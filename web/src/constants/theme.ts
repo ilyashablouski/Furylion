@@ -6,7 +6,9 @@ export const colors = {
   gray: '#888888',
   grayDark: '#5f5f5f',
   grayLight: '#999999',
-  red: 'red',
+  red: '#C2191E',
+  blackFury: '#191814',
+  white: '#ffffff',
 } as const;
 
 /** Source: https://htmlacademy.ru/blog/useful/css/short-14 */
