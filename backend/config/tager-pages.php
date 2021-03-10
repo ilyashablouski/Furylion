@@ -1,7 +1,5 @@
 <?php
 
-use OZiTAG\Tager\Backend\Fields\Enums\FieldType;
-
 return [
     'file_storage_scenarios' => [
         'cover' => null,
@@ -10,6 +8,9 @@ return [
     ],
 
     'templates' => [
-        'home' => \App\Tager\Templates\HomeTemplate::class
+        'home' => \App\Tager\Templates\HomeTemplate::class,
+        'vacancies' => \App\Tager\Templates\VacanciesTemplate::class,
+        'services' => \App\Tager\Templates\ServicesTemplate::class,
+        'playable-ads' => \App\Tager\Templates\PlayableAdsTemplate::class,
     ]
 ];
