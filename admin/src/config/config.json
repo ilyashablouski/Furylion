@@ -1,16 +1,12 @@
 {
-  "TITLE_TEMPLATE": "OZiTAG Admin - {{title}}",
+  "TITLE_TEMPLATE": "FuryLion Admin - {{title}}",
   "LANGUAGE": "EN",
   "BRAND": {
     "small": {
-      "logo": "logo-small.svg",
-      "label": "OZi",
-      "label-color": "#DD6900"
+      "logo": "logo-small.svg"
     },
     "large": {
-      "logo": "logo.svg",
-      "label": "OZiTAG",
-      "label-color": "#DD6900"
+      "logo": "logo.svg"
     }
   },
   "SPLASH_SCREEN": {

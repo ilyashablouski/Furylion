@@ -64,13 +64,11 @@ services:
       dockerfile: Dockerfile
     environment:
       BASE_PATH: /admin/auth
-      PAGE_TITLE: "OZiTAG - Login"
+      PAGE_TITLE: "FuryLion - Login"
       LOGO: "logo.svg"
       LANGUAGE: "EN"
-      BRAND_COLOR: "#DD6900"
-      # RECAPTCHA_SITE_KEY: "..."
-      # RECAPTCHA_VERSION: "2" | "2-invisible" | "3"
-      # GOOGLE_CLIENT_ID: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      BRAND_COLOR: "#C2191E"
+      GOOGLE_CLIENT_ID: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     networks:
       - app-network
   web:
