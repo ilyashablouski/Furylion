@@ -69,7 +69,7 @@ services:
       LOGO: "logo.svg"
       LANGUAGE: "EN"
       BRAND_COLOR: "#C2191E"
-      GOOGLE_CLIENT_ID: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      GOOGLE_CLIENT_ID: "160741798000-t304q24ksfik1mr3kaj5mtlctf8l8747"
     networks:
       - app-network
   web:
