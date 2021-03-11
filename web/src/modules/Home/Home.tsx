@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
+import { isBrowser } from '@tager/web-core';
 
 import Link from '@/components/Link';
 import { ReactComponent as OZiTAGLogo } from '@/assets/svg/ozitag-logo.svg';
@@ -10,7 +12,7 @@ import { colors } from '@/constants/theme';
 
 function Home() {
   return (
-    <Section>
+    <Wrapper>
       <Image>
         <Picture
           tabletLarge={{
@@ -35,11 +37,11 @@ function Home() {
       {/*</Link>*/}
 
       {/*<Button isActive={true}>dqwdqwd</Button>*/}
-    </Section>
+    </Wrapper>
   );
 }
 
-const Section = styled.section`
+const Wrapper = styled.section`
   position: relative;
 
   span {

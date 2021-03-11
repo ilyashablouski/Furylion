@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ContentContainer from '@/components/ContentContainer';
+
 function Header() {
-  return <HeaderContainer></HeaderContainer>;
+  return (
+    <HeaderContainer>
+      <ContentContainer></ContentContainer>
+    </HeaderContainer>
+  );
 }
 
 const HeaderContainer = styled.header`
