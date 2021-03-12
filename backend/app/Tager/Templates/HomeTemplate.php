@@ -18,7 +18,8 @@ class HomeTemplate extends Template
         parent::__construct('Главная страница', [
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
-                'heroText' => new TextField('Text')
+                'heroText' => new TextField('Text'),
+                'heroImage' => new ImageField('Image')
             ]),
             new GroupField('Works', [
                 'worksTitle' => new StringField('Title'),
