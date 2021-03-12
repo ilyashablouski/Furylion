@@ -18,6 +18,12 @@ import {
 } from '@tager/admin-administrators';
 
 import Home from '@/views/Home.vue';
+import { ROUTE_PATHS } from '@/constants/paths';
+import VacancyList from '@/views/VacancyList';
+import VacancyForm from '@/views/VacancyForm';
+import { getLinks } from '@/constants/links';
+import VacancyLocationList from '@/views/VacancyLocationList/VacancyLocationList.vue';
+import VacancyLocationForm from '@/views/VacansyLocationForm/VacancyLocationForm.vue';
 
 export const HOME_ROUTE: CustomRouteConfig = {
   path: '/',
@@ -28,9 +34,75 @@ export const HOME_ROUTE: CustomRouteConfig = {
   },
 };
 
+export const VACANCIES_ROUTE: CustomRouteConfig = {
+  path: ROUTE_PATHS.VACANCY_LIST,
+  component: VacancyList,
+  name: 'Vacancies',
+  meta: {
+    getBreadcrumbs: (route, t) => [
+      getLinks(t).HOME,
+      {
+        url: route.path,
+        text: 'Vacancies',
+      },
+    ],
+  },
+};
+
+export const VACANCY_FORM_ROUTE: CustomRouteConfig = {
+  path: ROUTE_PATHS.VACANCY_FORM,
+  component: VacancyForm,
+  name: 'Vacancy Form',
+  meta: {
+    getBreadcrumbs: (route, t) => [
+      getLinks(t).HOME,
+      getLinks(t).VACANCIES_LIST,
+      {
+        url: route.path,
+        text: 'Vacancy Form',
+      },
+    ],
+  },
+};
+
+export const VACANCY_LOCATIONS_ROUTE: CustomRouteConfig = {
+  path: ROUTE_PATHS.VACANCY_LOCATION_LIST,
+  component: VacancyLocationList,
+  name: 'Locations',
+  meta: {
+    getBreadcrumbs: (route, t) => [
+      getLinks(t).HOME,
+      {
+        url: route.path,
+        text: getLinks(t).VACANCY_LOCATIONS.text,
+      },
+    ],
+  },
+};
+
+export const VACANCY_LOCATION_FORM_ROUTE: CustomRouteConfig = {
+  path: ROUTE_PATHS.VACANCY_LOCATION_FORM,
+  component: VacancyLocationForm,
+  name: 'Location Form',
+  meta: {
+    getBreadcrumbs: (route, t) => [
+      getLinks(t).HOME,
+      getLinks(t).VACANCY_LOCATIONS,
+      {
+        url: route.path,
+        text: 'Location Form',
+      },
+    ],
+  },
+};
+
 const router = createRouter({
   routes: [
     HOME_ROUTE,
+    VACANCIES_ROUTE,
+    VACANCY_FORM_ROUTE,
+    VACANCY_LOCATIONS_ROUTE,
+    VACANCY_LOCATION_FORM_ROUTE,
     PAGE_FORM_ROUTE,
     PAGE_LIST_ROUTE,
     EMAIL_LOG_LIST_ROUTE,
