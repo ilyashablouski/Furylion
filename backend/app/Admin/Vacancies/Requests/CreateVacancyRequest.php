@@ -2,6 +2,7 @@
 
 namespace App\Admin\Vacancies\Requests;
 
+use App\Models\VacancyLocation;
 use OZiTAG\Tager\Backend\Crud\Requests\CrudFormRequest;
 
 /**
@@ -21,7 +22,7 @@ class CreateVacancyRequest extends CrudFormRequest
             'title' => 'required|string',
             'excerpt' => 'nullable|string',
             'body' => 'nullable|string',
-            'locationId' => 'required|integer|exists:vacancy_locations,id,id,!0,deleted_at,NULL',
+            'locationId' => 'required|integer|exists:' . VacancyLocation::class .',id,id,!0,deleted_at,NULL',
         ];
     }
 }

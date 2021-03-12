@@ -3,6 +3,7 @@
 namespace App\Admin\Vacancies\Requests;
 
 use App\Models\Vacancy;
+use App\Models\VacancyLocation;
 use Ozerich\FileStorage\Rules\FileRule;
 use OZiTAG\Tager\Backend\Crud\Requests\CrudFormWithSeoRequest;
 
@@ -42,7 +43,7 @@ class UpdateVacancyRequest extends CrudFormWithSeoRequest
             'duties' => 'nullable|string',
             'requirements' => 'nullable|string',
             'conditions' => 'nullable|string',
-            'locationId' => 'required|integer|exists:vacancy_locations,id,id,!0,deleted_at,NULL',
+            'locationId' => 'required|integer|exists:' . VacancyLocation::class .',id,id,!0,deleted_at,NULL',
             'image' => ['nullable', new FileRule()],
         ]);
     }

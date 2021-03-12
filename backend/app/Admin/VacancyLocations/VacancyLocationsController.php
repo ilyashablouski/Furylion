@@ -2,7 +2,6 @@
 
 namespace App\Admin\VacancyLocations;
 
-use App\Admin\VacancyLocations\Operations\UpdateVacancyLocationOperation;
 use App\Admin\VacancyLocations\Requests\CreateVacancyLocationRequest;
 use App\Admin\VacancyLocations\Requests\UpdateVacancyLocationRequest;
 use App\Repositories\VacancyLocationRepository;
@@ -29,9 +28,13 @@ class VacancyLocationsController extends AdminCrudController
             ],
         ]));
 
-        $this->setUpdateAction(new StoreOrUpdateAction(
-            UpdateVacancyLocationRequest::class, UpdateVacancyLocationOperation::class
-        ));
+        $this->setUpdateAction(new StoreOrUpdateAction(UpdateVacancyLocationRequest::class, null, [
+            'repository' => $repository,
+            'fields' => [
+                'name',
+                'url_alias' => 'urlAlias',
+            ],
+        ]));
 
         $this->setResourceFields([
             'id',

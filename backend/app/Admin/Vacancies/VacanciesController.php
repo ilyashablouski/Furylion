@@ -2,7 +2,6 @@
 
 namespace App\Admin\Vacancies;
 
-use App\Admin\Vacancies\Operations\UpdateVacancyOperation;
 use App\Admin\Vacancies\Requests\CreateVacancyRequest;
 use App\Admin\Vacancies\Requests\UpdateVacancyRequest;
 use App\Repositories\VacancyRepository;
@@ -32,9 +31,27 @@ class VacanciesController extends AdminCrudController
             ],
         ]));
 
-        $this->setUpdateAction(new StoreOrUpdateAction(
-            UpdateVacancyRequest::class, UpdateVacancyOperation::class
-        ));
+        $this->setUpdateAction(new StoreOrUpdateAction(UpdateVacancyRequest::class, null, [
+            'repository' => $repository,
+            'fields' => [
+                'title',
+                'url_alias' => 'urlAlias',
+                'excerpt',
+                'introduction',
+                'body',
+                'type',
+                'level',
+                'technologies',
+                'duties',
+                'requirements',
+                'conditions',
+                'location_id' => 'locationId',
+                'image_id' => 'image:file',
+                'page_title' => 'pageTitle',
+                'page_description' => 'pageDescription',
+                'open_graph_image_id' => 'openGraphImage:file'
+            ],
+        ]));
 
         $this->setResourceFields([
             'id',
