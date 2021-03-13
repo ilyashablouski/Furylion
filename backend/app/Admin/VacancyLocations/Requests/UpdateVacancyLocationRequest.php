@@ -19,8 +19,8 @@ class UpdateVacancyLocationRequest extends CrudFormRequest
         $routeId = $this->route('id', 0);
 
         return [
-            'name' => 'required|string',
-            'urlAlias' => ['required', 'string', 'unique:' . VacancyLocation::class . ',url_alias,' . $routeId . ',id,deleted_at,NULL']
+            'name' => 'required|string|max:255',
+            'urlAlias' => ['required', 'max:255', 'string', 'unique:' . VacancyLocation::class . ',url_alias,' . $routeId . ',id,deleted_at,NULL']
         ];
     }
 }

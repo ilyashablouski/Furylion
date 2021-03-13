@@ -19,7 +19,7 @@ class CreateVacancyRequest extends CrudFormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'title' => 'required|string|max:255',
             'excerpt' => 'nullable|string',
             'body' => 'nullable|string',
             'locationId' => 'required|integer|exists:' . VacancyLocation::class .',id,id,!0,deleted_at,NULL',

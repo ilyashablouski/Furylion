@@ -32,13 +32,13 @@ class UpdateVacancyRequest extends CrudFormWithSeoRequest
         $routeId = $this->route('id', 0);
 
         return array_merge(parent::rules(), [
-            'title' => 'required|string',
-            'urlAlias' => ['required', 'string', 'unique:' . Vacancy::class . ',url_alias,' . $routeId . ',id,deleted_at,NULL'],
+            'title' => 'required|string|max:255',
+            'urlAlias' => ['required', 'max:255', 'string', 'unique:' . Vacancy::class . ',url_alias,' . $routeId . ',id,deleted_at,NULL'],
             'excerpt' => 'nullable|string',
             'introduction' => 'nullable|string',
             'body' => 'nullable|string',
-            'type' => 'nullable|string',
-            'level' => 'nullable|string',
+            'type' => 'nullable|string|max:255',
+            'level' => 'nullable|string|max:255',
             'technologies' => 'nullable|string',
             'duties' => 'nullable|string',
             'requirements' => 'nullable|string',

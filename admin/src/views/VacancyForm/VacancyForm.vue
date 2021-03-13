@@ -40,6 +40,12 @@
           :url-template="pagePath"
           :error="errors.urlAlias"
         />
+        <form-field-file-input
+          v-model="values.image"
+          name="image"
+          :error="errors.image"
+          label="Image"
+        />
         <form-field-select
           v-model="values.location"
           name="location"
@@ -56,6 +62,12 @@
           label="Excerpt"
         />
         <form-field
+          v-model="values.technologies"
+          name="technologies"
+          :error="errors.technologies"
+          label="Technologies used"
+        />
+        <form-field
           v-model="values.type"
           name="type"
           :error="errors.type"
@@ -67,12 +79,6 @@
           :error="errors.level"
           label="Level"
         />
-        <form-field-file-input
-          v-model="values.image"
-          name="image"
-          :error="errors.image"
-          label="Image"
-        />
       </template>
       <template v-if="selectedTabId === 'details'">
         <form-field
@@ -82,11 +88,11 @@
           type="textarea"
           label="Intro text"
         />
-        <form-field
-          v-model="values.technologies"
-          name="technologies"
-          :error="errors.technologies"
-          label="Technologies used"
+        <form-field-rich-text-input
+          v-model="values.body"
+          name="body"
+          label="Body"
+          :error="errors.body"
         />
         <form-field
           v-model="values.duties"
@@ -108,12 +114,6 @@
           :error="errors.conditions"
           type="textarea"
           label="Conditions"
-        />
-        <form-field-rich-text-input
-          v-model="values.body"
-          name="body"
-          label="Body"
-          :error="errors.body"
         />
       </template>
       <template v-if="selectedTabId === 'seo'">
@@ -361,6 +361,10 @@ export default defineComponent({
     const isContentLoading = computed<boolean>(
       () => isVacancyLoading.value || isVacancyLocationListLoading.value
     );
+
+    watch(vacancyLocationOptionList, () => {
+      setValues();
+    });
 
     watch(vacancy, () => {
       setValues();

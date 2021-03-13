@@ -15,7 +15,7 @@ class CreateVacancyLocationRequest extends CrudFormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
         ];
     }
 }
