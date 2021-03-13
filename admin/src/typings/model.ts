@@ -26,4 +26,5 @@ export type VacancyLocationType = {
   readonly url: string;
   readonly name: string;
   readonly urlAlias: string;
+  readonly vacanciesCount: number;
 };

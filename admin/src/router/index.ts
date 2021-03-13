@@ -1,3 +1,4 @@
+import qs from 'qs';
 import { createRouter, CustomRouteConfig } from '@tager/admin-layout';
 import { PAGE_FORM_ROUTE, PAGE_LIST_ROUTE } from '@tager/admin-pages';
 import {
@@ -117,6 +118,12 @@ const router = createRouter({
     ROLE_FORM_ROUTE,
     ROLE_LIST_ROUTE,
   ],
+  stringifyQuery: (query) => {
+    return qs.stringify(query, {
+      encode: false,
+      addQueryPrefix: true,
+    });
+  },
 });
 
 export default router;

@@ -66,7 +66,6 @@ import {
   updateVacancyLocation,
 } from '@/services/requests';
 import { getWebsiteOrigin } from '@/utils/common';
-import { ROUTE_PATHS } from '@/constants/paths';
 import {
   convertVacancyLocationToFormValues,
   convertValuesToLocationCreationPayload,
@@ -88,7 +87,7 @@ export default defineComponent({
     const isSubmitting = ref<boolean>(false);
 
     const pagePath = computed<string>(() => {
-      return getWebsiteOrigin() + ROUTE_PATHS.VACANCY_LOCATION_LIST + '/';
+      return getWebsiteOrigin() + '/careers/location/';
     });
 
     const [

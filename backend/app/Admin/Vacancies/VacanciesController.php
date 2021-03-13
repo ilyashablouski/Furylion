@@ -57,6 +57,7 @@ class VacanciesController extends AdminCrudController
             'id',
             'url',
             'title',
+            'image:file:url',
             'location' => [
                 'relation' => 'location',
                 'as' => 'name',

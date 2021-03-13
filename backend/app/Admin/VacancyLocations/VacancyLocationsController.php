@@ -4,6 +4,7 @@ namespace App\Admin\VacancyLocations;
 
 use App\Admin\VacancyLocations\Requests\CreateVacancyLocationRequest;
 use App\Admin\VacancyLocations\Requests\UpdateVacancyLocationRequest;
+use App\Models\VacancyLocation;
 use App\Repositories\VacancyLocationRepository;
 use OZiTAG\Tager\Backend\Crud\Actions\StoreOrUpdateAction;
 use OZiTAG\Tager\Backend\Crud\Controllers\AdminCrudController;
@@ -40,6 +41,9 @@ class VacancyLocationsController extends AdminCrudController
             'id',
             'url',
             'name',
+            'vacanciesCount' => function (VacancyLocation $model) {
+                return $model->vacancies->count();
+            },
         ]);
 
         $this->setFullResourceFields([

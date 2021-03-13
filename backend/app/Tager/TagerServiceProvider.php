@@ -6,6 +6,7 @@ use App\Enums\SeoParamTemplate;
 use App\Enums\UsersScope;
 use App\Tager\PanelRouteHandlers\VacancyPanelRouteHandler;
 use App\Tager\SitemapHandlers\VacanciesSitemapHandler;
+use App\Tager\SitemapHandlers\VacancyLocationsSitemapHandler;
 use Illuminate\Support\ServiceProvider;
 use OZiTAG\Tager\Backend\Panel\TagerPanel;
 use OZiTAG\Tager\Backend\Rbac\TagerScopes;
@@ -41,6 +42,7 @@ class TagerServiceProvider extends ServiceProvider
         ]);
 
         TagerSeo::registerSitemapHandler(VacanciesSitemapHandler::class);
+        TagerSeo::registerSitemapHandler(VacancyLocationsSitemapHandler::class);
 
         TagerSeo::registerParamsTemplate(SeoParamTemplate::VacanciesSingle, new ParamsTemplate(
             'Vacancies - Vacancy Page', ['title' => 'Title', 'excerpt' => 'Excerpt'], false,

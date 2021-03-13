@@ -16,19 +16,6 @@
         :options="vacancyLocationOptionList"
         placeholder="No location"
       />
-      <form-field
-        v-model="values.excerpt"
-        name="excerpt"
-        :error="errors.excerpt"
-        type="textarea"
-        label="Excerpt"
-      />
-      <form-field-rich-text-input
-        v-model="values.body"
-        name="body"
-        label="Body"
-        :error="errors.body"
-      />
     </form>
 
     <!-- Editing -->
@@ -68,21 +55,6 @@
           type="textarea"
           label="Excerpt"
         />
-        <form-field-rich-text-input
-          v-model="values.body"
-          name="body"
-          label="Body"
-          :error="errors.body"
-        />
-      </template>
-      <template v-if="selectedTabId === 'details'">
-        <form-field
-          v-model="values.introduction"
-          name="introduction"
-          :error="errors.introduction"
-          type="textarea"
-          label="Introductory text"
-        />
         <form-field
           v-model="values.type"
           name="type"
@@ -95,12 +67,6 @@
           :error="errors.level"
           label="Level"
         />
-        <form-field
-          v-model="values.technologies"
-          name="technologies"
-          :error="errors.technologies"
-          label="Technologies used"
-        />
         <form-field-file-input
           v-model="values.image"
           name="image"
@@ -108,13 +74,26 @@
           label="Image"
         />
       </template>
-      <template v-if="selectedTabId === 'conditions'">
+      <template v-if="selectedTabId === 'details'">
+        <form-field
+          v-model="values.introduction"
+          name="introduction"
+          :error="errors.introduction"
+          type="textarea"
+          label="Intro text"
+        />
+        <form-field
+          v-model="values.technologies"
+          name="technologies"
+          :error="errors.technologies"
+          label="Technologies used"
+        />
         <form-field
           v-model="values.duties"
           name="duties"
           :error="errors.duties"
           type="textarea"
-          label="Duties"
+          label="Responsibilities"
         />
         <form-field
           v-model="values.requirements"
@@ -129,6 +108,12 @@
           :error="errors.conditions"
           type="textarea"
           label="Conditions"
+        />
+        <form-field-rich-text-input
+          v-model="values.body"
+          name="body"
+          label="Body"
+          :error="errors.body"
         />
       </template>
       <template v-if="selectedTabId === 'seo'">
@@ -194,7 +179,6 @@ import {
   updateVacancy,
 } from '@/services/requests';
 import { getWebsiteOrigin } from '@/utils/common';
-import { ROUTE_PATHS } from '@/constants/paths';
 
 export default defineComponent({
   name: 'VacanciesForm',
@@ -210,7 +194,7 @@ export default defineComponent({
     const isSubmitting = ref<boolean>(false);
 
     const pagePath = computed<string>(() => {
-      return getWebsiteOrigin() + ROUTE_PATHS.VACANCY_LIST + '/';
+      return getWebsiteOrigin() + '/careers/';
     });
 
     /** Tabs */
@@ -223,10 +207,12 @@ export default defineComponent({
           label: 'General',
           hasErrors: hasErrors([
             'title',
+            'urlAlias',
             'location',
             'excerpt',
-            'urlAlias',
-            'body',
+            'type',
+            'level',
+            'image',
           ]),
         },
         {
@@ -234,15 +220,12 @@ export default defineComponent({
           label: 'Details',
           hasErrors: hasErrors([
             'introduction',
-            'type',
-            'level',
             'technologies',
+            'duties',
+            'requirements',
+            'conditions',
+            'body',
           ]),
-        },
-        {
-          id: 'conditions',
-          label: 'Conditions',
-          hasErrors: hasErrors(['duties', 'requirements', 'conditions']),
         },
         {
           id: 'seo',

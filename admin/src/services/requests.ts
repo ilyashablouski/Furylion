@@ -26,8 +26,6 @@ export function getVacancy(
 export type VacancyCreatePayload = {
   title: string;
   locationId: Nullable<number>;
-  excerpt: string;
-  body: string;
 };
 
 export function createVacancy(

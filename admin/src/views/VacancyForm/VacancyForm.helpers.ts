@@ -32,8 +32,6 @@ export function convertFormValuesToVacancyCreationPayload(
   return {
     title: values.title,
     locationId: values.location?.value ?? null,
-    excerpt: values.excerpt,
-    body: values.body,
   };
 }
 

@@ -95,6 +95,14 @@ const COLUMN_DEFS: Array<ColumnDefinition<VacancyType>> = [
   },
   {
     id: 2,
+    name: 'Image',
+    field: 'image',
+    type: 'image',
+    style: { width: '111px' },
+    headStyle: { width: '111px' },
+  },
+  {
+    id: 3,
     name: 'Title',
     field: 'title',
     type: 'name',
@@ -112,19 +120,19 @@ const COLUMN_DEFS: Array<ColumnDefinition<VacancyType>> = [
     }),
   },
   {
-    id: 3,
+    id: 4,
     name: 'Location',
     field: 'location',
     style: { width: '230px' },
     headStyle: { width: '230px' },
   },
   {
-    id: 4,
+    id: 5,
     name: 'Excerpt',
     field: 'excerpt',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Actions',
     field: 'actions',
     style: { width: '139px', textAlign: 'center', whiteSpace: 'nowrap' },

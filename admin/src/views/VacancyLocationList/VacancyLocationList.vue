@@ -28,6 +28,21 @@
         <template v-slot:cell(index)="{ row, rowIndex }">
           <div>{{ rowIndex + 1 }}</div>
         </template>
+        <template v-slot:cell(vacancies)="{ row }">
+          <router-link
+            :to="{
+              path: getVacancyListUrl(),
+              query: { filter: { location: row.id } },
+            }"
+          >
+            <count-button
+              variant="outline-secondary"
+              :count="row.vacanciesCount"
+            >
+              Vacancies
+            </count-button>
+          </router-link>
+        </template>
         <template v-slot:cell(actions)="{ row, rowIndex }">
           <base-button
             variant="icon"
@@ -73,7 +88,7 @@
 </template>
 
 <script lang="ts">
-import { getVacancyLocationFormUrl } from '@/utils/paths';
+import { getVacancyListUrl, getVacancyLocationFormUrl } from '@/utils/paths';
 import { computed, defineComponent } from '@vue/composition-api';
 import {
   deleteVacancy,
@@ -98,8 +113,6 @@ const COLUMN_DEFS: Array<ColumnDefinition<VacancyLocationType>> = [
     name: 'Name',
     field: 'name',
     type: 'name',
-    style: { width: '230px' },
-    headStyle: { width: '230px' },
     format: ({ row }) => ({
       adminLink: {
         text: row.name,
@@ -113,10 +126,17 @@ const COLUMN_DEFS: Array<ColumnDefinition<VacancyLocationType>> = [
   },
   {
     id: 3,
+    name: 'Vacancies',
+    field: 'vacancies',
+    style: { width: '161px', textAlign: 'center', whiteSpace: 'nowrap' },
+    headStyle: { width: '161px', textAlign: 'center' },
+  },
+  {
+    id: 4,
     name: 'Actions',
     field: 'actions',
-    style: { width: '139px', textAlign: 'center', whiteSpace: 'nowrap' },
-    headStyle: { width: '139px', textAlign: 'center' },
+    style: { width: '177px', textAlign: 'center', whiteSpace: 'nowrap' },
+    headStyle: { width: '177px', textAlign: 'center' },
   },
 ];
 
@@ -179,6 +199,7 @@ export default defineComponent({
       isRowDataLoading,
       rowData,
       getVacancyLocationFormUrl,
+      getVacancyListUrl,
       handleVacancyLocationDelete,
       handleVacancyLocationMove,
       pageSize,
