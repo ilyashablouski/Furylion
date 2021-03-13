@@ -32,7 +32,7 @@
           <router-link
             :to="{
               path: getVacancyListUrl(),
-              query: { filter: { location: row.id } },
+              query: { 'filter[location]': row.id },
             }"
           >
             <count-button

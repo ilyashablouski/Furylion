@@ -25,6 +25,16 @@
         }"
         @change="handleChange"
       >
+        <template v-slot:filters>
+          <advanced-search :tags="tags" @click:tag="handleTagRemove">
+            <form-field-multi-select
+              v-model="locationFilter"
+              :options="vacancyLocationOptionList"
+              name="locationFilter"
+              label="Locations"
+            />
+          </advanced-search>
+        </template>
         <template v-slot:cell(index)="{ row, rowIndex }">
           <div>{{ rowIndex + 1 }}</div>
         </template>
@@ -74,15 +84,29 @@
 
 <script lang="ts">
 import { getVacancyFormUrl } from '@/utils/paths';
-import { computed, defineComponent } from '@vue/composition-api';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+} from '@vue/composition-api';
 import {
   deleteVacancy,
   getVacanciesList,
+  getVacancyLocationsList,
   moveVacancy,
 } from '@/services/requests';
-import { ColumnDefinition, useDataTable } from '@tager/admin-ui';
+import {
+  ColumnDefinition,
+  getFilterParamAsNumberArray,
+  getFilterParams,
+  OptionType,
+  useDataTable,
+  useSelectOptionsResource,
+} from '@tager/admin-ui';
 import { useResourceDelete, useResourceMove } from '@tager/admin-services';
-import { VacancyType } from '@/typings/model';
+import { VacancyLocationType, VacancyType } from '@/typings/model';
 import { getWebsiteOrigin } from '@/utils/common';
 
 const COLUMN_DEFS: Array<ColumnDefinition<VacancyType>> = [
@@ -144,6 +168,52 @@ export default defineComponent({
   name: 'Vacancies',
   setup(props, context) {
     const {
+      loading: isVacancyLocationListLoading,
+      options: vacancyLocationOptionList,
+      fetchEntityList: fetchVacancyLocationList,
+    } = useSelectOptionsResource<VacancyLocationType, OptionType<number>>({
+      fetchEntityList: getVacancyLocationsList,
+      context,
+      resourceName: 'Location list',
+      minQueryLength: 0,
+      convertEntityToOption: (vacancyLocation) => {
+        return {
+          value: vacancyLocation.id,
+          label: vacancyLocation.name,
+        };
+      },
+    });
+
+    onMounted(() => {
+      fetchVacancyLocationList({ query: '' });
+    });
+
+    const initialLocationFilter = computed<Array<OptionType<number>>>(() => {
+      const queryValue = getFilterParamAsNumberArray(
+        context.root.$route.query,
+        'location'
+      );
+
+      return vacancyLocationOptionList.value.filter((option) =>
+        queryValue.some((selected) => option.value === selected)
+      );
+    });
+
+    const locationFilter = ref<Array<OptionType<number>>>(
+      initialLocationFilter.value
+    );
+
+    watch(initialLocationFilter, () => {
+      locationFilter.value = initialLocationFilter.value;
+    });
+
+    const filterParams = computed(() => {
+      return getFilterParams({
+        location: locationFilter.value.map((tag) => tag.value),
+      });
+    });
+
+    const {
       isLoading: isVacanciesListLoading,
       rowData,
       errorMessage,
@@ -159,10 +229,21 @@ export default defineComponent({
           query: params.searchQuery,
           pageNumber: params.pageNumber,
           pageSize: params.pageSize,
+          ...filterParams.value,
         }),
       initialValue: [],
       context,
       resourceName: 'Vacancies list',
+    });
+
+    watch(filterParams, () => {
+      context.root.$router.replace({
+        query: {
+          ...filterParams.value,
+          query: (context.root.$route.query.query ?? '') as string,
+        },
+      });
+      fetchVacanciesList();
     });
 
     const {
@@ -184,8 +265,25 @@ export default defineComponent({
       }
     );
 
+    function handleTagRemove(event: TagType) {
+      if (event.name === 'location') {
+        locationFilter.value = locationFilter.value.filter(
+          (tag) => String(tag.value) !== event.value
+        );
+      }
+    }
+
+    const tags = computed<Array<TagType>>(() => [
+      ...locationFilter.value.map((tag) => ({
+        value: String(tag.value),
+        label: tag.label,
+        name: 'location',
+        title: 'Locations',
+      })),
+    ]);
+
     const isRowDataLoading = computed<boolean>(
-      () => isVacanciesListLoading.value
+      () => isVacanciesListLoading.value || isVacancyLocationListLoading.value
     );
 
     function isBusy(vacancyId: number): boolean {
@@ -208,6 +306,12 @@ export default defineComponent({
       searchQuery,
       errorMessage,
       columnDefs: COLUMN_DEFS,
+
+      locationFilter,
+      vacancyLocationOptionList,
+
+      handleTagRemove,
+      tags,
     };
   },
 });

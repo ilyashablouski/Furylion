@@ -5,11 +5,12 @@ namespace App\Repositories;
 use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Builder;
 use OZiTAG\Tager\Backend\Core\Repositories\EloquentRepository;
+use OZiTAG\Tager\Backend\Core\Repositories\IFilterable;
 use OZiTAG\Tager\Backend\Core\Repositories\ISearchable;
 use OZiTAG\Tager\Backend\Crud\Contracts\IRepositoryWithPriorityMethods;
 use OZiTAG\Tager\Backend\Crud\Traits\RepositoryPriorityMethodsTrait;
 
-class VacancyRepository extends EloquentRepository implements IRepositoryWithPriorityMethods, ISearchable
+class VacancyRepository extends EloquentRepository implements IRepositoryWithPriorityMethods, ISearchable, IFilterable
 {
     use RepositoryPriorityMethodsTrait;
 
@@ -30,5 +31,15 @@ class VacancyRepository extends EloquentRepository implements IRepositoryWithPri
     public function findByUrlAlias(string $urlAlias): ?Vacancy
     {
         return $this->model::query()->where('url_alias', '=', $urlAlias)->first();
+    }
+
+    public function filterByKey(Builder $builder, string $key, mixed $value): Builder
+    {
+        switch ($key) {
+            case 'location':
+                return $builder->whereIn('location_id', explode(',', $value));
+            default:
+                return $builder;
+        }
     }
 }
