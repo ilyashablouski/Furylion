@@ -1,5 +1,12 @@
 import { FileType, Nullable } from '@tager/admin-services';
 
+export type TagType = {
+  value: string;
+  label: string;
+  name: string;
+  title: string;
+};
+
 export type VacancyType = {
   readonly id: number;
   readonly url: string;

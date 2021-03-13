@@ -106,7 +106,7 @@ import {
   useSelectOptionsResource,
 } from '@tager/admin-ui';
 import { useResourceDelete, useResourceMove } from '@tager/admin-services';
-import { VacancyLocationType, VacancyType } from '@/typings/model';
+import { VacancyLocationType, VacancyType, TagType } from '@/typings/model';
 import { getWebsiteOrigin } from '@/utils/common';
 
 const COLUMN_DEFS: Array<ColumnDefinition<VacancyType>> = [
