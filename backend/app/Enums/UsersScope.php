@@ -6,5 +6,8 @@ use OZiTAG\Tager\Backend\Core\Enums\Enum;
 
 final class UsersScope extends Enum
 {
-    const Base = 'app.base';
+    const VacanciesView = 'vacancies.view';
+    const VacanciesCreate = 'vacancies.create';
+    const VacanciesEdit = 'vacancies.edit';
+    const VacanciesDelete = 'vacancies.delete';
 }

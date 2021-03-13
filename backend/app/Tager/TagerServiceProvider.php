@@ -2,7 +2,16 @@
 
 namespace App\Tager;
 
+use App\Enums\SeoParamTemplate;
+use App\Enums\UsersScope;
+use App\Tager\PanelRouteHandlers\VacancyPanelRouteHandler;
+use App\Tager\SitemapHandlers\VacanciesSitemapHandler;
+use App\Tager\SitemapHandlers\VacancyLocationsSitemapHandler;
 use Illuminate\Support\ServiceProvider;
+use OZiTAG\Tager\Backend\Panel\TagerPanel;
+use OZiTAG\Tager\Backend\Rbac\TagerScopes;
+use OZiTAG\Tager\Backend\Seo\Structures\ParamsTemplate;
+use OZiTAG\Tager\Backend\Seo\TagerSeo;
 
 class TagerServiceProvider extends ServiceProvider
 {
@@ -23,12 +32,21 @@ class TagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // TagerPanel::registerRouteHandler('/catalog/(.+?)$', ProductRouteHandler::class);
+        TagerPanel::registerRouteHandler('/vacancies/(.+?)$', VacancyPanelRouteHandler::class);
 
-        // TagerSeo::registerSitemapHandler(ProductSitemapHandler::class);
+        TagerScopes::registerGroup('Vacancies', [
+            UsersScope::VacanciesView => 'View',
+            UsersScope::VacanciesCreate => 'Create',
+            UsersScope::VacanciesEdit => 'Edit',
+            UsersScope::VacanciesDelete => 'Delete',
+        ]);
 
-        /* TagerScopes::registerGroup('App', [
-            UsersScope::Base => 'App Base Scope',
-        ]); */
+        TagerSeo::registerSitemapHandler(VacanciesSitemapHandler::class);
+        TagerSeo::registerSitemapHandler(VacancyLocationsSitemapHandler::class);
+
+        TagerSeo::registerParamsTemplate(SeoParamTemplate::VacanciesSingle, new ParamsTemplate(
+            'Vacancies - Vacancy Page', ['title' => 'Title', 'excerpt' => 'Excerpt'], false,
+            'Vacancy - {{title}}', 'Vacancy - {{title}}. {{excerpt}}'
+        ));
     }
 }

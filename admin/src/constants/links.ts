@@ -5,9 +5,12 @@ import { getEmailLogListUrl, getEmailTemplateListUrl } from '@tager/admin-mail';
 import { getSettingItemListUrl } from '@tager/admin-settings';
 import { getSeoSettingsUrl, getSeoTemplatesUrl } from '@tager/admin-seo';
 import { getAdminListUrl, getRoleListUrl } from '@tager/admin-administrators';
+import { getVacancyListUrl, getVacancyLocationListUrl } from '@/utils/paths';
 
 type LinkKey =
   | 'HOME'
+  | 'VACANCIES_LIST'
+  | 'VACANCY_LOCATIONS'
   | 'PAGE_LIST'
   | 'EMAIL_TEMPLATE_LIST'
   | 'EMAIL_LOG_LIST'
@@ -23,6 +26,14 @@ export const getLinks = (
   HOME: {
     url: '/',
     text: t('admin:home'),
+  },
+  VACANCIES_LIST: {
+    url: getVacancyListUrl(),
+    text: 'Vacancies',
+  },
+  VACANCY_LOCATIONS: {
+    url: getVacancyLocationListUrl(),
+    text: 'Locations',
   },
   PAGE_LIST: {
     url: getPageListUrl(),
