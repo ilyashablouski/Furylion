@@ -6,6 +6,7 @@ import Home from '@/modules/Home';
 import Vacancies from '@/modules/Vacancies';
 import Services from '@/modules/PlayableAds';
 import PlayableAds from '@/modules/PlayableAds';
+import Vacancy from '@/modules/Vacancy';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
@@ -17,6 +18,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   { template: 'vacancies', component: Vacancies },
   { template: 'services', component: Services },
   { template: 'playable-ads', component: PlayableAds },
+  { template: 'vacancy', component: Vacancy },
 ];
 
 export function getPageModuleByTemplate(
