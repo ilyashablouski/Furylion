@@ -2,19 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Picture from '@/components/Picture';
-import infoBgUrl from '@/assets/images/home/intro/intro-bg.jpg';
-import infoBgUrl2x from '@/assets/images/home/intro/intro-bg@2x.jpg';
+import heroBgUrl from '@/assets/images/home/intro/intro-bg.jpg';
+import heroBgUrl2x from '@/assets/images/home/intro/intro-bg@2x.jpg';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 function HeroSection() {
+  // const page = useCurrentPage();
+
   return (
     <WrapperSection>
       <BackgroundSection>
         <Picture
           tabletLarge={{
-            src: infoBgUrl,
-            src2x: infoBgUrl2x,
+            src: heroBgUrl,
+            src2x: heroBgUrl2x,
           }}
           className="section-background"
         />
@@ -44,6 +47,7 @@ const Title = styled.span`
   font-weight: 900;
   font-size: 72px;
   line-height: 100%;
+  text-align: center;
   text-transform: uppercase;
 `;
 

@@ -3,10 +3,21 @@ import styled from 'styled-components';
 
 import { isBrowser } from '@tager/web-core';
 
-import IntroSection from './components/HeroSection/HeroSection';
+import useCurrentPage from '@/hooks/useCurrentPage';
+import { HomePageTemplate } from '@/typings/model';
+
+import HomeSection from './components/HeroSection';
+import WorksSection from './components/WorksSection';
 
 function Home() {
-  return <IntroSection />;
+  // const page = useCurrentPage<HomePageTemplate>();
+
+  return (
+    <>
+      <HomeSection />
+      <WorksSection />
+    </>
+  );
 }
 
 // const Button = styled.button<{ isActive: boolean }>`

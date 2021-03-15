@@ -7,6 +7,7 @@ import Vacancies from '@/modules/Vacancies';
 import Services from '@/modules/PlayableAds';
 import PlayableAds from '@/modules/PlayableAds';
 import Vacancy from '@/modules/Vacancy';
+import { CustomApp_PageContext } from '@/typings/hocs';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
