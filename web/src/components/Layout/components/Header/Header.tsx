@@ -5,6 +5,8 @@ import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Link from '@/components/Link';
 
+import HeaderMenu from './components/HeaderMenu';
+
 function Header() {
   return (
     <HeaderContainer>
@@ -19,7 +21,16 @@ function Header() {
               </LogoWrapper>
             </HeaderLeft>
 
-            <HeaderRight></HeaderRight>
+            <HeaderRight>
+              <HeaderMenu
+                menuItemList={[
+                  'Services',
+                  'Playable ADS',
+                  'Contact Us',
+                  'Vacancies',
+                ]}
+              />
+            </HeaderRight>
           </HeaderInner>
         </HeaderWrapper>
       </ContentContainer>
@@ -32,6 +43,10 @@ const HeaderContainer = styled.header`
   top: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
+
+  ${ContentContainer} {
+    padding-right: 0;
+  }
 `;
 
 const HeaderWrapper = styled.div``;
