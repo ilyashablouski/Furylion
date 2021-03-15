@@ -1347,6 +1347,13 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
+"@tager/admin-menus@^0.2.12":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@tager/admin-menus/-/admin-menus-0.2.12.tgz#9a94c7b6ce8b82041961f65d15bc09417474afe6"
+  integrity sha512-yT+0VlpqX7szR5sxrZ4dxbHlEw+EI5r8BkZSVMWb4vohef7ankXEWp0XfIe3ts98jzRjl+PTZyytK8jcg8EzPA==
+  dependencies:
+    path-to-regexp "^6.1.0"
+
 "@tager/admin-pages@^0.3.13":
   version "0.3.13"
   resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.13.tgz#cf10cf32516d96aaa5fa95ec4b6b343dc147d1fe"
