@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
+import Link from '@/components/Link';
 
 function Header() {
   return (
@@ -11,7 +12,11 @@ function Header() {
         <HeaderWrapper>
           <HeaderInner>
             <HeaderLeft>
-              <HeaderLogo>link to logo</HeaderLogo>
+              <LogoWrapper>
+                <LogoLink to="/">
+                  <Logo />
+                </LogoLink>
+              </LogoWrapper>
             </HeaderLeft>
 
             <HeaderRight></HeaderRight>
@@ -22,7 +27,12 @@ function Header() {
   );
 }
 
-const HeaderContainer = styled.header``;
+const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+`;
 
 const HeaderWrapper = styled.div``;
 
@@ -38,6 +48,10 @@ const HeaderRight = styled.div`
   margin-left: auto;
 `;
 
-const HeaderLogo = styled.a``;
+const LogoWrapper = styled.div``;
+
+const LogoLink = styled(Link)`
+  display: inline-flex;
+`;
 
 export default Header;
