@@ -28,6 +28,12 @@ export default defineComponent({
       },
       { id: 'pages', icon: 'viewList', ...links.value.PAGE_LIST },
       {
+        id: 'menu',
+        icon: 'viewList',
+        text: 'Menu',
+        children: [links.value.MENU_TOP, links.value.MENU_BOTTOM],
+      },
+      {
         id: 'settings',
         icon: 'settings',
         text: t('admin:settings'),

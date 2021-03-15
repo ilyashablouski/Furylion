@@ -24,6 +24,7 @@ import VacancyForm from '@/views/VacancyForm';
 import { getLinks } from '@/constants/links';
 import VacancyLocationList from '@/views/VacancyLocationList/VacancyLocationList.vue';
 import VacancyLocationForm from '@/views/VacansyLocationForm/VacancyLocationForm.vue';
+import { createMenuRoute } from '@tager/admin-menus';
 
 export const HOME_ROUTE: CustomRouteConfig = {
   path: '/',
@@ -116,6 +117,7 @@ const router = createRouter({
     ADMIN_LIST_ROUTE,
     ROLE_FORM_ROUTE,
     ROLE_LIST_ROUTE,
+    createMenuRoute('Menu'),
   ],
 });
 
