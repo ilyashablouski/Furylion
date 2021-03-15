@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 import { Preloader } from '@tager/web-components';
 
-import Header from './components/Header';
+import { colors } from '@/constants/theme';
+
+import Header from './components/Header/Header';
 import Footer from './components/Footer';
 
 type Props = {
@@ -32,9 +34,11 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
+  margin-top: -100px;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  background: ${colors.dark};
 `;
 
 export default Layout;

@@ -7,12 +7,14 @@ export const colors = {
   grayDark: '#5f5f5f',
   grayLight: '#999999',
   red: '#C2191E',
-  blackFury: '#191814',
+  dark: '#191814',
   white: '#ffffff',
 } as const;
 
 /** Source: https://htmlacademy.ru/blog/useful/css/short-14 */
 const fallbackFont = [
+  'Inter',
+  'JetBrains',
   '-apple-system',
   "'BlickMacSystemFont'",
   "'Segoe UI'",
@@ -28,6 +30,8 @@ const fallbackFont = [
 
 export const fonts = {
   Montserrat: `'Montserrat', ${fallbackFont}`,
+  Inter: `'Inter', ${fallbackFont}`,
+  JetBrains: `'JetBrains', ${fallbackFont}`,
 };
 
 /**

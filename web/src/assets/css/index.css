@@ -2,7 +2,4 @@
 @import "~nprogress/nprogress.css";
 
 @import "./global.css";
-
-:root {
-  --color-button: #fff
-}
+@import "./fonts.css";

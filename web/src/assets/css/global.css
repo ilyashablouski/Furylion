@@ -78,7 +78,8 @@ img {
 }
 
 body {
-  font-family: -apple-system,
+  font-family:'Inter',
+  -apple-system,
   'BlickMacSystemFont',
   'Segoe UI',
   'Roboto',
