@@ -25,6 +25,12 @@ const SocialLink = styled(Link)`
   font-size: 24px;
   color: #191814;
   border: 1px solid ${colors.red};
+  transition: 150ms all ease-in-out;
+
+  &:hover {
+    background: #000;
+    color: ${colors.white};
+  }
 
   svg {
     display: inline-block;

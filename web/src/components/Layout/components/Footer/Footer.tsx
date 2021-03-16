@@ -8,8 +8,10 @@ import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
+import { colors } from '@/constants/theme';
 
 import FooterSocial from './components/FooterSocial';
+import FooterMenu from './components/FooterMenu';
 
 const socials = [
   {
@@ -34,6 +36,7 @@ function Footer() {
   const footerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'footer')) ??
     [];
+
   return (
     <FooterContainer>
       <ContentContainer>
@@ -44,12 +47,20 @@ function Footer() {
             })}
           </FooterSocials>
 
-          {/*<FooterLinks>*/}
-          {/*  */}
-          {/*</FooterLinks>*/}
+          <FooterMenu menuItemList={footerMenuItemList} />
         </FooterTop>
 
-        <FooterBottom></FooterBottom>
+        <FooterBottom>
+          <FooterCopyright>
+            © 2010-2021 FuryLion Development LLC.
+          </FooterCopyright>
+
+          <FooterCreator>
+            Made with fury in&nbsp;
+            <FooterCreatorFirst>69</FooterCreatorFirst>
+            <FooterCreatorSecond>pixels.</FooterCreatorSecond>
+          </FooterCreator>
+        </FooterBottom>
       </ContentContainer>
     </FooterContainer>
   );
@@ -60,13 +71,47 @@ const FooterContainer = styled.footer`
   padding-bottom: 72px;
 `;
 
-const FooterTop = styled.div``;
+const FooterTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-const FooterBottom = styled.div``;
+const FooterBottom = styled.div`
+  margin-top: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const FooterSocials = styled.div`
   display: flex;
   margin: 0 -17.5px;
+`;
+
+const FooterCopyright = styled.span`
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 17px;
+  color: ${colors.dark};
+`;
+
+const FooterCreator = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: right;
+  color: ${colors.dark};
+`;
+
+const FooterCreatorFirst = styled.span`
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  color: ${colors.red};
+`;
+
+const FooterCreatorSecond = styled(FooterCreatorFirst)`
+  color: ${colors.dark};
 `;
 
 export default Footer;

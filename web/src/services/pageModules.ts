@@ -20,42 +20,60 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
     template: 'home',
     component: Home,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
   {
     template: 'vacancies',
     component: Vacancies,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
   {
     template: 'services',
     component: Services,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
   {
     template: 'playable-ads',
     component: PlayableAds,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
   {
     template: 'vacancy',
     component: Vacancy,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
   {
     template: 'contacts',
     component: Contacts,
     getInitialProps({ store }) {
-      return Promise.all([store.dispatch(getMenuItemListThunk('header'))]);
+      return Promise.all([
+        store.dispatch(getMenuItemListThunk('header')),
+        store.dispatch(getMenuItemListThunk('footer')),
+      ]);
     },
   },
 ];
