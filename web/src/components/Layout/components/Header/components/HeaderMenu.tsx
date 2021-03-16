@@ -14,8 +14,7 @@ function HeaderMenu({ menuItemList }: Props) {
   return (
     <Nav>
       <MenuItems>
-        {menuItemList.map((menuItem, index) => {
-          console.log(menuItem);
+        {menuItemList.map((menuItem) => {
           return (
             <MenuItem key={menuItem.id}>
               <ItemLink
