@@ -6,12 +6,8 @@ import { MenuItemType } from '@tager/web-modules';
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 
-// type Props = {
-//   menuItemList: Array<MenuItemType>;
-// };
-
 type Props = {
-  menuItemList: Array<string>;
+  menuItemList: Array<MenuItemType>;
 };
 
 function HeaderMenu({ menuItemList }: Props) {
@@ -19,9 +15,15 @@ function HeaderMenu({ menuItemList }: Props) {
     <Nav>
       <MenuItems>
         {menuItemList.map((menuItem, index) => {
+          console.log(menuItem);
           return (
-            <MenuItem key={index}>
-              <ItemLink to="#">{menuItem}</ItemLink>
+            <MenuItem key={menuItem.id}>
+              <ItemLink
+                to={menuItem.link ?? '#'}
+                target={menuItem.isNewTab ? '_blank' : '_self'}
+              >
+                {menuItem.label}
+              </ItemLink>
             </MenuItem>
           );
         })}

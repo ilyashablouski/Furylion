@@ -4,10 +4,15 @@ import styled from 'styled-components';
 import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Link from '@/components/Link';
+import { useTypedSelector } from '@/store/store';
+import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 
 import HeaderMenu from './components/HeaderMenu';
 
 function Header() {
+  const headerMenuItemList =
+    useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
+    [];
   return (
     <HeaderContainer>
       <ContentContainer>
@@ -22,14 +27,7 @@ function Header() {
             </HeaderLeft>
 
             <HeaderRight>
-              <HeaderMenu
-                menuItemList={[
-                  'Services',
-                  'Playable ADS',
-                  'Contact Us',
-                  'Vacancies',
-                ]}
-              />
+              <HeaderMenu menuItemList={headerMenuItemList} />
             </HeaderRight>
           </HeaderInner>
         </HeaderWrapper>
