@@ -10,7 +10,11 @@ import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
 
 function Home() {
-  // const page = useCurrentPage<HomePageTemplate>();
+  const page = useCurrentPage<HomePageTemplate>();
+
+  useEffect(() => {
+    console.log(page);
+  });
 
   return (
     <>
