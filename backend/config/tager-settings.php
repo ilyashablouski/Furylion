@@ -6,7 +6,7 @@ use \OZiTAG\Tager\Backend\Fields\Enums\FieldType;
 return [
     'Footer' => [
         'FORM_TITLE' => [
-            'type' => FieldType::Repeater,
+            'type' => FieldType::String,
             'label' => 'Form Title'
         ],
         'FOOTER_OFFICES' => [
