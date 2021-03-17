@@ -15,18 +15,22 @@ import FooterMenu from './components/FooterMenu';
 
 const socials = [
   {
+    id: 1,
     href: 'https://www.instagram.com/',
     svg: <InstagramIcon />,
   },
   {
+    id: 2,
     href: 'https://vk.com/',
     svg: <VkIcon />,
   },
   {
+    id: 3,
     href: 'https://www.apple.com/',
     svg: <AppleIcon />,
   },
   {
+    id: 4,
     href: 'https://play.google.com/',
     svg: <AndroidIcon />,
   },
@@ -43,7 +47,13 @@ function Footer() {
         <FooterTop>
           <FooterSocials>
             {socials.map((social) => {
-              return <FooterSocial href={social.href} iconSVG={social.svg} />;
+              return (
+                <FooterSocial
+                  key={social.id}
+                  href={social.href}
+                  iconSVG={social.svg}
+                />
+              );
             })}
           </FooterSocials>
 

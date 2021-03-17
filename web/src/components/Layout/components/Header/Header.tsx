@@ -10,9 +10,9 @@ import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import HeaderMenu from './components/HeaderMenu';
 
 function Header() {
-  // const headerMenuItemList =
-  //   useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
-  //   [];
+  const headerMenuItemList =
+    useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
+    [];
   return (
     <HeaderContainer>
       <ContentContainer>
@@ -27,7 +27,7 @@ function Header() {
             </HeaderLeft>
 
             <HeaderRight>
-              {/*<HeaderMenu menuItemList={headerMenuItemList} />*/}
+              <HeaderMenu menuItemList={headerMenuItemList} />
             </HeaderRight>
           </HeaderInner>
         </HeaderWrapper>
