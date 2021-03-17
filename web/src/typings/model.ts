@@ -1,5 +1,6 @@
 import { PageFullType, SettingsItemString } from '@tager/web-modules';
-import { Nullable } from '@tager/web-core';
+
+import { StringFieldType } from '@/typings/common';
 
 export interface ExamplePageType extends PageFullType {
   path: '/example';
@@ -10,14 +11,22 @@ export type SettingsItemType =
   | SettingsItemString<'USER_NAME'>
   | SettingsItemString<'USER_AGE'>;
 
-export type StringField = Nullable<string>;
+// export interface HomePageTemplate extends PageFullType {
+//   templateFields: {
+//     heroTitle: StringFieldType;
+//     heroText: StringFieldType;
+//     heroImage: {
+//       url: StringFieldType;
+//     };
+//   };
+// }
 
-export interface HomePageTemplate extends PageFullType {
+export interface HeroSectionType extends PageFullType {
   templateFields: {
-    heroTitle: StringField;
-    heroText: StringField;
+    heroTitle: StringFieldType;
+    heroText: StringFieldType;
     heroImage: {
-      url: StringField;
+      url: StringFieldType;
     };
   };
 }

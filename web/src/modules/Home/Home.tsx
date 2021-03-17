@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { isBrowser } from '@tager/web-core';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
-import { HomePageTemplate } from '@/typings/model';
+// import { HomePageTemplate } from '@/typings/model';
 
 import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';

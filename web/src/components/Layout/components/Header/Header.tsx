@@ -69,7 +69,6 @@ const HeaderRight = styled.div`
 `;
 
 const LogoWrapper = styled.div`
-  padding: 25px 0;
   display: inline-flex;
   width: 221px;
 
