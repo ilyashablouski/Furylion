@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
 import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
@@ -10,6 +10,7 @@ import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { colors } from '@/constants/theme';
 import SocialNetwork from '@/components/SocialNetwork';
+import { media } from '@/utils/mixin';
 
 import FooterMenu from './components/FooterMenu';
 
@@ -73,12 +74,49 @@ function Footer() {
 const FooterContainer = styled.footer`
   padding-top: 55px;
   padding-bottom: 72px;
+
+  ${media.tabletSmallOnly(css`
+    padding-top: 47px;
+    padding-bottom: 40px;
+  `)}
+
+  ${media.mobile(css`
+    padding-top: 40px;
+    padding-bottom: 24px;
+  `)}
 `;
 
 const FooterTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.tabletSmall(css`
+    flex-direction: column;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    align-items: flex-end;
+  `)}
+
+  ${media.mobile(css`
+    align-items: flex-start;
+  `)}
+`;
+
+const FooterSocials = styled.div`
+  display: flex;
+  margin: 0 -17.5px;
+
+  ${media.tabletSmall(css`
+    order: 2;
+    margin: 0 -16px;
+    margin-top: 40px;
+  `)}
+
+  ${media.mobile(css`
+    align-self: center;
+  `)}
 `;
 
 const FooterBottom = styled.div`
@@ -86,11 +124,15 @@ const FooterBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
 
-const FooterSocials = styled.div`
-  display: flex;
-  margin: 0 -17.5px;
+  ${media.tabletSmallOnly(css`
+    margin-top: 40px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 25px;
+    flex-direction: column;
+  `)}
 `;
 
 const FooterCopyright = styled.span`
@@ -98,6 +140,11 @@ const FooterCopyright = styled.span`
   font-size: 11px;
   line-height: 17px;
   color: ${colors.dark};
+
+  ${media.mobile(css`
+    margin-top: 24px;
+    order: 2;
+  `)}
 `;
 
 const FooterCreator = styled.span`
@@ -106,6 +153,10 @@ const FooterCreator = styled.span`
   line-height: 17px;
   text-align: right;
   color: ${colors.dark};
+
+  ${media.mobile(css`
+    order: 1;
+  `)}
 `;
 
 const FooterCreatorFirst = styled.span`
@@ -133,6 +184,10 @@ const SocialWrapper = styled.div`
       background: #000;
       color: ${colors.white};
     }
+
+  ${media.tabletSmall(css`
+    margin: 0 16px;
+  `)}
   }
 `;
 
