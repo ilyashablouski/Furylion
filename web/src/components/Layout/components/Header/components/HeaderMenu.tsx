@@ -135,7 +135,9 @@ const MenuItem = styled.li`
 
   &:last-child {
     position: relative;
-    padding: 41px 65px;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 65px;
     background: ${colors.red};
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 10% 0);
 

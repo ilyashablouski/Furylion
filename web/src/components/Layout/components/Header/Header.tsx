@@ -55,10 +55,10 @@ const HeaderWrapper = styled.div``;
 const HeaderInner = styled.div`
   display: flex;
   align-items: center;
-  min-height: 100px;
+  height: 100px;
 
   ${media.tabletSmall(css`
-    min-height: 56px;
+    height: 56px;
   `)}
 `;
 
