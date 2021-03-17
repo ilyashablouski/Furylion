@@ -6,31 +6,22 @@ import { colors } from '@/constants/theme';
 
 type Props = {
   href?: string;
-  iconSVG?: React.SVGProps<SVGSVGElement>;
+  iconSVG: React.SVGProps<SVGSVGElement>;
 };
 
-function FooterSocial({ href, iconSVG }: Props) {
+function SocialNetwork({ href, iconSVG }: Props) {
   return <SocialLink to={href ?? '#'}>{iconSVG}</SocialLink>;
 }
 
-const LinkWrapper = styled.div``;
-
 const SocialLink = styled(Link)`
-  margin: 0 17.5px;
-  width: 44px;
-  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: #191814;
-  border: 1px solid ${colors.red};
-  transition: 150ms all ease-in-out;
-
-  &:hover {
-    background: #000;
-    color: ${colors.white};
-  }
+  width: 100%;
+  height: 100%;
+  color: ${(props) => props.color};
+  transition: none;
 
   svg {
     display: inline-block;
@@ -40,4 +31,4 @@ const SocialLink = styled(Link)`
   }
 `;
 
-export default FooterSocial;
+export default SocialNetwork;

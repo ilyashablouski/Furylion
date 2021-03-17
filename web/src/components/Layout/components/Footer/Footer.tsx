@@ -9,28 +9,24 @@ import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { colors } from '@/constants/theme';
+import SocialNetwork from '@/components/SocialNetwork';
 
-import FooterSocial from './components/FooterSocial';
 import FooterMenu from './components/FooterMenu';
 
 const socials = [
   {
-    id: 1,
     href: 'https://www.instagram.com/',
     svg: <InstagramIcon />,
   },
   {
-    id: 2,
     href: 'https://vk.com/',
     svg: <VkIcon />,
   },
   {
-    id: 3,
     href: 'https://www.apple.com/',
     svg: <AppleIcon />,
   },
   {
-    id: 4,
     href: 'https://play.google.com/',
     svg: <AndroidIcon />,
   },
@@ -46,13 +42,11 @@ function Footer() {
       <ContentContainer>
         <FooterTop>
           <FooterSocials>
-            {socials.map((social) => {
+            {socials.map((social, index) => {
               return (
-                <FooterSocial
-                  key={social.id}
-                  href={social.href}
-                  iconSVG={social.svg}
-                />
+                <SocialWrapper key={index}>
+                  <SocialNetwork href={social.href} iconSVG={social.svg} />
+                </SocialWrapper>
               );
             })}
           </FooterSocials>
@@ -122,6 +116,24 @@ const FooterCreatorFirst = styled.span`
 
 const FooterCreatorSecond = styled(FooterCreatorFirst)`
   color: ${colors.dark};
+`;
+
+const SocialWrapper = styled.div`
+  margin: 0 17.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: ${colors.dark};
+  border: 1px solid ${colors.red};
+  transition: 150ms all ease-in-out;
+  
+    &:hover {
+      background: #000;
+      color: ${colors.white};
+    }
+  }
 `;
 
 export default Footer;

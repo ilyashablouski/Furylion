@@ -1,13 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Link from '@/components/Link';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
+import { media } from '@/utils/mixin';
 
 import HeaderMenu from './components/HeaderMenu';
+import HeaderBurger from './components/HeaderBurger';
 
 function Header() {
   const headerMenuItemList =
@@ -27,6 +29,7 @@ function Header() {
             </HeaderLeft>
 
             <HeaderRight>
+              <HeaderBurger />
               <HeaderMenu menuItemList={headerMenuItemList} />
             </HeaderRight>
           </HeaderInner>
@@ -52,7 +55,11 @@ const HeaderWrapper = styled.div``;
 const HeaderInner = styled.div`
   display: flex;
   align-items: center;
-  height: 100px;
+  min-height: 100px;
+
+  ${media.tabletSmall(css`
+    min-height: 56px;
+  `)}
 `;
 
 const HeaderLeft = styled.div``;
@@ -61,7 +68,16 @@ const HeaderRight = styled.div`
   margin-left: auto;
 `;
 
-const LogoWrapper = styled.div``;
+const LogoWrapper = styled.div`
+  padding: 25px 0;
+  display: inline-flex;
+  width: 221px;
+
+  ${media.tabletSmall(css`
+    padding: 8px 0;
+    width: 174px;
+  `)}
+`;
 
 const LogoLink = styled(Link)`
   display: inline-flex;
