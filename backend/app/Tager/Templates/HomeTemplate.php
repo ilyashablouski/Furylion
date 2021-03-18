@@ -19,7 +19,8 @@ class HomeTemplate extends Template
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),
-                'heroImage' => new ImageField('Image')
+                'heroImage' => new ImageField('Image'),
+                'heroMobileImage' => new ImageField('Mobile Image'),
             ]),
             new GroupField('Works', [
                 'worksTitle' => new StringField('Title'),
