@@ -145,6 +145,8 @@ const MenuItem = styled.li`
       padding: 0;
       background: initial;
       clip-path: initial;
+      height: auto;
+      line-height: initial;
     `)}
   }
 `;

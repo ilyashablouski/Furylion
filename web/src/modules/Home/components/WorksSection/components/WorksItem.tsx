@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Picture from '@/components/Picture';
 import { WorksItemType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 import WorksTag from './WorksTag';
 
@@ -77,6 +78,14 @@ const WorksTags = styled.div`
   margin-left: -10px;
   margin-right: -10px;
   display: flex;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 34px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 15px;
+  `)}
 `;
 
 export default WorksItem;
