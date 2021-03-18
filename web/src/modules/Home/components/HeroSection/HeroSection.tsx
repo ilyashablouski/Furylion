@@ -10,7 +10,8 @@ import { HeroSectionType } from '@/typings/model';
 function HeroSection() {
   const page = useCurrentPage<HeroSectionType>();
   const pageFields = page?.templateFields;
-  const imageUrl = pageFields?.heroImage.url;
+  const image = pageFields?.heroImage;
+  const imageMobile = pageFields?.heroMobileImage;
   const title = pageFields?.heroTitle;
   const text = pageFields?.heroText;
 
@@ -19,10 +20,16 @@ function HeroSection() {
       <BackgroundSection>
         <Picture
           tabletLarge={{
-            src: imageUrl ?? '',
-            // src2x: '',
-            // webp: '',
-            // webp2x: '',
+            src: image?.url,
+            src2x: image?.url_2x,
+            webp: image?.url_webp,
+            webp2x: image?.url_webp_2x,
+          }}
+          mobileSmall={{
+            src: imageMobile?.url,
+            src2x: imageMobile?.url_2x,
+            webp: imageMobile?.url_webp,
+            webp2x: imageMobile?.url_webp_2x,
           }}
           className="section-background"
         />

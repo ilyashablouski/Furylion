@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Picture from '@/components/Picture';
-import heroBgUrl from '@/assets/images/home/intro/intro-bg.jpg';
-import heroBgUrl2x from '@/assets/images/home/intro/intro-bg@2x.jpg';
 import { colors } from '@/constants/theme';
+import useCurrentPage from '@/hooks/useCurrentPage';
+import { WorksSectionType } from '@/typings/model';
+import WorksSwiper from '@/modules/Home/components/WorksSection/components/WorksSwiper';
 
 function WorksSection() {
+  const page = useCurrentPage<WorksSectionType>();
+  const pageFields = page?.templateFields;
+  const sectionTitle = pageFields?.worksTitle;
+  const worksItems = pageFields?.worksItems ?? [];
   return (
     <WrapperSection>
-      <Title>WORKS</Title>
+      <Title>{sectionTitle}</Title>
+
+      <WorksSwiper worksItems={worksItems} />
     </WrapperSection>
   );
 }
