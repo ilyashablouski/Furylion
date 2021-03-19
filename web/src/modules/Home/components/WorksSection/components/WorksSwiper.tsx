@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/swiper-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Autoplay,
   EffectCoverflow,
@@ -14,6 +14,7 @@ import { media } from '@/utils/mixin';
 import { breakpoints } from '@/constants/theme';
 
 import WorksItem from './WorksItem';
+
 SwiperCore.use([Pagination, Navigation, Autoplay, EffectCoverflow]);
 
 type Props = {
@@ -29,39 +30,40 @@ function WorksSwiper({ worksItems }: Props) {
 
   return (
     <WorksSwiperContainer>
-      <NavButton className={`swiper-prev`} prev>
-        <SlideArrowIcon />
-      </NavButton>
-      <NavButton className={`swiper-next`} next>
-        <SlideArrowIcon />
-      </NavButton>
-
       {isMounted && (
         <Swiper
-          slidesPerView={4}
-          slidesPerGroup={4}
-          speed={700}
-          spaceBetween={10}
+          slidesPerView="auto"
+          spaceBetween={140}
+          loop={true}
           // loop={
           //   (isDesktop && products.length > 6) ||
           //   (isLaptop && products.length > 5) ||
           //   (isLaptopOnly && products.length > 4)
           // }
-          watchOverflow
+          centeredSlides={true}
+          effect="coverflow"
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: false,
+          }}
+          allowTouchMove={false}
           navigation={{
             prevEl: `.swiper-prev`,
             nextEl: `.swiper-next`,
           }}
-          breakpoints={{
-            [breakpoints.desktop]: {
-              slidesPerView: 6,
-              slidesPerGroup: 6,
-            },
-            [breakpoints.laptop]: {
-              slidesPerView: 5,
-              slidesPerGroup: 5,
-            },
-          }}
+          // breakpoints={{
+          //   [breakpoints.desktop]: {
+          //     slidesPerView: 6,
+          //     slidesPerGroup: 6,
+          //   },
+          //   [breakpoints.laptop]: {
+          //     slidesPerView: 5,
+          //     slidesPerGroup: 5,
+          //   },
+          // }}
         >
           {worksItems.map((worksItem, index) => {
             return (
@@ -75,6 +77,13 @@ function WorksSwiper({ worksItems }: Props) {
               </SwiperSlide>
             );
           })}
+
+          <NavButton className={`swiper-prev`} prev>
+            <SlideArrowIcon />
+          </NavButton>
+          <NavButton className={`swiper-next`} next>
+            <SlideArrowIcon />
+          </NavButton>
         </Swiper>
       )}
     </WorksSwiperContainer>
@@ -87,14 +96,60 @@ const WorksSwiperContainer = styled.div`
   ${media.tabletSmallOnly(css`
     margin-top: 38px;
   `)}
-
   ${media.mobile(css`
     margin-top: 16px;
   `)}
+  
+  .swiper-container-initialized {
+    .swiper-slide {
+      max-width: 1230px;
+    }
+  }
+}
 `;
 
-// const SwiperSlide = styled.div``;
+const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
+  position: absolute;
+  top: 50%;
+  left: ${(props) => (props.prev ? '7%' : 'auto')};
+  right: ${(props) => (props.next ? '7%' : 'auto')};
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
+  transition: 150ms all ease-in-out;
 
-const NavButton = styled.button<{ prev?: boolean; next?: boolean }>``;
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  svg {
+    transform: ${(props) => (props.next ? 'rotate(180deg)' : 'rotate(0deg)')};
+  }
+
+  &.swiper-prev {
+    svg {
+      margin-right: 4px;
+    }
+
+    ${media.tablet(css`
+      left: 40px;
+    `)}
+  }
+  &.swiper-next {
+    svg {
+      margin-left: 4px;
+    }
+
+    ${media.tablet(css`
+      right: 40px;
+    `)}
+  }
+`;
 
 export default WorksSwiper;
