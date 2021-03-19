@@ -30,9 +30,9 @@ export interface HeroSectionType extends PageFullType {
 
 export type WorksItemType = {
   image: ImageType;
-  tags: StringFieldType;
-  text: StringFieldType;
-  title: StringFieldType;
+  tags?: StringFieldType;
+  text?: StringFieldType;
+  title?: StringFieldType;
 };
 
 export interface WorksSectionType extends PageFullType {

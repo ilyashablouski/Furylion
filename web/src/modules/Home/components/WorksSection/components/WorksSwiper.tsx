@@ -28,66 +28,86 @@ function WorksSwiper({ worksItems }: Props) {
     setIsMounted(true);
   }, []);
 
-  return (
-    <WorksSwiperContainer>
-      {isMounted && (
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={140}
-          loop={true}
-          // loop={
-          //   (isDesktop && products.length > 6) ||
-          //   (isLaptop && products.length > 5) ||
-          //   (isLaptopOnly && products.length > 4)
-          // }
-          centeredSlides={true}
-          effect="coverflow"
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2,
-            slideShadows: false,
-          }}
-          allowTouchMove={false}
-          navigation={{
-            prevEl: `.swiper-prev`,
-            nextEl: `.swiper-next`,
-          }}
-          // breakpoints={{
-          //   [breakpoints.desktop]: {
-          //     slidesPerView: 6,
-          //     slidesPerGroup: 6,
-          //   },
-          //   [breakpoints.laptop]: {
-          //     slidesPerView: 5,
-          //     slidesPerGroup: 5,
-          //   },
-          // }}
-        >
-          {worksItems.map((worksItem, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <WorksItem
-                  image={worksItem.image}
-                  title={worksItem.title}
-                  text={worksItem.text}
-                  tags={worksItem.tags ?? ''}
-                />
-              </SwiperSlide>
-            );
-          })}
+  //TODO: Refactoring if needed (if/else)
+  if (worksItems.length > 1) {
+    return (
+      <WorksSwiperContainer>
+        {isMounted && (
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={140}
+            loop={true}
+            // loop={
+            //   (isDesktop && products.length > 6) ||
+            //   (isLaptop && products.length > 5) ||
+            //   (isLaptopOnly && products.length > 4)
+            // }
+            centeredSlides={true}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2,
+              slideShadows: false,
+            }}
+            allowTouchMove={false}
+            navigation={{
+              prevEl: `.swiper-prev`,
+              nextEl: `.swiper-next`,
+            }}
+            // breakpoints={{
+            //   [breakpoints.desktop]: {
+            //     slidesPerView: 6,
+            //     slidesPerGroup: 6,
+            //   },
+            //   [breakpoints.laptop]: {
+            //     slidesPerView: 5,
+            //     slidesPerGroup: 5,
+            //   },
+            // }}
+          >
+            {worksItems.map((worksItem, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <WorksItem
+                    image={worksItem.image}
+                    title={worksItem.title}
+                    text={worksItem.text}
+                    tags={worksItem.tags ?? ''}
+                  />
+                </SwiperSlide>
+              );
+            })}
 
-          <NavButton className={`swiper-prev`} prev>
-            <SlideArrowIcon />
-          </NavButton>
-          <NavButton className={`swiper-next`} next>
-            <SlideArrowIcon />
-          </NavButton>
-        </Swiper>
-      )}
-    </WorksSwiperContainer>
-  );
+            <NavButton className={`swiper-prev`} prev>
+              <SlideArrowIcon />
+            </NavButton>
+            <NavButton className={`swiper-next`} next>
+              <SlideArrowIcon />
+            </NavButton>
+          </Swiper>
+        )}
+      </WorksSwiperContainer>
+    );
+  } else {
+    return (
+      <WorksSwiperContainer>
+        {worksItems.map((worksItem, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <WorksItem
+                image={worksItem.image}
+                title={worksItem.title}
+                text={worksItem.text}
+                tags={worksItem.tags ?? ''}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </WorksSwiperContainer>
+    );
+  }
 }
 
 const WorksSwiperContainer = styled.div`

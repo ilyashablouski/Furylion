@@ -49,6 +49,10 @@ const WorksInfo = styled.div`
   bottom: 40px;
   color: #fff;
   z-index: 1;
+
+  .swiper-container-initialized & {
+    left: 40px;
+  }
 `;
 
 const WorksTitle = styled.span`
