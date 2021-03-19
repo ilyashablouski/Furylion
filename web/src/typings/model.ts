@@ -30,14 +30,29 @@ export interface HeroSectionType extends PageFullType {
 
 export type WorksItemType = {
   image: ImageType;
-  tags?: StringFieldType;
-  text?: StringFieldType;
-  title?: StringFieldType;
+  tags: StringFieldType;
+  text: StringFieldType;
+  title: StringFieldType;
 };
 
 export interface WorksSectionType extends PageFullType {
   templateFields: {
     worksTitle: StringFieldType;
     worksItems: Array<WorksItemType>;
+  };
+}
+
+export type ServiceItemType = {
+  image: ImageType;
+  title: StringFieldType;
+  text: StringFieldType;
+  linkLabel: StringFieldType;
+  linkUrl: StringFieldType;
+};
+
+export interface ServicesSectionType extends PageFullType {
+  templateFields: {
+    servicesTitle: StringFieldType;
+    servicesItems: Array<ServiceItemType>;
   };
 }
