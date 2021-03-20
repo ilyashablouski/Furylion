@@ -16,15 +16,20 @@ function ServicesSection() {
   return (
     <WrapperSection>
       <Title>{sectionTitle}</Title>
-
-      <ServicesFirst servicesItems={servicesItems} />
-      {/*<ServicesSecond servicesItems={servicesItems} />*/}
+      <ServicesWrapper>
+        <ServicesFirst servicesItems={servicesItems} />
+        {/*<ServicesSecond servicesItems={servicesItems} />*/}
+      </ServicesWrapper>
     </WrapperSection>
   );
 }
 
 const WrapperSection = styled.section`
   margin-top: 100px;
+`;
+
+const ServicesWrapper = styled.div`
+  margin-top: 35px;
 `;
 
 const Title = styled.span`

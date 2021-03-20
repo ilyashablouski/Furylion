@@ -1,21 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ServiceItem from './serviceItem';
+import ServiceItem from './ServiceItem';
 
 function ServicesSecond() {
-  return (
-    <ServicesContent>
-      <ContentLeft>
-        <ServiceItem />
-      </ContentLeft>
-
-      <ContentRight>
-        <ServiceItem />
-        <ServiceItem />
-      </ContentRight>
-    </ServicesContent>
-  );
+  return <></>;
 }
 
 const ServicesContent = styled.div``;

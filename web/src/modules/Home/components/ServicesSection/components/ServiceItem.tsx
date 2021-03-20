@@ -5,6 +5,7 @@ import Link from '@/components/Link';
 import ContentContainer from '@/components/ContentContainer';
 import { ServiceItemType } from '@/typings/model';
 import { colors } from '@/constants/theme';
+import Picture from '@/components/Picture';
 
 function ServiceItem({
   image,
@@ -14,17 +15,38 @@ function ServiceItem({
   linkUrl,
 }: ServiceItemType) {
   return (
-    <ItemContent>
-      <ContentContainer>
-        <ItemTitle>{title}</ItemTitle>
-        <ItemText>{text}</ItemText>
+    <>
+      <ImageContainer>
+        <Picture
+          mobileSmall={{
+            src: image?.url,
+            src2x: image?.url_2x,
+            webp: image?.url_webp,
+            webp2x: image?.url_webp_2x,
+          }}
+        />
+      </ImageContainer>
 
-        <ItemLink to={linkUrl}>{linkLabel}</ItemLink>
-      </ContentContainer>
-    </ItemContent>
+      <ItemInfo>
+        <ContentContainer>
+          <ItemTitle>{title}</ItemTitle>
+          <ItemText>{text}</ItemText>
+          <ItemLink to={linkUrl}>{linkLabel}</ItemLink>
+        </ContentContainer>
+      </ItemInfo>
+    </>
   );
 }
-const ItemContent = styled.div``;
+
+const ImageContainer = styled.div``;
+
+const ItemInfo = styled.div`
+  position: absolute;
+  bottom: 35px;
+  width: 100%;
+  color: #fff;
+  z-index: 2;
+`;
 
 const ItemTitle = styled.span`
   font-weight: 900;
