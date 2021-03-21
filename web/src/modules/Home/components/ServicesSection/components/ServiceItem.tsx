@@ -7,13 +7,18 @@ import { ServiceItemType } from '@/typings/model';
 import { colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
 
+interface Props extends ServiceItemType {
+  className?: string;
+}
+
 function ServiceItem({
   image,
   title,
   text,
   linkLabel,
   linkUrl,
-}: ServiceItemType) {
+  className,
+}: Props) {
   return (
     <>
       <ImageContainer>
@@ -24,10 +29,11 @@ function ServiceItem({
             webp: image?.url_webp,
             webp2x: image?.url_webp_2x,
           }}
+          className="item-image-container"
         />
       </ImageContainer>
 
-      <ItemInfo>
+      <ItemInfo className={className}>
         <ContentContainer>
           <ItemTitle>{title}</ItemTitle>
           <ItemText>{text}</ItemText>
@@ -38,12 +44,23 @@ function ServiceItem({
   );
 }
 
-const ImageContainer = styled.div``;
+const ImageContainer = styled.div`
+  .item-image-container {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
 const ItemInfo = styled.div`
   position: absolute;
   bottom: 35px;
   width: 100%;
+  max-width: 77%;
   color: #fff;
   z-index: 2;
 `;
