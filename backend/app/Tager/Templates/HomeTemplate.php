@@ -37,7 +37,7 @@ class HomeTemplate extends Template
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'linkLabel' => new StringField('Button Label'),
+                    'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                 ])
             ]),
@@ -47,7 +47,7 @@ class HomeTemplate extends Template
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'linkLabel' => new StringField('Button Label'),
+                    'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                 ])
             ]),
@@ -56,27 +56,30 @@ class HomeTemplate extends Template
                 'technologiesText' => new TextField('Text'),
                 'technologiesLogos' => new GalleryField('Gallery'),
                 'technologiesTextAdditional' => new HtmlField('Text - Additional'),
-                'technologiesButtonFirstLabel' => new StringField('Button 1 - Label'),
-                'technologiesButtonSecondLabel' => new StringField('Button 2 - Label'),
+                'technologiesButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'technologiesButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'technologiesButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'technologiesButtonSecondUrl' => new StringField('Button 2 - URL'),
             ]),
             new GroupField('Platform', [
                 'platformTitle' => new StringField('Title'),
                 'platformText' => new TextField('Text'),
                 'platformLogos' => new GalleryField('Gallery'),
                 'platformAdditional' => new HtmlField('Text - Additional'),
-                'platformButtonFirstLabel' => new StringField('Button 1 - Label'),
-                'platformButtonSecondLabel' => new StringField('Button 2 - Label'),
+                'platformButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'platformButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'platformButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'platformButtonSecondUrl' => new StringField('Button 2 - URL'),
             ]),
             new GroupField('Team', [
                 'teamGallery' => new GalleryField('Photos'),
-                'teamMobileImage' => new ImageField('Mobile Image'),
-                'teamButtonLabel' => new StringField('Button Label'),
+                'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),
             ]),
             new GroupField('Clients', [
-                'clientsTitle' => new GalleryField('Title'),
-                'clientsFirstGallery' => new ImageField('Gallery 1'),
-                'clientsSecondGallery' => new StringField('Gallery 2'),
+                'clientsTitle' => new StringField('Title'),
+                'clientsFirstGallery' => new GalleryField('Gallery 1'),
+                'clientsSecondGallery' => new GalleryField('Gallery 2'),
             ])
         ]);
     }
