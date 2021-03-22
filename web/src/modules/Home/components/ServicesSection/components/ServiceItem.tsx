@@ -82,6 +82,7 @@ const ItemText = styled.p`
 
 const ItemLink = styled(Link)`
   margin-top: 5px;
+  display: inline-block;
   font-weight: 500;
   font-size: 14px;
   line-height: 130%;
@@ -89,6 +90,10 @@ const ItemLink = styled(Link)`
   color: ${colors.red};
   border-bottom: 1px solid ${colors.red};
   transition: 150ms all ease-in-out;
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
 `;
 
 export default ServiceItem;

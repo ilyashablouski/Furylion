@@ -5,20 +5,21 @@ import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { ServicesSectionType } from '@/typings/model';
 
-import ServicesFirst from './components/ServicesFirst';
-import ServicesSecond from './components/ServicesSecond';
+import ServicesTop from './components/ServicesTop';
+import ServicesBottom from './components/ServicesBottom';
 
 function ServicesSection() {
   const page = useCurrentPage<ServicesSectionType>();
   const pageFields = page?.templateFields;
   const sectionTitle = pageFields?.servicesTitle;
   const servicesItems = pageFields?.servicesItems ?? [];
+  const servicesBottomItems = pageFields?.servicesBottomItems ?? [];
   return (
     <WrapperSection>
       <Title>{sectionTitle}</Title>
       <ServicesWrapper>
-        <ServicesFirst servicesItems={servicesItems} />
-        {/*<ServicesSecond servicesItems={servicesItems} />*/}
+        <ServicesTop servicesItems={servicesItems} />
+        <ServicesBottom servicesBottomItems={servicesBottomItems} />
       </ServicesWrapper>
     </WrapperSection>
   );

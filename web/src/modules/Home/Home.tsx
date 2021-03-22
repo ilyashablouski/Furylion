@@ -9,6 +9,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
 import ServicesSection from './components/ServicesSection';
+import TechSection from './components/TechSection';
 
 function Home() {
   // const page = useCurrentPage<HomePageTemplate>();
@@ -18,6 +19,7 @@ function Home() {
       <HomeSection />
       <WorksSection />
       <ServicesSection />
+      <TechSection />
     </>
   );
 }

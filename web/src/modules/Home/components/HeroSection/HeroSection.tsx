@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Picture from '@/components/Picture';
+import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -17,23 +17,20 @@ function HeroSection() {
 
   return (
     <WrapperSection>
-      <BackgroundSection>
-        <Picture
-          tabletLarge={{
-            src: image?.url,
-            src2x: image?.url_2x,
-            webp: image?.url_webp,
-            webp2x: image?.url_webp_2x,
-          }}
-          mobileSmall={{
-            src: imageMobile?.url,
-            src2x: imageMobile?.url_2x,
-            webp: imageMobile?.url_webp,
-            webp2x: imageMobile?.url_webp_2x,
-          }}
-          className="section-background"
-        />
-      </BackgroundSection>
+      <BackgroundPicture
+        tabletLarge={{
+          src: image?.url,
+          src2x: image?.url_2x,
+          webp: image?.url_webp,
+          webp2x: image?.url_webp_2x,
+        }}
+        mobileSmall={{
+          src: imageMobile?.url,
+          src2x: imageMobile?.url_2x,
+          webp: imageMobile?.url_webp,
+          webp2x: imageMobile?.url_webp_2x,
+        }}
+      />
       <ContentContainer>
         <Inner>
           <Title>{title}</Title>
@@ -46,6 +43,34 @@ function HeroSection() {
 
 const WrapperSection = styled.section`
   position: relative;
+`;
+
+const BackgroundPicture = styled(PlainPicture)`
+  position: static;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background: #3e3e3e;
+  }
+
+  img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
 `;
 
 const Title = styled.span`
@@ -65,44 +90,6 @@ const Text = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
-`;
-
-const BackgroundSection = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    background: #3e3e3e;
-  }
-
-  .section-background {
-    position: static;
-  }
-
-  img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-  }
 `;
 
 const Inner = styled.div`

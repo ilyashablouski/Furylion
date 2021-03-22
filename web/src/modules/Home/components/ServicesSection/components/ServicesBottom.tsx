@@ -8,15 +8,15 @@ import ServiceItem from './ServiceItem';
 import ItemWrapper from './ItemWrapper';
 
 type Props = {
-  servicesItems: Array<ServiceItemType>;
+  servicesBottomItems: Array<ServiceItemType>;
 };
 
-function ServicesFirst({ servicesItems }: Props) {
+function ServicesBottom({ servicesBottomItems }: Props) {
   // TODO: Refactoring if new data
-  if (servicesItems.length === 0) return null;
-  // const services = servicesItems.slice(0, 2);
+  if (servicesBottomItems.length === 0) return null;
+  // const services = servicesBottomItems.slice(0, 2);
 
-  const servicesMarkupArray = servicesItems.map((serviceItem) => {
+  const servicesMarkupArray = servicesBottomItems.map((serviceItem) => {
     return (
       <ServiceItem
         image={serviceItem.image}
@@ -30,18 +30,18 @@ function ServicesFirst({ servicesItems }: Props) {
   });
 
   return (
-    <ServicesBlock>
+    <ServicesBlock second>
       <BlockLeft>
-        <ItemWrapper className="item-wrapper" singleItem>
+        <ItemWrapper className="item-wrapper">
           {servicesMarkupArray[0]}
+        </ItemWrapper>
+        <ItemWrapper className="item-wrapper">
+          {servicesMarkupArray[1]}
         </ItemWrapper>
       </BlockLeft>
 
       <BlockRight>
-        <ItemWrapper className="item-wrapper" rightAlign>
-          {servicesMarkupArray[1]}
-        </ItemWrapper>
-        <ItemWrapper className="item-wrapper" rightAlign>
+        <ItemWrapper className="item-wrapper" singleItem rightAlign>
           {servicesMarkupArray[2]}
         </ItemWrapper>
       </BlockRight>
@@ -49,24 +49,14 @@ function ServicesFirst({ servicesItems }: Props) {
   );
 }
 const BlockLeft = styled.div`
-  clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
-  flex: 0 1 66.11%;
-  max-width: 66.11%;
-  z-index: 3;
-`;
-const BlockRight = styled.div`
-  clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 61% 0, 100% 100%, 0 100%);
   position: absolute;
-  right: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   width: 53.45%;
   height: 100%;
   z-index: 1;
-
-  .service-item-info {
-    right: 0;
-  }
 
   .item-wrapper {
     &:nth-child(1) {
@@ -79,4 +69,15 @@ const BlockRight = styled.div`
   }
 `;
 
-export default ServicesFirst;
+const BlockRight = styled.div`
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
+  flex: 0 1 66.11%;
+  max-width: 66.11%;
+  z-index: 3;
+
+  .service-item-info {
+    right: 0;
+  }
+`;
+
+export default ServicesBottom;
