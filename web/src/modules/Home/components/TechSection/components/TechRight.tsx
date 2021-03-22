@@ -25,8 +25,8 @@ function TechRight({ data }: Props) {
       <Text>{data.text}</Text>
       <Logos>
         {data.logos
-          ? data.logos.map((logoItem) => (
-              <LogoItem>
+          ? data.logos.map((logoItem, index) => (
+              <LogoItem key={index}>
                 <Picture
                   mobileSmall={{
                     src: logoItem?.url,
@@ -42,12 +42,12 @@ function TechRight({ data }: Props) {
 
       <Additional>
         <AdditionalTitle>Additional:</AdditionalTitle>
-        <AdditionalText
-          dangerouslySetInnerHTML={{ __html: data.addText ?? '' }}
-        />
+        {data.addText ? (
+          <AdditionalText dangerouslySetInnerHTML={{ __html: data.addText }} />
+        ) : null}
       </Additional>
 
-      <Buttons></Buttons>
+      {/*<Buttons></Buttons>*/}
     </Container>
   );
 }
@@ -93,7 +93,7 @@ const AdditionalTitle = styled.span`
   line-height: 160%;
 `;
 
-const AdditionalText = styled.p`
+const AdditionalText = styled.div`
   max-width: 631px;
   font-weight: 400;
   font-size: 14px;

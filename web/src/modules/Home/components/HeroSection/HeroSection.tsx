@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PlainPicture from '@/components/Picture';
+import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -30,6 +30,7 @@ function HeroSection() {
           webp: imageMobile?.url_webp,
           webp2x: imageMobile?.url_webp_2x,
         }}
+        className="hero-background"
       />
       <ContentContainer>
         <Inner>
@@ -45,8 +46,10 @@ const WrapperSection = styled.section`
   position: relative;
 `;
 
-const BackgroundPicture = styled(PlainPicture)`
-  position: static;
+const BackgroundPicture = styled(Picture)`
+  &.hero-background {
+    position: initial;
+  }
 
   &:before {
     content: '';
