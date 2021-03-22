@@ -19,7 +19,7 @@
     "@tager/admin-layout": "^0.4.13",
     "@tager/admin-mail": "^0.3.7",
     "@tager/admin-menus": "^0.2.12",
-    "@tager/admin-pages": "^0.3.13",
+    "@tager/admin-pages": "^0.3.14",
     "@tager/admin-seo": "^0.4.1",
     "@tager/admin-services": "^0.2.22",
     "@tager/admin-settings": "^0.3.12",
