@@ -1354,10 +1354,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-pages@^0.3.13":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.13.tgz#cf10cf32516d96aaa5fa95ec4b6b343dc147d1fe"
-  integrity sha512-qXKt+dJSNL0Zph791dzNxJ+9FRUWvkVOKKDp+cu25SphSBcgYWmzF3UxSOgc7KHfu3WkS08IuJ5Jq2NuA4t5eQ==
+"@tager/admin-pages@^0.3.14":
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.14.tgz#2041c0d7e33b6daecb83bd39a2aa9317fc8197c7"
+  integrity sha512-/RwFFbGHESQLK5WPhmzUYSGwHC8oKTuPE4Ry3/L4ZMZ2Nxs+8Fys7CSPXZi9/MxIACbXZzioreoGLJjTgcKaUw==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"

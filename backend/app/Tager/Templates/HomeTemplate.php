@@ -31,9 +31,19 @@ class HomeTemplate extends Template
                     'tags' => new StringField('Tags')
                 ])
             ]),
-            new GroupField('Services', [
+            new GroupField('Services Top', [
                 'servicesTitle' => new StringField('Title'),
                 'servicesItems' => new RepeaterField('Services', [
+                    'image' => new ImageField('Image'),
+                    'title' => new StringField('Title'),
+                    'text' => new TextField('Text'),
+                    'linkLabel' => new StringField('Button Label'),
+                    'linkUrl' => new StringField('Button URL'),
+                ])
+            ]),
+            new GroupField('Services Bottom', [
+                'servicesBottomTitle' => new StringField('Title'),
+                'servicesBottomItems' => new RepeaterField('Services', [
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
