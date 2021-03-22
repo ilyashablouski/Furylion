@@ -63,9 +63,9 @@ export interface TechSectionType extends PageFullType {
   templateFields: {
     technologiesTitle: StringFieldType;
     technologiesText: StringFieldType;
-    technologiesLogos: Array<{
-      url: StringFieldType;
-    }>;
+    technologiesLogos: Array<ImageType>;
+    technologiesImage: ImageType;
+    technologiesMobileImage: ImageType;
     technologiesTextAdditional: StringFieldType;
     technologiesButtonFirstLabel: StringFieldType;
     technologiesButtonFirstUrl: StringFieldType;

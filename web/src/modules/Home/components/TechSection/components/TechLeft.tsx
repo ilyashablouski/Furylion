@@ -2,11 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Picture from '@/components/Picture';
+import { ImageType } from '@/typings/model';
 
-function TechLeft() {
+type Props = {
+  image?: ImageType;
+  imageMobile?: ImageType;
+};
+
+function TechLeft({ image, imageMobile }: Props) {
   return (
     <Container>
-      <ImageContainer />
+      <ImageContainer
+        tabletLarge={{
+          src: image?.url,
+          src2x: image?.url_2x,
+          webp: image?.url_webp,
+          webp2x: image?.url_webp_2x,
+        }}
+        mobileSmall={{
+          src: imageMobile?.url,
+          src2x: imageMobile?.url_2x,
+          webp: imageMobile?.url_webp,
+          webp2x: imageMobile?.url_webp_2x,
+        }}
+      />
     </Container>
   );
 }

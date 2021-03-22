@@ -13,7 +13,8 @@ function TechSection() {
   const pageFields = page?.templateFields;
 
   const leftBlockProps = {
-    // image: pageFields?.
+    image: pageFields?.technologiesImage,
+    imageMobile: pageFields?.technologiesMobileImage,
   };
 
   const rightBlockProps = {
@@ -29,7 +30,10 @@ function TechSection() {
 
   return (
     <WrapperSection>
-      <TechLeft></TechLeft>
+      <TechLeft
+        image={leftBlockProps.image}
+        imageMobile={leftBlockProps.imageMobile}
+      />
       <TechRight data={rightBlockProps} />
     </WrapperSection>
   );
