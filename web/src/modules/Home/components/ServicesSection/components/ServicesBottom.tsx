@@ -77,6 +77,10 @@ const BlockRight = styled.div`
 
   .service-item-info {
     right: 0;
+
+    p {
+      max-width: 485px;
+    }
   }
 `;
 

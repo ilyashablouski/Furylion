@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function TechRight() {
+import { TechSectionType } from '@/typings/model';
+
+function TechRight({ ...props }: TechSectionType) {
+  // console.log(props);
   return (
     <Container>
       <Title></Title>

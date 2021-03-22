@@ -59,9 +59,17 @@ export interface ServicesSectionType extends PageFullType {
   };
 }
 
-// export interface TechSectionType extends PageFullType {
-//   templateFields: {
-//     servicesTitle: StringFieldType;
-//     servicesItems: Array<ServiceItemType>;
-//   };
-// }
+export interface TechSectionType extends PageFullType {
+  templateFields: {
+    technologiesTitle: StringFieldType;
+    technologiesText: StringFieldType;
+    technologiesLogos: Array<{
+      url: StringFieldType;
+    }>;
+    technologiesTextAdditional: StringFieldType;
+    technologiesButtonFirstLabel: StringFieldType;
+    technologiesButtonFirstUrl: StringFieldType;
+    technologiesButtonSecondLabel: StringFieldType;
+    technologiesButtonSecondUrl: StringFieldType;
+  };
+}

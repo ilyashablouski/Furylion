@@ -2,18 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
-import { ServicesSectionType } from '@/typings/model';
+import { TechSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
 
 import TechLeft from './components/TechLeft';
 import TechRight from './components/TechRight';
 
 function TechSection() {
-  // const page = useCurrentPage<TechSectionType>();
+  const page = useCurrentPage<TechSectionType>();
+  const pageFields = page?.templateFields;
+
+  const leftBlockProps = {
+    // image: pageFields?.
+  };
+
+  const rightBlockProps = {
+    title: pageFields?.technologiesTitle,
+    text: pageFields?.technologiesText,
+    logos: pageFields?.technologiesLogos,
+    addText: pageFields?.technologiesTextAdditional,
+    btnFirstLabel: pageFields?.technologiesButtonFirstLabel,
+    btnFirstUrl: pageFields?.technologiesButtonFirstUrl,
+    btnSecondLabel: pageFields?.technologiesButtonSecondLabel,
+    btnSecondUrl: pageFields?.technologiesButtonSecondUrl,
+  };
+
   return (
     <WrapperSection>
       <TechLeft></TechLeft>
-      <TechRight></TechRight>
+      <TechRight data={rightBlockProps} />
     </WrapperSection>
   );
 }

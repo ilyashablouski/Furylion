@@ -5,7 +5,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 
 function Vacancies() {
   const page = useCurrentPage();
-  console.log(page);
 
   return (
     <Container>
