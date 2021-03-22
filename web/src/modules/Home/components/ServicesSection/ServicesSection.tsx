@@ -13,12 +13,13 @@ function ServicesSection() {
   const pageFields = page?.templateFields;
   const sectionTitle = pageFields?.servicesTitle;
   const servicesItems = pageFields?.servicesItems ?? [];
+  const servicesBottomItems = pageFields?.servicesBottomItems ?? [];
   return (
     <WrapperSection>
       <Title>{sectionTitle}</Title>
       <ServicesWrapper>
         <ServicesTop servicesItems={servicesItems} />
-        <ServicesBottom servicesItems={servicesItems} />
+        <ServicesBottom servicesBottomItems={servicesBottomItems} />
       </ServicesWrapper>
     </WrapperSection>
   );

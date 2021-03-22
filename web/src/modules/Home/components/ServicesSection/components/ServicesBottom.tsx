@@ -8,15 +8,15 @@ import ServiceItem from './ServiceItem';
 import ItemWrapper from './ItemWrapper';
 
 type Props = {
-  servicesItems: Array<ServiceItemType>;
+  servicesBottomItems: Array<ServiceItemType>;
 };
 
-function ServicesBottom({ servicesItems }: Props) {
+function ServicesBottom({ servicesBottomItems }: Props) {
   // TODO: Refactoring if new data
-  if (servicesItems.length === 0) return null;
-  // const services = servicesItems.slice(0, 2);
+  if (servicesBottomItems.length === 0) return null;
+  // const services = servicesBottomItems.slice(0, 2);
 
-  const servicesMarkupArray = servicesItems.map((serviceItem) => {
+  const servicesMarkupArray = servicesBottomItems.map((serviceItem) => {
     return (
       <ServiceItem
         image={serviceItem.image}
@@ -33,16 +33,16 @@ function ServicesBottom({ servicesItems }: Props) {
     <ServicesBlock second>
       <BlockLeft>
         <ItemWrapper className="item-wrapper">
-          {servicesMarkupArray[1]}
+          {servicesMarkupArray[0]}
         </ItemWrapper>
         <ItemWrapper className="item-wrapper">
-          {servicesMarkupArray[2]}
+          {servicesMarkupArray[1]}
         </ItemWrapper>
       </BlockLeft>
 
       <BlockRight>
         <ItemWrapper className="item-wrapper" singleItem rightAlign>
-          {servicesMarkupArray[0]}
+          {servicesMarkupArray[2]}
         </ItemWrapper>
       </BlockRight>
     </ServicesBlock>
@@ -52,6 +52,8 @@ const BlockLeft = styled.div`
   clip-path: polygon(0 0, 61% 0, 100% 100%, 0 100%);
   position: absolute;
   left: 0;
+  display: flex;
+  flex-direction: column;
   width: 53.45%;
   height: 100%;
   z-index: 1;

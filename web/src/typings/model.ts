@@ -54,6 +54,8 @@ export interface ServicesSectionType extends PageFullType {
   templateFields: {
     servicesTitle: StringFieldType;
     servicesItems: Array<ServiceItemType>;
+    servicesBottomTitle: StringFieldType;
+    servicesBottomItems: Array<ServiceItemType>;
   };
 }
 
