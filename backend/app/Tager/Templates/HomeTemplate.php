@@ -55,6 +55,8 @@ class HomeTemplate extends Template
                 'technologiesTitle' => new StringField('Title'),
                 'technologiesText' => new TextField('Text'),
                 'technologiesLogos' => new GalleryField('Gallery'),
+                'technologiesImage' => new ImageField('Image'),
+                'technologiesMobileImage' => new ImageField('Mobile Image'),
                 'technologiesTextAdditional' => new HtmlField('Text - Additional'),
                 'technologiesButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'technologiesButtonFirstUrl' => new StringField('Button 1 - URL'),
