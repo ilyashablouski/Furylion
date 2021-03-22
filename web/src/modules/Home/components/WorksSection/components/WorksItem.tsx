@@ -41,6 +41,10 @@ function WorksItem({ image, title, text, tags }: WorksItemType) {
 
 const WorksItemContainer = styled.div`
   position: relative;
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
 `;
 
 const WorksInfo = styled.div`

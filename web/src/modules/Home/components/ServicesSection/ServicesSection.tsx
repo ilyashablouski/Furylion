@@ -5,8 +5,8 @@ import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { ServicesSectionType } from '@/typings/model';
 
-import ServicesFirst from './components/ServicesFirst';
-import ServicesSecond from './components/ServicesSecond';
+import ServicesTop from './components/ServicesTop';
+import ServicesBottom from './components/ServicesBottom';
 
 function ServicesSection() {
   const page = useCurrentPage<ServicesSectionType>();
@@ -17,8 +17,8 @@ function ServicesSection() {
     <WrapperSection>
       <Title>{sectionTitle}</Title>
       <ServicesWrapper>
-        <ServicesFirst servicesItems={servicesItems} />
-        {/*<ServicesSecond servicesItems={servicesItems} />*/}
+        <ServicesTop servicesItems={servicesItems} />
+        <ServicesBottom servicesItems={servicesItems} />
       </ServicesWrapper>
     </WrapperSection>
   );

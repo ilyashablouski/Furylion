@@ -4,16 +4,18 @@ import styled from 'styled-components';
 type Props = {
   className?: string;
   children: React.ReactNode;
+  second?: true;
 };
 
-function ServicesBlock({ className, children }: Props) {
-  return <Container className={className}>{children}</Container>;
+function ServicesBlock({ second, children }: Props) {
+  return <Container second={second}>{children}</Container>;
 }
 
-const Container = styled.div`
+const Container = styled.div<{ second?: boolean }>`
+  margin-top: ${(props) => (props.second ? '20px' : '0')};
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) => (props.second ? 'flex-end' : 'space-between')};
   max-height: 705px;
   overflow: hidden;
 `;
