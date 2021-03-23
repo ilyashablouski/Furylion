@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
+
+import { scroller } from '@tager/web-core';
 
 import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
@@ -9,12 +11,40 @@ import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { media } from '@/utils/mixin';
 
 import HeaderMenu from './components/HeaderMenu';
-import HeaderBurger from './components/HeaderBurger';
+import MobileMenuToggle from './components/MobileMenuToggle';
 
 function Header() {
   const headerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
     [];
+
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuActive, setMobileMenuActive] = useState(false);
+
+  function handleMobileMenuClose() {
+    setMobileMenuOpen(false);
+  }
+
+  function handleMenuToggleClick() {
+    if (isMobileMenuActive) {
+      setMobileMenuActive(false);
+    } else {
+      setMobileMenuActive(true);
+      setMobileMenuOpen(true);
+    }
+  }
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      scroller.lock(mobileMenuRef.current);
+    }
+
+    return () => {
+      scroller.unlockAll();
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <HeaderContainer>
       <ContentContainer>
@@ -29,8 +59,16 @@ function Header() {
             </HeaderLeft>
 
             <HeaderRight>
-              <HeaderBurger />
-              <HeaderMenu menuItemList={headerMenuItemList} />
+              <MobileMenuToggle
+                isActive={isMobileMenuActive}
+                onClick={handleMenuToggleClick}
+              />
+              <HeaderMenu
+                menuItemList={headerMenuItemList}
+                mobileMenuRef={mobileMenuRef}
+                isActive={isMobileMenuActive}
+                onClose={handleMobileMenuClose}
+              />
             </HeaderRight>
           </HeaderInner>
         </HeaderWrapper>

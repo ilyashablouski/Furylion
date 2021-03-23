@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { WorksSectionType } from '@/typings/model';
 import WorksSwiper from '@/modules/Home/components/WorksSection/components/WorksSwiper';
+import { media } from '@/utils/mixin';
 
 function WorksSection() {
   const page = useCurrentPage<WorksSectionType>();
@@ -22,6 +23,14 @@ function WorksSection() {
 
 const WrapperSection = styled.section`
   margin-top: 80px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 70px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 50px;
+  `)}
 `;
 
 const Title = styled.span`
@@ -32,6 +41,14 @@ const Title = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: ${colors.white};
+
+  ${media.tabletSmallOnly(css`
+    font-size: 56px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 
 export default WorksSection;

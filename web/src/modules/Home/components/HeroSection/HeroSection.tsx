@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { HeroSectionType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 function HeroSection() {
   const page = useCurrentPage<HeroSectionType>();
@@ -85,6 +86,15 @@ const Title = styled.span`
   line-height: 100%;
   text-align: center;
   text-transform: uppercase;
+
+  ${media.tabletSmallOnly(css`
+    font-size: 64px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 40px;
+    text-transform: initial;
+  `)}
 `;
 
 const Text = styled.p`
@@ -100,6 +110,15 @@ const Inner = styled.div`
   padding: 313px 0 212px;
   text-align: center;
   color: ${colors.white};
+
+  ${media.tabletSmallOnly(css`
+    padding: 439px 0 383px;
+  `)}
+
+  ${media.mobile(css`
+    padding: 212px 0 214px;
+    min-height: 640px;
+  `)}
 `;
 
 export default HeroSection;

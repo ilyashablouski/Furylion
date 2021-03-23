@@ -71,6 +71,14 @@ const WorksText = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 160%;
+
+  ${media.tabletSmall(css`
+    font-size: 12px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 10px;
+  `)}
 `;
 
 const WorksCopyright = styled.div`

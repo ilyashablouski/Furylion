@@ -5,7 +5,12 @@ import { ReactComponent as BurgerIcon } from '@/assets/svg/burger-btn.svg';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 
-function HeaderBurger() {
+type Props = {
+  isActive: boolean;
+  onClick: () => void;
+};
+
+function MobileMenuToggle({ isActive, onClick }: Props) {
   return (
     <BurgerButton>
       <BurgerIcon />
@@ -31,4 +36,4 @@ const BurgerButton = styled.button`
   `)}
 `;
 
-export default HeaderBurger;
+export default MobileMenuToggle;

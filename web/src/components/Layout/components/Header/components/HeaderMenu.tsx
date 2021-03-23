@@ -33,9 +33,12 @@ const socials = [
 
 type Props = {
   menuItemList: Array<MenuItemType>;
+  mobileMenuRef: React.RefObject<HTMLDivElement>;
+  isActive: boolean;
+  onClose: () => void;
 };
 
-function HeaderMenu({ menuItemList }: Props) {
+function HeaderMenu({ menuItemList, onClose, mobileMenuRef }: Props) {
   return (
     <Nav>
       <MenuItems>
