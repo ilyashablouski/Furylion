@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Picture from '@/components/Picture';
 import { ImageType } from '@/typings/model';
 import { StringFieldType } from '@/typings/common';
+import { media } from '@/utils/mixin';
 
 type Props = {
   title?: StringFieldType;
@@ -32,17 +33,17 @@ function PlatformLeft({
       <Text>{text}</Text>
       <Logos>
         {logos
-          ? logos.map((logoItem, index) => (
-              <LogoItem key={index}>
+          ? logos.map((logo, index) => (
+              <Logo key={index}>
                 <Picture
                   mobileSmall={{
-                    src: logoItem?.url,
-                    src2x: logoItem?.url_2x,
-                    webp: logoItem?.url_webp,
-                    webp2x: logoItem?.url_webp_2x,
+                    src: logo?.url,
+                    src2x: logo?.url_2x,
+                    webp: logo?.url_webp,
+                    webp2x: logo?.url_webp_2x,
                   }}
                 />
-              </LogoItem>
+              </Logo>
             ))
           : []}
       </Logos>
@@ -62,6 +63,10 @@ const Container = styled.div`
   padding: 0 68px;
   flex: 1 1 50%;
   max-width: 50%;
+
+  ${media.desktop1366(css`
+    padding-right: 0;
+  `)}
 `;
 
 const Title = styled.span`
@@ -85,11 +90,19 @@ const Logos = styled.div`
   align-items: center;
   max-width: 700px;
   justify-content: space-between;
+
+  ${media.desktop1366(css`
+    max-width: none;
+  `)}
 `;
 
-const LogoItem = styled.div`
+const Logo = styled.div`
   &:not(:first-child) {
     margin-left: 30px;
+  }
+
+  img {
+    max-height: 75px;
   }
 `;
 

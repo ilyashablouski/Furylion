@@ -25,17 +25,17 @@ function TechRight({ data }: Props) {
       <Text>{data.text}</Text>
       <Logos>
         {data.logos
-          ? data.logos.map((logoItem, index) => (
-              <LogoItem key={index}>
+          ? data.logos.map((logo, index) => (
+              <Logo key={index}>
                 <Picture
                   mobileSmall={{
-                    src: logoItem?.url,
-                    src2x: logoItem?.url_2x,
-                    webp: logoItem?.url_webp,
-                    webp2x: logoItem?.url_webp_2x,
+                    src: logo?.url,
+                    src2x: logo?.url_2x,
+                    webp: logo?.url_webp,
+                    webp2x: logo?.url_webp_2x,
                   }}
                 />
-              </LogoItem>
+              </Logo>
             ))
           : []}
       </Logos>
@@ -79,7 +79,7 @@ const AdditionalBlock = styled.div`
   margin-top: 47px;
 `;
 
-const LogoItem = styled.div`
+const Logo = styled.div`
   flex: 0 0 auto;
 
   &:not(:first-child) {

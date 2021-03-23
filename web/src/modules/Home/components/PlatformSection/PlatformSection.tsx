@@ -5,6 +5,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { PlatformSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
+import PlatformRight from '@/modules/Home/components/PlatformSection/components/PlatfromRight';
 
 import PlatformLeft from './components/PlatformLeft';
 
@@ -26,7 +27,7 @@ function PlatformSection() {
             btnSecondLabel={pageFields?.platformButtonSecondLabel}
             btnSecondUrl={pageFields?.platformButtonSecondUrl}
           />
-          {/*<PlatformRight />*/}
+          <PlatformRight />
         </InnerWrapper>
       </ContentContainer>
     </Wrapper>
