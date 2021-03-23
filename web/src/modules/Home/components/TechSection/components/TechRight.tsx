@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StringFieldType } from '@/typings/common';
 import { ImageType } from '@/typings/model';
 import Picture from '@/components/Picture';
+import { ButtonLink } from '@/components/Button';
 
 type Props = {
   data: {
@@ -47,7 +48,25 @@ function TechRight({ data }: Props) {
         ) : null}
       </AdditionalBlock>
 
-      {/*<Buttons></Buttons>*/}
+      <Buttons>
+        <StyledButton>
+          <ButtonLink
+            href={data.btnFirstUrl ?? '#'}
+            variants={['cut-bottom', 'white-red', 'w100']}
+          >
+            {data.btnFirstLabel}
+          </ButtonLink>
+        </StyledButton>
+
+        <StyledButton right>
+          <ButtonLink
+            href={data.btnSecondUrl ?? '#'}
+            variants={['cut-top', 'red', 'w100']}
+          >
+            {data.btnSecondLabel}
+          </ButtonLink>
+        </StyledButton>
+      </Buttons>
     </Container>
   );
 }
@@ -85,6 +104,16 @@ const Logo = styled.div`
   &:not(:first-child) {
     margin-left: 35px;
   }
+
+  &:last-child {
+    img {
+      max-height: 49px;
+    }
+  }
+
+  img {
+    max-height: 75px;
+  }
 `;
 
 const AdditionalTitle = styled.span`
@@ -103,6 +132,13 @@ const AdditionalText = styled.div`
 const Buttons = styled.div`
   margin-top: 35px;
   display: inline-flex;
+`;
+
+const StyledButton = styled.div<{ right?: boolean }>`
+  flex: 0 0 265px;
+  max-width: 265px;
+  margin-left: ${(props) => (props.right ? '-3%' : '0')};
+  margin-right: ${(props) => (props.right ? '0' : '-3%')};
 `;
 
 export default TechRight;

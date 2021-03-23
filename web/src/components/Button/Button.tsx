@@ -8,6 +8,7 @@ import * as S from './Button.style';
 import { ButtonVariant } from './Button.types';
 
 type CommonProps = {
+  variants?: Array<ButtonVariant>;
   variant?: ButtonVariant;
   as?: React.ElementType;
 };

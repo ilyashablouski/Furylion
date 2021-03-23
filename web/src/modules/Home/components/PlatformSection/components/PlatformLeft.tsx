@@ -56,7 +56,23 @@ function PlatformLeft({
       </AdditionalBlock>
 
       <Buttons>
-        <ButtonLink href="string">I want the same!</ButtonLink>
+        <StyledButton>
+          <ButtonLink
+            href={btnFirstUrl ?? '#'}
+            variants={['cut-bottom', 'white-dark', 'w100']}
+          >
+            {btnFirstLabel}
+          </ButtonLink>
+        </StyledButton>
+
+        <StyledButton right>
+          <ButtonLink
+            href={btnSecondUrl ?? '#'}
+            variants={['cut-top', 'dark', 'w100']}
+          >
+            {btnSecondLabel}
+          </ButtonLink>
+        </StyledButton>
       </Buttons>
     </Container>
   );
@@ -130,4 +146,11 @@ const Buttons = styled.div`
   margin-top: 35px;
   display: flex;
 `;
+
+const StyledButton = styled.div<{ right?: boolean }>`
+  flex: 1 1 auto;
+  margin-left: ${(props) => (props.right ? '-3%' : '0')};
+  margin-right: ${(props) => (props.right ? '0' : '-3%')};
+`;
+
 export default PlatformLeft;
