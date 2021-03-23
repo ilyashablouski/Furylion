@@ -5,7 +5,7 @@ import { LinkToPropType } from '@tager/web-components';
 import Link from '@/components/Link';
 
 import * as S from './Button.style';
-import { ButtonVariant } from './Button.style';
+import { ButtonVariant } from './Button.types';
 
 type CommonProps = {
   variant?: ButtonVariant;

@@ -5,6 +5,7 @@ import Picture from '@/components/Picture';
 import { ImageType } from '@/typings/model';
 import { StringFieldType } from '@/typings/common';
 import { media } from '@/utils/mixin';
+import Button, { ButtonLink } from '@/components/Button';
 
 type Props = {
   title?: StringFieldType;
@@ -54,7 +55,9 @@ function PlatformLeft({
         ) : null}
       </AdditionalBlock>
 
-      {/*<Buttons></Buttons>*/}
+      <Buttons>
+        <ButtonLink href="string">I want the same!</ButtonLink>
+      </Buttons>
     </Container>
   );
 }

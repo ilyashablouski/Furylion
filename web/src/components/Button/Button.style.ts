@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { CssSnippet } from '@tager/web-components';
 
-export type ReservedButtonVariant = 'contained' | 'outlined';
+import { ButtonVariant } from './Button.types';
 
-export type ButtonVariant = ReservedButtonVariant | CssSnippet;
-
-const variantCssMap: Record<ReservedButtonVariant, CssSnippet> = {
+const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   contained: css`
     background-color: #24292e;
     opacity: 0.95;
@@ -31,16 +29,16 @@ const variantCssMap: Record<ReservedButtonVariant, CssSnippet> = {
 };
 
 export const StyledButton = styled.button<{ variant?: ButtonVariant }>`
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  display: inline-block;
+  line-height: 100%;
+  font-size: 24px;
   text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+  appearance: none;
   text-transform: uppercase;
-  padding: 10px;
-  text-decoration: none;
-  transition: background-color 0.1s;
-  border-radius: 3px;
+  cursor: pointer;
 
   ${(props) =>
     typeof props.variant === 'string'
