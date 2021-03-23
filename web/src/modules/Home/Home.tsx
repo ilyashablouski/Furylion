@@ -10,16 +10,17 @@ import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
 import ServicesSection from './components/ServicesSection';
 import TechSection from './components/TechSection';
+import PlatformSection from './components/PlatformSection';
 
 function Home() {
   // const page = useCurrentPage<HomePageTemplate>();
-
   return (
     <>
       <HomeSection />
       <WorksSection />
       <ServicesSection />
       <TechSection />
+      <PlatformSection />
     </>
   );
 }

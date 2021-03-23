@@ -73,3 +73,16 @@ export interface TechSectionType extends PageFullType {
     technologiesButtonSecondUrl: StringFieldType;
   };
 }
+
+export interface PlatformSectionType extends PageFullType {
+  templateFields: {
+    platformTitle: StringFieldType;
+    platformText: StringFieldType;
+    platformLogos: Array<ImageType>;
+    platformAdditional: StringFieldType;
+    platformButtonFirstLabel: StringFieldType;
+    platformButtonFirstUrl: StringFieldType;
+    platformButtonSecondLabel: StringFieldType;
+    platformButtonSecondUrl: StringFieldType;
+  };
+}

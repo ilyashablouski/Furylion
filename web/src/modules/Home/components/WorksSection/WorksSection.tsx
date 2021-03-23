@@ -13,15 +13,15 @@ function WorksSection() {
   const sectionTitle = pageFields?.worksTitle;
   const worksItems = pageFields?.worksItems ?? [];
   return (
-    <WrapperSection>
+    <Wrapper>
       <Title>{sectionTitle}</Title>
 
       <WorksSwiper worksItems={worksItems} />
-    </WrapperSection>
+    </Wrapper>
   );
 }
 
-const WrapperSection = styled.section`
+const Wrapper = styled.section`
   margin-top: 80px;
 
   ${media.tabletSmallOnly(css`

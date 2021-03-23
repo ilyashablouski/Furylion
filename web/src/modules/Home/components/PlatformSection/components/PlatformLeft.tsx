@@ -1,31 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { StringFieldType } from '@/typings/common';
-import { ImageType } from '@/typings/model';
 import Picture from '@/components/Picture';
+import { ImageType } from '@/typings/model';
+import { StringFieldType } from '@/typings/common';
 
 type Props = {
-  data: {
-    title?: StringFieldType;
-    text?: StringFieldType;
-    logos?: Array<ImageType>;
-    addText?: StringFieldType;
-    btnFirstLabel?: StringFieldType;
-    btnFirstUrl?: StringFieldType;
-    btnSecondLabel?: StringFieldType;
-    btnSecondUrl?: StringFieldType;
-  };
+  title?: StringFieldType;
+  text?: StringFieldType;
+  logos?: Array<ImageType>;
+  addText?: StringFieldType;
+  btnFirstLabel?: StringFieldType;
+  btnFirstUrl?: StringFieldType;
+  btnSecondLabel?: StringFieldType;
+  btnSecondUrl?: StringFieldType;
 };
 
-function TechRight({ data }: Props) {
+function PlatformLeft({
+  title,
+  text,
+  logos,
+  addText,
+  btnFirstLabel,
+  btnFirstUrl,
+  btnSecondLabel,
+  btnSecondUrl,
+}: Props) {
   return (
     <Container>
-      <Title>{data.title}</Title>
-      <Text>{data.text}</Text>
+      <Title>{title}</Title>
+      <Text>{text}</Text>
       <Logos>
-        {data.logos
-          ? data.logos.map((logoItem, index) => (
+        {logos
+          ? logos.map((logoItem, index) => (
               <LogoItem key={index}>
                 <Picture
                   mobileSmall={{
@@ -39,11 +46,10 @@ function TechRight({ data }: Props) {
             ))
           : []}
       </Logos>
-
       <AdditionalBlock>
         <AdditionalTitle>Additional:</AdditionalTitle>
-        {data.addText ? (
-          <AdditionalText dangerouslySetInnerHTML={{ __html: data.addText }} />
+        {addText ? (
+          <AdditionalText dangerouslySetInnerHTML={{ __html: addText }} />
         ) : null}
       </AdditionalBlock>
 
@@ -53,8 +59,9 @@ function TechRight({ data }: Props) {
 }
 
 const Container = styled.div`
-  padding-top: 100px;
-  padding-left: 68px;
+  padding: 0 68px;
+  flex: 1 1 50%;
+  max-width: 50%;
 `;
 
 const Title = styled.span`
@@ -63,6 +70,7 @@ const Title = styled.span`
   line-height: 130%;
   text-transform: uppercase;
 `;
+
 const Text = styled.p`
   margin-top: 35px;
   max-width: 388px;
@@ -70,21 +78,23 @@ const Text = styled.p`
   font-size: 14px;
   line-height: 160%;
 `;
+
 const Logos = styled.div`
-  margin-top: 71px;
+  margin-top: 44px;
   display: flex;
   align-items: center;
-`;
-const AdditionalBlock = styled.div`
-  margin-top: 47px;
+  max-width: 700px;
+  justify-content: space-between;
 `;
 
 const LogoItem = styled.div`
-  flex: 0 0 auto;
-
   &:not(:first-child) {
-    margin-left: 35px;
+    margin-left: 30px;
   }
+`;
+
+const AdditionalBlock = styled.div`
+  margin-top: 47px;
 `;
 
 const AdditionalTitle = styled.span`
@@ -102,7 +112,6 @@ const AdditionalText = styled.div`
 
 const Buttons = styled.div`
   margin-top: 35px;
-  display: inline-flex;
+  display: flex;
 `;
-
-export default TechRight;
+export default PlatformLeft;

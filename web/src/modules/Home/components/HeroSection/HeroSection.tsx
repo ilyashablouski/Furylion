@@ -17,7 +17,7 @@ function HeroSection() {
   const text = pageFields?.heroText;
 
   return (
-    <WrapperSection>
+    <Wrapper>
       <BackgroundPicture
         tabletLarge={{
           src: image?.url,
@@ -39,11 +39,11 @@ function HeroSection() {
           <Text>{text}</Text>
         </Inner>
       </ContentContainer>
-    </WrapperSection>
+    </Wrapper>
   );
 }
 
-const WrapperSection = styled.section`
+const Wrapper = styled.section`
   position: relative;
 `;
 

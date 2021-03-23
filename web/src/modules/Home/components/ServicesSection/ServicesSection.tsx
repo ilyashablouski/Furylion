@@ -15,17 +15,17 @@ function ServicesSection() {
   const servicesItems = pageFields?.servicesItems ?? [];
   const servicesBottomItems = pageFields?.servicesBottomItems ?? [];
   return (
-    <WrapperSection>
+    <Wrapper>
       <Title>{sectionTitle}</Title>
       <ServicesWrapper>
         <ServicesTop servicesItems={servicesItems} />
         <ServicesBottom servicesBottomItems={servicesBottomItems} />
       </ServicesWrapper>
-    </WrapperSection>
+    </Wrapper>
   );
 }
 
-const WrapperSection = styled.section`
+const Wrapper = styled.section`
   margin-top: 100px;
 `;
 

@@ -29,17 +29,17 @@ function TechSection() {
   };
 
   return (
-    <WrapperSection>
+    <Wrapper>
       <TechLeft
         image={leftBlockProps.image}
         imageMobile={leftBlockProps.imageMobile}
       />
       <TechRight data={rightBlockProps} />
-    </WrapperSection>
+    </Wrapper>
   );
 }
 
-const WrapperSection = styled.div`
+const Wrapper = styled.div`
   position: relative;
   margin-top: 20px;
   height: 750px;
