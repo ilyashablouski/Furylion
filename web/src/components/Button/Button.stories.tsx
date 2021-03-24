@@ -19,12 +19,12 @@ const Container = styled.div`
 
 export const contained = () => (
   <Container>
-    <Button variant="contained">Сохранить</Button>
+    <Button>Сохранить</Button>
   </Container>
 );
 
 export const outlined = () => (
   <Container>
-    <Button variant="outlined">Удалить</Button>
+    <Button>Удалить</Button>
   </Container>
 );
