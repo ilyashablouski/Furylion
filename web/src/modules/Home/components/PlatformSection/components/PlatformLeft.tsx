@@ -86,6 +86,14 @@ const Container = styled.div`
   ${media.desktop1366(css`
     padding-right: 0;
   `)}
+
+  ${media.tabletSmall(css`
+    padding: 0;
+  `)}
+
+  ${media.mobile(css`
+    max-width: 100%;
+  `)}
 `;
 
 const Title = styled.span`
@@ -93,6 +101,20 @@ const Title = styled.span`
   font-size: 64px;
   line-height: 130%;
   text-transform: uppercase;
+
+  ${media.tabletSmall(css`
+    position: absolute;
+    top: 70px;
+    left: auto;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    font-size: 56px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 
 const Text = styled.p`
@@ -101,6 +123,19 @@ const Text = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 160%;
+
+  ${media.tabletSmall(css`
+    font-size: 12px;
+    max-width: none;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 27px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 20px;
+  `)}
 `;
 
 const Logos = styled.div`
@@ -113,6 +148,14 @@ const Logos = styled.div`
   ${media.desktop1366(css`
     max-width: none;
   `)}
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 53px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 30px;
+  `)}
 `;
 
 const Logo = styled.div`
@@ -122,17 +165,33 @@ const Logo = styled.div`
 
   img {
     max-height: 75px;
+
+    ${media.tabletSmall(css`
+      max-height: 64px;
+    `)}
   }
 `;
 
 const AdditionalBlock = styled.div`
   margin-top: 47px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 40px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 30px;
+  `)}
 `;
 
 const AdditionalTitle = styled.span`
   font-weight: 900;
   font-size: 24px;
   line-height: 160%;
+
+  ${media.tabletSmall(css`
+    font-size: 20px;
+  `)}
 `;
 
 const AdditionalText = styled.div`
@@ -140,11 +199,42 @@ const AdditionalText = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 187.5%;
+
+  ${media.tabletSmall(css`
+    font-size: 12px;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 10px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 5px;
+  `)}
 `;
 
 const Buttons = styled.div`
   margin-top: 35px;
   display: flex;
+
+  ${media.tabletSmall(css`
+    position: absolute;
+    left: auto;
+    margin-top: 0;
+    width: 100%;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    max-width: 350px;
+    bottom: 70px;
+  `)}
+
+  ${media.mobile(css`
+    left: -20px;
+    right: -20px;
+    bottom: 60px;
+    width: auto;
+  `)}
 `;
 
 const StyledButton = styled.div<{ right?: boolean }>`
