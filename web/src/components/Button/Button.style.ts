@@ -46,28 +46,35 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   `,
 
   'cut-top': css`
-    padding-right: 24px;
-    padding-left: 35px;
+    padding: 25px 24px 25px 35px;
     font-size: 20px;
     clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0% 100%);
     text-align: end;
-    ${media.tabletSmall(css`
-      padding-right: 15px;
-      padding-left: 20px;
+
+    ${media.tabletSmallOnly(css`
+      padding: 20px 15px 20px 20px;
       font-size: 14px;
+    `)}
+
+    ${media.mobile(css`
+      padding: 17px 15px 17px 20px;
+      font-size: 16px;
     `)}
   `,
   'cut-bottom': css`
-    padding-left: 24px;
-    padding-right: 35px;
+    padding: 25px 35px 25px 24px;
     font-size: 20px;
     clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
     text-align: start;
 
-    ${media.tabletSmall(css`
-      padding-left: 15px;
-      padding-right: 20px;
+    ${media.tabletSmallOnly(css`
+      padding: 20px 20px 20px 15px;
       font-size: 14px;
+    `)}
+
+    ${media.mobile(css`
+      padding: 17px 20px 17px 15px;
+      font-size: 16px;
     `)}
   `,
 
@@ -131,6 +138,7 @@ export const StyledButton = styled.button<{
   appearance: none;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 150ms ease-in-out;
 
   ${(props) =>
     typeof props.variant === 'string'

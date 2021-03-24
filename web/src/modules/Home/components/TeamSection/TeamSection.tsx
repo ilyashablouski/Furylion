@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { TeamSectionType } from '@/typings/model';
@@ -9,6 +9,8 @@ import teamBgUrlWebp from '@/assets/images/team/team-bg@2x.webp';
 import teamBgUrlWebp2x from '@/assets/images/team/team-bg@2x.webp';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
+import SkewButton from '@/components/SkewButton';
+import { media } from '@/utils/mixin';
 
 function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
@@ -40,6 +42,12 @@ function TeamSection() {
             ))
           : null}
       </Inner>
+
+      <StyledButton>
+        <SkewButton href={pageFields?.teamButtonUrl}>
+          {pageFields?.teamButtonLabel}
+        </SkewButton>
+      </StyledButton>
     </Wrapper>
   );
 }
@@ -100,6 +108,25 @@ const Inner = styled.div`
 const TeammatePicture = styled(Picture)`
   flex: 1 1 25%;
   max-width: 25%;
+`;
+
+const StyledButton = styled.div`
+  width: 100%;
+  max-width: 388px;
+  top: 75%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+
+  ${media.tabletSmallOnly(css`
+    top: 87%;
+  `)}
+
+  ${media.mobile(css`
+    max-width: 302px;
+    top: 84%;
+  `)}
 `;
 
 export default TeamSection;

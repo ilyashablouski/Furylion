@@ -7,19 +7,18 @@ import Button, { ButtonLink } from '@/components/Button';
 
 type Props = {
   icon?: string;
-  label: string;
-  isLink: boolean;
+  children?: Nullable<string>;
   href?: Nullable<string>;
 };
 
-function SkewButton({ href, label, icon, isLink }: Props) {
-  return isLink ? (
-    <StyledButtonLink href={href ?? '#'} variant="skew">
-      <Label>{label}</Label>
+function SkewButton({ href, icon, children }: Props) {
+  return href ? (
+    <StyledButtonLink href={href ?? '#'} variants={['skew', 'w100']}>
+      <Label>{children}</Label>
     </StyledButtonLink>
   ) : (
-    <StyledButton variant="skew">
-      <Label>{label}</Label>
+    <StyledButton variants={['skew', 'w100']}>
+      <Label>{children}</Label>
     </StyledButton>
   );
 }
