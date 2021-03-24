@@ -8,6 +8,27 @@ import { colors } from '@/constants/theme';
 import { ButtonVariant } from './Button.types';
 
 const variantCssMap: Record<ButtonVariant, CssSnippet> = {
+  contained: css`
+    background-color: #24292e;
+    opacity: 0.95;
+    color: white;
+    border: 1px solid #24292e;
+
+    &:hover {
+      background-color: black;
+    }
+  `,
+  outlined: css`
+    background-color: white;
+    color: #24292e;
+    border: 1px solid #24292e;
+
+    &:hover {
+      background-color: #24292e;
+      opacity: 0.95;
+      color: white;
+    }
+  `,
   'cut-top': css`
     padding-right: 24px;
     padding-left: 35px;

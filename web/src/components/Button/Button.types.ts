@@ -1,4 +1,6 @@
 export type ButtonVariant =
+  | 'contained'
+  | 'outlined'
   | 'cut-top'
   | 'cut-bottom'
   | 'white-dark'
