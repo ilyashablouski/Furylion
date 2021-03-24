@@ -26,6 +26,9 @@ export const media = {
     min: breakpoints.mobileSmall,
     max: breakpoints.mobileLarge,
   }),
+  mobile576: createMediaMixin({
+    max: 576,
+  }),
   mobileLarge: createMediaMixin({
     max: breakpoints.tabletSmall,
   }),
