@@ -86,3 +86,11 @@ export interface PlatformSectionType extends PageFullType {
     platformButtonSecondUrl: StringFieldType;
   };
 }
+
+export interface TeamSectionType extends PageFullType {
+  templateFields: {
+    teamGallery: Array<ImageType>;
+    teamButtonLabel: StringFieldType;
+    teamButtonUrl: StringFieldType;
+  };
+}

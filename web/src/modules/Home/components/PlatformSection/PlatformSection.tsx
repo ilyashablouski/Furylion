@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { PlatformSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import PlatformRight from '@/modules/Home/components/PlatformSection/components/PlatfromRight';
+import { media } from '@/utils/mixin';
 
 import PlatformLeft from './components/PlatformLeft';
 
@@ -37,6 +38,10 @@ function PlatformSection() {
 const Wrapper = styled.div`
   background: ${colors.red};
 
+  ${media.mobile(css`
+    margin-top: 60px;
+  `)}
+
   ${ContentContainer} {
     max-width: none;
   }
@@ -48,6 +53,22 @@ const InnerWrapper = styled.div`
   padding-bottom: 107px;
   display: flex;
   color: ${colors.white};
+
+  ${media.tabletSmall(css`
+    margin: 0;
+    position: relative;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    padding-bottom: 165px;
+    padding-top: 142px;
+  `)}
+
+  ${media.mobile(css`
+    padding-bottom: 163px;
+    padding-top: 102px;
+    display: block;
+  `)}
 `;
 
 export default PlatformSection;

@@ -8,8 +8,8 @@ type Props = {
 function SchemeListItem({ listItems }: Props) {
   return (
     <>
-      {listItems.map((item: string) => (
-        <ListItem>{item}</ListItem>
+      {listItems.map((item: string, index) => (
+        <ListItem key={index}>{item}</ListItem>
       ))}
     </>
   );

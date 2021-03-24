@@ -22,6 +22,29 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
       color: ${colors.red};
     }
   `,
+
+  contained: css`
+    background-color: #24292e;
+    opacity: 0.95;
+    color: white;
+    border: 1px solid #24292e;
+
+    &:hover {
+      background-color: black;
+    }
+  `,
+  outlined: css`
+    background-color: white;
+    color: #24292e;
+    border: 1px solid #24292e;
+
+    &:hover {
+      background-color: #24292e;
+      opacity: 0.95;
+      color: white;
+    }
+  `,
+
   'cut-top': css`
     padding-right: 24px;
     padding-left: 35px;
@@ -108,7 +131,6 @@ export const StyledButton = styled.button<{
   appearance: none;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
 
   ${(props) =>
     typeof props.variant === 'string'

@@ -11,6 +11,7 @@ import WorksSection from './components/WorksSection';
 import ServicesSection from './components/ServicesSection';
 import TechSection from './components/TechSection';
 import PlatformSection from './components/PlatformSection';
+import TeamSection from './components/TeamSection';
 
 function Home() {
   // const page = useCurrentPage<HomePageTemplate>();
@@ -21,6 +22,7 @@ function Home() {
       <ServicesSection />
       <TechSection />
       <PlatformSection />
+      <TeamSection />
     </>
   );
 }

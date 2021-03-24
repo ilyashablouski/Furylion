@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Picture from '@/components/Picture';
 import { ImageType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 type Props = {
   image?: ImageType;
@@ -38,11 +39,30 @@ const Container = styled.div`
   clip-path: polygon(69% 0, 100% 0, 100% 100%, 0 100%);
   shape-outside: polygon(69% 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
+
+  ${media.tabletSmallOnly(css`
+    width: 76.45vw;
+  `)}
+
+  ${media.mobile(css`
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    shape-outside: polygon(100% 0, 0 100%, 100% 100%);
+    shape-margin: 10px;
+    width: 100vw;
+  `)}
 `;
 
 const ImageContainer = styled(Picture)`
   position: static;
   min-height: 750px;
+
+  ${media.tabletSmallOnly(css`
+    min-height: 663px;
+  `)}
+
+  ${media.mobile(css`
+    min-height: 626px;
+  `)}
 
   img {
     position: absolute;
@@ -52,6 +72,14 @@ const ImageContainer = styled(Picture)`
     min-height: 750px;
     height: 100%;
     object-fit: cover;
+
+    ${media.tabletSmallOnly(css`
+      min-height: 663px;
+    `)}
+
+    ${media.mobile(css`
+      min-height: 626px;
+    `)}
   }
 `;
 
