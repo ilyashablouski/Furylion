@@ -31,11 +31,13 @@ function TechLeft({ image, imageMobile }: Props) {
 }
 
 const Container = styled.div`
+  position: relative;
   float: right;
   width: 48.6vw;
   height: 100%;
   clip-path: polygon(69% 0, 100% 0, 100% 100%, 0 100%);
   shape-outside: polygon(69% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 1;
 `;
 
 const ImageContainer = styled(Picture)`

@@ -79,7 +79,8 @@ const Nav = styled.nav`
     text-align: right;
     z-index: 4;
     background: ${colors.red};
-    //transform: translateX(100%);
+    //TODO: Logic for open/close
+    transform: translateX(100%);
     will-change: transform;
     transition: 150ms all ease-in-out;
   `)}

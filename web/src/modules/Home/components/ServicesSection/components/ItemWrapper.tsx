@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { media } from '@/utils/mixin';
 
 type Props = {
   className?: string;
@@ -8,23 +10,23 @@ type Props = {
   rightAlign?: boolean;
 };
 
-function ItemWrapper({ className, singleItem, rightAlign, children }: Props) {
+function ItemWrapper({ className, singleItem, children }: Props) {
   return (
-    <Container
-      className={className}
-      singleItem={singleItem}
-      rightAlign={rightAlign}
-    >
+    <Container className={className} singleItem={singleItem}>
       {children}
     </Container>
   );
 }
 
-const Container = styled.div<{ singleItem?: boolean; rightAlign?: boolean }>`
+const Container = styled.div<{ singleItem?: boolean }>`
   position: relative;
   height: ${(props) => (props.singleItem ? '100%' : '50%')};
   overflow: hidden;
-  text-align: ${(props) => (props.rightAlign ? 'right' : 'left')};
+
+  ${media.mobile(css`
+    margin-top: 30px;
+    padding-top: 83.33%;
+  `)}
 
   &:before {
     content: '';
@@ -39,10 +41,10 @@ const Container = styled.div<{ singleItem?: boolean; rightAlign?: boolean }>`
       #191814 100%
     );
     z-index: 1;
-  }
 
-  p {
-    margin-left: ${(props) => (props.rightAlign ? 'auto' : 'initial')};
+    ${media.mobile(css`
+      display: none;
+    `)}
   }
 `;
 

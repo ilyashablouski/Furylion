@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { media } from '@/utils/mixin';
 
 type Props = {
   className?: string;
@@ -18,6 +20,12 @@ const Container = styled.div<{ second?: boolean }>`
   justify-content: ${(props) => (props.second ? 'flex-end' : 'space-between')};
   max-height: 705px;
   overflow: hidden;
+
+  ${media.tabletSmall(css`
+    margin-top: 0;
+    flex-direction: column;
+    max-height: none;
+  `)}
 `;
 
 export default ServicesBlock;

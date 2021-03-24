@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { ServicesSectionType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 import ServicesTop from './components/ServicesTop';
 import ServicesBottom from './components/ServicesBottom';
@@ -27,10 +28,22 @@ function ServicesSection() {
 
 const Wrapper = styled.section`
   margin-top: 100px;
+
+  ${media.tabletSmall(css`
+    margin-top: 70px;
+  `)}
 `;
 
 const ServicesWrapper = styled.div`
   margin-top: 35px;
+
+  ${media.tabletSmall(css`
+    margin-top: 26px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 15px;
+  `)}
 `;
 
 const Title = styled.span`
@@ -41,6 +54,14 @@ const Title = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: ${colors.white};
+
+  ${media.tabletSmall(css`
+    font-size: 56px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 
 export default ServicesSection;

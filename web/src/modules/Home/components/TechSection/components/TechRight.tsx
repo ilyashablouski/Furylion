@@ -105,12 +105,6 @@ const Logo = styled.div`
     margin-left: 35px;
   }
 
-  &:last-child {
-    img {
-      max-height: 49px;
-    }
-  }
-
   img {
     max-height: 75px;
   }
