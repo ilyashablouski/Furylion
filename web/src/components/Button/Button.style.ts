@@ -8,6 +8,20 @@ import { colors } from '@/constants/theme';
 import { ButtonVariant } from './Button.types';
 
 const variantCssMap: Record<ButtonVariant, CssSnippet> = {
+  skew: css`
+    position: relative;
+    padding: 23px 25px;
+    font-size: 24px;
+    transform: skew(-15deg);
+
+    background: ${colors.red};
+    color: ${colors.white};
+
+    &:hover {
+      background: ${colors.white};
+      color: ${colors.red};
+    }
+  `,
   'cut-top': css`
     padding-right: 24px;
     padding-left: 35px;
@@ -94,6 +108,7 @@ export const StyledButton = styled.button<{
   appearance: none;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 150ms ease-in-out;
 
   ${(props) =>
     typeof props.variant === 'string'
