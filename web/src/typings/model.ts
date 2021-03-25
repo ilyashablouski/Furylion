@@ -94,3 +94,11 @@ export interface TeamSectionType extends PageFullType {
     teamButtonUrl: StringFieldType;
   };
 }
+
+export interface ClientsSectionType extends PageFullType {
+  templateFields: {
+    clientsTitle: StringFieldType;
+    clientsFirstGallery: Array<ImageType>;
+    clientsSecondGallery: Array<ImageType>;
+  };
+}

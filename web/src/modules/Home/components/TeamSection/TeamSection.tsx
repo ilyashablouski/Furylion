@@ -25,6 +25,7 @@ function TeamSection() {
           webp: teamBgUrlWebp,
           webp2x: teamBgUrlWebp2x,
         }}
+        className="team-background"
       />
       <Title>Team</Title>
       <Inner>
@@ -73,8 +74,10 @@ const Title = styled.span`
 `;
 
 const BackgroundPicture = styled(Picture)`
-  position: relative;
-  display: block;
+  &.team-background {
+    position: relative;
+    display: block;
+  }
 
   img {
     position: relative;
@@ -107,6 +110,8 @@ const Inner = styled.div`
 const TeammatePicture = styled(Picture)`
   flex: 1 1 25%;
   max-width: 25%;
+  border-radius: 100%;
+  overflow: hidden;
 `;
 
 const StyledButton = styled.div`
