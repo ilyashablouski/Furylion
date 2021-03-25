@@ -62,7 +62,7 @@ const Wrapper = styled.div`
 const Title = styled.span`
   position: absolute;
   top: 0;
-  left: -25px;
+  left: -16px;
   display: block;
   width: 100vw;
   font-weight: 900;
@@ -75,7 +75,6 @@ const Title = styled.span`
 const BackgroundPicture = styled(Picture)`
   position: relative;
   display: block;
-  padding-bottom: 44px;
 
   img {
     position: relative;
@@ -90,7 +89,7 @@ const BackgroundPicture = styled(Picture)`
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 64%;
+    height: 67%;
     background: ${colors.dark};
     clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
   }
