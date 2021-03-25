@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MenuItemType } from '@tager/web-modules';
@@ -34,43 +34,71 @@ const socials = [
 type Props = {
   menuItemList: Array<MenuItemType>;
   mobileMenuRef: React.RefObject<HTMLDivElement>;
-  isActive: boolean;
-  onClose: () => void;
+  // isActive: boolean;
+  isOpen: boolean;
 };
 
-function HeaderMenu({ menuItemList, onClose, mobileMenuRef }: Props) {
-  return (
-    <Nav>
-      <MenuItems>
-        {menuItemList.map((menuItem) => {
-          return (
-            <MenuItem key={menuItem.id}>
-              <ItemLink
-                to={menuItem.link ?? '#'}
-                target={menuItem.isNewTab ? '_blank' : '_self'}
-              >
-                {menuItem.label}
-              </ItemLink>
-            </MenuItem>
-          );
-        })}
-      </MenuItems>
+function HeaderMenu({ menuItemList, isOpen, mobileMenuRef }: Props) {
+  // const [isOpen, setOpen] = useState(false);
+  // useEffect(() => setOpen(isActive), [isActive]);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
-      <MenuSocials>
-        {socials.map((social, index) => {
-          return (
-            <SocialWrapper key={index}>
-              <SocialNetwork href={social.href} iconSVG={social.svg} />
-            </SocialWrapper>
-          );
-        })}
-      </MenuSocials>
-    </Nav>
+  return (
+    <Container>
+      <BackgroundContainer
+        isOpen={isOpen}
+        ref={backgroundRef}
+      ></BackgroundContainer>
+      <Nav isOpen={isOpen} ref={mobileMenuRef}>
+        <MenuItems>
+          {menuItemList.map((menuItem) => {
+            return (
+              <MenuItem key={menuItem.id}>
+                <ItemLink
+                  to={menuItem.link ?? '#'}
+                  target={menuItem.isNewTab ? '_blank' : '_self'}
+                >
+                  {menuItem.label}
+                </ItemLink>
+              </MenuItem>
+            );
+          })}
+        </MenuItems>
+
+        <MenuSocials>
+          {socials.map((social, index) => {
+            return (
+              <SocialWrapper key={index}>
+                <SocialNetwork href={social.href} iconSVG={social.svg} />
+              </SocialWrapper>
+            );
+          })}
+        </MenuSocials>
+      </Nav>
+    </Container>
   );
 }
 
-const Nav = styled.nav`
-  ${media.tabletSmall(css`
+const Container = styled.div``;
+
+const BackgroundContainer = styled.div<{ isOpen: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  will-change: opacity;
+  -webkit-tap-highlight-color: transparent;
+  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  transition: all 150s ease-in-out;
+`;
+
+const Nav = styled.nav<{ isOpen: boolean }>`
+  @media (max-width: 1024px) {
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     position: fixed;
     top: 0;
@@ -79,17 +107,17 @@ const Nav = styled.nav`
     text-align: right;
     z-index: 4;
     background: ${colors.red};
-    //TODO: Logic for open/close
-    transform: translateX(100%);
     will-change: transform;
+    transform: ${({ isOpen }) =>
+      isOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: 150ms all ease-in-out;
-  `)}
+  }
 
   ${media.tabletSmallOnly(css`
     padding: 91px 40px 30px 82px;
     max-width: 384px;
   `)}
-  
+
   ${media.mobile(css`
     padding: 79px 44px 20px 54px;
     max-width: 359px;
@@ -166,7 +194,6 @@ const ItemLink = styled(Link)`
   ${media.tabletSmall(css`
     font-weight: 700;
   `)}
-
   &:hover {
     color: #ccc;
   }

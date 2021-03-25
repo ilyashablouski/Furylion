@@ -12,13 +12,13 @@ type Props = {
 
 function MobileMenuToggle({ isActive, onClick }: Props) {
   return (
-    <BurgerButton>
+    <BurgerButton isActive={isActive} onClick={onClick}>
       <BurgerIcon />
     </BurgerButton>
   );
 }
 
-const BurgerButton = styled.button`
+const BurgerButton = styled.button<{ isActive: boolean }>`
   display: none;
 
   ${media.tabletSmall(css`
@@ -34,6 +34,13 @@ const BurgerButton = styled.button`
     background: ${colors.red};
     z-index: 5;
   `)}
+
+  svg {
+    transform-origin: center;
+    transform: ${({ isActive }) =>
+      isActive ? ' rotate(90deg)' : ' rotate(0)'};
+    transition: 150ms all ease-in-out;
+  }
 `;
 
 export default MobileMenuToggle;

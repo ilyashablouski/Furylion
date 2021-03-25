@@ -20,17 +20,14 @@ function Header() {
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isMobileMenuActive, setMobileMenuActive] = useState(false);
-
-  function handleMobileMenuClose() {
-    setMobileMenuOpen(false);
-  }
+  const [isMobileButtonActive, setMobileButtonActive] = useState(false);
 
   function handleMenuToggleClick() {
-    if (isMobileMenuActive) {
-      setMobileMenuActive(false);
+    if (isMobileButtonActive) {
+      setMobileButtonActive(false);
+      setMobileMenuOpen(false);
     } else {
-      setMobileMenuActive(true);
+      setMobileButtonActive(true);
       setMobileMenuOpen(true);
     }
   }
@@ -60,14 +57,13 @@ function Header() {
 
             <HeaderRight>
               <MobileMenuToggle
-                isActive={isMobileMenuActive}
+                isActive={isMobileButtonActive}
                 onClick={handleMenuToggleClick}
               />
               <HeaderMenu
                 menuItemList={headerMenuItemList}
                 mobileMenuRef={mobileMenuRef}
-                isActive={isMobileMenuActive}
-                onClose={handleMobileMenuClose}
+                isOpen={isMobileMenuOpen}
               />
             </HeaderRight>
           </HeaderInner>
