@@ -14,6 +14,7 @@ import PlatformSection from './components/PlatformSection';
 import TeamSection from './components/TeamSection';
 import ClientsSection from './components/ClientsSection';
 import AboutSection from './components/AboutSection';
+import ContactsSection from './components/ContactsSection';
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
       <TeamSection />
       <ClientsSection />
       <AboutSection />
+      <ContactsSection />
     </>
   );
 }
