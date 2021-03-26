@@ -18,7 +18,7 @@ function Header() {
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
     [];
 
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLUListElement>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobileButtonActive, setMobileButtonActive] = useState(false);
 
@@ -31,16 +31,6 @@ function Header() {
       setMobileMenuOpen(true);
     }
   }
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      scroller.lock(mobileMenuRef.current);
-    }
-
-    return () => {
-      scroller.unlockAll();
-    };
-  }, [isMobileMenuOpen]);
 
   return (
     <HeaderContainer>
@@ -74,7 +64,8 @@ function Header() {
 }
 
 const HeaderContainer = styled.header`
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;

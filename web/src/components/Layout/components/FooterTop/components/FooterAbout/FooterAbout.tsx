@@ -3,17 +3,24 @@ import styled from 'styled-components';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
+import { StringFieldType } from '@/typings/common';
 
-function AboutSection() {
+import ContactForm from '../FooterContacts/components/ContactForm';
+
+type Props = {
+  formTitle: StringFieldType;
+};
+
+function FooterAbout({ formTitle }: Props) {
   return (
     <Wrapper>
       <ContentContainer>
         <Inner>
           <Left>
-            <Title>Tell us about everything</Title>
+            <Title>{formTitle}</Title>
           </Left>
           <Right>
-            <Form></Form>
+            <ContactForm />
           </Right>
         </Inner>
       </ContentContainer>
@@ -48,6 +55,4 @@ const Right = styled.div`
   max-width: 50%;
 `;
 
-const Form = styled.div``;
-
-export default AboutSection;
+export default FooterAbout;

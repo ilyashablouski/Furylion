@@ -54,8 +54,8 @@ function TeamSection() {
 }
 
 const Wrapper = styled.div`
+  padding-top: 130px;
   position: relative;
-  padding-top: 95px;
   background: ${colors.white};
   overflow: hidden;
 `;

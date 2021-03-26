@@ -67,7 +67,7 @@ const WorksTitle = styled.span`
 
 const WorksText = styled.p`
   margin-top: 15px;
-  max-width: 420px;
+  max-width: 403px;
   font-weight: 400;
   font-size: 14px;
   line-height: 160%;

@@ -3,17 +3,18 @@ import styled from 'styled-components';
 
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
+import { SettingOptionType } from '@/typings/model';
 
-function ContactBlock() {
+function ContactBlock({ title, text, phone, email }: SettingOptionType) {
   return (
     <Container>
-      <Title>Novopolotsk</Title>
-      {/*<Address>404, Francisk Skorina Avenue 37<br>Polotsk 211400,<br>Republic of Belarus</Address>*/}
+      <Title>{title}</Title>
+      <Text dangerouslySetInnerHTML={{ __html: text ?? '' }} />
       <Phone>
-        <PhoneLink to="#">+375 (44) 569-69-69</PhoneLink>
+        <PhoneLink to="#">{phone}</PhoneLink>
       </Phone>
       <Email>
-        <EmailLink to="#">info@furylion.net</EmailLink>
+        <EmailLink to="#">{email}</EmailLink>
       </Email>
     </Container>
   );
@@ -29,7 +30,7 @@ const Title = styled.span`
   line-height: 160%;
 `;
 
-const Address = styled.p`
+const Text = styled.p`
   margin-top: 15px;
   font-weight: 300;
   font-size: 16px;

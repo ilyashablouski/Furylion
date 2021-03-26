@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MenuItemType } from '@tager/web-modules';
+import { scroller } from '@tager/web-core';
 
 import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
 import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
@@ -33,24 +34,32 @@ const socials = [
 
 type Props = {
   menuItemList: Array<MenuItemType>;
-  mobileMenuRef: React.RefObject<HTMLDivElement>;
-  // isActive: boolean;
+  mobileMenuRef: React.RefObject<HTMLUListElement>;
   isOpen: boolean;
 };
 
 function HeaderMenu({ menuItemList, isOpen, mobileMenuRef }: Props) {
-  // const [isOpen, setOpen] = useState(false);
-  // useEffect(() => setOpen(isActive), [isActive]);
   const backgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      scroller.lock(mobileMenuRef.current);
+    } else {
+      scroller.unlock(mobileMenuRef.current);
+    }
+    return () => {
+      scroller.unlockAll();
+    };
+  }, [isOpen]);
 
   return (
     <Container>
-      <BackgroundContainer
-        isOpen={isOpen}
-        ref={backgroundRef}
-      ></BackgroundContainer>
-      <Nav isOpen={isOpen} ref={mobileMenuRef}>
-        <MenuItems>
+      {/*<BackgroundContainer*/}
+      {/*  isOpen={isOpen}*/}
+      {/*  ref={backgroundRef}*/}
+      {/*></BackgroundContainer>*/}
+      <Nav isOpen={isOpen}>
+        <MenuItems ref={mobileMenuRef}>
           {menuItemList.map((menuItem) => {
             return (
               <MenuItem key={menuItem.id}>
@@ -89,7 +98,7 @@ const BackgroundContainer = styled.div<{ isOpen: boolean }>`
   height: 100%;
   min-height: 100vh;
   width: 100%;
-  background-color: black;
+  background: black;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   will-change: opacity;
   -webkit-tap-highlight-color: transparent;
@@ -159,6 +168,14 @@ const MenuItem = styled.li`
     `)}
   }
 
+  &:nth-child(3) {
+    margin-right: 46px;
+
+    ${media.tabletSmall(css`
+      margin: 0;
+    `)}
+  }
+
   &:not(:first-child) {
     ${media.tabletSmall(css`
       margin-top: 24px;
@@ -169,7 +186,7 @@ const MenuItem = styled.li`
     position: relative;
     height: 100px;
     line-height: 100px;
-    padding: 0 65px;
+    padding: 0 66px;
     background: ${colors.red};
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 10% 0);
 

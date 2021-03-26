@@ -121,7 +121,7 @@ const Text = styled.p`
   `)}
 `;
 const Logos = styled.div`
-  margin-top: 71px;
+  margin-top: 60px;
   display: flex;
   align-items: center;
 
@@ -134,7 +134,7 @@ const Logos = styled.div`
   `)}
 `;
 const AdditionalBlock = styled.div`
-  margin-top: 47px;
+  margin-top: 36px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 40px;
@@ -149,7 +149,7 @@ const Logo = styled.div`
   flex: 0 0 auto;
 
   &:not(:first-child) {
-    margin-left: 35px;
+    margin-left: 69px;
   }
 
   img {

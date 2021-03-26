@@ -9,6 +9,7 @@ import PlayableAds from '@/modules/PlayableAds';
 import Vacancy from '@/modules/Vacancy';
 import { getMenuItemListThunk } from '@/store/reducers/tager/menus';
 import Contacts from '@/modules/Contacts/Contacts';
+import { getSettingItemListThunk } from '@/store/reducers/tager/settings';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
@@ -23,6 +24,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },
@@ -33,6 +35,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },
@@ -43,6 +46,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },
@@ -53,6 +57,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },
@@ -63,6 +68,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },
@@ -73,6 +79,7 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
       return Promise.all([
         store.dispatch(getMenuItemListThunk('header')),
         store.dispatch(getMenuItemListThunk('footer')),
+        store.dispatch(getSettingItemListThunk()),
       ]);
     },
   },

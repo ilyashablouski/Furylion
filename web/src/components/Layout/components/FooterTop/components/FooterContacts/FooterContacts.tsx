@@ -4,10 +4,15 @@ import styled from 'styled-components';
 import { ReactComponent as FooterLogoIcon } from '@/assets/svg/footer-logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
+import { SettingOptionsListType } from '@/typings/model';
 
 import ContactBlock from './components/ContactBlock';
 
-function ContactsSection() {
+type Props = {
+  contactsArray: SettingOptionsListType;
+};
+
+function FooterContacts({ contactsArray }: Props) {
   return (
     <Wrapper>
       <ContentContainer>
@@ -17,7 +22,11 @@ function ContactsSection() {
           </LogoWrapper>
 
           <Inner>
-            <ContactBlock />
+            {contactsArray.length > 0
+              ? contactsArray.map((contact, index) => (
+                  <ContactBlock key={index} {...contact} />
+                ))
+              : null}
           </Inner>
         </ContentWrapper>
       </ContentContainer>
@@ -49,4 +58,4 @@ const Inner = styled.div`
   justify-content: space-between;
 `;
 
-export default ContactsSection;
+export default FooterContacts;

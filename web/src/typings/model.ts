@@ -1,5 +1,6 @@
 import { PageFullType, SettingsItemString } from '@tager/web-modules';
 import { Nullable } from '@tager/web-core';
+import { SettingsItemCommon } from '@tager/web-modules/src/typings/models';
 
 import { StringFieldType } from '@/typings/common';
 
@@ -8,9 +9,26 @@ export interface ExamplePageType extends PageFullType {
   templateFields: null;
 }
 
+export type SettingOptionType = {
+  title: StringFieldType;
+  text: StringFieldType;
+  phone: StringFieldType;
+  email: StringFieldType;
+};
+export type SettingOptionsListType = Array<SettingOptionType>;
+
+export interface SettingsItemOptions<Key extends string>
+  extends SettingsItemCommon<Key> {
+  value: SettingOptionsListType;
+}
+
 export type SettingsItemType =
-  | SettingsItemString<'USER_NAME'>
-  | SettingsItemString<'USER_AGE'>;
+  | SettingsItemString<'FORM_TITLE'>
+  | SettingsItemOptions<'FOOTER_OFFICES'>
+  | SettingsItemString<'INSTAGRAM_URL'>
+  | SettingsItemString<'VKONTAKTE_URL'>
+  | SettingsItemString<'APPSTORE_URL'>
+  | SettingsItemString<'GOOGLEPLAY_URL'>;
 
 export type ImageType = Nullable<{
   url: Nullable<string>;

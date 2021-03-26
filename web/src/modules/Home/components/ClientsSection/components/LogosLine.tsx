@@ -43,7 +43,7 @@ const Container = styled.div<{ top?: boolean }>`
   background: ${(props) => (props.top ? `${colors.white}` : `${colors.red}`)};
   transform: ${(props) => (props.top ? 'rotate(-3deg)' : 'rotate(3deg)')};
 
-  @media (min-width: 1366px) {
+  @media (min-width: 1367px) {
     margin-top: ${(props) => (props.top ? '0' : '-3%')};
   }
 

@@ -22,7 +22,7 @@ function ClientsSection() {
   );
 }
 const Wrapper = styled.div`
-  padding-top: 77px;
+  padding-top: 100px;
   padding-bottom: 2.7%;
   overflow: hidden;
 
@@ -50,7 +50,7 @@ const Title = styled.span`
 `;
 
 const Inner = styled.div`
-  margin-top: 80px;
+  margin-top: 86px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 97px;
