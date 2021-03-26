@@ -21,7 +21,6 @@ function ClientsSection() {
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
   padding-top: 77px;
   padding-bottom: 2.7%;

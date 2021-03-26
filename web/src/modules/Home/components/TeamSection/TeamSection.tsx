@@ -63,7 +63,7 @@ const Wrapper = styled.div`
 const Title = styled.span`
   position: absolute;
   top: 0;
-  left: -16px;
+  left: -18px;
   display: block;
   width: 100vw;
   font-weight: 900;

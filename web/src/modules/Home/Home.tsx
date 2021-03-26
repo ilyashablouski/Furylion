@@ -13,9 +13,9 @@ import TechSection from './components/TechSection';
 import PlatformSection from './components/PlatformSection';
 import TeamSection from './components/TeamSection';
 import ClientsSection from './components/ClientsSection';
+import AboutSection from './components/AboutSection';
 
 function Home() {
-  // const page = useCurrentPage<HomePageTemplate>();
   return (
     <>
       <HomeSection />
@@ -25,15 +25,9 @@ function Home() {
       <PlatformSection />
       <TeamSection />
       <ClientsSection />
+      <AboutSection />
     </>
   );
 }
-
-// const Button = styled.button<{ isActive: boolean }>`
-//   color: ${(props) => (props.isActive ? 'red' : 'green')};
-//
-//   &:last-child {
-//   }
-// `;
 
 export default Home;

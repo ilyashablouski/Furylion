@@ -6,6 +6,7 @@ import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { HeroSectionType } from '@/typings/model';
+import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
 import { media } from '@/utils/mixin';
 
 function HeroSection() {
@@ -33,11 +34,16 @@ function HeroSection() {
         }}
         className="hero-background"
       />
+
       <ContentContainer>
         <Inner>
           <Title>{title}</Title>
           <Text>{text}</Text>
         </Inner>
+
+        <DownArrow>
+          <ArrowIcon />
+        </DownArrow>
       </ContentContainer>
     </Wrapper>
   );
@@ -119,6 +125,15 @@ const Inner = styled.div`
     padding: 212px 0 214px;
     min-height: 640px;
   `)}
+`;
+
+const DownArrow = styled.i`
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  display: inline-flex;
+  transform: translate(-50%, 0);
+  cursor: pointer;
 `;
 
 export default HeroSection;

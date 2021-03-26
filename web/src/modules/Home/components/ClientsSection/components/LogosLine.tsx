@@ -43,6 +43,10 @@ const Container = styled.div<{ top?: boolean }>`
   background: ${(props) => (props.top ? `${colors.white}` : `${colors.red}`)};
   transform: ${(props) => (props.top ? 'rotate(-3deg)' : 'rotate(3deg)')};
 
+  @media (min-width: 1366px) {
+    margin-top: ${(props) => (props.top ? '0' : '-3%')};
+  }
+
   ${media.tabletSmall(css`
     margin-top: 3%;
   `)}
@@ -77,6 +81,8 @@ const Logo = styled(PlainPicture)`
   }
 
   img {
+    //TODO:Add to all logos images
+    //noinspection CssInvalidPropertyValue
     image-rendering: -webkit-optimize-contrast;
     max-height: 90px;
 
