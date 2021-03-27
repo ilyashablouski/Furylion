@@ -37,6 +37,14 @@ export type ImageType = Nullable<{
   url_webp_2x: Nullable<string>;
 }>;
 
+export type FileType = {
+  id: number;
+  mime: string;
+  name: string;
+  size: number;
+  url: string;
+};
+
 export interface HeroSectionType extends PageFullType {
   templateFields: {
     heroTitle: StringFieldType;

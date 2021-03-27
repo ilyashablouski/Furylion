@@ -32,7 +32,7 @@ const BurgerButton = styled.button<{ isActive: boolean }>`
     align-items: center;
     justify-content: center;
     background: ${colors.red};
-    z-index: 5;
+    z-index: 11;
   `)}
 
   svg {

@@ -41,23 +41,23 @@ type Props = {
 function HeaderMenu({ menuItemList, isOpen, mobileMenuRef }: Props) {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (isOpen) {
-      scroller.lock(mobileMenuRef.current);
-    } else {
-      scroller.unlock(mobileMenuRef.current);
-    }
-    return () => {
-      scroller.unlockAll();
-    };
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     scroller.lock(mobileMenuRef.current);
+  //   } else {
+  //     scroller.unlock(mobileMenuRef.current);
+  //   }
+  //   return () => {
+  //     scroller.unlockAll();
+  //   };
+  // }, [isOpen]);
 
   return (
     <Container>
-      {/*<BackgroundContainer*/}
-      {/*  isOpen={isOpen}*/}
-      {/*  ref={backgroundRef}*/}
-      {/*></BackgroundContainer>*/}
+      <BackgroundContainer
+        isOpen={isOpen}
+        ref={backgroundRef}
+      ></BackgroundContainer>
       <Nav isOpen={isOpen}>
         <MenuItems ref={mobileMenuRef}>
           {menuItemList.map((menuItem) => {
@@ -104,6 +104,7 @@ const BackgroundContainer = styled.div<{ isOpen: boolean }>`
   -webkit-tap-highlight-color: transparent;
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   transition: all 150s ease-in-out;
+  z-index: 9;
 `;
 
 const Nav = styled.nav<{ isOpen: boolean }>`
@@ -114,7 +115,7 @@ const Nav = styled.nav<{ isOpen: boolean }>`
     right: 0;
     width: 100%;
     text-align: right;
-    z-index: 4;
+    z-index: 10;
     background: ${colors.red};
     will-change: transform;
     transform: ${({ isOpen }) =>

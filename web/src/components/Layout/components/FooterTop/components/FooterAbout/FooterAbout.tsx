@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { StringFieldType } from '@/typings/common';
-
-import ContactForm from '../FooterContacts/components/ContactForm';
+import ContactsFormContainer from '@/components/form';
 
 type Props = {
   formTitle: StringFieldType;
@@ -20,7 +19,7 @@ function FooterAbout({ formTitle }: Props) {
             <Title>{formTitle}</Title>
           </Left>
           <Right>
-            <ContactForm />
+            <ContactsFormContainer />
           </Right>
         </Inner>
       </ContentContainer>
