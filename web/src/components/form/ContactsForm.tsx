@@ -9,18 +9,21 @@ import { TextInputFormik } from '@/components/TextInput';
 import Spinner from '@/components/Spinner';
 import { ContactsFormPayload } from '@/services/requests';
 import AttachFile from '@/components/AttachFile';
+import TextArea from '@/components/TextArea';
 
 // import MessageSuccess from './MessageSuccess';
 
 export type ContactsFormValues = ContactsFormPayload;
 
 type Props = FormikProps<ContactsFormValues> & {
+  isModal?: boolean;
   isSentSuccess: boolean;
   fileId: number;
   setFileId: (value: number) => void;
 };
 //TODO: Refactor logic for own requirements (edit requests.ts), look at korona
 function ContactsForm({
+  isModal = false,
   isSentSuccess,
   isSubmitting,
   fileId,
@@ -65,6 +68,22 @@ function ContactsForm({
                   placeholder="Email"
                   autoComplete="off"
                 />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <TextAreaContainer isModal={isModal}>
+                  <TextArea
+                    placeholder={'Tell us about your project'}
+                    name={'message'}
+                    isModal={isModal}
+                    isSuccessSend={isSentSuccess}
+                    isRequired={true}
+                    // errors={Boolean(errors.message && touched.message)}
+                    disabled={isSubmitting}
+                  />
+                </TextAreaContainer>
               </Col>
             </Row>
           </Center>
@@ -138,6 +157,23 @@ const Center = styled.div`
 
   ${media.laptop(css`
     margin: -14px -12px;
+  `)}
+`;
+
+const TextAreaContainer = styled.div<{ isModal: boolean }>`
+  position: relative;
+  margin-top: 50px;
+  ${(props) => css`
+    ${props.isModal
+      ? css`
+          ${media.mobileSmall(css`
+            margin-top: 15px;
+          `)};
+        `
+      : css``};
+  `}
+  ${media.mobileLarge(css`
+    margin-top: 20px;
   `)}
 `;
 
