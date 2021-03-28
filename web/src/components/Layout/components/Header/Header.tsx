@@ -18,18 +18,19 @@ function Header() {
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
     [];
 
-  const mobileMenuRef = useRef<HTMLUListElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isMobileButtonActive, setMobileButtonActive] = useState(false);
+  const [isAnimate, setAnimate] = useState(false);
+  // const [isMobileButtonActive, setMobileButtonActive] = useState(false);
 
   function handleMenuToggleClick() {
-    if (isMobileButtonActive) {
-      setMobileButtonActive(false);
-      setMobileMenuOpen(false);
-    } else {
-      setMobileButtonActive(true);
-      setMobileMenuOpen(true);
-    }
+    setMobileMenuOpen(!isMobileMenuOpen);
+    setAnimate(!isAnimate);
+  }
+
+  function handleOverlayCloseClick() {
+    setMobileMenuOpen(false);
+    setAnimate(false);
   }
 
   return (
@@ -47,13 +48,15 @@ function Header() {
 
             <HeaderRight>
               <MobileMenuToggle
-                isActive={isMobileButtonActive}
                 onClick={handleMenuToggleClick}
+                isOpen={isMobileMenuOpen}
               />
               <HeaderMenu
                 menuItemList={headerMenuItemList}
                 mobileMenuRef={mobileMenuRef}
                 isOpen={isMobileMenuOpen}
+                isAnimate={isAnimate}
+                onClickOverlay={handleOverlayCloseClick}
               />
             </HeaderRight>
           </HeaderInner>

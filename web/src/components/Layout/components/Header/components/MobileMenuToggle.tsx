@@ -6,19 +6,19 @@ import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 
 type Props = {
-  isActive: boolean;
+  isOpen: boolean;
   onClick: () => void;
 };
 
-function MobileMenuToggle({ isActive, onClick }: Props) {
+function MobileMenuToggle({ isOpen, onClick }: Props) {
   return (
-    <BurgerButton isActive={isActive} onClick={onClick}>
+    <BurgerButton isOpen={isOpen} onClick={onClick}>
       <BurgerIcon />
     </BurgerButton>
   );
 }
 
-const BurgerButton = styled.button<{ isActive: boolean }>`
+const BurgerButton = styled.button<{ isOpen: boolean }>`
   display: none;
 
   ${media.tabletSmall(css`
@@ -37,8 +37,7 @@ const BurgerButton = styled.button<{ isActive: boolean }>`
 
   svg {
     transform-origin: center;
-    transform: ${({ isActive }) =>
-      isActive ? ' rotate(90deg)' : ' rotate(0)'};
+    transform: ${({ isOpen }) => (isOpen ? ' rotate(90deg)' : ' rotate(0)')};
     transition: 150ms all ease-in-out;
   }
 `;

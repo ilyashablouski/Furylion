@@ -12,6 +12,7 @@ import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
+import FadeElement from '@/components/FadeElement';
 
 const socials = [
   {
@@ -34,32 +35,46 @@ const socials = [
 
 type Props = {
   menuItemList: Array<MenuItemType>;
-  mobileMenuRef: React.RefObject<HTMLUListElement>;
+  mobileMenuRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
+  isAnimate: boolean;
+  onClickOverlay: () => void;
 };
 
-function HeaderMenu({ menuItemList, isOpen, mobileMenuRef }: Props) {
-  const backgroundRef = useRef<HTMLDivElement>(null);
+function HeaderMenu({
+  menuItemList,
+  isOpen,
+  isAnimate,
+  onClickOverlay,
+  mobileMenuRef,
+}: Props) {
+  //FIXME: Set correct overflow with scroller
+  //   useEffect(() => {
+  //     if (isOpen) {
+  //       scroller.lock(mobileMenuRef.current);
+  //     } else {
+  //       scroller.unlock(mobileMenuRef.current);
+  //     }
+  //     return () => {
+  //       scroller.unlockAll();
+  //     };
+  //   }, [isOpen]);
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     scroller.lock(mobileMenuRef.current);
-  //   } else {
-  //     scroller.unlock(mobileMenuRef.current);
-  //   }
-  //   return () => {
-  //     scroller.unlockAll();
-  //   };
-  // }, [isOpen]);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  });
 
   return (
     <Container>
-      <BackgroundContainer
-        isOpen={isOpen}
-        ref={backgroundRef}
-      ></BackgroundContainer>
-      <Nav isOpen={isOpen}>
-        <MenuItems ref={mobileMenuRef}>
+      <FadeElement isAnimate={isAnimate}>
+        <BackgroundContainer onClick={onClickOverlay} />
+      </FadeElement>
+      <Nav isOpen={isOpen} ref={mobileMenuRef}>
+        <MenuItems>
           {menuItemList.map((menuItem) => {
             return (
               <MenuItem key={menuItem.id}>
@@ -90,21 +105,15 @@ function HeaderMenu({ menuItemList, isOpen, mobileMenuRef }: Props) {
 
 const Container = styled.div``;
 
-const BackgroundContainer = styled.div<{ isOpen: boolean }>`
-  position: absolute;
+const BackgroundContainer = styled.div`
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  min-height: 100vh;
-  width: 100%;
-  background: black;
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-  will-change: opacity;
-  -webkit-tap-highlight-color: transparent;
-  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-  transition: all 150s ease-in-out;
-  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const Nav = styled.nav<{ isOpen: boolean }>`
@@ -115,12 +124,12 @@ const Nav = styled.nav<{ isOpen: boolean }>`
     right: 0;
     width: 100%;
     text-align: right;
-    z-index: 10;
     background: ${colors.red};
     will-change: transform;
     transform: ${({ isOpen }) =>
       isOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: 150ms all ease-in-out;
+    z-index: 10;
   }
 
   ${media.tabletSmallOnly(css`
