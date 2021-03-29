@@ -29,7 +29,7 @@ return [
             'subject' => 'New feedback',
             'body' => '<p><b>Name:</b> {{name}}</p><p><b>Company:</b> {{company}}</p><p><b>E-Mail</b> {{email}}</p><p><b>Message</b> {{message}}</p>',
             'recipients' => [
-                'themyconant@yandex.ru'
+                'v.ozierski@ozitag.com'
             ],
         ],
     ]
