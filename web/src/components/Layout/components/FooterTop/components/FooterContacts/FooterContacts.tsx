@@ -38,6 +38,10 @@ function FooterContacts({ contactsArray }: Props) {
 const Wrapper = styled.div`
   margin-top: 97px;
   padding-bottom: 75px;
+
+  ${ContentContainer} {
+    max-width: none;
+  }
 `;
 
 const ContentWrapper = styled.div`

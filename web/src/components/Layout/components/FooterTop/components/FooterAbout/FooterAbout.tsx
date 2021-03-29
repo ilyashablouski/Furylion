@@ -27,7 +27,11 @@ function FooterAbout({ formTitle }: Props) {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  ${ContentContainer} {
+    max-width: none;
+  }
+`;
 const Inner = styled.div`
   padding-top: 158px;
   display: flex;
