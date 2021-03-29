@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { SettingOptionType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 function ContactBlock({ title, text, phone, email }: SettingOptionType) {
   return (
@@ -22,6 +23,17 @@ function ContactBlock({ title, text, phone, email }: SettingOptionType) {
 
 const Container = styled.div`
   padding: 0 45px;
+
+  ${media.tablet(css`
+    padding: 0 10px;
+  `)}
+
+  ${media.mobile(css`
+    &:not(:first-child) {
+      margin-top: 50px;
+    }
+    padding: 0;
+  `)}
 `;
 
 const Title = styled.span`
@@ -29,6 +41,14 @@ const Title = styled.span`
   font-size: 40px;
   line-height: 160%;
   white-space: nowrap;
+
+  ${media.tabletSmallOnly(css`
+    font-size: 28px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 
 const Text = styled.p`
@@ -37,6 +57,14 @@ const Text = styled.p`
   font-size: 16px;
   line-height: 160%;
   white-space: nowrap;
+
+  ${media.tabletSmallOnly(css`
+    font-size: 13px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 16px;
+  `)}
 `;
 
 const Phone = styled.div`
@@ -44,6 +72,18 @@ const Phone = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 160%;
+
+  ${media.tabletSmall(css`
+    margin-top: 15px;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    font-size: 13px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 16px;
+  `)}
 `;
 
 const PhoneLink = styled(Link)`
@@ -53,6 +93,15 @@ const PhoneLink = styled(Link)`
 
 const Email = styled.div`
   margin-top: 25px;
+
+  ${media.tabletSmall(css`
+    margin-top: 15px;
+    font-size: 13px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 16px;
+  `)}
 `;
 
 const EmailLink = styled(Link)``;

@@ -13,7 +13,7 @@ function FooterTop() {
   return (
     <Wrapper>
       <FooterAbout formTitle={formTitle} />
-      {/*<FooterContacts contactsArray={contactsArray} />*/}
+      <FooterContacts contactsArray={contactsArray} />
     </Wrapper>
   );
 }

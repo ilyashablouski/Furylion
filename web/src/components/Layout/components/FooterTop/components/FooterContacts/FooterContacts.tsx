@@ -42,6 +42,16 @@ const Wrapper = styled.div`
   ${ContentContainer} {
     max-width: none;
   }
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 139px;
+    padding-bottom: 40px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 77px;
+    padding-bottom: 50px;
+  `)}
 `;
 
 const ContentWrapper = styled.div`
@@ -57,6 +67,26 @@ const LogoWrapper = styled.div`
   margin-right: 54px;
   flex: 1 2 40%;
   max-width: 40%;
+
+  ${media.desktop1366(css`
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-right: 0;
+  `)}
+
+  svg {
+    ${media.tabletSmallOnly(css`
+      width: 71px;
+      height: auto;
+    `)}
+
+    ${media.mobile(css`
+      margin: 0 auto;
+      display: block;
+      width: 102px;
+      height: auto;
+    `)}
+  }
 `;
 
 const Inner = styled.div`
@@ -68,6 +98,16 @@ const Inner = styled.div`
   ${media.desktop1366(css`
     width: auto;
     margin-top: 30px;
+  `)}
+
+  ${media.tablet(css`
+    margin-left: -10px;
+    margin-right: -10px;
+  `)}
+
+  ${media.mobile(css`
+    margin: 25px 0 0;
+    display: block;
   `)}
 `;
 
