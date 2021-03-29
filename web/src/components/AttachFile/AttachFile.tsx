@@ -59,14 +59,15 @@ function AttachFile({
     const fileItem = fileList.item(0);
     if (!fileItem) return;
     setFile(fileItem);
-    setIsLoadingFile(true);
-    return uploadFile(fileItem).then((res) => {
-      setFileId(res.id);
-      setTimeout(() => {
-        setIsLoadingFile(false);
-        setIsLoadedFile(true);
-      }, 500);
-    });
+    //TODO: Rebuild when get processing in server
+    // setIsLoadingFile(true);
+    // return uploadFile(fileItem).then((res) => {
+    //   setFileId(res.id);
+    //   setTimeout(() => {
+    //     setIsLoadingFile(false);
+    //     setIsLoadedFile(true);
+    //   }, 500);
+    // });
   }
 
   return (
@@ -76,7 +77,7 @@ function AttachFile({
           id="attach-file"
           type={'file'}
           name={'file'}
-          accept=".doc,.pdf,.docx,.txt"
+          // accept=".doc,.pdf,.docx,.txt"
           ref={fileInputRef}
           onChange={handleFileChange}
         />
@@ -146,23 +147,32 @@ const Description = styled.span`
 `;
 
 const FileName = styled.span`
+  display: block;
   text-align: center;
   font-weight: 500;
   font-size: 32px;
   line-height: 42px;
-  color: ${colors.black};
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: ${colors.white};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ClearFileButton = styled.button`
   position: absolute;
   top: 50%;
   right: 50px;
+  color: ${colors.white};
   transform: translateY(-50%);
-  transition: all 0.3s linear;
+  transition: all 150ms linear;
   z-index: 10;
 
   &:hover {
-    opacity: 0.7;
+    color: ${colors.red};
   }
 `;
 

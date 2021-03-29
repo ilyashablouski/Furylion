@@ -106,6 +106,15 @@ const FormContent = styled.fieldset`
 const FormInner = styled.div<{ isSentSuccess: boolean }>`
   margin-top: -60px;
   transition: all 0.15s ease-in-out;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: -50px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: -60px;
+  `)}
+
   ${(props) =>
     props.isSentSuccess
       ? css`
@@ -118,6 +127,14 @@ const FormInner = styled.div<{ isSentSuccess: boolean }>`
 
 const Input = styled(TextInputFormik)`
   margin-top: 60px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 50px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 60px;
+  `)}
   input {
     padding: 0;
     width: 100%;
@@ -149,6 +166,10 @@ const Input = styled(TextInputFormik)`
 const TextAreaContainer = styled.div<{ isModal: boolean }>`
   position: relative;
   margin-top: 80px;
+  ${media.mobile(css`
+    margin-top: 90px;
+  `)}
+
   ${(props) => css`
     ${props.isModal
       ? css`
@@ -158,13 +179,14 @@ const TextAreaContainer = styled.div<{ isModal: boolean }>`
         `
       : css``};
   `}
-  ${media.mobileLarge(css`
-    margin-top: 20px;
-  `)}
 `;
 
 const AttachWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 35px;
+
+  ${media.mobile(css`
+    margin-top: 15px;
+  `)}
 `;
 
 const Bottom = styled.div`
@@ -173,6 +195,8 @@ const Bottom = styled.div`
 `;
 
 const SendButton = styled(Button)<{ isSubmitting: boolean }>`
+  position: relative;
+  min-height: 70px;
   ${(props) =>
     props.isSubmitting
       ? css`
