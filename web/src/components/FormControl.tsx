@@ -23,7 +23,6 @@ const ErrorMessage = styled.span`
   font-size: 11px;
   line-height: 15px;
   color: ${colors.red};
-  text-align: right;
   margin-top: 8px;
 `;
 

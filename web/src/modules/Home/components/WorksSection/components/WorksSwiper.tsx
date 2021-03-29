@@ -8,6 +8,9 @@ import SwiperCore, {
   Pagination,
 } from 'swiper';
 
+import { createMediaQuery } from '@tager/web-components';
+import { useMedia } from '@tager/web-core';
+
 import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { WorksItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
@@ -23,13 +26,15 @@ type Props = {
 
 function WorksSwiper({ worksItems }: Props) {
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  // const [isMountedLaptop, setIsMountedLaptop] = useState<boolean>(false);
+  const isDesktop = useMedia(createMediaQuery({ min: breakpoints.laptop }));
+  const isLaptop = useMedia(createMediaQuery({ max: 1259 }));
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  //TODO: Refactoring if needed (if/else)
-  if (worksItems.length > 1) {
+  if (worksItems.length > 1 && isDesktop) {
     return (
       <WorksSwiperContainer>
         {isMounted && (
@@ -66,6 +71,40 @@ function WorksSwiper({ worksItems }: Props) {
             //     slidesPerGroup: 5,
             //   },
             // }}
+          >
+            {worksItems.map((worksItem, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <WorksItem
+                    image={worksItem.image}
+                    title={worksItem.title}
+                    text={worksItem.text}
+                    tags={worksItem.tags ?? ''}
+                  />
+                </SwiperSlide>
+              );
+            })}
+
+            <NavButton className={`swiper-prev`} prev>
+              <SlideArrowIcon />
+            </NavButton>
+            <NavButton className={`swiper-next`} next>
+              <SlideArrowIcon />
+            </NavButton>
+          </Swiper>
+        )}
+      </WorksSwiperContainer>
+    );
+  } else if (worksItems.length > 1 && isLaptop) {
+    return (
+      <WorksSwiperContainer>
+        {isMounted && (
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={140}
+            loop={true}
+            centeredSlides={true}
+            allowTouchMove={false}
           >
             {worksItems.map((worksItem, index) => {
               return (

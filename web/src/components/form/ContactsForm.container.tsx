@@ -17,10 +17,10 @@ function ContactsFormContainer() {
   ) {
     const payload: ContactsFormPayload = {
       name: values.name,
-      companyName: values.companyName,
+      company: values.company,
       email: values.email,
       message: values.message,
-      fileId: fileId ?? null,
+      file: fileId ?? null,
     };
 
     sendContactsForm(payload)
@@ -47,10 +47,10 @@ function ContactsFormContainer() {
       onSubmit={handleSubmit}
       initialValues={{
         name: '',
-        companyName: '',
+        company: '',
         email: '',
         message: '',
-        fileId: null,
+        file: null,
       }}
       validateOnBlur={false}
       validateOnChange={false}

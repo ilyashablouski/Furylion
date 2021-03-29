@@ -4,10 +4,10 @@ import { FileType } from '@/typings/model';
 
 export type ContactsFormPayload = {
   name: string;
-  companyName: string;
+  company: string;
   email: string;
   message: string;
-  fileId: number | null;
+  file: number | null;
 };
 
 export function getExampleList() {
@@ -26,12 +26,12 @@ export function getVacancies() {
 export function sendContactsForm(
   payload: ContactsFormPayload
 ): Promise<ContactsFormPayload> {
-  return request.post({ path: '/leads/career', body: payload });
+  return request.post({ path: '/leads/feedback', body: payload });
 }
 
 export function uploadFile(file: File): Promise<FileType> {
   const formData = new FormData();
   formData.append('file', file);
 
-  return request.post({ path: '/upload/cv', body: formData });
+  return request.post({ path: '/upload/feedback', body: formData });
 }

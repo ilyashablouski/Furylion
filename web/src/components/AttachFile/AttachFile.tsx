@@ -59,15 +59,14 @@ function AttachFile({
     const fileItem = fileList.item(0);
     if (!fileItem) return;
     setFile(fileItem);
-    //TODO: Rebuild when get processing in server
-    // setIsLoadingFile(true);
-    // return uploadFile(fileItem).then((res) => {
-    //   setFileId(res.id);
-    //   setTimeout(() => {
-    //     setIsLoadingFile(false);
-    //     setIsLoadedFile(true);
-    //   }, 500);
-    // });
+    setIsLoadingFile(true);
+    return uploadFile(fileItem).then((res) => {
+      setFileId(res.id);
+      setTimeout(() => {
+        setIsLoadingFile(false);
+        setIsLoadedFile(true);
+      }, 500);
+    });
   }
 
   return (

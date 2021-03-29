@@ -71,6 +71,7 @@ function ContactsForm({
             <AttachFile
               name={'fileId'}
               type={'file'}
+              required
               isSmall={true}
               fileId={fileId}
               setFileId={setFileId}
