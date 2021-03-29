@@ -45,7 +45,7 @@ function TextArea({
 
   useEffect(() => {
     setIsActiveTextArea(false);
-    setTextAreaHeight('40px');
+    setTextAreaHeight('35px');
   }, [isSuccessSend]);
 
   function handleFocus() {
@@ -83,13 +83,14 @@ function TextArea({
 
   return (
     <>
-      <TextAreaLabel
-        htmlFor={placeholder}
-        isActive={isActiveTextArea}
-        // error={errors}
-      >
-        {placeholder} {isRequired ? <span>*</span> : null}
-      </TextAreaLabel>
+      {/*TODO: Delete if no need*/}
+      {/*<TextAreaLabel*/}
+      {/*  htmlFor={placeholder}*/}
+      {/*  isActive={isActiveTextArea}*/}
+      {/*  // error={errors}*/}
+      {/*>*/}
+      {/*  {placeholder}*/}
+      {/*</TextAreaLabel>*/}
       <InputTextArea
         isActive={isActiveTextArea}
         onFocus={handleFocus}
@@ -98,6 +99,7 @@ function TextArea({
         value={value}
         name={name}
         onChange={handleChange}
+        placeholder={placeholder}
         id={placeholder}
         rows={1}
         ref={textAreaRef}
@@ -114,32 +116,35 @@ const InputTextArea = styled.textarea<{
   textAreaHeight: string;
   // error: boolean;
 }>`
+  padding: 17px 0;
   resize: none;
-  width: ${(props) => (props.isModal ? '100%' : '660px')};
-  overflow: hidden;
+  width: 100%;
   height: ${(props) => props.textAreaHeight};
-  border: none;
-  padding: 10px 15px 4px 0;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 100%;
+  border-bottom: 1.77px solid ${colors.white};
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  color: ${colors.white};
+  overflow: hidden;
 
-  color: rgba(38, 38, 38, 0.7);
-`;
-
-const TextAreaLabel = styled.label<{ isActive: boolean }>`
-  position: absolute;
-  left: 0;
-  bottom: 8px;
-  opacity: ${(props) => (props.isActive ? '0' : '1')};
-  transition: all 0.2s ease;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
-
-  span {
-    transition: color 150ms ease-in-out;
+  &::placeholder {
+    color: ${colors.white};
   }
 `;
+//TODO: Delete if no need
+// const TextAreaLabel = styled.label<{ isActive: boolean }>`
+//   position: absolute;
+//   left: 0;
+//   bottom: 8px;
+//   font-weight: 400;
+//   font-size: 21px;
+//   line-height: 100%;
+//   transition: all 0.15s ease-in-out;
+//   opacity: ${(props) => (props.isActive ? '0' : '1')};
+// `;
 
 export default TextArea;

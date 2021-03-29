@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as FooterLogoIcon } from '@/assets/svg/footer-logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { SettingOptionsListType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 import ContactBlock from './components/ContactBlock';
 
@@ -43,6 +44,9 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${colors.white};
+  ${media.desktop1366(css`
+    display: block;
+  `)}
 `;
 
 const LogoWrapper = styled.div`
@@ -56,6 +60,11 @@ const Inner = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+  ${media.desktop1366(css`
+    width: auto;
+    margin-top: 30px;
+  `)}
 `;
 
 export default FooterContacts;

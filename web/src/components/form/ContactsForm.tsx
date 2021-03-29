@@ -34,59 +34,39 @@ function ContactsForm({
       <FormContent>
         {/*<MessageSuccess isSentSuccess={isSentSuccess} />*/}
         <FormInner isSentSuccess={isSentSuccess}>
-          <Top>
-            <Title>Не нашли подходящую вакансию? Предложите свое резюме!</Title>
-          </Top>
+          <Input
+            type="text"
+            name="name"
+            required
+            placeholder="Name"
+            autoComplete="off"
+          />
+          <Input
+            type="text"
+            name="companyName"
+            required
+            placeholder="Company"
+            autoComplete="off"
+          />
+          <Input
+            type="email"
+            name="email"
+            required
+            placeholder="E-mail"
+            autoComplete="off"
+          />
 
-          <Center>
-            <Row>
-              <Col>
-                <Input
-                  type="text"
-                  name="firstName"
-                  required
-                  placeholder="Имя"
-                  autoComplete="off"
-                />
-              </Col>
-              <Col>
-                <Input
-                  type="text"
-                  name="lastName"
-                  required
-                  placeholder="Фамилия"
-                  autoComplete="off"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  autoComplete="off"
-                />
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <TextAreaContainer isModal={isModal}>
-                  <TextArea
-                    placeholder={'Tell us about your project'}
-                    name={'message'}
-                    isModal={isModal}
-                    isSuccessSend={isSentSuccess}
-                    isRequired={true}
-                    // errors={Boolean(errors.message && touched.message)}
-                    disabled={isSubmitting}
-                  />
-                </TextAreaContainer>
-              </Col>
-            </Row>
-          </Center>
+          <TextAreaContainer isModal={isModal}>
+            <TextArea
+              placeholder={'Message'}
+              name={'message'}
+              isModal={isModal}
+              isSuccessSend={isSentSuccess}
+              isRequired={true}
+              // errors={Boolean(errors.message && touched.message)}
+              disabled={isSubmitting}
+            />
+          </TextAreaContainer>
           <AttachWrapper>
             <AttachFile
               name={'fileId'}
@@ -98,12 +78,12 @@ function ContactsForm({
           </AttachWrapper>
           <Bottom>
             <SendButton
-              // variant="orange"
+              variants={['large', 'red', 'w100']}
               type="submit"
               isSubmitting={isSubmitting}
             >
               {!isSubmitting ? (
-                'Отправить резюме'
+                'Send Message'
               ) : (
                 <Spinner color="dark" absolute={true} />
               )}
@@ -115,13 +95,6 @@ function ContactsForm({
   );
 }
 
-const FormRow = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
 const FormContent = styled.fieldset`
   border: none;
   position: relative;
@@ -131,7 +104,8 @@ const FormContent = styled.fieldset`
 `;
 
 const FormInner = styled.div<{ isSentSuccess: boolean }>`
-  transition: all 0.3s ease-in-out;
+  margin-top: -60px;
+  transition: all 0.15s ease-in-out;
   ${(props) =>
     props.isSentSuccess
       ? css`
@@ -142,27 +116,39 @@ const FormInner = styled.div<{ isSentSuccess: boolean }>`
         `};
 `;
 
-const Top = styled.div`
-  max-width: 648px;
-  margin-bottom: 45px;
+const Input = styled(TextInputFormik)`
+  margin-top: 60px;
+  input {
+    padding: 0;
+    width: 100%;
+    font-weight: 400;
+    font-size: 21px;
+    height: 35px;
+    line-height: 100%;
+    border-bottom: 1.77px solid ${colors.white};
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+    color: ${colors.white};
 
-  ${media.laptop(css`
-    max-width: 500px;
-    margin-bottom: 40px;
-  `)}
-`;
+    &::placeholder {
+      color: ${colors.white};
+    }
 
-const Center = styled.div`
-  margin: -11px -16px;
-
-  ${media.laptop(css`
-    margin: -14px -12px;
-  `)}
+    &:focus {
+      color: ${colors.white} !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-color: ${colors.white} !important;
+    }
+  }
 `;
 
 const TextAreaContainer = styled.div<{ isModal: boolean }>`
   position: relative;
-  margin-top: 50px;
+  margin-top: 80px;
   ${(props) => css`
     ${props.isModal
       ? css`
@@ -179,136 +165,14 @@ const TextAreaContainer = styled.div<{ isModal: boolean }>`
 
 const AttachWrapper = styled.div`
   margin-top: 40px;
-
-  ${media.laptop(css`
-    margin-top: 33px;
-  `)}
 `;
 
 const Bottom = styled.div`
-  margin-top: 50px;
+  margin-top: 35px;
   text-align: center;
-
-  ${media.laptop(css`
-    margin-top: 40px;
-  `)}
-`;
-
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Col = styled.div`
-  flex: 1 1 50%;
-  position: relative;
-  padding: 11px 16px;
-
-  ${media.laptop(css`
-    padding: 14px 12px;
-  `)}
-
-  input {
-    border: none;
-    border-bottom: 2px solid ${colors.black};
-    padding: 8px 0;
-    height: 40px;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 36px;
-    color: ${colors.black};
-
-    ${media.laptop(css`
-      padding: 4px 0;
-      height: 30px;
-      border-bottom: 1px solid ${colors.black};
-      font-size: 20px;
-      line-height: 26px;
-    `)}
-
-    &::placeholder {
-      color: ${colors.grayLight};
-
-      ${media.laptop(css`
-        font-size: 20px;
-        line-height: 26px;
-      `)}
-    }
-  }
-
-  span {
-    right: 16px;
-
-    ${media.laptop(css`
-      right: 12px;
-    `)}
-  }
-`;
-
-const Input = styled(TextInputFormik)`
-  input {
-    border: none;
-    border-bottom: 2px solid ${colors.black};
-    padding: 8px 0;
-    height: 40px;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 36px;
-    color: ${colors.black};
-
-    ${media.laptop(css`
-      padding: 4px 0;
-      height: 30px;
-      border-bottom: 1px solid ${colors.black};
-      font-size: 20px;
-      line-height: 26px;
-    `)}
-
-    &::placeholder {
-      color: ${colors.grayLight};
-
-      ${media.laptop(css`
-        font-size: 20px;
-        line-height: 26px;
-      `)}
-    }
-  }
-`;
-
-const Title = styled.h2`
-  margin: 0;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 42px;
-  color: ${colors.black};
-
-  ${media.laptop(css`
-    font-size: 24px;
-    line-height: 32px;
-  `)}
 `;
 
 const SendButton = styled(Button)<{ isSubmitting: boolean }>`
-  position: relative;
-  display: block;
-  min-height: 70px;
-  height: 100%;
-  width: 100%;
-  padding: 19px 35px;
-
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
-
-  transition: all 0.3s linear;
-
-  ${media.laptop(css`
-    min-height: 50px;
-    padding: 9px 35px;
-    font-size: 16px;
-    line-height: 24px;
-  `)}
-
   ${(props) =>
     props.isSubmitting
       ? css`

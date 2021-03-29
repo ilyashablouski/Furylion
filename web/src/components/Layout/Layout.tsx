@@ -21,7 +21,7 @@ function Layout({ children, isPreloaderHidden }: Props) {
 
       <Header />
       <Main>{children}</Main>
-      {/*<FooterTop />*/}
+      <FooterTop />
       <Footer />
     </Container>
   );

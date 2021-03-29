@@ -121,6 +121,10 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   w100: css`
     width: 100%;
   `,
+
+  large: css`
+    padding: 23px;
+  `,
 };
 
 export const StyledButton = styled.button<{

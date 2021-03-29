@@ -13,7 +13,7 @@ export function Overlay({ className, children }: OverlayProps) {
   return <OverlayBlock className={className}>{children}</OverlayBlock>;
 }
 
-type SpinnerColor = 'white' | 'dark';
+type SpinnerColor = 'white' | 'dark' | 'red';
 
 type Props = {
   className?: string;
@@ -43,6 +43,7 @@ const spin = keyframes`
 const colorMap: Record<SpinnerColor, string> = {
   white: colors.white,
   dark: colors.dark,
+  red: colors.red,
 };
 
 const Circle = styled.div<{ color: SpinnerColor }>`
@@ -50,7 +51,7 @@ const Circle = styled.div<{ color: SpinnerColor }>`
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  border: 2px solid #f5f5f5;
+  border: 2px solid ${colors.white};
   border-top: 3px solid ${(props) => colorMap[props.color]};
   border-radius: 50%;
   animation: ${spin} 1s infinite linear;

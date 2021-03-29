@@ -76,7 +76,7 @@ function AttachFile({
           id="attach-file"
           type={'file'}
           name={'file'}
-          accept=".doc,.pdf,.docx"
+          accept=".doc,.pdf,.docx,.txt"
           ref={fileInputRef}
           onChange={handleFileChange}
         />
@@ -84,14 +84,11 @@ function AttachFile({
 
         <Content>
           {isLoadingFile ? (
-            <Spinner color={'white'} />
+            <Spinner color={'red'} />
           ) : file ? (
             <FileName>{file.name}</FileName>
           ) : (
-            <Description>
-              Перетащите сюда файл с резюме или <span>загрузите</span> его с
-              компьютера (до 5 Мб)
-            </Description>
+            <Description>+Add file</Description>
           )}
           {file && !isLoadingFile ? (
             <ClearFileButton onClick={clearFile}>
@@ -106,17 +103,10 @@ function AttachFile({
 }
 
 const Inner = styled.div`
-  padding: 58px 0;
-  min-height: 200px;
-
+  min-height: 78px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ${media.laptop(css`
-    padding: 48px 0;
-    min-height: 160px;
-  `)}
 `;
 
 const Content = styled.div``;
@@ -141,13 +131,11 @@ const InputLabel = styled.label`
   z-index: 4;
 `;
 
-const Description = styled.p`
-  text-align: center;
-  max-width: 640px;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 42px;
-  color: ${colors.black};
+const Description = styled.span`
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  color: ${colors.white};
 
   span {
     color: ${colors.red};
@@ -155,12 +143,6 @@ const Description = styled.p`
     text-decoration-color: transparent;
     transition: all 0.3s linear;
   }
-
-  ${media.laptop(css`
-    max-width: 480px;
-    font-size: 24px;
-    line-height: 32px;
-  `)}
 `;
 
 const FileName = styled.span`
@@ -169,12 +151,6 @@ const FileName = styled.span`
   font-size: 32px;
   line-height: 42px;
   color: ${colors.black};
-
-  ${media.laptop(css`
-    max-width: 480px;
-    font-size: 24px;
-    line-height: 32px;
-  `)}
 `;
 
 const ClearFileButton = styled.button`
@@ -185,13 +161,6 @@ const ClearFileButton = styled.button`
   transition: all 0.3s linear;
   z-index: 10;
 
-  ${media.laptop(css`
-    svg {
-      width: 15px;
-      height: 15px;
-    }
-  `)}
-
   &:hover {
     opacity: 0.7;
   }
@@ -199,8 +168,8 @@ const ClearFileButton = styled.button`
 
 const Component = styled.div<{ isSmall?: boolean; isFeedback?: boolean }>`
   position: relative;
-  border: 2px dotted ${colors.black};
-  transition: all 0.3s linear;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  transition: all 0.15s linear;
 
   &:hover,
   &:focus {
@@ -213,70 +182,6 @@ const Component = styled.div<{ isSmall?: boolean; isFeedback?: boolean }>`
       }
     }
   }
-
-  ${(props) =>
-    props.isSmall
-      ? css`
-          ${Inner} {
-            padding: 31px 0;
-            min-height: 116px;
-
-            ${media.laptop(css`
-              padding: 32px 0;
-            `)}
-          }
-
-          ${Description} {
-            max-width: 400px;
-            font-size: 20px;
-            line-height: 26px;
-
-            ${media.laptop(css`
-              max-width: 320px;
-              font-size: 16px;
-              line-height: 24px;
-            `)}
-          }
-
-          ${FileName} {
-            max-width: 400px;
-            font-size: 20px;
-            line-height: 26px;
-
-            ${media.laptop(css`
-              max-width: 320px;
-              font-size: 16px;
-              line-height: 24px;
-            `)}
-          }
-
-          ${ClearFileButton} {
-            svg {
-              width: 15px;
-              height: 15px;
-            }
-            ${media.laptop(css`
-              svg {
-                width: 12px;
-                height: 12px;
-              }
-            `)}
-          }
-        `
-      : ''}
-
-  ${(props) =>
-    props.isFeedback
-      ? css`
-          ${Inner} {
-            min-height: 168px;
-
-            ${media.laptop(css`
-              min-height: 120px;
-            `)}
-          }
-        `
-      : ''}
 `;
 
 const ErrorMessage = styled.span`

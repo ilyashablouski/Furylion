@@ -28,6 +28,7 @@ const Title = styled.span`
   font-weight: 900;
   font-size: 40px;
   line-height: 160%;
+  white-space: nowrap;
 `;
 
 const Text = styled.p`
