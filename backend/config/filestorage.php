@@ -18,5 +18,9 @@ return [
             'storage' => ConfigHelper::fileStorage('content'),
             'validator' => ConfigHelper::imageValidator(),
         ]),
+        FileScenario::Feedback => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('feedback'),
+            'validator' => ConfigHelper::defaultValidator(),
+        ]),
     ]
 ];
