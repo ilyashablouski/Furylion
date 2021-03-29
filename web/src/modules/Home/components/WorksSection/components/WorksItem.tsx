@@ -19,6 +19,9 @@ function WorksItem({ image, title, text, tags }: WorksItemType) {
           webp: image?.url_webp,
           webp2x: image?.url_webp_2x,
         }}
+        usePlaceholder={true}
+        placeholderColor={'#3e3e3e'}
+        className="swiper-image-block"
       />
 
       <WorksInfo>
@@ -42,8 +45,20 @@ function WorksItem({ image, title, text, tags }: WorksItemType) {
 const WorksItemContainer = styled.div`
   position: relative;
 
+  .swiper-image-block {
+    padding-top: 56.01%;
+  }
+
   img {
     image-rendering: -webkit-optimize-contrast;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 

@@ -29,6 +29,7 @@ export type SettingsItemType =
   | SettingsItemString<'VKONTAKTE_URL'>
   | SettingsItemString<'APPSTORE_URL'>
   | SettingsItemString<'GOOGLEPLAY_URL'>;
+// | SettingsItemString<'GOOGLEPLAY_URL'>
 
 export type ImageType = Nullable<{
   url: Nullable<string>;

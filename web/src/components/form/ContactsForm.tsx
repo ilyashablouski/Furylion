@@ -10,8 +10,7 @@ import Spinner from '@/components/Spinner';
 import { ContactsFormPayload } from '@/services/requests';
 import AttachFile from '@/components/AttachFile';
 import TextArea from '@/components/TextArea';
-
-// import MessageSuccess from './MessageSuccess';
+import MessageSuccess from '@/components/modals/MessageSuccess';
 
 export type ContactsFormValues = ContactsFormPayload;
 
@@ -32,7 +31,7 @@ function ContactsForm({
   return (
     <Form autoComplete="off" noValidate>
       <FormContent>
-        {/*<MessageSuccess isSentSuccess={isSentSuccess} />*/}
+        <MessageSuccess isSentSuccess={isSentSuccess} />
         <FormInner isSentSuccess={isSentSuccess}>
           <Input
             type="text"
@@ -43,7 +42,7 @@ function ContactsForm({
           />
           <Input
             type="text"
-            name="companyName"
+            name="company"
             required
             placeholder="Company"
             autoComplete="off"
@@ -63,7 +62,6 @@ function ContactsForm({
               isModal={isModal}
               isSuccessSend={isSentSuccess}
               isRequired={true}
-              // errors={Boolean(errors.message && touched.message)}
               disabled={isSubmitting}
             />
           </TextAreaContainer>
