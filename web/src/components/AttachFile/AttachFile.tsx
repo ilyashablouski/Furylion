@@ -124,7 +124,6 @@ const InputFile = styled.input`
 const InputLabel = styled.label`
   position: absolute;
   cursor: pointer;
-
   top: 0;
   left: 0;
   width: 100%;
@@ -150,12 +149,8 @@ const FileName = styled.span`
   display: block;
   text-align: center;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 42px;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-
+  font-size: 24px;
+  line-height: 100%;
   color: ${colors.white};
   white-space: nowrap;
   overflow: hidden;
@@ -183,7 +178,7 @@ const Component = styled.div<{ isSmall?: boolean; isFeedback?: boolean }>`
 
   &:hover,
   &:focus {
-    border-color: transparent;
+    border-color: ${colors.red};
     background: rgba(0, 0, 0, 0.1);
 
     ${Description} {
