@@ -80,8 +80,8 @@ function PlatformRight() {
 const Container = styled.div`
   margin-top: 14px;
   padding: 0 68px;
-  flex: 1 1 50%;
-  max-width: 41.58%;
+  flex: 1 1 46.6%;
+  max-width: 46.6%;
 
   ${media.desktop1366(css`
     margin-left: 100px;
@@ -90,6 +90,7 @@ const Container = styled.div`
 
   ${media.tabletSmall(css`
     padding: 0;
+    flex: 1 1 50%;
     max-width: 50%;
   `)}
 
@@ -139,7 +140,7 @@ const Inner = styled.div`
 `;
 
 const DashedLine = styled.div`
-  margin: 0 23%;
+  margin: 0 21%;
   display: block;
 `;
 
@@ -155,6 +156,7 @@ const DashedRectangle = styled.div`
 
 const Blocks = styled.div`
   margin: 0 -10px;
+  margin-top: -3px;
   display: flex;
 
   ${media.tabletSmall(css`
@@ -251,7 +253,7 @@ const DashedBlocks = styled.div`
 
 const DashedBlock = styled.div`
   position: relative;
-  padding: 35px;
+  padding: 34px;
   text-align: center;
 
   ${media.tabletSmallOnly(css`
@@ -366,6 +368,7 @@ const SchemeListLeft = styled.ul`
 const SchemeListRight = styled.ul`
   padding-right: 16px;
   position: relative;
+  text-align: right;
 
   ${media.tabletSmallOnly(css`
     padding-right: 13px;

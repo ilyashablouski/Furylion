@@ -27,7 +27,9 @@ function TeamSection() {
         }}
         className="team-background"
       />
-      <Title>Team</Title>
+      <TitleBlock>
+        <Title>Team</Title>
+      </TitleBlock>
       <Inner>
         {teamImagesArray
           ? teamImagesArray.map((image, index) => (
@@ -54,23 +56,46 @@ function TeamSection() {
 }
 
 const Wrapper = styled.div`
-  padding-top: 130px;
+  padding-top: 83px;
   position: relative;
   background: ${colors.white};
   overflow: hidden;
+
+  ${media.tabletSmallOnly(
+    css`
+      padding-top: 95px;
+    `
+  )}
+
+  ${media.mobile(
+    css`
+      padding-top: 95px;
+    `
+  )}
+`;
+
+const TitleBlock = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  max-width: 1592px;
+  text-align: center;
+  transform: translateX(-50%);
 `;
 
 const Title = styled.span`
-  position: absolute;
-  top: 0;
-  left: -18px;
-  display: block;
-  width: 100vw;
+  width: 100%;
   font-weight: 900;
-  font-size: 34.9vw;
+  font-size: 474px;
   line-height: 72%;
   text-transform: uppercase;
   color: ${colors.red};
+
+  ${media.desktop1366(
+    css`
+      font-size: 34.1vw;
+    `
+  )}
 `;
 
 const BackgroundPicture = styled(Picture)`
@@ -81,9 +106,23 @@ const BackgroundPicture = styled(Picture)`
 
   img {
     position: relative;
-    padding-bottom: 14.5%;
+    padding-bottom: 13.9%;
     margin: 0 auto;
-    width: 100%;
+    width: 108.2%;
+    left: -57px;
+    max-width: 1592px;
+
+    ${media.tabletSmallOnly(css`
+      left: -86px;
+      padding-bottom: 16.5%;
+      width: 117.2%;
+    `)}
+
+    ${media.mobile(css`
+      left: -17px;
+      padding-bottom: 31%;
+      width: 109.2%;
+    `)}
   }
 
   &:before {
@@ -92,19 +131,34 @@ const BackgroundPicture = styled(Picture)`
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 67%;
+    height: 66.7%;
     background: ${colors.dark};
     clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
+    z-index: 1;
+    overflow: hidden;
+
+    ${media.tabletSmallOnly(css`
+      height: 60.7%;
+    `)}
+
+    ${media.tabletSmallOnly(css`
+      height: 57%;
+    `)}
+
+    ${media.mobile(css`
+      height: 57.5%;
+    `)}
   }
 `;
 
 const Inner = styled.div`
   position: absolute;
   top: 10%;
-  left: 0;
+  left: 50%;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  max-width: 1592px;
+  transform: translateX(-50%);
 `;
 
 const TeammatePicture = styled(Picture)`
@@ -117,19 +171,19 @@ const TeammatePicture = styled(Picture)`
 const StyledButton = styled.div`
   width: 100%;
   max-width: 370px;
-  top: 77.3%;
+  top: 76.7%;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 2;
 
   ${media.tabletSmallOnly(css`
-    top: 87%;
+    top: 87.5%;
   `)}
 
   ${media.mobile(css`
     max-width: 302px;
-    top: 84%;
+    top: 84.6%;
   `)}
 `;
 

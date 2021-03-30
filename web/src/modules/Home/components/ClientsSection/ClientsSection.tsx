@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { ClientsSectionType } from '@/typings/model';
 import { media } from '@/utils/mixin';
+import { colors } from '@/constants/theme';
 
 import LogosLine from './components/LogosLine';
 
@@ -22,9 +23,12 @@ function ClientsSection() {
   );
 }
 const Wrapper = styled.div`
-  padding-top: 100px;
+  position: relative;
+  padding-top: 106px;
   padding-bottom: 2.7%;
   overflow: hidden;
+  background: ${colors.dark};
+  z-index: 1;
 
   ${media.tabletSmall(css`
     padding-top: 70px;

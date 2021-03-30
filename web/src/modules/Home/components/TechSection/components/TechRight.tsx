@@ -109,6 +109,7 @@ const Text = styled.p`
   line-height: 160%;
 
   ${media.tabletSmall(css`
+    max-width: 345px;
     font-size: 12px;
   `)}
 
@@ -179,7 +180,7 @@ const AdditionalText = styled.div`
   `)}
 
   ${media.tabletSmallOnly(css`
-    margin-top: 10px;
+    margin-top: 7px;
   `)}
 
   ${media.mobile(css`
@@ -196,7 +197,7 @@ const Buttons = styled.div`
   display: flex;
 
   ${media.tabletSmallOnly(css`
-    margin-top: 40px;
+    margin-top: 51px;
   `)}
 
   ${media.mobile576(css`

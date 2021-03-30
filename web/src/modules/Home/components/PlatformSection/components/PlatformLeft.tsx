@@ -80,8 +80,8 @@ function PlatformLeft({
 
 const Container = styled.div`
   padding: 0 68px;
-  flex: 1 1 46%;
-  max-width: 46%;
+  flex: 1 1 50%;
+  max-width: 50%;
 
   ${media.desktop1366(css`
     padding-right: 0;
@@ -119,7 +119,7 @@ const Title = styled.span`
 `;
 
 const Text = styled.p`
-  margin-top: 35px;
+  margin-top: 38px;
   max-width: 388px;
   font-weight: 400;
   font-size: 14px;
@@ -140,7 +140,7 @@ const Text = styled.p`
 `;
 
 const Logos = styled.div`
-  margin-top: 44px;
+  margin-top: 37px;
   display: flex;
   align-items: center;
   max-width: 700px;
@@ -174,7 +174,7 @@ const Logo = styled.div`
 `;
 
 const AdditionalBlock = styled.div`
-  margin-top: 47px;
+  margin-top: 40px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 40px;
@@ -196,6 +196,7 @@ const AdditionalTitle = styled.span`
 `;
 
 const AdditionalText = styled.div`
+  margin-top: -3px;
   max-width: 631px;
   font-weight: 400;
   font-size: 14px;
@@ -215,19 +216,16 @@ const AdditionalText = styled.div`
 `;
 
 const Buttons = styled.div`
-  margin-top: 35px;
-  display: flex;
-  max-width: 91.31%;
+  margin-top: 44px;
+  display: inline-flex;
 
   ${media.tabletSmall(css`
     position: absolute;
     left: auto;
     margin-top: 0;
-    width: 100%;
   `)}
 
   ${media.tabletSmallOnly(css`
-    max-width: 350px;
     bottom: 70px;
   `)}
 
@@ -236,14 +234,24 @@ const Buttons = styled.div`
     right: -20px;
     bottom: 60px;
     width: auto;
-    max-width: none;
   `)}
 `;
 
 const StyledButton = styled.div<{ right?: boolean }>`
-  flex: 1 1 auto;
   margin-left: ${(props) => (props.right ? '-3%' : '0')};
   margin-right: ${(props) => (props.right ? '0' : '-3%')};
+  flex: 0 0 265px;
+  max-width: 265px;
+
+  ${media.tabletSmallOnly(css`
+    flex: 0 0 186px;
+    max-width: 186px;
+  `)}
+
+  ${media.mobile(css`
+    flex: auto;
+    max-width: none;
+  `)}
 `;
 
 export default PlatformLeft;

@@ -140,7 +140,7 @@ const Inner = styled.div`
 const DownArrow = styled.i`
   position: absolute;
   left: 50%;
-  bottom: 36px;
+  bottom: 23px;
   display: inline-flex;
   justify-content: center;
   align-items: center;

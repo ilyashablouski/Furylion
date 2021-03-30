@@ -41,7 +41,9 @@ const Container = styled.div`
   z-index: 1;
 
   ${media.tabletSmallOnly(css`
-    width: 76.45vw;
+    width: 67vw;
+    clip-path: polygon(74% 0, 100% 0, 100% 100%, 0 100%);
+    shape-outside: polygon(74% 0, 100% 0, 100% 100%, 0 100%);
   `)}
 
   ${media.mobile(css`
