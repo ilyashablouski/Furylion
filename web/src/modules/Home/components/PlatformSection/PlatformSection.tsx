@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   `)}
 
   ${ContentContainer} {
-    max-width: none;
+    max-width: 1592px;
   }
 `;
 

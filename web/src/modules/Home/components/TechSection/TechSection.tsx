@@ -43,6 +43,10 @@ function TechSection() {
 const Wrapper = styled.div`
   position: relative;
   margin-top: 20px;
+  width: 100%;
+  max-width: 1592px;
+  margin-left: auto;
+  margin-right: auto;
   height: 750px;
   min-height: 750px;
   color: ${colors.white};

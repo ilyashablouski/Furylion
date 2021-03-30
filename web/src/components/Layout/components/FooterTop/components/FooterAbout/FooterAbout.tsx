@@ -30,7 +30,7 @@ function FooterAbout({ formTitle }: Props) {
 
 const Wrapper = styled.div`
   ${ContentContainer} {
-    max-width: none;
+    max-width: 1592px;
   }
 `;
 const Inner = styled.div`
