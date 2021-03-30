@@ -5,17 +5,19 @@ import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { SettingOptionType } from '@/typings/model';
 import { media } from '@/utils/mixin';
+import { normalizePhoneNumber } from '@/utils/common';
 
 function ContactBlock({ title, text, phone, email }: SettingOptionType) {
+  const href = `tel:${normalizePhoneNumber(phone)}`;
   return (
     <Container>
       <Title>{title}</Title>
       <Text dangerouslySetInnerHTML={{ __html: text ?? '' }} />
       <Phone>
-        <PhoneLink to="#">{phone}</PhoneLink>
+        <PhoneLink to={href}>{phone}</PhoneLink>
       </Phone>
       <Email>
-        <EmailLink to="#">{email}</EmailLink>
+        <EmailLink to={`mailto:${email}`}>{email}</EmailLink>
       </Email>
     </Container>
   );

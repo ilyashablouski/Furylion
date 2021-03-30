@@ -25,3 +25,8 @@ export function convertErrorToProps(
 
   return { err: error, statusCode: 500 };
 }
+
+export function normalizePhoneNumber(phone: string | null): string | null {
+  if (!phone) return null;
+  return phone.replace(/[^+\d]/g, '');
+}
