@@ -44,6 +44,7 @@ function WorksSwiper({ worksItems }: Props) {
           loop={true}
           centeredSlides={true}
           allowTouchMove={false}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           effect="coverflow"
           coverflowEffect={{
             rotate: 0,
@@ -70,7 +71,6 @@ function WorksSwiper({ worksItems }: Props) {
             [breakpoints.mobileSmall]: {
               spaceBetween: 0,
               speed: 500,
-              autoplay: { delay: 4000, disableOnInteraction: false },
             },
           }}
         >
@@ -133,10 +133,10 @@ const WorksSwiperContainer = styled.div`
 
   ${media.tabletSmallOnly(css`
     margin-top: 38px;
-  `)}
+  `)};
   ${media.mobile(css`
     margin-top: 16px;
-  `)}
+  `)};
 
   .swiper-container-initialized {
     .swiper-slide {
