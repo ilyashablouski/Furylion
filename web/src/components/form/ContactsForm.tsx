@@ -101,7 +101,7 @@ const FormContent = styled.fieldset`
 `;
 
 const FormInner = styled.div<{ isSentSuccess: boolean }>`
-  margin-top: -60px;
+  margin-top: -57px;
   transition: all 0.15s ease-in-out;
 
   ${media.tabletSmallOnly(css`
@@ -123,7 +123,7 @@ const FormInner = styled.div<{ isSentSuccess: boolean }>`
 `;
 
 const Input = styled(TextInputFormik)`
-  margin-top: 60px;
+  margin-top: 59px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 50px;
@@ -162,14 +162,14 @@ const Input = styled(TextInputFormik)`
 
 const TextAreaContainer = styled.div`
   position: relative;
-  margin-top: 80px;
+  margin-top: 85px;
   ${media.mobile(css`
     margin-top: 90px;
   `)}
 `;
 
 const AttachWrapper = styled.div`
-  margin-top: 35px;
+  margin-top: 32px;
 
   ${media.mobile(css`
     margin-top: 15px;

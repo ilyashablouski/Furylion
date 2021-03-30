@@ -141,6 +141,10 @@ const FooterCreatorLink = styled(Link)`
   line-height: 17px;
   text-align: right;
   color: ${colors.dark};
+  transition: all 150ms ease-in-out;
+  &:hover {
+    opacity: 0.85;
+  }
 
   ${media.mobile(css`
     order: 1;

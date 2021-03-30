@@ -116,8 +116,8 @@ const TeammatePicture = styled(Picture)`
 
 const StyledButton = styled.div`
   width: 100%;
-  max-width: 388px;
-  top: 75%;
+  max-width: 370px;
+  top: 77.3%;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);

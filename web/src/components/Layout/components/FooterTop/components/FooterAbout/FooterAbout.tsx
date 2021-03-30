@@ -82,7 +82,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  margin-left: 40px;
+  margin-left: 20px;
   flex: 1 1 50%;
   max-width: 50%;
 

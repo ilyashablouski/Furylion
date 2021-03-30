@@ -53,6 +53,14 @@ function HeroSection() {
 
 const Wrapper = styled.section`
   position: relative;
+  height: 100vh;
+
+  ${ContentContainer} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 `;
 
 const BackgroundPicture = styled(Picture)`

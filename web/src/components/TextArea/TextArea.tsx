@@ -40,14 +40,14 @@ function TextArea(
 
       if (textAreaElement.value === '') {
         isDesktop
-          ? (textAreaElement.style.height = '35px')
+          ? (textAreaElement.style.height = '37px')
           : isLaptop
-          ? (textAreaElement.style.height = '35px')
+          ? (textAreaElement.style.height = '37px')
           : (textAreaElement.style.height = 'auto');
       }
 
       if (isSentSuccess) {
-        textAreaElement.style.height = '35px';
+        textAreaElement.style.height = '37px';
       }
     }
 

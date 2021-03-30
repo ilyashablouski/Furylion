@@ -17,7 +17,7 @@ export const TextArea = styled.textarea<{
   invalid?: boolean;
 }>`
   width: 100%;
-  height: 35px;
+  height: 37px;
   max-height: 300px;
   font-weight: 400;
   font-size: 21px;

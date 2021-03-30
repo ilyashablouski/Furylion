@@ -52,6 +52,7 @@ const InnerWrapper = styled.div`
   padding-top: 100px;
   padding-bottom: 107px;
   display: flex;
+  justify-content: space-between;
   color: ${colors.white};
 
   ${media.tabletSmall(css`

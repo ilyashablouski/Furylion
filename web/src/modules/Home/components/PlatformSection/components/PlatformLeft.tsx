@@ -80,8 +80,8 @@ function PlatformLeft({
 
 const Container = styled.div`
   padding: 0 68px;
-  flex: 1 1 50%;
-  max-width: 50%;
+  flex: 1 1 46%;
+  max-width: 46%;
 
   ${media.desktop1366(css`
     padding-right: 0;
@@ -89,6 +89,7 @@ const Container = styled.div`
 
   ${media.tabletSmall(css`
     padding: 0;
+    max-width: 50%;
   `)}
 
   ${media.mobile(css`
@@ -216,6 +217,7 @@ const AdditionalText = styled.div`
 const Buttons = styled.div`
   margin-top: 35px;
   display: flex;
+  max-width: 91.31%;
 
   ${media.tabletSmall(css`
     position: absolute;
@@ -234,6 +236,7 @@ const Buttons = styled.div`
     right: -20px;
     bottom: 60px;
     width: auto;
+    max-width: none;
   `)}
 `;
 

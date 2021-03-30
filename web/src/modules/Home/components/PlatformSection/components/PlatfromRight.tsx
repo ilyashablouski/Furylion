@@ -78,9 +78,10 @@ function PlatformRight() {
 }
 
 const Container = styled.div`
+  margin-top: 14px;
   padding: 0 68px;
   flex: 1 1 50%;
-  max-width: 50%;
+  max-width: 41.58%;
 
   ${media.desktop1366(css`
     margin-left: 100px;
@@ -89,6 +90,7 @@ const Container = styled.div`
 
   ${media.tabletSmall(css`
     padding: 0;
+    max-width: 50%;
   `)}
 
   ${media.tabletSmallOnly(css`
