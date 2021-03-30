@@ -91,6 +91,7 @@ const LogoWrapper = styled.div`
 
 const Inner = styled.div`
   margin: 0 -45px;
+
   display: flex;
   width: 100%;
   justify-content: space-between;

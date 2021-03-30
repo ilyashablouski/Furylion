@@ -51,7 +51,7 @@ const Circle = styled.div<{ color: SpinnerColor }>`
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  border: 2px solid ${colors.white};
+  border: 2px solid #d9d9d9;
   border-top: 3px solid ${(props) => colorMap[props.color]};
   border-radius: 50%;
   animation: ${spin} 1s infinite linear;

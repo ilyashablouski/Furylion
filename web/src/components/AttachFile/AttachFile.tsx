@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { FieldConfig, useField } from 'formik';
 
@@ -22,11 +22,13 @@ type Props = FormikFieldProps &
     setFileId: (value: number) => void;
     error?: string;
     isFeedback?: boolean;
+    isSentSuccess?: boolean;
   };
 
 function AttachFile({
   isSmall,
   isFeedback,
+  isSentSuccess,
   fileId,
   setFileId,
   error: customError,
@@ -41,6 +43,7 @@ function AttachFile({
   const [field, meta, helpers] = useField<string>({ name, type });
   const error = customError ?? (meta.touched ? meta.error : '');
 
+  //TODO:Clear when request is success
   function clearFile(event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (event) {
       event.preventDefault();
@@ -140,30 +143,41 @@ const Description = styled.span`
     color: ${colors.red};
     text-decoration: underline;
     text-decoration-color: transparent;
-    transition: all 0.3s linear;
+    transition: all 150ms linear;
   }
 `;
 
 const FileName = styled.span`
   display: block;
+  max-width: 318px;
   text-align: center;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 100%;
+  font-size: 21px;
   color: ${colors.white};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ${media.mobile576(css`
+    max-width: 220px;
+  `)}
 `;
 
 const ClearFileButton = styled.button`
   position: absolute;
   top: 50%;
-  right: 50px;
+  right: 30px;
+  display: inline-flex;
   color: ${colors.white};
   transform: translateY(-50%);
   transition: all 150ms linear;
   z-index: 10;
+
+  ${media.mobile576(
+    css`
+      right: 15px;
+    `
+  )}
 
   &:hover {
     color: ${colors.red};
@@ -192,10 +206,10 @@ const ErrorMessage = styled.span`
   position: absolute;
   right: 0;
   display: block;
+  width: 100%;
   font-size: 11px;
   line-height: 15px;
   color: ${colors.red};
-  text-align: right;
   margin-top: 8px;
 `;
 

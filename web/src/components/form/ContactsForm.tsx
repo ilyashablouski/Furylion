@@ -9,7 +9,7 @@ import { TextInputFormik } from '@/components/TextInput';
 import Spinner from '@/components/Spinner';
 import { ContactsFormPayload } from '@/services/requests';
 import AttachFile from '@/components/AttachFile';
-import TextArea from '@/components/TextArea';
+import { TextAreaFormik } from '@/components/TextArea';
 import MessageSuccess from '@/components/modals/MessageSuccess';
 
 export type ContactsFormValues = ContactsFormPayload;
@@ -55,21 +55,19 @@ function ContactsForm({
             autoComplete="off"
           />
 
-          <TextAreaContainer isModal={isModal}>
-            <TextArea
+          <TextAreaContainer>
+            <TextAreaFormik
               placeholder={'Message'}
-              name={'message'}
-              isModal={isModal}
-              isSuccessSend={isSentSuccess}
-              isRequired={true}
-              disabled={isSubmitting}
+              name="message"
+              required
+              autoHeight
+              isSentSuccess={isSentSuccess}
             />
           </TextAreaContainer>
           <AttachWrapper>
             <AttachFile
-              name={'fileId'}
+              name={'file'}
               type={'file'}
-              required
               isSmall={true}
               fileId={fileId}
               setFileId={setFileId}
@@ -162,22 +160,12 @@ const Input = styled(TextInputFormik)`
   }
 `;
 
-const TextAreaContainer = styled.div<{ isModal: boolean }>`
+const TextAreaContainer = styled.div`
   position: relative;
   margin-top: 80px;
   ${media.mobile(css`
     margin-top: 90px;
   `)}
-
-  ${(props) => css`
-    ${props.isModal
-      ? css`
-          ${media.mobileSmall(css`
-            margin-top: 15px;
-          `)};
-        `
-      : css``};
-  `}
 `;
 
 const AttachWrapper = styled.div`

@@ -22,21 +22,24 @@ function MessageSuccess({ isSentSuccess }: Props) {
 
   return (
     <Message isSentSuccess={isSentSuccess}>
-      <Title>Success message</Title>
+      <Title>Thank you for your message!</Title>
     </Message>
   );
 }
 
 const Message = styled.div<{ isSentSuccess: boolean }>`
   position: absolute;
-  top: 0;
+  top: 50%;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
+  height: 100px;
   justify-content: center;
   align-items: center;
-  transition: all 150ms ease-in-out;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%);
+  transition: all 300ms ease-in-out;
   ${(props) =>
     props.isSentSuccess
       ? css`
@@ -54,7 +57,7 @@ const Title = styled.span`
   font-weight: 500;
   font-size: 32px;
   line-height: 42px;
-  color: ${colors.black};
+  color: ${colors.white};
   text-align: center;
 
   ${media.laptop(css`
