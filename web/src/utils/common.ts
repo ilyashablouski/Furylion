@@ -30,3 +30,12 @@ export function normalizePhoneNumber(phone: string | null): string | null {
   if (!phone) return null;
   return phone.replace(/[^+\d]/g, '');
 }
+
+export function scrollDown() {
+  const firstElement = document.querySelector('main > *:first-child');
+  if (!firstElement) return;
+  window.scrollTo({
+    top: firstElement.scrollHeight,
+    behavior: 'smooth',
+  });
+}

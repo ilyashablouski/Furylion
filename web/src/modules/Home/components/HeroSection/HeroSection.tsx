@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import Picture from '@/components/Picture';
@@ -8,6 +8,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { HeroSectionType } from '@/typings/model';
 import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
 import { media } from '@/utils/mixin';
+import { scrollDown } from '@/utils/common';
 
 function HeroSection() {
   const page = useCurrentPage<HeroSectionType>();
@@ -17,6 +18,7 @@ function HeroSection() {
   const title = pageFields?.heroTitle;
   const text = pageFields?.heroText;
 
+  const arrowRef = useRef<HTMLElement>(null);
   return (
     <Wrapper>
       <BackgroundPicture
@@ -41,7 +43,7 @@ function HeroSection() {
           <Text>{text}</Text>
         </Inner>
 
-        <DownArrow>
+        <DownArrow ref={arrowRef} onClick={scrollDown}>
           <ArrowIcon />
         </DownArrow>
       </ContentContainer>
@@ -132,8 +134,19 @@ const DownArrow = styled.i`
   left: 50%;
   bottom: 36px;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
   transform: translate(-50%, 0);
   cursor: pointer;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 export default HeroSection;

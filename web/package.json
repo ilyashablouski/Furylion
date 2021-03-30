@@ -32,6 +32,7 @@
     "@tager/web-panel": "^0.1.9",
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "formik": "^2.2.5",
+    "gsap": "^3.6.1",
     "lodash": "^4.17.20",
     "next": "^10.0.3",
     "normalize.css": "^8.0.1",
