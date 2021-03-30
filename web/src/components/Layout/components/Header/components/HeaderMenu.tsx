@@ -4,40 +4,23 @@ import styled, { css } from 'styled-components';
 import { MenuItemType } from '@tager/web-modules';
 import { scroller } from '@tager/web-core';
 
-import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
-import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
-import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
-import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
+// import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
+// import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
+// import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
+// import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
 
-const socials = [
-  {
-    href: 'https://www.instagram.com/',
-    svg: <InstagramIcon />,
-  },
-  {
-    href: 'https://vk.com/',
-    svg: <VkIcon />,
-  },
-  {
-    href: 'https://www.apple.com/',
-    svg: <AppleIcon />,
-  },
-  {
-    href: 'https://play.google.com/',
-    svg: <AndroidIcon />,
-  },
-];
-
 type Props = {
   menuItemList: Array<MenuItemType>;
   mobileMenuRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
   isAnimate: boolean;
+  // FIXME: REFACTORING TYPINGS
+  socialsData: Array<any>;
   onClickOverlay: () => void;
 };
 
@@ -47,6 +30,7 @@ function HeaderMenu({
   isAnimate,
   onClickOverlay,
   mobileMenuRef,
+  socialsData,
 }: Props) {
   //FIXME: Set correct overflow with scroller
   //   useEffect(() => {
@@ -90,7 +74,7 @@ function HeaderMenu({
         </MenuItems>
 
         <MenuSocials>
-          {socials.map((social, index) => {
+          {socialsData.map((social, index) => {
             return (
               <SocialWrapper key={index}>
                 <SocialNetwork href={social.href} iconSVG={social.svg} />

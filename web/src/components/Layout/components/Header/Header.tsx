@@ -13,7 +13,12 @@ import { media } from '@/utils/mixin';
 import HeaderMenu from './components/HeaderMenu';
 import MobileMenuToggle from './components/MobileMenuToggle';
 
-function Header() {
+// FIXME: REFACTORING TYPINGS
+type Props = {
+  socialsData: any;
+};
+
+function Header({ socialsData }: Props) {
   const headerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
     [];
@@ -21,7 +26,6 @@ function Header() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isAnimate, setAnimate] = useState(false);
-  // const [isMobileButtonActive, setMobileButtonActive] = useState(false);
 
   function handleMenuToggleClick() {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -56,6 +60,7 @@ function Header() {
                 mobileMenuRef={mobileMenuRef}
                 isOpen={isMobileMenuOpen}
                 isAnimate={isAnimate}
+                socialsData={socialsData}
                 onClickOverlay={handleOverlayCloseClick}
               />
             </HeaderRight>

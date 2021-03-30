@@ -1,39 +1,27 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
-import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
-import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
-import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
+// import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
+// import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
+// import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
+// import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
+import { Nullable } from '@tager/web-core';
+
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { colors } from '@/constants/theme';
 import SocialNetwork from '@/components/SocialNetwork';
 import { media } from '@/utils/mixin';
+import Link from '@/components/Link';
 
 import FooterMenu from './components/FooterMenu';
 
-const socials = [
-  {
-    href: 'https://www.instagram.com/',
-    svg: <InstagramIcon />,
-  },
-  {
-    href: 'https://vk.com/',
-    svg: <VkIcon />,
-  },
-  {
-    href: 'https://www.apple.com/',
-    svg: <AppleIcon />,
-  },
-  {
-    href: 'https://play.google.com/',
-    svg: <AndroidIcon />,
-  },
-];
-
-function Footer() {
+type Props = {
+  // FIXME: REFACTORING TYPINGS
+  socialsData: Array<any>;
+};
+function Footer({ socialsData }: Props) {
   const footerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'footer')) ??
     [];
@@ -43,7 +31,7 @@ function Footer() {
       <ContentContainer>
         <FooterTop>
           <FooterSocials>
-            {socials.map((social, index) => {
+            {socialsData.map((social, index) => {
               return (
                 <SocialWrapper key={index}>
                   <SocialNetwork href={social.href} iconSVG={social.svg} />
@@ -60,11 +48,11 @@ function Footer() {
             © 2010-2021 FuryLion Development LLC.
           </FooterCopyright>
 
-          <FooterCreator>
+          <FooterCreatorLink to="#">
             Made with fury in&nbsp;
             <FooterCreatorFirst>69</FooterCreatorFirst>
             <FooterCreatorSecond>pixels.</FooterCreatorSecond>
-          </FooterCreator>
+          </FooterCreatorLink>
         </FooterBottom>
       </ContentContainer>
     </FooterContainer>
@@ -147,7 +135,7 @@ const FooterCopyright = styled.span`
   `)}
 `;
 
-const FooterCreator = styled.span`
+const FooterCreatorLink = styled(Link)`
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
