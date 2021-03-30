@@ -148,7 +148,7 @@ const WorksSwiperContainer = styled.div`
     display: none;
     ${media.mobile(css`
       position: absolute;
-      bottom: -15px;
+      bottom: -5px;
       left: 0;
       height: 2px;
       width: 100%;
@@ -210,6 +210,9 @@ const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
   transform: translate(0, -50%);
   z-index: 1;
   transition: 150ms all ease-in-out;
+  ${media.mobile(css`
+    display: none;
+  `)}
 
   &:hover {
     background: rgba(0, 0, 0, 0.8);

@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { media } from '@/utils/mixin';
 
 type Props = {
   tag: string;
@@ -18,6 +20,10 @@ const TagContainer = styled.div`
   text-transform: uppercase;
   background: rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 0.5);
+
+  ${media.tabletSmall(css`
+    margin: 0 5px;
+  `)}
 `;
 
 export default WorksTag;

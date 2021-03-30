@@ -47,9 +47,18 @@ const WorksItemContainer = styled.div`
 
   .swiper-image-block {
     padding-top: 56.01%;
+
+    @media (max-width: 1024px) {
+      padding-top: 71.09%;
+    }
+
+    @media (max-width: 767px) {
+      padding-top: 151.66%;
+    }
   }
 
   img {
+    //noinspection CssInvalidPropertyValue
     image-rendering: -webkit-optimize-contrast;
     position: absolute;
     top: 0;
@@ -71,6 +80,12 @@ const WorksInfo = styled.div`
 
   .swiper-container-initialized & {
     left: 40px;
+    right: 40px;
+
+    ${media.mobile(css`
+      left: 20px;
+      right: 20px;
+    `)}
   }
 `;
 
@@ -78,6 +93,10 @@ const WorksTitle = styled.span`
   font-weight: 900;
   font-size: 32px;
   line-height: 130%;
+
+  ${media.mobile(css`
+    font-size: 24px;
+  `)}
 `;
 
 const WorksText = styled.p`
@@ -116,6 +135,8 @@ const WorksTags = styled.div`
 
   ${media.mobile(css`
     margin-top: 15px;
+    margin-left: -5px;
+    margin-right: -5px;
   `)}
 `;
 
