@@ -60,7 +60,7 @@ function Footer({ socialsData }: Props) {
 }
 
 const FooterContainer = styled.footer`
-  padding-top: 55px;
+  padding-top: 69px;
   padding-bottom: 72px;
 
   ${media.tabletSmallOnly(css`

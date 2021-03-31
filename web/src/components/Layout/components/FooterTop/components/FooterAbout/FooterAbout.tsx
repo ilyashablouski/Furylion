@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   }
 `;
 const Inner = styled.div`
-  padding-top: 158px;
+  padding-top: 285px;
   display: flex;
 
   ${media.tabletSmall(css`

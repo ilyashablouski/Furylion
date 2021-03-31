@@ -50,7 +50,7 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   margin: 0 -68px;
   padding-top: 100px;
-  padding-bottom: 107px;
+  padding-bottom: 147px;
   display: flex;
   justify-content: space-between;
   color: ${colors.white};

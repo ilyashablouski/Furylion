@@ -177,7 +177,7 @@ const AttachWrapper = styled.div`
 `;
 
 const Bottom = styled.div`
-  margin-top: 35px;
+  margin-top: 33px;
   text-align: center;
 `;
 

@@ -94,7 +94,7 @@ const PhoneLink = styled(Link)`
 `;
 
 const Email = styled.div`
-  margin-top: 25px;
+  margin-top: 33px;
 
   ${media.tabletSmall(css`
     margin-top: 15px;
@@ -106,6 +106,12 @@ const Email = styled.div`
   `)}
 `;
 
-const EmailLink = styled(Link)``;
+const EmailLink = styled(Link)`
+  display: inline-block;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  border-bottom: 1px solid ${colors.white};
+`;
 
 export default ContactBlock;

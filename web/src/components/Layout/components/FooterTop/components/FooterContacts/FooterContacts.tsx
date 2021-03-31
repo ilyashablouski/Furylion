@@ -37,12 +37,12 @@ function FooterContacts({ contactsArray }: Props) {
 
 const Wrapper = styled.div`
   margin-top: 97px;
-  padding-bottom: 75px;
+  padding-bottom: 77px;
 
   ${ContentContainer} {
     max-width: 1592px;
   }
-
+F
   ${media.tabletSmallOnly(css`
     margin-top: 139px;
     padding-bottom: 40px;
@@ -64,14 +64,14 @@ const ContentWrapper = styled.div`
 `;
 
 const LogoWrapper = styled.div`
+  margin-top: 17px;
   margin-right: 54px;
-  flex: 1 2 40%;
-  max-width: 40%;
 
   ${media.desktop1366(css`
+    margin-top: 0;
+    margin-right: 0;
     flex: 1 1 100%;
     max-width: 100%;
-    margin-right: 0;
   `)}
 
   svg {

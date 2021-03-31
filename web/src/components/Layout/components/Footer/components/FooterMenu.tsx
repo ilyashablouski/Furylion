@@ -32,6 +32,7 @@ function FooterMenu({ menuItemList }: Props) {
 
 const MenuItems = styled.ul`
   margin: 0 -37.5px;
+  margin-top: 12px;
   display: flex;
 
   ${media.tabletSmall(css`
