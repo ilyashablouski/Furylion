@@ -24,76 +24,49 @@ type Props = {
 function WorksSwiper({ worksItems }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  // const [isMounted, setIsMounted] = useState<boolean>(false);
+  //
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (isMounted && worksItems.length > 1) {
-    return (
-      <WorksSwiperContainer>
-        <Swiper
-          slidesPerView="auto"
-          loop={true}
-          centeredSlides={true}
-          allowTouchMove={false}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          effect="coverflow"
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2,
-            slideShadows: false,
-          }}
-          navigation={{
-            prevEl: `.swiper-prev`,
-            nextEl: `.swiper-next`,
-          }}
-          pagination={{
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true,
-          }}
-          onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-          breakpoints={{
-            [breakpoints.laptop]: {
-              spaceBetween: 140,
-              autoplay: false,
-            },
-            [breakpoints.mobileSmall]: {
-              spaceBetween: 0,
-              allowTouchMove: true,
-            },
-          }}
-        >
-          {worksItems.map((worksItem, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <WorksItem
-                  image={worksItem.image}
-                  title={worksItem.title}
-                  text={worksItem.text}
-                  tags={worksItem.tags ?? ''}
-                />
-              </SwiperSlide>
-            );
-          })}
-
-          <NavButton className={`swiper-prev`} prev>
-            <SlideArrowIcon />
-          </NavButton>
-          <NavButton className={`swiper-next`} next>
-            <SlideArrowIcon />
-          </NavButton>
-        </Swiper>
-        <ItemsPagination className="swiper-pagination" ref={sliderPagination} />
-      </WorksSwiperContainer>
-    );
-  } else if (isMounted) {
-    return (
-      <WorksSwiperContainer>
+  return (
+    <WorksSwiperContainer>
+      <Swiper
+        slidesPerView="auto"
+        loop={true}
+        centeredSlides={true}
+        allowTouchMove={false}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        }}
+        navigation={{
+          prevEl: `.swiper-prev`,
+          nextEl: `.swiper-next`,
+        }}
+        pagination={{
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true,
+        }}
+        onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+        breakpoints={{
+          [breakpoints.laptop]: {
+            spaceBetween: 140,
+            autoplay: false,
+          },
+          [breakpoints.mobileSmall]: {
+            spaceBetween: 0,
+            allowTouchMove: true,
+          },
+        }}
+      >
         {worksItems.map((worksItem, index) => {
           return (
             <SwiperSlide key={index}>
@@ -106,9 +79,17 @@ function WorksSwiper({ worksItems }: Props) {
             </SwiperSlide>
           );
         })}
-      </WorksSwiperContainer>
-    );
-  }
+
+        <NavButton className={`swiper-prev`} prev>
+          <SlideArrowIcon />
+        </NavButton>
+        <NavButton className={`swiper-next`} next>
+          <SlideArrowIcon />
+        </NavButton>
+      </Swiper>
+      <ItemsPagination className="swiper-pagination" ref={sliderPagination} />
+    </WorksSwiperContainer>
+  );
 }
 const ItemsPagination = styled.div``;
 
