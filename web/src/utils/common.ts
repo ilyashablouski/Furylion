@@ -36,14 +36,16 @@ export function normalizePhoneNumber(phone: string | null): string | null {
 export function scrollDown() {
   const firstElement = document.querySelector('main > *:first-child');
   if (!firstElement) return;
-  const isDesktop = createMediaQuery({ min: 1024 });
-  let topOffset = 0;
 
-  if (isDesktop) {
+  const isDesktop = window.matchMedia('(min-width: 1024px)');
+  let topOffset: number;
+
+  if (isDesktop.matches) {
     topOffset = 100;
   } else {
     topOffset = 56;
   }
+
   window.scrollTo({
     behavior: 'smooth',
     top: firstElement.scrollHeight - topOffset,

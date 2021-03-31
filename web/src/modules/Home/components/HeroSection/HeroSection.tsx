@@ -130,10 +130,6 @@ const Inner = styled.div`
   ${media.tabletSmall(css`
     padding-top: 56px;
   `)}
-
-  ${media.mobile(css`
-    min-height: 640px;
-  `)}
 `;
 
 const DownArrow = styled.i`

@@ -57,13 +57,17 @@ function WorksSwiper({ worksItems }: Props) {
         }}
         onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
         breakpoints={{
-          [breakpoints.laptop]: {
-            spaceBetween: 140,
-            autoplay: false,
-          },
           [breakpoints.mobileSmall]: {
             spaceBetween: 0,
             allowTouchMove: true,
+          },
+          [breakpoints.tabletSmall]: {
+            spaceBetween: 0,
+            autoplay: false,
+          },
+          1230: {
+            spaceBetween: 140,
+            autoplay: false,
           },
         }}
       >

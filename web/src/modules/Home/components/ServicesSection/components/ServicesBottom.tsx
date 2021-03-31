@@ -28,8 +28,6 @@ function ServicesBottom({ servicesBottomItems }: Props) {
     );
   });
 
-  console.log(servicesMarkupArray);
-
   return (
     <ServicesBlock second>
       <BlockLeft>
