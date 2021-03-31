@@ -53,7 +53,7 @@ function HeroSection() {
 
 const Wrapper = styled.section`
   position: relative;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 
   ${ContentContainer} {
     display: flex;

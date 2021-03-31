@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { RequestError, useMedia } from '@tager/web-core';
-import { createMediaQuery } from '@tager/web-components';
 
 import ErrorPage from '@/pages/_error';
-import { breakpoints } from '@/constants/theme';
 
 export function convertSlugToPath(
   slug: Array<string> | string | undefined
@@ -34,20 +32,12 @@ export function normalizePhoneNumber(phone: string | null): string | null {
 }
 
 export function scrollDown() {
-  const firstElement = document.querySelector('main > *:first-child');
-  if (!firstElement) return;
+  const section = document.querySelector('.works-section');
+  if (!section) return;
+  const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
 
-  const isDesktop = window.matchMedia('(min-width: 1024px)');
-  let topOffset: number;
-
-  if (isDesktop.matches) {
-    topOffset = 100;
-  } else {
-    topOffset = 56;
+  if (section) {
+    const y = section.getBoundingClientRect().top - headerHeight;
+    window.scrollTo({ top: y, behavior: 'smooth' });
   }
-
-  window.scrollTo({
-    behavior: 'smooth',
-    top: firstElement.scrollHeight - topOffset,
-  });
 }

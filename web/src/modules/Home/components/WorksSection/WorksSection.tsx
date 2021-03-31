@@ -13,7 +13,7 @@ function WorksSection() {
   const sectionTitle = pageFields?.worksTitle;
   const worksItems = pageFields?.worksItems ?? [];
   return (
-    <Wrapper>
+    <Wrapper className="works-section">
       <Title>{sectionTitle}</Title>s
       <WorksSwiper worksItems={worksItems} />
     </Wrapper>
@@ -21,14 +21,14 @@ function WorksSection() {
 }
 
 const Wrapper = styled.section`
-  margin-top: 80px;
+  padding-top: 80px;
 
   ${media.tabletSmallOnly(css`
-    margin-top: 70px;
+    padding-top: 70px;
   `)}
 
   ${media.mobile(css`
-    margin-top: 50px;
+    padding-top: 50px;
   `)}
 `;
 

@@ -24,74 +24,83 @@ type Props = {
 function WorksSwiper({ worksItems }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-  // const [isMounted, setIsMounted] = useState<boolean>(false);
-  //
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, []);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (worksItems.length > 1) {
+      setIsMounted(true);
+    }
+  }, []);
 
   return (
     <WorksSwiperContainer>
-      <Swiper
-        slidesPerView="auto"
-        loop={true}
-        centeredSlides={true}
-        allowTouchMove={false}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        effect="coverflow"
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2,
-          slideShadows: false,
-        }}
-        navigation={{
-          prevEl: `.swiper-prev`,
-          nextEl: `.swiper-next`,
-        }}
-        pagination={{
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true,
-        }}
-        onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-        breakpoints={{
-          [breakpoints.mobileSmall]: {
-            spaceBetween: 0,
-            allowTouchMove: true,
-          },
-          [breakpoints.tabletSmall]: {
-            spaceBetween: 0,
-            autoplay: false,
-          },
-          1230: {
-            spaceBetween: 140,
-            autoplay: false,
-          },
-        }}
-      >
-        {worksItems.map((worksItem, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <WorksItem
-                image={worksItem.image}
-                title={worksItem.title}
-                text={worksItem.text}
-                tags={worksItem.tags ?? ''}
-              />
-            </SwiperSlide>
-          );
-        })}
+      {isMounted ? (
+        <>
+          <Swiper
+            slidesPerView="auto"
+            loop={true}
+            centeredSlides={true}
+            allowTouchMove={false}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2,
+              slideShadows: false,
+            }}
+            navigation={{
+              prevEl: `.swiper-prev`,
+              nextEl: `.swiper-next`,
+            }}
+            pagination={{
+              el: '.swiper-pagination',
+              type: 'bullets',
+              clickable: true,
+            }}
+            onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+            breakpoints={{
+              [breakpoints.mobileSmall]: {
+                spaceBetween: 0,
+                allowTouchMove: true,
+              },
+              [breakpoints.tabletSmall]: {
+                spaceBetween: 0,
+                autoplay: false,
+              },
+              1230: {
+                spaceBetween: 140,
+                autoplay: false,
+              },
+            }}
+          >
+            {worksItems.map((worksItem, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <WorksItem
+                    image={worksItem.image}
+                    title={worksItem.title}
+                    text={worksItem.text}
+                    tags={worksItem.tags ?? ''}
+                  />
+                </SwiperSlide>
+              );
+            })}
 
-        <NavButton className={`swiper-prev`} prev>
-          <SlideArrowIcon />
-        </NavButton>
-        <NavButton className={`swiper-next`} next>
-          <SlideArrowIcon />
-        </NavButton>
-      </Swiper>
-      <ItemsPagination className="swiper-pagination" ref={sliderPagination} />
+            <NavButton className={`swiper-prev`} prev>
+              <SlideArrowIcon />
+            </NavButton>
+            <NavButton className={`swiper-next`} next>
+              <SlideArrowIcon />
+            </NavButton>
+          </Swiper>
+          <ItemsPagination
+            className="swiper-pagination"
+            ref={sliderPagination}
+          />
+        </>
+      ) : null}
     </WorksSwiperContainer>
   );
 }
