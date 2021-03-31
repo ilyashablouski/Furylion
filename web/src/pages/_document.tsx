@@ -2,10 +2,10 @@ import React from 'react';
 import Document, {
   DocumentContext,
   DocumentInitialProps,
+  Head,
   Html,
   Main,
 } from 'next/document';
-import Head from 'next/head';
 import { ServerStyleSheet } from 'styled-components';
 
 import { Nullable } from '@tager/web-core';
@@ -14,7 +14,7 @@ import {
   getAnalyticsSettings,
   SiteVerificationMeta,
 } from '@tager/web-analytics';
-import { TagerNextHead, TagerNextScript } from '@tager/web-components';
+import { TagerNextScript } from '@tager/web-components';
 
 type CustomDocumentProps = {
   settings: Nullable<AnalyticsSettingsType>;

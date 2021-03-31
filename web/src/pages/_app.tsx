@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+// eslint-disable-next-line import/order
 import * as Sentry from '@sentry/node';
-import Head from 'next/head';
+
 import 'scroll-behavior-polyfill';
 import '@/assets/css/index.css';
+
+import Head from 'next/head';
 
 import { AdminBar } from '@tager/web-panel';
 import { useAnalytics } from '@tager/web-analytics';

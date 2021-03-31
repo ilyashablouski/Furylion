@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MenuItemType } from '@tager/web-modules';
-import { scroller } from '@tager/web-core';
+// import { scroller } from '@tager/web-core';
 
-// import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
-// import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
-// import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
-// import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
@@ -73,15 +69,17 @@ function HeaderMenu({
           })}
         </MenuItems>
 
-        <MenuSocials>
-          {socialsData.map((social, index) => {
-            return (
-              <SocialWrapper key={index}>
-                <SocialNetwork href={social.href} iconSVG={social.svg} />
-              </SocialWrapper>
-            );
-          })}
-        </MenuSocials>
+        <MenuBottom>
+          <MenuSocials>
+            {socialsData.map((social, index) => {
+              return (
+                <SocialWrapper key={index}>
+                  <SocialNetwork href={social.href} iconSVG={social.svg} />
+                </SocialWrapper>
+              );
+            })}
+          </MenuSocials>
+        </MenuBottom>
       </Nav>
     </Container>
   );
@@ -125,6 +123,17 @@ const Nav = styled.nav<{ isOpen: boolean }>`
     padding: 79px 44px 20px 54px;
     max-width: 359px;
   `)}
+
+  ${media.mobile576(css`
+    padding: 79px 44px 20px 54px;
+    max-width: none;
+  `)}
+`;
+
+const MenuBottom = styled.div`
+  ${media.tabletSmall(css`
+    margin-right: 10px;
+  `)}
 `;
 
 const MenuSocials = styled.div`
@@ -149,7 +158,8 @@ const MenuItems = styled.ul`
   align-items: center;
 
   ${media.tabletSmall(css`
-    display: block;
+    flex-direction: column;
+    align-items: flex-end;
   `)}
 `;
 
@@ -162,11 +172,30 @@ const MenuItem = styled.li`
     `)}
   }
 
+  &:nth-child(1) {
+    ${media.tabletSmall(css`
+      order: 1;
+    `)}
+  }
+
+  &:nth-child(2) {
+    ${media.tabletSmall(css`
+      order: 2;
+    `)}
+  }
+
   &:nth-child(3) {
     margin-right: 46px;
 
     ${media.tabletSmall(css`
       margin: 0;
+      order: 4;
+    `)}
+  }
+
+  &:nth-child(4) {
+    ${media.tabletSmall(css`
+      order: 3;
     `)}
   }
 

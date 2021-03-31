@@ -13,14 +13,15 @@ function WorksItem({ image, title, text, tags }: WorksItemType) {
   return (
     <WorksItemContainer>
       <Picture
+        //TODO: Ask Matvey
+        // usePlaceholder={true}
+        // placeholderColor={'#3e3e3e'}
         mobileSmall={{
           src: image?.url,
           src2x: image?.url_2x,
           webp: image?.url_webp,
           webp2x: image?.url_webp_2x,
         }}
-        usePlaceholder={true}
-        placeholderColor={'#3e3e3e'}
         className="swiper-image-block"
       />
 
@@ -67,6 +68,7 @@ const WorksItemContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    background: #3e3e3e;
     object-fit: cover;
   }
 `;
