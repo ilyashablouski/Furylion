@@ -14,8 +14,7 @@ function WorksSection() {
   const worksItems = pageFields?.worksItems ?? [];
   return (
     <Wrapper>
-      <Title>{sectionTitle}</Title>
-
+      <Title>{sectionTitle}</Title>s
       <WorksSwiper worksItems={worksItems} />
     </Wrapper>
   );

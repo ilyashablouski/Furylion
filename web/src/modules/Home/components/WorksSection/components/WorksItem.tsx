@@ -48,11 +48,11 @@ const WorksItemContainer = styled.div`
   .swiper-image-block {
     padding-top: 56.01%;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023.98px) {
       padding-top: 71.09%;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 767.98px) {
       padding-top: 151.66%;
     }
   }

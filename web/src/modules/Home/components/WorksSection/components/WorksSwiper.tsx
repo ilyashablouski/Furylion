@@ -28,9 +28,6 @@ function WorksSwiper({ worksItems }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  // const [isMountedLaptop, setIsMountedLaptop] = useState<boolean>(false);
-  // const isDesktop = useMedia(createMediaQuery({ min: breakpoints.laptop }));
-  // const isLaptop = useMedia(createMediaQuery({ max: 1259 }));
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,7 +40,6 @@ function WorksSwiper({ worksItems }: Props) {
           slidesPerView="auto"
           loop={true}
           centeredSlides={true}
-          allowTouchMove={false}
           effect="coverflow"
           coverflowEffect={{
             rotate: 0,
@@ -66,11 +62,13 @@ function WorksSwiper({ worksItems }: Props) {
             [breakpoints.laptop]: {
               spaceBetween: 140,
               autoplay: false,
+              allowTouchMove: false,
             },
             [breakpoints.mobileSmall]: {
               spaceBetween: 0,
               speed: 500,
               autoplay: { delay: 4000, disableOnInteraction: false },
+              allowTouchMove: true,
             },
           }}
         >
