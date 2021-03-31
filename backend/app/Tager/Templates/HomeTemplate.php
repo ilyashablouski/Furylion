@@ -28,7 +28,7 @@ class HomeTemplate extends Template
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'tags' => new StringField('Tags')
+                    'logos' => new GalleryField('Gallery'),
                 ])
             ]),
             new GroupField('Services Top', [
