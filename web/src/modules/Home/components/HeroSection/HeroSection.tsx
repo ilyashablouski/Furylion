@@ -123,16 +123,15 @@ const Text = styled.p`
 
 const Inner = styled.div`
   position: relative;
-  padding: 313px 0 212px;
+  padding-top: 100px;
   text-align: center;
   color: ${colors.white};
 
-  ${media.tabletSmallOnly(css`
-    padding: 439px 0 383px;
+  ${media.tabletSmall(css`
+    padding-top: 56px;
   `)}
 
   ${media.mobile(css`
-    padding: 212px 0 214px;
     min-height: 640px;
   `)}
 `;

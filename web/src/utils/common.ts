@@ -36,7 +36,7 @@ export function normalizePhoneNumber(phone: string | null): string | null {
 export function scrollDown() {
   const firstElement = document.querySelector('main > *:first-child');
   if (!firstElement) return;
-  const isDesktop = createMediaQuery({ min: 1025 });
+  const isDesktop = createMediaQuery({ min: 1024 });
   let topOffset = 0;
 
   if (isDesktop) {
