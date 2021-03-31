@@ -101,7 +101,7 @@ const BackgroundContainer = styled.div`
 `;
 
 const Nav = styled.nav<{ isOpen: boolean }>`
-  @media (max-width: 1024px) {
+  @media (max-width: 1023.98px) {
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     position: fixed;
     top: 0;

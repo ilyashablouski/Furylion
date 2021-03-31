@@ -90,7 +90,10 @@ const Phone = styled.div`
 
 const PhoneLink = styled(Link)`
   border-bottom: 1px solid ${colors.white};
-  transition: 150ms all ease-in-out;
+
+  &:hover {
+    opacity: 0.85;
+  }
 `;
 
 const Email = styled.div`
@@ -112,6 +115,10 @@ const EmailLink = styled(Link)`
   font-size: 16px;
   line-height: 100%;
   border-bottom: 1px solid ${colors.white};
+
+  &:hover {
+    opacity: 0.85;
+  }
 `;
 
 export default ContactBlock;

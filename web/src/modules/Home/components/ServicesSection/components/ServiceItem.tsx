@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Link from '@/components/Link';
 import ContentContainer from '@/components/ContentContainer';
 import { ServiceItemType } from '@/typings/model';
 import { colors } from '@/constants/theme';
@@ -12,14 +11,7 @@ interface Props extends ServiceItemType {
   className?: string;
 }
 
-function ServiceItem({
-  image,
-  title,
-  text,
-  linkLabel,
-  linkUrl,
-  className,
-}: Props) {
+function ServiceItem({ image, title, text, linkLabel, className }: Props) {
   return (
     <>
       <ImageContainer>
@@ -38,7 +30,7 @@ function ServiceItem({
         <ContentContainer>
           <ItemTitle>{title}</ItemTitle>
           <ItemText>{text}</ItemText>
-          <ItemLink to={linkUrl}>{linkLabel}</ItemLink>
+          <Label className="item-label">{linkLabel}</Label>
         </ContentContainer>
       </ItemInfo>
     </>
@@ -99,6 +91,7 @@ const ItemInfo = styled.div`
   max-width: 77%;
   color: #fff;
   z-index: 2;
+  transition: all 150ms ease-in-out;
 
   ${media.tabletSmall(css`
     max-width: none;
@@ -129,7 +122,7 @@ const ItemText = styled.p`
   `)}
 `;
 
-const ItemLink = styled(Link)`
+const Label = styled.span`
   margin-top: 5px;
   display: inline-block;
   font-weight: 500;
@@ -143,11 +136,6 @@ const ItemLink = styled(Link)`
   ${media.mobile(css`
     font-size: 12px;
   `)}
-
-  &:hover {
-    border-bottom-color: transparent;
-    color: rgba(157, 20, 24, 0.85);
-  }
 `;
 
 export default ServiceItem;

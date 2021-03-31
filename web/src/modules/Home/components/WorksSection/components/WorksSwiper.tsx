@@ -128,6 +128,9 @@ const animation = keyframes`
 `;
 
 const WorksSwiperContainer = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1592px;
   position: relative;
   margin-top: 55px;
 

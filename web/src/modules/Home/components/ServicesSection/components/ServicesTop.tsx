@@ -31,16 +31,26 @@ function ServicesTop({ servicesItems }: Props) {
   return (
     <ServicesBlock>
       <BlockLeft>
-        <ItemWrapper className="item-wrapper" singleItem>
+        <ItemWrapper
+          className="item-wrapper"
+          singleItem
+          linkUrl={servicesMarkupArray[0].props.linkUrl}
+        >
           {servicesMarkupArray[0]}
         </ItemWrapper>
       </BlockLeft>
 
       <BlockRight>
-        <ItemWrapper className="item-wrapper">
+        <ItemWrapper
+          className="item-wrapper"
+          linkUrl={servicesMarkupArray[1].props.linkUrl}
+        >
           {servicesMarkupArray[1]}
         </ItemWrapper>
-        <ItemWrapper className="item-wrapper">
+        <ItemWrapper
+          className="item-wrapper"
+          linkUrl={servicesMarkupArray[2].props.linkUrl}
+        >
           {servicesMarkupArray[2]}
         </ItemWrapper>
       </BlockRight>
@@ -49,8 +59,8 @@ function ServicesTop({ servicesItems }: Props) {
 }
 const BlockLeft = styled.div`
   clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
-  flex: 0 1 66.11%;
-  max-width: 66.11%;
+  flex: 0 1 66.1%;
+  max-width: 66.1%;
   z-index: 3;
 
   ${media.tabletSmall(css`

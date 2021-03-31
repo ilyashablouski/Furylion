@@ -2,17 +2,20 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { media } from '@/utils/mixin';
+import Link from '@/components/Link';
 
 type Props = {
   className?: string;
   children: React.ReactNode;
   singleItem?: boolean;
   rightAlign?: boolean;
+  linkUrl?: string;
 };
 
-function ItemWrapper({ className, singleItem, children }: Props) {
+function ItemWrapper({ className, singleItem, linkUrl, children }: Props) {
   return (
     <Container className={className} singleItem={singleItem}>
+      <ItemLink to={linkUrl ?? '#'} />
       {children}
     </Container>
   );
@@ -27,6 +30,17 @@ const Container = styled.div<{ singleItem?: boolean }>`
     margin-top: 30px;
     padding-top: 83.33%;
   `)}
+
+  &:hover {
+    .item-label {
+      border-bottom-color: transparent;
+      color: rgba(157, 20, 24, 0.85);
+    }
+
+    .service-item-info {
+      opacity: 0.85;
+    }
+  }
 
   &:before {
     content: '';
@@ -46,6 +60,17 @@ const Container = styled.div<{ singleItem?: boolean }>`
       display: none;
     `)}
   }
+`;
+
+const ItemLink = styled(Link)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
 `;
 
 export default ItemWrapper;

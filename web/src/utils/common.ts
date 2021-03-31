@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { RequestError } from '@tager/web-core';
+import { RequestError, useMedia } from '@tager/web-core';
+import { createMediaQuery } from '@tager/web-components';
 
 import ErrorPage from '@/pages/_error';
+import { breakpoints } from '@/constants/theme';
 
 export function convertSlugToPath(
   slug: Array<string> | string | undefined
@@ -34,8 +36,16 @@ export function normalizePhoneNumber(phone: string | null): string | null {
 export function scrollDown() {
   const firstElement = document.querySelector('main > *:first-child');
   if (!firstElement) return;
+  const isDesktop = createMediaQuery({ min: 1025 });
+  let topOffset = 0;
+
+  if (isDesktop) {
+    topOffset = 100;
+  } else {
+    topOffset = 56;
+  }
   window.scrollTo({
-    top: firstElement.scrollHeight,
     behavior: 'smooth',
+    top: firstElement.scrollHeight - topOffset,
   });
 }
