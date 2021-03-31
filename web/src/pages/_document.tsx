@@ -5,6 +5,7 @@ import Document, {
   Html,
   Main,
 } from 'next/document';
+import Head from 'next/head';
 import { ServerStyleSheet } from 'styled-components';
 
 import { Nullable } from '@tager/web-core';
@@ -70,7 +71,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
 
     return (
       <Html lang="en">
-        <TagerNextHead>
+        <Head>
           <SiteVerificationMeta
             google={settings?.googleVerification}
             yandex={settings?.yandexVerification}
@@ -126,7 +127,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
               <meta name="msapplication-TileColor" content={themeColor} />
             </>
           ) : null}
-        </TagerNextHead>
+        </Head>
         <body>
           <Main />
           <script src="/static/js/global.js" defer />
