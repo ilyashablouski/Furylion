@@ -8,9 +8,6 @@ import SwiperCore, {
   Pagination,
 } from 'swiper';
 
-import { createMediaQuery } from '@tager/web-components';
-import { useMedia } from '@tager/web-core';
-
 import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { WorksItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
@@ -33,13 +30,15 @@ function WorksSwiper({ worksItems }: Props) {
     setIsMounted(true);
   }, []);
 
-  if (worksItems.length > 1) {
+  if (isMounted && worksItems.length > 1) {
     return (
       <WorksSwiperContainer>
         <Swiper
           slidesPerView="auto"
           loop={true}
           centeredSlides={true}
+          allowTouchMove={false}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           effect="coverflow"
           coverflowEffect={{
             rotate: 0,
@@ -62,12 +61,9 @@ function WorksSwiper({ worksItems }: Props) {
             [breakpoints.laptop]: {
               spaceBetween: 140,
               autoplay: false,
-              allowTouchMove: false,
             },
             [breakpoints.mobileSmall]: {
               spaceBetween: 0,
-              speed: 500,
-              autoplay: { delay: 4000, disableOnInteraction: false },
               allowTouchMove: true,
             },
           }}
@@ -95,7 +91,7 @@ function WorksSwiper({ worksItems }: Props) {
         <ItemsPagination className="swiper-pagination" ref={sliderPagination} />
       </WorksSwiperContainer>
     );
-  } else {
+  } else if (isMounted) {
     return (
       <WorksSwiperContainer>
         {worksItems.map((worksItem, index) => {
@@ -126,9 +122,6 @@ const animation = keyframes`
 `;
 
 const WorksSwiperContainer = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1592px;
   position: relative;
   margin-top: 55px;
 
