@@ -22,7 +22,6 @@ export function getVacancies() {
   return request.get({ path: '/vacancies' });
 }
 
-//FIXME: Add correct path
 export function sendContactsForm(
   payload: ContactsFormPayload
 ): Promise<ContactsFormPayload> {

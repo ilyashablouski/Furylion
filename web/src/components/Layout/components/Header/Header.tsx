@@ -9,16 +9,12 @@ import Link from '@/components/Link';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { media } from '@/utils/mixin';
+import { SocialsType } from '@/typings/model';
 
 import HeaderMenu from './components/HeaderMenu';
 import MobileMenuToggle from './components/MobileMenuToggle';
 
-// FIXME: REFACTORING TYPINGS
-type Props = {
-  socialsData: any;
-};
-
-function Header({ socialsData }: Props) {
+function Header({ socialsData }: SocialsType) {
   const headerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??
     [];

@@ -10,7 +10,6 @@ type Props = {
 function WorksTag({ tag }: Props) {
   return <TagContainer>{tag}</TagContainer>;
 }
-// TODO: Adaptive
 const TagContainer = styled.div`
   margin: 0 10px;
   padding: 6px 10px;

@@ -20,7 +20,6 @@ type Props = FormikProps<ContactsFormValues> & {
   fileId: number;
   setFileId: (value: number) => void;
 };
-//TODO: Refactor logic for own requirements (edit requests.ts), look at korona
 function ContactsForm({
   isModal = false,
   isSentSuccess,

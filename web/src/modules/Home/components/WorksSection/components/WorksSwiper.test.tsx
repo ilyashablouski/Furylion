@@ -32,10 +32,6 @@ function WorksSwiper({ worksItems }: Props) {
   const isLaptop = useMedia(createMediaQuery({ max: 1259 }));
 
   useEffect(() => {
-    //TODO: Refactor code!!!
-    // setMountedDesktop(true);
-    // setMountedLaptop(true);
-
     const onChangeLayout = function () {
       if (isDesktop && swiperLaptop !== undefined) {
         swiperLaptop.destroy();

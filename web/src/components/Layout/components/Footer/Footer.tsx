@@ -1,12 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-// import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.svg';
-// import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
-// import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
-// import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
-import { Nullable } from '@tager/web-core';
-
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
@@ -14,14 +8,11 @@ import { colors } from '@/constants/theme';
 import SocialNetwork from '@/components/SocialNetwork';
 import { media } from '@/utils/mixin';
 import Link from '@/components/Link';
+import { SocialsType } from '@/typings/model';
 
 import FooterMenu from './components/FooterMenu';
 
-type Props = {
-  // FIXME: REFACTORING TYPINGS
-  socialsData: Array<any>;
-};
-function Footer({ socialsData }: Props) {
+function Footer({ socialsData }: SocialsType) {
   const footerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'footer')) ??
     [];
@@ -34,7 +25,10 @@ function Footer({ socialsData }: Props) {
             {socialsData.map((social, index) => {
               return (
                 <SocialWrapper key={index}>
-                  <SocialNetwork href={social.href} iconSVG={social.svg} />
+                  <SocialNetwork
+                    href={social.href ?? '#'}
+                    iconSVG={social.svg}
+                  />
                 </SocialWrapper>
               );
             })}

@@ -1,3 +1,5 @@
+import { ReactElement, SVGProps } from 'react';
+
 import { PageFullType, SettingsItemString } from '@tager/web-modules';
 import { Nullable } from '@tager/web-core';
 import { SettingsItemCommon } from '@tager/web-modules/src/typings/models';
@@ -44,6 +46,10 @@ export type FileType = {
   size: number;
   url: string;
 };
+
+export interface SocialsType {
+  socialsData: Array<{ href: StringFieldType; svg: SVGProps<SVGSVGElement> }>;
+}
 
 export interface HeroSectionType extends PageFullType {
   templateFields: {
