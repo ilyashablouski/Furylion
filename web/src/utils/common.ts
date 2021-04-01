@@ -16,6 +16,15 @@ export function convertSlugToPath(
   return '/' + slug;
 }
 
+export function convertAliasToPath(
+  alias: Array<string> | string | undefined
+): string {
+  if (!alias) return '';
+  const convertString = convertSlugToPath(alias);
+
+  return convertString.substring(convertString.indexOf('/') + 1);
+}
+
 export function convertErrorToProps(
   error: Error | RequestError
 ): React.ComponentProps<typeof ErrorPage> {
