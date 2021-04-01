@@ -78,7 +78,7 @@ const TitleBlock = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
-  max-width: 1592px;
+  max-width: 1920px;
   text-align: center;
   transform: translateX(-50%);
 `;
@@ -110,7 +110,7 @@ const BackgroundPicture = styled(Picture)`
     margin: 0 auto;
     width: 108.2%;
     left: -57px;
-    max-width: 1592px;
+    max-width: 1920px;
 
     ${media.tabletSmallOnly(css`
       left: -86px;
@@ -157,7 +157,7 @@ const Inner = styled.div`
   left: 50%;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1592px;
+  max-width: 1920px;
   transform: translateX(-50%);
 `;
 
