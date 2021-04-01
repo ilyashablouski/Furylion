@@ -123,13 +123,8 @@ const Text = styled.p`
 
 const Inner = styled.div`
   position: relative;
-  padding-top: 100px;
   text-align: center;
   color: ${colors.white};
-
-  ${media.tabletSmall(css`
-    padding-top: 56px;
-  `)}
 `;
 
 const DownArrow = styled.i`
