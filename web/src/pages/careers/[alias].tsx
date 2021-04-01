@@ -1,26 +1,87 @@
 import React from 'react';
 
-import { isBrowser } from '@tager/web-core';
+import { isServer } from '@tager/web-core';
+import { Page } from '@tager/web-components';
+import { convertSeoParamsToPageProps } from '@tager/web-modules';
 
 import Layout from '@/components/Layout';
 import Vacancy from '@/modules/Vacancy';
-import { convertAliasToPath } from '@/utils/common';
+import { convertAliasToPath, convertErrorToProps } from '@/utils/common';
 import { CustomApp_PageContext } from '@/typings/hocs';
-import { getCareersVacancyByAlias } from '@/services/requests';
+import {
+  getVacancyByAliasThunk,
+  selectVacancyByAliasResource,
+} from '@/store/reducers/pages/vacancies';
+import { getSharedThunkList } from '@/utils/thunks';
+import { VacancyFull } from '@/typings/model';
+import ErrorPage from '@/pages/_error';
+import NotFoundPage from '@/pages/404';
 
-function CareersVacancy() {
+type Props =
+  | { pageType: 'NOT_FOUND' }
+  | { pageType: 'DYNAMIC_PAGE'; vacancy: VacancyFull }
+  | {
+      pageType: 'ERROR';
+      error: Error;
+    };
+
+function CareersVacancy(props: Props) {
+  if (props.pageType === 'NOT_FOUND') {
+    return <NotFoundPage />;
+  }
+
+  if (props.pageType === 'ERROR') {
+    return <ErrorPage {...convertErrorToProps(props.error)} />;
+  }
+
   return (
-    <Layout>
-      <Vacancy />
-    </Layout>
+    <Page
+      title={props.vacancy.pageTitle}
+      description={props.vacancy.pageDescription}
+      openGraphImage={props.vacancy.openGraphImage}
+    >
+      <Layout>
+        <Vacancy />
+      </Layout>
+    </Page>
   );
 }
 
 CareersVacancy.getInitialProps = async function ({
   query,
-}: CustomApp_PageContext) {
+  store,
+}: CustomApp_PageContext): Promise<Props> {
   const alias = convertAliasToPath(query.alias);
-  const response = await getCareersVacancyByAlias(alias);
+  try {
+    await store.dispatch(getVacancyByAliasThunk(alias));
+
+    const vacancyResource = selectVacancyByAliasResource(
+      store.getState(),
+      alias
+    );
+
+    if (!vacancyResource?.data) {
+      return {
+        pageType: 'NOT_FOUND',
+      };
+    }
+
+    const response = Promise.all([...getSharedThunkList(store.dispatch)]);
+
+    if (isServer()) {
+      await response;
+    }
+
+    return {
+      pageType: 'DYNAMIC_PAGE',
+      vacancy: vacancyResource.data,
+    };
+  } catch (error) {
+    return {
+      pageType: 'ERROR',
+      error,
+    };
+  }
 };
 
 export default CareersVacancy;

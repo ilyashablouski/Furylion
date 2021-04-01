@@ -1,15 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
 
-import useCurrentPage from '@/hooks/useCurrentPage';
+import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 
 import TopSection from './components/TopSection';
 import GetSection from './components/GetSection';
 import JobSection from './components/MainSection/JobSection';
 
 function Vacancy() {
-  const page = useCurrentPage();
-
+  const vacancy = useCurrentVacancy();
+  useEffect(() => {
+    console.log(vacancy);
+  }, []);
   return (
     <>
       <TopSection />

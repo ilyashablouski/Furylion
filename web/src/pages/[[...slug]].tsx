@@ -15,6 +15,7 @@ import {
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { getPageModuleByTemplate } from '@/services/pageModules';
 import { convertErrorToProps, convertSlugToPath } from '@/utils/common';
+import { getSharedThunkList } from '@/utils/thunks';
 
 type Props =
   | {
@@ -70,12 +71,12 @@ DynamicPage.getInitialProps = async (
     }
 
     const requestsPromise = Promise.all([
+      ...getSharedThunkList(store.dispatch),
       store.dispatch(getPageByPathThunk(foundPage.path)),
       foundPageModule.getInitialProps
         ? foundPageModule.getInitialProps(context)
         : Promise.resolve(),
     ]);
-
     if (isServer()) {
       await requestsPromise;
     }

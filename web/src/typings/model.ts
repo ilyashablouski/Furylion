@@ -135,24 +135,36 @@ export interface ClientsSectionType extends PageFullType {
   };
 }
 
+export interface VacancyShort {
+  id: number;
+  title: StringFieldType;
+  typeOfWork: StringFieldType;
+  excerpt: StringFieldType;
+  urlAlias: string;
+  location: StringFieldType;
+  image: ImageType;
+}
+
+export interface VacancyFull {
+  body: StringFieldType;
+  conditions: StringFieldType;
+  duties: StringFieldType;
+  excerpt: StringFieldType;
+  id: number;
+  image: ImageType;
+  introduction: StringFieldType;
+  level: StringFieldType;
+  location: { id: number; name: StringFieldType; url_alias: StringFieldType };
+  openGraphImage: StringFieldType;
+  pageDescription: StringFieldType;
+  pageTitle: StringFieldType;
+  requirements: StringFieldType;
+  technologies: StringFieldType;
+  title: StringFieldType;
+  type: StringFieldType;
+  urlAlias: StringFieldType;
+}
+
 export interface CareersVacancyType {
-  data: {
-    body: StringFieldType;
-    conditions: StringFieldType;
-    duties: StringFieldType;
-    excerpt: StringFieldType;
-    id: number;
-    image: ImageType;
-    introduction: StringFieldType;
-    level: StringFieldType;
-    location: { id: number; name: StringFieldType; url_alias: StringFieldType };
-    openGraphImage: ImageType;
-    pageDescription: StringFieldType;
-    pageTitle: StringFieldType;
-    requirements: StringFieldType;
-    technologies: StringFieldType;
-    title: StringFieldType;
-    type: StringFieldType;
-    urlAlias: StringFieldType;
-  };
+  data: VacancyFull;
 }

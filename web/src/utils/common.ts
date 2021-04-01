@@ -16,6 +16,12 @@ export function convertSlugToPath(
   return '/' + slug;
 }
 
+export function getParamAsString(
+  param: Array<string> | string | undefined
+): string {
+  return Array.isArray(param) ? param[0] : param ?? '';
+}
+
 export function convertAliasToPath(
   alias: Array<string> | string | undefined
 ): string {

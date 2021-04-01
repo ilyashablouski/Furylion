@@ -10,15 +10,13 @@ function JobSection({ tagsArray }: any) {
   return (
     <Wrapper>
       <ContentContainer>
-        <Left>
-          <VacancyCard />
-        </Left>
+        <Left>{/*<VacancyCard />*/}</Left>
         <Right>
-          <Tags>
-            {tagsArray.map((tag: any, index: any) => {
-              return <Tag key={index} tag={tag} />;
-            })}
-          </Tags>
+          {/*<Tags>*/}
+          {/*  {tagsArray.map((tag: any, index: any) => {*/}
+          {/*    return <Tag key={index} tag={tag} />;*/}
+          {/*  })}*/}
+          {/*</Tags>*/}
         </Right>
       </ContentContainer>
     </Wrapper>
