@@ -26,6 +26,7 @@ use OZiTAG\Tager\Backend\Seo\TagerSeo;
  * @property string $duties
  * @property string $requirements
  * @property string $conditions
+ * @property string $tags
  * @property int $location_id
  * @property int $image_id
  * @property string $page_title
@@ -59,6 +60,7 @@ class Vacancy extends TModel
         'duties',
         'requirements',
         'conditions',
+        'tags',
         'location_id',
         'image_id',
         'page_title',

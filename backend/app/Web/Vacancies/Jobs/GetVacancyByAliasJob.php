@@ -7,7 +7,7 @@ use App\Web\Vacancies\Resources\VacancyFullResource;
 use OZiTAG\Tager\Backend\Core\Jobs\Job;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class getVacancyByAliasJob extends Job
+class GetVacancyByAliasJob extends Job
 {
     protected string $alias;
 

@@ -79,6 +79,12 @@
           :error="errors.level"
           label="Level"
         />
+        <form-field
+          v-model="values.tags"
+          name="tags"
+          :error="errors.tags"
+          label="Tags"
+        />
       </template>
       <template v-if="selectedTabId === 'details'">
         <form-field

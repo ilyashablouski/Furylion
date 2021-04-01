@@ -22,6 +22,7 @@ use OZiTAG\Tager\Backend\Crud\Requests\CrudFormWithSeoRequest;
  * @property string $duties
  * @property string $requirements
  * @property string $conditions
+ * @property string $tags
  * @property string $locationId
  * @property string $image
  */
@@ -43,6 +44,7 @@ class UpdateVacancyRequest extends CrudFormWithSeoRequest
             'duties' => 'nullable|string',
             'requirements' => 'nullable|string',
             'conditions' => 'nullable|string',
+            'tags' => 'nullable|string',
             'locationId' => 'required|integer|exists:' . VacancyLocation::class .',id,id,!0,deleted_at,NULL',
             'image' => ['nullable', new FileRule()],
         ]);

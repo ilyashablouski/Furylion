@@ -2,7 +2,7 @@
 
 namespace App\Web\Vacancies\Features;
 
-use App\Web\Vacancies\Jobs\getVacancyByAliasJob;
+use App\Web\Vacancies\Jobs\GetVacancyByAliasJob;
 use OZiTAG\Tager\Backend\Core\Features\Feature;
 
 class ViewVacancyFeature extends Feature
@@ -16,7 +16,7 @@ class ViewVacancyFeature extends Feature
 
     public function handle()
     {
-        return $this->run(getVacancyByAliasJob::class, [
+        return $this->run(GetVacancyByAliasJob::class, [
             'alias' => $this->alias
         ]);
     }

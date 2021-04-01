@@ -21,6 +21,7 @@ export type VacancyType = {
   readonly duties: string;
   readonly requirements: string;
   readonly conditions: string;
+  readonly tags: string;
   readonly body: Nullable<string>;
   readonly pageTitle: Nullable<string>;
   readonly pageDescription: Nullable<string>;
