@@ -133,17 +133,36 @@ const WorksSwiperContainer = styled.div`
   }
 
   .swiper-pagination {
-    display: none;
+    position: absolute;
+    bottom: 41px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ${media.tabletSmallOnly(css`
+      display: none;
+    `)}
     ${media.mobile(css`
-      position: absolute;
       bottom: -5px;
       left: 0;
       height: 2px;
       width: 100%;
       display: flex;
       justify-content: center;
+      transform: translateX(0);
+    `)}
+    .swiper-pagination-bullet {
+      width: 4.8px;
+      height: 4.8px;
+      background: ${colors.black};
+      border: 0.2px solid rgba(255, 255, 255, 0.78);
+      border-radius: 50%;
+      opacity: 1;
+      box-sizing: content-box;
+      &:not(:first-child) {
+        margin-left: 15px;
+      }
 
-      .swiper-pagination-bullet {
+      ${media.mobile(css`
         position: relative;
         max-width: 110px;
         width: 100%;
@@ -151,11 +170,13 @@ const WorksSwiperContainer = styled.div`
         border-radius: 0;
         background: #8c8b89;
         opacity: 1;
+        border: none;
         margin-left: 10px;
 
         &:first-child {
           margin-left: 0;
         }
+
         &:before {
           position: absolute;
           top: 0;
@@ -163,13 +184,20 @@ const WorksSwiperContainer = styled.div`
           left: 0;
           width: 0;
           content: '';
-          background-color: #6b1a1a;
+          background: #6b1a1a;
           opacity: 1;
         }
-      }
-      .swiper-pagination-bullet-active {
+      `)}
+    }
+
+    .swiper-pagination-bullet-active {
+      background: ${colors.white};
+      border: 0.2px solid rgba(255, 255, 255, 1);
+      ${media.mobile(css`
         position: relative;
         overflow: hidden;
+        background: #8c8b89;
+        border: none;
 
         &:before {
           content: '';
@@ -178,8 +206,8 @@ const WorksSwiperContainer = styled.div`
           will-change: transform;
           animation: ${animation} 4350ms linear;
         }
-      }
-    `)}
+      `)}
+    }
   }
 `;
 
