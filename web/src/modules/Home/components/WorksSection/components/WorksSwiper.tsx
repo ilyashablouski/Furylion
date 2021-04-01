@@ -151,8 +151,8 @@ const WorksSwiperContainer = styled.div`
       transform: translateX(0);
     `)}
     .swiper-pagination-bullet {
-      width: 4.8px;
-      height: 4.8px;
+      width: 4px;
+      height: 4px;
       background: ${colors.black};
       border: 0.2px solid rgba(255, 255, 255, 0.78);
       border-radius: 50%;
