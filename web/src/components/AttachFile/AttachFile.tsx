@@ -204,7 +204,8 @@ const Component = styled.div<{ isSmall?: boolean; isFeedback?: boolean }>`
 
 const ErrorMessage = styled.span`
   position: absolute;
-  right: 0;
+  top: auto;
+  right: auto;
   display: block;
   width: 100%;
   font-size: 11px;

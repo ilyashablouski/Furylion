@@ -123,6 +123,7 @@ const FormInner = styled.div<{ isSentSuccess: boolean }>`
 `;
 
 const Input = styled(TextInputFormik)`
+  position: relative;
   margin-top: 59px;
 
   ${media.tabletSmallOnly(css`

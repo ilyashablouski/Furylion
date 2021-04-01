@@ -19,6 +19,9 @@ function FormControl({ className, error, children }: Props) {
 }
 
 const ErrorMessage = styled.span`
+  position: absolute;
+  top: auto;
+  left: auto;
   display: block;
   font-size: 11px;
   line-height: 15px;
