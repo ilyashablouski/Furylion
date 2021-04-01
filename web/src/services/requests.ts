@@ -1,6 +1,6 @@
 import { request } from '@tager/web-core';
 
-import { FileType } from '@/typings/model';
+import { CareersVacancyType, FileType } from '@/typings/model';
 
 export type ContactsFormPayload = {
   name: string;
@@ -33,4 +33,10 @@ export function uploadFile(file: File): Promise<FileType> {
   formData.append('file', file);
 
   return request.post({ path: '/upload/feedback', body: formData });
+}
+
+export function getCareersVacancyByAlias(
+  alias: string
+): Promise<CareersVacancyType> {
+  return request.get({ path: `/careers/${alias}` });
 }

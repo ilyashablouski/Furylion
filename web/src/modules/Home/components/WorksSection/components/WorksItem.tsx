@@ -4,8 +4,7 @@ import styled, { css } from 'styled-components';
 import Picture from '@/components/Picture';
 import { WorksItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
-
-import WorksTag from './WorksTag';
+import Tag from '@/components/Tag';
 
 function WorksItem({ image, title, text, tags }: WorksItemType) {
   const tagsArray = tags ? tags.split(',') : [];
@@ -25,15 +24,15 @@ function WorksItem({ image, title, text, tags }: WorksItemType) {
         className="swiper-image-block"
       />
 
-      <WorksInfo>
-        <WorksTitle>{title}</WorksTitle>
-        <WorksText>{text}</WorksText>
-        <WorksTags>
+      <Info>
+        <Title>{title}</Title>
+        <Text>{text}</Text>
+        <Tags>
           {tagsArray.map((tag, index) => {
-            return <WorksTag key={index} tag={tag} />;
+            return <Tag key={index} tag={tag} />;
           })}
-        </WorksTags>
-      </WorksInfo>
+        </Tags>
+      </Info>
 
       <WorksCopyright>
         {/*TODO: Add picture from Admin or static*/}
@@ -73,7 +72,7 @@ const WorksItemContainer = styled.div`
   }
 `;
 
-const WorksInfo = styled.div`
+const Info = styled.div`
   position: absolute;
   left: 68px;
   bottom: 40px;
@@ -91,7 +90,7 @@ const WorksInfo = styled.div`
   }
 `;
 
-const WorksTitle = styled.span`
+const Title = styled.span`
   font-weight: 900;
   font-size: 32px;
   line-height: 130%;
@@ -101,7 +100,7 @@ const WorksTitle = styled.span`
   `)}
 `;
 
-const WorksText = styled.p`
+const Text = styled.p`
   margin-top: 15px;
   max-width: 403px;
   font-weight: 400;
@@ -125,7 +124,7 @@ const WorksCopyright = styled.div`
   z-index: 1;
 `;
 
-const WorksTags = styled.div`
+const Tags = styled.div`
   margin-top: 25px;
   margin-left: -10px;
   margin-right: -10px;

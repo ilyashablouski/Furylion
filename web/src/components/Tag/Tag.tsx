@@ -7,7 +7,7 @@ type Props = {
   tag: string;
 };
 
-function WorksTag({ tag }: Props) {
+function Tag({ tag }: Props) {
   return <TagContainer>{tag}</TagContainer>;
 }
 const TagContainer = styled.div`
@@ -25,4 +25,4 @@ const TagContainer = styled.div`
   `)}
 `;
 
-export default WorksTag;
+export default Tag;

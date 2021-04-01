@@ -134,3 +134,25 @@ export interface ClientsSectionType extends PageFullType {
     clientsSecondGallery: Array<ImageType>;
   };
 }
+
+export interface CareersVacancyType {
+  data: {
+    body: StringFieldType;
+    conditions: StringFieldType;
+    duties: StringFieldType;
+    excerpt: StringFieldType;
+    id: number;
+    image: ImageType;
+    introduction: StringFieldType;
+    level: StringFieldType;
+    location: { id: number; name: StringFieldType; url_alias: StringFieldType };
+    openGraphImage: ImageType;
+    pageDescription: StringFieldType;
+    pageTitle: StringFieldType;
+    requirements: StringFieldType;
+    technologies: StringFieldType;
+    title: StringFieldType;
+    type: StringFieldType;
+    urlAlias: StringFieldType;
+  };
+}

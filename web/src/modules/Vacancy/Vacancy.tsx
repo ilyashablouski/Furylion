@@ -3,20 +3,20 @@ import styled from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 
+import TopSection from './components/TopSection';
+import GetSection from './components/GetSection';
+import JobSection from './components/MainSection/JobSection';
+
 function Vacancy() {
   const page = useCurrentPage();
 
   return (
-    <Container>
-      <h1>{page?.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: page?.body ?? '' }} />
-    </Container>
+    <>
+      <TopSection />
+      <JobSection />
+      <GetSection />
+    </>
   );
 }
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 2rem auto;
-`;
 
 export default Vacancy;
