@@ -53,6 +53,7 @@ export type VacancyUpdatePayload = {
   duties: string;
   requirements: string;
   conditions: string;
+  tags: string;
   image: Nullable<string>;
 };
 

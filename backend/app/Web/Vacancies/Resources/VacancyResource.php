@@ -18,6 +18,8 @@ class VacancyResource extends JsonResource
             'excerpt' => $model->excerpt,
             'urlAlias' => $model->url_alias,
             'location' => $model->location->name,
+            'image' => $model->image ? $model->image->getFullJson() : null,
+            'typeOfWork' => $model->type,
         ];
     }
 }

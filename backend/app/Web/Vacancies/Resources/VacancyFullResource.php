@@ -19,16 +19,17 @@ class VacancyFullResource extends JsonResource
             'introduction' => $model->introduction,
             'location' => $model->location->name,
             'body' => $model->body,
-            'type' => $model->type,
+            'typeOfWork' => $model->type,
             'level' => $model->level,
             'technologies' => $model->technologies,
-            'duties' => $model->duties,
+            'responsibilities' => $model->duties,
             'requirements' => $model->requirements,
             'conditions' => $model->conditions,
-            'image' => $model->image ? $model->image->getUrl() : null,
+            'tags' => $model->tags,
+            'image' => $model->image ? $model->image->getFullJson() : null,
             'pageTitle' => $model->getPageTitle(),
             'pageDescription' => $model->getPageDescription(),
-            'openGraphImage' => $model->openGraphImage ? $model->openGraphImage->getUrl() : null,
+            'openGraphImage' => $model->openGraphImage ? $model->openGraphImage->getFullJson() : null,
         ];
     }
 }

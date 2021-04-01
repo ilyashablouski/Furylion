@@ -23,6 +23,7 @@ export type FormValues = {
   duties: string;
   requirements: string;
   conditions: string;
+  tags: string;
   image: Nullable<SingleFileInputValueType>;
 };
 
@@ -54,6 +55,7 @@ export function convertFormValuesToVacancyUpdatePayload(
     duties: values.duties,
     requirements: values.requirements,
     conditions: values.conditions,
+    tags: values.tags,
     image: values.image?.file.id ?? null,
   };
 }
@@ -80,6 +82,7 @@ export function convertVacancyToFormValues(
       duties: '',
       requirements: '',
       conditions: '',
+      tags: '',
     };
   }
 
@@ -106,5 +109,6 @@ export function convertVacancyToFormValues(
     duties: vacancy.duties,
     requirements: vacancy.requirements,
     conditions: vacancy.conditions,
+    tags: vacancy.tags,
   };
 }

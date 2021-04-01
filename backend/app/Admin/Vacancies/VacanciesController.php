@@ -45,6 +45,7 @@ class VacanciesController extends AdminCrudController
                 'duties',
                 'requirements',
                 'conditions',
+                'tags',
                 'location_id' => 'locationId',
                 'image_id' => 'image:file',
                 'page_title' => 'pageTitle',
@@ -78,7 +79,7 @@ class VacanciesController extends AdminCrudController
             'duties',
             'requirements',
             'conditions',
-            'conditions',
+            'tags',
             'location' => [
                 'relation' => 'location',
                 'as' => ['id', 'name', 'url_alias']
