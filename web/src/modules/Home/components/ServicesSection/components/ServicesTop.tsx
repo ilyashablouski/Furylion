@@ -62,6 +62,7 @@ const BlockLeft = styled.div`
   flex: 0 1 66.1%;
   max-width: 66.1%;
   z-index: 3;
+  transform: translateZ(0);
 
   ${media.tabletSmall(css`
     margin-top: -10px;
@@ -104,15 +105,12 @@ const BlockRight = styled.div`
   width: 53.45%;
   height: 100%;
   z-index: 1;
-
-  ${media.tabletSmall(css`
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    clip-path: initial;
-  `)}
-
-  .item-wrapper {
+  transform: translateZ(0);
+  transform: translateZ(0) ${media.tabletSmall(css`
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      clip-path: initial;`)} .item-wrapper {
     &:nth-child(1) {
       margin-bottom: 11px;
 

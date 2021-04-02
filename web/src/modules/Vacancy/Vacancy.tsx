@@ -16,6 +16,7 @@ function Vacancy() {
       <TopSection />
       <JobSection />
       <GetSection />
+      ItemWrapper
     </>
   );
 }
