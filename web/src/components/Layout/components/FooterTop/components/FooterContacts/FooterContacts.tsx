@@ -42,7 +42,6 @@ const Wrapper = styled.div`
   ${ContentContainer} {
     max-width: 1920px;
   }
-F
   ${media.tabletSmallOnly(css`
     margin-top: 139px;
     padding-bottom: 40px;
