@@ -35,15 +35,15 @@ function TextArea(
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     if (autoHeight) {
       const textAreaElement = event.target;
-      textAreaElement.style.height = 'auto';
-      textAreaElement.style.height = `${textAreaElement.scrollHeight}px`;
+      textAreaElement.style.height = '37px';
+      textAreaElement.style.height = `${textAreaElement.scrollHeight + 2}px`;
 
       if (textAreaElement.value === '') {
         isDesktop
           ? (textAreaElement.style.height = '37px')
           : isLaptop
           ? (textAreaElement.style.height = '37px')
-          : (textAreaElement.style.height = 'auto');
+          : (textAreaElement.style.height = '37px');
       }
 
       if (isSentSuccess) {

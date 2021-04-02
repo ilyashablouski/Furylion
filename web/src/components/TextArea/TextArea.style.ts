@@ -21,7 +21,6 @@ export const TextArea = styled.textarea<{
   max-height: 300px;
   font-weight: 400;
   font-size: 21px;
-  line-height: 100%;
   background: transparent;
   resize: none;
   border: none;

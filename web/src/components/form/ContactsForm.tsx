@@ -174,7 +174,7 @@ const TextAreaContainer = styled.div`
 `;
 
 const AttachWrapper = styled.div`
-  margin-top: 32px;
+  margin-top: 34px;
 
   ${media.mobile(css`
     margin-top: 20px;
@@ -182,7 +182,7 @@ const AttachWrapper = styled.div`
 `;
 
 const Bottom = styled.div`
-  margin-top: 33px;
+  margin-top: 34px;
   text-align: center;
 `;
 

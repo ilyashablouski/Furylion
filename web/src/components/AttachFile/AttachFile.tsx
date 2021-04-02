@@ -212,6 +212,10 @@ const ErrorMessage = styled.span`
   line-height: 15px;
   color: ${colors.red};
   margin-top: 8px;
+
+  ${media.mobile(css`
+    margin-top: 4px;
+  `)}
 `;
 
 export default AttachFile;
