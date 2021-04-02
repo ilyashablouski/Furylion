@@ -138,33 +138,43 @@ export interface ClientsSectionType extends PageFullType {
 export interface VacancyShort {
   id: number;
   title: StringFieldType;
-  typeOfWork: StringFieldType;
   excerpt: StringFieldType;
   urlAlias: string;
   location: StringFieldType;
   image: ImageType;
+  typeOfWork: StringFieldType;
 }
 
+//TODO: refactoring types if need
 export interface VacancyFull {
-  body: StringFieldType;
-  conditions: StringFieldType;
-  duties: StringFieldType;
-  excerpt: StringFieldType;
   id: number;
+  body: StringFieldType;
+  pageTitle: StringFieldType;
+  tags: StringFieldType;
+  conditions: StringFieldType;
+  excerpt: StringFieldType;
+  title: StringFieldType;
   image: ImageType;
   introduction: StringFieldType;
   level: StringFieldType;
-  location: { id: number; name: StringFieldType; url_alias: StringFieldType };
+  typeOfWork: StringFieldType;
+  location: StringFieldType;
   openGraphImage: StringFieldType;
   pageDescription: StringFieldType;
-  pageTitle: StringFieldType;
   requirements: StringFieldType;
+  responsibilities: StringFieldType;
   technologies: StringFieldType;
-  title: StringFieldType;
-  type: StringFieldType;
-  urlAlias: StringFieldType;
 }
 
 export interface CareersVacancyType {
   data: VacancyFull;
+}
+
+type testImage = string;
+
+export interface VacancyCardType {
+  // FIXME:Change image type on ImageType if test type not need
+  image?: testImage;
+  typeOfWork?: StringFieldType;
+  level?: StringFieldType;
 }

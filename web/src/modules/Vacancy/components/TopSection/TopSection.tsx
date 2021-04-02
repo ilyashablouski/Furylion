@@ -2,11 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { colors } from '@/constants/theme';
+import useCurrentVacancy from '@/hooks/useCurrentVacancy';
+
+// type Props = {
+//   title: string;
+// };
 
 function TopSection() {
+  const vacancyFullData = useCurrentVacancy();
+  const vacancyData = vacancyFullData?.data;
+  const title = vacancyData?.title ?? '';
   return (
     <Wrapper>
-      <Title>TopSection</Title>
+      <Title>{title}</Title>
     </Wrapper>
   );
 }

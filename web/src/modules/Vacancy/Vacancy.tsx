@@ -7,16 +7,14 @@ import GetSection from './components/GetSection';
 import JobSection from './components/MainSection/JobSection';
 
 function Vacancy() {
-  const vacancy = useCurrentVacancy();
-  useEffect(() => {
-    console.log(vacancy);
-  }, []);
+  // useEffect(() => {
+  //   console.log(vacancyData);
+  // }, []);
   return (
     <>
       <TopSection />
       <JobSection />
       <GetSection />
-      ItemWrapper
     </>
   );
 }
