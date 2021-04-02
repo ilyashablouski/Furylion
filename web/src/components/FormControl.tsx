@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '@/constants/theme';
+import { media } from '@/utils/mixin';
 
 type Props = {
   className?: string;
@@ -27,6 +28,10 @@ const ErrorMessage = styled.span`
   line-height: 15px;
   color: ${colors.red};
   margin-top: 8px;
+
+  ${media.mobile(css`
+    margin-top: 4px;
+  `)}
 `;
 
 export default FormControl;

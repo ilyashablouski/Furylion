@@ -56,6 +56,7 @@ function ContactsForm({
 
           <TextAreaContainer>
             <TextAreaFormik
+              className="textarea-field"
               placeholder={'Message'}
               name="message"
               required
@@ -163,6 +164,10 @@ const Input = styled(TextInputFormik)`
 const TextAreaContainer = styled.div`
   position: relative;
   margin-top: 85px;
+  .textarea-field {
+    line-height: 0;
+  }
+
   ${media.mobile(css`
     margin-top: 90px;
   `)}
@@ -172,7 +177,7 @@ const AttachWrapper = styled.div`
   margin-top: 32px;
 
   ${media.mobile(css`
-    margin-top: 15px;
+    margin-top: 20px;
   `)}
 `;
 
