@@ -11,27 +11,34 @@ type Props = {
 //TODO: REfactoring for universal use
 function PlaceholderCard({ height, color }: Props) {
   return (
-    <Content height={height} color={color}>
-      <LoaderWrapper>
-        <LoaderComponent>
-          <div />
-          <div />
-        </LoaderComponent>
-      </LoaderWrapper>
-    </Content>
+    <Wrapper>
+      <Content height={height} color={color}>
+        <LoaderWrapper>
+          <LoaderComponent>
+            <div />
+            <div />
+          </LoaderComponent>
+        </LoaderWrapper>
+      </Content>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1230px;
+`;
 
 const Content = styled.div<{
   height?: number;
   color?: string;
 }>`
   position: relative;
-  margin: 0 auto;
+
   padding-top: 56.01%;
   display: flex;
   transition: 0.3s;
-  max-width: 1230px;
+
   min-height: 75px;
   height: ${(props) => (props.height ? `${props.height}px` : 'auto')};
   width: 100%;
