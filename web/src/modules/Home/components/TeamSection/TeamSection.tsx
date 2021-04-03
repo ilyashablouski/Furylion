@@ -55,7 +55,7 @@ function TeamSection() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   padding-top: 83px;
   position: relative;
   background: ${colors.white};

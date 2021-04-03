@@ -35,7 +35,7 @@ function PlatformSection() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   background: ${colors.red};
 
   ${media.mobile(css`

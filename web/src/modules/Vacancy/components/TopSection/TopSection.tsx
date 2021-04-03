@@ -4,10 +4,6 @@ import styled from 'styled-components';
 import { colors } from '@/constants/theme';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 
-// type Props = {
-//   title: string;
-// };
-
 function TopSection() {
   const vacancyFullData = useCurrentVacancy();
   const vacancyData = vacancyFullData?.data;

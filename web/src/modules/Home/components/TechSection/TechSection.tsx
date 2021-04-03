@@ -40,7 +40,7 @@ function TechSection() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   position: relative;
   margin-top: 20px;
   width: 100%;

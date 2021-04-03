@@ -22,16 +22,24 @@ function ClientsSection() {
     </Wrapper>
   );
 }
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   position: relative;
+  padding-bottom: 285px;
   padding-top: 106px;
-  padding-bottom: 2.7%;
   overflow: hidden;
   background: ${colors.dark};
   z-index: 1;
 
   ${media.tabletSmall(css`
     padding-top: 70px;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    padding-bottom: 70px;
+  `)}
+
+  ${media.mobile(css`
+    padding-bottom: 78px;
   `)}
 `;
 
@@ -55,6 +63,7 @@ const Title = styled.span`
 
 const Inner = styled.div`
   margin-top: 86px;
+  padding-bottom: 2.7%;
 
   ${media.tabletSmallOnly(css`
     margin-top: 97px;
