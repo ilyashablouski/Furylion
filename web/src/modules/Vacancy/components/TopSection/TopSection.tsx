@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
+import ContentContainer from '@/components/ContentContainer';
 
 function TopSection() {
   const vacancyFullData = useCurrentVacancy();
@@ -10,18 +11,23 @@ function TopSection() {
   const title = vacancyData?.title ?? '';
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <ContentContainer>
+        <Title>{title}</Title>
+      </ContentContainer>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
+  padding: 70px 0;
   width: 100%;
   height: 100%;
   background: ${colors.red};
 `;
 
 const Title = styled.span`
+  display: block;
+  text-align: center;
   font-weight: 900;
   font-size: 180.531px;
   line-height: 100%;
