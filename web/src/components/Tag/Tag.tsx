@@ -12,7 +12,6 @@ function Tag({ tag }: Props) {
   return <TagContainer>{tag}</TagContainer>;
 }
 const TagContainer = styled.div`
-  margin: 0 5px;
   padding: 6px 10px;
   font-weight: 400;
   font-size: 12px;
@@ -21,9 +20,9 @@ const TagContainer = styled.div`
   background: rgba(0, 0, 0, 0.5);
   color: ${colors.white};
 
-  ${media.tabletSmall(css`
+  &:not(:first-child) {
     margin: 0 5px;
-  `)}
+  }
 `;
 
 export default Tag;

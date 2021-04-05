@@ -73,29 +73,23 @@ const Wrapper = styled.section`
   padding-top: 70px;
   padding-bottom: 100px;
 `;
-const Inner = styled.div`
-  display: flex;
-`;
-const Left = styled.div``;
-const Right = styled.div`
-  margin-left: 40px;
-  color: ${colors.white};
+const Inner = styled.div``;
+const Left = styled.div`
+  float: left;
+  margin-right: 40px;
 
   ${media.tabletSmallOnly(css`
-    margin-left: 20px;
-  `)}
-
-  ${media.mobile(css`
-    margin-left: 0;
+    margin-right: 20px;
   `)}
 `;
+const Right = styled.div`
+  color: ${colors.white};
+`;
 const Tags = styled.div`
-  margin: 0 -5px;
   display: flex;
 `;
 
 const IntroBlock = styled.div`
-  margin: 0 -8px;
   margin-top: 38px;
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +99,7 @@ const IntroBlock = styled.div`
   color: ${colors.white};
 
   ${media.tabletSmall(css`
-    margin: 25px 0 0 0;
+    margin-top: 25px;
     display: block;
   `)}
 
@@ -115,7 +109,6 @@ const IntroBlock = styled.div`
 `;
 
 const IntroFirstText = styled.p`
-  padding: 0 8px;
   flex: 1 1 41.18%;
   max-width: 41.18%;
 
@@ -126,12 +119,12 @@ const IntroFirstText = styled.p`
 `;
 
 const IntroSecondText = styled.p`
-  padding: 0 8px;
-  flex: 1 1 58.82%;
-  max-width: 58.82%;
+  margin-left: 16px;
+  flex: 1 1 calc(58.82% - 16px);
+  max-width: calc(58.82% - 16px);
 
   ${media.tabletSmall(css`
-    padding: 0;
+    margin-left: 0;
     margin-top: 24px;
     max-width: none;
   `)}
@@ -143,7 +136,6 @@ const IntroSecondText = styled.p`
 
 const IntroThirdText = styled.p`
   margin-top: 37px;
-  padding: 0 8px;
   flex: 1 1 100%;
   max-width: 100%;
 
@@ -158,35 +150,19 @@ const IntroThirdText = styled.p`
 
 const Lists = styled.div`
   margin-top: 40px;
-  margin-left: -50px;
-  margin-right: -50px;
   display: flex;
 
-  ${media.tablet(css`
-    margin-left: -25px;
-    margin-right: -25px;
-  `)}
-
   ${media.tabletSmall(css`
-    margin-left: 0;
-    margin-right: 0;
     display: block;
   `)}
 `;
 
 const LeftList = styled.div`
-  padding: 0 50px;
   flex: 1 1 50%;
   max-width: 50%;
 
-  ${media.tablet(css`
-    padding-left: 25px;
-    padding-right: 25px;
-  `)}
-
   ${media.tabletSmall(css`
     margin-top: 58px;
-    padding: 0;
   `)}
 
   ${media.tabletSmallOnly(css`
@@ -195,18 +171,17 @@ const LeftList = styled.div`
   `)}
 `;
 const RightList = styled.div`
-  padding: 0 50px;
+  margin-left: 100px;
   flex: 1 1 50%;
   max-width: 50%;
 
   ${media.tablet(css`
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-left: 25px;
   `)}
 
   ${media.tabletSmall(css`
     margin-top: 58px;
-    padding: 0;
+    margin-left: 0;
   `)}
 `;
 
@@ -215,6 +190,7 @@ const ListTitle = styled.span`
   font-size: 32px;
   line-height: 130%;
   white-space: nowrap;
+  color: ${colors.white};
 
   ${media.tablet(css`
     font-size: 26px;
