@@ -94,31 +94,42 @@
           type="textarea"
           label="Intro text"
         />
+        <form-field
+          v-model="values.introductionSecond"
+          name="introductionSecond"
+          :error="errors.introductionSecond"
+          type="textarea"
+          label="Second intro text"
+        />
+        <form-field
+          v-model="values.introductionThird"
+          name="introductionThird"
+          :error="errors.introductionThird"
+          type="textarea"
+          label="Third intro text"
+        />
         <form-field-rich-text-input
           v-model="values.body"
           name="body"
           label="Body"
           :error="errors.body"
         />
-        <form-field
+        <form-field-rich-text-input
           v-model="values.duties"
           name="duties"
           :error="errors.duties"
-          type="textarea"
           label="Responsibilities"
         />
-        <form-field
+        <form-field-rich-text-input
           v-model="values.requirements"
           name="requirements"
           :error="errors.requirements"
-          type="textarea"
           label="Requirements"
         />
-        <form-field
+        <form-field-rich-text-input
           v-model="values.conditions"
           name="conditions"
           :error="errors.conditions"
-          type="textarea"
           label="Conditions"
         />
       </template>
