@@ -42,7 +42,7 @@ const Lists = styled.div`
 
   ul {
     margin-top: -25px;
-    padding: 10px;
+    padding: 0 10px;
     flex: 1 1 33.33%;
     max-width: 33.33%;
     display: flex;
@@ -54,6 +54,9 @@ const Lists = styled.div`
     position: relative;
     margin-top: 25px;
     padding-left: 52px;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     font-weight: normal;
     font-size: 14px;
     line-height: 160%;
@@ -61,9 +64,8 @@ const Lists = styled.div`
     &:before {
       content: url(${checkMarkFillUrl});
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 0;
-      transform: translateY(-50%);
     }
   }
 

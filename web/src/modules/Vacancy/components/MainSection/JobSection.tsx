@@ -45,7 +45,7 @@ function JobSection() {
                 <IntroFirstText>{introFirstText}</IntroFirstText>
                 <IntroSecondText>{introSecondText}</IntroSecondText>
               </IntroInner>
-              <IntroThirdText>{introSecondText}</IntroThirdText>
+              <IntroThirdText>{introThirdText}</IntroThirdText>
             </Intro>
 
             <Lists>
@@ -89,7 +89,7 @@ const Tags = styled.div`
 `;
 
 const Intro = styled.div`
-  margin-top: 44px;
+  margin-top: 38px;
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
@@ -102,11 +102,15 @@ const IntroInner = styled.div`
 `;
 
 const IntroFirstText = styled.p`
-  padding: 8px;
+  padding: 0 8px;
+  flex: 1 1 41.18%;
+  max-width: 41.18%;
 `;
 
 const IntroSecondText = styled.p`
-  padding: 8px;
+  padding: 0 8px;
+  flex: 1 1 58.82%;
+  max-width: 58.82%;
 `;
 
 const IntroThirdText = styled.p`
@@ -122,9 +126,13 @@ const Lists = styled.div`
 
 const LeftList = styled.div`
   padding: 0 50px;
+  flex: 1 1 50%;
+  max-width: 50%;
 `;
 const RightList = styled.div`
   padding: 0 50px;
+  flex: 1 1 50%;
+  max-width: 50%;
 `;
 
 const ListTitle = styled.span`
@@ -134,7 +142,7 @@ const ListTitle = styled.span`
 `;
 
 const ListContent = styled.div`
-  margin-top: 44px;
+  margin-top: 70px;
 
   ul {
     margin-top: -25px;
@@ -144,6 +152,7 @@ const ListContent = styled.div`
     position: relative;
     margin-top: 25px;
     padding-left: 52px;
+    min-height: 44px;
     font-weight: normal;
     font-size: 14px;
     line-height: 160%;
@@ -151,9 +160,8 @@ const ListContent = styled.div`
     &:before {
       content: url(${checkMarkUrl});
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 0;
-      transform: translateY(-50%);
     }
   }
 `;
