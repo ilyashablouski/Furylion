@@ -23,10 +23,6 @@ export function createExample() {
   return request.post({ path: '/tager/example', body: { name: 'example' } });
 }
 
-export function getVacancies() {
-  return request.get({ path: '/vacancies' });
-}
-
 export function sendContactsForm(
   payload: ContactsFormPayload
 ): Promise<ContactsFormPayload> {

@@ -156,6 +156,8 @@ export interface VacancyFull {
   title: StringFieldType;
   image: ImageType;
   introduction: StringFieldType;
+  introductionSecond: StringFieldType;
+  introductionThird: StringFieldType;
   level: StringFieldType;
   typeOfWork: StringFieldType;
   location: StringFieldType;

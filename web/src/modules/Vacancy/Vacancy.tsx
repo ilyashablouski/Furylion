@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import useCurrentVacancy from '@/hooks/useCurrentVacancy';
+import AboutSection from '@/components/AboutSection';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 import TopSection from './components/TopSection';
 import GetSection from './components/GetSection';
 import JobSection from './components/MainSection/JobSection';
 
 function Vacancy() {
-  // useEffect(() => {
-  //   console.log(vacancyData);
-  // }, []);
   return (
     <>
       <TopSection />
       <JobSection />
-      <GetSection />
+      {/*<GetSection />*/}
+      {/*<AboutSection />*/}
     </>
   );
 }

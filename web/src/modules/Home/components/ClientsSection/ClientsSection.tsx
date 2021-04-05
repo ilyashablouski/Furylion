@@ -24,23 +24,11 @@ function ClientsSection() {
 }
 const Wrapper = styled.section`
   position: relative;
-  padding-bottom: 285px;
+  padding-bottom: 165px;
   padding-top: 106px;
   overflow: hidden;
   background: ${colors.dark};
   z-index: 1;
-
-  ${media.tabletSmall(css`
-    padding-top: 70px;
-  `)}
-
-  ${media.tabletSmallOnly(css`
-    padding-bottom: 70px;
-  `)}
-
-  ${media.mobile(css`
-    padding-bottom: 78px;
-  `)}
 `;
 
 const Title = styled.span`

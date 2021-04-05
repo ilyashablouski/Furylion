@@ -47,6 +47,8 @@ export type VacancyUpdatePayload = {
   pageDescription: string;
   openGraphImage: Nullable<string>;
   introduction: string;
+  introductionSecond: string;
+  introductionThird: string;
   type: string;
   level: string;
   technologies: string;

@@ -84,7 +84,7 @@ const LabelLeft = styled.span`
 const LabelRight = styled.span`
   display: inline-flex;
   align-items: center;
-  text-decoration-line: underline;
+  border-bottom: 1px solid ${colors.white};
 `;
 
 const LabelIcon = styled.i`

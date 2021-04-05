@@ -8,6 +8,7 @@ import Services from '@/modules/Services';
 import PlayableAds from '@/modules/PlayableAds';
 import Vacancy from '@/modules/Vacancy';
 import Contacts from '@/modules/Contacts/Contacts';
+import { CustomApp_PageContext } from '@/typings/hocs';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
