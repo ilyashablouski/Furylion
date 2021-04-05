@@ -16,7 +16,9 @@ function JobSection() {
   const vacancyData = vacancyFullData?.data;
   const tags = vacancyFullData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
-  const introText = vacancyFullData?.data?.introduction;
+  const introFirstText = vacancyFullData?.data?.introduction;
+  const introSecondText = vacancyFullData?.data?.introductionSecond;
+  const introThirdText = vacancyFullData?.data?.introductionThird;
   //TODO:Delete from admin panel if no need
   // const mainInfo = vacancyFullData?.data?.body;
   const responsibilitiesList = vacancyFullData?.data?.responsibilities;
@@ -38,9 +40,13 @@ function JobSection() {
                 return <Tag key={index} tag={tag} />;
               })}
             </Tags>
-
-            <IntroText>{introText}</IntroText>
-            {/*<MainInfo dangerouslySetInnerHTML={{ __html: mainInfo ?? '' }} />*/}
+            <Intro>
+              <IntroInner>
+                <IntroFirstText>{introFirstText}</IntroFirstText>
+                <IntroSecondText>{introSecondText}</IntroSecondText>
+              </IntroInner>
+              <IntroThirdText>{introSecondText}</IntroThirdText>
+            </Intro>
 
             <Lists>
               <LeftList>
@@ -78,18 +84,33 @@ const Right = styled.div`
   color: ${colors.white};
 `;
 const Tags = styled.div`
-  margin: 0 -10px;
+  margin: 0 -5px;
   display: flex;
-
-  ${media.tabletSmall(css`
-    margin: 0 -5px;
-  `)}
 `;
-const IntroText = styled.p`
+
+const Intro = styled.div`
   margin-top: 44px;
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
+  color: ${colors.white};
+`;
+
+const IntroInner = styled.div`
+  display: flex;
+  margin: 0 -8px;
+`;
+
+const IntroFirstText = styled.p`
+  padding: 8px;
+`;
+
+const IntroSecondText = styled.p`
+  padding: 8px;
+`;
+
+const IntroThirdText = styled.p`
+  margin-top: 37px;
 `;
 
 const Lists = styled.div`

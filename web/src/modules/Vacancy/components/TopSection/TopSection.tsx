@@ -9,7 +9,6 @@ function TopSection() {
   const vacancyFullData = useCurrentVacancy();
   const vacancyData = vacancyFullData?.data;
   const title = vacancyData?.title ?? '';
-  console.log(vacancyFullData);
 
   return (
     <Wrapper>
@@ -21,7 +20,7 @@ function TopSection() {
 }
 
 const Wrapper = styled.section`
-  padding: 170px 0;
+  padding: 170px 0 72px;
   width: 100%;
   height: 100%;
   background: ${colors.red};
@@ -33,6 +32,7 @@ const Title = styled.span`
   font-weight: 900;
   font-size: 180.531px;
   line-height: 100%;
+  text-transform: uppercase;
   color: ${colors.white};
 `;
 
