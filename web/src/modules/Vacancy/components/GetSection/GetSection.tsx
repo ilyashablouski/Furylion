@@ -3,12 +3,16 @@ import styled from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
+import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 
 function GetSection() {
+  const vacancyFullData = useCurrentVacancy();
+  const vacancyData = vacancyFullData?.data;
   return (
     <Wrapper>
       <ContentContainer>
         <Title>You will get:</Title>
+        <Lists />
       </ContentContainer>
     </Wrapper>
   );
@@ -26,5 +30,7 @@ const Title = styled.span`
   text-transform: uppercase;
   color: ${colors.white};
 `;
+
+const Lists = styled.div``;
 
 export default GetSection;

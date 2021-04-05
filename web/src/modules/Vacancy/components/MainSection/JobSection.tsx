@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import testBg from '@/assets/images/test.jpg';
+import checkMarkUrl from '@/assets/svg/vacancy/check-mark.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Tag from '@/components/Tag';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
@@ -16,8 +17,10 @@ function JobSection() {
   const tags = vacancyFullData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
   const introText = vacancyFullData?.data?.introduction;
-  const mainInfo = vacancyFullData?.data?.body;
-
+  //TODO:Delete from admin panel if no need
+  // const mainInfo = vacancyFullData?.data?.body;
+  const responsibilitiesList = vacancyFullData?.data?.responsibilities;
+  const requirementsList = vacancyFullData?.data?.requirements;
   return (
     <Wrapper>
       <ContentContainer>
@@ -37,12 +40,24 @@ function JobSection() {
             </Tags>
 
             <IntroText>{introText}</IntroText>
-            <MainInfo dangerouslySetInnerHTML={{ __html: mainInfo ?? '' }} />
+            {/*<MainInfo dangerouslySetInnerHTML={{ __html: mainInfo ?? '' }} />*/}
 
-            {/*<ListBlock>*/}
-            {/*  <LeftList />*/}
-            {/*  <RightList/>*/}
-            {/*</ListBlock>*/}
+            <Lists>
+              <LeftList>
+                <ListTitle>Your responsibilities:</ListTitle>
+                <ListContent
+                  dangerouslySetInnerHTML={{
+                    __html: responsibilitiesList ?? '',
+                  }}
+                />
+              </LeftList>
+              <RightList>
+                <ListTitle>Requirements:</ListTitle>
+                <ListContent
+                  dangerouslySetInnerHTML={{ __html: requirementsList ?? '' }}
+                />
+              </RightList>
+            </Lists>
           </Right>
         </Inner>
       </ContentContainer>
@@ -77,13 +92,45 @@ const IntroText = styled.p`
   line-height: 160%;
 `;
 
-const MainInfo = styled.div``;
-
-const ListBlock = styled.div`
+const Lists = styled.div`
   margin-top: 40px;
+  margin-left: -50px;
+  margin-right: -50px;
+  display: flex;
 `;
 
-const LeftList = styled.div``;
-const RightList = styled.div``;
+const LeftList = styled.div`
+  padding: 0 50px;
+`;
+const RightList = styled.div`
+  padding: 0 50px;
+`;
+
+const ListTitle = styled.span`
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 130%;
+`;
+
+const ListContent = styled.div`
+  margin-top: 44px;
+
+  ul {
+    margin-top: -25px;
+  }
+
+  li {
+    position: relative;
+    margin-top: 25px;
+    padding-left: 52px;
+    &:before {
+      content: url(${checkMarkUrl});
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+`;
 
 export default JobSection;

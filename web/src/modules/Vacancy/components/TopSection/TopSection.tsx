@@ -9,6 +9,8 @@ function TopSection() {
   const vacancyFullData = useCurrentVacancy();
   const vacancyData = vacancyFullData?.data;
   const title = vacancyData?.title ?? '';
+  console.log(vacancyFullData);
+
   return (
     <Wrapper>
       <ContentContainer>

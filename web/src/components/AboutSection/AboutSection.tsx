@@ -31,9 +31,15 @@ function AboutSection({ formTitle, children }: Props) {
 }
 
 const Wrapper = styled.section`
+  padding-top: 120px;
+  
   ${ContentContainer} {
     max-width: 1920px;
   }
+
+  ${media.tabletSmall(css`
+    padding-top: 70px;
+  `)}}
 `;
 const Inner = styled.div`
   display: flex;
@@ -57,7 +63,7 @@ const Title = styled.span`
   `)}
 
   ${media.tabletSmallOnly(css`
-    font-size: 64px;
+    font-size: 56px;
   `)}
 
   ${media.mobile(css`
