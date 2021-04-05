@@ -17,6 +17,8 @@ export type FormValues = {
   pageDescription: string;
   openGraphImage: Nullable<SingleFileInputValueType>;
   introduction: string;
+  introductionSecond: string;
+  introductionThird: string;
   type: string;
   level: string;
   technologies: string;
@@ -49,6 +51,8 @@ export function convertFormValuesToVacancyUpdatePayload(
     pageDescription: values.pageDescription,
     openGraphImage: values.openGraphImage?.file.id ?? null,
     introduction: values.introduction,
+    introductionSecond: values.introductionSecond,
+    introductionThird: values.introductionThird,
     type: values.type,
     level: values.level,
     technologies: values.technologies,
@@ -76,6 +80,8 @@ export function convertVacancyToFormValues(
       openGraphImage: null,
       image: null,
       introduction: '',
+      introductionSecond: '',
+      introductionThird: '',
       type: '',
       level: '',
       technologies: '',
@@ -103,6 +109,8 @@ export function convertVacancyToFormValues(
       : null,
     image: vacancy.image ? createFileInputValue(vacancy.image) : null,
     introduction: vacancy.introduction,
+    introductionSecond: vacancy.introductionSecond,
+    introductionThird: vacancy.introductionThird,
     type: vacancy.type,
     level: vacancy.level,
     technologies: vacancy.technologies,

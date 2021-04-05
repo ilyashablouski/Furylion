@@ -82,7 +82,10 @@ class HomeTemplate extends Template
                 'clientsTitle' => new StringField('Title'),
                 'clientsFirstGallery' => new GalleryField('Gallery 1'),
                 'clientsSecondGallery' => new GalleryField('Gallery 2'),
-            ])
+            ]),
+            new GroupField('Form', [
+                'formTitle' => new StringField('Title'),
+            ]),
         ]);
     }
 }

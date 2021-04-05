@@ -15,6 +15,8 @@ export type VacancyType = {
   readonly location: Nullable<VacancyLocationType>;
   readonly excerpt: string;
   readonly introduction: string;
+  readonly introductionSecond: string;
+  readonly introductionThird: string;
   readonly type: string;
   readonly level: string;
   readonly technologies: string;

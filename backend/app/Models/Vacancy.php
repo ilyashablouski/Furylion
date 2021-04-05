@@ -19,6 +19,8 @@ use OZiTAG\Tager\Backend\Seo\TagerSeo;
  * @property string $url_alias
  * @property string $excerpt
  * @property string $introduction
+ * @property string $introduction_second
+ * @property string $introduction_third
  * @property string $body
  * @property string $type
  * @property string $level
@@ -53,6 +55,8 @@ class Vacancy extends TModel
         'url_alias',
         'excerpt',
         'introduction',
+        'introduction_second',
+        'introduction_third',
         'body',
         'type',
         'level',

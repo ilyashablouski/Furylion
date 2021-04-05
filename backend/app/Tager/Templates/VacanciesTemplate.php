@@ -18,6 +18,9 @@ class VacanciesTemplate extends Template
                 'teamLifeDescription' => new HtmlField('Описание'),
                 'teamLifeButton' => new ButtonField('Кнопка'),
             ]),
+            new GroupField('Form', [
+                'formTitle' => new StringField('Title'),
+            ]),
         ]);
     }
 }
