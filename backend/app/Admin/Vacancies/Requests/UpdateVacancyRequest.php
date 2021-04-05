@@ -37,6 +37,8 @@ class UpdateVacancyRequest extends CrudFormWithSeoRequest
             'urlAlias' => ['required', 'max:255', 'string', 'unique:' . Vacancy::class . ',url_alias,' . $routeId . ',id,deleted_at,NULL'],
             'excerpt' => 'nullable|string',
             'introduction' => 'nullable|string',
+            'introductionSecond' => 'nullable|string',
+            'introductionThird' => 'nullable|string',
             'body' => 'nullable|string',
             'type' => 'nullable|string|max:255',
             'level' => 'nullable|string|max:255',
