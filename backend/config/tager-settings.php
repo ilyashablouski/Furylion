@@ -1,6 +1,5 @@
 <?php
 
-use \App\Enums\SettingKey;
 use \OZiTAG\Tager\Backend\Fields\Enums\FieldType;
 
 return [
@@ -8,6 +7,10 @@ return [
         'FORM_TITLE' => [
             'type' => FieldType::String,
             'label' => 'Form Title'
+        ],
+        'FORM_VACANCIES_TITLE' => [
+            'type' => FieldType::String,
+            'label' => 'Form Vacancies Title'
         ],
         'FOOTER_OFFICES' => [
             'type' => FieldType::Repeater,
