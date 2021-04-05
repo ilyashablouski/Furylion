@@ -17,6 +17,8 @@ class VacancyFullResource extends JsonResource
             'title' => $model->title,
             'excerpt' => $model->excerpt,
             'introduction' => $model->introduction,
+            'introductionSecond' => $model->introduction_second,
+            'introductionThird' => $model->introduction_third,
             'location' => $model->location->name,
             'body' => $model->body,
             'typeOfWork' => $model->type,
