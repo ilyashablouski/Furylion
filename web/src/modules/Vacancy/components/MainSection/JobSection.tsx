@@ -40,31 +40,29 @@ function JobSection() {
                 return <Tag key={index} tag={tag} />;
               })}
             </Tags>
-            <Intro>
-              <IntroInner>
-                <IntroFirstText>{introFirstText}</IntroFirstText>
-                <IntroSecondText>{introSecondText}</IntroSecondText>
-              </IntroInner>
-              <IntroThirdText>{introThirdText}</IntroThirdText>
-            </Intro>
+            <IntroBlock>
+              <IntroFirstText>{introFirstText}</IntroFirstText>
+              <IntroSecondText>{introSecondText}</IntroSecondText>
 
-            <Lists>
-              <LeftList>
-                <ListTitle>Your responsibilities:</ListTitle>
-                <ListContent
-                  dangerouslySetInnerHTML={{
-                    __html: responsibilitiesList ?? '',
-                  }}
-                />
-              </LeftList>
-              <RightList>
-                <ListTitle>Requirements:</ListTitle>
-                <ListContent
-                  dangerouslySetInnerHTML={{ __html: requirementsList ?? '' }}
-                />
-              </RightList>
-            </Lists>
+              <IntroThirdText>{introThirdText}</IntroThirdText>
+            </IntroBlock>
           </Right>
+          <Lists>
+            <LeftList>
+              <ListTitle>Your responsibilities:</ListTitle>
+              <ListContent
+                dangerouslySetInnerHTML={{
+                  __html: responsibilitiesList ?? '',
+                }}
+              />
+            </LeftList>
+            <RightList>
+              <ListTitle>Requirements:</ListTitle>
+              <ListContent
+                dangerouslySetInnerHTML={{ __html: requirementsList ?? '' }}
+              />
+            </RightList>
+          </Lists>
         </Inner>
       </ContentContainer>
     </Wrapper>
@@ -82,39 +80,80 @@ const Left = styled.div``;
 const Right = styled.div`
   margin-left: 40px;
   color: ${colors.white};
+
+  ${media.tabletSmallOnly(css`
+    margin-left: 20px;
+  `)}
+
+  ${media.mobile(css`
+    margin-left: 0;
+  `)}
 `;
 const Tags = styled.div`
   margin: 0 -5px;
   display: flex;
 `;
 
-const Intro = styled.div`
+const IntroBlock = styled.div`
+  margin: 0 -8px;
   margin-top: 38px;
+  display: flex;
+  flex-wrap: wrap;
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
   color: ${colors.white};
-`;
 
-const IntroInner = styled.div`
-  display: flex;
-  margin: 0 -8px;
+  ${media.tabletSmall(css`
+    margin: 25px 0 0 0;
+    display: block;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 const IntroFirstText = styled.p`
   padding: 0 8px;
   flex: 1 1 41.18%;
   max-width: 41.18%;
+
+  ${media.tabletSmall(css`
+    padding: 0;
+    max-width: none;
+  `)}
 `;
 
 const IntroSecondText = styled.p`
   padding: 0 8px;
   flex: 1 1 58.82%;
   max-width: 58.82%;
+
+  ${media.tabletSmall(css`
+    padding: 0;
+    margin-top: 24px;
+    max-width: none;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 20px;
+  `)}
 `;
 
 const IntroThirdText = styled.p`
   margin-top: 37px;
+  padding: 0 8px;
+  flex: 1 1 100%;
+  max-width: 100%;
+
+  ${media.tabletSmall(css`
+    margin-top: 24px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 13px;
+  `)}
 `;
 
 const Lists = styled.div`
@@ -122,23 +161,64 @@ const Lists = styled.div`
   margin-left: -50px;
   margin-right: -50px;
   display: flex;
+
+  ${media.tablet(css`
+    margin-left: -25px;
+    margin-right: -25px;
+  `)}
+
+  ${media.tabletSmall(css`
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  `)}
 `;
 
 const LeftList = styled.div`
   padding: 0 50px;
   flex: 1 1 50%;
   max-width: 50%;
+
+  ${media.tablet(css`
+    padding-left: 25px;
+    padding-right: 25px;
+  `)}
+
+  ${media.tabletSmall(css`
+    margin-top: 58px;
+    padding: 0;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    margin-left: auto;
+    max-width: 376px;
+  `)}
 `;
 const RightList = styled.div`
   padding: 0 50px;
   flex: 1 1 50%;
   max-width: 50%;
+
+  ${media.tablet(css`
+    padding-left: 25px;
+    padding-right: 25px;
+  `)}
+
+  ${media.tabletSmall(css`
+    margin-top: 58px;
+    padding: 0;
+  `)}
 `;
 
 const ListTitle = styled.span`
   font-weight: 900;
   font-size: 32px;
   line-height: 130%;
+  white-space: nowrap;
+
+  ${media.tablet(css`
+    font-size: 26px;
+  `)}
 `;
 
 const ListContent = styled.div`
