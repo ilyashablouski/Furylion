@@ -4,16 +4,13 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as FooterLogoIcon } from '@/assets/svg/footer-logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
-import { SettingOptionsListType } from '@/typings/model';
 import { media } from '@/utils/mixin';
+import useSettingItem from '@/hooks/useSettingItem';
 
 import ContactBlock from './components/ContactBlock';
 
-type Props = {
-  contactsArray: SettingOptionsListType;
-};
-
-function FooterContacts({ contactsArray }: Props) {
+function ContactsSection() {
+  const contactsArray = useSettingItem('FOOTER_OFFICES');
   return (
     <Wrapper>
       <ContentContainer>
@@ -35,20 +32,21 @@ function FooterContacts({ contactsArray }: Props) {
   );
 }
 
-const Wrapper = styled.div`
-  margin-top: 100px;
+const Wrapper = styled.section`
+  padding-top: 100px;
   padding-bottom: 77px;
+  background: ${colors.dark};
 
   ${ContentContainer} {
     max-width: 1920px;
   }
   ${media.tabletSmallOnly(css`
-    margin-top: 139px;
+    padding-top: 139px;
     padding-bottom: 40px;
   `)}
 
   ${media.mobile(css`
-    margin-top: 77px;
+    padding-top: 77px;
     padding-bottom: 50px;
   `)}
 `;
@@ -111,4 +109,4 @@ const Inner = styled.div`
   `)}
 `;
 
-export default FooterContacts;
+export default ContactsSection;

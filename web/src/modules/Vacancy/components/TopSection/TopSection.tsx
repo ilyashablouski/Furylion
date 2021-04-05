@@ -19,7 +19,7 @@ function TopSection() {
 }
 
 const Wrapper = styled.section`
-  padding: 70px 0;
+  padding: 170px 0;
   width: 100%;
   height: 100%;
   background: ${colors.red};

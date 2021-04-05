@@ -8,16 +8,18 @@ import ContactsFormContainer from '@/components/form';
 import { media } from '@/utils/mixin';
 
 type Props = {
-  formTitle: StringFieldType;
+  formTitle?: StringFieldType;
+  children?: React.ReactNode;
 };
 
-function FooterAbout({ formTitle }: Props) {
+function AboutSection({ formTitle, children }: Props) {
   return (
     <Wrapper>
       <ContentContainer>
         <Inner>
           <Left>
             <Title>{formTitle}</Title>
+            {children}
           </Left>
           <Right>
             <ContactsFormContainer />
@@ -28,7 +30,7 @@ function FooterAbout({ formTitle }: Props) {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   ${ContentContainer} {
     max-width: 1920px;
   }
@@ -91,4 +93,4 @@ const Right = styled.div`
   `)}
 `;
 
-export default FooterAbout;
+export default AboutSection;
