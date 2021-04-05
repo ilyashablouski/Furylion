@@ -123,6 +123,10 @@ const ListContent = styled.div`
     position: relative;
     margin-top: 25px;
     padding-left: 52px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 160%;
+    color: ${colors.white};
     &:before {
       content: url(${checkMarkUrl});
       position: absolute;
