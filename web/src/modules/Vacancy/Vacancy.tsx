@@ -12,7 +12,7 @@ function Vacancy() {
     <>
       <TopSection />
       <JobSection />
-      {/*<GetSection />*/}
+      <GetSection />
       {/*<AboutSection />*/}
     </>
   );

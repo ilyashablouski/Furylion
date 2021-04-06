@@ -6,7 +6,8 @@ import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 // import { VacancyCardType } from '@/typings/model';
 
-function JobCard({ image, level, typeOfWork }) {
+// { image, level, typeOfWork }
+function JobCard() {
   return (
     <Container>
       <ImageContainer>
@@ -20,12 +21,12 @@ function JobCard({ image, level, typeOfWork }) {
         {/*  className={'vacancy-image'}*/}
         {/*/>*/}
 
-        <Picture
-          mobileSmall={{
-            src: image ?? '',
-          }}
-          className={'vacancy-image'}
-        />
+        {/*<Picture*/}
+        {/*  mobileSmall={{*/}
+        {/*    src: image ?? '',*/}
+        {/*  }}*/}
+        {/*  className={'vacancy-image'}*/}
+        {/*/>*/}
       </ImageContainer>
 
       <Labels>
@@ -33,9 +34,9 @@ function JobCard({ image, level, typeOfWork }) {
           <LabelIcon>
             <ClockIcon />
           </LabelIcon>
-          {typeOfWork}
+          {/*{typeOfWork}*/}
         </LabelLeft>
-        <LabelRight>{level}</LabelRight>
+        {/*<LabelRight>{level}</LabelRight>*/}
       </Labels>
     </Container>
   );
