@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { Nullable } from '@tager/web-core';
+
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { StringFieldType } from '@/typings/common';
@@ -10,15 +12,16 @@ import { media } from '@/utils/mixin';
 type Props = {
   formTitle?: StringFieldType;
   children?: React.ReactNode;
+  className?: string;
 };
 
-function AboutSection({ formTitle, children }: Props) {
+function AboutSection({ formTitle, children, className }: Props) {
   return (
     <Wrapper>
       <ContentContainer>
         <Inner>
           <Left>
-            <Title>{formTitle}</Title>
+            <Title className={className}>{formTitle}</Title>
             {children}
           </Left>
           <Right>
@@ -49,7 +52,6 @@ const Inner = styled.div`
   `)}
 `;
 const Title = styled.span`
-  max-width: 260px;
   display: inline-block;
   font-style: normal;
   font-size: 64px;
@@ -57,6 +59,10 @@ const Title = styled.span`
   color: ${colors.white};
   font-weight: 900;
   text-transform: uppercase;
+
+  &.about-title--small {
+    max-width: 260px;
+  }
 
   ${media.tabletSmall(css`
     max-width: none;

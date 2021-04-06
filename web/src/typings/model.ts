@@ -26,6 +26,7 @@ export interface SettingsItemOptions<Key extends string>
 
 export type SettingsItemType =
   | SettingsItemString<'FORM_TITLE'>
+  | SettingsItemString<'FORM_VACANCIES_TITLE'>
   | SettingsItemOptions<'FOOTER_OFFICES'>
   | SettingsItemString<'INSTAGRAM_URL'>
   | SettingsItemString<'VKONTAKTE_URL'>

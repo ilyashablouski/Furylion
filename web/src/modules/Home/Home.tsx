@@ -22,7 +22,7 @@ function Home() {
       <PlatformSection />
       <TeamSection />
       <ClientsSection />
-      <AboutSection formTitle={formTitle} />
+      <AboutSection className="about-title--small" formTitle={formTitle} />
     </>
   );
 }
