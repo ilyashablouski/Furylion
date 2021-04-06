@@ -136,18 +136,18 @@ export interface ClientsSectionType extends PageFullType {
   };
 }
 
-export interface VacancyShort {
+export interface VacancyShortListType {
   id: number;
   title: StringFieldType;
   excerpt: StringFieldType;
-  urlAlias: string;
+  urlAlias: StringFieldType;
   location: StringFieldType;
   image: ImageType;
   typeOfWork: StringFieldType;
+  level: StringFieldType;
 }
 
-//TODO: refactoring types if need
-export interface VacancyFull {
+export interface VacancyFullListType {
   id: number;
   body: StringFieldType;
   pageTitle: StringFieldType;
@@ -170,14 +170,20 @@ export interface VacancyFull {
 }
 
 export interface CareersVacancyType {
-  data: VacancyFull;
+  data: VacancyFullListType;
 }
 
 //TODO: refactoring types if need
-type testImage = string;
+type testImageType = string;
 
 export interface VacancyCardType {
   image?: ImageType;
   typeOfWork?: StringFieldType;
   level?: StringFieldType;
+}
+
+export interface JobCardType extends VacancyCardType {
+  title: StringFieldType;
+  excerpt: StringFieldType;
+  urlAlias: StringFieldType;
 }

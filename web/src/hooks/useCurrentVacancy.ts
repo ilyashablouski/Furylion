@@ -4,9 +4,11 @@ import { Nullable, ResourceType } from '@tager/web-core';
 
 import { useTypedSelector } from '@/store/store';
 import { getParamAsString } from '@/utils/common';
-import { VacancyFull } from '@/typings/model';
+import { VacancyFullListType } from '@/typings/model';
 import { selectVacancyByAliasResource } from '@/store/reducers/pages/vacancies';
-function useCurrentVacancy(): ResourceType<Nullable<VacancyFull>> | undefined {
+function useCurrentVacancy():
+  | ResourceType<Nullable<VacancyFullListType>>
+  | undefined {
   const router = useRouter();
   const vacancyAlias = getParamAsString(router.query.alias);
   return useTypedSelector((state) =>

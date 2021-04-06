@@ -16,6 +16,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { getPageModuleByTemplate } from '@/services/pageModules';
 import { convertErrorToProps, convertSlugToPath } from '@/utils/common';
 import { getSharedThunkList } from '@/utils/thunks';
+import { getVacanciesListThunk } from '@/store/reducers/pages/vacancies';
 
 type Props =
   | {
@@ -59,7 +60,6 @@ DynamicPage.getInitialProps = async (
 
   try {
     const pageList = await store.dispatch(getPageListThunk());
-
     const foundPage = pageList.find((page) => page.path === currentPath);
     const foundPageModule = getPageModuleByTemplate(foundPage?.template);
 

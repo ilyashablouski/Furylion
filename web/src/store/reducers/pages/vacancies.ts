@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { store } from 'next/dist/build/output/store';
 
 import {
   createResourceLoader,
@@ -9,21 +10,26 @@ import {
 } from '@tager/web-core';
 
 import { AppState, AppThunk } from '@/store/store';
-import { VacancyFull, VacancyShort } from '@/typings/model';
+import { VacancyFullListType, VacancyShortListType } from '@/typings/model';
 import {
   getCareersVacanciesList,
   getCareersVacancyByAlias,
 } from '@/services/requests';
 
-const vacancyListLoader = createResourceLoader<Array<VacancyShort>>([]);
-const vacancyLoader = createResourceLoader<Nullable<VacancyFull>>(null);
+const vacancyListLoader = createResourceLoader<Array<VacancyShortListType>>([]);
+const vacancyLoader = createResourceLoader<Nullable<VacancyFullListType>>(null);
 type State = {
-  vacancyShortList: ResourceType<Array<VacancyShort>>;
-  vacancyFullMap: Record<string, ResourceType<Nullable<VacancyFull>>>;
+  VacancyShortListTypeList: ResourceType<Array<VacancyShortListType>>;
+  VacancyFullListTypeMap: Record<
+    string,
+    ResourceType<Nullable<VacancyFullListType>>
+  >;
+  totalVacanciesValue: number;
 };
 const initialState: State = {
-  vacancyShortList: vacancyListLoader.getInitialResource(),
-  vacancyFullMap: {},
+  VacancyShortListTypeList: vacancyListLoader.getInitialResource(),
+  VacancyFullListTypeMap: {},
+  totalVacanciesValue: 0,
 };
 const vacanciesSlice = createSlice({
   name: 'vacancies',
@@ -31,31 +37,38 @@ const vacanciesSlice = createSlice({
   reducers: {
     /** Vacancies list */
     vacanciesListRequestPending(state) {
-      state.vacancyShortList = vacancyListLoader.pending();
+      state.VacancyShortListTypeList = vacancyListLoader.pending();
     },
     vacanciesListRequestFulfilled(
       state,
-      action: PayloadAction<Array<VacancyShort>>
+      action: PayloadAction<Array<VacancyShortListType>>
     ) {
-      state.vacancyShortList = vacancyListLoader.fulfill(action.payload);
+      state.VacancyShortListTypeList = vacancyListLoader.fulfill(
+        action.payload
+      );
     },
     vacanciesListRequestRejected(state) {
-      state.vacancyShortList = vacancyListLoader.reject();
+      state.VacancyShortListTypeList = vacancyListLoader.reject();
     },
     /** Vacancy full */
     vacancyRequestPending(state, action: PayloadAction<{ key: string }>) {
-      state.vacancyFullMap[action.payload.key] = vacancyLoader.pending();
+      state.VacancyFullListTypeMap[
+        action.payload.key
+      ] = vacancyLoader.pending();
     },
     vacancyRequestFulfilled(
       state,
-      action: PayloadAction<MapEntry<string, VacancyFull>>
+      action: PayloadAction<MapEntry<string, VacancyFullListType>>
     ) {
-      state.vacancyFullMap[action.payload.key] = vacancyLoader.fulfill(
+      state.VacancyFullListTypeMap[action.payload.key] = vacancyLoader.fulfill(
         action.payload.value
       );
     },
     vacancyRequestRejected(state, action: PayloadAction<{ key: string }>) {
-      state.vacancyFullMap[action.payload.key] = vacancyLoader.reject();
+      state.VacancyFullListTypeMap[action.payload.key] = vacancyLoader.reject();
+    },
+    setTotalVacanciesValue(state, action: PayloadAction<{ total: number }>) {
+      state.totalVacanciesValue = action.payload.total;
     },
   },
 });
@@ -67,12 +80,13 @@ export const {
   vacancyRequestPending,
   vacancyRequestFulfilled,
   vacancyRequestRejected,
+  setTotalVacanciesValue,
 } = actions;
 export default reducer;
 
 export function getVacanciesListThunk(options?: {
   shouldInvalidate?: boolean;
-}): AppThunk<Promise<Array<VacancyShort>>> {
+}): AppThunk<Promise<Array<VacancyShortListType>>> {
   return async (dispatch, getState) => {
     const vacanciesListResource = selectVacanciesListResource(getState());
     const shouldGetDataFromCache = shouldGetResourceDataFromCache(
@@ -85,6 +99,11 @@ export function getVacanciesListThunk(options?: {
     dispatch(vacanciesListRequestPending());
     try {
       const response = await getCareersVacanciesList();
+      //FIXME: fix for get meta & data
+      // dispatch(vacanciesListRequestFulfilled(response.data.data));
+      // dispatch(setTotalVacanciesValue({ total: response.meta.total }));
+      // return response.data.data;
+
       dispatch(vacanciesListRequestFulfilled(response.data));
       return response.data;
     } catch (error) {
@@ -99,7 +118,7 @@ export function getVacancyByAliasThunk(
   options?: {
     shouldInvalidate?: boolean;
   }
-): AppThunk<Promise<Nullable<VacancyFull>>> {
+): AppThunk<Promise<Nullable<VacancyFullListType>>> {
   return async (dispatch, getState) => {
     try {
       const post = selectVacancyByAliasResource(getState(), alias);
@@ -124,17 +143,23 @@ export function getVacancyByAliasThunk(
 
 export function selectVacanciesListResource(
   state: AppState
-): ResourceType<Array<VacancyShort>> {
-  return state.tager.vacancies.vacancyShortList;
+): ResourceType<Array<VacancyShortListType>> {
+  return state.tager.vacancies.VacancyShortListTypeList;
 }
 
-export function selectVacanciesList(state: AppState): Array<VacancyShort> {
+export function selectVacanciesList(
+  state: AppState
+): Array<VacancyShortListType> {
   return selectVacanciesListResource(state).data;
 }
 
 export function selectVacancyByAliasResource(
   state: AppState,
   alias: string
-): ResourceType<Nullable<VacancyFull>> | undefined {
-  return state.tager.vacancies.vacancyFullMap[alias];
+): ResourceType<Nullable<VacancyFullListType>> | undefined {
+  return state.tager.vacancies.VacancyFullListTypeMap[alias];
+}
+
+export function selectVacanciesTotalValue(state: AppState): number {
+  return state.tager.vacancies.totalVacanciesValue;
 }

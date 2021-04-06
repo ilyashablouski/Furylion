@@ -39,7 +39,7 @@ function TechRight({ data }: Props) {
                 />
               </Logo>
             ))
-          : []}
+          : null}
       </Logos>
 
       <AdditionalBlock>

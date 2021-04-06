@@ -131,7 +131,7 @@ export const StyledButton = styled.button<{
   variant?: ButtonVariant;
   variants?: Array<ButtonVariant>;
 }>`
-  padding: 25px;
+  padding: 23px 25px;
   display: inline-block;
   line-height: 100%;
   font-size: 24px;

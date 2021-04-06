@@ -9,6 +9,7 @@ import PlayableAds from '@/modules/PlayableAds';
 import Vacancy from '@/modules/Vacancy';
 import Contacts from '@/modules/Contacts/Contacts';
 import { CustomApp_PageContext } from '@/typings/hocs';
+import { getVacanciesListThunk } from '@/store/reducers/pages/vacancies';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
@@ -23,6 +24,10 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   {
     template: 'vacancies',
     component: Vacancies,
+    //TODO: Delete if no need
+    // async getInitialProps({ store }: CustomApp_PageContext) {
+    //   await store.dispatch(getVacanciesListThunk());
+    // },
   },
   {
     template: 'services',
@@ -31,10 +36,6 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   {
     template: 'playable-ads',
     component: PlayableAds,
-  },
-  {
-    template: 'vacancy',
-    component: Vacancy,
   },
   {
     template: 'contacts',

@@ -2,17 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ContentContainer from '@/components/ContentContainer';
+import { useTypedSelector } from '@/store/store';
+import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 
 import JobCard from './components/JobCard';
 
 function JobsSection() {
+  const vacanciesList = useTypedSelector(selectVacanciesList);
   return (
     <Wrapper>
       {/*//TODO:Tabs*/}
       {/*<ContentContainer></ContentContainer>*/}
       <TabContent>
         <ContentContainer>
-          <JobsCards>{/*<JobCard />*/}</JobsCards>
+          <JobsCards>
+            {vacanciesList
+              ? vacanciesList.map((vacancyItem) => (
+                  <Card>
+                    <JobCard
+                      key={vacancyItem.id}
+                      title={vacancyItem.title}
+                      image={vacancyItem.image}
+                      urlAlias={vacancyItem.urlAlias}
+                      excerpt={vacancyItem.excerpt}
+                      typeOfWork={vacancyItem.typeOfWork}
+                      level={vacancyItem.level}
+                    />
+                  </Card>
+                ))
+              : null}
+          </JobsCards>
         </ContentContainer>
       </TabContent>
     </Wrapper>
@@ -33,6 +52,13 @@ const JobsCards = styled.div`
   margin: -50px -10px 0;
   display: flex;
   flex-wrap: wrap;
+`;
+
+const Card = styled.div`
+  margin-top: 50px;
+  padding: 0 10px;
+  flex: 0 0 25%;
+  max-width: 25%;
 `;
 
 export default JobsSection;

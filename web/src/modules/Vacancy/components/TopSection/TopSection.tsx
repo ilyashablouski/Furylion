@@ -7,8 +7,8 @@ import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
 
 function TopSection() {
-  const vacancyFullData = useCurrentVacancy();
-  const vacancyData = vacancyFullData?.data;
+  const VacancyFullListTypeData = useCurrentVacancy();
+  const vacancyData = VacancyFullListTypeData?.data;
   const title = vacancyData?.title ?? '';
 
   return (

@@ -46,7 +46,7 @@ function PlatformLeft({
                 />
               </Logo>
             ))
-          : []}
+          : null}
       </Logos>
       <AdditionalBlock>
         <AdditionalTitle>Additional:</AdditionalTitle>

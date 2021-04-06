@@ -12,16 +12,16 @@ import { media } from '@/utils/mixin';
 import VacancyCard from './components/VacancyCard';
 
 function JobSection() {
-  const vacancyFullData = useCurrentVacancy();
-  const vacancyData = vacancyFullData?.data;
-  const image = vacancyFullData?.data?.image;
-  const tags = vacancyFullData?.data?.tags;
+  const VacancyFullListTypeData = useCurrentVacancy();
+  const vacancyData = VacancyFullListTypeData?.data;
+  const image = VacancyFullListTypeData?.data?.image;
+  const tags = VacancyFullListTypeData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
-  const introFirstText = vacancyFullData?.data?.introduction;
-  const introSecondText = vacancyFullData?.data?.introductionSecond;
-  const introThirdText = vacancyFullData?.data?.introductionThird;
-  const responsibilitiesList = vacancyFullData?.data?.responsibilities;
-  const requirementsList = vacancyFullData?.data?.requirements;
+  const introFirstText = VacancyFullListTypeData?.data?.introduction;
+  const introSecondText = VacancyFullListTypeData?.data?.introductionSecond;
+  const introThirdText = VacancyFullListTypeData?.data?.introductionThird;
+  const responsibilitiesList = VacancyFullListTypeData?.data?.responsibilities;
+  const requirementsList = VacancyFullListTypeData?.data?.requirements;
   return (
     <Wrapper>
       <ContentContainer>
