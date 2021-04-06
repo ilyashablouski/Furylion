@@ -20,6 +20,8 @@ class VacancyResource extends JsonResource
             'location' => $model->location->name,
             'image' => $model->image ? $model->image->getFullJson() : null,
             'typeOfWork' => $model->type,
+            'tags' => $model->tags,
+            'level' => $model->level,
         ];
     }
 }
