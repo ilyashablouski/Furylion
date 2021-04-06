@@ -11,19 +11,12 @@ function VacancyCard({ image, level, typeOfWork }: VacancyCardType) {
   return (
     <Container>
       <ImageContainer>
-        {/*<Picture*/}
-        {/*  mobileSmall={{*/}
-        {/*    src: image?.url,*/}
-        {/*    src2x: image?.url_2x,*/}
-        {/*    webp: image?.url_webp,*/}
-        {/*    webp2x: image?.url_webp_2x,*/}
-        {/*  }}*/}
-        {/*  className={'vacancy-image'}*/}
-        {/*/>*/}
-
         <Picture
           mobileSmall={{
-            src: image ?? '',
+            src: image?.url,
+            src2x: image?.url_2x,
+            webp: image?.url_webp,
+            webp2x: image?.url_webp_2x,
           }}
           className={'vacancy-image'}
         />

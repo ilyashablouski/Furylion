@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import testBg from '@/assets/images/test.jpg';
+// import testBg from '@/assets/images/test.jpg';
 import checkMarkUrl from '@/assets/svg/vacancy/check-mark.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Tag from '@/components/Tag';
@@ -14,13 +14,12 @@ import VacancyCard from './components/VacancyCard';
 function JobSection() {
   const vacancyFullData = useCurrentVacancy();
   const vacancyData = vacancyFullData?.data;
+  const image = vacancyFullData?.data?.image;
   const tags = vacancyFullData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
   const introFirstText = vacancyFullData?.data?.introduction;
   const introSecondText = vacancyFullData?.data?.introductionSecond;
   const introThirdText = vacancyFullData?.data?.introductionThird;
-  //TODO:Delete from admin panel if no need
-  // const mainInfo = vacancyFullData?.data?.body;
   const responsibilitiesList = vacancyFullData?.data?.responsibilities;
   const requirementsList = vacancyFullData?.data?.requirements;
   return (
@@ -29,7 +28,7 @@ function JobSection() {
         <Inner>
           <Left>
             <VacancyCard
-              image={testBg}
+              image={image}
               level={vacancyData?.level}
               typeOfWork={vacancyData?.typeOfWork}
             />

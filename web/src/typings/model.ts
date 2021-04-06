@@ -173,11 +173,11 @@ export interface CareersVacancyType {
   data: VacancyFull;
 }
 
+//TODO: refactoring types if need
 type testImage = string;
 
 export interface VacancyCardType {
-  // FIXME:Change image type on ImageType if test type not need
-  image?: testImage;
+  image?: ImageType;
   typeOfWork?: StringFieldType;
   level?: StringFieldType;
 }

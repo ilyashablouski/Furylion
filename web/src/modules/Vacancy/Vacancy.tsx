@@ -5,7 +5,7 @@ import useSettingItem from '@/hooks/useSettingItem';
 
 import TopSection from './components/TopSection';
 import GetSection from './components/GetSection';
-import JobSection from './components/MainSection/JobSection';
+import JobSection from './components/JobSection';
 
 function Vacancy() {
   const formVacancyTitle = useSettingItem('FORM_VACANCIES_TITLE');
