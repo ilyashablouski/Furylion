@@ -12,9 +12,7 @@ function JobsSection() {
       {/*<ContentContainer></ContentContainer>*/}
       <TabContent>
         <ContentContainer>
-          <JobsCards>
-            <JobCard />
-          </JobsCards>
+          <JobsCards>{/*<JobCard />*/}</JobsCards>
         </ContentContainer>
       </TabContent>
     </Wrapper>

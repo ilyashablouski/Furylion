@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as ClockIcon } from '@/assets/svg/vacancy/clock.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { VacancyCardType } from '@/typings/model';
+import { media } from '@/utils/mixin';
 
 function VacancyCard({ image, level, typeOfWork }: VacancyCardType) {
   return (
@@ -45,6 +46,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 293px;
+
+  ${media.mobile(css`
+    width: 320px;
+  `)}
 `;
 
 const ImageContainer = styled.div`
@@ -54,6 +59,11 @@ const ImageContainer = styled.div`
   background: ${colors.white};
   border: 15px solid ${colors.white};
   filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.25));
+
+  ${media.mobile(css`
+    width: 320px;
+    height: 458px;
+  `)}
 
   .vacancy-image {
     display: block;

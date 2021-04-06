@@ -48,20 +48,20 @@ function JobSection() {
             </IntroBlock>
           </Right>
           <Lists>
-            <LeftList>
+            <List>
               <ListTitle>Your responsibilities:</ListTitle>
               <ListContent
                 dangerouslySetInnerHTML={{
                   __html: responsibilitiesList ?? '',
                 }}
               />
-            </LeftList>
-            <RightList>
+            </List>
+            <List>
               <ListTitle>Requirements:</ListTitle>
               <ListContent
                 dangerouslySetInnerHTML={{ __html: requirementsList ?? '' }}
               />
-            </RightList>
+            </List>
           </Lists>
         </Inner>
       </ContentContainer>
@@ -72,8 +72,14 @@ function JobSection() {
 const Wrapper = styled.section`
   padding-top: 70px;
   padding-bottom: 100px;
+
+  ${media.mobile(css`
+    padding-top: 33px;
+  `)}
 `;
+
 const Inner = styled.div``;
+
 const Left = styled.div`
   float: left;
   margin-right: 40px;
@@ -81,9 +87,20 @@ const Left = styled.div`
   ${media.tabletSmallOnly(css`
     margin-right: 20px;
   `)}
+
+  ${media.mobile(css`
+    float: none;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+  `)}
 `;
 const Right = styled.div`
   color: ${colors.white};
+
+  ${media.mobile(css`
+    margin-top: 25px;
+  `)}
 `;
 const Tags = styled.div`
   display: flex;
@@ -153,35 +170,52 @@ const Lists = styled.div`
   display: flex;
 
   ${media.tabletSmall(css`
+    margin-top: 0;
     display: block;
   `)}
 `;
 
-const LeftList = styled.div`
+// const LeftList = styled.div`
+//   flex: 1 1 50%;
+//   max-width: 50%;
+//
+//   ${media.tabletSmall(css`
+//     margin-top: 58px;
+//   `)}
+//
+//   ${media.tabletSmallOnly(css`
+//     margin-left: auto;
+//     max-width: 376px;
+//   `)}
+// `;
+const List = styled.div`
   flex: 1 1 50%;
   max-width: 50%;
+  &:first-child {
+    ${media.tabletSmallOnly(css`
+      margin-left: auto;
+      max-width: 376px;
+    `)}
+  }
 
-  ${media.tabletSmall(css`
-    margin-top: 58px;
-  `)}
+  &:not(:first-child) {
+    margin-left: 100px;
+    ${media.tablet(css`
+      margin-left: 25px;
+    `)}
 
-  ${media.tabletSmallOnly(css`
-    margin-left: auto;
-    max-width: 376px;
-  `)}
-`;
-const RightList = styled.div`
-  margin-left: 100px;
-  flex: 1 1 50%;
-  max-width: 50%;
-
-  ${media.tablet(css`
-    margin-left: 25px;
-  `)}
+    ${media.tabletSmall(css`
+      margin-left: 0;
+    `)}
+  }
 
   ${media.tabletSmall(css`
     margin-top: 58px;
     margin-left: 0;
+  `)}
+
+  ${media.mobile(css`
+    max-width: none;
   `)}
 `;
 
@@ -195,24 +229,48 @@ const ListTitle = styled.span`
   ${media.tablet(css`
     font-size: 26px;
   `)}
+
+  ${media.tabletSmallOnly(css`
+    font-size: 32px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 24px;
+  `)}
 `;
 
 const ListContent = styled.div`
-  margin-top: 70px;
+  margin-top: 44px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 56px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 30px;
+    font-size: 12px;
+  `)}
 
   ul {
-    margin-top: -25px;
   }
 
   li {
     position: relative;
-    margin-top: 25px;
     padding-left: 52px;
     min-height: 44px;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 160%;
     color: ${colors.white};
+
+    &:not(:first-child) {
+      margin-top: 25px;
+
+      ${media.mobile(css`
+        margin-top: 20px;
+      `)}
+    }
+
     &:before {
       content: url(${checkMarkUrl});
       position: absolute;
