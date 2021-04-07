@@ -10,4 +10,6 @@ final class FileScenario extends Enum
     const Content = 'content';
 
     const Feedback = 'Feedback';
+
+    const HeadImage = 'head-image';
 }
