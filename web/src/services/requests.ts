@@ -59,3 +59,12 @@ export function getCareersVacanciesList(): Promise<
 > {
   return request.get({ path: `/vacancies` });
 }
+
+//TODO: Refactor types
+export function getVacancyCategories(
+  value: number
+): Promise<ResponseBody<Array<any>>> {
+  return request.get({
+    path: `/vacancies/?filter[location]=${value}`,
+  });
+}

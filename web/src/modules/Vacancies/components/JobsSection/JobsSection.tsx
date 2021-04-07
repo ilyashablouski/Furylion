@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import ContentContainer from '@/components/ContentContainer';
@@ -10,6 +10,15 @@ import JobCard from './components/JobCard';
 
 function JobsSection() {
   const vacanciesList = useTypedSelector(selectVacanciesList);
+
+  //TODO:edit for request
+  // useEffect(() => {
+  //   if (isActiveCity === -1) return;
+  //
+  //   getVacancyCategories(isActiveCity).then((response) => {
+  //     scrollTo(componentRef.current);
+  //   });
+
   return (
     <Wrapper>
       <ContentContainer>
