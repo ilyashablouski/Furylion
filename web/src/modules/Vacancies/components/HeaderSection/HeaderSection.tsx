@@ -75,8 +75,8 @@ const Title = styled.span`
 
 const ImageContainer = styled.div`
   position: absolute;
-  bottom: 13.7%;
-  right: 7.7%;
+  bottom: 7%;
+  right: 3%;
 `;
 
 export default HeaderSection;

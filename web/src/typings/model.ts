@@ -173,7 +173,7 @@ export interface CareersVacancyType {
   data: VacancyFullListType;
 }
 
-//TODO: refactoring types if need
+//TODO: Delete types if not need
 type testImageType = string;
 
 export interface VacancyCardType {
