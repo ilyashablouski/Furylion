@@ -11,16 +11,16 @@ function JobsSection() {
   const vacanciesList = useTypedSelector(selectVacanciesList);
   return (
     <Wrapper>
-      {/*//TODO:Tabs*/}
-      {/*<ContentContainer></ContentContainer>*/}
+      <ContentContainer>
+        <JobTabs></JobTabs>
+      </ContentContainer>
       <TabContent>
         <ContentContainer>
           <JobsCards>
             {vacanciesList
               ? vacanciesList.map((vacancyItem) => (
-                  <Card>
+                  <Card key={vacancyItem.id}>
                     <JobCard
-                      key={vacancyItem.id}
                       title={vacancyItem.title}
                       image={vacancyItem.image}
                       urlAlias={vacancyItem.urlAlias}
@@ -41,6 +41,8 @@ function JobsSection() {
 const Wrapper = styled.section`
   margin-top: 70px;
 `;
+
+const JobTabs = styled.div``;
 
 const TabContent = styled.div`
   padding-top: 50px;

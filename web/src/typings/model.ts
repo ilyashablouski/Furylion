@@ -187,3 +187,16 @@ export interface JobCardType extends VacancyCardType {
   excerpt: StringFieldType;
   urlAlias: StringFieldType;
 }
+
+export interface TeamLifeSectionType extends PageFullType {
+  templateFields: {
+    headImage: ImageType;
+    teamLifeTitle: StringFieldType;
+    teamLifeDescription: StringFieldType;
+    teamLifeButton: {
+      label: StringFieldType;
+      link: StringFieldType;
+      isNewTab: boolean;
+    };
+  };
+}

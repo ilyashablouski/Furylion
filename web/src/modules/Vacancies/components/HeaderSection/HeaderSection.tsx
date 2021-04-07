@@ -5,16 +5,26 @@ import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
+import { TeamLifeSectionType } from '@/typings/model';
+import Picture from '@/components/Picture';
 
 function HeaderSection() {
-  const page = useCurrentPage();
-
+  const page = useCurrentPage<TeamLifeSectionType>();
+  const pageFields = page?.templateFields;
+  const image = pageFields?.headImage;
   return (
     <Wrapper>
       <Inner>
         <Title data-text="VACANCIES">Vacancies</Title>
         <ImageContainer>
-          <PlainPicture />
+          <PlainPicture
+            mobileSmall={{
+              src: image?.url,
+              src2x: image?.url_2x,
+              webp: image?.url_webp,
+              webp2x: image?.url_webp_2x,
+            }}
+          />
         </ImageContainer>
       </Inner>
     </Wrapper>
