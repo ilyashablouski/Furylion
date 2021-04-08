@@ -8,7 +8,11 @@ import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 import { colors } from '@/constants/theme';
-import { LocationListType, VacancyShortListType } from '@/typings/model';
+import {
+  ImageType,
+  LocationListType,
+  VacancyShortListType,
+} from '@/typings/model';
 import useSettingItem from '@/hooks/useSettingItem';
 
 import JobCard from './components/JobCard';
@@ -71,6 +75,8 @@ function JobsSection() {
     isCurrentLocation
   );
 
+  console.log(openedVacancyImage);
+
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
   return (
@@ -125,7 +131,7 @@ function JobsSection() {
             <Card>
               <HeroJobCard
                 title={openedVacancyTitle}
-                image={openedVacancyImage}
+                image={openedVacancyImage as ImageType}
                 excerpt={openedVacancyDescription}
                 className="hero-card"
                 heroCard={true}

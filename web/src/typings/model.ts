@@ -180,7 +180,7 @@ export interface CareersVacancyType {
 type testImageType = string;
 
 export interface VacancyCardType {
-  image?: ImageType;
+  image: ImageType;
   typeOfWork?: StringFieldType;
   level?: StringFieldType;
 }
@@ -188,7 +188,7 @@ export interface VacancyCardType {
 export interface JobCardType extends VacancyCardType {
   title: StringFieldType;
   excerpt: StringFieldType;
-  urlAlias: StringFieldType;
+  urlAlias?: StringFieldType;
   className?: string;
   heroCard?: boolean;
 }
