@@ -32,18 +32,21 @@ function JobCard({
         />
       </ImageContainer>
       <ExcerptText>{excerpt}</ExcerptText>
-      <Labels>
-        <LabelLeft>
-          <LabelIcon>
-            <ClockIcon />
-          </LabelIcon>
-          {typeOfWork}
-        </LabelLeft>
-        <LabelRight>{level}</LabelRight>
-      </Labels>
 
       <Bottom>
-        <CardButton variants={['dark', 'w100']}>Apply</CardButton>
+        <Labels>
+          <LabelLeft>
+            <LabelIcon>
+              <ClockIcon />
+            </LabelIcon>
+            {typeOfWork}
+          </LabelLeft>
+          <LabelRight>{level}</LabelRight>
+        </Labels>
+
+        <ButtonContainer>
+          <CardButton variants={['dark', 'w100']}>Apply</CardButton>
+        </ButtonContainer>
       </Bottom>
     </Container>
   );
@@ -92,6 +95,10 @@ const LabelRight = styled.span`
 
 const CardButton = styled(Button)`
   font-weight: 700;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 25px;
 `;
 
 const Container = styled.div`
@@ -146,7 +153,7 @@ const LabelIcon = styled.i`
 `;
 
 const Bottom = styled.div`
-  margin-top: 25px;
+  margin-top: auto;
 `;
 
 export default JobCard;

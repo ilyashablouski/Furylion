@@ -42,10 +42,11 @@ const Title = styled.span`
   font-size: 180.531px;
   line-height: 100%;
   text-transform: uppercase;
+  word-break: break-word;
   color: ${colors.white};
 
   ${media.tablet(css`
-    font-size: 16vw;
+    font-size: 14vw;
   `)}
 `;
 
