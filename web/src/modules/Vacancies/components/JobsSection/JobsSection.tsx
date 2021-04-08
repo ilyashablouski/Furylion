@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
@@ -10,6 +11,13 @@ import JobCard from './components/JobCard';
 
 function JobsSection() {
   const vacanciesList = useTypedSelector(selectVacanciesList);
+  const vacanciesCityList = [
+    { id: 1, location: 'Minsk', numberOfVacancies: 1 },
+    { id: 2, location: 'Novopolotsk', numberOfVacancies: 2 },
+    { id: 3, location: 'Saint Petersburg', numberOfVacancies: 3 },
+  ];
+
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
   //TODO:edit for request
   // useEffect(() => {
@@ -23,26 +31,28 @@ function JobsSection() {
     <Wrapper>
       <ContentContainer>
         <Tabs>
-          <Tab active>
-            <TabText>
-              Minsk <TabLabel>1</TabLabel>
-            </TabText>
-          </Tab>
-          <Tab>
-            <TabText>
-              Minsk <TabLabel>1</TabLabel>
-            </TabText>
-          </Tab>
-          <Tab>
-            <TabText>
-              Minsk <TabLabel>1</TabLabel>
-            </TabText>
-          </Tab>
-          <Tab>
-            <TabText>
-              Minsk <TabLabel>1</TabLabel>
-            </TabText>
-          </Tab>
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={0}
+            speed={500}
+            onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+          >
+            {vacanciesCityList
+              ? vacanciesCityList.map((categoryItem, index) => {
+                  // if (getCountVacancies(categoryItem.vacancies) === 0) return false;
+                  return (
+                    <SwiperSlide key={categoryItem.id}>
+                      <Tab>
+                        <TabText>
+                          {categoryItem.location}
+                          <TabLabel>{categoryItem.numberOfVacancies}</TabLabel>
+                        </TabText>
+                      </Tab>
+                    </SwiperSlide>
+                  );
+                })
+              : null}
+          </Swiper>
         </Tabs>
       </ContentContainer>
       <TabContent>
@@ -77,6 +87,14 @@ const Tabs = styled.div`
   position: relative;
   z-index: 1;
   display: flex;
+
+  .swiper-container {
+    margin: 0;
+  }
+
+  .swiper-slide {
+    width: auto;
+  }
 `;
 
 const TabLabel = styled.sup`
