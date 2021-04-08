@@ -18,15 +18,6 @@ function JobsSection() {
   ];
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-
-  //TODO:edit for request
-  // useEffect(() => {
-  //   if (isActiveCity === -1) return;
-  //
-  //   getVacancyCategories(isActiveCity).then((response) => {
-  //     scrollTo(componentRef.current);
-  //   });
-
   return (
     <Wrapper>
       <ContentContainer>
