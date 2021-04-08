@@ -6,18 +6,59 @@ import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 import { colors } from '@/constants/theme';
+import { LocationListType, VacancyShortListType } from '@/typings/model';
 
 import JobCard from './components/JobCard';
 
+function getLocationList(vacanciesList: Array<VacancyShortListType>) {
+  const locationInfo: {
+    [key: string]: {
+      name: string;
+      number: number;
+    };
+  } = {};
+  vacanciesList.forEach((item) => {
+    const location = item.location;
+    if (location) {
+      if (locationInfo[location]) {
+        locationInfo[location] = {
+          ...locationInfo[location],
+          number: locationInfo[location].number + 1,
+        };
+      } else {
+        locationInfo[location] = {
+          name: location,
+          number: 1,
+        };
+      }
+    }
+  });
+
+  const newArr = Object.keys(locationInfo).map((item, index) => ({
+    id: index + 1,
+    location: item,
+    number: locationInfo[item].number,
+  }));
+
+  return newArr as LocationListType;
+}
+
+function getVacanciesByLocation(
+  vacanciesList: Array<VacancyShortListType>,
+  location: string
+) {
+  return vacanciesList.filter((vacancy) => vacancy.location === location);
+}
+
 function JobsSection() {
   const vacanciesList = useTypedSelector(selectVacanciesList);
-  const vacanciesCityList = [
-    { id: 1, location: 'Minsk', numberOfVacancies: 1 },
-    { id: 2, location: 'Novopolotsk', numberOfVacancies: 2 },
-    { id: 3, location: 'Saint Petersburg', numberOfVacancies: 3 },
-  ];
+  const vacanciesCityList = getLocationList(vacanciesList);
+  const [state, setState] = useState<string>(vacanciesCityList[0].location);
+
+  const renderVacancyList = getVacanciesByLocation(vacanciesList, state);
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
+
   return (
     <Wrapper>
       <ContentContainer>
@@ -30,13 +71,15 @@ function JobsSection() {
           >
             {vacanciesCityList
               ? vacanciesCityList.map((categoryItem, index) => {
-                  // if (getCountVacancies(categoryItem.vacancies) === 0) return false;
                   return (
                     <SwiperSlide key={categoryItem.id}>
-                      <Tab>
+                      <Tab
+                        active={state === categoryItem.location}
+                        onClick={() => setState(categoryItem.location ?? '')}
+                      >
                         <TabText>
                           {categoryItem.location}
-                          <TabLabel>{categoryItem.numberOfVacancies}</TabLabel>
+                          <TabLabel>{categoryItem.number}</TabLabel>
                         </TabText>
                       </Tab>
                     </SwiperSlide>
@@ -49,8 +92,8 @@ function JobsSection() {
       <TabContent>
         <ContentContainer>
           <JobsCards>
-            {vacanciesList
-              ? vacanciesList.map((vacancyItem) => (
+            {renderVacancyList
+              ? renderVacancyList.map((vacancyItem) => (
                   <Card key={vacancyItem.id}>
                     <JobCard
                       title={vacancyItem.title}

@@ -33,11 +33,12 @@ function HeaderSection() {
 
 const Wrapper = styled.section`
   padding-top: 221px;
-  position: relative;
+  max-width: 1920px;
   text-align: center;
 `;
 
 const Inner = styled.div`
+  position: relative;
   display: inline-block;
 `;
 const Title = styled.span`
@@ -75,7 +76,7 @@ const Title = styled.span`
 
 const ImageContainer = styled.div`
   position: absolute;
-  bottom: 7%;
+  bottom: 13.7%;
   right: 3%;
 `;
 

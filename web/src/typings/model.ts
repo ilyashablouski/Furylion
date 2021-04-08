@@ -4,7 +4,7 @@ import { PageFullType, SettingsItemString } from '@tager/web-modules';
 import { Nullable } from '@tager/web-core';
 import { SettingsItemCommon } from '@tager/web-modules/src/typings/models';
 
-import { StringFieldType } from '@/typings/common';
+import { ImageType, StringFieldType } from '@/typings/common';
 
 export interface ExamplePageType extends PageFullType {
   path: '/example';
@@ -32,13 +32,6 @@ export type SettingsItemType =
   | SettingsItemString<'VKONTAKTE_URL'>
   | SettingsItemString<'APPSTORE_URL'>
   | SettingsItemString<'GOOGLEPLAY_URL'>;
-
-export type ImageType = Nullable<{
-  url: Nullable<string>;
-  url_2x: Nullable<string>;
-  url_webp: Nullable<string>;
-  url_webp_2x: Nullable<string>;
-}>;
 
 export type FileType = {
   id: number;
@@ -200,3 +193,9 @@ export interface TeamLifeSectionType extends PageFullType {
     };
   };
 }
+
+export type LocationListType = Array<{
+  id: number;
+  location: string;
+  number: Nullable<number>;
+}>;
