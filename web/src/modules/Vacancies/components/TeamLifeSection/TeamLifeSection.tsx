@@ -56,7 +56,7 @@ function TeamLifeSection() {
 }
 
 const Wrapper = styled.section`
-  padding-top: 220px;
+  padding-top: 215px;
   padding-bottom: 78px;
   position: relative;
   background: ${colors.white};
@@ -89,12 +89,13 @@ const Title = styled.span`
 `;
 
 const InstagramBlock = styled.div`
+  margin-top: 98px;
   position: relative;
 `;
 
 const InstagramBlockTitle = styled.span`
-  margin-top: 47px;
   display: block;
+  max-width: 1242px;
   text-align: center;
   font-weight: 900;
   font-size: 64px;
@@ -105,6 +106,9 @@ const InstagramBlockTitle = styled.span`
 
 const InstagramBlockText = styled.div`
   margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 972px;
   font-weight: normal;
   font-size: 20px;
   line-height: 160%;
@@ -123,18 +127,19 @@ const BackgroundPicture = styled(Picture)`
   img {
     position: relative;
     margin: 0 auto;
-    width: 108.2%;
-    left: -57px;
+    width: 144%;
+    left: -95px;
     max-width: 1920px;
   }
 `;
 
 const StyledButton = styled.div`
   margin: 45px auto 0;
-  max-width: 388px;
+  max-width: 369px;
 `;
 
 const IconWrapper = styled.i`
+  margin-top: -2px;
   margin-left: 12px;
   display: inline-flex;
 `;
