@@ -55,21 +55,22 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${colors.white};
-  ${media.desktop1366(css`
+
+  @media (max-width: 1365px) {
     display: block;
-  `)}
+  }
 `;
 
 const LogoWrapper = styled.div`
   margin-top: 17px;
   margin-right: 54px;
 
-  ${media.desktop1366(css`
+  @media (max-width: 1365px) {
     margin-top: 0;
     margin-right: 0;
     flex: 1 1 100%;
     max-width: 100%;
-  `)}
+  }
 
   svg {
     ${media.tabletSmallOnly(css`
@@ -93,10 +94,10 @@ const Inner = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  ${media.desktop1366(css`
+  @media (max-width: 1365px) {
     width: auto;
     margin-top: 30px;
-  `)}
+  }
 
   ${media.tablet(css`
     margin-left: -10px;

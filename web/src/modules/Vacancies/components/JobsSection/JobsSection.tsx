@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Nullable } from '@tager/web-core';
+
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 import { colors } from '@/constants/theme';
 import { LocationListType, VacancyShortListType } from '@/typings/model';
+import useSettingItem from '@/hooks/useSettingItem';
 
 import JobCard from './components/JobCard';
 
@@ -52,8 +55,13 @@ function getVacanciesByLocation(
 
 //TODO:Refactor naming of states and types
 function JobsSection() {
+  const openedVacancyTitle = useSettingItem('OPEN_VACANCY_TITLE');
+  const openedVacancyImage = useSettingItem('OPEN_VACANCY_IMAGE');
+  const openedVacancyDescription = useSettingItem('OPEN_VACANCY_DESCRIPTION');
+
   const vacanciesList = useTypedSelector(selectVacanciesList);
   const vacanciesCityList = getLocationList(vacanciesList);
+
   const [isCurrentLocation, setCurrentLocation] = useState<string>(
     vacanciesCityList[0].location
   );
@@ -114,6 +122,15 @@ function JobsSection() {
                   </Card>
                 ))
               : null}
+            <Card>
+              <HeroJobCard
+                title={openedVacancyTitle}
+                image={openedVacancyImage}
+                excerpt={openedVacancyDescription}
+                className="hero-card"
+                heroCard={true}
+              />
+            </Card>
           </JobsCards>
         </ContentContainer>
       </TabContent>
@@ -197,5 +214,7 @@ const Card = styled.div`
   flex: 0 0 25%;
   max-width: 25%;
 `;
+
+const HeroJobCard = styled(JobCard)``;
 
 export default JobsSection;

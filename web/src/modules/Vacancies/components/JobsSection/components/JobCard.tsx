@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as ClockIcon } from '@/assets/svg/vacancy/clock.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { JobCardType } from '@/typings/model';
 import Link from '@/components/Link';
-import Button, { ButtonLink } from '@/components/Button';
+import Button from '@/components/Button';
 
 function JobCard({
   title,
@@ -15,12 +15,14 @@ function JobCard({
   excerpt,
   level,
   typeOfWork,
+  heroCard = false,
+  className,
 }: JobCardType) {
   return (
-    <Container>
+    <Container className={className}>
       <JobLink to={`careers/${urlAlias}`} />
       <Title>{title}</Title>
-      <ImageContainer>
+      <ImageContainer heroCard={heroCard}>
         <Picture
           mobileSmall={{
             src: image?.url,
@@ -28,19 +30,22 @@ function JobCard({
             webp: image?.url_webp,
             webp2x: image?.url_webp_2x,
           }}
-          className={'vacancy-image'}
+          className={'vacancy-image-block'}
         />
       </ImageContainer>
       <ExcerptText>{excerpt}</ExcerptText>
 
       <Bottom>
         <Labels>
-          <LabelLeft>
-            <LabelIcon>
-              <ClockIcon />
-            </LabelIcon>
-            {typeOfWork}
-          </LabelLeft>
+          {!heroCard && (
+            <LabelLeft>
+              <LabelIcon>
+                <ClockIcon />
+              </LabelIcon>
+              {typeOfWork}
+            </LabelLeft>
+          )}
+
           <LabelRight>{level}</LabelRight>
         </Labels>
 
@@ -52,17 +57,35 @@ function JobCard({
   );
 }
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ heroCard: boolean }>`
   position: relative;
   margin-top: 19px;
   min-height: 419px;
   max-height: 419px;
-  background: ${colors.white};
-  border: 15px solid ${colors.dark};
   filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.25));
-  transition: 150ms all ease-in-out;
 
-  .vacancy-image {
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: 150ms all ease-in-out;
+    ${(props) =>
+      props.heroCard
+        ? css`
+            border: 15px dashed ${colors.dark};
+          `
+        : css`
+            border: 15px solid ${colors.dark};
+          `};
+  }
+
+  .vacancy-image-block {
     display: block;
     width: 100%;
     height: 100%;
@@ -71,6 +94,15 @@ const ImageContainer = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      ${(props) =>
+        props.heroCard
+          ? css`
+              background: transparent;
+            `
+          : css`
+              background: ${colors.white};
+            `};
     }
   }
 `;
@@ -109,7 +141,17 @@ const Container = styled.div`
 
   &:hover {
     ${ImageContainer} {
-      border: 15px solid ${colors.white};
+      &:before {
+        border: 15px solid ${colors.white};
+      }
+    }
+
+    &.hero-card {
+      ${ImageContainer} {
+        &:before {
+          border: 15px dashed ${colors.white};
+        }
+      }
     }
 
     ${Labels} {

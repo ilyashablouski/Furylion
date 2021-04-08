@@ -31,7 +31,10 @@ export type SettingsItemType =
   | SettingsItemString<'INSTAGRAM_URL'>
   | SettingsItemString<'VKONTAKTE_URL'>
   | SettingsItemString<'APPSTORE_URL'>
-  | SettingsItemString<'GOOGLEPLAY_URL'>;
+  | SettingsItemString<'GOOGLEPLAY_URL'>
+  | SettingsItemString<'OPEN_VACANCY_TITLE'>
+  | SettingsItemString<'OPEN_VACANCY_IMAGE'>
+  | SettingsItemString<'OPEN_VACANCY_DESCRIPTION'>;
 
 export type ImageType = Nullable<{
   url: Nullable<string>;
@@ -186,6 +189,8 @@ export interface JobCardType extends VacancyCardType {
   title: StringFieldType;
   excerpt: StringFieldType;
   urlAlias: StringFieldType;
+  className?: string;
+  heroCard?: boolean;
 }
 
 export interface TeamLifeSectionType extends PageFullType {

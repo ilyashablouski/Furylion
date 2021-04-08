@@ -119,8 +119,8 @@ const InstagramBlockText = styled.div`
 const BackgroundPicture = styled(Picture)`
   &.team-life-background {
     position: absolute;
-    left: auto;
-    top: auto;
+    left: 0;
+    right: 0;
     display: block;
   }
 
@@ -129,7 +129,10 @@ const BackgroundPicture = styled(Picture)`
     margin: 0 auto;
     width: 144%;
     left: -95px;
-    max-width: 1920px;
+
+    ${media.desktop1366(css`
+      max-width: 1920px;
+    `)}
   }
 `;
 
