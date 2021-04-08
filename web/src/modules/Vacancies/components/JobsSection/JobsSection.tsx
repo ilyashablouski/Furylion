@@ -50,12 +50,18 @@ function getVacanciesByLocation(
   return vacanciesList.filter((vacancy) => vacancy.location === location);
 }
 
+//TODO:Refactor naming of states and types
 function JobsSection() {
   const vacanciesList = useTypedSelector(selectVacanciesList);
   const vacanciesCityList = getLocationList(vacanciesList);
-  const [state, setState] = useState<string>(vacanciesCityList[0].location);
+  const [isCurrentLocation, setCurrentLocation] = useState<string>(
+    vacanciesCityList[0].location
+  );
 
-  const renderVacancyList = getVacanciesByLocation(vacanciesList, state);
+  const renderVacancyList = getVacanciesByLocation(
+    vacanciesList,
+    isCurrentLocation
+  );
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
@@ -74,8 +80,10 @@ function JobsSection() {
                   return (
                     <SwiperSlide key={categoryItem.id}>
                       <Tab
-                        active={state === categoryItem.location}
-                        onClick={() => setState(categoryItem.location ?? '')}
+                        active={isCurrentLocation === categoryItem.location}
+                        onClick={() =>
+                          setCurrentLocation(categoryItem.location ?? '')
+                        }
                       >
                         <TabText>
                           {categoryItem.location}
