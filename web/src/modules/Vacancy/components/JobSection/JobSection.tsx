@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-// import testBg from '@/assets/images/test.jpg';
 import checkMarkUrl from '@/assets/svg/vacancy/check-mark.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Tag from '@/components/Tag';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import { ImageType } from '@/typings/model';
 
 import VacancyCard from './components/VacancyCard';
 
@@ -28,7 +28,8 @@ function JobSection() {
         <Inner>
           <Left>
             <VacancyCard
-              image={image}
+              //FIXME:Refactor image type without redefinition
+              image={image as ImageType}
               level={vacancyData?.level}
               typeOfWork={vacancyData?.typeOfWork}
             />
@@ -173,20 +174,6 @@ const Lists = styled.div`
     display: block;
   `)}
 `;
-
-// const LeftList = styled.div`
-//   flex: 1 1 50%;
-//   max-width: 50%;
-//
-//   ${media.tabletSmall(css`
-//     margin-top: 58px;
-//   `)}
-//
-//   ${media.tabletSmallOnly(css`
-//     margin-left: auto;
-//     max-width: 376px;
-//   `)}
-// `;
 const List = styled.div`
   flex: 1 1 50%;
   max-width: 50%;
