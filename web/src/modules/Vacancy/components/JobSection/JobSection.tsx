@@ -7,29 +7,27 @@ import Tag from '@/components/Tag';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
-import { ImageType } from '@/typings/model';
 
 import VacancyCard from './components/VacancyCard';
 
 function JobSection() {
-  const VacancyFullListTypeData = useCurrentVacancy();
-  const vacancyData = VacancyFullListTypeData?.data;
-  const image = VacancyFullListTypeData?.data?.image;
-  const tags = VacancyFullListTypeData?.data?.tags;
+  const vacancyFullListTypeData = useCurrentVacancy();
+  const vacancyData = vacancyFullListTypeData?.data;
+  const image = vacancyFullListTypeData?.data?.image;
+  const tags = vacancyFullListTypeData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
-  const introFirstText = VacancyFullListTypeData?.data?.introduction;
-  const introSecondText = VacancyFullListTypeData?.data?.introductionSecond;
-  const introThirdText = VacancyFullListTypeData?.data?.introductionThird;
-  const responsibilitiesList = VacancyFullListTypeData?.data?.responsibilities;
-  const requirementsList = VacancyFullListTypeData?.data?.requirements;
+  const introFirstText = vacancyFullListTypeData?.data?.introduction;
+  const introSecondText = vacancyFullListTypeData?.data?.introductionSecond;
+  const introThirdText = vacancyFullListTypeData?.data?.introductionThird;
+  const responsibilitiesList = vacancyFullListTypeData?.data?.responsibilities;
+  const requirementsList = vacancyFullListTypeData?.data?.requirements;
   return (
     <Wrapper>
       <ContentContainer>
         <Inner>
           <Left>
             <VacancyCard
-              //FIXME:Refactor image type without redefinition
-              image={image as ImageType}
+              image={image || null}
               level={vacancyData?.level}
               typeOfWork={vacancyData?.typeOfWork}
             />

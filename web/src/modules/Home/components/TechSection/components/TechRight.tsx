@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { ThumbnailType } from '@tager/web-modules';
+
 import { StringFieldType } from '@/typings/common';
-import { ImageType } from '@/typings/model';
 import Picture from '@/components/Picture';
 import { ButtonLink } from '@/components/Button';
 import { media } from '@/utils/mixin';
@@ -11,7 +12,7 @@ type Props = {
   data: {
     title?: StringFieldType;
     text?: StringFieldType;
-    logos?: Array<ImageType>;
+    logos?: Array<ThumbnailType>;
     addText?: StringFieldType;
     btnFirstLabel?: StringFieldType;
     btnFirstUrl?: StringFieldType;

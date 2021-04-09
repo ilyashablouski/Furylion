@@ -8,8 +8,8 @@ import checkMarkFillUrl from '@/assets/svg/vacancy/check-mark-fill.svg';
 import { media } from '@/utils/mixin';
 
 function GetSection() {
-  const VacancyFullListTypeData = useCurrentVacancy();
-  const vacancyData = VacancyFullListTypeData?.data;
+  const vacancyResource = useCurrentVacancy();
+  const vacancyData = vacancyResource?.data;
   const conditionsList = vacancyData?.conditions;
 
   return (

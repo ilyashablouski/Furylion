@@ -1,14 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ImageType } from '@/typings/model';
+import { ThumbnailType } from '@tager/web-modules';
+
 import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
 type Props = {
   top?: true;
-  logosArray?: Array<ImageType>;
+  logosArray?: Array<ThumbnailType>;
 };
 
 function LogosLine({ top, logosArray }: Props) {

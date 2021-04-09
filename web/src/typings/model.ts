@@ -1,15 +1,15 @@
 import { ReactElement, SVGProps } from 'react';
 
-import { PageFullType, SettingsItemString } from '@tager/web-modules';
+import {
+  PageFullType,
+  SettingsItemImage,
+  SettingsItemString,
+  ThumbnailType,
+} from '@tager/web-modules';
 import { Nullable } from '@tager/web-core';
 import { SettingsItemCommon } from '@tager/web-modules/src/typings/models';
 
 import { StringFieldType } from '@/typings/common';
-
-export interface ExamplePageType extends PageFullType {
-  path: '/example';
-  templateFields: null;
-}
 
 export type SettingOptionType = {
   title: StringFieldType;
@@ -33,15 +33,8 @@ export type SettingsItemType =
   | SettingsItemString<'APPSTORE_URL'>
   | SettingsItemString<'GOOGLEPLAY_URL'>
   | SettingsItemString<'OPEN_VACANCY_TITLE'>
-  | SettingsItemString<'OPEN_VACANCY_IMAGE'>
+  | SettingsItemImage<'OPEN_VACANCY_IMAGE'>
   | SettingsItemString<'OPEN_VACANCY_DESCRIPTION'>;
-
-export type ImageType = Nullable<{
-  url: Nullable<string>;
-  url_2x: Nullable<string>;
-  url_webp: Nullable<string>;
-  url_webp_2x: Nullable<string>;
-}>;
 
 export type FileType = {
   id: number;
@@ -59,13 +52,13 @@ export interface HeroSectionType extends PageFullType {
   templateFields: {
     heroTitle: StringFieldType;
     heroText: StringFieldType;
-    heroImage: ImageType;
-    heroMobileImage: ImageType;
+    heroImage: Nullable<ThumbnailType>;
+    heroMobileImage: Nullable<ThumbnailType>;
   };
 }
 
 export type WorksItemType = {
-  image: ImageType;
+  image: Nullable<ThumbnailType>;
   tags: StringFieldType;
   text: StringFieldType;
   title: StringFieldType;
@@ -79,7 +72,7 @@ export interface WorksSectionType extends PageFullType {
 }
 
 export type ServiceItemType = {
-  image: ImageType;
+  image: Nullable<ThumbnailType>;
   title: StringFieldType;
   text: StringFieldType;
   linkLabel: StringFieldType;
@@ -99,9 +92,9 @@ export interface TechSectionType extends PageFullType {
   templateFields: {
     technologiesTitle: StringFieldType;
     technologiesText: StringFieldType;
-    technologiesLogos: Array<ImageType>;
-    technologiesImage: ImageType;
-    technologiesMobileImage: ImageType;
+    technologiesLogos: Array<ThumbnailType>;
+    technologiesImage: Nullable<ThumbnailType>;
+    technologiesMobileImage: Nullable<ThumbnailType>;
     technologiesTextAdditional: StringFieldType;
     technologiesButtonFirstLabel: StringFieldType;
     technologiesButtonFirstUrl: StringFieldType;
@@ -114,7 +107,7 @@ export interface PlatformSectionType extends PageFullType {
   templateFields: {
     platformTitle: StringFieldType;
     platformText: StringFieldType;
-    platformLogos: Array<ImageType>;
+    platformLogos: Array<ThumbnailType>;
     platformAdditional: StringFieldType;
     platformButtonFirstLabel: StringFieldType;
     platformButtonFirstUrl: StringFieldType;
@@ -125,7 +118,7 @@ export interface PlatformSectionType extends PageFullType {
 
 export interface TeamSectionType extends PageFullType {
   templateFields: {
-    teamGallery: Array<ImageType>;
+    teamGallery: Array<ThumbnailType>;
     teamButtonLabel: StringFieldType;
     teamButtonUrl: StringFieldType;
   };
@@ -134,23 +127,23 @@ export interface TeamSectionType extends PageFullType {
 export interface ClientsSectionType extends PageFullType {
   templateFields: {
     clientsTitle: StringFieldType;
-    clientsFirstGallery: Array<ImageType>;
-    clientsSecondGallery: Array<ImageType>;
+    clientsFirstGallery: Array<ThumbnailType>;
+    clientsSecondGallery: Array<ThumbnailType>;
   };
 }
 
-export interface VacancyShortListType {
+export interface VacancyShortType {
   id: number;
   title: StringFieldType;
   excerpt: StringFieldType;
   urlAlias: StringFieldType;
   location: StringFieldType;
-  image: ImageType;
+  image: Nullable<ThumbnailType>;
   typeOfWork: StringFieldType;
   level: StringFieldType;
 }
 
-export interface VacancyFullListType {
+export interface VacancyFullType {
   id: number;
   body: StringFieldType;
   pageTitle: StringFieldType;
@@ -158,7 +151,7 @@ export interface VacancyFullListType {
   conditions: StringFieldType;
   excerpt: StringFieldType;
   title: StringFieldType;
-  image: ImageType;
+  image: Nullable<ThumbnailType>;
   introduction: StringFieldType;
   introductionSecond: StringFieldType;
   introductionThird: StringFieldType;
@@ -173,19 +166,19 @@ export interface VacancyFullListType {
 }
 
 export interface CareersVacancyType {
-  data: VacancyFullListType;
+  data: VacancyFullType;
 }
 
 //TODO: Delete types if not need
-type testImageType = string;
+type testThumbnailType = string;
 
-export interface VacancyCardType {
-  image: ImageType;
+export interface VacancyCardShortType {
+  image: Nullable<ThumbnailType>;
   typeOfWork?: StringFieldType;
   level?: StringFieldType;
 }
 
-export interface JobCardType extends VacancyCardType {
+export interface VacancyCardFullType extends VacancyCardShortType {
   title: StringFieldType;
   excerpt: StringFieldType;
   urlAlias?: StringFieldType;
@@ -193,7 +186,7 @@ export interface JobCardType extends VacancyCardType {
 
 export interface TeamLifeSectionType extends PageFullType {
   templateFields: {
-    headImage: ImageType;
+    headImage: Nullable<ThumbnailType>;
     teamLifeTitle: StringFieldType;
     teamLifeDescription: StringFieldType;
     teamLifeButton: {
@@ -204,8 +197,8 @@ export interface TeamLifeSectionType extends PageFullType {
   };
 }
 
-export type LocationListType = Array<{
+export type LocationType = {
   id: number;
   location: string;
-  number: Nullable<number>;
-}>;
+  number: number;
+};

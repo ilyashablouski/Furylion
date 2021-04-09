@@ -10,19 +10,19 @@ import {
 } from '@tager/web-core';
 
 import { AppState, AppThunk } from '@/store/store';
-import { VacancyFullListType, VacancyShortListType } from '@/typings/model';
+import { VacancyFullType, VacancyShortType } from '@/typings/model';
 import {
   getCareersVacanciesList,
   getCareersVacancyByAlias,
 } from '@/services/requests';
 
-const vacancyListLoader = createResourceLoader<Array<VacancyShortListType>>([]);
-const vacancyLoader = createResourceLoader<Nullable<VacancyFullListType>>(null);
+const vacancyListLoader = createResourceLoader<Array<VacancyShortType>>([]);
+const vacancyLoader = createResourceLoader<Nullable<VacancyFullType>>(null);
 type State = {
-  VacancyShortListTypeList: ResourceType<Array<VacancyShortListType>>;
+  VacancyShortListTypeList: ResourceType<Array<VacancyShortType>>;
   VacancyFullListTypeMap: Record<
     string,
-    ResourceType<Nullable<VacancyFullListType>>
+    ResourceType<Nullable<VacancyFullType>>
   >;
   totalVacanciesValue: number;
 };
@@ -41,7 +41,7 @@ const vacanciesSlice = createSlice({
     },
     vacanciesListRequestFulfilled(
       state,
-      action: PayloadAction<Array<VacancyShortListType>>
+      action: PayloadAction<Array<VacancyShortType>>
     ) {
       state.VacancyShortListTypeList = vacancyListLoader.fulfill(
         action.payload
@@ -58,7 +58,7 @@ const vacanciesSlice = createSlice({
     },
     vacancyRequestFulfilled(
       state,
-      action: PayloadAction<MapEntry<string, VacancyFullListType>>
+      action: PayloadAction<MapEntry<string, VacancyFullType>>
     ) {
       state.VacancyFullListTypeMap[action.payload.key] = vacancyLoader.fulfill(
         action.payload.value
@@ -86,7 +86,7 @@ export default reducer;
 
 export function getVacanciesListThunk(options?: {
   shouldInvalidate?: boolean;
-}): AppThunk<Promise<Array<VacancyShortListType>>> {
+}): AppThunk<Promise<Array<VacancyShortType>>> {
   return async (dispatch, getState) => {
     const vacanciesListResource = selectVacanciesListResource(getState());
     const shouldGetDataFromCache = shouldGetResourceDataFromCache(
@@ -118,7 +118,7 @@ export function getVacancyByAliasThunk(
   options?: {
     shouldInvalidate?: boolean;
   }
-): AppThunk<Promise<Nullable<VacancyFullListType>>> {
+): AppThunk<Promise<Nullable<VacancyFullType>>> {
   return async (dispatch, getState) => {
     try {
       const post = selectVacancyByAliasResource(getState(), alias);
@@ -143,20 +143,18 @@ export function getVacancyByAliasThunk(
 
 export function selectVacanciesListResource(
   state: AppState
-): ResourceType<Array<VacancyShortListType>> {
+): ResourceType<Array<VacancyShortType>> {
   return state.tager.vacancies.VacancyShortListTypeList;
 }
 
-export function selectVacanciesList(
-  state: AppState
-): Array<VacancyShortListType> {
+export function selectVacanciesList(state: AppState): Array<VacancyShortType> {
   return selectVacanciesListResource(state).data;
 }
 
 export function selectVacancyByAliasResource(
   state: AppState,
   alias: string
-): ResourceType<Nullable<VacancyFullListType>> | undefined {
+): ResourceType<Nullable<VacancyFullType>> | undefined {
   return state.tager.vacancies.VacancyFullListTypeMap[alias];
 }
 

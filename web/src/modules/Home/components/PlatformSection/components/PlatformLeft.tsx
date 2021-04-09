@@ -1,21 +1,22 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { ThumbnailType } from '@tager/web-modules';
+
 import Picture from '@/components/Picture';
-import { ImageType } from '@/typings/model';
 import { StringFieldType } from '@/typings/common';
 import { media } from '@/utils/mixin';
 import Button, { ButtonLink } from '@/components/Button';
 
 type Props = {
-  title?: StringFieldType;
-  text?: StringFieldType;
-  logos?: Array<ImageType>;
-  addText?: StringFieldType;
-  btnFirstLabel?: StringFieldType;
-  btnFirstUrl?: StringFieldType;
-  btnSecondLabel?: StringFieldType;
-  btnSecondUrl?: StringFieldType;
+  title: StringFieldType;
+  text: StringFieldType;
+  logos: Array<ThumbnailType>;
+  addText: StringFieldType;
+  btnFirstLabel: StringFieldType;
+  btnFirstUrl: StringFieldType;
+  btnSecondLabel: StringFieldType;
+  btnSecondUrl: StringFieldType;
 };
 
 function PlatformLeft({

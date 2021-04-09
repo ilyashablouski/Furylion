@@ -1,23 +1,20 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
 import { ReactComponent as ClockIcon } from '@/assets/svg/vacancy/clock.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
-import { VacancyCardType } from '@/typings/model';
+import { VacancyCardShortType } from '@/typings/model';
 import { media } from '@/utils/mixin';
 
-function VacancyCard({ image, level, typeOfWork }: VacancyCardType) {
+function VacancyCard({ image, level, typeOfWork }: VacancyCardShortType) {
   return (
     <Container>
       <ImageContainer>
         <Picture
-          mobileSmall={{
-            src: image?.url,
-            src2x: image?.url_2x,
-            webp: image?.url_webp,
-            webp2x: image?.url_webp_2x,
-          }}
+          mobileSmall={convertThumbnailToPictureImage(image)}
           className={'vacancy-image'}
         />
       </ImageContainer>

@@ -1,31 +1,26 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
+import { Nullish } from '@tager/web-core';
+
 import Picture from '@/components/Picture';
-import { ImageType } from '@/typings/model';
 import { media } from '@/utils/mixin';
 
 type Props = {
-  image?: ImageType;
-  imageMobile?: ImageType;
+  image: Nullish<ThumbnailType>;
+  imageMobile: Nullish<ThumbnailType>;
 };
 
 function TechLeft({ image, imageMobile }: Props) {
   return (
     <Container>
       <ImageContainer
-        tabletLarge={{
-          src: image?.url,
-          src2x: image?.url_2x,
-          webp: image?.url_webp,
-          webp2x: image?.url_webp_2x,
-        }}
-        mobileSmall={{
-          src: imageMobile?.url,
-          src2x: imageMobile?.url_2x,
-          webp: imageMobile?.url_webp,
-          webp2x: imageMobile?.url_webp_2x,
-        }}
+        tabletLarge={convertThumbnailToPictureImage(image)}
+        mobileSmall={convertThumbnailToPictureImage(imageMobile)}
       />
     </Container>
   );

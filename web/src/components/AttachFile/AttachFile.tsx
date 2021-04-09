@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { FieldConfig, useField } from 'formik';
+import { useField } from 'formik';
 
 import { Nullable } from '@tager/web-core';
 
@@ -8,28 +8,21 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import { ReactComponent as CloseIcon } from '@/assets/svg/close.svg';
 import { uploadFile } from '@/services/requests';
-import TextInput from '@/components/TextInput/TextInput';
 
 import Spinner from '../Spinner';
 
-type FormikFieldProps = Pick<FieldConfig, 'name' | 'type'>;
-type InputProps = Omit<React.ComponentProps<typeof TextInput>, 'name' | 'type'>;
-
-type Props = FormikFieldProps &
-  InputProps & {
-    isSmall?: boolean;
-    fileId: number;
-    setFileId: (value: number) => void;
-    error?: string;
-    isFeedback?: boolean;
-    isSentSuccess?: boolean;
-  };
+type Props = {
+  isSmall?: boolean;
+  isFeedback?: boolean;
+  setFileId: (value: number) => void;
+  error?: string;
+  name: string;
+  type?: string;
+};
 
 function AttachFile({
   isSmall,
   isFeedback,
-  isSentSuccess,
-  fileId,
   setFileId,
   error: customError,
   name = 'fileId',

@@ -11,22 +11,25 @@ import TechRight from './components/TechRight';
 
 function TechSection() {
   const page = useCurrentPage<TechSectionType>();
-  const pageFields = page?.templateFields;
+
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
 
   const leftBlockProps = {
-    image: pageFields?.technologiesImage,
-    imageMobile: pageFields?.technologiesMobileImage,
+    image: pageFields.technologiesImage,
+    imageMobile: pageFields.technologiesMobileImage,
   };
 
   const rightBlockProps = {
-    title: pageFields?.technologiesTitle,
-    text: pageFields?.technologiesText,
-    logos: pageFields?.technologiesLogos,
-    addText: pageFields?.technologiesTextAdditional,
-    btnFirstLabel: pageFields?.technologiesButtonFirstLabel,
-    btnFirstUrl: pageFields?.technologiesButtonFirstUrl,
-    btnSecondLabel: pageFields?.technologiesButtonSecondLabel,
-    btnSecondUrl: pageFields?.technologiesButtonSecondUrl,
+    title: pageFields.technologiesTitle,
+    text: pageFields.technologiesText,
+    logos: pageFields.technologiesLogos,
+    addText: pageFields.technologiesTextAdditional,
+    btnFirstLabel: pageFields.technologiesButtonFirstLabel,
+    btnFirstUrl: pageFields.technologiesButtonFirstUrl,
+    btnSecondLabel: pageFields.technologiesButtonSecondLabel,
+    btnSecondUrl: pageFields.technologiesButtonSecondUrl,
   };
 
   return (
