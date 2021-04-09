@@ -125,6 +125,17 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   large: css`
     padding: 23px;
   `,
+
+  dashed: css`
+    background: transparent;
+    color: ${colors.white};
+    border: 1px dashed ${colors.white};
+
+    &:hover {
+      background: ${colors.white};
+      color: ${colors.dark};
+    }
+  `,
 };
 
 export const StyledButton = styled.button<{

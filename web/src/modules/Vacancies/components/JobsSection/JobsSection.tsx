@@ -75,8 +75,6 @@ function JobsSection() {
     isCurrentLocation
   );
 
-  console.log(openedVacancyImage);
-
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
   return (
@@ -130,6 +128,7 @@ function JobsSection() {
               : null}
             <Card>
               <HeroJobCard
+                //FIXME:Refactor image type without redefinition
                 title={openedVacancyTitle}
                 image={openedVacancyImage as ImageType}
                 excerpt={openedVacancyDescription}
@@ -217,8 +216,8 @@ const JobsCards = styled.div`
 const Card = styled.div`
   margin-top: 50px;
   padding: 0 10px;
-  flex: 0 0 25%;
-  max-width: 25%;
+  max-width: 293px;
+  min-width: 293px;
 `;
 
 const HeroJobCard = styled(JobCard)``;

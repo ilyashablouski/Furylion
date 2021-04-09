@@ -20,7 +20,7 @@ function JobCard({
 }: JobCardType) {
   return (
     <Container className={className}>
-      <JobLink to={`careers/${urlAlias}`} />
+      {!heroCard && <JobLink to={`careers/${urlAlias}`} />}
       <Title>{title}</Title>
       <ImageContainer heroCard={heroCard}>
         <Picture
@@ -50,7 +50,11 @@ function JobCard({
         </Labels>
 
         <ButtonContainer>
-          <CardButton variants={['dark', 'w100']}>Apply</CardButton>
+          {!heroCard ? (
+            <CardButton variants={['dark', 'w100']}>Apply</CardButton>
+          ) : (
+            <CardButton variants={['dashed', 'w100']}>Apply</CardButton>
+          )}
         </ButtonContainer>
       </Bottom>
     </Container>
@@ -138,6 +142,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  cursor: pointer;
 
   &:hover {
     ${ImageContainer} {
