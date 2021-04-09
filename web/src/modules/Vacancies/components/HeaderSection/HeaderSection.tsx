@@ -35,6 +35,14 @@ const Wrapper = styled.section`
   padding-top: 323px;
   max-width: 1920px;
   text-align: center;
+
+  ${media.tabletSmallOnly(css`
+    padding-top: 248px;
+  `)}
+
+  ${media.mobile(css`
+    padding-top: 256px;
+  `)}
 `;
 
 const Inner = styled.div`
@@ -53,7 +61,7 @@ const Title = styled.span`
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 16.3vw;
+    font-size: 16.5vw;
   `)}
 
   &:before {
@@ -82,12 +90,13 @@ const ImageContainer = styled.div`
 
   ${media.tabletSmallOnly(css`
     max-width: 262px;
+    right: 0;
   `)}
 
   ${media.mobile(css`
     margin: auto;
     right: 0;
-    left: 0;
+    left: 67px;
     max-width: 187px;
   `)}
 `;

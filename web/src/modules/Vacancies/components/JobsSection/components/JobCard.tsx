@@ -118,7 +118,8 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
 `;
 
 const Labels = styled.div`
-  margin-top: 25px;
+  margin-top: 17px;
+  min-height: 20px;
   display: flex;
   justify-content: space-between;
   transition: 150ms all ease-in-out;

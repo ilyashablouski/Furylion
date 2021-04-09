@@ -153,7 +153,7 @@ function JobsSection() {
 }
 
 const Wrapper = styled.section`
-  margin-top: 70px;
+  margin-top: 38px;
 `;
 
 const Tabs = styled.div`
@@ -182,7 +182,7 @@ const TabLabel = styled.sup`
 
 const Tab = styled.div<{ active?: boolean }>`
   position: relative;
-  padding: 17px 57px 17px 32px;
+  padding: 17px 48px 17px 32px;
   ${(props) =>
     props.active
       ? css`
@@ -225,8 +225,8 @@ const JobsCards = styled.div`
 const Card = styled.div`
   margin-top: 50px;
   padding: 0 10px;
-  max-width: 293px;
-  min-width: 293px;
+  max-width: calc(293px + 20px);
+  min-width: calc(293px + 20px);
 `;
 
 const HeroJobCard = styled(JobCard)``;
