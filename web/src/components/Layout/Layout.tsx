@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Preloader } from '@tager/web-components';
 
@@ -72,9 +72,9 @@ const Main = styled.main`
   flex-direction: column;
   background: ${colors.dark};
 
-  ${media.tabletSmall} {
+  ${media.tabletSmall(css`
     margin-top: -56px;
-  }
+  `)}
 `;
 
 export default Layout;
