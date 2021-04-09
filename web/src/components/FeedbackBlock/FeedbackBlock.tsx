@@ -1,8 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { Nullable } from '@tager/web-core';
-
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { StringFieldType } from '@/typings/common';
@@ -15,7 +13,7 @@ type Props = {
   className?: string;
 };
 
-function AboutSection({ formTitle, children, className }: Props) {
+function FeedbackBlock({ formTitle, children, className }: Props) {
   return (
     <Wrapper>
       <ContentContainer>
@@ -105,4 +103,4 @@ const Right = styled.div`
   `)}
 `;
 
-export default AboutSection;
+export default FeedbackBlock;

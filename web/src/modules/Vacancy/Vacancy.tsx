@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AboutSection from '@/components/AboutSection';
+import FeedbackBlock from '@/components/FeedbackBlock';
 import useSettingItem from '@/hooks/useSettingItem';
 
 import TopSection from './components/TopSection';
@@ -15,7 +15,7 @@ function Vacancy() {
       <TopSection />
       <JobSection />
       <GetSection />
-      <AboutSection formTitle={formVacancyTitle} />
+      <FeedbackBlock formTitle={formVacancyTitle} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useSettingItem from '@/hooks/useSettingItem';
-import AboutSection from '@/components/AboutSection';
+import FeedbackBlock from '@/components/FeedbackBlock';
 
 import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
@@ -22,7 +22,7 @@ function Home() {
       <PlatformSection />
       <TeamSection />
       <ClientsSection />
-      <AboutSection className="about-title--small" formTitle={formTitle} />
+      <FeedbackBlock className="about-title--small" formTitle={formTitle} />
     </>
   );
 }

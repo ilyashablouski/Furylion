@@ -129,10 +129,10 @@ const BackgroundPicture = styled(Picture)`
     position: relative;
     margin: 0 auto;
     width: 144%;
+    max-width: 1920px;
 
     ${media.desktop1366(css`
       left: -95px;
-      max-width: 1920px;
     `)}
   }
 `;
