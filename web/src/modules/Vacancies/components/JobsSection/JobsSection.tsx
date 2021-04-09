@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Nullable } from '@tager/web-core';
+import { useModal } from '@tager/web-components';
 
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
@@ -14,6 +14,7 @@ import {
   VacancyShortListType,
 } from '@/typings/model';
 import useSettingItem from '@/hooks/useSettingItem';
+import ExampleModal from '@/components/modals/ExampleModal';
 
 import JobCard from './components/JobCard';
 
@@ -76,6 +77,10 @@ function JobsSection() {
   );
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
+  const openModal = useModal();
+  function handleOpenVacanciesModal() {
+    openModal(ExampleModal, { title: 'Title' });
+  }
 
   return (
     <Wrapper>
@@ -88,7 +93,7 @@ function JobsSection() {
             onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
           >
             {vacanciesCityList
-              ? vacanciesCityList.map((categoryItem, index) => {
+              ? vacanciesCityList.map((categoryItem) => {
                   return (
                     <SwiperSlide key={categoryItem.id}>
                       <Tab
@@ -128,12 +133,13 @@ function JobsSection() {
               : null}
             <Card>
               <HeroJobCard
-                //FIXME:Refactor image type without redefinition
                 title={openedVacancyTitle}
+                //FIXME:Refactor image type without redefinition
                 image={openedVacancyImage as ImageType}
                 excerpt={openedVacancyDescription}
                 className="hero-card"
                 heroCard={true}
+                onClick={handleOpenVacanciesModal}
               />
             </Card>
           </JobsCards>

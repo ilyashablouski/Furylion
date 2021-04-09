@@ -13,13 +13,6 @@ type Props = {
 };
 
 function MessageSuccess({ isSentSuccess }: Props) {
-  //TODO:Use if need form from admin panel
-  // const settingsList = useTypedSelector(selectSettingItemList);
-  // const careersSuccessText = getSettingValueByKey(
-  //   settingsList,
-  //   'careersSuccessText'
-  // );
-
   return (
     <Message isSentSuccess={isSentSuccess}>
       <Title>Thank you for your message!</Title>

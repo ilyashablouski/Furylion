@@ -8,6 +8,11 @@ import { JobCardType } from '@/typings/model';
 import Link from '@/components/Link';
 import Button from '@/components/Button';
 
+interface Props extends JobCardType {
+  className?: string;
+  heroCard?: boolean;
+  onClick?: () => void;
+}
 function JobCard({
   title,
   image,
@@ -17,9 +22,10 @@ function JobCard({
   typeOfWork,
   heroCard = false,
   className,
-}: JobCardType) {
+  onClick,
+}: Props) {
   return (
-    <Container className={className}>
+    <Container className={className} onClick={onClick}>
       {!heroCard && <JobLink to={`careers/${urlAlias}`} />}
       <Title>{title}</Title>
       <ImageContainer heroCard={heroCard}>

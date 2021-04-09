@@ -94,6 +94,7 @@ const InstagramBlock = styled.div`
 `;
 
 const InstagramBlockTitle = styled.span`
+  margin: 0 auto;
   display: block;
   max-width: 1242px;
   text-align: center;
@@ -128,9 +129,9 @@ const BackgroundPicture = styled(Picture)`
     position: relative;
     margin: 0 auto;
     width: 144%;
-    left: -95px;
 
     ${media.desktop1366(css`
+      left: -95px;
       max-width: 1920px;
     `)}
   }

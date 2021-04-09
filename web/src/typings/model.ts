@@ -189,8 +189,6 @@ export interface JobCardType extends VacancyCardType {
   title: StringFieldType;
   excerpt: StringFieldType;
   urlAlias?: StringFieldType;
-  className?: string;
-  heroCard?: boolean;
 }
 
 export interface TeamLifeSectionType extends PageFullType {
