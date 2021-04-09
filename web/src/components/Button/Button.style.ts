@@ -127,6 +127,7 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   `,
 
   dashed: css`
+    padding: 22px 25px;
     background: transparent;
     color: ${colors.white};
     border: 1px dashed ${colors.white};

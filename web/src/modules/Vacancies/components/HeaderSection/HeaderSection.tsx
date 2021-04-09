@@ -49,10 +49,11 @@ const Title = styled.span`
   font-size: 223px;
   line-height: 100%;
   text-transform: uppercase;
+  word-break: break-word;
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 16.5vw;
+    font-size: 16.3vw;
   `)}
 
   &:before {

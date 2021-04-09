@@ -14,7 +14,7 @@ import {
   VacancyShortListType,
 } from '@/typings/model';
 import useSettingItem from '@/hooks/useSettingItem';
-import ExampleModal from '@/components/modals/ExampleModal';
+import FeedbackModal from '@/components/modals/FeedbackModal';
 
 import JobCard from './components/JobCard';
 
@@ -63,6 +63,7 @@ function JobsSection() {
   const openedVacancyTitle = useSettingItem('OPEN_VACANCY_TITLE');
   const openedVacancyImage = useSettingItem('OPEN_VACANCY_IMAGE');
   const openedVacancyDescription = useSettingItem('OPEN_VACANCY_DESCRIPTION');
+  const formVacanciesTitle = useSettingItem('FORM_VACANCIES_TITLE');
 
   const vacanciesList = useTypedSelector(selectVacanciesList);
   const vacanciesCityList = getLocationList(vacanciesList);
@@ -78,8 +79,8 @@ function JobsSection() {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const openModal = useModal();
-  function handleOpenVacanciesModal() {
-    openModal(ExampleModal, { title: 'Title' });
+  function handleOpenFeedbackModal() {
+    openModal(FeedbackModal, { formTitle: formVacanciesTitle });
   }
 
   return (
@@ -139,7 +140,7 @@ function JobsSection() {
                 excerpt={openedVacancyDescription}
                 className="hero-card"
                 heroCard={true}
-                onClick={handleOpenVacanciesModal}
+                onClick={handleOpenFeedbackModal}
               />
             </Card>
           </JobsCards>

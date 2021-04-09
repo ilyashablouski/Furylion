@@ -2,6 +2,7 @@ import React from 'react';
 
 import useSettingItem from '@/hooks/useSettingItem';
 import FeedbackBlock from '@/components/FeedbackBlock';
+import FeedbackSection from '@/modules/Vacancies/components/FeedbackSection';
 
 import HeaderSection from './components/HeaderSection';
 import JobsSection from './components/JobsSection';
@@ -14,7 +15,7 @@ function Vacancies() {
       <HeaderSection />
       <JobsSection />
       <TeamLifeSection />
-      <FeedbackBlock className="about-title--small" formTitle={formTitle} />
+      <FeedbackSection />
     </>
   );
 }

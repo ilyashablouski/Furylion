@@ -24,7 +24,6 @@ function ClientsSection() {
 }
 const Wrapper = styled.section`
   position: relative;
-  padding-bottom: 165px;
   padding-top: 106px;
   overflow: hidden;
   background: ${colors.dark};

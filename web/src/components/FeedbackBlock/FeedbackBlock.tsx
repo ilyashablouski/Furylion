@@ -15,7 +15,7 @@ type Props = {
 
 function FeedbackBlock({ formTitle, children, className }: Props) {
   return (
-    <Wrapper>
+    <Container>
       <ContentContainer>
         <Inner>
           <Left>
@@ -27,21 +27,11 @@ function FeedbackBlock({ formTitle, children, className }: Props) {
           </Right>
         </Inner>
       </ContentContainer>
-    </Wrapper>
+    </Container>
   );
 }
 
-const Wrapper = styled.section`
-  padding-top: 120px;
-  
-  ${ContentContainer} {
-    max-width: 1920px;
-  }
-
-  ${media.tabletSmall(css`
-    padding-top: 70px;
-  `)}}
-`;
+const Container = styled.div``;
 const Inner = styled.div`
   display: flex;
 
