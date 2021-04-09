@@ -1,36 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ModalProps } from '@tager/web-components';
 import { Nullable } from '@tager/web-core';
 
-import TextInput from '@/components/TextInput';
 import FeedbackBlock from '@/components/FeedbackBlock';
 import { colors } from '@/constants/theme';
+import { media } from '@/utils/mixin';
 
 import CloseButton from '../shared/CloseButton';
-// import {
-//   Container,
-//   Header,
-//   HeaderTitle,
-//   Content,
-//   Footer,
-//   FooterButton,
-// } from '../shared/styles';
 
 type FeedbackModalProps = ModalProps<{ formTitle: Nullable<string> }>;
 
 function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
   const { formTitle } = innerProps;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    closeModal();
-  }
-
   return (
     <Wrapper>
+      <ButtonWrapper>
+        <CloseButton onClick={closeModal} />
+      </ButtonWrapper>
       <FeedbackBlock formTitle={formTitle} />
     </Wrapper>
   );
@@ -39,5 +28,25 @@ function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
 export default FeedbackModal;
 
 const Wrapper = styled.div`
+  position: relative;
+  margin: 0 -10px;
+  padding-top: 120px;
+  padding-bottom: 110px;
   background: ${colors.dark};
+`;
+
+const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 68px;
+  display: inline-flex;
+
+  ${media.tabletSmallOnly(css`
+    top: 70px;
+    right: 40px;
+  `)}
+
+  ${media.mobile(css`
+    right: 20px;
+  `)}
 `;
