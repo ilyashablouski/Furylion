@@ -10,9 +10,9 @@ function Vacancies() {
   return (
     <>
       <HeaderSection />
-      <JobsSection />
-      <TeamLifeSection />
-      <FeedbackSection />
+      {/*<JobsSection />*/}
+      {/*<TeamLifeSection />*/}
+      {/*<FeedbackSection />*/}
     </>
   );
 }

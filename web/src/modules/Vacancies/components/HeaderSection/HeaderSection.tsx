@@ -77,8 +77,19 @@ const Title = styled.span`
 
 const ImageContainer = styled.div`
   position: absolute;
-  bottom: 13.7%;
+  bottom: 13.5%;
   right: 3%;
+
+  ${media.tabletSmallOnly(css`
+    max-width: 262px;
+  `)}
+
+  ${media.mobile(css`
+    margin: auto;
+    right: 0;
+    left: 0;
+    max-width: 187px;
+  `)}
 `;
 
 export default HeaderSection;
