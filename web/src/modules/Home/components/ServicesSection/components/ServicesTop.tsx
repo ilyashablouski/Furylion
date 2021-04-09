@@ -106,11 +106,15 @@ const BlockRight = styled.div`
   height: 100%;
   z-index: 1;
   transform: translateZ(0);
-  transform: translateZ(0) ${media.tabletSmall(css`
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      clip-path: initial;`)} .item-wrapper {
+  transform: translateZ(0);
+  ${media.tabletSmall(css`
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    clip-path: initial;
+  `)}
+
+  .item-wrapper {
     &:nth-child(1) {
       margin-bottom: 11px;
 

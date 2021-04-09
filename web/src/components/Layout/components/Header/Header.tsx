@@ -68,7 +68,7 @@ function Header({ socialsData }: SocialsType) {
 }
 
 const HeaderContainer = styled.header`
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   background: rgba(0, 0, 0, 0.5);

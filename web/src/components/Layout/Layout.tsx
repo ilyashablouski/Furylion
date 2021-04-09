@@ -9,6 +9,7 @@ import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.s
 import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
 import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
 import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
+import { media } from '@/utils/mixin';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -65,11 +66,15 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  margin-top: 0;
+  margin-top: -100px;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   background: ${colors.dark};
+
+  ${media.tabletSmall} {
+    margin-top: -56px;
+  }
 `;
 
 export default Layout;

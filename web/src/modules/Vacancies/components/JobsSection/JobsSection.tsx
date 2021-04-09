@@ -80,7 +80,9 @@ function JobsSection() {
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const openModal = useModal();
   function handleOpenFeedbackModal() {
-    openModal(FeedbackModal, { formTitle: formVacanciesTitle });
+    openModal(FeedbackModal, {
+      formTitle: formVacanciesTitle,
+    });
   }
 
   return (
