@@ -22,7 +22,7 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
   display: none;
 
   ${media.tabletSmall(css`
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
     position: absolute;
     top: 0;
     right: 0;
@@ -36,6 +36,7 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
   `)}
 
   svg {
+    margin-left: 8px;
     transform-origin: center;
     transform: ${({ isOpen }) => (isOpen ? ' rotate(90deg)' : ' rotate(0)')};
     transition: 150ms all ease-in-out;

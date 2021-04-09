@@ -32,7 +32,7 @@ function HeaderSection() {
 }
 
 const Wrapper = styled.section`
-  padding-top: 221px;
+  padding-top: 323px;
   max-width: 1920px;
   text-align: center;
 `;
@@ -78,7 +78,7 @@ const Title = styled.span`
 const ImageContainer = styled.div`
   position: absolute;
   bottom: 13.5%;
-  right: 3%;
+  right: 2.2%;
 
   ${media.tabletSmallOnly(css`
     max-width: 262px;

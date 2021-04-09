@@ -10,7 +10,7 @@ function Vacancies() {
   return (
     <>
       <HeaderSection />
-      {/*<JobsSection />*/}
+      <JobsSection />
       {/*<TeamLifeSection />*/}
       {/*<FeedbackSection />*/}
     </>
