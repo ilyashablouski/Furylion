@@ -13,9 +13,9 @@ type Props = {
   className?: string;
 };
 
-function FeedbackBlock({ formTitle, children, className }: Props) {
+function FeedbackSection({ formTitle, children, className }: Props) {
   return (
-    <Container>
+    <Wrapper>
       <ContentContainer>
         <Inner>
           <Left>
@@ -27,11 +27,20 @@ function FeedbackBlock({ formTitle, children, className }: Props) {
           </Right>
         </Inner>
       </ContentContainer>
-    </Container>
+    </Wrapper>
   );
 }
 
-const Container = styled.div``;
+const Wrapper = styled.section`
+  margin-top: 120px;
+  ${media.tabletSmall(css`
+    margin-top: 70px;
+  `)}
+
+  ${ContentContainer} {
+    max-width: 1920px;
+  }
+`;
 const Inner = styled.div`
   display: flex;
 
@@ -93,4 +102,4 @@ const Right = styled.div`
   `)}
 `;
 
-export default FeedbackBlock;
+export default FeedbackSection;

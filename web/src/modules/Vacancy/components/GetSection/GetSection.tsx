@@ -25,7 +25,7 @@ function GetSection() {
 }
 
 const Wrapper = styled.section`
-  padding-top: 83px;
+  padding-top: 80px;
   padding-bottom: 100px;
   background: ${colors.red};
 

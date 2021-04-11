@@ -136,9 +136,9 @@ const IntroFirstText = styled.p`
 `;
 
 const IntroSecondText = styled.p`
-  margin-left: 16px;
-  flex: 1 1 calc(58.82% - 16px);
-  max-width: calc(58.82% - 16px);
+  margin-left: 24px;
+  flex: 1 1 calc(58.82% - 24px);
+  max-width: calc(58.82% - 24px);
 
   ${media.tabletSmall(css`
     margin-left: 0;
@@ -152,7 +152,7 @@ const IntroSecondText = styled.p`
 `;
 
 const IntroThirdText = styled.p`
-  margin-top: 37px;
+  margin-top: 35px;
   flex: 1 1 100%;
   max-width: 100%;
 
@@ -250,7 +250,7 @@ const ListContent = styled.div`
     color: ${colors.white};
 
     &:not(:first-child) {
-      margin-top: 25px;
+      margin-top: 24px;
 
       ${media.mobile(css`
         margin-top: 20px;

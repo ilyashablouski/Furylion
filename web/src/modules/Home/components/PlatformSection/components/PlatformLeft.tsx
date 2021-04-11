@@ -168,7 +168,7 @@ const Logo = styled.div`
     max-height: 75px;
 
     ${media.tabletSmall(css`
-      max-height: 64px;
+      max-height: 59px;
     `)}
   }
 `;

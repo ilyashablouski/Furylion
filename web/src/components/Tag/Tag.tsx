@@ -21,7 +21,7 @@ const TagContainer = styled.div`
   color: ${colors.white};
 
   &:not(:first-child) {
-    margin: 0 5px;
+    margin-left: 10px;
   }
 `;
 

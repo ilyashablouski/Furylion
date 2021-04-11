@@ -71,6 +71,6 @@ export const media = {
     min: breakpoints.desktop,
   }),
   desktop1366: createMediaMixin({
-    max: 1367,
+    max: 1366,
   }),
 };

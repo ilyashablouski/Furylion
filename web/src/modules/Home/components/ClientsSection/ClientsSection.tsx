@@ -25,9 +25,15 @@ function ClientsSection() {
 const Wrapper = styled.section`
   position: relative;
   padding-top: 106px;
+  padding-bottom: 162px;
   overflow: hidden;
   background: ${colors.dark};
   z-index: 1;
+  ${media.tabletSmall(
+    css`
+      padding-bottom: 0;
+    `
+  )}
 `;
 
 const Title = styled.span`

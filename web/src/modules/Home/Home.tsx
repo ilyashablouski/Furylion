@@ -1,8 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import FeedbackSection from '@/components/FeedbackSection';
 import useSettingItem from '@/hooks/useSettingItem';
-import FeedbackBlock from '@/components/FeedbackBlock';
 
 import HomeSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
@@ -11,9 +10,9 @@ import TechSection from './components/TechSection';
 import PlatformSection from './components/PlatformSection';
 import TeamSection from './components/TeamSection';
 import ClientsSection from './components/ClientsSection';
-import FeedbackSection from './components/FeedbackSection';
 
 function Home() {
+  const formTitle = useSettingItem('FORM_TITLE');
   return (
     <>
       <HomeSection />
@@ -23,7 +22,7 @@ function Home() {
       <PlatformSection />
       <TeamSection />
       <ClientsSection />
-      <FeedbackSection />
+      <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );
 }

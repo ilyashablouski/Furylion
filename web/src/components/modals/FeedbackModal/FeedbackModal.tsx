@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { ModalProps } from '@tager/web-components';
 import { Nullable } from '@tager/web-core';
 
-import FeedbackBlock from '@/components/FeedbackBlock';
+import FeedbackSection from '@/components/FeedbackSection';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
@@ -20,7 +20,7 @@ function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
       <ButtonWrapper>
         <CloseButton onClick={closeModal} />
       </ButtonWrapper>
-      <FeedbackBlock formTitle={formTitle} />
+      <FeedbackSection formTitle={formTitle} />
     </Wrapper>
   );
 }
