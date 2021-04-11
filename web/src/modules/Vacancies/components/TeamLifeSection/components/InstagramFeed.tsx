@@ -7,7 +7,7 @@ function InstagramFeed() {
     <Container>
       <InstagramEmbed
         url="https://www.instagram.com/i.shablovskiy/"
-        clientAccessToken="IGQVJYaHdNX1ljbmJUVmY4VV9oQXlfRnlQdlNoSmtWa29XdzZAXbVRNQ2RaSF9TNUI3SFlCSUpBV08yNVMtM1J1dFVjb1VFRWpsYjZAWNnVnTXNMQ0xiZAi04b3hwdlZAIREVkQUdTd2VSa1NOdTVoazRBQgZDZD"
+        clientAccessToken="IGQVJWaHYzRUJGTnRka2FRazctMUJZANnYtTHcyRW43dXdsdjctUHRIcFIzMDF4S01Ga3Q1SGphWVVmbWpENk5aWUlhQ3hzUXZAnTndMZA3pYZAklsNU5BQXVyTmx1aV9tZAkV4eVAteWhuZA3FvZAXdnZAGp6WgZDZD"
         maxWidth={320}
         hideCaption={false}
         containerTagName="div"
