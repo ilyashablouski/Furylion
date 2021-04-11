@@ -14,6 +14,8 @@ import ContentContainer from '@/components/ContentContainer';
 import SkewButton from '@/components/SkewButton';
 import { TeamLifeSectionType } from '@/typings/model';
 
+import InstagramFeed from './components/InstagramFeed';
+
 function TeamLifeSection() {
   const page = useCurrentPage<TeamLifeSectionType>();
   const pageFields = page?.templateFields;
@@ -50,6 +52,8 @@ function TeamLifeSection() {
             </IconWrapper>
           </SkewButton>
         </StyledButton>
+
+        <InstagramFeed />
       </InstagramBlock>
     </Wrapper>
   );
