@@ -12,21 +12,24 @@ import PlatformLeft from './components/PlatformLeft';
 
 function PlatformSection() {
   const page = useCurrentPage<PlatformSectionType>();
-  const pageFields = page?.templateFields;
+
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
 
   return (
     <Wrapper>
       <ContentContainer>
         <InnerWrapper>
           <PlatformLeft
-            title={pageFields?.platformTitle}
-            text={pageFields?.platformText}
-            logos={pageFields?.platformLogos}
-            addText={pageFields?.platformAdditional}
-            btnFirstLabel={pageFields?.platformButtonFirstLabel}
-            btnFirstUrl={pageFields?.platformButtonFirstUrl}
-            btnSecondLabel={pageFields?.platformButtonSecondLabel}
-            btnSecondUrl={pageFields?.platformButtonSecondUrl}
+            title={pageFields.platformTitle}
+            text={pageFields.platformText}
+            logos={pageFields.platformLogos}
+            addText={pageFields.platformAdditional}
+            btnFirstLabel={pageFields.platformButtonFirstLabel}
+            btnFirstUrl={pageFields.platformButtonFirstUrl}
+            btnSecondLabel={pageFields.platformButtonSecondLabel}
+            btnSecondUrl={pageFields.platformButtonSecondUrl}
           />
           <PlatformRight />
         </InnerWrapper>

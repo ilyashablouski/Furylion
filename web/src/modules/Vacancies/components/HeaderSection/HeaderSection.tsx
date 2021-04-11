@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
 import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { TeamLifeSectionType } from '@/typings/model';
-import Picture from '@/components/Picture';
 
 function HeaderSection() {
   const page = useCurrentPage<TeamLifeSectionType>();
@@ -17,14 +18,7 @@ function HeaderSection() {
       <Inner>
         <Title data-text="VACANCIES">Vacancies</Title>
         <ImageContainer>
-          <PlainPicture
-            mobileSmall={{
-              src: image?.url,
-              src2x: image?.url_2x,
-              webp: image?.url_webp,
-              webp2x: image?.url_webp_2x,
-            }}
-          />
+          <PlainPicture mobileSmall={convertThumbnailToPictureImage(image)} />
         </ImageContainer>
       </Inner>
     </Wrapper>
@@ -32,9 +26,17 @@ function HeaderSection() {
 }
 
 const Wrapper = styled.section`
-  padding-top: 221px;
+  padding-top: 226px;
   max-width: 1920px;
   text-align: center;
+
+  ${media.tabletSmallOnly(css`
+    padding-top: 193px;
+  `)}
+
+  ${media.mobile(css`
+    padding-top: 201px;
+  `)}
 `;
 
 const Inner = styled.div`
@@ -77,8 +79,20 @@ const Title = styled.span`
 
 const ImageContainer = styled.div`
   position: absolute;
-  bottom: 13.7%;
-  right: 3%;
+  bottom: 13.5%;
+  right: 2.2%;
+
+  ${media.tabletSmallOnly(css`
+    max-width: 262px;
+    right: 0;
+  `)}
+
+  ${media.mobile(css`
+    margin: auto;
+    right: 0;
+    left: 67px;
+    max-width: 187px;
+  `)}
 `;
 
 export default HeaderSection;

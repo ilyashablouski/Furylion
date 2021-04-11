@@ -13,13 +13,13 @@ import {
   selectVacancyByAliasResource,
 } from '@/store/reducers/pages/vacancies';
 import { getSharedThunkList } from '@/utils/thunks';
-import { VacancyFullListType } from '@/typings/model';
+import { VacancyFullType } from '@/typings/model';
 import ErrorPage from '@/pages/_error';
 import NotFoundPage from '@/pages/404';
 
 type Props =
   | { pageType: 'NOT_FOUND' }
-  | { pageType: 'DYNAMIC_PAGE'; vacancy: VacancyFullListType }
+  | { pageType: 'DYNAMIC_PAGE'; vacancy: VacancyFullType }
   | {
       pageType: 'ERROR';
       error: Error;

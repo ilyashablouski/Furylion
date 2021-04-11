@@ -8,51 +8,43 @@ import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 import { colors } from '@/constants/theme';
-import {
-  ImageType,
-  LocationListType,
-  VacancyShortListType,
-} from '@/typings/model';
+import { LocationType, VacancyShortType } from '@/typings/model';
 import useSettingItem from '@/hooks/useSettingItem';
 import FeedbackModal from '@/components/modals/FeedbackModal';
+import { media } from '@/utils/mixin';
 
 import JobCard from './components/JobCard';
 
-function getLocationList(vacanciesList: Array<VacancyShortListType>) {
-  const locationInfo: {
-    [key: string]: {
-      name: string;
-      number: number;
-    };
-  } = {};
+function getLocationList(
+  vacanciesList: Array<VacancyShortType>
+): Array<LocationType> {
+  const locationMap = new Map<string, LocationType>();
+
   vacanciesList.forEach((item) => {
     const location = item.location;
-    if (location) {
-      if (locationInfo[location]) {
-        locationInfo[location] = {
-          ...locationInfo[location],
-          number: locationInfo[location].number + 1,
-        };
-      } else {
-        locationInfo[location] = {
-          name: location,
-          number: 1,
-        };
-      }
+
+    if (!location) return;
+
+    const currentLocationEntry = locationMap.get(location);
+
+    if (currentLocationEntry) {
+      currentLocationEntry.number += 1;
+    } else {
+      const newLocationEntry: LocationType = {
+        id: locationMap.size + 1,
+        location,
+        number: 1,
+      };
+
+      locationMap.set(location, newLocationEntry);
     }
   });
 
-  const newArr = Object.keys(locationInfo).map((item, index) => ({
-    id: index + 1,
-    location: item,
-    number: locationInfo[item].number,
-  }));
-
-  return newArr as LocationListType;
+  return Array.from(locationMap.values());
 }
 
 function getVacanciesByLocation(
-  vacanciesList: Array<VacancyShortListType>,
+  vacanciesList: Array<VacancyShortType>,
   location: string
 ) {
   return vacanciesList.filter((vacancy) => vacancy.location === location);
@@ -72,13 +64,15 @@ function JobsSection() {
     vacanciesCityList[0].location
   );
 
-  const renderVacancyList = getVacanciesByLocation(
+  const filteredVacancyList = getVacanciesByLocation(
     vacanciesList,
     isCurrentLocation
   );
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
+
   const openModal = useModal();
+
   function handleOpenFeedbackModal() {
     openModal(FeedbackModal, {
       formTitle: formVacanciesTitle,
@@ -120,28 +114,21 @@ function JobsSection() {
       <TabContent>
         <ContentContainer>
           <JobsCards>
-            {renderVacancyList
-              ? renderVacancyList.map((vacancyItem) => (
+            {filteredVacancyList
+              ? filteredVacancyList.map((vacancyItem) => (
                   <Card key={vacancyItem.id}>
-                    <JobCard
-                      title={vacancyItem.title}
-                      image={vacancyItem.image}
-                      urlAlias={vacancyItem.urlAlias}
-                      excerpt={vacancyItem.excerpt}
-                      typeOfWork={vacancyItem.typeOfWork}
-                      level={vacancyItem.level}
-                    />
+                    <JobCard card={vacancyItem} />
                   </Card>
                 ))
               : null}
             <Card>
-              <HeroJobCard
-                title={openedVacancyTitle}
-                //FIXME:Refactor image type without redefinition
-                image={openedVacancyImage as ImageType}
-                excerpt={openedVacancyDescription}
-                className="hero-card"
-                heroCard={true}
+              <JobCard
+                card={{
+                  title: openedVacancyTitle,
+                  image: openedVacancyImage,
+                  excerpt: openedVacancyDescription,
+                }}
+                isHeroCard={true}
                 onClick={handleOpenFeedbackModal}
               />
             </Card>
@@ -153,7 +140,13 @@ function JobsSection() {
 }
 
 const Wrapper = styled.section`
-  margin-top: 70px;
+  margin-top: 38px;
+
+  ${media.tabletOnly(css`
+    margin-top: 56px;
+  `)}
+
+  ${media.mobile(css``)}
 `;
 
 const Tabs = styled.div`
@@ -178,11 +171,16 @@ const TabLabel = styled.sup`
   font-size: 20px;
   line-height: 130%;
   color: ${colors.red};
+
+  ${media.tabletSmall(css`
+    left: 5px;
+    font-size: 12px;
+  `)}
 `;
 
 const Tab = styled.div<{ active?: boolean }>`
   position: relative;
-  padding: 17px 57px 17px 32px;
+  padding: 17px 48px 17px 32px;
   ${(props) =>
     props.active
       ? css`
@@ -191,6 +189,10 @@ const Tab = styled.div<{ active?: boolean }>`
       : ''};
   cursor: pointer;
   transition: 150ms all ease-in-out;
+
+  ${media.tabletSmall(css`
+    padding: 8px 32px 8px 24px;
+  `)}
 
   ${TabLabel} {
     ${(props) =>
@@ -208,27 +210,41 @@ const TabText = styled.span`
   font-size: 32px;
   line-height: 130%;
   color: ${colors.white};
+  ${media.tabletSmall(css`
+    font-size: 20px;
+    line-height: 160%;
+  `)}
 `;
 
 const TabContent = styled.div`
   padding-top: 50px;
   padding-bottom: 110px;
   background: #c2191e;
+
+  ${media.tabletSmallOnly(css`
+    padding-top: 25px;
+  `)}
+
+  ${media.mobile(css`
+    padding-top: 20px;
+  `)}
 `;
 
 const JobsCards = styled.div`
   margin: -50px -10px 0;
   display: flex;
   flex-wrap: wrap;
+
+  ${media.tabletSmallOnly(css`
+    justify-content: center;
+  `)}
 `;
 
 const Card = styled.div`
   margin-top: 50px;
   padding: 0 10px;
-  max-width: 293px;
-  min-width: 293px;
+  max-width: calc(293px + 20px);
+  min-width: calc(293px + 20px);
 `;
-
-const HeroJobCard = styled(JobCard)``;
 
 export default JobsSection;

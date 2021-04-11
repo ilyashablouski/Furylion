@@ -66,15 +66,10 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  margin-top: -100px;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   background: ${colors.dark};
-
-  ${media.tabletSmall(css`
-    margin-top: -56px;
-  `)}
 `;
 
 export default Layout;

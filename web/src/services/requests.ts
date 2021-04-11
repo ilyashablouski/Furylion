@@ -1,10 +1,6 @@
 import { request, ResponseBody } from '@tager/web-core';
 
-import {
-  FileType,
-  VacancyFullListType,
-  VacancyShortListType,
-} from '@/typings/model';
+import { FileType, VacancyFullType, VacancyShortType } from '@/typings/model';
 
 export type ContactsFormPayload = {
   name: string;
@@ -37,7 +33,7 @@ export function uploadFile(file: File): Promise<FileType> {
 
 export function getCareersVacancyByAlias(
   alias: string
-): Promise<ResponseBody<VacancyFullListType>> {
+): Promise<ResponseBody<VacancyFullType>> {
   return request.get({ path: `/vacancies/${alias}` });
 }
 //FIXME: fix for get meta & data
@@ -55,7 +51,7 @@ export function getCareersVacancyByAlias(
 //   return request.get({ path: `/vacancies` });
 // }
 export function getCareersVacanciesList(): Promise<
-  ResponseBody<Array<VacancyShortListType>>
+  ResponseBody<Array<VacancyShortType>>
 > {
   return request.get({ path: `/vacancies` });
 }

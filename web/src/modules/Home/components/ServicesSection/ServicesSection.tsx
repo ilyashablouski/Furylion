@@ -27,15 +27,10 @@ function ServicesSection() {
 }
 
 const Wrapper = styled.section`
-  margin-top: 100px;
   width: 100%;
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
-
-  ${media.tabletSmall(css`
-    margin-top: 70px;
-  `)}
 `;
 
 const ServicesWrapper = styled.div`

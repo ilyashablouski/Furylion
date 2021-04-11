@@ -69,7 +69,6 @@ function ContactsForm({
               name={'file'}
               type={'file'}
               isSmall={true}
-              fileId={fileId}
               setFileId={setFileId}
             />
           </AttachWrapper>

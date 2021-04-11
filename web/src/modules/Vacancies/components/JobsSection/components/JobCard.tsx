@@ -4,31 +4,25 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as ClockIcon } from '@/assets/svg/vacancy/clock.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
-import { JobCardType } from '@/typings/model';
+import { VacancyCardFullType } from '@/typings/model';
 import Link from '@/components/Link';
 import Button from '@/components/Button';
+import { media } from '@/utils/mixin';
 
-interface Props extends JobCardType {
+interface Props {
+  card: VacancyCardFullType;
   className?: string;
-  heroCard?: boolean;
+  isHeroCard?: boolean;
   onClick?: () => void;
 }
-function JobCard({
-  title,
-  image,
-  urlAlias,
-  excerpt,
-  level,
-  typeOfWork,
-  heroCard = false,
-  className,
-  onClick,
-}: Props) {
+function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
+  const { title, image, urlAlias, excerpt, level, typeOfWork } = card;
+
   return (
-    <Container className={className} onClick={onClick}>
-      {!heroCard && <JobLink to={`careers/${urlAlias}`} />}
-      <Title>{title}</Title>
-      <ImageContainer heroCard={heroCard}>
+    <Container className={className} onClick={onClick} isHeroCard={isHeroCard}>
+      {!isHeroCard && <JobLink to={`careers/${urlAlias}`} />}
+      <Title heroCard={isHeroCard}>{title}</Title>
+      <ImageContainer heroCard={isHeroCard}>
         <Picture
           mobileSmall={{
             src: image?.url,
@@ -43,7 +37,7 @@ function JobCard({
 
       <Bottom>
         <Labels>
-          {!heroCard && (
+          {!isHeroCard && (
             <LabelLeft>
               <LabelIcon>
                 <ClockIcon />
@@ -56,7 +50,7 @@ function JobCard({
         </Labels>
 
         <ButtonContainer>
-          {!heroCard ? (
+          {!isHeroCard ? (
             <CardButton variants={['dark', 'w100']}>Apply</CardButton>
           ) : (
             <CardButton variants={['dashed', 'w100']}>Apply</CardButton>
@@ -73,6 +67,10 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
   min-height: 419px;
   max-height: 419px;
   filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.25));
+
+  ${media.tabletSmall(css`
+    margin-top: 15px;
+  `)}
 
   &:before {
     content: '';
@@ -118,10 +116,15 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
 `;
 
 const Labels = styled.div`
-  margin-top: 25px;
+  margin-top: 17px;
+  min-height: 20px;
   display: flex;
   justify-content: space-between;
   transition: 150ms all ease-in-out;
+
+  ${media.tabletSmall(css`
+    margin-top: 25px;
+  `)}
 `;
 
 const LabelLeft = styled.span`
@@ -143,7 +146,7 @@ const ButtonContainer = styled.div`
   margin-top: 25px;
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ isHeroCard?: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -157,13 +160,16 @@ const Container = styled.div`
       }
     }
 
-    &.hero-card {
-      ${ImageContainer} {
-        &:before {
-          border: 15px dashed ${colors.white};
-        }
-      }
-    }
+    ${(props) =>
+      props.isHeroCard
+        ? css`
+            ${ImageContainer} {
+              &:before {
+                border: 15px dashed ${colors.white};
+              }
+            }
+          `
+        : ''}
 
     ${Labels} {
       color: ${colors.white};
@@ -185,11 +191,26 @@ const JobLink = styled(Link)`
   z-index: 2;
 `;
 
-const Title = styled.span`
+const Title = styled.span<{ heroCard: boolean }>`
+  ${(props) =>
+    !props.heroCard
+      ? css`
+          color: ${colors.white};
+        `
+      : css`
+          font-family: 'Inter', sans-serif;
+          color: transparent;
+          text-stroke: 1px ${colors.white};
+        -webkit-text-stroke: 1px ${colors.white};
+      }
+        `}
   font-weight: 900;
   font-size: 24px;
   line-height: 160%;
-  color: ${colors.white};
+
+  ${media.tabletSmall(css`
+    font-size: 20px;
+  `)}
 `;
 
 const ExcerptText = styled.p`
@@ -198,6 +219,10 @@ const ExcerptText = styled.p`
   font-size: 14px;
   line-height: 160%;
   color: ${colors.white};
+
+  ${media.tabletSmall(css`
+    margin-top: 15px;
+  `)}
 `;
 
 const LabelIcon = styled.i`
