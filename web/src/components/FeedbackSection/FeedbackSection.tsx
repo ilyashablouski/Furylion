@@ -11,11 +11,17 @@ type Props = {
   formTitle?: StringFieldType;
   children?: React.ReactNode;
   className?: string;
+  isModal?: boolean;
 };
 
-function FeedbackSection({ formTitle, children, className }: Props) {
+function FeedbackSection({
+  formTitle,
+  children,
+  className,
+  isModal = false,
+}: Props) {
   return (
-    <Wrapper>
+    <Wrapper isModal={isModal}>
       <ContentContainer>
         <Inner>
           <Left>
@@ -31,11 +37,18 @@ function FeedbackSection({ formTitle, children, className }: Props) {
   );
 }
 
-const Wrapper = styled.section`
-  margin-top: 120px;
-  ${media.tabletSmall(css`
-    margin-top: 70px;
-  `)}
+const Wrapper = styled.section<{ isModal: boolean }>`
+  ${(props) =>
+    props.isModal
+      ? css`
+          margin-top: 0;
+        `
+      : css`
+          margin-top: 120px;
+          ${media.tabletSmall(css`
+            margin-top: 70px;
+          `)}
+        `}
 
   ${ContentContainer} {
     max-width: 1920px;

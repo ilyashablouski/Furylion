@@ -60,20 +60,25 @@ function TeamLifeSection() {
 }
 
 const Wrapper = styled.section`
-  padding-top: 215px;
   padding-bottom: 78px;
   position: relative;
   background: ${colors.white};
   overflow: hidden;
+
+  ${media.tabletSmallOnly(css`
+    padding-bottom: 50px;
+  `)}
+
+  ${media.mobile(css`
+    padding-bottom: 0;
+  `)}
 `;
 
 const TitleBlock = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
+  position: relative;
   max-width: 1920px;
   text-align: center;
-  transform: translateX(-50%);
+  z-index: 1;
 `;
 
 const Title = styled.span`
@@ -90,11 +95,26 @@ const Title = styled.span`
       font-size: 19.3vw;
     `
   )}
+
+  ${media.mobile(
+    css`
+      font-size: 34.1vw;
+      white-space: normal;
+    `
+  )}
 `;
 
 const InstagramBlock = styled.div`
-  margin-top: 98px;
+  margin-top: 120px;
   position: relative;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 92px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 36px;
+  `)}
 `;
 
 const InstagramBlockTitle = styled.span`
@@ -107,6 +127,10 @@ const InstagramBlockTitle = styled.span`
   line-height: 130%;
   text-transform: uppercase;
   color: ${colors.dark};
+
+  ${media.tabletSmall(css`
+    font-size: 32px;
+  `)}
 `;
 
 const InstagramBlockText = styled.div`
@@ -119,14 +143,33 @@ const InstagramBlockText = styled.div`
   line-height: 160%;
   text-align: center;
   color: ${colors.dark};
+
+  ${media.tabletSmall(css`
+    margin-top: 20px;
+    max-width: 554px;
+    font-size: 14px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 const BackgroundPicture = styled(Picture)`
   &.team-life-background {
     position: absolute;
+    top: 215px;
     left: 0;
     right: 0;
     display: block;
+
+    ${media.tabletSmallOnly(css`
+      top: 124px;
+    `)}
+
+    ${media.mobile(css`
+      top: 163px;
+    `)}
   }
 
   img {
@@ -138,12 +181,32 @@ const BackgroundPicture = styled(Picture)`
     ${media.desktop1366(css`
       left: -95px;
     `)}
+
+    ${media.tabletSmallOnly(css`
+      left: -105px;
+      width: 148%;
+    `)}
+
+    ${media.mobile(css`
+      left: -18px;
+      max-width: none;
+      width: 111%;
+    `)}
   }
 `;
 
 const StyledButton = styled.div`
   margin: 45px auto 0;
   max-width: 369px;
+
+  ${media.tabletSmall(css`
+    margin: 20px auto 0;
+  `)}
+
+  ${media.mobile(css`
+    margin: 30px auto 0;
+    max-width: 300px;
+  `)}
 `;
 
 const IconWrapper = styled.i`

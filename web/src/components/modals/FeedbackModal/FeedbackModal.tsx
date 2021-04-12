@@ -20,7 +20,7 @@ function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
       <ButtonWrapper>
         <CloseButton onClick={closeModal} />
       </ButtonWrapper>
-      <FeedbackSection formTitle={formTitle} />
+      <FeedbackSection formTitle={formTitle} isModal={true} />
     </Wrapper>
   );
 }

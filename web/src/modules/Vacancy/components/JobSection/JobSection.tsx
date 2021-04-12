@@ -164,7 +164,7 @@ const IntroThirdText = styled.p`
 `;
 
 const Lists = styled.div`
-  margin-top: 40px;
+  margin-top: 43px;
   display: flex;
 
   ${media.tabletSmall(css`
@@ -248,7 +248,7 @@ const ListContent = styled.div`
     color: ${colors.white};
 
     &:not(:first-child) {
-      margin-top: 24px;
+      margin-top: 25px;
 
       ${media.mobile(css`
         margin-top: 20px;

@@ -55,7 +55,7 @@ const Title = styled.span`
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 16.3vw;
+    font-size: 16.1vw;
   `)}
 
   &:before {

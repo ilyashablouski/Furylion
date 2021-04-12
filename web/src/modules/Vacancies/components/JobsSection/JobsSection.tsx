@@ -223,10 +223,19 @@ const TabContent = styled.div`
 
   ${media.tabletSmallOnly(css`
     padding-top: 25px;
+    padding-bottom: 60px;
   `)}
 
   ${media.mobile(css`
     padding-top: 20px;
+    padding-bottom: 127px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `)}
 `;
 
@@ -236,7 +245,13 @@ const JobsCards = styled.div`
   flex-wrap: wrap;
 
   ${media.tabletSmallOnly(css`
+    margin: -50px -30px 0;
     justify-content: center;
+  `)}
+
+  ${media.mobile(css`
+    margin: 0 -10px;
+    flex-wrap: nowrap;
   `)}
 `;
 
@@ -245,6 +260,16 @@ const Card = styled.div`
   padding: 0 10px;
   max-width: calc(293px + 20px);
   min-width: calc(293px + 20px);
+
+  ${media.tabletSmallOnly(css`
+    padding: 0 30px;
+    max-width: calc(293px + 60px);
+    min-width: calc(293px + 60px);
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 0;
+  `)}
 `;
 
 export default JobsSection;
