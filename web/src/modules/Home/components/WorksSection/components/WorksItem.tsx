@@ -124,6 +124,7 @@ const WorksCopyright = styled.div`
   z-index: 1;
 `;
 
+//TODO: Change on image tags from admin panel
 const Tags = styled.div`
   margin-top: 25px;
   margin-left: -10px;

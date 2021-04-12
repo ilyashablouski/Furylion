@@ -66,6 +66,7 @@ const Lists = styled.div`
   margin-left: -10px;
   margin-right: -10px;
   display: flex;
+  color: ${colors.white};
 
   ${media.tabletSmallOnly(css`
     margin-top: -70px;

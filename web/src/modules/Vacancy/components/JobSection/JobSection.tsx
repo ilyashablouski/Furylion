@@ -34,9 +34,11 @@ function JobSection() {
           </Left>
           <Right>
             <Tags>
-              {tagsArray.map((tag, index) => {
-                return <Tag key={index} tag={tag} />;
-              })}
+              <TagsInner>
+                {tagsArray.map((tag, index) => {
+                  return <Tag key={index} tag={tag} />;
+                })}
+              </TagsInner>
             </Tags>
             <IntroBlock>
               <IntroFirstText>{introFirstText}</IntroFirstText>
@@ -102,6 +104,11 @@ const Right = styled.div`
 `;
 const Tags = styled.div`
   display: flex;
+`;
+const TagsInner = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px -5px 0;
 `;
 
 const IntroBlock = styled.div`
@@ -228,6 +235,7 @@ const ListContent = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
+  color: ${colors.white};
 
   ${media.tabletSmallOnly(css`
     margin-top: 56px;
