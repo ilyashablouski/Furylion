@@ -136,6 +136,7 @@ export interface VacancyShortType {
   id: number;
   title: StringFieldType;
   excerpt: StringFieldType;
+  tags: StringFieldType;
   urlAlias: StringFieldType;
   location: StringFieldType;
   image: Nullable<ThumbnailType>;
@@ -182,6 +183,7 @@ export interface VacancyCardFullType extends VacancyCardShortType {
   title: StringFieldType;
   excerpt: StringFieldType;
   urlAlias?: StringFieldType;
+  tags?: StringFieldType;
 }
 
 export interface TeamLifeSectionType extends PageFullType {

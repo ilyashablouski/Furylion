@@ -8,6 +8,7 @@ import { VacancyCardFullType } from '@/typings/model';
 import Link from '@/components/Link';
 import Button from '@/components/Button';
 import { media } from '@/utils/mixin';
+import Tag from '@/components/Tag';
 
 interface Props {
   card: VacancyCardFullType;
@@ -16,7 +17,9 @@ interface Props {
   onClick?: () => void;
 }
 function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
-  const { title, image, urlAlias, excerpt, level, typeOfWork } = card;
+  const { title, image, urlAlias, excerpt, level, typeOfWork, tags } = card;
+
+  const tagsArray = tags ? tags.split(',') : [];
 
   return (
     <Container className={className} onClick={onClick} isHeroCard={isHeroCard}>
@@ -32,6 +35,14 @@ function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
           }}
           className={'vacancy-image-block'}
         />
+
+        <Tags>
+          <TagsInner>
+            {tagsArray.map((tag, index) => {
+              return <Tag key={index} tag={tag} />;
+            })}
+          </TagsInner>
+        </Tags>
       </ImageContainer>
       <ExcerptText>{excerpt}</ExcerptText>
 
@@ -113,6 +124,19 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
             `};
     }
   }
+`;
+
+const Tags = styled.div`
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+`;
+
+const TagsInner = styled.div`
+  margin: -10px -5px 0;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Labels = styled.div`
