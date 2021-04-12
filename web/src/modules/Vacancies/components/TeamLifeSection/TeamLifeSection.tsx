@@ -75,6 +75,7 @@ const Wrapper = styled.section`
 `;
 
 const TitleBlock = styled.div`
+  margin: 0 auto;
   position: relative;
   max-width: 1920px;
   text-align: center;

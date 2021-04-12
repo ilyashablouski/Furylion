@@ -2,7 +2,6 @@ import React from 'react';
 
 import { isServer } from '@tager/web-core';
 import { Page } from '@tager/web-components';
-import { convertSeoParamsToPageProps } from '@tager/web-modules';
 
 import Layout from '@/components/Layout';
 import Vacancy from '@/modules/Vacancy';

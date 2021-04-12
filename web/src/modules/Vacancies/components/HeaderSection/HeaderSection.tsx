@@ -26,6 +26,7 @@ function HeaderSection() {
 }
 
 const Wrapper = styled.section`
+  margin: 0 auto;
   padding-top: 226px;
   max-width: 1920px;
   text-align: center;

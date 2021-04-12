@@ -29,6 +29,7 @@ type State = {
 const initialState: State = {
   VacancyShortListTypeList: vacancyListLoader.getInitialResource(),
   VacancyFullListTypeMap: {},
+  //FIXME: fix for get meta
   totalVacanciesValue: 0,
 };
 const vacanciesSlice = createSlice({
