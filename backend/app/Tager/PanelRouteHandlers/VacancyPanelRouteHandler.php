@@ -25,7 +25,7 @@ class VacancyPanelRouteHandler implements IRouteHandler
         $result = new TagerRouteHandlerResult();
 
         $result->setModel('Vacancy', $vacancy->title);
-        $result->addAction('Edit Vacancy', '/admin/vacancies/' . $vacancy->id);
+        $result->addAction('Edit Vacancy', '/vacancies/' . $vacancy->id);
 
         return $result;
     }
