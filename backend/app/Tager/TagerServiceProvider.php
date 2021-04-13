@@ -32,7 +32,7 @@ class TagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        TagerPanel::registerRouteHandler('/vacancies/(.+?)$', VacancyPanelRouteHandler::class);
+        TagerPanel::registerRouteHandler('/careers/(.+?)$', VacancyPanelRouteHandler::class);
 
         TagerScopes::registerGroup('Vacancies', [
             UsersScope::VacanciesView => 'View',
