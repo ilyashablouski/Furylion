@@ -2,20 +2,22 @@
 
 use App\Enums\SettingKey;
 use \OZiTAG\Tager\Backend\Fields\Enums\FieldType;
+use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
+use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
 
 return [
-    'Открытая вакансия' => [
+    'Open vacancy' => [
         SettingKey::OpenVacancyTitle => [
             'type' => FieldType::String,
-            'label' => 'Название'
+            'label' => 'Title'
         ],
         SettingKey::OpenVacancyImage => [
             'type' => FieldType::Image,
-            'label' => 'Изображение'
+            'label' => 'Image'
         ],
         SettingKey::OpenVacancyDescription => [
             'type' => FieldType::Text,
-            'label' => 'Описание'
+            'label' => 'Description'
         ],
     ],
     'Footer' => [
@@ -70,4 +72,26 @@ return [
             'value' => 'https://instagram.com'
         ],
     ],
+    'Instagram' => [
+        SettingKey::FooterOffices => [
+            'type' => FieldType::Repeater,
+            'label' => 'Previews',
+            'viewMode' => RepeaterView::Table,
+            'fields' => [
+                'type' => new SelectField('Type', [
+                    'VIDEO' => 'Video',
+                    'IMAGE' => 'Image',
+                    'CAROUSEL_ALBUM' => 'Carousel Album',
+                ]),
+                'preview' => [
+                    'label' => 'Preview',
+                    'type' => FieldType::Image,
+                ],
+                'url' => [
+                    'label' => 'Url',
+                    'type' => FieldType::Url,
+                ],
+            ],
+        ],
+    ]
 ];
