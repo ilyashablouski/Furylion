@@ -17,4 +17,6 @@ final class SettingKey extends Enum
     const AppstoreUrl = 'APPSTORE_URL';
     const GoogleplayUrl = 'GOOGLEPLAY_URL';
     const OpenVacancyDescription = 'OPEN_VACANCY_DESCRIPTION';
+
+    const Instagram = 'INSTAGRAM';
 }

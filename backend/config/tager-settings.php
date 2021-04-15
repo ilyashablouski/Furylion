@@ -73,7 +73,7 @@ return [
         ],
     ],
     'Instagram' => [
-        SettingKey::FooterOffices => [
+        SettingKey::Instagram => [
             'type' => FieldType::Repeater,
             'label' => 'Previews',
             'viewMode' => RepeaterView::Table,
