@@ -53,7 +53,9 @@ function TeamLifeSection() {
           </SkewButton>
         </StyledButton>
 
-        <InstagramFeed />
+        <ContentContainer>
+          <InstagramFeed />
+        </ContentContainer>
       </InstagramBlock>
     </Wrapper>
   );

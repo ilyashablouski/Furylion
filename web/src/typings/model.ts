@@ -17,11 +17,24 @@ export type SettingOptionType = {
   phone: StringFieldType;
   email: StringFieldType;
 };
+
+export type SettingInstagramOptionType = {
+  type: StringFieldType;
+  preview: ThumbnailType;
+  url: StringFieldType;
+};
+
 export type SettingOptionsListType = Array<SettingOptionType>;
+export type SettingInstagramOptionsListType = Array<SettingInstagramOptionType>;
 
 export interface SettingsItemOptions<Key extends string>
   extends SettingsItemCommon<Key> {
   value: SettingOptionsListType;
+}
+
+export interface SettingsInstagramOptions<Key extends string>
+  extends SettingsItemCommon<Key> {
+  value: SettingInstagramOptionsListType;
 }
 
 export type SettingsItemType =
@@ -34,7 +47,8 @@ export type SettingsItemType =
   | SettingsItemString<'GOOGLEPLAY_URL'>
   | SettingsItemString<'OPEN_VACANCY_TITLE'>
   | SettingsItemImage<'OPEN_VACANCY_IMAGE'>
-  | SettingsItemString<'OPEN_VACANCY_DESCRIPTION'>;
+  | SettingsItemString<'OPEN_VACANCY_DESCRIPTION'>
+  | SettingsInstagramOptions<'INSTAGRAM'>;
 
 export type FileType = {
   id: number;
