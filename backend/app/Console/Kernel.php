@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use OZiTAG\Tager\Backend\Core\Console\Kernel as ConsoleKernel;
-use App\Console\Commands\Test;
+use App\Console\Commands\GetInstagramPreviews;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Test::class
+        GetInstagramPreviews::class
     ];
 
     /**
@@ -25,6 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('test')->hourly();
+        $schedule->command('cron:get-instagram-previews')->hourly();
     }
 }
