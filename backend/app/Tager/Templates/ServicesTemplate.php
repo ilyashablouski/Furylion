@@ -53,7 +53,7 @@ class ServicesTemplate extends Template
                 'productionText2' => new TextField('Text - 2'),
                 'productionMedia' => new RepeaterField('Production Media', [
                     'image' => new ImageField('Image'),
-                    //TODO: ADD field for video
+                    'videoUrl' => new StringField('Video - URL'),
                 ]),
                 'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'productionButtonFirstUrl' => new StringField('Button 1 - URL'),
@@ -99,8 +99,8 @@ class ServicesTemplate extends Template
                 'coDevelopmentText3' => new TextField('Text - 3'),
                 'leftLogo' => new ImageField('Left logo'),
                 'rightLogo' => new ImageField('Right logo'),
-                'coDevelopmentButtonLabel' => new StringField('Button 1 - Text'),
-                'coDevelopmentButtonUrl' => new StringField('Button 1 - URL'),
+                'coDevelopmentButtonLabel' => new StringField('Button - Text'),
+                'coDevelopmentButtonUrl' => new StringField('Button - URL'),
             ]),
             new GroupField('Ads', [
                 'adsTitle' => new StringField('Title'),
@@ -108,8 +108,8 @@ class ServicesTemplate extends Template
                 'adsText2' => new TextField('Text - 2'),
                 'adsText3' => new TextField('Text - 3'),
                 'adsImage' => new ImageField('Image'),
-                'adsButtonLabel' => new StringField('Button 1 - Text'),
-                'adsButtonUrl' => new StringField('Button 1 - URL'),
+                'adsButtonLabel' => new StringField('Button - Text'),
+                'adsButtonUrl' => new StringField('Button - URL'),
             ]),
         ]);
     }
