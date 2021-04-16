@@ -20,26 +20,28 @@ function InstagramFeed() {
         {instagramItems.map((instagramItem, index) => {
           return (
             <InstagramItem key={index}>
-              <IconContainer>
-                {instagramItem.type === 'CAROUSEL_ALBUM' && (
-                  <InstagramGalleryIcon />
-                )}
-
-                {instagramItem.type === 'VIDEO' && <InstagramVideoIcon />}
-              </IconContainer>
-
-              <ItemLink to={instagramItem.url} target="_blank" />
-              <ImageContainer>
-                <Picture
-                  mobileSmall={convertThumbnailToPictureImage(
-                    instagramItem.preview
+              <InstagramItemWrapper>
+                <IconContainer>
+                  {instagramItem.type === 'CAROUSEL_ALBUM' && (
+                    <InstagramGalleryIcon />
                   )}
-                  className="instagram-thumbnail"
-                />
-                <InstagramIconWrapper>
-                  <InstagramIcon />
-                </InstagramIconWrapper>
-              </ImageContainer>
+
+                  {instagramItem.type === 'VIDEO' && <InstagramVideoIcon />}
+                </IconContainer>
+
+                <ItemLink to={instagramItem.url} target="_blank" />
+                <ImageContainer>
+                  <Picture
+                    mobileSmall={convertThumbnailToPictureImage(
+                      instagramItem.preview
+                    )}
+                    className="instagram-thumbnail"
+                  />
+                  <InstagramIconWrapper>
+                    <InstagramIcon />
+                  </InstagramIconWrapper>
+                </ImageContainer>
+              </InstagramItemWrapper>
             </InstagramItem>
           );
         })}
@@ -100,7 +102,6 @@ const InstagramIconWrapper = styled.div`
 `;
 
 const InstagramItem = styled.div`
-  position: relative;
   margin: 40px 20px 0;
   flex: 1 1 calc(33.33% - 40px);
   max-width: calc(33.33% - 40px);
@@ -127,6 +128,12 @@ const InstagramItem = styled.div`
     flex: 0 0 360px;
     max-width: 360px;
     max-height: 360px;
+    min-height: 360px;
+    background: ${colors.dark};
+
+    &:not(:first-child) {
+      padding-top: 10px;
+    }
 
     &:nth-child(5) {
       display: block;
@@ -146,6 +153,12 @@ const InstagramItem = styled.div`
       opacity: 1;
     }
   }
+`;
+
+const InstagramItemWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 const IconContainer = styled.div`
@@ -173,6 +186,12 @@ const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    ${media.mobile(
+      css`
+        min-height: 360px;
+      `
+    )}
   }
 `;
 
