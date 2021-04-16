@@ -1,22 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import useCurrentPage from '@/hooks/useCurrentPage';
+import HeaderSection from './components/HeaderSection';
+import TextBannerSection from './components/TextBannerSection';
 
 function Services() {
-  const page = useCurrentPage();
-
   return (
-    <Container>
-      <h1>{page?.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: page?.body ?? '' }} />
-    </Container>
+    <>
+      <HeaderSection />
+      <TextBannerSection />
+    </>
   );
 }
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 2rem auto;
-`;
-
 export default Services;

@@ -47,7 +47,7 @@ export function normalizePhoneNumber(phone: string | null): string | null {
 }
 
 export function scrollDown() {
-  const section = document.querySelector('.works-section');
+  const section = document.querySelector('.anchor-section');
   if (!section) return;
   const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
 

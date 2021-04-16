@@ -137,10 +137,12 @@ const DownArrow = styled.i`
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.5);
+  color: #939491;
   border-radius: 50%;
   transform: translate(-50%, 0);
   cursor: pointer;
   transition: all 150ms ease-in-out;
+  z-index: 2;
 
   &:hover {
     background: rgba(0, 0, 0, 0.8);
