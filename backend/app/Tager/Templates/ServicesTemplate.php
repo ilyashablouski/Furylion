@@ -8,6 +8,10 @@ class ServicesTemplate extends Template
 {
     public function __construct()
     {
-        parent::__construct('Услуги', []);
+        parent::__construct('Услуги', [
+            new GroupField('Head', [
+                'headText' => new StringField('Text'),
+            ]),
+        ]);
     }
 }
