@@ -80,7 +80,16 @@ class ServicesTemplate extends Template
                     'additionalText' => new TextField('Additional Text'),
                     'logos' => new GalleryField('Logos'),
                 ]),
+            ]),
 
+            new GroupField('Outstaffing', [
+                'outstaffingTitle' => new StringField('Title'),
+                'outstaffingText1' => new TextField('Text - 1'),
+                'outstaffingText2' => new TextField('Text - 2'),
+                'outstaffingItems' => new RepeaterField('Items', [
+                    'title' => new StringField('Title'),
+                    'tags' => new StringField('Tags'),
+                ]),
             ]),
         ]);
     }
