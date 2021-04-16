@@ -18,15 +18,33 @@ class SetInstagramPreviewsOperation extends Operation
 
     public function handle(SettingsRepository $settingsRepository)
     {
+        $model = $settingsRepository->findOneByKey(SettingKey::Instagram);
+
+        $settingsValue = json_decode($model->value);
+
         $result = [];
         foreach ($this->data as $item) {
+            $imageUuid = null;
             $imageKey = 'thumbnail_url';
             if (!isset($item->$imageKey)) {
                 $imageKey = 'media_url';
             }
 
-            $storage = new Storage();
-            $image = $storage->createFromUrl($item->$imageKey);
+            $allowDownloadImage = true;
+            if ($settingsValue) {
+                foreach ($settingsValue as $preview) {
+                    if ($preview[2]->value === $item->permalink) {
+                        $allowDownloadImage = false;
+                        $imageUuid = $preview[1]->value;
+                    }
+                }
+            }
+
+            if ($allowDownloadImage) {
+                $storage = new Storage();
+                $image = $storage->createFromUrl($item->$imageKey);
+                $imageUuid = $image->uuid;
+            }
 
             $result[] = [
                 [
@@ -35,7 +53,7 @@ class SetInstagramPreviewsOperation extends Operation
                 ],
                 [
                     'name' => 'preview',
-                    'value' => $image->uuid
+                    'value' => $imageUuid
                 ],
                 [
                     'name' => 'url',
@@ -44,7 +62,6 @@ class SetInstagramPreviewsOperation extends Operation
             ];
         }
 
-        $model = $settingsRepository->findOneByKey(SettingKey::Instagram);
         $model->value = $result;
         return $model->save();
     }
