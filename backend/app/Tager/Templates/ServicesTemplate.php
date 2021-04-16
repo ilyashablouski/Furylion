@@ -5,6 +5,10 @@ namespace App\Tager\Templates;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
+use OZiTAG\Tager\Backend\Fields\Fields\TextField;
+use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
+use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
+
 
 class ServicesTemplate extends Template
 {
@@ -13,6 +17,32 @@ class ServicesTemplate extends Template
         parent::__construct('Услуги', [
             new GroupField('Head', [
                 'headText' => new StringField('Text'),
+            ]),
+
+            new GroupField('Art 1', [
+                'firstArtTitle' => new StringField('Title'),
+                'firstArtText1' => new TextField('Text - 1'),
+                'firstArtText2' => new TextField('Text - 2'),
+                'firstArtText3' => new TextField('Text - 3'),
+                'firstArtTextAdditional' => new HtmlField('Text - Additional'),
+                'firstArtButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'firstArtButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'firstArtButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'firstArtButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'firstArtImages' => new GalleryField('Slider Images'),
+            ]),
+
+            new GroupField('Art 2', [
+                'secondArtTitle' => new StringField('Title'),
+                'secondArtText1' => new TextField('Text - 1'),
+                'secondArtText2' => new TextField('Text - 2'),
+                'secondArtText3' => new TextField('Text - 3'),
+                'secondArtTextAdditional' => new HtmlField('Text - Additional'),
+                'secondArtButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'secondArtButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'secondArtButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'secondArtImages' => new GalleryField('Slider Images'),
             ]),
         ]);
     }
