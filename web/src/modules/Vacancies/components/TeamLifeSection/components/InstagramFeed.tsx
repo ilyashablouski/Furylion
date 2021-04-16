@@ -28,7 +28,7 @@ function InstagramFeed() {
                 {instagramItem.type === 'VIDEO' && <InstagramVideoIcon />}
               </IconContainer>
 
-              <ItemLink to={instagramItem.url} />
+              <ItemLink to={instagramItem.url} target="_blank" />
               <ImageContainer>
                 <Picture
                   mobileSmall={convertThumbnailToPictureImage(
