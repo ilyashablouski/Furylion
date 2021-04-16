@@ -76,8 +76,8 @@ class ServicesTemplate extends Template
                 'developmentTitle' => new StringField('Title'),
                 'developmentItems' => new RepeaterField('Items', [
                     'image' => new ImageField('Image'),
-                    'additionalTitle' => new StringField('Additional Title'),
-                    'additionalText' => new TextField('Additional Text'),
+                    'title' => new StringField('Title'),
+                    'text' => new TextField('Text'),
                     'logos' => new GalleryField('Logos'),
                 ]),
             ]),
