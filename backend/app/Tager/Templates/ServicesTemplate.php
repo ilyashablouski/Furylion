@@ -91,6 +91,26 @@ class ServicesTemplate extends Template
                     'tags' => new StringField('Tags'),
                 ]),
             ]),
+
+            new GroupField('Co-development', [
+                'coDevelopmentTitle' => new StringField('Title'),
+                'coDevelopmentText1' => new TextField('Text - 1'),
+                'coDevelopmentText2' => new TextField('Text - 2'),
+                'coDevelopmentText3' => new TextField('Text - 3'),
+                'leftLogo' => new ImageField('Left logo'),
+                'rightLogo' => new ImageField('Right logo'),
+                'coDevelopmentButtonLabel' => new StringField('Button 1 - Text'),
+                'coDevelopmentButtonUrl' => new StringField('Button 1 - URL'),
+            ]),
+            new GroupField('Ads', [
+                'adsTitle' => new StringField('Title'),
+                'adsText1' => new TextField('Text - 1'),
+                'adsText2' => new TextField('Text - 2'),
+                'adsText3' => new TextField('Text - 3'),
+                'adsImage' => new ImageField('Image'),
+                'adsButtonLabel' => new StringField('Button 1 - Text'),
+                'adsButtonUrl' => new StringField('Button 1 - URL'),
+            ]),
         ]);
     }
 }
