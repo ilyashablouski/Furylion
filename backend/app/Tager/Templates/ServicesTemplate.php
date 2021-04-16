@@ -8,6 +8,8 @@ use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
+use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
+use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 
 
 class ServicesTemplate extends Template
@@ -43,6 +45,31 @@ class ServicesTemplate extends Template
                 'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'secondArtButtonSecondUrl' => new StringField('Button 2 - URL'),
                 'secondArtImages' => new GalleryField('Slider Images'),
+            ]),
+
+            new GroupField('Production', [
+                'productionTitle' => new StringField('Title'),
+                'productionText1' => new TextField('Text - 1'),
+                'productionText2' => new TextField('Text - 2'),
+                'productionMedia' => new RepeaterField('Production Media', [
+                    'image' => new ImageField('Image'),
+                    //TODO: ADD field for video
+                ]),
+                'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'productionButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'productionButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'productionButtonSecondUrl' => new StringField('Button 2 - URL'),
+            ]),
+
+            new GroupField('Porting', [
+                'portingTitle' => new StringField('Title'),
+                'portingText1' => new TextField('Text - 1'),
+                'portingText2' => new TextField('Text - 2'),
+                'portingText3' => new TextField('Text - 2'),
+                'portingButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'portingButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'portingButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'portingButtonSecondUrl' => new StringField('Button 2 - URL'),
             ]),
         ]);
     }
