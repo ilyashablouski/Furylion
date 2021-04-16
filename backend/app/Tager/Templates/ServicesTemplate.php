@@ -26,7 +26,7 @@ class ServicesTemplate extends Template
                 'firstArtText1' => new TextField('Text - 1'),
                 'firstArtText2' => new TextField('Text - 2'),
                 'firstArtText3' => new TextField('Text - 3'),
-                'firstArtTextAdditional' => new HtmlField('Text - Additional'),
+                'firstArtTextAdditional' => new HtmlField('Additional Text'),
                 'firstArtButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'firstArtButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'firstArtButtonSecondLabel' => new StringField('Button 2 - Text'),
@@ -39,7 +39,7 @@ class ServicesTemplate extends Template
                 'secondArtText1' => new TextField('Text - 1'),
                 'secondArtText2' => new TextField('Text - 2'),
                 'secondArtText3' => new TextField('Text - 3'),
-                'secondArtTextAdditional' => new HtmlField('Text - Additional'),
+                'secondArtTextAdditional' => new HtmlField('Additional Text'),
                 'secondArtButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'secondArtButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
@@ -70,6 +70,17 @@ class ServicesTemplate extends Template
                 'portingButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'portingButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'portingButtonSecondUrl' => new StringField('Button 2 - URL'),
+            ]),
+
+            new GroupField('Development', [
+                'developmentTitle' => new StringField('Title'),
+                'developmentItems' => new RepeaterField('Items', [
+                    'image' => new ImageField('Image'),
+                    'additionalTitle' => new StringField('Additional Title'),
+                    'additionalText' => new TextField('Additional Text'),
+                    'logos' => new GalleryField('Logos'),
+                ]),
+
             ]),
         ]);
     }
