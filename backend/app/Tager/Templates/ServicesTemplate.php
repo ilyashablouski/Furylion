@@ -3,6 +3,7 @@
 namespace App\Tager\Templates;
 
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
+use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 
 class ServicesTemplate extends Template
