@@ -222,6 +222,7 @@ const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.5);
+  color: ${colors.red};
   border-radius: 50%;
   transform: translate(0, -50%);
   z-index: 1;

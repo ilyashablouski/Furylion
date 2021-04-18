@@ -41,7 +41,7 @@ function FirstArtSection() {
         </ContentContainer>
       </Left>
       <Right>
-        <ArtSwiper images={pageFields.firstArtImages} />
+        <ArtSwiper images={pageFields.firstArtImages} isRightSide={true} />
       </Right>
     </Wrapper>
   );
@@ -58,20 +58,14 @@ const Wrapper = styled.section`
 
 const Left = styled.div`
   margin-top: 100px;
-  //margin-right: 673px;
 
   ${ContentContainer} {
     padding-right: 0;
   }
 `;
 const Right = styled.div`
-  //position: absolute;
-  //right: 0;
-  //top: 0;
-  //height: 100%;
   max-width: 673px;
   clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
-  shape-outside: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
 `;
 
 const Title = styled.span`

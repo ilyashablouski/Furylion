@@ -18,9 +18,10 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 type Props = {
   images: Array<ThumbnailType>;
+  isRightSide: boolean;
 };
 
-function ArtSwiper({ images }: Props) {
+function ArtSwiper({ images, isRightSide }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -74,13 +75,14 @@ function ArtSwiper({ images }: Props) {
                 </SwiperSlide>
               );
             })}
-
-            <NavButton className={`swiper-prev`} prev>
-              <SlideArrowIcon />
-            </NavButton>
-            <NavButton className={`swiper-next`} next>
-              <SlideArrowIcon />
-            </NavButton>
+            <NavButtons isRightSide={isRightSide}>
+              <NavButton className={`swiper-prev`} prev>
+                <SlideArrowIcon />
+              </NavButton>
+              <NavButton className={`swiper-next`} next>
+                <SlideArrowIcon />
+              </NavButton>
+            </NavButtons>
           </Swiper>
           <ItemsPagination
             className="swiper-pagination"
@@ -113,7 +115,6 @@ const ArtSwiperContainer = styled.div`
       display: flex;
       img {
         min-height: 750px;
-        //height: 100%;
         object-fit: cover;
       }
     }
@@ -170,17 +171,36 @@ const ItemsPagination = styled.div`
   }
 `;
 
-const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
+const NavButtons = styled.div<{ isRightSide?: boolean }>`
+  display: flex;
   position: absolute;
-  top: 0;
-  left: ${(props) => (props.prev ? '7%' : 'auto')};
-  right: ${(props) => (props.next ? '7%' : 'auto')};
+  top: 50px;
+  ${(props) =>
+    props.isRightSide
+      ? css`
+          right: 50px;
+        `
+      : css`
+          left: 50px;
+        `}
+`;
+
+const NavButton = styled.button<{
+  prev?: boolean;
+  next?: boolean;
+}>`
+  ${(props) =>
+    props.prev &&
+    css`
+      margin-right: 50px;
+    `}
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   transform: translate(0, -50%);
   z-index: 1;
