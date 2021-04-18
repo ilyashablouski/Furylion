@@ -83,7 +83,7 @@ class ServicesTemplate extends Template
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'logos' => new RepeaterField('Logo Item', [
+                    'logos' => new RepeaterField('Logo Items', [
                         'image' =>new ImageField('Image'),
                         'linkUrl' => new StringField('URL'),
                     ]),
