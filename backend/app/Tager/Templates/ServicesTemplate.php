@@ -51,7 +51,11 @@ class ServicesTemplate extends Template
                 'productionTitle' => new StringField('Title'),
                 'productionText1' => new TextField('Text - 1'),
                 'productionText2' => new TextField('Text - 2'),
-                'productionMedia' => new RepeaterField('Production Media', [
+                'productionMediaTop' => new RepeaterField('Production Media Top', [
+                    'image' => new ImageField('Image'),
+                    'videoUrl' => new StringField('Video - URL'),
+                ]),
+                'productionMediaBottom' => new RepeaterField('Production Media Bottom', [
                     'image' => new ImageField('Image'),
                     'videoUrl' => new StringField('Video - URL'),
                 ]),
@@ -70,6 +74,7 @@ class ServicesTemplate extends Template
                 'portingButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'portingButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'portingButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'portingImage' => new ImageField('Image'),
             ]),
 
             new GroupField('Development', [
@@ -78,7 +83,10 @@ class ServicesTemplate extends Template
                     'image' => new ImageField('Image'),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'logos' => new GalleryField('Logos'),
+                    'logos' => new RepeaterField('Logo Item', [
+                        'image' =>new ImageField('Image'),
+                        'linkUrl' => new StringField('URL'),
+                    ]),
                 ]),
             ]),
 
