@@ -105,7 +105,6 @@ function WorksSwiper({ worksItems }: Props) {
     </WorksSwiperContainer>
   );
 }
-const ItemsPagination = styled.div``;
 
 const animation = keyframes`
   from {
@@ -113,6 +112,84 @@ const animation = keyframes`
   }
   to {
     transform: translateX(0);
+  }
+`;
+
+const ItemsPagination = styled.div`
+  position: absolute;
+  bottom: 41px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  ${media.tabletSmallOnly(css`
+    display: none;
+  `)}
+  ${media.mobile(css`
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateX(0);
+  `)}
+    .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    background: ${colors.black};
+    border: 0.2px solid rgba(255, 255, 255, 0.78);
+    border-radius: 50%;
+    opacity: 1;
+    box-sizing: content-box;
+    &:not(:first-child) {
+      margin-left: 15px;
+    }
+
+    ${media.mobile(css`
+      position: relative;
+      max-width: 110px;
+      width: 100%;
+      height: 2px;
+      border-radius: 0;
+      background: #8c8b89;
+      opacity: 1;
+      border: none;
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        content: '';
+        background: #6b1a1a;
+        opacity: 1;
+      }
+    `)}
+  }
+
+  .swiper-pagination-bullet-active {
+    background: ${colors.white};
+    border: 0.2px solid rgba(255, 255, 255, 1);
+    ${media.mobile(css`
+      position: relative;
+      overflow: hidden;
+      background: #8c8b89;
+      border: none;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        will-change: transform;
+        animation: ${animation} 4350ms linear;
+      }
+    `)}
   }
 `;
 
@@ -130,84 +207,6 @@ const WorksSwiperContainer = styled.div`
   .swiper-container-initialized {
     .swiper-slide {
       max-width: 1230px;
-    }
-  }
-
-  .swiper-pagination {
-    position: absolute;
-    bottom: 41px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    ${media.tabletSmallOnly(css`
-      display: none;
-    `)}
-    ${media.mobile(css`
-      bottom: -5px;
-      left: 0;
-      height: 2px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      transform: translateX(0);
-    `)}
-    .swiper-pagination-bullet {
-      width: 4px;
-      height: 4px;
-      background: ${colors.black};
-      border: 0.2px solid rgba(255, 255, 255, 0.78);
-      border-radius: 50%;
-      opacity: 1;
-      box-sizing: content-box;
-      &:not(:first-child) {
-        margin-left: 15px;
-      }
-
-      ${media.mobile(css`
-        position: relative;
-        max-width: 110px;
-        width: 100%;
-        height: 2px;
-        border-radius: 0;
-        background: #8c8b89;
-        opacity: 1;
-        border: none;
-        margin-left: 10px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:before {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          content: '';
-          background: #6b1a1a;
-          opacity: 1;
-        }
-      `)}
-    }
-
-    .swiper-pagination-bullet-active {
-      background: ${colors.white};
-      border: 0.2px solid rgba(255, 255, 255, 1);
-      ${media.mobile(css`
-        position: relative;
-        overflow: hidden;
-        background: #8c8b89;
-        border: none;
-
-        &:before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          will-change: transform;
-          animation: ${animation} 4350ms linear;
-        }
-      `)}
     }
   }
 `;

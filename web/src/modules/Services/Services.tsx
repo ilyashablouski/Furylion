@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FirstArtSection from './components/FirstArtSection';
 import HeaderSection from './components/HeaderSection';
 import TextBannerSection from './components/TextBannerSection';
 
@@ -8,6 +9,7 @@ function Services() {
     <>
       <HeaderSection />
       <TextBannerSection />
+      <FirstArtSection />
     </>
   );
 }

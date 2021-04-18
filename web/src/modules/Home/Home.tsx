@@ -3,7 +3,7 @@ import React from 'react';
 import FeedbackSection from '@/components/FeedbackSection';
 import useSettingItem from '@/hooks/useSettingItem';
 
-import HomeSection from './components/HeroSection';
+import HeroSection from './components/HeroSection';
 import WorksSection from './components/WorksSection';
 import ServicesSection from './components/ServicesSection';
 import TechSection from './components/TechSection';
@@ -15,7 +15,7 @@ function Home() {
   const formTitle = useSettingItem('FORM_TITLE');
   return (
     <>
-      <HomeSection />
+      <HeroSection />
       <WorksSection />
       <ServicesSection />
       <TechSection />

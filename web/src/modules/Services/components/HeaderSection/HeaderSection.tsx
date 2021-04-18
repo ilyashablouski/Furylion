@@ -1,26 +1,25 @@
 import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import { convertThumbnailToPictureImage } from '@tager/web-modules';
-
-import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { scrollDown } from '@/utils/common';
 import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
+import { ServiceHeaderSectionType } from '@/typings/model';
 
 function HeaderSection() {
-  // const page = useCurrentPage<TeamLifeSectionType>();
-  // const pageFields = page?.templateFields;
-  // const image = pageFields?.headImage;
-
   const arrowRef = useRef<HTMLElement>(null);
+  const page = useCurrentPage<ServiceHeaderSectionType>();
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
+
   return (
     <Wrapper>
       <Inner>
         <Title data-text="SERVICES">Services</Title>
-        <Text>We love making cool ART and Animation.</Text>
+        <Text>{pageFields.headText}</Text>
       </Inner>
 
       <DownArrow ref={arrowRef} onClick={scrollDown}>

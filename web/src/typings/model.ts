@@ -218,3 +218,24 @@ export type LocationType = {
   location: string;
   number: number;
 };
+
+export interface ServiceHeaderSectionType extends PageFullType {
+  templateFields: {
+    headText: StringFieldType;
+  };
+}
+
+export interface ArtSectionType extends PageFullType {
+  templateFields: {
+    firstArtTitle: StringFieldType;
+    firstArtText1: StringFieldType;
+    firstArtText2: StringFieldType;
+    firstArtText3: StringFieldType;
+    firstArtTextAdditional: StringFieldType;
+    firstArtButtonFirstLabel: StringFieldType;
+    firstArtButtonFirstUrl: StringFieldType;
+    firstArtButtonSecondLabel: StringFieldType;
+    firstArtButtonSecondUrl: StringFieldType;
+    firstArtImages: Array<ThumbnailType>;
+  };
+}
