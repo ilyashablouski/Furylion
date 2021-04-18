@@ -5,8 +5,7 @@ import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { ProductionBlockType } from '@/typings/model';
 import { colors } from '@/constants/theme';
-import TopMediaBlock from '@/modules/Services/components/AnimationSection/components/ProductionBlock/components/TopMediaBlock';
-import BottomMediaBlock from '@/modules/Services/components/AnimationSection/components/ProductionBlock/components/BottomMediaBlock';
+import MediaBlock from '@/modules/Services/components/AnimationSection/components/ProductionBlock/components/MediaBlock';
 
 function ProductionBlock() {
   const page = useCurrentPage<ProductionBlockType>();
@@ -28,8 +27,11 @@ function ProductionBlock() {
         </TextBlock>
 
         <MediaWrapper>
-          <TopMediaBlock />
-          <BottomMediaBlock />
+          <MediaBlock mediaInfo={pageFields.productionMediaTop} />
+          <MediaBlock
+            mediaInfo={pageFields.productionMediaBottom}
+            isTop={false}
+          />
         </MediaWrapper>
       </ContentContainer>
     </Container>
@@ -51,6 +53,7 @@ const Title = styled.span`
 const TextBlock = styled.div`
   display: flex;
   margin: 0 -12px;
+  margin-top: 35px;
 `;
 
 const TextItem = styled.div`
@@ -64,5 +67,7 @@ const Text = styled.p`
   color: ${colors.white};
 `;
 
-const MediaWrapper = styled.div``;
+const MediaWrapper = styled.div`
+  margin-top: 72px;
+`;
 export default ProductionBlock;

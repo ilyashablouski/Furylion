@@ -269,6 +269,40 @@ export interface ProductionBlockType extends PageFullType {
     productionButtonFirstUrl: StringFieldType;
     productionButtonSecondLabel: StringFieldType;
     productionButtonSecondUrl: StringFieldType;
-    productionMedia: Array<ProductionMediaItemType>;
+    productionMediaTop: Array<ProductionMediaItemType>;
+    productionMediaBottom: Array<ProductionMediaItemType>;
+  };
+}
+
+export interface PortingBlockType extends PageFullType {
+  templateFields: {
+    portingTitle: StringFieldType;
+    portingText1: StringFieldType;
+    portingText2: StringFieldType;
+    portingText3: StringFieldType;
+    portingButtonFirstLabel: StringFieldType;
+    portingButtonFirstUrl: StringFieldType;
+    portingButtonSecondLabel: StringFieldType;
+    portingButtonSecondUrl: StringFieldType;
+    portingImage: ThumbnailType;
+  };
+}
+
+export type DevelopmentLogoType = {
+  image: ThumbnailType;
+  linkUrl: StringFieldType;
+};
+
+export type DevelopmentItemType = {
+  image: ThumbnailType;
+  title: StringFieldType;
+  text: StringFieldType;
+  logos: Array<DevelopmentLogoType>;
+};
+
+export interface DevelopmentSectionType extends PageFullType {
+  templateFields: {
+    developmentTitle: StringFieldType;
+    developmentItems: Array<DevelopmentItemType>;
   };
 }

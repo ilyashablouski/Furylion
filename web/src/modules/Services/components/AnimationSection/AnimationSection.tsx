@@ -5,14 +5,15 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
 import ProductionBlock from './components/ProductionBlock';
+import PortingBlock from './components/PortingBlock';
 
 function AnimationSection() {
   return (
     <Wrapper>
       <TitleBlock>
         <Title>Animation</Title>
-
         <ProductionBlock />
+        <PortingBlock />
       </TitleBlock>
     </Wrapper>
   );
@@ -20,12 +21,12 @@ function AnimationSection() {
 
 const Wrapper = styled.section`
   margin: 0 auto;
+  padding-bottom: 100px;
   max-width: 1920px;
 `;
 
 const TitleBlock = styled.div`
   margin: 0 auto;
-  text-align: center;
 `;
 
 const Title = styled.span`

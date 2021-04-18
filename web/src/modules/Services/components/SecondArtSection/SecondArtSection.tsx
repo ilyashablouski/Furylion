@@ -149,17 +149,14 @@ const AdditionalText = styled.div`
 `;
 
 const Bottom = styled.div`
+  margin-top: 68px;
   display: flex;
   justify-content: flex-end;
 `;
 
+//TODO: Refactoring Cut Buttons in common component
 const Buttons = styled.div`
-  margin-top: 68px;
   display: inline-flex;
-
-  ${media.tabletSmallOnly(css`
-    margin-top: 40px;
-  `)}
 
   ${media.mobile576(css`
     width: 100%;
