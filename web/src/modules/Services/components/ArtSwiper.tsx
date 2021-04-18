@@ -18,11 +18,13 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 type Props = {
   images: Array<ThumbnailType>;
-  isRightSide: boolean;
+  isRightSide?: boolean;
+  sliderPaginationRef: React.Ref<HTMLInputElement>;
 };
 
-function ArtSwiper({ images, isRightSide }: Props) {
-  const sliderPagination = useRef<HTMLInputElement>(null);
+function ArtSwiper({ images, isRightSide = true, sliderPaginationRef }: Props) {
+  //TODO: Refactor & clean code
+  // const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -31,7 +33,7 @@ function ArtSwiper({ images, isRightSide }: Props) {
   }, []);
 
   return (
-    <ArtSwiperContainer>
+    <ArtSwiperContainer isRightSide={isRightSide}>
       {isMounted ? (
         <>
           <Swiper
@@ -45,8 +47,6 @@ function ArtSwiper({ images, isRightSide }: Props) {
               nextEl: `.swiper-next`,
             }}
             pagination={{
-              el: '.swiper-pagination',
-              type: 'bullets',
               clickable: true,
             }}
             onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
@@ -84,10 +84,10 @@ function ArtSwiper({ images, isRightSide }: Props) {
               </NavButton>
             </NavButtons>
           </Swiper>
-          <ItemsPagination
-            className="swiper-pagination"
-            ref={sliderPagination}
-          />
+          {/*<ItemsPagination*/}
+          {/*  className="swiper-pagination"*/}
+          {/*  // ref={sliderPaginationRef}*/}
+          {/*/>*/}
         </>
       ) : (
         <PlaceholderCard color="#3e3e3e" />
@@ -105,71 +105,144 @@ const animation = keyframes`
   }
 `;
 
-const ArtSwiperContainer = styled.div`
+const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
   position: relative;
+  display: flex;
   height: 100%;
   min-height: 750px;
 
   .swiper-container-initialized {
     .swiper-slide {
       display: flex;
+
+      picture {
+        display: flex;
+        height: 100%;
+      }
+
       img {
         min-height: 750px;
+        height: 100%;
         object-fit: cover;
+      }
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 41px;
+      left: 104px;
+      width: 100%;
+      max-width: 326px;
+      text-align: left;
+
+      ${(props) =>
+        !props.isRightSide &&
+        css`
+          left: 68px;
+
+          ${media.tabletSmallOnly(css`
+            left: 40px;
+          `)}
+
+          ${media.mobile(css`
+            left: 20px;
+          `)}
+        `}
+    }
+
+    .swiper-pagination-bullet {
+      position: relative;
+      max-width: 110px;
+      width: 100%;
+      height: 2px;
+      border-radius: 0;
+      background: #8c8b89;
+      opacity: 1;
+      border: none;
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        content: '';
+        background: #6b1a1a;
+        opacity: 1;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      position: relative;
+      overflow: hidden;
+      background: #8c8b89;
+      border: none;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        will-change: transform;
+        animation: ${animation} 4350ms linear;
       }
     }
   }
 `;
 
-const ItemsPagination = styled.div`
-  position: absolute;
-  bottom: 41px;
-  left: 104px;
-  width: 100%;
-  max-width: 326px;
-
-  .swiper-pagination-bullet {
-    position: relative;
-    max-width: 110px;
-    width: 100%;
-    height: 2px;
-    border-radius: 0;
-    background: #8c8b89;
-    opacity: 1;
-    border: none;
-    margin-left: 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      content: '';
-      background: #6b1a1a;
-      opacity: 1;
-    }
-  }
-
-  .swiper-pagination-bullet-active {
-    position: relative;
-    overflow: hidden;
-    background: #8c8b89;
-    border: none;
-
-    &:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      will-change: transform;
-      animation: ${animation} 4350ms linear;
-    }
-  }
-`;
+// const ItemsPagination = styled.div`
+//   position: absolute;
+//   bottom: 41px;
+//   left: 104px;
+//   width: 100%;
+//   max-width: 326px;
+//
+//   .swiper-pagination-bullet {
+//     position: relative;
+//     max-width: 110px;
+//     width: 100%;
+//     height: 2px;
+//     border-radius: 0;
+//     background: #8c8b89;
+//     opacity: 1;
+//     border: none;
+//     margin-left: 10px;
+//
+//     &:first-child {
+//       margin-left: 0;
+//     }
+//
+//     &:before {
+//       position: absolute;
+//       top: 0;
+//       bottom: 0;
+//       left: 0;
+//       width: 0;
+//       content: '';
+//       background: #6b1a1a;
+//       opacity: 1;
+//     }
+//   }
+//
+//   .swiper-pagination-bullet-active {
+//     position: relative;
+//     overflow: hidden;
+//     background: #8c8b89;
+//     border: none;
+//
+//     &:before {
+//       content: '';
+//       position: absolute;
+//       width: 100%;
+//       will-change: transform;
+//       animation: ${animation} 4350ms linear;
+//     }
+//   }
+// `;
 
 const NavButtons = styled.div<{ isRightSide?: boolean }>`
   display: flex;
@@ -178,10 +251,10 @@ const NavButtons = styled.div<{ isRightSide?: boolean }>`
   ${(props) =>
     props.isRightSide
       ? css`
-          right: 50px;
+          right: 35px;
         `
       : css`
-          left: 50px;
+          left: 35px;
         `}
 `;
 
@@ -192,7 +265,7 @@ const NavButton = styled.button<{
   ${(props) =>
     props.prev &&
     css`
-      margin-right: 50px;
+      margin-right: 70px;
     `}
   display: inline-flex;
   justify-content: center;

@@ -3,33 +3,39 @@ import styled, { css } from 'styled-components';
 
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
-import { FirstArtSectionType } from '@/typings/model';
+import { SecondArtSectionType } from '@/typings/model';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import ArtSwiper from '@/modules/Services/components/ArtSwiper';
 import { ButtonLink } from '@/components/Button';
 
-function FirstArtSection() {
-  const sliderPaginationRef1 = useRef<HTMLInputElement>(null);
+function SecondArtSection() {
+  const sliderPaginationRef2 = useRef<HTMLInputElement>(null);
 
-  const page = useCurrentPage<FirstArtSectionType>();
+  const page = useCurrentPage<SecondArtSectionType>();
   if (!page) return null;
 
   const pageFields = page.templateFields;
-
   return (
     <Wrapper>
       <Left>
+        <ArtSwiper
+          images={pageFields.secondArtImages}
+          sliderPaginationRef={sliderPaginationRef2}
+          isRightSide={false}
+        />
+      </Left>
+      <Right>
         <ContentContainer>
-          <Title>{pageFields.firstArtTitle}</Title>
+          <Title>{pageFields.secondArtTitle}</Title>
           <TextContainer>
-            <Text>{pageFields.firstArtText1}</Text>
+            <Text>{pageFields.secondArtText1}</Text>
             <TextInner>
               <TextItem>
-                <Text>{pageFields.firstArtText2}</Text>
+                <Text>{pageFields.secondArtText2}</Text>
               </TextItem>
               <TextItem>
-                <Text>{pageFields.firstArtText3}</Text>
+                <Text>{pageFields.secondArtText3}</Text>
               </TextItem>
             </TextInner>
           </TextContainer>
@@ -38,7 +44,7 @@ function FirstArtSection() {
             <AdditionalTitle>Technology stack:</AdditionalTitle>
             <AdditionalText
               dangerouslySetInnerHTML={{
-                __html: pageFields.firstArtTextAdditional ?? '',
+                __html: pageFields.secondArtTextAdditional ?? '',
               }}
             />
           </AdditionalBlock>
@@ -46,30 +52,24 @@ function FirstArtSection() {
             <Buttons>
               <StyledButton>
                 <ButtonLink
-                  href={pageFields.firstArtButtonFirstUrl ?? '#'}
-                  variants={['cut-bottom', 'white-red', 'w100']}
+                  href={pageFields.secondArtButtonFirstUrl ?? '#'}
+                  variants={['cut-bottom', 'white-dark', 'w100']}
                 >
-                  {pageFields.firstArtButtonFirstLabel}
+                  {pageFields.secondArtButtonFirstLabel}
                 </ButtonLink>
               </StyledButton>
 
               <StyledButton right>
                 <ButtonLink
-                  href={pageFields.firstArtButtonSecondUrl ?? '#'}
-                  variants={['cut-top', 'red', 'w100']}
+                  href={pageFields.secondArtButtonSecondUrl ?? '#'}
+                  variants={['cut-top', 'dark', 'w100']}
                 >
-                  {pageFields.firstArtButtonSecondLabel}
+                  {pageFields.secondArtButtonSecondLabel}
                 </ButtonLink>
               </StyledButton>
             </Buttons>
           </Bottom>
         </ContentContainer>
-      </Left>
-      <Right>
-        <ArtSwiper
-          images={pageFields.firstArtImages}
-          sliderPaginationRef={sliderPaginationRef1}
-        />
       </Right>
     </Wrapper>
   );
@@ -82,21 +82,24 @@ const Wrapper = styled.section`
   max-width: 1920px;
   min-height: 750px;
   display: flex;
+  background: ${colors.red};
 `;
 
 const Left = styled.div`
+  max-width: 673px;
+  clip-path: polygon(0 0, 35% 0, 100% 100%, 0% 100%);
+`;
+
+const Right = styled.div`
   margin-top: 100px;
 
   ${ContentContainer} {
-    padding-right: 0;
+    padding-left: 0;
   }
-`;
-const Right = styled.div`
-  max-width: 673px;
-  clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
 `;
 
 const Title = styled.span`
+  margin-left: -140px;
   font-weight: 900;
   font-size: 64px;
   line-height: 130%;
@@ -105,7 +108,7 @@ const Title = styled.span`
 `;
 const TextContainer = styled.div`
   margin-top: 35px;
-  margin-right: -140px;
+  margin-left: -180px;
 `;
 const TextInner = styled.div`
   margin-top: 25px;
@@ -147,7 +150,7 @@ const AdditionalText = styled.div`
 
 const Bottom = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 `;
 
 const Buttons = styled.div`
@@ -185,4 +188,4 @@ const StyledButton = styled.div<{ right?: boolean }>`
   `)}
 `;
 
-export default FirstArtSection;
+export default SecondArtSection;

@@ -225,7 +225,7 @@ export interface ServiceHeaderSectionType extends PageFullType {
   };
 }
 
-export interface ArtSectionType extends PageFullType {
+export interface FirstArtSectionType extends PageFullType {
   templateFields: {
     firstArtTitle: StringFieldType;
     firstArtText1: StringFieldType;
@@ -237,5 +237,20 @@ export interface ArtSectionType extends PageFullType {
     firstArtButtonSecondLabel: StringFieldType;
     firstArtButtonSecondUrl: StringFieldType;
     firstArtImages: Array<ThumbnailType>;
+  };
+}
+
+export interface SecondArtSectionType extends PageFullType {
+  templateFields: {
+    secondArtTitle: StringFieldType;
+    secondArtText1: StringFieldType;
+    secondArtText2: StringFieldType;
+    secondArtText3: StringFieldType;
+    secondArtTextAdditional: StringFieldType;
+    secondArtButtonFirstLabel: StringFieldType;
+    secondArtButtonFirstUrl: StringFieldType;
+    secondArtButtonSecondLabel: StringFieldType;
+    secondArtButtonSecondUrl: StringFieldType;
+    secondArtImages: Array<ThumbnailType>;
   };
 }

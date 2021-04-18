@@ -17,13 +17,14 @@ const Wrapper = styled.section`
   align-items: center;
   text-align: center;
   background: ${colors.white};
+  overflow: hidden;
 `;
 
 const Text = styled.span`
-  margin: -42px 0;
+  margin: -89px 0;
   max-width: 1920px;
   text-transform: uppercase;
-  font-size: 300px;
+  font-size: 653px;
   font-weight: 900;
   line-height: 100%;
 `;
