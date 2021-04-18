@@ -4,13 +4,15 @@ import styled, { css } from 'styled-components';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
+import ProductionBlock from './components/ProductionBlock';
+
 function AnimationSection() {
   return (
     <Wrapper>
       <TitleBlock>
         <Title>Animation</Title>
 
-        {/*<ProductionBlock />*/}
+        <ProductionBlock />
       </TitleBlock>
     </Wrapper>
   );

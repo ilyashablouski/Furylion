@@ -254,3 +254,21 @@ export interface SecondArtSectionType extends PageFullType {
     secondArtImages: Array<ThumbnailType>;
   };
 }
+
+export type ProductionMediaItemType = {
+  image: ThumbnailType;
+  videoUrl: StringFieldType;
+};
+
+export interface ProductionBlockType extends PageFullType {
+  templateFields: {
+    productionTitle: StringFieldType;
+    productionText1: StringFieldType;
+    productionText2: StringFieldType;
+    productionButtonFirstLabel: StringFieldType;
+    productionButtonFirstUrl: StringFieldType;
+    productionButtonSecondLabel: StringFieldType;
+    productionButtonSecondUrl: StringFieldType;
+    productionMedia: Array<ProductionMediaItemType>;
+  };
+}
