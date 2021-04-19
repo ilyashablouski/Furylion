@@ -333,3 +333,15 @@ export interface CoDevelopmentSectionType extends PageFullType {
     coDevelopmentButtonUrl: StringFieldType;
   };
 }
+
+export interface AdsSectionType extends PageFullType {
+  templateFields: {
+    adsTitle: StringFieldType;
+    adsText1: StringFieldType;
+    adsText2: StringFieldType;
+    adsText3: StringFieldType;
+    adsImage: null;
+    adsButtonLabel: StringFieldType;
+    adsButtonUrl: StringFieldType;
+  };
+}

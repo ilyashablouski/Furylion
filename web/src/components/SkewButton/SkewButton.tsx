@@ -12,18 +12,15 @@ type Props = {
 
 function SkewButton({ href, children }: Props) {
   return href ? (
-    <StyledButtonLink href={href ?? '#'} variants={['skew', 'w100']}>
+    <ButtonLink href={href ?? '#'} variants={['skew', 'w100']}>
       <Label>{children}</Label>
-    </StyledButtonLink>
+    </ButtonLink>
   ) : (
-    <StyledButton variants={['skew', 'w100']}>
+    <Button variants={['skew', 'w100']}>
       <Label>{children}</Label>
-    </StyledButton>
+    </Button>
   );
 }
-
-const StyledButton = styled(Button)``;
-const StyledButtonLink = styled(ButtonLink)``;
 
 const Label = styled.span`
   display: inline-flex;

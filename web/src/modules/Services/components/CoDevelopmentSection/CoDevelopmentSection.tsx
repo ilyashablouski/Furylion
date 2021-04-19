@@ -75,7 +75,7 @@ function CoDevelopmentSection() {
       </ImagesContainer>
 
       <StyledButton>
-        <SkewButton href={pageFields.coDevelopmentButtonUrl ?? '#'}>
+        <SkewButton href={pageFields.coDevelopmentButtonUrl}>
           {pageFields.coDevelopmentButtonLabel}
         </SkewButton>
       </StyledButton>
@@ -102,13 +102,13 @@ const Title = styled.span`
 
 const TextContainer = styled.div`
   margin-top: 35px;
-  margin-left: -14px;
-  margin-right: -14px;
+  margin-left: -10px;
+  margin-right: -10px;
   display: flex;
 `;
 
 const TextItem = styled.div`
-  padding: 0 14px;
+  padding: 0 10px;
   flex: 1 1 33.33%;
   max-width: 33.33%;
 `;
