@@ -9,6 +9,7 @@ import DevelopmentSection from '@/modules/Services/components/DevelopmentSection
 import FirstArtSection from './components/FirstArtSection';
 import HeaderSection from './components/HeaderSection';
 import TextBannerSection from './components/TextBannerSection';
+import OutStaffingSection from './components/OutstaffingSection';
 
 function Services() {
   const formTitle = useSettingItem('FORM_TITLE');
@@ -20,6 +21,7 @@ function Services() {
       <SecondArtSection />
       <AnimationSection />
       <DevelopmentSection />
+      <OutStaffingSection />
       <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );

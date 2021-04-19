@@ -306,3 +306,11 @@ export interface DevelopmentSectionType extends PageFullType {
     developmentItems: Array<DevelopmentItemType>;
   };
 }
+
+export interface OutStaffingSectionType extends PageFullType {
+  templateFields: {
+    outStaffingTitle: StringFieldType;
+    outStaffingText1: StringFieldType;
+    outStaffingText2: StringFieldType;
+  };
+}
