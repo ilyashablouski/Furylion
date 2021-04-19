@@ -320,3 +320,14 @@ export interface OutStaffingSectionType extends PageFullType {
     outStaffingItems: Array<OutStaffingItemType>;
   };
 }
+
+export interface CoDevelopmentSectionType extends PageFullType {
+  templateFields: {
+    coDevelopmentTitle: StringFieldType;
+    coDevelopmentText1: StringFieldType;
+    coDevelopmentText2: StringFieldType;
+    coDevelopmentText3: StringFieldType;
+    leftLogo: ThumbnailType;
+    rightLogo: ThumbnailType;
+  };
+}

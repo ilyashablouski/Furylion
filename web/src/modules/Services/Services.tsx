@@ -5,6 +5,7 @@ import AnimationSection from '@/modules/Services/components/AnimationSection';
 import useSettingItem from '@/hooks/useSettingItem';
 import FeedbackSection from '@/components/FeedbackSection';
 import DevelopmentSection from '@/modules/Services/components/DevelopmentSection';
+import CoDevelopmentSection from '@/modules/Services/components/CoDevelopmentSection';
 
 import FirstArtSection from './components/FirstArtSection';
 import HeaderSection from './components/HeaderSection';
@@ -22,6 +23,7 @@ function Services() {
       <AnimationSection />
       <DevelopmentSection />
       <OutStaffingSection />
+      <CoDevelopmentSection />
       <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );
