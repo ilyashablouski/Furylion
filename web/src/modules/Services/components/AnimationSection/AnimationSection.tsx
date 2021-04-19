@@ -13,7 +13,7 @@ function AnimationSection() {
       <TitleBlock>
         <Title>Animation</Title>
         <ProductionBlock />
-        <PortingBlock />
+        {/*<PortingBlock />*/}
       </TitleBlock>
     </Wrapper>
   );
@@ -30,10 +30,12 @@ const TitleBlock = styled.div`
 `;
 
 const Title = styled.span`
+  display: block;
+  text-align: center;
   width: 100%;
   font-weight: 900;
   font-size: 230px;
-  line-height: 72%;
+  line-height: 74%;
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.white};
@@ -41,13 +43,6 @@ const Title = styled.span`
   ${media.desktop1366(
     css`
       font-size: 16.8vw;
-    `
-  )}
-
-  ${media.mobile(
-    css`
-      font-size: 34.1vw;
-      white-space: normal;
     `
   )}
 `;

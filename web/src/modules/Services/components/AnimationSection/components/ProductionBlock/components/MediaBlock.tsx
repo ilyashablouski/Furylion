@@ -6,6 +6,7 @@ import { convertThumbnailToPictureImage } from '@tager/web-modules';
 import { ProductionMediaItemType } from '@/typings/model';
 import Link from '@/components/Link';
 import Picture from '@/components/Picture';
+import { media } from '@/utils/mixin';
 
 type Props = {
   mediaInfo: Array<ProductionMediaItemType>;
@@ -39,6 +40,10 @@ const Container = styled.div`
 
   &:not(:first-child) {
     margin-top: 20px;
+
+    ${media.tabletSmall(css`
+      margin-top: 10px;
+    `)}
   }
 `;
 

@@ -42,30 +42,30 @@ function FirstArtSection() {
               }}
             />
           </AdditionalBlock>
-          <Bottom>
-            <Buttons>
-              <StyledButton>
-                <ButtonLink
-                  href={pageFields.firstArtButtonFirstUrl ?? '#'}
-                  variants={['cut-bottom', 'white-red', 'w100']}
-                  className="art-button-left"
-                >
-                  {pageFields.firstArtButtonFirstLabel}
-                </ButtonLink>
-              </StyledButton>
-
-              <StyledButton right>
-                <ButtonLink
-                  href={pageFields.firstArtButtonSecondUrl ?? '#'}
-                  variants={['cut-top', 'red', 'w100']}
-                  className="art-button-right"
-                >
-                  {pageFields.firstArtButtonSecondLabel}
-                </ButtonLink>
-              </StyledButton>
-            </Buttons>
-          </Bottom>
         </ContentContainer>
+        <Bottom>
+          <Buttons>
+            <StyledButton>
+              <ButtonLink
+                href={pageFields.firstArtButtonFirstUrl ?? '#'}
+                variants={['cut-bottom', 'white-red', 'w100']}
+                className="cut-button-left"
+              >
+                {pageFields.firstArtButtonFirstLabel}
+              </ButtonLink>
+            </StyledButton>
+
+            <StyledButton right>
+              <ButtonLink
+                href={pageFields.firstArtButtonSecondUrl ?? '#'}
+                variants={['cut-top', 'red', 'w100']}
+                className="cut-button-right"
+              >
+                {pageFields.firstArtButtonSecondLabel}
+              </ButtonLink>
+            </StyledButton>
+          </Buttons>
+        </Bottom>
       </Left>
       <Right>
         <ArtSwiper
@@ -248,20 +248,14 @@ const Bottom = styled.div`
     justify-content: center;
   `)}
 
-  ${media.mobile(css`
-    margin-left: -20px;
-    margin-right: -20px;
-  `)}
-
-
-  .art-button-left {
+  .cut-button-left {
     ${media.tabletSmallOnly(css`
       padding: 25px 35px 25px 24px;
       font-size: 20px;
     `)}
   }
 
-  .art-button-right {
+  .cut-button-right {
     ${media.tabletSmallOnly(css`
       padding: 25px 24px 25px 35px;
       font-size: 20px;

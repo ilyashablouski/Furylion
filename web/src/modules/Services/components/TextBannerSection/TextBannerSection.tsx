@@ -22,12 +22,11 @@ const Wrapper = styled.section`
 `;
 
 const Text = styled.span`
-  margin: -6.8% 0;
   max-width: 1920px;
   text-transform: uppercase;
   font-size: 653px;
   font-weight: 900;
-  line-height: 100%;
+  line-height: 72%;
 
   ${media.desktop1366(css`
     font-size: 48.6vw;

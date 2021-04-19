@@ -21,7 +21,7 @@ function Services() {
       <TextBannerSection />
       <FirstArtSection />
       <SecondArtSection />
-      {/*<AnimationSection />*/}
+      <AnimationSection />
       {/*<DevelopmentSection />*/}
       {/*<OutStaffingSection />*/}
       {/*<CoDevelopmentSection />*/}
