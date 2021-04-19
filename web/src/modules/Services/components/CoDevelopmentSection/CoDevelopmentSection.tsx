@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
@@ -16,6 +16,8 @@ import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { CoDevelopmentSectionType } from '@/typings/model';
+import SkewButton from '@/components/SkewButton';
+import { media } from '@/utils/mixin';
 
 function CoDevelopmentSection() {
   const page = useCurrentPage<CoDevelopmentSectionType>();
@@ -71,11 +73,18 @@ function CoDevelopmentSection() {
           className="second-background-image"
         />
       </ImagesContainer>
+
+      <StyledButton>
+        <SkewButton href={pageFields.coDevelopmentButtonUrl ?? '#'}>
+          {pageFields.coDevelopmentButtonLabel}
+        </SkewButton>
+      </StyledButton>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
+  position: relative;
   padding-top: 100px;
   background: ${colors.white};
   overflow: hidden;
@@ -161,4 +170,22 @@ const RightLogo = styled.div`
   z-index: 1;
 `;
 
+const StyledButton = styled.div`
+  width: 100%;
+  max-width: 370px;
+  top: 86%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+
+  ${media.tabletSmallOnly(css`
+    top: 87.5%;
+  `)}
+
+  ${media.mobile(css`
+    max-width: 302px;
+    top: 84.6%;
+  `)}
+`;
 export default CoDevelopmentSection;

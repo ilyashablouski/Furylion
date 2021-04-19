@@ -329,5 +329,7 @@ export interface CoDevelopmentSectionType extends PageFullType {
     coDevelopmentText3: StringFieldType;
     leftLogo: ThumbnailType;
     rightLogo: ThumbnailType;
+    coDevelopmentButtonLabel: StringFieldType;
+    coDevelopmentButtonUrl: StringFieldType;
   };
 }
