@@ -307,10 +307,16 @@ export interface DevelopmentSectionType extends PageFullType {
   };
 }
 
+export type OutStaffingItemType = {
+  title: StringFieldType;
+  tags: StringFieldType;
+};
+
 export interface OutStaffingSectionType extends PageFullType {
   templateFields: {
     outStaffingTitle: StringFieldType;
     outStaffingText1: StringFieldType;
     outStaffingText2: StringFieldType;
+    outStaffingItems: Array<OutStaffingItemType>;
   };
 }

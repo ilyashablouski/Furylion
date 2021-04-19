@@ -15,12 +15,12 @@ function Services() {
   const formTitle = useSettingItem('FORM_TITLE');
   return (
     <>
-      <HeaderSection />
-      <TextBannerSection />
-      <FirstArtSection />
-      <SecondArtSection />
-      <AnimationSection />
-      <DevelopmentSection />
+      {/*<HeaderSection />*/}
+      {/*<TextBannerSection />*/}
+      {/*<FirstArtSection />*/}
+      {/*<SecondArtSection />*/}
+      {/*<AnimationSection />*/}
+      {/*<DevelopmentSection />*/}
       <OutStaffingSection />
       <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
