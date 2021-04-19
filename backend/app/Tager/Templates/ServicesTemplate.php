@@ -91,11 +91,11 @@ class ServicesTemplate extends Template
             ]),
 
 
-            new GroupField('Outstaffing', [
-                'outstaffingTitle' => new StringField('Title'),
-                'outstaffingText1' => new TextField('Text - 1'),
-                'outstaffingText2' => new TextField('Text - 2'),
-                'outstaffingItems' => new RepeaterField('Items', [
+            new GroupField('OutStaffing', [
+                'outStaffingTitle' => new StringField('Title'),
+                'outStaffingText1' => new TextField('Text - 1'),
+                'outStaffingText2' => new TextField('Text - 2'),
+                'outStaffingItems' => new RepeaterField('Items', [
                     'title' => new StringField('Title'),
                     'tags' => new StringField('Tags'),
                 ]),
