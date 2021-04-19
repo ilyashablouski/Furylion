@@ -19,8 +19,8 @@ function Services() {
     <>
       <HeaderSection />
       <TextBannerSection />
-      {/*<FirstArtSection />*/}
-      {/*<SecondArtSection />*/}
+      <FirstArtSection />
+      <SecondArtSection />
       {/*<AnimationSection />*/}
       {/*<DevelopmentSection />*/}
       {/*<OutStaffingSection />*/}

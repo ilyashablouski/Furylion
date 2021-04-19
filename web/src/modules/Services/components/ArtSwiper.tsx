@@ -124,6 +124,11 @@ const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
         min-height: 750px;
         height: 100%;
         object-fit: cover;
+
+        ${media.tablet(css`
+          width: 100%;
+          max-height: 750px;
+        `)}
       }
     }
 
@@ -148,6 +153,16 @@ const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
             left: 20px;
           `)}
         `}
+
+      ${media.tabletSmall(css`
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      `)}
+
+      ${media.mobile(css`
+        bottom: 22px;
+      `)}
     }
 
     .swiper-pagination-bullet {
@@ -247,15 +262,19 @@ const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
 const NavButtons = styled.div<{ isRightSide?: boolean }>`
   display: flex;
   position: absolute;
-  top: 50px;
+  top: 52px;
   ${(props) =>
     props.isRightSide
       ? css`
-          right: 35px;
+          right: 23px;
         `
       : css`
-          left: 35px;
+          left: 23px;
         `}
+
+  ${media.tablet(css`
+    display: none;
+  `)}
 `;
 
 const NavButton = styled.button<{
@@ -265,7 +284,7 @@ const NavButton = styled.button<{
   ${(props) =>
     props.prev &&
     css`
-      margin-right: 70px;
+      margin-right: 98px;
     `}
   display: inline-flex;
   justify-content: center;

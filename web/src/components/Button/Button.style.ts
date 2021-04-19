@@ -51,13 +51,12 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
     clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0% 100%);
     text-align: end;
 
-    ${media.tabletSmallOnly(css`
+    ${media.tabletSmall(css`
       padding: 20px 15px 20px 20px;
       font-size: 14px;
     `)}
 
     ${media.mobile(css`
-      padding: 17px 15px 17px 20px;
       font-size: 16px;
     `)}
   `,
@@ -67,13 +66,12 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
     clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
     text-align: start;
 
-    ${media.tabletSmallOnly(css`
+    ${media.tabletSmall(css`
       padding: 20px 20px 20px 15px;
       font-size: 14px;
     `)}
 
     ${media.mobile(css`
-      padding: 17px 20px 17px 15px;
       font-size: 16px;
     `)}
   `,

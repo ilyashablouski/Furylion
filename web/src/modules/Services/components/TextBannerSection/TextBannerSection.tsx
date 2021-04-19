@@ -30,7 +30,7 @@ const Text = styled.span`
   line-height: 100%;
 
   ${media.desktop1366(css`
-    font-size: 47.8vw;
+    font-size: 48.6vw;
   `)}
 `;
 
