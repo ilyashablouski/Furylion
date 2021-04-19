@@ -83,17 +83,21 @@ const Text = styled.div`
 
 const BackgroundImage = styled(Picture)`
   margin-top: 85px;
-  height: 892px;
+  ${media.desktop1366(css`
+    height: 892px;
+  `)}
 
   img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    ${media.desktop1366(css`
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    `)}
   }
 `;
 
