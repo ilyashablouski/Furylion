@@ -32,17 +32,19 @@ function HeaderSection() {
 const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
-  padding-top: 226px;
+  padding-top: 215px;
   padding-bottom: 170px;
   max-width: 1920px;
   text-align: center;
 
   ${media.tabletSmallOnly(css`
-    padding-top: 193px;
+    padding-top: 140px;
+    padding-bottom: 115px;
   `)}
 
   ${media.mobile(css`
-    padding-top: 201px;
+    padding-top: 140px;
+    padding-bottom: 102px;
   `)}
 `;
 
@@ -55,14 +57,14 @@ const Title = styled.span`
   z-index: 1;
   width: 100%;
   font-weight: 900;
-  font-size: 223px;
+  font-size: 269px;
   line-height: 100%;
   text-transform: uppercase;
   word-break: break-word;
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 16.1vw;
+    font-size: 19.6vw;
   `)}
 
   &:before {
@@ -85,17 +87,29 @@ const Title = styled.span`
 `;
 
 const Text = styled.span`
+  margin-top: 52px;
   display: block;
   font-weight: 900;
   font-size: 32px;
   line-height: 130%;
   color: ${colors.white};
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 60px;
+    font-size: 24px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 93px;
+    font-size: 20px;
+    line-height: 160%;
+  `)}
 `;
 
 const DownArrow = styled.i`
   position: absolute;
   left: 50%;
-  bottom: 23px;
+  bottom: 44px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -108,6 +122,10 @@ const DownArrow = styled.i`
   cursor: pointer;
   transition: all 150ms ease-in-out;
   z-index: 2;
+
+  ${media.tabletSmall(css`
+    display: none;
+  `)}
 
   &:hover {
     background: rgba(0, 0, 0, 0.8);

@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '@/constants/theme';
+import { media } from '@/utils/mixin';
 
 function TextBannerSection() {
   return (
@@ -21,12 +22,16 @@ const Wrapper = styled.section`
 `;
 
 const Text = styled.span`
-  margin: -89px 0;
+  margin: -6.8% 0;
   max-width: 1920px;
   text-transform: uppercase;
   font-size: 653px;
   font-weight: 900;
   line-height: 100%;
+
+  ${media.desktop1366(css`
+    font-size: 47.8vw;
+  `)}
 `;
 
 export default TextBannerSection;

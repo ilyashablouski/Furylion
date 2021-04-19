@@ -19,13 +19,13 @@ function Services() {
     <>
       <HeaderSection />
       <TextBannerSection />
-      <FirstArtSection />
-      <SecondArtSection />
-      <AnimationSection />
-      <DevelopmentSection />
-      <OutStaffingSection />
-      <CoDevelopmentSection />
-      <AdsSection />
+      {/*<FirstArtSection />*/}
+      {/*<SecondArtSection />*/}
+      {/*<AnimationSection />*/}
+      {/*<DevelopmentSection />*/}
+      {/*<OutStaffingSection />*/}
+      {/*<CoDevelopmentSection />*/}
+      {/*<AdsSection />*/}
       <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );
