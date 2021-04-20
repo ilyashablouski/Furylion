@@ -13,7 +13,7 @@ function AnimationSection() {
       <TitleBlock>
         <Title>Animation</Title>
         <ProductionBlock />
-        {/*<PortingBlock />*/}
+        <PortingBlock />
       </TitleBlock>
     </Wrapper>
   );

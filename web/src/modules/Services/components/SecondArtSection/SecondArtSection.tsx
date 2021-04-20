@@ -131,7 +131,7 @@ const Right = styled.div`
 `;
 
 const Title = styled.span`
-  margin-left: -140px;
+  margin-left: -180px;
   font-weight: 900;
   font-size: 64px;
   line-height: 130%;

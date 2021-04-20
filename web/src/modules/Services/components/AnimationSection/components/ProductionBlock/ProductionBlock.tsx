@@ -35,31 +35,30 @@ function ProductionBlock() {
             isTop={false}
           />
         </MediaWrapper>
+        <Bottom>
+          <Buttons>
+            <StyledButton>
+              <ButtonLink
+                href={pageFields.productionButtonFirstUrl ?? '#'}
+                variants={['cut-bottom', 'white-red', 'w100']}
+                className="cut-button-left"
+              >
+                {pageFields.productionButtonFirstLabel}
+              </ButtonLink>
+            </StyledButton>
+
+            <StyledButton right>
+              <ButtonLink
+                href={pageFields.productionButtonSecondUrl ?? '#'}
+                variants={['cut-top', 'red', 'w100']}
+                className="cut-button-right"
+              >
+                {pageFields.productionButtonSecondLabel}
+              </ButtonLink>
+            </StyledButton>
+          </Buttons>
+        </Bottom>
       </ContentContainer>
-
-      <Bottom>
-        <Buttons>
-          <StyledButton>
-            <ButtonLink
-              href={pageFields.productionButtonFirstUrl ?? '#'}
-              variants={['cut-bottom', 'white-red', 'w100']}
-              className="cut-button-left"
-            >
-              {pageFields.productionButtonFirstLabel}
-            </ButtonLink>
-          </StyledButton>
-
-          <StyledButton right>
-            <ButtonLink
-              href={pageFields.productionButtonSecondUrl ?? '#'}
-              variants={['cut-top', 'red', 'w100']}
-              className="cut-button-right"
-            >
-              {pageFields.productionButtonSecondLabel}
-            </ButtonLink>
-          </StyledButton>
-        </Buttons>
-      </Bottom>
     </Container>
   );
 }
@@ -151,6 +150,8 @@ const Bottom = styled.div`
 
   ${media.mobile(css`
     margin-top: 30px;
+    margin-left: -20px;
+    margin-right: -20px;
   `)}
 
   .cut-button-left {
