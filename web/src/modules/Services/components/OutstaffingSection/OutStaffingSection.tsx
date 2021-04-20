@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { OutStaffingSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
+import { media } from '@/utils/mixin';
 
 function OutStaffingSection() {
   const page = useCurrentPage<OutStaffingSectionType>();
@@ -26,29 +27,33 @@ function OutStaffingSection() {
         </TextContainer>
 
         <Main>
-          {pageFields.outStaffingItems
-            ? pageFields.outStaffingItems.map((outStaffingItem, index) => {
-                const tagsArray = outStaffingItem.tags
-                  ? outStaffingItem.tags.split(',')
-                  : [];
-                return (
-                  <TagsBlock key={index}>
-                    <TagsTitle>{outStaffingItem.title}</TagsTitle>
-                    <Tags>
-                      {tagsArray
-                        ? tagsArray.map((tag, index) => {
-                            return (
-                              <TagItem key={index}>
-                                <Tag>{tag}</Tag>
-                              </TagItem>
-                            );
-                          })
-                        : null}
-                    </Tags>
-                  </TagsBlock>
-                );
-              })
-            : null}
+          <MainWrapper>
+            {pageFields.outStaffingItems
+              ? pageFields.outStaffingItems.map((outStaffingItem, index) => {
+                  const tagsArray = outStaffingItem.tags
+                    ? outStaffingItem.tags.split(',')
+                    : [];
+                  return (
+                    <TagsBlock key={index}>
+                      <TagsTitle>{outStaffingItem.title}</TagsTitle>
+                      <TagsWrapper>
+                        <Tags>
+                          {tagsArray
+                            ? tagsArray.map((tag, index) => {
+                                return (
+                                  <TagItem key={index}>
+                                    <Tag>{tag}</Tag>
+                                  </TagItem>
+                                );
+                              })
+                            : null}
+                        </Tags>
+                      </TagsWrapper>
+                    </TagsBlock>
+                  );
+                })
+              : null}
+          </MainWrapper>
         </Main>
       </ContentContainer>
     </Wrapper>
@@ -56,9 +61,11 @@ function OutStaffingSection() {
 }
 
 const Wrapper = styled.section`
-  margin: 0 auto;
   padding: 100px 0;
-  max-width: 1920px;
+
+  ${media.tabletSmall(css`
+    padding: 70px 0;
+  `)}
 `;
 
 const Title = styled.span`
@@ -66,50 +73,144 @@ const Title = styled.span`
   font-size: 64px;
   line-height: 130%;
   color: ${colors.white};
+
+  ${media.tabletSmallOnly(css`
+    font-size: 56px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 const TextContainer = styled.div`
   margin-top: 25px;
   margin-left: -10px;
   margin-right: -10px;
   display: flex;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 40px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 30px;
+    display: block;
+  `)}
 `;
+
 const TextItem = styled.div`
-  padding: 10px;
+  padding: 0 10px;
+
+  ${media.mobile(css`
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  `)}
 `;
+
 const Text = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
   color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 12px;
+  `)}
 `;
 const Main = styled.div`
   margin-top: 30px;
-`;
-const TagsBlock = styled.div`
-  padding: 25px;
   display: flex;
-  width: fit-content;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 50px;
+  `)}
+`;
+
+const MainWrapper = styled.div`
+  margin-top: -25px;
+  ${media.tabletSmallOnly(css`
+    margin: -20px -10px 0;
+    display: flex;
+    flex-wrap: wrap;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: -10px;
+    display: block;
+    width: 100%;
+  `)}
+`;
+
+const TagsBlock = styled.div`
+  margin-top: 25px;
+  display: inline-flex;
   align-items: center;
   border: 1px dashed rgba(194, 25, 30, 0.8);
 
-  &:not(:first-child) {
-    margin-top: 25px;
-  }
+  ${media.tabletSmall(css`
+    margin: 20px 10px 0;
+    padding: 20px 25px;
+    display: block;
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  `)}
+
+  ${media.mobile(css`
+    margin: 10px 0 0;
+    max-width: none;
+  `)}
 `;
+
 const TagsTitle = styled.div`
+  margin-left: 25px;
+  padding: 10px 0;
+  flex: 0 0 178px;
   font-weight: 900;
   font-size: 24px;
   line-height: 130%;
   color: rgba(255, 255, 255, 0.8);
+
+  ${media.tabletSmall(css`
+    margin-left: 0;
+    padding: 0;
+  `)}
 `;
+const TagsWrapper = styled.div`
+  padding: 25px;
+  display: inline-grid;
+
+  ${media.tabletSmall(css`
+    margin-top: 20px;
+    padding: 0;
+    display: block;
+  `)}
+`;
+
 const Tags = styled.div`
-  margin-left: 43px;
   display: flex;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ${media.tabletSmall(css`
+    display: block;
+    overflow: initial;
+  `)}
 `;
 
 const TagItem = styled.div`
   &:not(:first-child) {
     margin-left: 25px;
+
+    ${media.tabletSmall(css`
+      margin-top: 10px;
+      margin-left: 0;
+    `)}
   }
 `;
 
@@ -118,6 +219,9 @@ const Tag = styled.span`
   display: inline-block;
   background: rgba(255, 255, 255, 0.8);
   color: ${colors.dark};
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 130%;
   white-space: nowrap;
 `;
 
