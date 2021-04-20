@@ -64,7 +64,7 @@ function ProductionBlock() {
 }
 
 const Container = styled.div`
-  margin-top: 75px;
+  margin-top: 82px;
 `;
 
 const Title = styled.span`

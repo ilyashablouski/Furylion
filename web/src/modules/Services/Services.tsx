@@ -22,7 +22,7 @@ function Services() {
       <FirstArtSection />
       <SecondArtSection />
       <AnimationSection />
-      {/*<DevelopmentSection />*/}
+      <DevelopmentSection />
       {/*<OutStaffingSection />*/}
       {/*<CoDevelopmentSection />*/}
       {/*<AdsSection />*/}
