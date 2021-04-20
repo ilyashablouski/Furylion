@@ -42,30 +42,30 @@ function FirstArtSection() {
               }}
             />
           </AdditionalBlock>
-        </ContentContainer>
-        <Bottom>
-          <Buttons>
-            <StyledButton>
-              <ButtonLink
-                href={pageFields.firstArtButtonFirstUrl ?? '#'}
-                variants={['cut-bottom', 'white-red', 'w100']}
-                className="cut-button-left"
-              >
-                {pageFields.firstArtButtonFirstLabel}
-              </ButtonLink>
-            </StyledButton>
+          <Bottom>
+            <Buttons>
+              <StyledButton>
+                <ButtonLink
+                  href={pageFields.firstArtButtonFirstUrl ?? '#'}
+                  variants={['cut-bottom', 'white-red', 'w100']}
+                  className="cut-button-left"
+                >
+                  {pageFields.firstArtButtonFirstLabel}
+                </ButtonLink>
+              </StyledButton>
 
-            <StyledButton right>
-              <ButtonLink
-                href={pageFields.firstArtButtonSecondUrl ?? '#'}
-                variants={['cut-top', 'red', 'w100']}
-                className="cut-button-right"
-              >
-                {pageFields.firstArtButtonSecondLabel}
-              </ButtonLink>
-            </StyledButton>
-          </Buttons>
-        </Bottom>
+              <StyledButton right>
+                <ButtonLink
+                  href={pageFields.firstArtButtonSecondUrl ?? '#'}
+                  variants={['cut-top', 'red', 'w100']}
+                  className="cut-button-right"
+                >
+                  {pageFields.firstArtButtonSecondLabel}
+                </ButtonLink>
+              </StyledButton>
+            </Buttons>
+          </Bottom>
+        </ContentContainer>
       </Left>
       <Right>
         <ArtSwiper
@@ -247,6 +247,12 @@ const Bottom = styled.div`
     margin-top: 40px;
     justify-content: center;
   `)}
+
+  ${media.mobile(css`
+    margin-left: -20px;
+    margin-right: -20px;
+  `)}
+  
 
   .cut-button-left {
     ${media.tabletSmallOnly(css`

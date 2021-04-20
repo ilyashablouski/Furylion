@@ -48,30 +48,30 @@ function SecondArtSection() {
               }}
             />
           </AdditionalBlock>
-        </ContentContainer>
-        <Bottom>
-          <Buttons>
-            <StyledButton>
-              <ButtonLink
-                href={pageFields.secondArtButtonFirstUrl ?? '#'}
-                variants={['cut-bottom', 'white-dark', 'w100']}
-                className="cut-button-left"
-              >
-                {pageFields.secondArtButtonFirstLabel}
-              </ButtonLink>
-            </StyledButton>
+          <Bottom>
+            <Buttons>
+              <StyledButton>
+                <ButtonLink
+                  href={pageFields.secondArtButtonFirstUrl ?? '#'}
+                  variants={['cut-bottom', 'white-dark', 'w100']}
+                  className="cut-button-left"
+                >
+                  {pageFields.secondArtButtonFirstLabel}
+                </ButtonLink>
+              </StyledButton>
 
-            <StyledButton right>
-              <ButtonLink
-                href={pageFields.secondArtButtonSecondUrl ?? '#'}
-                variants={['cut-top', 'dark', 'w100']}
-                className="cut-button-right"
-              >
-                {pageFields.secondArtButtonSecondLabel}
-              </ButtonLink>
-            </StyledButton>
-          </Buttons>
-        </Bottom>
+              <StyledButton right>
+                <ButtonLink
+                  href={pageFields.secondArtButtonSecondUrl ?? '#'}
+                  variants={['cut-top', 'dark', 'w100']}
+                  className="cut-button-right"
+                >
+                  {pageFields.secondArtButtonSecondLabel}
+                </ButtonLink>
+              </StyledButton>
+            </Buttons>
+          </Bottom>
+        </ContentContainer>
       </Right>
     </Wrapper>
   );
@@ -252,6 +252,11 @@ const Bottom = styled.div`
   ${media.tablet(css`
     margin-top: 40px;
     justify-content: center;
+  `)}
+
+  ${media.mobile(css`
+    margin-left: -20px;
+    margin-right: -20px;
   `)}
 
   .cut-button-left {
