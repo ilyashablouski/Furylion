@@ -6,7 +6,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { FirstArtSectionType } from '@/typings/model';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
-import ArtSwiper from '@/modules/Services/components/ArtSwiper';
+import ArtSwiper1 from '@/modules/Services/components/ArtSwiper1';
 import { ButtonLink } from '@/components/Button';
 
 function FirstArtSection() {
@@ -68,9 +68,9 @@ function FirstArtSection() {
         </ContentContainer>
       </Left>
       <Right>
-        <ArtSwiper
+        <ArtSwiper1
           images={pageFields.firstArtImages}
-          sliderPaginationRef={sliderPaginationRef1}
+          // sliderPaginationRef={sliderPaginationRef1}
         />
       </Right>
     </Wrapper>

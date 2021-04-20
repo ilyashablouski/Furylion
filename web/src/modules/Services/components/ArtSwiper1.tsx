@@ -10,8 +10,6 @@ import {
 
 import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
-import { breakpoints, colors } from '@/constants/theme';
-import PlaceholderCard from '@/components/PlaceholderCard';
 import Picture from '@/components/Picture';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
@@ -19,79 +17,54 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 type Props = {
   images: Array<ThumbnailType>;
   isRightSide?: boolean;
-  sliderPaginationRef: React.Ref<HTMLInputElement>;
+  // sliderPaginationRef: React.Ref<HTMLInputElement>;
 };
 
-function ArtSwiper({ images, isRightSide = true, sliderPaginationRef }: Props) {
+function ArtSwiper1({ images, isRightSide = true }: Props) {
   //TODO: Refactor & clean code
-  // const sliderPagination = useRef<HTMLInputElement>(null);
+  const sliderPaginationRef = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setIsMountedSwiper(true);
   }, []);
-
   return (
     <ArtSwiperContainer isRightSide={isRightSide}>
-      {isMounted ? (
-        <>
-          <Swiper
-            slidesPerView={1}
-            loop={true}
-            centeredSlides={true}
-            allowTouchMove={false}
-            // autoplay={{ delay: 4000, disableOnInteraction: false }}
-            navigation={{
-              prevEl: `.swiper-prev`,
-              nextEl: `.swiper-next`,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-            // breakpoints={{
-            //   [breakpoints.mobileSmall]: {
-            //     spaceBetween: 0,
-            //     allowTouchMove: true,
-            //   },
-            //   [breakpoints.tabletSmall]: {
-            //     spaceBetween: 0,
-            //     autoplay: false,
-            //   },
-            //   1230: {
-            //     spaceBetween: 140,
-            //     autoplay: false,
-            //   },
-            // }}
-          >
-            {images.map((image, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <Picture
-                    mobileSmall={convertThumbnailToPictureImage(image)}
-                    className="swiper-image-container"
-                  />
-                </SwiperSlide>
-              );
-            })}
-            <NavButtons isRightSide={isRightSide}>
-              <NavButton className={`swiper-prev`} prev>
-                <SlideArrowIcon />
-              </NavButton>
-              <NavButton className={`swiper-next`} next>
-                <SlideArrowIcon />
-              </NavButton>
-            </NavButtons>
-          </Swiper>
-          {/*<ItemsPagination*/}
-          {/*  className="swiper-pagination"*/}
-          {/*  // ref={sliderPaginationRef}*/}
-          {/*/>*/}
-        </>
-      ) : (
-        <PlaceholderCard color="#3e3e3e" />
-      )}
+      <>
+        <Swiper
+          slidesPerView={1}
+          loop={true}
+          // centeredSlides={true}
+          allowTouchMove={true}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          navigation={{
+            prevEl: `.swiper-prev1`,
+            nextEl: `.swiper-next1`,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+        >
+          {images.map((image, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <Picture mobileSmall={convertThumbnailToPictureImage(image)} />
+                {/*<SwiperText>Image</SwiperText>*/}
+              </SwiperSlide>
+            );
+          })}
+          <NavButtons isRightSide={isRightSide}>
+            <NavButton className={`swiper-prev1`} prev>
+              <SlideArrowIcon />
+            </NavButton>
+            <NavButton className={`swiper-next1`} next>
+              <SlideArrowIcon />
+            </NavButton>
+          </NavButtons>
+        </Swiper>
+      </>
     </ArtSwiperContainer>
   );
 }
@@ -103,6 +76,14 @@ const animation = keyframes`
   to {
     transform: translateX(0);
   }
+`;
+
+const SwiperText = styled.span`
+  //margin-right: -40px;
+  //position: relative;
+  //display: block;
+  //width: 40px;
+  //right: 40px;
 `;
 
 const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
@@ -209,55 +190,55 @@ const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
   }
 `;
 
-// const ItemsPagination = styled.div`
-//   position: absolute;
-//   bottom: 41px;
-//   left: 104px;
-//   width: 100%;
-//   max-width: 326px;
-//
-//   .swiper-pagination-bullet {
-//     position: relative;
-//     max-width: 110px;
-//     width: 100%;
-//     height: 2px;
-//     border-radius: 0;
-//     background: #8c8b89;
-//     opacity: 1;
-//     border: none;
-//     margin-left: 10px;
-//
-//     &:first-child {
-//       margin-left: 0;
-//     }
-//
-//     &:before {
-//       position: absolute;
-//       top: 0;
-//       bottom: 0;
-//       left: 0;
-//       width: 0;
-//       content: '';
-//       background: #6b1a1a;
-//       opacity: 1;
-//     }
-//   }
-//
-//   .swiper-pagination-bullet-active {
-//     position: relative;
-//     overflow: hidden;
-//     background: #8c8b89;
-//     border: none;
-//
-//     &:before {
-//       content: '';
-//       position: absolute;
-//       width: 100%;
-//       will-change: transform;
-//       animation: ${animation} 4350ms linear;
-//     }
-//   }
-// `;
+const ItemsPagination = styled.div`
+  position: absolute;
+  bottom: 41px;
+  left: 104px;
+  width: 100%;
+  max-width: 326px;
+
+  .swiper-pagination-bullet {
+    position: relative;
+    max-width: 110px;
+    width: 100%;
+    height: 2px;
+    border-radius: 0;
+    background: #8c8b89;
+    opacity: 1;
+    border: none;
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      content: '';
+      background: #6b1a1a;
+      opacity: 1;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    position: relative;
+    overflow: hidden;
+    background: #8c8b89;
+    border: none;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      will-change: transform;
+      animation: ${animation} 4350ms linear;
+    }
+  }
+`;
 
 const NavButtons = styled.div<{ isRightSide?: boolean }>`
   display: flex;
@@ -329,4 +310,4 @@ const NavButton = styled.button<{
   }
 `;
 
-export default ArtSwiper;
+export default ArtSwiper1;

@@ -6,7 +6,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { SecondArtSectionType } from '@/typings/model';
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
-import ArtSwiper from '@/modules/Services/components/ArtSwiper';
+import ArtSwiper2 from '@/modules/Services/components/ArtSwiper2';
 import { ButtonLink } from '@/components/Button';
 
 function SecondArtSection() {
@@ -19,9 +19,9 @@ function SecondArtSection() {
   return (
     <Wrapper>
       <Left>
-        <ArtSwiper
+        <ArtSwiper2
           images={pageFields.secondArtImages}
-          sliderPaginationRef={sliderPaginationRef2}
+          // sliderPaginationRef={sliderPaginationRef2}
           isRightSide={false}
         />
       </Left>

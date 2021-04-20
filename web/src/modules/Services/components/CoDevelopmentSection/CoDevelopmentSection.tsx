@@ -122,8 +122,8 @@ const Text = styled.div`
 
 const ImagesContainer = styled.div`
   position: relative;
-  margin-top: 65px;
-  padding-bottom: 180px;
+  margin-top: 71px;
+  padding-bottom: 189px;
 
   &:before {
     content: '';
@@ -131,7 +131,7 @@ const ImagesContainer = styled.div`
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 98%;
     background: #191814;
     -webkit-clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
     clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
@@ -142,38 +142,46 @@ const ImagesContainer = styled.div`
 
 const FirstBackgroundImage = styled(Picture)`
   margin: 0 auto;
-  max-width: 790px;
+  max-width: 829px;
 `;
 
 const SecondBackgroundImage = styled(Picture)`
   margin: 0 auto;
-  max-width: 480px;
+  width: 100%;
+  height: 100%;
   &.second-background-image {
     position: absolute;
     top: 35px;
     left: 50%;
     transform: translateX(-50%);
   }
+
+  picture {
+    display: flex;
+    justify-content: center;
+    height: 129%;
+    width: 100%;
+  }
 `;
 
 const LeftLogo = styled.div`
   position: absolute;
-  top: 20%;
-  left: 20%;
+  top: 22.2%;
+  left: 16.7%;
   z-index: 1;
 `;
 
 const RightLogo = styled.div`
   position: absolute;
-  top: 20%;
-  right: 20%;
+  top: 21.1%;
+  right: 19%;
   z-index: 1;
 `;
 
 const StyledButton = styled.div`
   width: 100%;
   max-width: 370px;
-  top: 86%;
+  top: 85.1%;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
