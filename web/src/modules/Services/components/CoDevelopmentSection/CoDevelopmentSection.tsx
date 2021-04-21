@@ -43,38 +43,37 @@ function CoDevelopmentSection() {
         </TextContainer>
       </ContentContainer>
 
-      <ImagesWrapper>
-        <ImagesContainer>
-          <LeftLogo>
-            <Picture
-              mobileSmall={convertThumbnailToPictureImage(pageFields.leftLogo)}
-            />
-          </LeftLogo>
-          <RightLogo>
-            <Picture
-              mobileSmall={convertThumbnailToPictureImage(pageFields.rightLogo)}
-            />
-          </RightLogo>
-          <FirstBackgroundImage
-            mobileSmall={{
-              src: coDevelopmentBgUrl,
-              src2x: coDevelopmentBgUrl2x,
-              webp: coDevelopmentBgUrlWebp,
-              webp2x: coDevelopmentBgUrlWebp2x,
-            }}
+      <ImagesContainer>
+        <LeftLogo>
+          <Picture
+            mobileSmall={convertThumbnailToPictureImage(pageFields.leftLogo)}
           />
+        </LeftLogo>
+        <RightLogo>
+          <Picture
+            mobileSmall={convertThumbnailToPictureImage(pageFields.rightLogo)}
+          />
+        </RightLogo>
+        <FirstBackgroundImage
+          mobileSmall={{
+            src: coDevelopmentBgUrl,
+            src2x: coDevelopmentBgUrl2x,
+            webp: coDevelopmentBgUrlWebp,
+            webp2x: coDevelopmentBgUrlWebp2x,
+          }}
+        />
 
-          <SecondBackgroundImage
-            mobileSmall={{
-              src: chartsBgUrl,
-              src2x: chartsBgUrl2x,
-              webp: chartsBgUrlWebp,
-              webp2x: chartsBgUrlWebp2x,
-            }}
-            className="second-background-image"
-          />
-        </ImagesContainer>
-      </ImagesWrapper>
+        <SecondBackgroundImage
+          mobileSmall={{
+            src: chartsBgUrl,
+            src2x: chartsBgUrl2x,
+            webp: chartsBgUrlWebp,
+            webp2x: chartsBgUrlWebp2x,
+          }}
+          className="second-background-image"
+        />
+      </ImagesContainer>
+
       <StyledButton>
         <SkewButton href={pageFields.coDevelopmentButtonUrl}>
           {pageFields.coDevelopmentButtonLabel}
@@ -170,8 +169,6 @@ const Text = styled.p`
   `)}
 `;
 
-const ImagesWrapper = styled.div``;
-
 const ImagesContainer = styled.div`
   position: relative;
   margin-top: 71px;
@@ -183,6 +180,10 @@ const ImagesContainer = styled.div`
 
   ${media.mobile(css`
     padding-bottom: 170px;
+  `)}
+
+  ${media.mobileLargeOnly(css`
+    margin-top: 110px;
   `)}
 
   &:before {
