@@ -10,6 +10,7 @@ import { colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
+import AdsSwiper from '@/modules/PlayableAds/components/AdsSwiper';
 
 function AdsSection() {
   const page = useCurrentPage<AdsSectionType>();
@@ -36,10 +37,7 @@ function AdsSection() {
       </ContentContainer>
 
       <Inner>
-        <BackgroundImage
-          mobileSmall={convertThumbnailToPictureImage(pageFields.adsImage)}
-          className="ads-background-image"
-        />
+        <AdsSwiper adsImages={pageFields.adsImages} />
       </Inner>
 
       <StyledButton>
@@ -54,13 +52,12 @@ function AdsSection() {
 const Wrapper = styled.section`
   position: relative;
   margin: 52px auto 0;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   max-width: 1920px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 150px;
-    margin-bottom: -10px;
-    padding-bottom: 0;
+    padding-bottom: 70px;
   `)}
 
   ${media.mobile(css`
@@ -70,18 +67,14 @@ const Wrapper = styled.section`
 `;
 
 const Inner = styled.div`
-  ${media.desktop1366(css`
-    position: relative;
-    padding-top: 63.5%;
-    overflow: hidden;
-  `)}
+  margin-top: 110px;
 
-  ${media.tabletSmall(css`
-    padding-top: 100%;
+  ${media.tabletSmallOnly(css`
+    margin-top: 50px;
   `)}
 
   ${media.mobile(css`
-    overflow: initial;
+    margin-top: 40px;
   `)}
 `;
 
@@ -145,7 +138,7 @@ const TextItem = styled.div`
   `)}
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
@@ -156,66 +149,19 @@ const Text = styled.div`
   `)}
 `;
 
-const BackgroundImage = styled(Picture)`
-  margin-top: 110px;
-
-  ${media.desktop1366(css`
-    &.ads-background-image {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  `)}
-
-  ${media.tabletSmallOnly(css`
-    margin-top: 48px;
-  `)}
-
-  ${media.mobile(css`
-    margin-top: 97px;
-  `)}
-
-  img {
-    ${media.desktop1366(css`
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 103%;
-      object-fit: cover;
-    `)}
-
-    ${media.tabletSmallOnly(css`
-      height: 98%;
-    `)}
-
-    ${media.mobile(css`
-      height: 144%;
-    `)}
-  }
-`;
-
 const StyledButton = styled.div`
-  position: absolute;
-  bottom: 79px;
-  left: 50%;
+  margin-top: 116px;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   max-width: 370px;
-  transform: translate(-50%, 0);
-  z-index: 2;
 
   ${media.tabletSmallOnly(css`
-    bottom: 81px;
+    margin-top: 122px;
   `)}
 
   ${media.mobile(css`
-    margin-top: 105px;
+    margin-top: 68px;
     margin-left: auto;
     margin-right: auto;
     position: static;
