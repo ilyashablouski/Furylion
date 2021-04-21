@@ -12,9 +12,9 @@ function AnimationSection() {
     <Wrapper>
       <TitleBlock>
         <Title>Animation</Title>
-        <ProductionBlock />
-        <PortingBlock />
       </TitleBlock>
+      <ProductionBlock />
+      <PortingBlock />
     </Wrapper>
   );
 }
@@ -34,7 +34,7 @@ const Title = styled.span`
   text-align: center;
   width: 100%;
   font-weight: 900;
-  font-size: 230px;
+  font-size: 227px;
   line-height: 74%;
   text-transform: uppercase;
   white-space: nowrap;
@@ -43,6 +43,18 @@ const Title = styled.span`
   ${media.desktop1366(
     css`
       font-size: 16.8vw;
+    `
+  )}
+
+  ${media.tabletSmallOnly(
+    css`
+      font-size: 16.4vw;
+    `
+  )}
+
+  ${media.mobile(
+    css`
+      font-size: 16vw;
     `
   )}
 `;

@@ -57,14 +57,18 @@ const Title = styled.span`
   z-index: 1;
   width: 100%;
   font-weight: 900;
-  font-size: 269px;
+  font-size: 265px;
   line-height: 100%;
   text-transform: uppercase;
   word-break: break-word;
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 19.6vw;
+    font-size: 19.2vw;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 18.7vw;
   `)}
 
   &:before {
