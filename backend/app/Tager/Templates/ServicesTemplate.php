@@ -53,11 +53,11 @@ class ServicesTemplate extends Template
                 'productionText2' => new TextField('Text - 2'),
                 'productionMediaTop' => new RepeaterField('Production Media Top', [
                     'image' => new ImageField('Image'),
-                    'videoUrl' => new StringField('Video - URL'),
+                    'videoId' => new StringField('Video - ID'),
                 ]),
                 'productionMediaBottom' => new RepeaterField('Production Media Bottom', [
                     'image' => new ImageField('Image'),
-                    'videoID' => new StringField('Video - ID'),
+                    'videoId' => new StringField('Video - ID'),
                 ]),
                 'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'productionButtonFirstUrl' => new StringField('Button 1 - URL'),
