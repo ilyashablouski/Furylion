@@ -12,6 +12,7 @@ import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 import ModalVideoElement from '@/components/ModalVideoElement';
 import { colors } from '@/constants/theme';
+import { StringFieldType } from '@/typings/common';
 
 type Props = {
   mediaInfo: Array<ProductionMediaItemType>;
@@ -24,6 +25,10 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
   return (
     <Container>
       {mediaInfo.map((mediaItem, index) => {
+        let isVideo: boolean = false;
+        if (mediaItem.videoId) {
+          isVideo = true;
+        }
         return (
           <>
             <Item
@@ -33,6 +38,7 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
                 setOpen(true);
                 console.log('click');
               }}
+              isVideo={isVideo}
             >
               {mediaItem.videoId && (
                 <IconWrapper>
@@ -77,9 +83,20 @@ const Container = styled.div`
   }
 `;
 
-const Item = styled.div<{ isTop: boolean }>`
+const Item = styled.div<{ isTop: boolean; isVideo: boolean }>`
   position: relative;
   max-height: 411px;
+  transition: all 150ms ease-in-out;
+
+  ${(props) =>
+    props.isVideo
+      ? css`
+          cursor: pointer;
+          &:hover {
+            opacity: 0.85;
+          }
+        `
+      : null}downarrow
   img {
     position: absolute;
     top: 0;

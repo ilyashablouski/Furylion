@@ -6,7 +6,7 @@ import { media } from '@/utils/mixin';
 
 function TextBannerSection() {
   return (
-    <Wrapper>
+    <Wrapper className="anchor-section">
       <Text>Art</Text>
     </Wrapper>
   );
