@@ -57,7 +57,7 @@ class ServicesTemplate extends Template
                 ]),
                 'productionMediaBottom' => new RepeaterField('Production Media Bottom', [
                     'image' => new ImageField('Image'),
-                    'videoUrl' => new StringField('Video - URL'),
+                    'videoID' => new StringField('Video - ID'),
                 ]),
                 'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'productionButtonFirstUrl' => new StringField('Button 1 - URL'),
