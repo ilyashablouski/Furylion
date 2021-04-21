@@ -18,12 +18,12 @@ function Services() {
   return (
     <>
       <HeaderSection />
-      {/*<TextBannerSection />*/}
-      {/*<FirstArtSection />*/}
-      {/*<SecondArtSection />*/}
-      {/*<AnimationSection />*/}
-      {/*<DevelopmentSection />*/}
-      {/*<OutStaffingSection />*/}
+      <TextBannerSection />
+      <FirstArtSection />
+      <SecondArtSection />
+      <AnimationSection />
+      <DevelopmentSection />
+      <OutStaffingSection />
       <CoDevelopmentSection />
       <AdsSection />
 
