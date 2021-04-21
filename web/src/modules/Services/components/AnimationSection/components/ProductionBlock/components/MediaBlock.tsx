@@ -40,7 +40,6 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
                 </IconWrapper>
               )}
 
-              {/*L61p2uyiMSo*/}
               <ImageContainer>
                 <Picture
                   mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}
@@ -54,7 +53,7 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
                 channel="youtube"
                 autoplay
                 isOpen={isOpen}
-                videoId={mediaItem.videoUrl}
+                videoId={mediaItem.videoId}
                 onClose={() => setOpen(false)}
               />
             )}
