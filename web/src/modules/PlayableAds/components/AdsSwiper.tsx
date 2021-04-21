@@ -135,11 +135,11 @@ const Container = styled.div`
 `;
 
 const SwiperImage = styled(Picture)`
-  border-radius: 20px;
+  border-radius: 30px;
   overflow: hidden;
 
   img {
-    border-radius: 20px;
+    border-radius: 30px;
   }
 `;
 
