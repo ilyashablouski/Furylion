@@ -25,7 +25,7 @@ function Services() {
       {/*<DevelopmentSection />*/}
       {/*<OutStaffingSection />*/}
       <CoDevelopmentSection />
-      {/*<AdsSection />*/}
+      <AdsSection />
 
       <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>

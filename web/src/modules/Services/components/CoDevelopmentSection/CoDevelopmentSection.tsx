@@ -245,6 +245,10 @@ const SecondBackgroundImage = styled(Picture)`
       height: 144%;
     `)}
   }
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
 `;
 
 const LeftLogo = styled.div`
@@ -300,7 +304,8 @@ const StyledButton = styled.div`
 
   ${media.mobile(css`
     max-width: 302px;
-    top: 94%;
+    top: auto;
+    bottom: 0;
   `)}
 `;
 export default CoDevelopmentSection;

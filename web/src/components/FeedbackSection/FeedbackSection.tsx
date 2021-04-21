@@ -72,6 +72,13 @@ const Title = styled.span`
 
   &.about-title--small {
     max-width: 260px;
+    ${media.tabletSmall(css`
+      max-width: none;
+    `)}
+
+    ${media.mobile(css`
+      max-width: 252px;
+    `)}
   }
 
   ${media.tabletSmall(css`
