@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import ModalVideo from 'react-modal-video';
 
 type Props = {
   videoId: string;
+  isOpenModal: boolean;
 };
 
-function ModalVideoElement({ videoId }: Props) {
+function ModalVideoElement({ videoId, isOpenModal }: Props) {
   const [isOpen, setOpen] = useState(false);
+
   return (
     <>
       <ModalVideo
         // @ts-ignore
         channel="youtube"
         autoplay
-        isOpen={isOpen}
+        isOpen={isOpenModal}
         videoId={videoId}
         onClose={() => setOpen(false)}
       />

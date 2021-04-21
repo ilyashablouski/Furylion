@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+// @ts-ignore
+import ModalVideo from 'react-modal-video';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
+import { ReactComponent as YoutubeIcon } from '@/assets/svg/youtube-icon.svg';
 import { ProductionMediaItemType } from '@/typings/model';
 import Link from '@/components/Link';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 import ModalVideoElement from '@/components/ModalVideoElement';
+import { colors } from '@/constants/theme';
 
 type Props = {
   mediaInfo: Array<ProductionMediaItemType>;
@@ -15,23 +19,46 @@ type Props = {
 };
 
 function MediaBlock({ mediaInfo, isTop = true }: Props) {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <Container>
       {mediaInfo.map((mediaItem, index) => {
         return (
-          <Item key={index} isTop={isTop}>
-            {mediaItem.videoId && (
-              <ModalVideoElement videoId={mediaItem.videoId} />
-            )}
+          <>
+            <Item
+              key={index}
+              isTop={isTop}
+              onClick={() => {
+                setOpen(true);
+                console.log('click');
+              }}
+            >
+              {mediaItem.videoId && (
+                <IconWrapper>
+                  <YoutubeIcon />
+                </IconWrapper>
+              )}
 
-            {/*L61p2uyiMSo*/}
-            <ImageContainer>
-              <Picture
-                mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}
-                className="media-image-block"
+              {/*L61p2uyiMSo*/}
+              <ImageContainer>
+                <Picture
+                  mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}
+                  className="media-image-block"
+                />
+              </ImageContainer>
+            </Item>
+            {mediaItem.videoId && (
+              <ModalVideo
+                // @ts-ignore
+                channel="youtube"
+                autoplay
+                isOpen={isOpen}
+                videoId={mediaItem.videoUrl}
+                onClose={() => setOpen(false)}
               />
-            </ImageContainer>
-          </Item>
+            )}
+          </>
         );
       })}
     </Container>
@@ -104,14 +131,13 @@ const Item = styled.div<{ isTop: boolean }>`
   }
 `;
 
-const ItemLink = styled(Link)`
+const IconWrapper = styled.i`
+  display: inline-flex;
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${colors.white};
   z-index: 1;
 `;
 

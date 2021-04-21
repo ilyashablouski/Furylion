@@ -42,7 +42,7 @@ const Title = styled.span`
 
   ${media.desktop1366(
     css`
-      font-size: 16.8vw;
+      font-size: 16.5vw;
     `
   )}
 
