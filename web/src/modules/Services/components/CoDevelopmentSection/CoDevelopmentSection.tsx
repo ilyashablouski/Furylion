@@ -88,6 +88,10 @@ const Wrapper = styled.section`
   padding-top: 100px;
   background: ${colors.white};
   overflow: hidden;
+
+  ${media.tabletSmall(css`
+    padding-top: 70px;
+  `)}
 `;
 
 const Title = styled.span`
@@ -98,6 +102,14 @@ const Title = styled.span`
   line-height: 130%;
   text-transform: uppercase;
   color: ${colors.dark};
+
+  ${media.tabletSmallOnly(css`
+    font-size: 56px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 32px;
+  `)}
 `;
 
 const TextContainer = styled.div`
@@ -105,25 +117,70 @@ const TextContainer = styled.div`
   margin-left: -10px;
   margin-right: -10px;
   display: flex;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 40px;
+    flex-wrap: wrap;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  `)}
 `;
 
 const TextItem = styled.div`
   padding: 0 10px;
   flex: 1 1 33.33%;
   max-width: 33.33%;
+
+  ${media.tabletSmall(css`
+    &:first-child {
+      margin-top: 0;
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 20px;
+    flex: 1 1 50%;
+    max-width: 50%;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 20px;
+    padding: 0;
+    display: block;
+    max-width: none;
+  `)}
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
   color: ${colors.dark};
+
+  ${media.mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 const ImagesContainer = styled.div`
   position: relative;
   margin-top: 71px;
-  padding-bottom: 189px;
+  padding-bottom: 149px;
+
+  ${media.tabletSmallOnly(css`
+    padding-bottom: 40px;
+  `)}
+
+  ${media.mobile(css`
+    padding-bottom: 170px;
+  `)}
 
   &:before {
     content: '';
@@ -131,18 +188,31 @@ const ImagesContainer = styled.div`
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 98%;
+    height: 99%;
     background: #191814;
     -webkit-clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
     clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
     z-index: 1;
     overflow: hidden;
+
+    ${media.tabletSmallOnly(css`
+      height: 71%;
+    `)}
+
+    ${media.mobile(css`
+      height: 49%;
+    `)}
   }
 `;
 
 const FirstBackgroundImage = styled(Picture)`
   margin: 0 auto;
   max-width: 829px;
+
+  ${media.tabletSmallOnly(css`
+    padding-top: 110px;
+    max-width: 618px;
+  `)}
 `;
 
 const SecondBackgroundImage = styled(Picture)`
@@ -151,16 +221,29 @@ const SecondBackgroundImage = styled(Picture)`
   height: 100%;
   &.second-background-image {
     position: absolute;
-    top: 35px;
+    top: 115px;
     left: 50%;
     transform: translateX(-50%);
+
+    ${media.mobile(css`
+      top: 101px;
+      width: 120%;
+    `)}
   }
 
   picture {
     display: flex;
     justify-content: center;
-    height: 129%;
+    height: 116%;
     width: 100%;
+
+    ${media.tabletSmallOnly(css`
+      height: 134%;
+    `)}
+
+    ${media.mobile(css`
+      height: 144%;
+    `)}
   }
 `;
 
@@ -169,6 +252,18 @@ const LeftLogo = styled.div`
   top: 22.2%;
   left: 16.7%;
   z-index: 1;
+  image-rendering: -webkit-optimize-contrast;
+
+  ${media.tabletSmallOnly(css`
+    top: -10px;
+    left: 5.2%;
+  `)}
+
+  ${media.mobile(css`
+    top: -9%;
+    left: 5.6%;
+    max-width: 120px;
+  `)}
 `;
 
 const RightLogo = styled.div`
@@ -176,6 +271,18 @@ const RightLogo = styled.div`
   top: 21.1%;
   right: 19%;
   z-index: 1;
+  image-rendering: -webkit-optimize-contrast;
+
+  ${media.tabletSmallOnly(css`
+    top: -2.3%;
+    right: 5.2%;
+  `)}
+
+  ${media.mobile(css`
+    top: -10.5%;
+    right: 6.5%;
+    max-width: 120px;
+  `)}
 `;
 
 const StyledButton = styled.div`
@@ -188,12 +295,12 @@ const StyledButton = styled.div`
   z-index: 2;
 
   ${media.tabletSmallOnly(css`
-    top: 87.5%;
+    top: 83.2%;
   `)}
 
   ${media.mobile(css`
     max-width: 302px;
-    top: 84.6%;
+    top: 94%;
   `)}
 `;
 export default CoDevelopmentSection;
