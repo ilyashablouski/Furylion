@@ -116,7 +116,7 @@ class ServicesTemplate extends Template
                 'adsText1' => new TextField('Text - 1'),
                 'adsText2' => new TextField('Text - 2'),
                 'adsText3' => new TextField('Text - 3'),
-                'adsImage' => new ImageField('Image'),
+                'adsImages' => new GalleryField('Slider Images'),
                 'adsButtonLabel' => new StringField('Button - Text'),
                 'adsButtonUrl' => new StringField('Button - URL'),
             ]),
