@@ -7,6 +7,7 @@ import { ProductionMediaItemType } from '@/typings/model';
 import Link from '@/components/Link';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
+import ModalVideoElement from '@/components/ModalVideoElement';
 
 type Props = {
   mediaInfo: Array<ProductionMediaItemType>;
@@ -19,8 +20,11 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
       {mediaInfo.map((mediaItem, index) => {
         return (
           <Item key={index} isTop={isTop}>
-            {mediaItem.videoUrl && <ItemLink to={mediaItem.videoUrl} />}
+            {mediaItem.videoId && (
+              <ModalVideoElement videoId={mediaItem.videoId} />
+            )}
 
+            {/*L61p2uyiMSo*/}
             <ImageContainer>
               <Picture
                 mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}

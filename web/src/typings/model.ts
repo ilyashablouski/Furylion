@@ -257,7 +257,7 @@ export interface SecondArtSectionType extends PageFullType {
 
 export type ProductionMediaItemType = {
   image: ThumbnailType;
-  videoUrl: StringFieldType;
+  videoId: StringFieldType;
 };
 
 export interface ProductionBlockType extends PageFullType {
