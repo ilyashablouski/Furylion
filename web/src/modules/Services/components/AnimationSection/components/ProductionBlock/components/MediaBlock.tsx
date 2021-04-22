@@ -33,9 +33,9 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
               isTop={isTop}
               onClick={() => {
                 setOpen(true);
-                console.log('click');
               }}
               isVideo={isVideo}
+              className={'media-item-' + index}
             >
               {mediaItem.videoId && (
                 <IconWrapper>
@@ -105,39 +105,39 @@ const Item = styled.div<{ isTop: boolean; isVideo: boolean }>`
     object-fit: cover;
   }
 
-  &:first-child {
+  &.media-item-0 {
     ${(props) =>
       props.isTop
         ? css`
             margin-right: -8.7%;
             padding-top: 33.36%;
-            flex: 1 1 813px;
+            flex: 0 1 813px;
             max-width: 813px;
             clip-path: polygon(0 0, 100% 0, 71% 100%, 0 100%);
           `
         : css`
             margin-right: -8.7%;
             padding-top: 33.36%;
-            flex: 1 1 712px;
+            flex: 0 1 712px;
             max-width: 712px;
             clip-path: polygon(0 0, 67% 0, 100% 100%, 0 100%);
           `}
   }
 
-  &:last-child {
+  &.media-item-1 {
     ${(props) =>
       props.isTop
         ? css`
             margin-left: -8.7%;
             padding-top: 33.36%;
-            flex: 1 1 632px;
+            flex: 0 1 632px;
             max-width: 632px;
             clip-path: polygon(37% 0, 100% 0, 100% 100%, 0 100%);
           `
         : css`
             margin-left: -8.7%;
             padding-top: 33.36%;
-            flex: 1 1 733px;
+            flex: 0 1 733px;
             max-width: 733px;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
           `}
