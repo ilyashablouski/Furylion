@@ -24,7 +24,6 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
               <ModalVideoElement videoId={mediaItem.videoId} />
             )}
 
-            {/*L61p2uyiMSo*/}
             <ImageContainer>
               <Picture
                 mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}
