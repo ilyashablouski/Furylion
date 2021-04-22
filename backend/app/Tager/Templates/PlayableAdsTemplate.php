@@ -26,8 +26,17 @@ class PlayableAdsTemplate extends Template
                 'advantagesText1' => new TextField('Text - 1'),
                 'advantagesText2' => new TextField('Text - 2'),
                 'advantagesText3' => new TextField('Text - 3'),
-                'advantagesList' => new HtmlField('Additional List'),
+                'advantagesList' => new HtmlField('Advantages List'),
             ]),
+
+            new GroupField('Click-through rate', [
+                'rateMainTitle' => new StringField('Main Title'),
+                'rateText' => new TextField('Text'),
+                'rateTitle1' => new TextField('Title - 1'),
+                'advantagesText3' => new TextField('Text - 3'),
+                'advantagesList' => new HtmlField('Advantages List'),
+            ]),
+
         ]);
     }
 }
