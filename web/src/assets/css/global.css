@@ -100,9 +100,3 @@ div[data-testid=modal-overlay] {
   background: rgba(0,0,0,0.35);
 }
 
-
-/*TODO:Delete if no need*/
-/*div[data-testid=modal-overlay]:not([hidden]) + div > header > div > div{*/
-/*  padding-right: 17px;*/
-/*}*/
-
