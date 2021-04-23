@@ -37,6 +37,33 @@ class PlayableAdsTemplate extends Template
                 'advantagesList' => new HtmlField('Advantages List'),
             ]),
 
+            new GroupField('CPI', [
+                'cpiTitle' => new StringField('Title'),
+                'cpiText' => new TextField('Text'),
+                'cpiButtonLabel' => new StringField('Button - Text'),
+                'cpiButtonUrl' => new StringField('Button - URL'),
+            ]),
+
+            new GroupField('Reengagement', [
+                'reengagementTitle' => new StringField('Title'),
+                'reengagementText1' => new TextField('Text - 1'),
+                'reengagementText2' => new TextField('Text - 2'),
+                'reengagementText3' => new TextField('Text - 3'),
+                'reengagementButtonLabel' => new StringField('Button - Text'),
+                'reengagementButtonUrl' => new StringField('Button - URL'),
+            ]),
+
+            new GroupField('Framework', [
+                'frameworkTitle' => new StringField('Title'),
+                'frameworkText' => new TextField('Text'),
+                'frameworkItems' => new RepeaterField('Items', [
+                    'title' => new StringField('Title'),
+                    'topText' => new StringField('Top text'),
+                    'bottomText' => new StringField('Bottom text'),
+                ]),
+                'frameworkButtonLabel' => new StringField('Button - Text'),
+                'frameworkButtonUrl' => new StringField('Button - URL'),
+            ]),
         ]);
     }
 }
