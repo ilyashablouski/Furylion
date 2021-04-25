@@ -82,14 +82,15 @@ class PlayableAdsTemplate extends Template
                 'editorButtonUrl' => new StringField('Button - URL')
             ]),
 
-            new GroupField('Want', [
+            new GroupField('Do you want', [
                 'wantImage' => new ImageField('Image'),
             ]),
 
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),
-                'formImage' => new ImageField('Image'),
-                'formLabel' => new StringField('Label'),
+                'formAvatarTitle' => new StringField('Avatar Title'),
+                'formAvatarImage' => new ImageField('Avatar Image'),
+                'formAvatarLabel' => new StringField('Avatar Label'),
             ]),
         ]);
     }
