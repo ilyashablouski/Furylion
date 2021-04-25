@@ -32,9 +32,9 @@ class PlayableAdsTemplate extends Template
             new GroupField('Click-through rate', [
                 'rateMainTitle' => new StringField('Main Title'),
                 'rateText' => new TextField('Text'),
-                'rateLeftTitle' => new TextField('Left Title'),
+                'rateLeftTitle' => new StringField('Left Title'),
                 'rateLeftText' => new TextField('Left Text'),
-                'rateRightTitle' => new TextField('Right Title'),
+                'rateRightTitle' => new StringField('Right Title'),
                 'rateRightText' => new TextField('Right Text'),
                 'rateButtonLabel' => new StringField('Button - Text'),
                 'rateButtonUrl' => new StringField('Button - URL'),
