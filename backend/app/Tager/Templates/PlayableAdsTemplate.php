@@ -64,6 +64,30 @@ class PlayableAdsTemplate extends Template
                 'frameworkButtonLabel' => new StringField('Button - Text'),
                 'frameworkButtonUrl' => new StringField('Button - URL'),
             ]),
+
+            new GroupField('Networks', [
+                'networksTitle' => new StringField('Title'),
+                'networksFirstGallery' => new GalleryField('Gallery 1'),
+                'networksSecondGallery' => new GalleryField('Gallery 2'),
+            ]),
+
+            new GroupField('Editor', [
+                'editorTitle' => new StringField('Title'),
+                'editorText' => new TextField('Text'),
+                'editorImage' => new ImageField('Image'),
+                'editorButtonLabel' => new StringField('Button - Text'),
+                'editorButtonUrl' => new StringField('Button - URL')
+            ]),
+
+            new GroupField('Want', [
+                'wantImage' => new ImageField('Image'),
+            ]),
+
+            new GroupField('Form', [
+                'formTitle' => new StringField('Title'),
+                'formImage' => new ImageField('Image'),
+                'formLabel' => new StringField('Label'),
+            ]),
         ]);
     }
 }
