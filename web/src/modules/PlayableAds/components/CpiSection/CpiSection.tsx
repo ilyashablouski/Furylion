@@ -96,6 +96,6 @@ const DownArrow = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 47px auto 0;
+  margin: 50px auto 0;
   max-width: 397px;
 `;

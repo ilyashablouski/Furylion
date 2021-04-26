@@ -389,3 +389,14 @@ export interface CpiSectionType extends PageFullType {
     cpiButtonUrl: StringFieldType;
   };
 }
+
+export interface ReengagementSectionType extends PageFullType {
+  templateFields: {
+    reengagementTitle: StringFieldType;
+    reengagementText1: StringFieldType;
+    reengagementText2: StringFieldType;
+    reengagementText3: StringFieldType;
+    reengagementButtonLabel: StringFieldType;
+    reengagementButtonUrl: StringFieldType;
+  };
+}
