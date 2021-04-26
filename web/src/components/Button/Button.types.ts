@@ -10,4 +10,7 @@ export type ButtonVariant =
   | 'w100'
   | 'skew'
   | 'large'
-  | 'dashed';
+  | 'dashed'
+  | 'curve'
+  | 'curve-red'
+  | 'curve-dark';

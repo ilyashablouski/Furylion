@@ -47,7 +47,7 @@ function TeamSection() {
       </Inner>
 
       <StyledButton>
-        <SkewButton href={pageFields?.teamButtonUrl}>
+        <SkewButton href={pageFields?.teamButtonUrl} color="red">
           {pageFields?.teamButtonLabel}
         </SkewButton>
       </StyledButton>

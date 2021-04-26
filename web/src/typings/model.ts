@@ -367,3 +367,25 @@ export interface AdvantagesSectionType extends PageFullType {
     advantagesList: StringFieldType;
   };
 }
+
+export interface RateSectionType extends PageFullType {
+  templateFields: {
+    rateMainTitle: StringFieldType;
+    rateText: StringFieldType;
+    rateLeftTitle: StringFieldType;
+    rateLeftText: StringFieldType;
+    rateRightTitle: StringFieldType;
+    rateRightText: StringFieldType;
+    rateButtonLabel: StringFieldType;
+    rateButtonUrl: StringFieldType;
+  };
+}
+
+export interface CpiSectionType extends PageFullType {
+  templateFields: {
+    cpiTitle: StringFieldType;
+    cpiText: StringFieldType;
+    cpiButtonLabel: StringFieldType;
+    cpiButtonUrl: StringFieldType;
+  };
+}

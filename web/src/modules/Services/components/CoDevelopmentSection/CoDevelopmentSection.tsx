@@ -75,7 +75,7 @@ function CoDevelopmentSection() {
       </ImagesContainer>
 
       <StyledButton>
-        <SkewButton href={pageFields.coDevelopmentButtonUrl}>
+        <SkewButton href={pageFields.coDevelopmentButtonUrl} color="red">
           {pageFields.coDevelopmentButtonLabel}
         </SkewButton>
       </StyledButton>
