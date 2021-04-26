@@ -400,3 +400,19 @@ export interface ReengagementSectionType extends PageFullType {
     reengagementButtonUrl: StringFieldType;
   };
 }
+
+export type FrameworkItemType = {
+  title: StringFieldType;
+  topText: StringFieldType;
+  bottomText: StringFieldType;
+};
+
+export interface FrameworkSectionType extends PageFullType {
+  templateFields: {
+    frameworkTitle: StringFieldType;
+    frameworkText: StringFieldType;
+    frameworkItems: Array<FrameworkItemType>;
+    frameworkButtonLabel: StringFieldType;
+    frameworkButtonUrl: StringFieldType;
+  };
+}
