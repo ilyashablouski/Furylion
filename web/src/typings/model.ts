@@ -345,3 +345,15 @@ export interface AdsSectionType extends PageFullType {
     adsButtonUrl: StringFieldType;
   };
 }
+
+export type AdsHeadItemType = {
+  image: ThumbnailType;
+  linkUrl: StringFieldType;
+};
+
+export interface AdsHeadSectionType extends PageFullType {
+  templateFields: {
+    headText: StringFieldType;
+    headItems: Array<AdsHeadItemType>;
+  };
+}

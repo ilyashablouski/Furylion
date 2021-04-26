@@ -10,7 +10,7 @@ import { colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
-import AdsSwiper from '@/modules/PlayableAds/components/AdsSwiper';
+import AdsSwiper from '@/modules/Services/components/AdsSection/components/AdsSwiper';
 
 function AdsSection() {
   const page = useCurrentPage<AdsSectionType>();

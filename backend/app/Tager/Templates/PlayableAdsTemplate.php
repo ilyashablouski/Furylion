@@ -17,8 +17,11 @@ class PlayableAdsTemplate extends Template
     {
         parent::__construct('Игровые рекламы', [
             new GroupField('Head', [
-                'headText' => new StringField('Text'),
-                'headImages' => new GalleryField('Slider Images'),
+                'headAdsText' => new StringField('Text'),
+                'headAdsItems' => new RepeaterField('Slider Items', [
+                    'image' => new ImageField('Image'),
+                    'linkUrl' => new StringField('URL'),
+                ]),
             ]),
 
             new GroupField('Advantages', [
