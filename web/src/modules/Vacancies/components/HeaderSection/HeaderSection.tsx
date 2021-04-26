@@ -62,7 +62,7 @@ const Title = styled.span`
   &:before {
     content: attr(data-text);
     position: absolute;
-    top: -13.1%;
+    top: -14%;
     left: 0;
     transform-origin: bottom;
     transform: rotateX(180deg);

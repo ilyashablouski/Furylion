@@ -43,20 +43,14 @@ const animateUpDown = keyframes`
 const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
-  padding-top: 215px;
+  padding-top: 135px;
   padding-bottom: 170px;
   max-width: 1920px;
   text-align: center;
 
-  ${media.tabletSmallOnly(css`
-    padding-top: 140px;
-    padding-bottom: 115px;
-  `)}
+  ${media.tabletSmallOnly(css``)}
 
-  ${media.mobile(css`
-    padding-top: 140px;
-    padding-bottom: 102px;
-  `)}
+  ${media.mobile(css``)}
 `;
 
 const Inner = styled.div`
@@ -68,24 +62,24 @@ const Title = styled.span`
   z-index: 1;
   width: 100%;
   font-weight: 900;
-  font-size: 265px;
+  font-size: 176px;
   line-height: 100%;
   text-transform: uppercase;
-  word-break: break-word;
+  white-space: nowrap;
   color: ${colors.white};
 
   ${media.desktop1366(css`
-    font-size: 19.2vw;
+    font-size: 12.7vw;
   `)}
 
   ${media.mobile(css`
-    font-size: 18.7vw;
+    font-size: 12.4vw;
   `)}
 
   &:before {
     content: attr(data-text);
     position: absolute;
-    top: -13.1%;
+    top: -14%;
     left: 0;
     transform-origin: bottom;
     transform: rotateX(180deg);
@@ -102,7 +96,7 @@ const Title = styled.span`
 `;
 
 const Text = styled.span`
-  margin-top: 52px;
+  margin-top: 40px;
   display: block;
   font-weight: 900;
   font-size: 32px;
@@ -110,18 +104,17 @@ const Text = styled.span`
   color: ${colors.white};
 
   ${media.tabletSmallOnly(css`
-    margin-top: 60px;
     font-size: 24px;
   `)}
 
   ${media.mobile(css`
-    margin-top: 93px;
     font-size: 20px;
     line-height: 160%;
   `)}
 `;
 
 const DownArrow = styled.div`
+  margin-top: 25px;
   animation: ${animateUpDown} 500ms linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;

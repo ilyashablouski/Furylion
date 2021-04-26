@@ -358,12 +358,12 @@ export interface AdsHeadSectionType extends PageFullType {
   };
 }
 
-// export interface AdvantagesSectionType extends PageFullType {
-//   templateFields: {
-//     advantagesTitle: ;
-//     advantagesText1: ;
-//     advantagesText2: ;
-//     advantagesText3: ;
-//     advantagesImages: ;
-//   };
-// }
+export interface AdvantagesSectionType extends PageFullType {
+  templateFields: {
+    advantagesTitle: StringFieldType;
+    advantagesText1: StringFieldType;
+    advantagesText2: StringFieldType;
+    advantagesText3: StringFieldType;
+    advantagesList: StringFieldType;
+  };
+}

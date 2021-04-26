@@ -6,33 +6,38 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import checkMarkUrl from '@/assets/svg/vacancy/check-mark.svg';
+import { AdvantagesSectionType } from '@/typings/model';
 
 function AdvantagesSection() {
-  // const page = useCurrentPage<>();
-  // if (!page) return null;
-  //
-  // const pageFields = page.templateFields;
+  const page = useCurrentPage<AdvantagesSectionType>();
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
   return (
     <Wrapper>
-      {/*<ContentContainer>*/}
-      {/*  <Title></Title>*/}
+      <ContentContainer>
+        <Title>{pageFields.advantagesTitle}</Title>
 
-      {/*  <TextContainer>*/}
-      {/*    <TextItem>*/}
-      {/*      <Text>{pageFields.}</Text>*/}
-      {/*    </TextItem>*/}
-      {/*    <TextItem>*/}
-      {/*      <Text>{pageFields.}</Text>*/}
-      {/*    </TextItem>*/}
-      {/*    <TextItem>*/}
-      {/*      <Text>{pageFields.}</Text>*/}
-      {/*    </TextItem>*/}
-      {/*  </TextContainer>*/}
+        <TextContainer>
+          <TextItem>
+            <Text>{pageFields.advantagesText1}</Text>
+          </TextItem>
+          <TextItem>
+            <Text>{pageFields.advantagesText2}</Text>
+          </TextItem>
+          <TextItem>
+            <Text>{pageFields.advantagesText3}</Text>
+          </TextItem>
+        </TextContainer>
 
-      {/*  <Inner>*/}
-      {/*    <Lists dangerouslySetInnerHTML={{ __html: conditionsList ?? '' }} />*/}
-      {/*  </Inner>*/}
-      {/*</ContentContainer>*/}
+        <Inner>
+          <Lists
+            dangerouslySetInnerHTML={{
+              __html: pageFields.advantagesList ?? '',
+            }}
+          />
+        </Inner>
+      </ContentContainer>
     </Wrapper>
   );
 }
@@ -40,6 +45,8 @@ function AdvantagesSection() {
 export default AdvantagesSection;
 
 const Wrapper = styled.section`
+  margin-top: -675px;
+  padding-top: 476px;
   background: ${colors.red};
 `;
 const Title = styled.span`
