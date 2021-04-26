@@ -45,7 +45,7 @@ class PlayableAdsTemplate extends Template
 
             new GroupField('CPI', [
                 'cpiTitle' => new StringField('Title'),
-                'cpiText' => new TextField('Text'),
+                'cpiImage' => new ImageField('Image'),
                 'cpiButtonLabel' => new StringField('Button - Text'),
                 'cpiButtonUrl' => new StringField('Button - URL'),
             ]),
