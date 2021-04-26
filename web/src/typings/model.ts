@@ -384,7 +384,7 @@ export interface RateSectionType extends PageFullType {
 export interface CpiSectionType extends PageFullType {
   templateFields: {
     cpiTitle: StringFieldType;
-    cpiText: StringFieldType;
+    cpiImage: ThumbnailType;
     cpiButtonLabel: StringFieldType;
     cpiButtonUrl: StringFieldType;
   };

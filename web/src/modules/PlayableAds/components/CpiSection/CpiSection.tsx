@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
 import CurveButton from '@/components/CurveButton';
@@ -8,6 +10,8 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { CpiSectionType } from '@/typings/model';
+import Picture from '@/components/Picture';
+import { ReactComponent as SmallArrowIcon } from '@/assets/svg/ads/small-arrow-down.svg';
 
 function CpiSection() {
   const page = useCurrentPage<CpiSectionType>();
@@ -19,9 +23,15 @@ function CpiSection() {
       <ContentContainer>
         <Title>{pageFields.cpiTitle}</Title>
 
-        <TextBlock>
-          <Text>{pageFields.cpiText}</Text>
-        </TextBlock>
+        <ImageContainer>
+          <Picture
+            mobileSmall={convertThumbnailToPictureImage(pageFields.cpiImage)}
+          />
+        </ImageContainer>
+
+        <DownArrow>
+          <SmallArrowIcon />
+        </DownArrow>
 
         <ButtonWrapper>
           <SkewButton href={pageFields.cpiButtonUrl} color="dark">
@@ -34,6 +44,16 @@ function CpiSection() {
 }
 
 export default CpiSection;
+
+const animateUpDown = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  
+  to {
+    transform: translateY(-10px);
+  }
+`;
 
 const Wrapper = styled.section`
   padding: 100px 0;
@@ -57,22 +77,25 @@ const Title = styled.span`
   `)}
 `;
 
-const TextBlock = styled.div`
+const ImageContainer = styled.div`
   margin: 35px auto 0;
-  max-width: 605px;
+  max-width: 703px;
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
 `;
 
-const Text = styled.span`
-  font-weight: 900;
-  font-size: 269.93px;
-  line-height: 130%;
-  text-transform: uppercase;
-  outline: 2px dashed ${colors.red};
-  outline-offset: -4px;
-  color: ${colors.white};
+const DownArrow = styled.div`
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  animation: ${animateUpDown} 500ms linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 0 auto;
+  margin: 47px auto 0;
   max-width: 397px;
 `;
