@@ -47,6 +47,7 @@ export default AdvantagesSection;
 const Wrapper = styled.section`
   margin-top: -675px;
   padding-top: 476px;
+  padding-bottom: 100px;
   background: ${colors.red};
 `;
 const Title = styled.span`
@@ -66,7 +67,7 @@ const Title = styled.span`
 `;
 
 const TextContainer = styled.div`
-  margin: 35px -10px 0;
+  margin: 35px -20px 0;
   display: flex;
 
   ${media.tabletSmallOnly(css`
@@ -81,7 +82,7 @@ const TextContainer = styled.div`
 `;
 
 const TextItem = styled.div`
-  padding: 0 10px;
+  padding: 0 20px;
   flex: 1 1 33.33%;
   max-width: 33.33%;
 
@@ -119,7 +120,7 @@ const Text = styled.p`
 `;
 
 const Inner = styled.div`
-  margin-top: 50px;
+  margin-top: 70px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 40px;
@@ -158,20 +159,22 @@ const Lists = styled.div`
 
   li {
     position: relative;
-    padding-left: 52px;
+    padding-left: 59px;
     display: flex;
     align-items: center;
     min-height: 44px;
-    font-weight: normal;
-    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
     line-height: 160%;
     color: ${colors.white};
+
     ${media.mobile(css`
       margin-top: 20px;
     `)}
 
     &:not(:first-child) {
-      margin-top: 25px;
+      margin-top: 37px;
 
       ${media.mobile(css`
         margin-top: 20px;
