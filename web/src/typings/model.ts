@@ -416,3 +416,11 @@ export interface FrameworkSectionType extends PageFullType {
     frameworkButtonUrl: StringFieldType;
   };
 }
+
+export interface NetworksSectionType extends PageFullType {
+  templateFields: {
+    networksTitle: StringFieldType;
+    networksFirstGallery: Array<ThumbnailType>;
+    networksSecondGallery: Array<ThumbnailType>;
+  };
+}

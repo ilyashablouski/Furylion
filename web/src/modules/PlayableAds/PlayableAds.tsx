@@ -8,6 +8,7 @@ import HeaderSection from './components/HeaderSection';
 import RateSection from './components/RateSection';
 import ReengagementSection from './components/ReengagementSection';
 import FrameworkSection from './components/FrameworkSection';
+import NetworksSection from './components/NetworksSection';
 
 function PlayableAds() {
   const page = useCurrentPage();
@@ -20,6 +21,7 @@ function PlayableAds() {
       <CpiSection />
       <ReengagementSection />
       <FrameworkSection />
+      <NetworksSection />
     </>
   );
 }
