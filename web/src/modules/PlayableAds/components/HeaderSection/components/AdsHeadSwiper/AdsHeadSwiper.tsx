@@ -1,30 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {
-  Autoplay,
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-} from 'swiper';
+import SwiperCore, { EffectCoverflow } from 'swiper';
 
-import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
-import { WorksItemType } from '@/typings/model';
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
+import { AdsHeadItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
 import { breakpoints, colors } from '@/constants/theme';
 import PlaceholderCard from '@/components/PlaceholderCard';
+import Picture from '@/components/Picture';
+import Link from '@/components/Link';
 
-import WorksItem from './WorksItem';
-
-SwiperCore.use([Pagination, Navigation, Autoplay, EffectCoverflow]);
+SwiperCore.use([EffectCoverflow]);
 
 type Props = {
-  adsHeadItems: Array<any>;
+  adsHeadItems: Array<AdsHeadItemType>;
 };
 
-function AdsHeadSwiper({ worksItems }: Props) {
-  const sliderPagination = useRef<HTMLInputElement>(null);
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
+function AdsHeadSwiper({ adsHeadItems }: Props) {
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -32,15 +26,14 @@ function AdsHeadSwiper({ worksItems }: Props) {
   }, []);
 
   return (
-    <WorksSwiperContainer>
+    <Container>
       {isMounted ? (
         <>
           <Swiper
             slidesPerView="auto"
             loop={true}
             centeredSlides={true}
-            allowTouchMove={false}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            allowTouchMove={true}
             effect="coverflow"
             coverflowEffect={{
               rotate: 0,
@@ -64,189 +57,36 @@ function AdsHeadSwiper({ worksItems }: Props) {
             //   },
             // }}
           >
-            {worksItems.map((worksItem, index) => {
+            {adsHeadItems.map((adsHeadItem, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <WorksItem
-                    image={worksItem.image}
-                    title={worksItem.title}
-                    text={worksItem.text}
-                    tags={worksItem.tags ?? ''}
-                  />
+                  <AdsHeadItem>
+                    <Picture
+                      mobileSmall={convertThumbnailToPictureImage(
+                        adsHeadItem.image
+                      )}
+                    />
+                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+                  </AdsHeadItem>
                 </SwiperSlide>
               );
             })}
-
-            <NavButton className={`swiper-prev`} prev>
-              <SlideArrowIcon />
-            </NavButton>
-            <NavButton className={`swiper-next`} next>
-              <SlideArrowIcon />
-            </NavButton>
           </Swiper>
-          <ItemsPagination
-            className="swiper-pagination"
-            ref={sliderPagination}
-          />
         </>
-      ) : (
-        <PlaceholderCard color="#3e3e3e" />
-      )}
-    </WorksSwiperContainer>
+      ) : null}
+    </Container>
   );
 }
 
-const animation = keyframes`
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
+export default AdsHeadSwiper;
 
-const ItemsPagination = styled.div`
-  position: absolute;
-  bottom: 41px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  ${media.tabletSmallOnly(css`
-    display: none;
-  `)}
-  ${media.mobile(css`
-    bottom: -5px;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    transform: translateX(0);
-  `)}
-    .swiper-pagination-bullet {
-    width: 4px;
-    height: 4px;
-    background: ${colors.black};
-    border: 0.2px solid rgba(255, 255, 255, 0.78);
-    border-radius: 50%;
-    opacity: 1;
-    box-sizing: content-box;
-    &:not(:first-child) {
-      margin-left: 15px;
-    }
-
-    ${media.mobile(css`
-      position: relative;
-      max-width: 110px;
-      width: 100%;
-      height: 2px;
-      border-radius: 0;
-      background: #8c8b89;
-      opacity: 1;
-      border: none;
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        content: '';
-        background: #6b1a1a;
-        opacity: 1;
-      }
-    `)}
-  }
-
-  .swiper-pagination-bullet-active {
-    background: ${colors.white};
-    border: 0.2px solid rgba(255, 255, 255, 1);
-    ${media.mobile(css`
-      position: relative;
-      overflow: hidden;
-      background: #8c8b89;
-      border: none;
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        will-change: transform;
-        animation: ${animation} 4350ms linear;
-      }
-    `)}
-  }
-`;
-
-const WorksSwiperContainer = styled.div`
-  position: relative;
-  margin-top: 55px;
-
-  ${media.tabletSmallOnly(css`
-    margin-top: 38px;
-  `)}
-  ${media.mobile(css`
-    margin-top: 16px;
-  `)}
-
+const Container = styled.div`
   .swiper-container-initialized {
     .swiper-slide {
-      max-width: 1230px;
     }
   }
 `;
 
-const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: ${(props) => (props.prev ? '7%' : 'auto')};
-  right: ${(props) => (props.next ? '7%' : 'auto')};
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.5);
-  color: ${colors.red};
-  border-radius: 50%;
-  transform: translate(0, -50%);
-  z-index: 1;
-  transition: 150ms all ease-in-out;
-  ${media.mobile(css`
-    display: none;
-  `)}
+const AdsHeadItem = styled.div``;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
-
-  svg {
-    transform: ${(props) => (props.next ? 'rotate(180deg)' : 'rotate(0deg)')};
-  }
-
-  &.swiper-prev {
-    svg {
-      margin-right: 4px;
-    }
-
-    ${media.tablet(css`
-      left: 40px;
-    `)}
-  }
-  &.swiper-next {
-    svg {
-      margin-left: 4px;
-    }
-
-    ${media.tablet(css`
-      right: 40px;
-    `)}
-  }
-`;
-
-export default AdsHeadSwiper;
+const ItemLink = styled(Link)``;

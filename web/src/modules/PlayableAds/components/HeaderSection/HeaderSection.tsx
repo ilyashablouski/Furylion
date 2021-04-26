@@ -18,14 +18,14 @@ function HeaderSection() {
     <Wrapper>
       <Inner>
         <Title data-text="PLAYABLE ADS">Playable ADS</Title>
-        <Text>{pageFields.headText}</Text>
+        <Text>{pageFields.headAdsText}</Text>
       </Inner>
 
       <DownArrow>
         <SmallArrowIcon />
       </DownArrow>
 
-      <AdsHeadSwiper />
+      <AdsHeadSwiper adsHeadItems={pageFields.headAdsItems} />
     </Wrapper>
   );
 }
