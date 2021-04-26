@@ -1347,10 +1347,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-menus@^0.2.12":
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/@tager/admin-menus/-/admin-menus-0.2.12.tgz#9a94c7b6ce8b82041961f65d15bc09417474afe6"
-  integrity sha512-yT+0VlpqX7szR5sxrZ4dxbHlEw+EI5r8BkZSVMWb4vohef7ankXEWp0XfIe3ts98jzRjl+PTZyytK8jcg8EzPA==
+"@tager/admin-menus@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@tager/admin-menus/-/admin-menus-0.3.0.tgz#844f7e2feca24b5f95c0a05bfa8387248700ec49"
+  integrity sha512-L+Y5a3rzgTbyWL0NZOoWxquKnsr1hOiL9XMRDkQYMhONLcbkf3gH7TrAl5hAe4xocbNuCR3FtFLua+1DAnUZjg==
   dependencies:
     path-to-regexp "^6.1.0"
 
@@ -1387,10 +1387,10 @@
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-ui@^0.8.56":
-  version "0.8.56"
-  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.56.tgz#64a9f788057d364bdb06b8394b3a3ad14056e00d"
-  integrity sha512-j9AHd4gA1ERJmDiPAa0oRU7zUfza6E/zSt4n1HQ/EDarp/MbUyLL0hxcT2CsKcgIeofyAIp5LOGLYkEkL7YP6A==
+"@tager/admin-ui@^0.8.59":
+  version "0.8.59"
+  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.59.tgz#02f9d6c27bef30e3515f0c326ea8ca219fd2cb19"
+  integrity sha512-vRGiIL8+FhS1iBuC4m0ksV0AOzPY6zyphFTaW0vA9MCYOgpVBH1ZHQmC640Ah89e5+pdyQOBEjoJiX5WPNpf/w==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@ckeditor/ckeditor5-vue" "^1.0.2"

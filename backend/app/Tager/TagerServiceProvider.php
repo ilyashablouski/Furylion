@@ -2,16 +2,17 @@
 
 namespace App\Tager;
 
-use App\Enums\SeoParamTemplate;
-use App\Enums\UsersScope;
-use App\Tager\PanelRouteHandlers\VacancyPanelRouteHandler;
-use App\Tager\SitemapHandlers\VacanciesSitemapHandler;
-use App\Tager\SitemapHandlers\VacancyLocationsSitemapHandler;
 use Illuminate\Support\ServiceProvider;
 use OZiTAG\Tager\Backend\Panel\TagerPanel;
 use OZiTAG\Tager\Backend\Rbac\TagerScopes;
 use OZiTAG\Tager\Backend\Seo\Structures\ParamsTemplate;
 use OZiTAG\Tager\Backend\Seo\TagerSeo;
+use OZiTAG\Tager\Backend\Menus\TagerMenus;
+use App\Enums\SeoParamTemplate;
+use App\Enums\UsersScope;
+use App\Tager\PanelRouteHandlers\VacancyPanelRouteHandler;
+use App\Tager\SitemapHandlers\VacanciesSitemapHandler;
+use App\Tager\SitemapHandlers\VacancyLocationsSitemapHandler;
 
 class TagerServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,9 @@ class TagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        TagerMenus::registerMenu('header', 'Header Menu', false);
+        TagerMenus::registerMenu('footer', 'Footer Menu', false);
+
         TagerPanel::registerRouteHandler('/careers/(.+?)$', VacancyPanelRouteHandler::class);
 
         TagerScopes::registerGroup('Vacancies', [
