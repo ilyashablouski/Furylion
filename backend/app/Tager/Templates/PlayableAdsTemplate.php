@@ -86,11 +86,16 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Do you want', [
-                'wantImage' => new ImageField('Image'),
+                'doYouWantTitle' => new StringField('Title'),
+                'doYouWantImage' => new ImageField('Image'),
+                'doYouWantFirstGallery' => new GalleryField('Gallery 1'),
+                'doYouWantSecondGallery' => new GalleryField('Gallery 2'),
+                'doYouWantThirdGallery' => new GalleryField('Gallery 3'),
             ]),
 
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),
+
                 'formAvatarTitle' => new StringField('Avatar Title'),
                 'formAvatarImage' => new ImageField('Avatar Image'),
                 'formAvatarLabel' => new StringField('Avatar Label'),
