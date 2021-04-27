@@ -13,6 +13,7 @@ import RateSection from './components/RateSection';
 import ReengagementSection from './components/ReengagementSection';
 import FrameworkSection from './components/FrameworkSection';
 import NetworksSection from './components/NetworksSection';
+import DoYouWantSection from './components/DoYouWantSection';
 
 function PlayableAds() {
   const page = useCurrentPage<EditorFormType>();
@@ -30,7 +31,7 @@ function PlayableAds() {
       <FrameworkSection />
       <NetworksSection />
       <EditorSection />
-
+      <DoYouWantSection />
       <FeedbackSection
         formTitle={pageFields.formTitle}
         formProfileTitle={pageFields.formProfileTitle}

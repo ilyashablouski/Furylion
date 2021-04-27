@@ -2,11 +2,28 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { media } from '@/utils/mixin';
+import useCurrentPage from '@/hooks/useCurrentPage';
+import { DoYouWantSectionType } from '@/typings/model';
+import { colors } from '@/constants/theme';
+
+import ImagesRow from './components/ImagesRow';
 
 function DoYouWantSection() {
+  const page = useCurrentPage<DoYouWantSectionType>();
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
+  const firstGalleryImages = page.templateFields.doYouWantFirstGallery;
+  const secondGalleryImages = page.templateFields.doYouWantSecondGallery;
+  const thirdGalleryImages = page.templateFields.doYouWantThirdGallery;
+
   return (
     <Wrapper>
-      <Title></Title>
+      <Title>{pageFields.doYouWantTitle}</Title>
+
+      <ImagesContainer>
+        <ImagesRow imagesGallery={firstGalleryImages} />
+      </ImagesContainer>
     </Wrapper>
   );
 }
@@ -18,6 +35,7 @@ const Wrapper = styled.section`
   margin: 0 auto;
   max-width: 1920px;
   text-align: center;
+  background: ${colors.red};
 
   ${media.tabletSmallOnly(css``)}
 
@@ -30,4 +48,7 @@ const Title = styled.span`
   line-height: 72.5%;
   text-align: center;
   text-transform: uppercase;
+  color: ${colors.white};
 `;
+
+const ImagesContainer = styled.div``;

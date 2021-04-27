@@ -453,3 +453,12 @@ export interface EditorFormType extends PageFullType {
     formProfileLabel: StringFieldType;
   };
 }
+
+export interface DoYouWantSectionType extends PageFullType {
+  templateFields: {
+    doYouWantTitle: StringFieldType;
+    doYouWantFirstGallery: Array<ThumbnailType>;
+    doYouWantSecondGallery: Array<ThumbnailType>;
+    doYouWantThirdGallery: Array<ThumbnailType>;
+  };
+}

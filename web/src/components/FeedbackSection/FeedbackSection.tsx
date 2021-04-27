@@ -186,8 +186,7 @@ const ProfileTitle = styled.span`
   color: ${colors.white};
 `;
 const ProfileImage = styled(Picture)`
-  margin: 0 auto;
-  margin-top: 33px;
+  margin: 33 auto 0;
   border-radius: 100%;
   width: 257px;
   height: 257px;
