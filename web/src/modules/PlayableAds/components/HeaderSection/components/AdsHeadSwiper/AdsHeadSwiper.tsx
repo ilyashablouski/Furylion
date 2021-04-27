@@ -27,47 +27,43 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
 
   return (
     <Container>
-      {isMounted ? (
-        <>
-          <Swiper
-            slidesPerView="auto"
-            loop={true}
-            centeredSlides={true}
-            allowTouchMove={true}
-            effect="coverflow"
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 60,
-              modifier: 2,
-              slideShadows: false,
-            }}
-            breakpoints={{
-              [breakpoints.mobileSmall]: {
-                spaceBetween: 0,
-              },
-              [breakpoints.tabletSmall]: {
-                spaceBetween: 70,
-              },
-            }}
-          >
-            {adsHeadItems.map((adsHeadItem, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <AdsHeadItem>
-                    <AdsHeadPicture
-                      mobileSmall={convertThumbnailToPictureImage(
-                        adsHeadItem.image
-                      )}
-                    />
-                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
-                  </AdsHeadItem>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </>
-      ) : null}
+      <Swiper
+        slidesPerView="auto"
+        loop={true}
+        centeredSlides={true}
+        allowTouchMove={true}
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 60,
+          modifier: 2,
+          slideShadows: false,
+        }}
+        breakpoints={{
+          [breakpoints.mobileSmall]: {
+            spaceBetween: 0,
+          },
+          [breakpoints.tabletSmall]: {
+            spaceBetween: 70,
+          },
+        }}
+      >
+        {adsHeadItems.map((adsHeadItem, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <AdsHeadItem>
+                <AdsHeadPicture
+                  mobileSmall={convertThumbnailToPictureImage(
+                    adsHeadItem.image
+                  )}
+                />
+                <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+              </AdsHeadItem>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </Container>
   );
 }
@@ -76,6 +72,7 @@ export default AdsHeadSwiper;
 
 const Container = styled.div`
   margin-top: 35px;
+  min-height: 813px;
   .swiper-container-initialized {
     padding-bottom: 175px;
     .swiper-slide {
