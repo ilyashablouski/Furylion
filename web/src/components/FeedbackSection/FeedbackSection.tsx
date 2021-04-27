@@ -1,7 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ThumbnailType } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
@@ -32,13 +35,29 @@ function FeedbackSection({
   return (
     <Wrapper isModal={isModal}>
       <ContentContainer>
-        {isProfileInfo && <Title className={className}>{formTitle}</Title>}
+        {isProfileInfo && (
+          <Title className={className} isProfileInfo>
+            {formTitle}
+          </Title>
+        )}
         <Inner>
           {isProfileInfo && (
+            <Left isProfileInfo>
+              <ProfileInfo>
+                <ProfileTitle>{formProfileTitle}</ProfileTitle>
+                <ProfileImage
+                  mobileSmall={convertThumbnailToPictureImage(formProfileImage)}
+                />
+                <ProfileName>{formProfileLabel}</ProfileName>
+              </ProfileInfo>
+            </Left>
+          )}
+
+          {!isProfileInfo && (
             <Left>
-              <ProfileTitle></ProfileTitle>
-              <ProfileImage></ProfileImage>
-              <ProfileName></ProfileName>
+              <Title className={className} isProfileInfo>
+                {formTitle}
+              </Title>
             </Left>
           )}
           <Right>
@@ -75,7 +94,7 @@ const Inner = styled.div`
     display: block;
   `)}
 `;
-const Title = styled.span`
+const Title = styled.span<{ isProfileInfo?: boolean }>`
   display: inline-block;
   font-style: normal;
   font-size: 64px;
@@ -83,6 +102,17 @@ const Title = styled.span`
   color: ${colors.white};
   font-weight: 900;
   text-transform: uppercase;
+  ${(props) =>
+    props.isProfileInfo &&
+    css`
+      max-width: 556px;
+      font-size: 56px;
+
+      ${media.tabletSmall(css`
+        max-width: none;
+        text-align: center;
+      `)}
+    `}
 
   &.about-title--small {
     max-width: 260px;
@@ -108,13 +138,19 @@ const Title = styled.span`
   `)}
 `;
 
-const Left = styled.div`
+const Left = styled.div<{ isProfileInfo?: boolean }>`
   flex: 1 1 50%;
   max-width: 50%;
 
   ${media.tabletSmall(css`
     max-width: none;
   `)}
+
+  ${(props) =>
+    props.isProfileInfo &&
+    css`
+      margin-top: 97px;
+    `}
 `;
 
 const Right = styled.div`
@@ -136,6 +172,38 @@ const Right = styled.div`
   `)}
 `;
 
-const ProfileTitle = styled.span``;
-const ProfileImage = styled(Picture)``;
-const ProfileName = styled.span``;
+const ProfileInfo = styled.div`
+  display: inline-block;
+  text-align: center;
+`;
+
+const ProfileTitle = styled.span`
+  display: block;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+  text-transform: uppercase;
+  color: ${colors.white};
+`;
+const ProfileImage = styled(Picture)`
+  margin: 0 auto;
+  margin-top: 33px;
+  border-radius: 100%;
+  width: 257px;
+  height: 257px;
+  overflow: hidden;
+
+  img {
+    width: 257px;
+    height: 257px;
+  }
+`;
+const ProfileName = styled.span`
+  margin-top: 20px;
+  display: block;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+  text-transform: capitalize;
+  color: ${colors.white};
+`;
