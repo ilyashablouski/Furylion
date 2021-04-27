@@ -5,6 +5,8 @@ import { CssSnippet } from '@tager/web-components';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import curveBgRedUrl from '@/assets/svg/curve-button-red.svg';
+import curveBgWhiteUrl from '@/assets/svg/curve-button-whiteSm.svg';
+import curveBgDarkSmallUrl from '@/assets/svg/curve-btn-darkSm.svg';
 
 import { ButtonVariant } from './Button.types';
 
@@ -132,20 +134,50 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   curve: css`
     position: relative;
     padding: 0;
+    height: 70px;
+    z-index: 1;
+    width: 405px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 405px;
+
+    &:hover {
+      opacity: 0.75;
+    }
 
     &:before {
       position: absolute;
-      content: ${curveBgRedUrl};
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      max-width: 405px;
+      z-index: -1;
     }
   `,
 
   'curve-red': css`
+    color: ${colors.white};
     &:before {
+      content: url(${curveBgRedUrl});
     }
   `,
 
-  'curve-dark': css`
+  'curve-white': css`
+    color: ${colors.dark};
+    font-size: 20px;
     &:before {
+      content: url(${curveBgWhiteUrl});
+    }
+  `,
+
+  'curve-dark-small': css`
+    color: ${colors.dark};
+    &:before {
+      content: url(${curveBgDarkSmallUrl});
     }
   `,
 };

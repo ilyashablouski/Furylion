@@ -13,4 +13,5 @@ export type ButtonVariant =
   | 'dashed'
   | 'curve'
   | 'curve-red'
-  | 'curve-dark';
+  | 'curve-white'
+  | 'curve-dark-small';

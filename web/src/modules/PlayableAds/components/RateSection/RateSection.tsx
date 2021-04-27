@@ -96,7 +96,7 @@ const Items = styled.div`
 `;
 
 const Item = styled.div`
-  padding: 35px;
+  padding: 0 35px;
   flex: 1 1 50%;
   max-width: 50%;
 `;
@@ -133,4 +133,8 @@ const ItemText = styled.span<{ isGray?: boolean }>`
     `}
 `;
 
-const ButtonWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  margin-top: 35px;
+  display: flex;
+  justify-content: flex-end;
+`;

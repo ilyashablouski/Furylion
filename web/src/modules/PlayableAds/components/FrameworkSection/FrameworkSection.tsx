@@ -6,6 +6,7 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { FrameworkSectionType } from '@/typings/model';
+import CurveButton from '@/components/CurveButton';
 
 import FrameworkItem from './components/FrameworkItem';
 
@@ -39,7 +40,13 @@ function FrameworkSection() {
           </Items>
         </Inner>
 
-        <ButtonWrapper></ButtonWrapper>
+        <ButtonWrapper>
+          <CurveButton
+            href={pageFields.frameworkButtonUrl}
+            label={pageFields.frameworkButtonLabel}
+            variants={['curve', 'curve-white', 'w100']}
+          />
+        </ButtonWrapper>
       </ContentContainer>
     </Wrapper>
   );
@@ -93,7 +100,9 @@ const Item = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 50px auto 0;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 `;
 
 export default FrameworkSection;
