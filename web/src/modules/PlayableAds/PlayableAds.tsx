@@ -30,7 +30,13 @@ function PlayableAds() {
       <FrameworkSection />
       <NetworksSection />
       <EditorSection />
-      <FeedbackSection formTitle={pageFields.formTitle} isProfileInfo={true} />
+      <FeedbackSection
+        formTitle={pageFields.formTitle}
+        formProfileTitle={pageFields.formProfileTitle}
+        formProfileImage={pageFields.formProfileImage}
+        formProfileLabel={pageFields.formProfileLabel}
+        isProfileInfo={true}
+      />
     </>
   );
 }

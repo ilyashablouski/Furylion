@@ -1,15 +1,20 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { ThumbnailType } from '@tager/web-modules';
+
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { StringFieldType } from '@/typings/common';
 import ContactsFormContainer from '@/components/form';
 import { media } from '@/utils/mixin';
+import Picture from '@/components/Picture';
 
 type Props = {
   formTitle?: StringFieldType;
-  children?: React.ReactNode;
+  formProfileTitle?: StringFieldType;
+  formProfileImage?: ThumbnailType;
+  formProfileLabel?: StringFieldType;
   className?: string;
   isModal?: boolean;
   isProfileInfo?: boolean;
@@ -17,7 +22,9 @@ type Props = {
 
 function FeedbackSection({
   formTitle,
-  children,
+  formProfileTitle,
+  formProfileImage,
+  formProfileLabel,
   className,
   isModal = false,
   isProfileInfo = false,
@@ -25,18 +32,13 @@ function FeedbackSection({
   return (
     <Wrapper isModal={isModal}>
       <ContentContainer>
+        {isProfileInfo && <Title className={className}>{formTitle}</Title>}
         <Inner>
-          {!isProfileInfo && (
-            <Left>
-              <Title className={className}>{formTitle}</Title>
-            </Left>
-          )}
-
           {isProfileInfo && (
             <Left>
-              {/*<ProfileTitle></ProfileTitle>*/}
-              {/*<ProfileImage></ProfileImage>*/}
-              {/*<ProfileName></ProfileName>*/}
+              <ProfileTitle></ProfileTitle>
+              <ProfileImage></ProfileImage>
+              <ProfileName></ProfileName>
             </Left>
           )}
           <Right>
@@ -133,3 +135,7 @@ const Right = styled.div`
     margin-top: 35px;
   `)}
 `;
+
+const ProfileTitle = styled.span``;
+const ProfileImage = styled(Picture)``;
+const ProfileName = styled.span``;
