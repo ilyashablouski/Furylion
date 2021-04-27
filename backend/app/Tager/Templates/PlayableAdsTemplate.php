@@ -87,7 +87,6 @@ class PlayableAdsTemplate extends Template
 
             new GroupField('Do you want', [
                 'doYouWantTitle' => new StringField('Title'),
-                'doYouWantImage' => new ImageField('Image'),
                 'doYouWantFirstGallery' => new GalleryField('Gallery 1'),
                 'doYouWantSecondGallery' => new GalleryField('Gallery 2'),
                 'doYouWantThirdGallery' => new GalleryField('Gallery 3'),
