@@ -4,6 +4,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import EditorSection from '@/modules/PlayableAds/components/EditorSection';
 import FeedbackSection from '@/components/FeedbackSection';
 import useSettingItem from '@/hooks/useSettingItem';
+import { EditorFormType, FrameworkSectionType } from '@/typings/model';
 
 import AdvantagesSection from './components/AdvantagesSection';
 import CpiSection from './components/CpiSection';
@@ -14,7 +15,10 @@ import FrameworkSection from './components/FrameworkSection';
 import NetworksSection from './components/NetworksSection';
 
 function PlayableAds() {
-  // const formTitle = useCurrentPage<>();
+  const page = useCurrentPage<EditorFormType>();
+  if (!page) return null;
+
+  const pageFields = page.templateFields;
 
   return (
     <>
@@ -26,7 +30,7 @@ function PlayableAds() {
       <FrameworkSection />
       <NetworksSection />
       <EditorSection />
-      <FeedbackSection />
+      <FeedbackSection formTitle={pageFields.formTitle} isProfileInfo={true} />
     </>
   );
 }

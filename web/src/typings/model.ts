@@ -444,3 +444,12 @@ export interface EditorSectionType extends PageFullType {
     editorImage: ThumbnailType;
   };
 }
+
+export interface EditorFormType extends PageFullType {
+  templateFields: {
+    formTitle: StringFieldType;
+    formProfileTitle: StringFieldType;
+    formProfileImage: ThumbnailType;
+    formProfileLabel: StringFieldType;
+  };
+}

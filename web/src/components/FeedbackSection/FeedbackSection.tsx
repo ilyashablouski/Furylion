@@ -12,6 +12,7 @@ type Props = {
   children?: React.ReactNode;
   className?: string;
   isModal?: boolean;
+  isProfileInfo?: boolean;
 };
 
 function FeedbackSection({
@@ -19,15 +20,25 @@ function FeedbackSection({
   children,
   className,
   isModal = false,
+  isProfileInfo = false,
 }: Props) {
   return (
     <Wrapper isModal={isModal}>
       <ContentContainer>
         <Inner>
-          <Left>
-            <Title className={className}>{formTitle}</Title>
-            {children}
-          </Left>
+          {!isProfileInfo && (
+            <Left>
+              <Title className={className}>{formTitle}</Title>
+            </Left>
+          )}
+
+          {isProfileInfo && (
+            <Left>
+              {/*<ProfileTitle></ProfileTitle>*/}
+              {/*<ProfileImage></ProfileImage>*/}
+              {/*<ProfileName></ProfileName>*/}
+            </Left>
+          )}
           <Right>
             <ContactsFormContainer />
           </Right>

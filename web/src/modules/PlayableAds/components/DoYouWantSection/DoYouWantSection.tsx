@@ -4,7 +4,11 @@ import styled, { css } from 'styled-components';
 import { media } from '@/utils/mixin';
 
 function DoYouWantSection() {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <Title></Title>
+    </Wrapper>
+  );
 }
 
 export default DoYouWantSection;
@@ -18,4 +22,12 @@ const Wrapper = styled.section`
   ${media.tabletSmallOnly(css``)}
 
   ${media.mobile(css``)}
+`;
+
+const Title = styled.span`
+  font-weight: 900;
+  font-size: 178.605px;
+  line-height: 72.5%;
+  text-align: center;
+  text-transform: uppercase;
 `;
