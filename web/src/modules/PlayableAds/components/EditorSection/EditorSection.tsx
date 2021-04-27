@@ -92,9 +92,15 @@ const ButtonWrapper = styled.div`
   max-width: 388px;
 `;
 
-const Left = styled.div``;
+const Left = styled.div`
+  flex: 1 1 40.15%;
+  max-width: 40.15%;
+`;
 
 const Right = styled.div`
-  flex: 1 1 709px;
-  max-width: 709px;
+  margin-left: 24px;
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 calc(59.85% - 24px);
+  max-width: calc(59.85% - 24px);
 `;
