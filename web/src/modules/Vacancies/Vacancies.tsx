@@ -12,10 +12,10 @@ function Vacancies() {
 
   return (
     <>
-      <HeaderSection />
-      <JobsSection />
-      <TeamLifeSection />
-      <FeedbackSection className="about-title--small" formTitle={formTitle} />
+      {/*<HeaderSection />*/}
+      {/*<JobsSection />*/}
+      {/*<TeamLifeSection />*/}
+      {/*<FeedbackSection className="about-title--small" formTitle={formTitle} />*/}
     </>
   );
 }

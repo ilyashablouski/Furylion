@@ -23,22 +23,22 @@ function PlayableAds() {
 
   return (
     <>
-      <HeaderSection />
-      <AdvantagesSection />
-      <RateSection />
-      <CpiSection />
-      <ReengagementSection />
-      <FrameworkSection />
-      <NetworksSection />
-      <EditorSection />
-      <DoYouWantSection />
-      <FeedbackSection
-        formTitle={pageFields.formTitle}
-        formProfileTitle={pageFields.formProfileTitle}
-        formProfileImage={pageFields.formProfileImage}
-        formProfileLabel={pageFields.formProfileLabel}
-        isProfileInfo={true}
-      />
+      {/*<HeaderSection />*/}
+      {/*<AdvantagesSection />*/}
+      {/*<RateSection />*/}
+      {/*<CpiSection />*/}
+      {/*<ReengagementSection />*/}
+      {/*<FrameworkSection />*/}
+      {/*<NetworksSection />*/}
+      {/*<EditorSection />*/}
+      {/*<DoYouWantSection />*/}
+      {/*<FeedbackSection*/}
+      {/*  formTitle={pageFields.formTitle}*/}
+      {/*  formProfileTitle={pageFields.formProfileTitle}*/}
+      {/*  formProfileImage={pageFields.formProfileImage}*/}
+      {/*  formProfileLabel={pageFields.formProfileLabel}*/}
+      {/*  isProfileInfo={true}*/}
+      {/*/>*/}
     </>
   );
 }
