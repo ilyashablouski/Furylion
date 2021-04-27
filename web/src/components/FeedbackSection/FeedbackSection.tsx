@@ -36,6 +36,7 @@ function FeedbackSection({
     </Wrapper>
   );
 }
+export default FeedbackSection;
 
 const Wrapper = styled.section<{ isModal: boolean }>`
   ${(props) =>
@@ -121,5 +122,3 @@ const Right = styled.div`
     margin-top: 35px;
   `)}
 `;
-
-export default FeedbackSection;

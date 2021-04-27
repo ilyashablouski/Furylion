@@ -424,3 +424,23 @@ export interface NetworksSectionType extends PageFullType {
     networksSecondGallery: Array<ThumbnailType>;
   };
 }
+
+export interface EditorSectionType extends PageFullType {
+  templateFields: {
+    editorTitle: StringFieldType;
+    editorText: StringFieldType;
+    editorButtonLabel: StringFieldType;
+    editorButtonUrl: StringFieldType;
+    editorImage: ThumbnailType;
+  };
+}
+
+export interface EditorSectionType extends PageFullType {
+  templateFields: {
+    editorTitle: StringFieldType;
+    editorText: StringFieldType;
+    editorButtonLabel: StringFieldType;
+    editorButtonUrl: StringFieldType;
+    editorImage: ThumbnailType;
+  };
+}

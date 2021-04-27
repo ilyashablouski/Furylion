@@ -1,6 +1,9 @@
 import React from 'react';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
+import EditorSection from '@/modules/PlayableAds/components/EditorSection';
+import FeedbackSection from '@/components/FeedbackSection';
+import useSettingItem from '@/hooks/useSettingItem';
 
 import AdvantagesSection from './components/AdvantagesSection';
 import CpiSection from './components/CpiSection';
@@ -11,7 +14,7 @@ import FrameworkSection from './components/FrameworkSection';
 import NetworksSection from './components/NetworksSection';
 
 function PlayableAds() {
-  const page = useCurrentPage();
+  // const formTitle = useCurrentPage<>();
 
   return (
     <>
@@ -22,6 +25,8 @@ function PlayableAds() {
       <ReengagementSection />
       <FrameworkSection />
       <NetworksSection />
+      <EditorSection />
+      <FeedbackSection />
     </>
   );
 }
