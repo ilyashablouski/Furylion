@@ -1,12 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { EffectCoverflow } from 'swiper';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import { AdsHeadItemType } from '@/typings/model';
-import { breakpoints } from '@/constants/theme';
+import { media } from '@/utils/mixin';
+import { breakpoints, colors } from '@/constants/theme';
+import PlaceholderCard from '@/components/PlaceholderCard';
 import Picture from '@/components/Picture';
 import Link from '@/components/Link';
 
@@ -17,45 +19,55 @@ type Props = {
 };
 
 function AdsHeadSwiper({ adsHeadItems }: Props) {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Container>
-      <Swiper
-        slidesPerView="auto"
-        loop={true}
-        centeredSlides={true}
-        allowTouchMove={true}
-        effect="coverflow"
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 60,
-          modifier: 2,
-          slideShadows: false,
-        }}
-        breakpoints={{
-          [breakpoints.mobileSmall]: {
-            spaceBetween: 0,
-          },
-          [breakpoints.tabletSmall]: {
-            spaceBetween: 70,
-          },
-        }}
-      >
-        {adsHeadItems.map((adsHeadItem, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <AdsHeadItem>
-                <AdsHeadPicture
-                  mobileSmall={convertThumbnailToPictureImage(
-                    adsHeadItem.image
-                  )}
-                />
-                <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
-              </AdsHeadItem>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {isMounted ? (
+        <>
+          <Swiper
+            slidesPerView="auto"
+            loop={true}
+            centeredSlides={true}
+            allowTouchMove={true}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 60,
+              modifier: 2,
+              slideShadows: false,
+            }}
+            breakpoints={{
+              [breakpoints.mobileSmall]: {
+                spaceBetween: 0,
+              },
+              [breakpoints.tabletSmall]: {
+                spaceBetween: 70,
+              },
+            }}
+          >
+            {adsHeadItems.map((adsHeadItem, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <AdsHeadItem>
+                    <AdsHeadPicture
+                      mobileSmall={convertThumbnailToPictureImage(
+                        adsHeadItem.image
+                      )}
+                    />
+                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+                  </AdsHeadItem>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
+      ) : null}
     </Container>
   );
 }
@@ -77,12 +89,12 @@ const Container = styled.div`
 
 const AdsHeadItem = styled.div`
   border-radius: 30px;
-  box-shadow: 0 100px 80px rgba(0, 0, 0, 0.21),
-    0 52.2782px 44.658px rgba(0, 0, 0, 0.150959),
-    0 33.0459px 33.3517px rgba(0, 0, 0, 0.125183),
-    0 21.118px 26.035px rgba(0, 0, 0, 0.105),
-    0 12.6549px 18.9822px rgba(0, 0, 0, 0.0848175),
-    0 5.97057px 10.6103px rgba(0, 0, 0, 0.0590406);
+  box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.21),
+    0px 52.2782px 44.658px rgba(0, 0, 0, 0.150959),
+    0px 33.0459px 33.3517px rgba(0, 0, 0, 0.125183),
+    0px 21.118px 26.035px rgba(0, 0, 0, 0.105),
+    0px 12.6549px 18.9822px rgba(0, 0, 0, 0.0848175),
+    0px 5.97057px 10.6103px rgba(0, 0, 0, 0.0590406);
 `;
 
 const AdsHeadPicture = styled(Picture)`

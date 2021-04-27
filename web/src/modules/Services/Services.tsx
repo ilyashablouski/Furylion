@@ -17,17 +17,17 @@ function Services() {
   const formTitle = useSettingItem('FORM_TITLE');
   return (
     <>
-      {/*<HeaderSection />*/}
-      {/*<TextBannerSection />*/}
-      {/*<FirstArtSection />*/}
-      {/*<SecondArtSection />*/}
-      {/*<AnimationSection />*/}
-      {/*<DevelopmentSection />*/}
-      {/*<OutStaffingSection />*/}
-      {/*<CoDevelopmentSection />*/}
-      {/*<AdsSection />*/}
+      <HeaderSection />
+      <TextBannerSection />
+      <FirstArtSection />
+      <SecondArtSection />
+      <AnimationSection />
+      <DevelopmentSection />
+      <OutStaffingSection />
+      <CoDevelopmentSection />
+      <AdsSection />
 
-      {/*<FeedbackSection className="about-title--small" formTitle={formTitle} />*/}
+      <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );
 }

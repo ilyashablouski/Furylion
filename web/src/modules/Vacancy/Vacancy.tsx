@@ -12,10 +12,10 @@ function Vacancy() {
 
   return (
     <>
-      {/*<TopSection />*/}
-      {/*<JobSection />*/}
-      {/*<GetSection />*/}
-      {/*<FeedbackSection formTitle={formVacancyTitle} />*/}
+      <TopSection />
+      <JobSection />
+      <GetSection />
+      <FeedbackSection formTitle={formVacancyTitle} />
     </>
   );
 }

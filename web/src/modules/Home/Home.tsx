@@ -16,13 +16,13 @@ function Home() {
   return (
     <>
       <HeroSection />
-      {/*<WorksSection />*/}
-      {/*<ServicesSection />*/}
-      {/*<TechSection />*/}
-      {/*<PlatformSection />*/}
-      {/*<TeamSection />*/}
-      {/*<ClientsSection />*/}
-      {/*<FeedbackSection className="about-title--small" formTitle={formTitle} />*/}
+      <WorksSection />
+      <ServicesSection />
+      <TechSection />
+      <PlatformSection />
+      <TeamSection />
+      <ClientsSection />
+      <FeedbackSection className="about-title--small" formTitle={formTitle} />
     </>
   );
 }

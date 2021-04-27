@@ -24,10 +24,6 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   {
     template: 'vacancies',
     component: Vacancies,
-    //TODO: Delete if no need
-    // async getInitialProps({ store }: CustomApp_PageContext) {
-    //   await store.dispatch(getVacanciesListThunk());
-    // },
   },
   {
     template: 'services',
