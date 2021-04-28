@@ -58,6 +58,10 @@ const animateUpDown = keyframes`
 const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.red};
+
+  ${media.tabletSmall(css`
+    padding: 70px 0;
+  `)}
 `;
 const Title = styled.span`
   display: block;
@@ -81,21 +85,48 @@ const ImageContainer = styled.div`
   margin: 35px auto 0;
   max-width: 703px;
 
+  ${media.tabletSmallOnly(css`
+    margin-top: -15px;
+    max-width: 625px;
+  `)}
+
+  ${media.mobile(css`
+    margin: 35px -20px 0;
+  `)}
+
   img {
     image-rendering: -webkit-optimize-contrast;
   }
 `;
 
 const DownArrow = styled.div`
-  margin: 0 auto;
+  margin: -18px auto 0;
   display: flex;
   justify-content: center;
-  animation: ${animateUpDown} 500ms linear;
+  // animation: ${animateUpDown} 500ms linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+
+  ${media.tabletSmall(css`
+    display: none;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 34px;
+    display: flex;
+  `)}
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 50px auto 0;
-  max-width: 397px;
+  margin: 46px auto 0;
+  max-width: 377px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 4px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 29px;
+    max-width: 302px;
+  `)}
 `;
