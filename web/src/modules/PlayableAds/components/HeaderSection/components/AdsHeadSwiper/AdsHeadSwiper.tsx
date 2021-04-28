@@ -19,63 +19,73 @@ type Props = {
 };
 
 function AdsHeadSwiper({ adsHeadItems }: Props) {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Container>
-      <Swiper
-        slidesPerView="auto"
-        loop={true}
-        centeredSlides={true}
-        allowTouchMove={true}
-        effect="coverflow"
-        breakpoints={{
-          [breakpoints.mobileSmall]: {
-            spaceBetween: 0,
-            coverflowEffect: {
-              rotate: 0,
-              stretch: 0,
-              depth: 150,
-              modifier: 2,
-              slideShadows: false,
-            },
-          },
-          [breakpoints.tabletSmall]: {
-            spaceBetween: 20,
-            coverflowEffect: {
-              rotate: 0,
-              stretch: 0,
-              depth: 110,
-              modifier: 1,
-              slideShadows: false,
-            },
-          },
+      {isMounted ? (
+        <>
+          <Swiper
+            slidesPerView="auto"
+            loop={true}
+            centeredSlides={true}
+            allowTouchMove={true}
+            effect="coverflow"
+            breakpoints={{
+              [breakpoints.mobileSmall]: {
+                spaceBetween: 0,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 150,
+                  modifier: 2,
+                  slideShadows: false,
+                },
+              },
+              [breakpoints.tabletSmall]: {
+                spaceBetween: 20,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 110,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+              },
 
-          1023: {
-            spaceBetween: 80,
-            coverflowEffect: {
-              rotate: 0,
-              stretch: 0,
-              depth: 110,
-              modifier: 1,
-              slideShadows: false,
-            },
-          },
-        }}
-      >
-        {adsHeadItems.map((adsHeadItem, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <AdsHeadItem>
-                <AdsHeadPicture
-                  mobileSmall={convertThumbnailToPictureImage(
-                    adsHeadItem.image
-                  )}
-                />
-                <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
-              </AdsHeadItem>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+              1023: {
+                spaceBetween: 80,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 110,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+              },
+            }}
+          >
+            {adsHeadItems.map((adsHeadItem, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <AdsHeadItem>
+                    <AdsHeadPicture
+                      mobileSmall={convertThumbnailToPictureImage(
+                        adsHeadItem.image
+                      )}
+                    />
+                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+                  </AdsHeadItem>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
+      ) : null}
     </Container>
   );
 }
@@ -87,12 +97,14 @@ const Container = styled.div`
   min-height: 813px;
   ${media.tabletSmallOnly(css`
     margin-top: 70px;
+    min-height: 676px;
   `)}
 
   ${media.mobile(css`
     margin-top: 46px;
+    min-height: 485px;
   `)}
-  
+
   .swiper-container-initialized {
     padding-bottom: 175px;
     .swiper-slide {
@@ -131,6 +143,7 @@ const AdsHeadPicture = styled(Picture)`
   height: 100%;
   border-radius: 30px;
   overflow: hidden;
+  background: #3e3e3e;
 
   ${media.tabletSmallOnly(css`
     border-radius: 22px;
@@ -138,7 +151,7 @@ const AdsHeadPicture = styled(Picture)`
   ${media.mobile(css`
     border-radius: 11px;
   `)}
-  
+
   picture {
     width: 100%;
     height: 100%;

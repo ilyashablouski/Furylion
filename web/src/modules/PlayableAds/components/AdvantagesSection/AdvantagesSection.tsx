@@ -56,13 +56,13 @@ const Wrapper = styled.section`
   }
 
   ${media.tabletSmallOnly(css`
-    margin-top: -733px;
+    margin-top: -596px;
     padding-top: 400px;
     padding-bottom: 70px;
   `)}
 
   ${media.mobile(css`
-    margin-top: -835px;
+    margin-top: -507px;
     padding-top: 233px;
     padding-bottom: 70px;
   `)}
