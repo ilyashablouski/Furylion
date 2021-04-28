@@ -30,7 +30,7 @@ function PlayableAds() {
       <ReengagementSection />
       <FrameworkSection />
       <NetworksSection />
-      {/*<EditorSection />*/}
+      <EditorSection />
       {/*<DoYouWantSection />*/}
       {/*<FeedbackSection*/}
       {/*  formTitle={pageFields.formTitle}*/}

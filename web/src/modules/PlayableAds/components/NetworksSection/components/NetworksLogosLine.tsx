@@ -1,7 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ThumbnailType } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
 
 import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
@@ -21,12 +24,7 @@ function NetworksLogosLine({ isTop, logosArray }: Props) {
               <Logo
                 key={index}
                 //TODO:Refactor to images thumbnail
-                mobileSmall={{
-                  src: logo?.url,
-                  src2x: logo?.url_2x,
-                  webp: logo?.url_webp,
-                  webp2x: logo?.url_webp_2x,
-                }}
+                mobileSmall={convertThumbnailToPictureImage(logo)}
                 className="logo-image"
               />
             ))
@@ -42,10 +40,10 @@ const Container = styled.div<{ isTop?: boolean }>`
   display: flex;
   align-items: center;
   height: 150px;
-  margin-top: ${(props) => (props.isTop ? '0' : '1%')};
+  margin-top: ${(props) => (props.isTop ? '0' : '2%')};
   background: ${(props) =>
     props.isTop ? `${colors.white}` : `${colors.dark}`};
-  transform: ${(props) => (props.isTop ? 'rotate(-3deg)' : 'rotate(3deg)')};
+  transform: ${(props) => (props.isTop ? 'rotate(-4deg)' : 'rotate(4deg)')};
 
   @media (min-width: 1367px) {
     margin-top: ${(props) => (props.isTop ? '0' : '-3%')};
@@ -63,12 +61,20 @@ const Container = styled.div<{ isTop?: boolean }>`
   `)}
 
   ${media.tabletSmallOnly(css`
-    height: 90px;
+    height: 98px;
   `)}
 
   ${media.mobile(css`
-    height: 40px;
+    height: 65px;
   `)}
+
+  ${(props) =>
+    !props.isTop &&
+    css`
+      ${media.mobile(css`
+        margin-top: 5%;
+      `)}
+    `}
 `;
 
 const LogosWrapper = styled.div`

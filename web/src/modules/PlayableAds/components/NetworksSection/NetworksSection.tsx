@@ -35,6 +35,10 @@ const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.red};
   overflow: hidden;
+
+  ${media.tabletSmall(css`
+    padding: 70px 0;
+  `)}
 `;
 const Title = styled.span`
   max-width: 490px;
@@ -46,15 +50,27 @@ const Title = styled.span`
   color: ${colors.white};
 
   ${media.tabletSmallOnly(css`
+    max-width: 487px;
     font-size: 56px;
   `)}
 
   ${media.mobile(css`
+    max-width: 278px;
     font-size: 32px;
   `)}
 `;
 
 const Inner = styled.div`
-  margin-top: 75px;
-  padding-bottom: 2.7%;
+  margin-top: 72px;
+  padding-bottom: 54px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 70px;
+    padding-bottom: 33px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 55px;
+    padding-bottom: 20px;
+  `)}
 `;
