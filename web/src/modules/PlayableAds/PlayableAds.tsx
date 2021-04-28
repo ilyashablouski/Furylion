@@ -27,7 +27,7 @@ function PlayableAds() {
       <AdvantagesSection />
       <RateSection />
       <CpiSection />
-      {/*<ReengagementSection />*/}
+      <ReengagementSection />
       {/*<FrameworkSection />*/}
       {/*<NetworksSection />*/}
       {/*<EditorSection />*/}

@@ -46,6 +46,10 @@ export default ReengagementSection;
 const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.white};
+
+  ${media.tabletSmall(css`
+    padding: 70px 0;
+  `)}
 `;
 const Title = styled.span`
   display: block;
@@ -58,6 +62,7 @@ const Title = styled.span`
 
   ${media.tabletSmallOnly(css`
     font-size: 56px;
+    text-align: left;
   `)}
 
   ${media.mobile(css`
@@ -70,7 +75,7 @@ const TextContainer = styled.div`
   display: flex;
 
   ${media.tabletSmallOnly(css`
-    margin-top: 40px;
+    margin: 40px -10px 0;
     flex-wrap: wrap;
   `)}
 
@@ -95,6 +100,7 @@ const TextItem = styled.div`
 
   ${media.tabletSmallOnly(css`
     margin-top: 20px;
+    padding: 0 10px;
     flex: 1 1 50%;
     max-width: 50%;
   `)}
@@ -119,6 +125,15 @@ const Text = styled.p`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 50px auto 0;
-  max-width: 397px;
+  margin: 72px auto 0;
+  max-width: 377px;
+
+  ${media.tabletSmallOnly(css`
+    margin-top: 41px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 31px;
+    max-width: 302px;
+  `)}
 `;
