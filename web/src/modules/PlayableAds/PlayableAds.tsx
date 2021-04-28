@@ -25,8 +25,8 @@ function PlayableAds() {
     <>
       <HeaderSection />
       <AdvantagesSection />
-      {/*<RateSection />*/}
-      {/*<CpiSection />*/}
+      <RateSection />
+      <CpiSection />
       {/*<ReengagementSection />*/}
       {/*<FrameworkSection />*/}
       {/*<NetworksSection />*/}

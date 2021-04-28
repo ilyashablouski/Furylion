@@ -50,6 +50,11 @@ const Wrapper = styled.section`
   padding-bottom: 100px;
   background: ${colors.red};
 
+  ${ContentContainer} {
+    position: relative;
+    z-index: 1;
+  }
+
   ${media.tabletSmallOnly(css`
     margin-top: -733px;
     padding-top: 400px;

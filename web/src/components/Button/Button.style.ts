@@ -4,6 +4,7 @@ import { CssSnippet } from '@tager/web-components';
 
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
+import curveBgRedSmallUrl from '@/assets/svg/curve-button-redSm.svg';
 import curveBgRedUrl from '@/assets/svg/curve-button-red.svg';
 import curveBgWhiteUrl from '@/assets/svg/curve-button-whiteSm.svg';
 import curveBgDarkSmallUrl from '@/assets/svg/curve-btn-darkSm.svg';
@@ -135,12 +136,13 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
     position: relative;
     padding: 0;
     height: 70px;
-    z-index: 1;
+    font-size: 20px;
     width: 405px;
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 405px;
+    z-index: 1;
 
     &:hover {
       opacity: 0.75;
@@ -161,8 +163,17 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
 
   'curve-red': css`
     color: ${colors.white};
+
+    @media (min-width: 768px) {
+      font-size: 24px;
+    }
+
     &:before {
       content: url(${curveBgRedUrl});
+
+      ${media.mobile(css`
+        content: url(${curveBgRedSmallUrl});
+      `)}
     }
   `,
 
