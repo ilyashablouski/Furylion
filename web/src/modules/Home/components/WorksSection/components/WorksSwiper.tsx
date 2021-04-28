@@ -28,7 +28,7 @@ function WorksSwiper({ worksItems }: Props) {
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMountedSwiper(false);
+    setIsMountedSwiper(true);
   }, []);
 
   return (

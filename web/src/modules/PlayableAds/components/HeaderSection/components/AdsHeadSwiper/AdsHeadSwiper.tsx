@@ -11,6 +11,7 @@ import { breakpoints, colors } from '@/constants/theme';
 import PlaceholderCard from '@/components/PlaceholderCard';
 import Picture from '@/components/Picture';
 import Link from '@/components/Link';
+import SimplePlaceholder from '@/components/SimplePlaceholder';
 
 SwiperCore.use([EffectCoverflow]);
 
@@ -85,7 +86,9 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
             })}
           </Swiper>
         </>
-      ) : null}
+      ) : (
+        <SimplePlaceholder color="transparent" height={250} />
+      )}
     </Container>
   );
 }
