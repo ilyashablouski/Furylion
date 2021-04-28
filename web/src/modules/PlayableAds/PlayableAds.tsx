@@ -28,17 +28,17 @@ function PlayableAds() {
       <RateSection />
       <CpiSection />
       <ReengagementSection />
-      {/*<FrameworkSection />*/}
-      {/*<NetworksSection />*/}
-      {/*<EditorSection />*/}
-      {/*<DoYouWantSection />*/}
-      {/*<FeedbackSection*/}
-      {/*  formTitle={pageFields.formTitle}*/}
-      {/*  formProfileTitle={pageFields.formProfileTitle}*/}
-      {/*  formProfileImage={pageFields.formProfileImage}*/}
-      {/*  formProfileLabel={pageFields.formProfileLabel}*/}
-      {/*  isProfileInfo={true}*/}
-      {/*/>*/}
+      <FrameworkSection />
+      <NetworksSection />
+      <EditorSection />
+      <DoYouWantSection />
+      <FeedbackSection
+        formTitle={pageFields.formTitle}
+        formProfileTitle={pageFields.formProfileTitle}
+        formProfileImage={pageFields.formProfileImage}
+        formProfileLabel={pageFields.formProfileLabel}
+        isProfileInfo={true}
+      />
     </>
   );
 }
