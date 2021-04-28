@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { FrameworkItemType } from '@/typings/model';
 import { colors } from '@/constants/theme';
+import { media } from '@/utils/mixin';
 
 function FrameworkItem({ title, topText, bottomText }: FrameworkItemType) {
   return (
@@ -23,6 +24,10 @@ const Container = styled.div`
   transition: all 0.15s ease-in-out;
   color: ${colors.white};
 
+  ${media.tabletSmall(css`
+    padding: 16px 10px;
+  `)}
+
   &:hover {
     background: ${colors.white};
     color: ${colors.dark};
@@ -34,6 +39,10 @@ const Title = styled.div`
   font-size: 24px;
   line-height: 100%;
   text-transform: uppercase;
+
+  ${media.tabletSmall(css`
+    font-size: 13px;
+  `)}
 `;
 
 const Inner = styled.div`
@@ -41,11 +50,20 @@ const Inner = styled.div`
   font-weight: normal;
   font-size: 16px;
   line-height: 160%;
+
+  ${media.tabletSmall(css`
+    margin-top: 5px;
+    font-size: 10px;
+  `)}
 `;
 
 const TopText = styled.div``;
 const BottomText = styled.div`
   margin-top: 10px;
+
+  ${media.tabletSmall(css`
+    margin-top: 5px;
+  `)}
 `;
 
 export default FrameworkItem;

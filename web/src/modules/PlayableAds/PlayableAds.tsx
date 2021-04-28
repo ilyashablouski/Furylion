@@ -30,15 +30,15 @@ function PlayableAds() {
       <ReengagementSection />
       <FrameworkSection />
       <NetworksSection />
-      <EditorSection />
-      <DoYouWantSection />
-      <FeedbackSection
-        formTitle={pageFields.formTitle}
-        formProfileTitle={pageFields.formProfileTitle}
-        formProfileImage={pageFields.formProfileImage}
-        formProfileLabel={pageFields.formProfileLabel}
-        isProfileInfo={true}
-      />
+      {/*<EditorSection />*/}
+      {/*<DoYouWantSection />*/}
+      {/*<FeedbackSection*/}
+      {/*  formTitle={pageFields.formTitle}*/}
+      {/*  formProfileTitle={pageFields.formProfileTitle}*/}
+      {/*  formProfileImage={pageFields.formProfileImage}*/}
+      {/*  formProfileLabel={pageFields.formProfileLabel}*/}
+      {/*  isProfileInfo={true}*/}
+      {/*/>*/}
     </>
   );
 }
