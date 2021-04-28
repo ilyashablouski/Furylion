@@ -36,9 +36,11 @@ function FeedbackSection({
     <Wrapper isModal={isModal}>
       <ContentContainer>
         {isProfileInfo && (
-          <Title className={className} isProfileInfo>
-            {formTitle}
-          </Title>
+          <TitleBlock>
+            <Title className={className} isProfileInfo>
+              {formTitle}
+            </Title>
+          </TitleBlock>
         )}
         <Inner>
           {isProfileInfo && (
@@ -94,6 +96,17 @@ const Inner = styled.div`
     display: block;
   `)}
 `;
+
+const TitleBlock = styled.div`
+  max-width: 556px;
+
+  ${media.tabletSmallOnly(css`
+    margin: 0 auto;
+    max-width: 612px;
+    text-align: center;
+  `)}
+`;
+
 const Title = styled.span<{ isProfileInfo?: boolean }>`
   display: inline-block;
   font-style: normal;
@@ -102,17 +115,6 @@ const Title = styled.span<{ isProfileInfo?: boolean }>`
   color: ${colors.white};
   font-weight: 900;
   text-transform: uppercase;
-  ${(props) =>
-    props.isProfileInfo &&
-    css`
-      max-width: 556px;
-      font-size: 56px;
-
-      ${media.tabletSmall(css`
-        max-width: none;
-        text-align: center;
-      `)}
-    `}
 
   &.about-title--small {
     max-width: 260px;
@@ -136,6 +138,16 @@ const Title = styled.span<{ isProfileInfo?: boolean }>`
   ${media.mobile(css`
     font-size: 32px;
   `)}
+
+  ${(props) =>
+    props.isProfileInfo &&
+    css`
+      font-size: 56px;
+
+      ${media.mobile(css`
+        font-size: 32px;
+      `)}
+    `}
 `;
 
 const Left = styled.div<{ isProfileInfo?: boolean }>`
@@ -150,6 +162,16 @@ const Left = styled.div<{ isProfileInfo?: boolean }>`
     props.isProfileInfo &&
     css`
       margin-top: 97px;
+
+      ${media.tabletSmall(css`
+        margin-top: 51px;
+        display: flex;
+        justify-content: center;
+      `)}
+
+      ${media.mobile(css`
+        margin-top: 32px;
+      `)}
     `}
 `;
 
@@ -184,6 +206,10 @@ const ProfileTitle = styled.span`
   line-height: 160%;
   text-transform: uppercase;
   color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 20px;
+  `)}
 `;
 const ProfileImage = styled(Picture)`
   margin: 33px auto 0;
@@ -191,6 +217,10 @@ const ProfileImage = styled(Picture)`
   width: 257px;
   height: 257px;
   overflow: hidden;
+
+  ${media.mobile(css`
+    margin-top: 20px;
+  `)}
 
   img {
     width: 257px;
@@ -205,4 +235,8 @@ const ProfileName = styled.span`
   line-height: 160%;
   text-transform: capitalize;
   color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 20px;
+  `)}
 `;
