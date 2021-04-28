@@ -70,7 +70,6 @@ function FeedbackSection({
     </Wrapper>
   );
 }
-export default FeedbackSection;
 
 const Wrapper = styled.section<{ isModal: boolean }>`
   ${(props) =>
@@ -240,3 +239,5 @@ const ProfileName = styled.span`
     font-size: 20px;
   `)}
 `;
+
+export default FeedbackSection;

@@ -53,8 +53,6 @@ function RateSection() {
   );
 }
 
-export default RateSection;
-
 const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.dark};
@@ -229,3 +227,5 @@ const ButtonWrapper = styled.div`
     justify-content: center;
   `)}
 `;
+
+export default RateSection;

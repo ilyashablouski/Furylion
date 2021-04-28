@@ -10,8 +10,6 @@ import ArtSwiper1 from '@/modules/Services/components/ArtSwiper1';
 import { ButtonLink } from '@/components/Button';
 
 function FirstArtSection() {
-  const sliderPaginationRef1 = useRef<HTMLInputElement>(null);
-
   const page = useCurrentPage<FirstArtSectionType>();
   if (!page) return null;
 
@@ -68,10 +66,7 @@ function FirstArtSection() {
         </ContentContainer>
       </Left>
       <Right>
-        <ArtSwiper1
-          images={pageFields.firstArtImages}
-          // sliderPaginationRef={sliderPaginationRef1}
-        />
+        <ArtSwiper1 images={pageFields.firstArtImages} />
       </Right>
     </Wrapper>
   );
@@ -118,6 +113,7 @@ const Left = styled.div`
   }
 `;
 const Right = styled.div`
+  min-width: 673px;
   max-width: 673px;
   clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
 

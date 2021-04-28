@@ -29,8 +29,6 @@ function NetworksSection() {
   );
 }
 
-export default NetworksSection;
-
 const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.red};
@@ -74,3 +72,5 @@ const Inner = styled.div`
     padding-bottom: 20px;
   `)}
 `;
+
+export default NetworksSection;

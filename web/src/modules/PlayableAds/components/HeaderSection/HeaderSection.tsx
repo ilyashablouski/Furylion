@@ -68,6 +68,7 @@ const Inner = styled.div`
   position: relative;
   display: inline-block;
 `;
+
 const Title = styled.span`
   position: relative;
   display: block;

@@ -42,8 +42,6 @@ function AdvantagesSection() {
   );
 }
 
-export default AdvantagesSection;
-
 const Wrapper = styled.section`
   margin-top: -642px;
   padding-top: 438px;
@@ -222,3 +220,5 @@ const Lists = styled.div`
     display: none;
   }
 `;
+
+export default AdvantagesSection;

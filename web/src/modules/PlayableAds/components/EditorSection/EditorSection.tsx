@@ -48,7 +48,6 @@ function EditorSection() {
     </Wrapper>
   );
 }
-export default EditorSection;
 
 const Wrapper = styled.section`
   position: relative;
@@ -187,3 +186,5 @@ const Right = styled.div`
     max-width: none;
   `)}
 `;
+
+export default EditorSection;

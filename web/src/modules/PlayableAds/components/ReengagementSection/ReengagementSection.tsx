@@ -41,8 +41,6 @@ function ReengagementSection() {
   );
 }
 
-export default ReengagementSection;
-
 const Wrapper = styled.section`
   padding: 100px 0;
   background: ${colors.white};
@@ -137,3 +135,5 @@ const ButtonWrapper = styled.div`
     max-width: 302px;
   `)}
 `;
+
+export default ReengagementSection;

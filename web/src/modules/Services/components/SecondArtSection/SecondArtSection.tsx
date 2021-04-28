@@ -10,8 +10,6 @@ import ArtSwiper2 from '@/modules/Services/components/ArtSwiper2';
 import { ButtonLink } from '@/components/Button';
 
 function SecondArtSection() {
-  const sliderPaginationRef2 = useRef<HTMLInputElement>(null);
-
   const page = useCurrentPage<SecondArtSectionType>();
   if (!page) return null;
 
@@ -19,11 +17,7 @@ function SecondArtSection() {
   return (
     <Wrapper>
       <Left>
-        <ArtSwiper2
-          images={pageFields.secondArtImages}
-          // sliderPaginationRef={sliderPaginationRef2}
-          isRightSide={false}
-        />
+        <ArtSwiper2 images={pageFields.secondArtImages} isRightSide={false} />
       </Left>
       <Right>
         <ContentContainer>
@@ -96,6 +90,7 @@ const Wrapper = styled.section`
 `;
 
 const Left = styled.div`
+  min-width: 673px;
   max-width: 673px;
   clip-path: polygon(0 0, 35% 0, 100% 100%, 0% 100%);
 

@@ -25,15 +25,15 @@ type Props = {
 function WorksSwiper({ worksItems }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setIsMountedSwiper(false);
   }, []);
 
   return (
     <WorksSwiperContainer>
-      {isMounted ? (
+      {isMountedSwiper ? (
         <>
           <Swiper
             slidesPerView="auto"

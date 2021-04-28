@@ -32,8 +32,6 @@ function DoYouWantSection() {
   );
 }
 
-export default DoYouWantSection;
-
 const animationMarquee = keyframes`
   from {
     transform: translateX(0);
@@ -96,3 +94,5 @@ const ImagesContainer = styled.div`
   transform-origin: center center;
   transform: rotate(17deg);
 `;
+
+export default DoYouWantSection;

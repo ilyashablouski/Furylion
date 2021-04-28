@@ -43,8 +43,6 @@ function CpiSection() {
   );
 }
 
-export default CpiSection;
-
 const animateUpDown = keyframes`
   from {
     transform: translateY(0);
@@ -130,3 +128,5 @@ const ButtonWrapper = styled.div`
     max-width: 302px;
   `)}
 `;
+
+export default CpiSection;

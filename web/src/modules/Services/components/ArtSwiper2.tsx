@@ -10,68 +10,85 @@ import {
 
 import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
-import { breakpoints, colors } from '@/constants/theme';
-import PlaceholderCard from '@/components/PlaceholderCard';
+import { colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
+import SimplePlaceholder from '@/components/SimplePlaceholder';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 type Props = {
   images: Array<ThumbnailType>;
   isRightSide?: boolean;
-  // sliderPaginationRef: React.Ref<HTMLInputElement>;
 };
 
 function ArtSwiper2({ images, isRightSide = true }: Props) {
-  //TODO: Refactor & clean code
   const sliderPaginationRef = useRef<HTMLInputElement>(null);
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
+  const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
+  const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setIsMountedSwiper(true);
+    setIsMountedSwiper(true);
   }, []);
   return (
-    <ArtSwiperContainer isRightSide={isRightSide}>
-      <>
-        <Swiper
-          slidesPerView={1}
-          loop={true}
-          centeredSlides={true}
-          allowTouchMove={true}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          navigation={{
-            prevEl: `.swiper-prev2`,
-            nextEl: `.swiper-next2`,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          // onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-          onAfterInit={(swiper) => {
-            swiper.update();
-          }}
-        >
-          {images.map((image, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <Picture
-                  mobileSmall={convertThumbnailToPictureImage(image)}
-                  className="swiper-image-container"
-                />
-              </SwiperSlide>
-            );
-          })}
-          <NavButtons isRightSide={isRightSide}>
-            <NavButton className={`swiper-prev2`} prev>
-              <SlideArrowIcon />
-            </NavButton>
-            <NavButton className={`swiper-next2`} next>
-              <SlideArrowIcon />
-            </NavButton>
-          </NavButtons>
-        </Swiper>
-      </>
+    <ArtSwiperContainer>
+      {isMountedSwiper ? (
+        <>
+          <Swiper
+            slidesPerView={1}
+            loop={true}
+            centeredSlides={true}
+            allowTouchMove={true}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            navigation={{
+              prevEl: `.swiper-prev2`,
+              nextEl: `.swiper-next2`,
+            }}
+            pagination={{
+              el: '.swiper-pagination2',
+              type: 'bullets',
+              clickable: true,
+            }}
+            onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
+            onAfterInit={(swiper) => setTotalSlidesValue(swiper.slides.length)}
+          >
+            {images.map((image, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <SlidePicture
+                    mobileSmall={convertThumbnailToPictureImage(image)}
+                    className="swiper-image-container"
+                  />
+                </SwiperSlide>
+              );
+            })}
+            <NavButtons isRightSide={isRightSide}>
+              <NavButton className={`swiper-prev2`} prev>
+                <SlideArrowIcon />
+              </NavButton>
+              <NavButton className={`swiper-next2`} next>
+                <SlideArrowIcon />
+              </NavButton>
+            </NavButtons>
+
+            <SwiperPaginationWrapper>
+              <BulletsPagination
+                className="swiper-pagination2"
+                ref={sliderPaginationRef}
+              />
+              <FractionPagination>
+                <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
+                <TotalValueLabel>
+                  //&nbsp;00{totalSlidesValue - 2}
+                </TotalValueLabel>
+              </FractionPagination>
+            </SwiperPaginationWrapper>
+          </Swiper>
+        </>
+      ) : (
+        <SimplePlaceholder color="#3e3e3e" />
+      )}
     </ArtSwiperContainer>
   );
 }
@@ -85,7 +102,7 @@ const animation = keyframes`
   }
 `;
 
-const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
+const ArtSwiperContainer = styled.div`
   position: relative;
   display: flex;
   height: 100%;
@@ -94,107 +111,56 @@ const ArtSwiperContainer = styled.div<{ isRightSide: boolean }>`
   .swiper-container-initialized {
     .swiper-slide {
       display: flex;
-
-      picture {
-        display: flex;
-        height: 100%;
-      }
-
-      img {
-        min-height: 750px;
-        height: 100%;
-        object-fit: cover;
-
-        ${media.tablet(css`
-          width: 100%;
-          max-height: 750px;
-        `)}
-      }
-    }
-
-    .swiper-pagination {
-      position: absolute;
-      bottom: 41px;
-      left: 104px;
-      width: 100%;
-      max-width: 326px;
-      text-align: left;
-
-      ${(props) =>
-        !props.isRightSide &&
-        css`
-          left: 68px;
-
-          ${media.tabletSmallOnly(css`
-            left: 40px;
-          `)}
-
-          ${media.mobile(css`
-            left: 20px;
-          `)}
-        `}
-
-      ${media.tabletSmall(css`
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-      `)}
-
-      ${media.mobile(css`
-        bottom: 22px;
-      `)}
-    }
-
-    .swiper-pagination-bullet {
-      position: relative;
-      max-width: 110px;
-      width: 100%;
-      height: 2px;
-      border-radius: 0;
-      background: #8c8b89;
-      opacity: 1;
-      border: none;
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        content: '';
-        background: #6b1a1a;
-        opacity: 1;
-      }
-    }
-
-    .swiper-pagination-bullet-active {
-      position: relative;
-      overflow: hidden;
-      background: #8c8b89;
-      border: none;
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        will-change: transform;
-        animation: ${animation} 4350ms linear;
-      }
     }
   }
 `;
 
-const ItemsPagination = styled.div`
+const SlidePicture = styled(Picture)`
+  width: 100%;
+  picture {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    min-height: 750px;
+    height: 100%;
+    object-fit: cover;
+
+    ${media.tablet(css`
+      width: 100%;
+      max-height: 750px;
+    `)}
+  }
+`;
+
+const SwiperPaginationWrapper = styled.div`
   position: absolute;
   bottom: 41px;
-  left: 104px;
+  left: 68px;
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  z-index: 1;
+
+  ${media.tablet(css`
+    left: 0;
+    justify-content: center;
+  `)}
+
+  ${media.mobile(css`
+    left: 20px;
+    bottom: 22px;
+  `)}
+`;
+
+const BulletsPagination = styled.div`
+  display: flex;
   width: 100%;
   max-width: 326px;
+  text-align: left;
+  z-index: 1;
 
   .swiper-pagination-bullet {
     position: relative;
@@ -237,6 +203,30 @@ const ItemsPagination = styled.div`
       animation: ${animation} 4350ms linear;
     }
   }
+`;
+
+const FractionPagination = styled.div`
+  margin-left: 22px;
+  line-height: 100%;
+`;
+
+const CurrentValueLabel = styled.span`
+  display: inline-block;
+  width: 73px;
+  font-weight: 900;
+  font-size: 40px;
+
+  color: ${colors.white};
+`;
+
+const TotalValueLabel = styled.span`
+  margin-left: 5px;
+  position: relative;
+  display: inline-block;
+  bottom: 3px;
+  font-weight: 500;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 const NavButtons = styled.div<{ isRightSide?: boolean }>`
