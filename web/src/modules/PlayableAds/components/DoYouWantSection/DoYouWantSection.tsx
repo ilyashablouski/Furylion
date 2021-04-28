@@ -67,7 +67,7 @@ const Title = styled.span`
   color: ${colors.white};
   position: relative;
   z-index: 1;
-  // animation: ${animationMarquee} 10s infinite linear;
+  animation: ${animationMarquee} 10s infinite linear;
 
   ${media.tabletSmall(css`
     margin-top: 70px;

@@ -85,6 +85,22 @@ class CustomDocument extends Document<CustomDocumentProps> {
           {/*/>*/}
 
           <link
+            rel="preload"
+            href="/static/fonts/Inter/Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="/static/fonts/Inter/Heavy.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="/favicon/apple-touch-icon.png"

@@ -108,18 +108,18 @@ const Container = styled.div`
   .swiper-container-initialized {
     padding-bottom: 175px;
     .swiper-slide {
-      max-width: 295px;
+      width: 295px;
       height: 638px;
       border-radius: 30px;
 
       ${media.tabletSmallOnly(css`
-        max-width: 228px;
+        width: 228px;
         height: 501px;
         border-radius: 22px;
       `)}
 
       ${media.mobile(css`
-        max-width: 140px;
+        width: 140px;
         height: 310px;
         border-radius: 11px;
       `)}
