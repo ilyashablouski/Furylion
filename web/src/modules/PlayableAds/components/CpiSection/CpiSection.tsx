@@ -103,7 +103,7 @@ const DownArrow = styled.div`
   margin: -18px auto 0;
   display: flex;
   justify-content: center;
-  // animation: ${animateUpDown} 500ms linear;
+  animation: ${animateUpDown} 500ms linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 
