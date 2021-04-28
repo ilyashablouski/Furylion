@@ -10,15 +10,20 @@ type Props = {
   children?: any;
   href?: StringFieldType;
   color: ButtonVariant;
+  className?: string;
 };
 
-function SkewButton({ href, children, color }: Props) {
+function SkewButton({ href, children, color, className }: Props) {
   return href ? (
-    <ButtonLink href={href ?? '#'} variants={[color, 'skew', 'w100']}>
+    <ButtonLink
+      href={href ?? '#'}
+      variants={[color, 'skew', 'w100']}
+      className={className}
+    >
       <Label>{children}</Label>
     </ButtonLink>
   ) : (
-    <Button variants={['skew', 'w100']}>
+    <Button variants={[color, 'skew', 'w100']} className={className}>
       <Label>{children}</Label>
     </Button>
   );
