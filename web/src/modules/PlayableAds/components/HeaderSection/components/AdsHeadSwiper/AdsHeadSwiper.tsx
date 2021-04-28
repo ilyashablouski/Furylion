@@ -19,55 +19,63 @@ type Props = {
 };
 
 function AdsHeadSwiper({ adsHeadItems }: Props) {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <Container>
-      {isMounted ? (
-        <>
-          <Swiper
-            slidesPerView="auto"
-            loop={true}
-            centeredSlides={true}
-            allowTouchMove={true}
-            effect="coverflow"
-            coverflowEffect={{
+      <Swiper
+        slidesPerView="auto"
+        loop={true}
+        centeredSlides={true}
+        allowTouchMove={true}
+        effect="coverflow"
+        breakpoints={{
+          [breakpoints.mobileSmall]: {
+            spaceBetween: 0,
+            coverflowEffect: {
               rotate: 0,
               stretch: 0,
-              depth: 60,
+              depth: 150,
               modifier: 2,
               slideShadows: false,
-            }}
-            breakpoints={{
-              [breakpoints.mobileSmall]: {
-                spaceBetween: 0,
-              },
-              [breakpoints.tabletSmall]: {
-                spaceBetween: 70,
-              },
-            }}
-          >
-            {adsHeadItems.map((adsHeadItem, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <AdsHeadItem>
-                    <AdsHeadPicture
-                      mobileSmall={convertThumbnailToPictureImage(
-                        adsHeadItem.image
-                      )}
-                    />
-                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
-                  </AdsHeadItem>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </>
-      ) : null}
+            },
+          },
+          [breakpoints.tabletSmall]: {
+            spaceBetween: 20,
+            coverflowEffect: {
+              rotate: 0,
+              stretch: 0,
+              depth: 110,
+              modifier: 1,
+              slideShadows: false,
+            },
+          },
+
+          1023: {
+            spaceBetween: 80,
+            coverflowEffect: {
+              rotate: 0,
+              stretch: 0,
+              depth: 110,
+              modifier: 1,
+              slideShadows: false,
+            },
+          },
+        }}
+      >
+        {adsHeadItems.map((adsHeadItem, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <AdsHeadItem>
+                <AdsHeadPicture
+                  mobileSmall={convertThumbnailToPictureImage(
+                    adsHeadItem.image
+                  )}
+                />
+                <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+              </AdsHeadItem>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </Container>
   );
 }
@@ -75,19 +83,40 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
 export default AdsHeadSwiper;
 
 const Container = styled.div`
-  margin-top: 35px;
+  margin-top: 30px;
   min-height: 813px;
+  ${media.tabletSmallOnly(css`
+    margin-top: 70px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 46px;
+  `)}
+  
   .swiper-container-initialized {
     padding-bottom: 175px;
     .swiper-slide {
       max-width: 295px;
-      max-height: 638px;
+      height: 638px;
       border-radius: 30px;
+
+      ${media.tabletSmallOnly(css`
+        max-width: 228px;
+        height: 501px;
+        border-radius: 22px;
+      `)}
+
+      ${media.mobile(css`
+        max-width: 140px;
+        height: 310px;
+        border-radius: 11px;
+      `)}
     }
   }
 `;
 
 const AdsHeadItem = styled.div`
+  height: 100%;
   border-radius: 30px;
   box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.21),
     0px 52.2782px 44.658px rgba(0, 0, 0, 0.150959),
@@ -99,11 +128,37 @@ const AdsHeadItem = styled.div`
 
 const AdsHeadPicture = styled(Picture)`
   position: relative;
+  height: 100%;
   border-radius: 30px;
   overflow: hidden;
 
+  ${media.tabletSmallOnly(css`
+    border-radius: 22px;
+  `)}
+  ${media.mobile(css`
+    border-radius: 11px;
+  `)}
+  
+  picture {
+    width: 100%;
+    height: 100%;
+  }
+
   img {
     border-radius: 30px;
+    //noinspection CssInvalidPropertyValue
+    image-rendering: -webkit-optimize-contrast;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    ${media.tabletSmallOnly(css`
+      border-radius: 22px;
+    `)}
+
+    ${media.mobile(css`
+      border-radius: 11px;
+    `)}
   }
 `;
 

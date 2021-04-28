@@ -16,16 +16,18 @@ function HeaderSection() {
   const pageFields = page.templateFields;
   return (
     <Wrapper>
-      <Inner>
-        <Title data-text="PLAYABLE ADS">Playable ADS</Title>
-        <Text>{pageFields.headAdsText}</Text>
-      </Inner>
+      <InnerWrapper>
+        <Inner>
+          <Title data-text="PLAYABLE ADS">Playable ADS</Title>
+          <Text>{pageFields.headAdsText}</Text>
+        </Inner>
 
-      <DownArrow>
-        <SmallArrowIcon />
-      </DownArrow>
+        <DownArrow>
+          <SmallArrowIcon />
+        </DownArrow>
 
-      <AdsHeadSwiper adsHeadItems={pageFields.headAdsItems} />
+        <AdsHeadSwiper adsHeadItems={pageFields.headAdsItems} />
+      </InnerWrapper>
     </Wrapper>
   );
 }
@@ -42,15 +44,24 @@ const animateUpDown = keyframes`
 
 const Wrapper = styled.section`
   position: relative;
-  margin: 0 auto;
-  padding-top: 135px;
+  padding-top: 164px;
   padding-bottom: 170px;
-  max-width: 1920px;
+  display: flex;
+  justify-content: center;
   text-align: center;
 
-  ${media.tabletSmallOnly(css``)}
+  ${media.tabletSmallOnly(css`
+    padding-top: 143px;
+  `)}
 
-  ${media.mobile(css``)}
+  ${media.mobile(css`
+    padding-top: 138px;
+  `)}
+`;
+
+const InnerWrapper = styled.div`
+  max-width: 1920px;
+  overflow: hidden;
 `;
 
 const Inner = styled.div`
@@ -59,7 +70,8 @@ const Inner = styled.div`
 `;
 const Title = styled.span`
   position: relative;
-  z-index: 1;
+  display: block;
+  text-align: center;
   width: 100%;
   font-weight: 900;
   font-size: 176px;
@@ -67,6 +79,7 @@ const Title = styled.span`
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.white};
+  z-index: 1;
 
   ${media.desktop1366(css`
     font-size: 12.7vw;
@@ -96,7 +109,7 @@ const Title = styled.span`
 `;
 
 const Text = styled.span`
-  margin-top: 40px;
+  margin-top: 30px;
   display: block;
   font-weight: 900;
   font-size: 32px;
@@ -104,10 +117,12 @@ const Text = styled.span`
   color: ${colors.white};
 
   ${media.tabletSmallOnly(css`
+    margin-top: 81px;
     font-size: 24px;
   `)}
 
   ${media.mobile(css`
+    margin-top: 51px;
     font-size: 20px;
     line-height: 160%;
   `)}
@@ -118,6 +133,10 @@ const DownArrow = styled.div`
   animation: ${animateUpDown} 500ms linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+
+  ${media.tabletSmall(css`
+    display: none;
+  `)}
 `;
 
 export default HeaderSection;
