@@ -56,7 +56,7 @@ const Inner = styled.div`
 `;
 
 const Title = styled.span`
-  padding-left: 100%;
+  padding-left: 0;
   display: inline-block;
   font-weight: 900;
   font-size: 178.605px;
@@ -67,7 +67,29 @@ const Title = styled.span`
   color: ${colors.white};
   position: relative;
   z-index: 1;
-  animation: ${animationMarquee} 10s infinite linear;
+  // animation: ${animationMarquee} 10s infinite linear;
+
+  ${media.tabletSmall(css`
+    margin-top: 70px;
+    padding-left: 0;
+    display: block;
+    text-align: left;
+    animation: none;
+    white-space: normal;
+    line-height: 130%;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    padding: 0 40px;
+    font-size: 56px;
+    max-width: 540px;
+  `)}
+
+  ${media.mobile(css`
+    padding: 0 20px;
+    font-size: 32px;
+    max-width: 328px;
+  `)}
 `;
 
 const ImagesContainer = styled.div`

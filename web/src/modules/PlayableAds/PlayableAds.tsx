@@ -32,13 +32,13 @@ function PlayableAds() {
       <NetworksSection />
       <EditorSection />
       <DoYouWantSection />
-      {/*<FeedbackSection*/}
-      {/*  formTitle={pageFields.formTitle}*/}
-      {/*  formProfileTitle={pageFields.formProfileTitle}*/}
-      {/*  formProfileImage={pageFields.formProfileImage}*/}
-      {/*  formProfileLabel={pageFields.formProfileLabel}*/}
-      {/*  isProfileInfo={true}*/}
-      {/*/>*/}
+      <FeedbackSection
+        formTitle={pageFields.formTitle}
+        formProfileTitle={pageFields.formProfileTitle}
+        formProfileImage={pageFields.formProfileImage}
+        formProfileLabel={pageFields.formProfileLabel}
+        isProfileInfo={true}
+      />
     </>
   );
 }
