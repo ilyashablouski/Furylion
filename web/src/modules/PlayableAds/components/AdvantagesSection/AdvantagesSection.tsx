@@ -45,10 +45,22 @@ function AdvantagesSection() {
 export default AdvantagesSection;
 
 const Wrapper = styled.section`
-  margin-top: -675px;
-  padding-top: 476px;
+  margin-top: -642px;
+  padding-top: 438px;
   padding-bottom: 100px;
   background: ${colors.red};
+
+  ${media.tabletSmallOnly(css`
+    margin-top: -733px;
+    padding-top: 400px;
+    padding-bottom: 70px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: -835px;
+    padding-top: 233px;
+    padding-bottom: 70px;
+  `)}
 `;
 const Title = styled.span`
   font-weight: 900;
@@ -71,7 +83,7 @@ const TextContainer = styled.div`
   display: flex;
 
   ${media.tabletSmallOnly(css`
-    margin-top: 40px;
+    margin: 30px -10px 0;
     flex-wrap: wrap;
   `)}
 
@@ -95,7 +107,8 @@ const TextItem = styled.div`
   `)}
 
   ${media.tabletSmallOnly(css`
-    margin-top: 20px;
+    margin-top: 30px;
+    padding: 0 10px;
     flex: 1 1 50%;
     max-width: 50%;
   `)}
@@ -120,7 +133,7 @@ const Text = styled.p`
 `;
 
 const Inner = styled.div`
-  margin-top: 70px;
+  margin-top: 92px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 40px;
@@ -137,9 +150,10 @@ const Lists = styled.div`
   display: flex;
   color: ${colors.white};
 
-  ${media.tabletSmallOnly(css``)}
-
-  ${media.mobile(css``)}
+  ${media.mobile(css`
+    margin: 0;
+    display: block;
+  `)}
 
   ul {
     padding: 0 10px;
@@ -149,11 +163,13 @@ const Lists = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    ${media.tabletSmallOnly(css``)}
-
     ${media.mobile(css`
       padding: 0;
       max-width: none;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
     `)}
   }
 
@@ -169,15 +185,23 @@ const Lists = styled.div`
     line-height: 160%;
     color: ${colors.white};
 
+    ${media.tabletSmall(css`
+      font-size: 20px;
+    `)}
+
     ${media.mobile(css`
-      margin-top: 20px;
+      padding-left: 54px;
     `)}
 
     &:not(:first-child) {
       margin-top: 37px;
 
+      ${media.tabletSmallOnly(css`
+        margin-top: 34px;
+      `)}
+
       ${media.mobile(css`
-        margin-top: 20px;
+        margin-top: 10px;
       `)}
     }
 
