@@ -16,7 +16,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { getPageModuleByTemplate } from '@/services/pageModules';
 import { convertErrorToProps, convertSlugToPath } from '@/utils/common';
 import { getSharedThunkList } from '@/utils/thunks';
-import { getVacanciesListThunk } from '@/store/reducers/pages/vacancies';
 
 type Props =
   | {

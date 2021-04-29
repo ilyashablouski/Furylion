@@ -13,9 +13,7 @@ import { media } from '@/utils/mixin';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import SimplePlaceholder from '@/components/SimplePlaceholder';
-
 SwiperCore.use([Pagination, Navigation, Autoplay]);
-
 type Props = {
   images: Array<ThumbnailType>;
   isRightSide?: boolean;
@@ -30,6 +28,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
   useEffect(() => {
     setIsMountedSwiper(true);
   }, []);
+
   return (
     <ArtSwiperContainer>
       {isMountedSwiper ? (
@@ -49,8 +48,8 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
               type: 'bullets',
               clickable: true,
             }}
+            onAfterInit={() => setTotalSlidesValue(images.length)}
             onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
-            onAfterInit={(swiper) => setTotalSlidesValue(swiper.slides.length)}
           >
             {images.map((image, index) => {
               return (
@@ -77,9 +76,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
               />
               <FractionPagination>
                 <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
-                <TotalValueLabel>
-                  //&nbsp;00{totalSlidesValue - 2}
-                </TotalValueLabel>
+                <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
               </FractionPagination>
             </SwiperPaginationWrapper>
           </Swiper>
@@ -217,7 +214,7 @@ const CurrentValueLabel = styled.span`
 `;
 
 const TotalValueLabel = styled.span`
-  margin-left: 5px;
+  margin-left: 15px;
   position: relative;
   display: inline-block;
   bottom: 3px;

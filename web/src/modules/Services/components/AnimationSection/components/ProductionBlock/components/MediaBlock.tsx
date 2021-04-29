@@ -27,15 +27,16 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
           isVideo = true;
         }
         return (
-          <>
+          <ItemWrapper
+            key={index}
+            className={'media-item-' + index}
+            isTop={isTop}
+          >
             <Item
-              key={index}
-              isTop={isTop}
               onClick={() => {
                 setOpen(true);
               }}
               isVideo={isVideo}
-              className={'media-item-' + index}
             >
               {mediaItem.videoId && (
                 <IconWrapper>
@@ -60,7 +61,7 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
                 onClose={() => setOpen(false)}
               />
             )}
-          </>
+          </ItemWrapper>
         );
       })}
     </Container>
@@ -80,9 +81,65 @@ const Container = styled.div`
   }
 `;
 
-const Item = styled.div<{ isTop: boolean; isVideo: boolean }>`
+const ItemWrapper = styled.div<{ isTop?: boolean }>`
   position: relative;
   max-height: 411px;
+
+  &.media-item-0 {
+    ${(props) =>
+      props.isTop
+        ? css`
+            margin-right: -8.7%;
+            flex: 0 1 813px;
+            max-width: 813px;
+
+            ${Item} {
+              padding-top: 50.59%;
+              clip-path: polygon(0 0, 100% 0, 71% 100%, 0 100%);
+            }
+          `
+        : css`
+            margin-right: -8.7%;
+            flex: 0 1 712px;
+            max-width: 712px;
+
+            ${Item} {
+              padding-top: 57.76%;
+              clip-path: polygon(0 0, 67% 0, 100% 100%, 0 100%);
+            }
+          `}
+  }
+
+  &.media-item-1 {
+    ${(props) =>
+      props.isTop
+        ? css`
+            margin-left: -8.7%;
+            flex: 0 1 632px;
+            max-width: 632px;
+
+            ${Item} {
+              padding-top: 65.07%;
+              clip-path: polygon(37% 0, 100% 0, 100% 100%, 0 100%);
+            }
+          `
+        : css`
+            margin-left: -8.7%;
+
+            flex: 0 1 733px;
+            max-width: 733px;
+
+            ${Item} {
+              padding-top: 56.11%;
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
+            }
+          `}
+  }
+`;
+
+const Item = styled.div<{ isVideo: boolean }>`
+  //position: relative;
+  //max-height: 411px;
   transition: all 150ms ease-in-out;
 
   ${(props) =>
@@ -103,44 +160,6 @@ const Item = styled.div<{ isTop: boolean; isVideo: boolean }>`
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  &.media-item-0 {
-    ${(props) =>
-      props.isTop
-        ? css`
-            margin-right: -8.7%;
-            padding-top: 33.36%;
-            flex: 0 1 813px;
-            max-width: 813px;
-            clip-path: polygon(0 0, 100% 0, 71% 100%, 0 100%);
-          `
-        : css`
-            margin-right: -8.7%;
-            padding-top: 33.36%;
-            flex: 0 1 712px;
-            max-width: 712px;
-            clip-path: polygon(0 0, 67% 0, 100% 100%, 0 100%);
-          `}
-  }
-
-  &.media-item-1 {
-    ${(props) =>
-      props.isTop
-        ? css`
-            margin-left: -8.7%;
-            padding-top: 33.36%;
-            flex: 0 1 632px;
-            max-width: 632px;
-            clip-path: polygon(37% 0, 100% 0, 100% 100%, 0 100%);
-          `
-        : css`
-            margin-left: -8.7%;
-            padding-top: 33.36%;
-            flex: 0 1 733px;
-            max-width: 733px;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
-          `}
   }
 `;
 
