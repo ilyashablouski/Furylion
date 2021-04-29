@@ -20,7 +20,7 @@ type Props = {
 };
 
 function ArtSwiper1({ images, isRightSide = true }: Props) {
-  const sliderPaginationRef = useRef<HTMLInputElement>(null);
+  const sliderPaginationRef = useRef<any>(null);
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
@@ -34,6 +34,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
       {isMountedSwiper ? (
         <>
           <Swiper
+            className="art-swiper-1"
             slidesPerView={1}
             loop={true}
             centeredSlides={true}
@@ -48,6 +49,8 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
               type: 'bullets',
               clickable: true,
             }}
+            observer={true}
+            observeParents={true}
             onAfterInit={() => setTotalSlidesValue(images.length)}
             onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
           >
@@ -72,7 +75,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             <SwiperPaginationWrapper>
               <BulletsPagination
                 className="swiper-pagination1"
-                ref={sliderPaginationRef}
+                // ref={sliderPaginationRef}
               />
               <FractionPagination>
                 <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
