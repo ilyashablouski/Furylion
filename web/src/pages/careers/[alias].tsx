@@ -65,10 +65,8 @@ CareersVacancy.getInitialProps = async function ({
       };
     }
 
-    const response = Promise.all([...getSharedThunkList(store.dispatch)]);
-
     if (isServer()) {
-      await response;
+      await Promise.all([...getSharedThunkList(store.dispatch)]);
     }
 
     return {

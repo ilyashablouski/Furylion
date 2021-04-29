@@ -6,10 +6,7 @@ import Home from '@/modules/Home';
 import Vacancies from '@/modules/Vacancies';
 import Services from '@/modules/Services';
 import PlayableAds from '@/modules/PlayableAds';
-import Vacancy from '@/modules/Vacancy';
 import Contacts from '@/modules/Contacts/Contacts';
-import { CustomApp_PageContext } from '@/typings/hocs';
-import { getVacanciesListThunk } from '@/store/reducers/pages/vacancies';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,

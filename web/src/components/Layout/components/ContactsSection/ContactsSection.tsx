@@ -11,6 +11,7 @@ import ContactBlock from './components/ContactBlock';
 
 function ContactsSection() {
   const contactsArray = useSettingItem('FOOTER_OFFICES');
+  if (!contactsArray) return null;
   return (
     <Wrapper>
       <ContentContainer>

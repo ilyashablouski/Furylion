@@ -8,6 +8,7 @@ final class SettingKey extends Enum
 {
     const OpenVacancyTitle = 'OPEN_VACANCY_TITLE';
     const OpenVacancyImage = 'OPEN_VACANCY_IMAGE';
+    const OpenVacancyDescription = 'OPEN_VACANCY_DESCRIPTION';
 
     const FormTitle = 'FORM_TITLE';
     const FormVacanciesTitle = 'FORM_VACANCIES_TITLE';
@@ -16,7 +17,10 @@ final class SettingKey extends Enum
     const VkontakeUrl = 'VKONTAKTE_URL';
     const AppstoreUrl = 'APPSTORE_URL';
     const GoogleplayUrl = 'GOOGLEPLAY_URL';
-    const OpenVacancyDescription = 'OPEN_VACANCY_DESCRIPTION';
 
     const Instagram = 'INSTAGRAM';
+
+    const NotFoundText = 'NOT_FOUND_TEXT';
+    const NotFoundButtonUrl = 'NOT_FOUND_BUTTON_URL';
+    const NotFoundButtonLabel = 'NOT_FOUND_BUTTON_LABEL';
 }

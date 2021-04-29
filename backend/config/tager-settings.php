@@ -93,5 +93,19 @@ return [
                 ],
             ],
         ],
-    ]
+    ],
+    '404' => [
+        SettingKey::NotFoundText => [
+            'type' => FieldType::Text,
+            'label' => 'Text'
+        ],
+        SettingKey::NotFoundButtonUrl => [
+            'type' => FieldType::String,
+            'label' => 'Button URL'
+        ],
+        SettingKey::NotFoundButtonLabel => [
+            'type' => FieldType::String,
+            'label' => 'Button Label'
+        ],
+    ],
 ];

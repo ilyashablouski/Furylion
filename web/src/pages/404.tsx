@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { Page, ErrorModule as TagerError } from '@tager/web-components';
+import { Page } from '@tager/web-components';
+
+import NotFound from '@/modules/NotFound';
+import Layout from '@/components/Layout';
 
 function NotFoundPage() {
   return (
     <Page title="Page not found">
-      <TagerError errorCode={404} errorName="Page not found" />
+      <Layout>
+        <NotFound />
+      </Layout>
     </Page>
   );
 }

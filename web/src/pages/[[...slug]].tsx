@@ -59,8 +59,13 @@ DynamicPage.getInitialProps = async (
 
   try {
     const pageList = await store.dispatch(getPageListThunk());
+
+    await Promise.all([
+      ...getSharedThunkList(store.dispatch),
+      store.dispatch(getPageByPathThunk(currentPath)),
+    ]);
+
     const foundPage = pageList.find((page) => page.path === currentPath);
-    const foundPageModule = getPageModuleByTemplate(foundPage?.template);
 
     if (!foundPage) {
       if (context.res) {
@@ -69,13 +74,12 @@ DynamicPage.getInitialProps = async (
       return { pageType: 'NOT_FOUND' };
     }
 
-    const requestsPromise = Promise.all([
-      ...getSharedThunkList(store.dispatch),
-      store.dispatch(getPageByPathThunk(foundPage.path)),
-      foundPageModule.getInitialProps
-        ? foundPageModule.getInitialProps(context)
-        : Promise.resolve(),
-    ]);
+    const foundPageModule = getPageModuleByTemplate(foundPage?.template);
+
+    const requestsPromise = foundPageModule.getInitialProps
+      ? foundPageModule.getInitialProps(context)
+      : Promise.resolve();
+
     if (isServer()) {
       await requestsPromise;
     }
