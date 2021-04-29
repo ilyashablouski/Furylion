@@ -54,7 +54,7 @@ const Inner = styled.div`
 `;
 
 const Title = styled.span`
-  padding-left: 0;
+  padding-left: 100%;
   display: inline-block;
   font-weight: 900;
   font-size: 178.605px;

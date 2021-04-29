@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import {
   convertThumbnailToPictureImage,
@@ -7,6 +7,7 @@ import {
 } from '@tager/web-modules';
 
 import Picture from '@/components/Picture';
+import { media } from '@/utils/mixin';
 
 type Props = {
   imagesGallery: Array<ThumbnailType>;
@@ -26,8 +27,6 @@ function ImagesRow({ imagesGallery }: Props) {
   );
 }
 
-export default ImagesRow;
-
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -40,12 +39,14 @@ const PictureItem = styled(Picture)`
   border-radius: 16px;
   overflow: hidden;
   transform: matrix(0.72, 0.51, -0.95, 0.72, 0, 0) rotate(-20deg);
-  box-shadow: 0px 100px 80px rgb(0 0 0 / 21%),
-    0px 52.2782px 44.658px rgb(0 0 0 / 15%),
-    0px 33.0459px 33.3517px rgb(0 0 0 / 13%),
-    0px 21.118px 26.035px rgb(0 0 0 / 11%),
-    0px 12.6549px 18.9822px rgb(0 0 0 / 8%),
-    0px 5.97057px 10.6103px rgb(0 0 0 / 6%);
+  box-shadow: 0 100px 80px rgb(0 0 0 / 21%),
+    0 52.2782px 44.658px rgb(0 0 0 / 15%),
+    0 33.0459px 33.3517px rgb(0 0 0 / 13%), 0 21.118px 26.035px rgb(0 0 0 / 11%),
+    0 12.6549px 18.9822px rgb(0 0 0 / 8%), 0 5.97057px 10.6103px rgb(0 0 0 / 6%);
+  cursor: pointer;
+  //TODO:Fix transform
+  //will-change: transform;
+  //transition: all 150ms ease-in-out;
 
   &:not(:first-child) {
     margin-left: 70px;
@@ -64,3 +65,5 @@ const PictureItem = styled(Picture)`
     image-rendering: -webkit-optimize-contrast;
   }
 `;
+
+export default ImagesRow;
