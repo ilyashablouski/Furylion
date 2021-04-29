@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 function NotFoundPage() {
   return (
     <Page title="Page not found">
-      <Layout>
+      <Layout isWhite>
         <NotFound />
       </Layout>
     </Page>

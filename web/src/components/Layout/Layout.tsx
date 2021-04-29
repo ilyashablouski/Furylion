@@ -18,9 +18,10 @@ import ContactsSection from './components/ContactsSection';
 type Props = {
   children?: React.ReactNode;
   isPreloaderHidden?: boolean;
+  isWhite?: boolean;
 };
 
-function Layout({ children, isPreloaderHidden }: Props) {
+function Layout({ children, isPreloaderHidden, isWhite }: Props) {
   const instagramUrl = useSettingItem('INSTAGRAM_URL');
   const vkontakteUrl = useSettingItem('VKONTAKTE_URL');
   const appstoreUrl = useSettingItem('APPSTORE_URL');
@@ -50,7 +51,7 @@ function Layout({ children, isPreloaderHidden }: Props) {
       <Preloader hidden={isPreloaderHidden} />
 
       <Header socialsData={socialsData} />
-      <Main>{children}</Main>
+      <Main isWhite={isWhite}>{children}</Main>
       <ContactsSection />
       <Footer socialsData={socialsData} />
     </Container>
@@ -65,11 +66,11 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Main = styled.main`
+const Main = styled.main<{ isWhite?: boolean }>`
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  background: ${colors.dark};
+  background: ${(props) => (props.isWhite ? colors.white : colors.dark)};
 `;
 
 export default Layout;
