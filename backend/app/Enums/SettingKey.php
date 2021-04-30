@@ -21,6 +21,6 @@ final class SettingKey extends Enum
     const Instagram = 'INSTAGRAM';
 
     const NotFoundText = 'NOT_FOUND_TEXT';
-    const NotFoundButtonUrl = 'NOT_FOUND_BUTTON_URL';
     const NotFoundButtonLabel = 'NOT_FOUND_BUTTON_LABEL';
+    const NotFoundButtonUrl = 'NOT_FOUND_BUTTON_URL';
 }

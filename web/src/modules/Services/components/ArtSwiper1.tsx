@@ -71,16 +71,16 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             </NavButton>
           </NavButtons>
 
-          <SwiperPaginationWrapper>
-            <BulletsPagination
-              className="swiper-pagination1"
-              // ref={sliderPaginationRef}
-            />
-            <FractionPagination>
-              <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
-              <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
-            </FractionPagination>
-          </SwiperPaginationWrapper>
+          {/*<SwiperPaginationWrapper>*/}
+          {/*  <BulletsPagination*/}
+          {/*    className="swiper-pagination1"*/}
+          {/*    // ref={sliderPaginationRef}*/}
+          {/*  />*/}
+          {/*  <FractionPagination>*/}
+          {/*    <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>*/}
+          {/*    <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>*/}
+          {/*  </FractionPagination>*/}
+          {/*</SwiperPaginationWrapper>*/}
         </Swiper>
       </>
       {/*<SimplePlaceholder color="#3e3e3e" />*/}
