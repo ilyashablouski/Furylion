@@ -11,14 +11,16 @@ type Props = {
   href?: StringFieldType;
   color: ButtonVariant;
   className?: string;
+  isNewTab?: boolean;
 };
 
-function SkewButton({ href, children, color, className }: Props) {
+function SkewButton({ href, children, color, className, isNewTab }: Props) {
   return href ? (
     <ButtonLink
       href={href ?? '#'}
       variants={[color, 'skew', 'w100']}
       className={className}
+      target={isNewTab ? '_blank' : '_self'}
     >
       <Label>{children}</Label>
     </ButtonLink>

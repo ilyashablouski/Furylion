@@ -18,6 +18,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { CoDevelopmentSectionType } from '@/typings/model';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
+import { ButtonLink } from '@/components/Button';
 
 function CoDevelopmentSection() {
   const page = useCurrentPage<CoDevelopmentSectionType>();
@@ -75,7 +76,11 @@ function CoDevelopmentSection() {
       </ImagesContainer>
 
       <StyledButton>
-        <SkewButton href={pageFields.coDevelopmentButtonUrl} color="red">
+        <SkewButton
+          href={pageFields.coDevelopmentButtonUrl}
+          color="red"
+          isNewTab={true}
+        >
           {pageFields.coDevelopmentButtonLabel}
         </SkewButton>
       </StyledButton>

@@ -47,6 +47,7 @@ function FirstArtSection() {
                   href={pageFields.firstArtButtonFirstUrl ?? '#'}
                   variants={['cut-bottom', 'white-red', 'w100']}
                   className="cut-button-left"
+                  target="_blank"
                 >
                   {pageFields.firstArtButtonFirstLabel}
                 </ButtonLink>
@@ -57,6 +58,7 @@ function FirstArtSection() {
                   href={pageFields.firstArtButtonSecondUrl ?? '#'}
                   variants={['cut-top', 'red', 'w100']}
                   className="cut-button-right"
+                  target="_blank"
                 >
                   {pageFields.firstArtButtonSecondLabel}
                 </ButtonLink>

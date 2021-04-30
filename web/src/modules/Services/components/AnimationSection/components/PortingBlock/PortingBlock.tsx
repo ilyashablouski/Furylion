@@ -42,6 +42,7 @@ function PortingBlock() {
                     href={pageFields.portingButtonFirstUrl ?? '#'}
                     variants={['cut-bottom', 'white-red', 'w100']}
                     className="cut-button-left"
+                    target="_blank"
                   >
                     {pageFields.portingButtonFirstLabel}
                   </ButtonLink>
@@ -52,6 +53,7 @@ function PortingBlock() {
                     href={pageFields.portingButtonSecondUrl ?? '#'}
                     variants={['cut-top', 'red', 'w100']}
                     className="cut-button-right"
+                    target="_blank"
                   >
                     {pageFields.portingButtonSecondLabel}
                   </ButtonLink>

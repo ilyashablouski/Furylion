@@ -34,7 +34,11 @@ function CpiSection() {
         </DownArrow>
 
         <ButtonWrapper>
-          <SkewButton href={pageFields.cpiButtonUrl} color="dark">
+          <SkewButton
+            href={pageFields.cpiButtonUrl}
+            color="dark"
+            isNewTab={true}
+          >
             {pageFields.cpiButtonLabel}
           </SkewButton>
         </ButtonWrapper>

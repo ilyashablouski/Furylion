@@ -45,6 +45,7 @@ function RateSection() {
               href={pageFields.rateButtonUrl}
               label={pageFields.rateButtonLabel}
               variants={['curve', 'curve-red', 'w100']}
+              isNewTab={true}
             />
           </ButtonWrapper>
         </Inner>

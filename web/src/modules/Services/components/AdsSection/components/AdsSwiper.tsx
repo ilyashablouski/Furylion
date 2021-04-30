@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import {
@@ -7,57 +7,45 @@ import {
   ThumbnailType,
 } from '@tager/web-modules';
 
-import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
-import { breakpoints, colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
+import SimplePlaceholder from '@/components/SimplePlaceholder';
 
 type Props = {
   adsImages: Array<ThumbnailType>;
 };
 
 function AdsSwiper({ adsImages }: Props) {
+  const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMountedSwiper(true);
+  }, []);
+
   if (adsImages.length === 0) return null;
-  // const [isMounted, setIsMounted] = useState<boolean>(false);
-  //
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, []);
 
   return (
     <Container>
-      <Swiper
-        slidesPerView="auto"
-        loop={true}
-        centeredSlides={true}
-        allowTouchMove={true}
-        // autoplay={{ delay: 4000, disableOnInteraction: false }}
-
-        // breakpoints={{
-        //   [breakpoints.mobileSmall]: {
-        //     spaceBetween: 0,
-        //     allowTouchMove: true,
-        //   },
-        //   [breakpoints.tabletSmall]: {
-        //     spaceBetween: 0,
-        //     autoplay: false,
-        //   },
-        //   1230: {
-        //     spaceBetween: 140,
-        //     autoplay: false,
-        //   },
-        // }}
-      >
-        {adsImages.map((adsImage, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <SwiperImage
-                mobileSmall={convertThumbnailToPictureImage(adsImage)}
-              />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {isMountedSwiper ? (
+        <Swiper
+          slidesPerView="auto"
+          loop={true}
+          centeredSlides={true}
+          allowTouchMove={true}
+        >
+          {adsImages.map((adsImage, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <SwiperImage
+                  mobileSmall={convertThumbnailToPictureImage(adsImage)}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      ) : (
+        <SimplePlaceholder color="transparent" height={250} />
+      )}
     </Container>
   );
 }
@@ -74,6 +62,8 @@ const Container = styled.div`
       ${media.mobile(css`
         max-width: 140px;
       `)};
+
+      //TODO: Delete if not need
       //transform-origin: bottom;
       //&:nth-child(1) {
       //  transform: rotate(-45deg);

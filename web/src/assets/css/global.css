@@ -19,10 +19,6 @@ svg {
   display: flex;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html, body {
   width: 100%;
   min-width: 320px;

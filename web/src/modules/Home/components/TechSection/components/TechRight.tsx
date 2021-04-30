@@ -55,6 +55,7 @@ function TechRight({ data }: Props) {
           <ButtonLink
             href={data.btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-red', 'w100']}
+            target="_blank"
           >
             {data.btnFirstLabel}
           </ButtonLink>
@@ -64,6 +65,7 @@ function TechRight({ data }: Props) {
           <ButtonLink
             href={data.btnSecondUrl ?? '#'}
             variants={['cut-top', 'red', 'w100']}
+            target="_blank"
           >
             {data.btnSecondLabel}
           </ButtonLink>

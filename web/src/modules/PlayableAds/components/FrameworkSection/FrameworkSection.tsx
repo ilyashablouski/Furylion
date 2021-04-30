@@ -45,6 +45,7 @@ function FrameworkSection() {
             href={pageFields.frameworkButtonUrl}
             label={pageFields.frameworkButtonLabel}
             variants={['curve', 'curve-white', 'w100']}
+            isNewTab={true}
           />
         </ButtonWrapper>
       </ContentContainer>

@@ -61,6 +61,7 @@ function PlatformLeft({
           <ButtonLink
             href={btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-dark', 'w100']}
+            target="_blank"
           >
             {btnFirstLabel}
           </ButtonLink>
@@ -70,6 +71,7 @@ function PlatformLeft({
           <ButtonLink
             href={btnSecondUrl ?? '#'}
             variants={['cut-top', 'dark', 'w100']}
+            target="_blank"
           >
             {btnSecondLabel}
           </ButtonLink>

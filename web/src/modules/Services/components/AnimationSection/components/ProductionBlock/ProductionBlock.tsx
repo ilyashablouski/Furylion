@@ -42,6 +42,7 @@ function ProductionBlock() {
                 href={pageFields.productionButtonFirstUrl ?? '#'}
                 variants={['cut-bottom', 'white-red', 'w100']}
                 className="cut-button-left"
+                target="_blank"
               >
                 {pageFields.productionButtonFirstLabel}
               </ButtonLink>
@@ -52,6 +53,7 @@ function ProductionBlock() {
                 href={pageFields.productionButtonSecondUrl ?? '#'}
                 variants={['cut-top', 'red', 'w100']}
                 className="cut-button-right"
+                target="_blank"
               >
                 {pageFields.productionButtonSecondLabel}
               </ButtonLink>

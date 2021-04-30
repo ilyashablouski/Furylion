@@ -11,6 +11,7 @@ import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
+import { ButtonLink } from '@/components/Button';
 
 function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
@@ -47,7 +48,11 @@ function TeamSection() {
       </Inner>
 
       <StyledButton>
-        <SkewButton href={pageFields?.teamButtonUrl} color="red">
+        <SkewButton
+          href={pageFields?.teamButtonUrl}
+          color="red"
+          isNewTab={true}
+        >
           {pageFields?.teamButtonLabel}
         </SkewButton>
       </StyledButton>

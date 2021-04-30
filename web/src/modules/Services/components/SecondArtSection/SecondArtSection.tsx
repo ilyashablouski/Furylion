@@ -49,6 +49,7 @@ function SecondArtSection() {
                   href={pageFields.secondArtButtonFirstUrl ?? '#'}
                   variants={['cut-bottom', 'white-dark', 'w100']}
                   className="cut-button-left"
+                  target="_blank"
                 >
                   {pageFields.secondArtButtonFirstLabel}
                 </ButtonLink>
@@ -59,6 +60,7 @@ function SecondArtSection() {
                   href={pageFields.secondArtButtonSecondUrl ?? '#'}
                   variants={['cut-top', 'dark', 'w100']}
                   className="cut-button-right"
+                  target="_blank"
                 >
                   {pageFields.secondArtButtonSecondLabel}
                 </ButtonLink>

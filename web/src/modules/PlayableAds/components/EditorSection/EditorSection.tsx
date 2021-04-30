@@ -10,6 +10,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import Picture from '@/components/Picture';
 import { EditorSectionType } from '@/typings/model';
 import SkewButton from '@/components/SkewButton';
+import CurveButton from '@/components/CurveButton';
 
 function EditorSection() {
   const page = useCurrentPage<EditorSectionType>();
@@ -30,6 +31,7 @@ function EditorSection() {
                 color="white-dark"
                 href={pageFields.editorButtonUrl ?? '#'}
                 className="skew-button"
+                isNewTab={true}
               >
                 {pageFields.editorButtonLabel}
               </SkewButton>

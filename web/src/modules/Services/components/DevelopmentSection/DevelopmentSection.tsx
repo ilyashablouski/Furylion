@@ -10,6 +10,7 @@ import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
+import { ButtonLink } from '@/components/Button';
 
 function DevelopmentSection() {
   const page = useCurrentPage<DevelopmentSectionType>();
@@ -46,7 +47,10 @@ function DevelopmentSection() {
                             {item.logos.map((logo, index) => {
                               return (
                                 <Logo key={index}>
-                                  <LogoLink to={logo.linkUrl ?? '#'}>
+                                  <LogoLink
+                                    to={logo.linkUrl ?? '#'}
+                                    target="_blank"
+                                  >
                                     <Picture
                                       mobileSmall={convertThumbnailToPictureImage(
                                         logo.image

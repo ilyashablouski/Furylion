@@ -10,11 +10,16 @@ type Props = {
   label: Nullable<string>;
   href?: Nullish<string>;
   variants: Array<ButtonVariant>;
+  isNewTab?: boolean;
 };
 
-function CurveButton({ href, label, variants }: Props) {
+function CurveButton({ href, label, variants, isNewTab }: Props) {
   return href ? (
-    <ButtonLink href={href ?? '#'} variants={variants}>
+    <ButtonLink
+      href={href ?? '#'}
+      variants={variants}
+      target={isNewTab ? '_blank' : '_self'}
+    >
       {label}
     </ButtonLink>
   ) : (
