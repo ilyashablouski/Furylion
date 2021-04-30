@@ -85,10 +85,6 @@ const Wrapper = styled.section<{ isModal: boolean }>`
             margin-top: 70px;
           `)}
         `}
-
-  ${ContentContainer} {
-    max-width: 1920px;
-  }
 `;
 const Inner = styled.div`
   display: flex;
