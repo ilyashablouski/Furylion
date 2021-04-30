@@ -23,8 +23,6 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
   const sliderPaginationRef = useRef<any>(null);
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
-
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
@@ -45,17 +43,15 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             prevEl: `.swiper-prev1`,
             nextEl: `.swiper-next1`,
           }}
-          // pagination={{
-          //   el: '.swiper-pagination1',
-          //   type: 'bullets',
-          //   clickable: true,
-          // }}
           pagination={{
-            // el: '.swiper-pagination1',
-            // type: 'bullets',
+            el: '.swiper-pagination1',
+            type: 'bullets',
             clickable: true,
           }}
-          onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+          observer={true}
+          observeParents={true}
+          onAfterInit={() => setTotalSlidesValue(images.length)}
+          onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
         >
           {images.map((image, index) => {
             return (
@@ -76,17 +72,18 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
           </NavButtons>
 
           <SwiperPaginationWrapper>
-            {/*<BulletsPagination*/}
-            {/*  className="swiper-pagination1"*/}
-            {/*  // ref={sliderPaginationRef}*/}
-            {/*/>*/}
+            <BulletsPagination
+              className="swiper-pagination1"
+              // ref={sliderPaginationRef}
+            />
             <FractionPagination>
-              <CurrentValueLabel>{activeSlideIndex}</CurrentValueLabel>
-              <TotalValueLabel></TotalValueLabel>
+              <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
+              <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
             </FractionPagination>
           </SwiperPaginationWrapper>
         </Swiper>
       </>
+      {/*<SimplePlaceholder color="#3e3e3e" />*/}
     </ArtSwiperContainer>
   );
 }
@@ -115,6 +112,7 @@ const ArtSwiperContainer = styled.div`
 
 const SlidePicture = styled(Picture)`
   width: 100%;
+  background: #3e3e3e;
   picture {
     display: flex;
     width: 100%;

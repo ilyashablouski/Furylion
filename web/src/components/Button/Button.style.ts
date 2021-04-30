@@ -186,7 +186,7 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   `,
 
   'curve-dark-small': css`
-    color: ${colors.dark};
+    color: ${colors.white};
     &:before {
       content: url(${curveBgDarkSmallUrl});
     }

@@ -28,7 +28,7 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMountedSwiper(false);
+    setIsMountedSwiper(true);
   }, []);
   return (
     <ArtSwiperContainer>
@@ -44,15 +44,9 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
             prevEl: `.swiper-prev2`,
             nextEl: `.swiper-next2`,
           }}
-          // pagination={{
-          //   el: '.swiper-pagination2',
-          //   type: 'bullets',
-          //   clickable: true,
-          // }}
-
           pagination={{
-            // el: '.swiper-pagination2',
-            // type: 'bullets',
+            el: '.swiper-pagination2',
+            type: 'bullets',
             clickable: true,
           }}
           observer={true}
@@ -79,16 +73,16 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
             </NavButton>
           </NavButtons>
 
-          {/*<SwiperPaginationWrapper>*/}
-          {/*  <BulletsPagination*/}
-          {/*    className="swiper-pagination2"*/}
-          {/*    // ref={sliderPaginationRef}*/}
-          {/*  />*/}
-          {/*  <FractionPagination>*/}
-          {/*    <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>*/}
-          {/*    <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>*/}
-          {/*  </FractionPagination>*/}
-          {/*</SwiperPaginationWrapper>*/}
+          <SwiperPaginationWrapper>
+            <BulletsPagination
+              className="swiper-pagination2"
+              // ref={sliderPaginationRef}
+            />
+            <FractionPagination>
+              <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
+              <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
+            </FractionPagination>
+          </SwiperPaginationWrapper>
         </Swiper>
       </>
     </ArtSwiperContainer>
@@ -119,6 +113,7 @@ const ArtSwiperContainer = styled.div`
 
 const SlidePicture = styled(Picture)`
   width: 100%;
+  background: #3e3e3e;
   picture {
     display: flex;
     width: 100%;

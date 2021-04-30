@@ -48,7 +48,10 @@ export type SettingsItemType =
   | SettingsItemString<'OPEN_VACANCY_TITLE'>
   | SettingsItemImage<'OPEN_VACANCY_IMAGE'>
   | SettingsItemString<'OPEN_VACANCY_DESCRIPTION'>
-  | SettingsInstagramOptions<'INSTAGRAM'>;
+  | SettingsInstagramOptions<'INSTAGRAM'>
+  | SettingsItemString<'NOT_FOUND_TEXT'>
+  | SettingsItemString<'NOT_FOUND_BUTTON_LABEL'>
+  | SettingsItemString<'NOT_FOUND_BUTTON_URL'>;
 
 export type FileType = {
   id: number;
