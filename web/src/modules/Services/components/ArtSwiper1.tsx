@@ -32,7 +32,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
         slidesPerView={1}
         centeredSlides={true}
         allowTouchMove={true}
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
         navigation={{
           prevEl: `.swiper-prev1`,
           nextEl: `.swiper-next1`,
