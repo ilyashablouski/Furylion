@@ -24,6 +24,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
   useEffect(() => {
     setIsMountedSwiper(true);
@@ -48,10 +49,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             type: 'bullets',
             clickable: true,
           }}
-          observer={true}
-          observeParents={true}
-          onAfterInit={() => setTotalSlidesValue(images.length)}
-          onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
+          onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
         >
           {images.map((image, index) => {
             return (
@@ -71,16 +69,16 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             </NavButton>
           </NavButtons>
 
-          {/*<SwiperPaginationWrapper>*/}
-          {/*  <BulletsPagination*/}
-          {/*    className="swiper-pagination1"*/}
-          {/*    // ref={sliderPaginationRef}*/}
-          {/*  />*/}
-          {/*  <FractionPagination>*/}
-          {/*    <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>*/}
-          {/*    <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>*/}
-          {/*  </FractionPagination>*/}
-          {/*</SwiperPaginationWrapper>*/}
+          <SwiperPaginationWrapper>
+            {/*<BulletsPagination*/}
+            {/*  className="swiper-pagination1"*/}
+            {/*  // ref={sliderPaginationRef}*/}
+            {/*/>*/}
+            <FractionPagination>
+              <CurrentValueLabel>00{activeSlideIndex}</CurrentValueLabel>
+              <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
+            </FractionPagination>
+          </SwiperPaginationWrapper>
         </Swiper>
       </>
       {/*<SimplePlaceholder color="#3e3e3e" />*/}
