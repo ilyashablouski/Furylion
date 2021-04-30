@@ -24,7 +24,6 @@ type Props = {
 
 function WorksSwiper({ worksItems }: Props) {
   const sliderPagination = useRef<HTMLInputElement>(null);
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
@@ -58,7 +57,6 @@ function WorksSwiper({ worksItems }: Props) {
               type: 'bullets',
               clickable: true,
             }}
-            onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
             breakpoints={{
               [breakpoints.mobileSmall]: {
                 spaceBetween: 0,
@@ -81,7 +79,7 @@ function WorksSwiper({ worksItems }: Props) {
                     image={worksItem.image}
                     title={worksItem.title}
                     text={worksItem.text}
-                    tags={worksItem.tags ?? ''}
+                    logos={worksItem.logos}
                   />
                 </SwiperSlide>
               );
