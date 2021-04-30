@@ -7,6 +7,7 @@ import notFoundBgUrlWebp from '@/assets/images/404/404.webp';
 import notFoundBgUrlWebp2x from '@/assets/images/404/404@2x.webp';
 import CurveButton from '@/components/CurveButton';
 import Picture from '@/components/Picture';
+import ContentContainer from '@/components/ContentContainer';
 
 function NotFound() {
   return (
@@ -22,25 +23,28 @@ function NotFound() {
 
       <Text></Text>
 
-      {/*<ButtonWrapper>*/}
-      {/*  <CurveButton*/}
-      {/*    href={}*/}
-      {/*    label={}*/}
-      {/*    variants={['curve', 'curve-red', 'w100']}*/}
-      {/*  />*/}
-      {/*</ButtonWrapper>*/}
+      <ButtonWrapper>
+        <CurveButton
+          href=""
+          label=""
+          variants={['curve', 'curve-dark-small', 'w100']}
+          isNewTab={true}
+        />
+      </ButtonWrapper>
     </Container>
   );
 }
 
 const Container = styled.div`
-  //color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const PictureItem = styled(Picture)``;
 
 const Text = styled.div``;
 
-const ButtonWrapper = styled.div;
+const ButtonWrapper = styled.div``;
 
 export default NotFound;

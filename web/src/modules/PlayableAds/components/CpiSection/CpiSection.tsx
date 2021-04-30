@@ -4,7 +4,6 @@ import styled, { css, keyframes } from 'styled-components';
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
-import CurveButton from '@/components/CurveButton';
 import SkewButton from '@/components/SkewButton';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
