@@ -183,13 +183,6 @@ export interface VacancyFullType {
   technologies: StringFieldType;
 }
 
-export interface CareersVacancyType {
-  data: VacancyFullType;
-}
-
-//TODO: Delete types if not need
-type testThumbnailType = string;
-
 export interface VacancyCardShortType {
   image: Nullable<ThumbnailType>;
   typeOfWork?: StringFieldType;

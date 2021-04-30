@@ -17,34 +17,36 @@ function InstagramFeed() {
   return (
     <Container>
       <Wrapper>
-        {instagramItems.map((instagramItem, index) => {
-          return (
-            <InstagramItem key={index}>
-              <InstagramItemWrapper>
-                <IconContainer>
-                  {instagramItem.type === 'CAROUSEL_ALBUM' && (
-                    <InstagramGalleryIcon />
-                  )}
+        {instagramItems
+          ? instagramItems.map((instagramItem, index) => {
+              return (
+                <InstagramItem key={index}>
+                  <InstagramItemWrapper>
+                    <IconContainer>
+                      {instagramItem.type === 'CAROUSEL_ALBUM' && (
+                        <InstagramGalleryIcon />
+                      )}
 
-                  {instagramItem.type === 'VIDEO' && <InstagramVideoIcon />}
-                </IconContainer>
+                      {instagramItem.type === 'VIDEO' && <InstagramVideoIcon />}
+                    </IconContainer>
 
-                <ItemLink to={instagramItem.url} target="_blank" />
-                <ImageContainer>
-                  <Picture
-                    mobileSmall={convertThumbnailToPictureImage(
-                      instagramItem.preview
-                    )}
-                    className="instagram-thumbnail"
-                  />
-                  <InstagramIconWrapper>
-                    <InstagramIcon />
-                  </InstagramIconWrapper>
-                </ImageContainer>
-              </InstagramItemWrapper>
-            </InstagramItem>
-          );
-        })}
+                    <ItemLink to={instagramItem.url} target="_blank" />
+                    <ImageContainer>
+                      <Picture
+                        mobileSmall={convertThumbnailToPictureImage(
+                          instagramItem.preview
+                        )}
+                        className="instagram-thumbnail"
+                      />
+                      <InstagramIconWrapper>
+                        <InstagramIcon />
+                      </InstagramIconWrapper>
+                    </ImageContainer>
+                  </InstagramItemWrapper>
+                </InstagramItem>
+              );
+            })
+          : null}
       </Wrapper>
     </Container>
   );
