@@ -45,7 +45,11 @@ function TeamLifeSection() {
         </ContentContainer>
 
         <StyledButton>
-          <SkewButton href={pageFields?.teamLifeButton.link} color="red">
+          <SkewButton
+            href={pageFields?.teamLifeButton.link}
+            color="red"
+            isNewTab={true}
+          >
             {pageFields?.teamLifeButton?.label}
             <IconWrapper>
               <InstagramIcon />

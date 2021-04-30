@@ -79,7 +79,7 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
                         adsHeadItem.image
                       )}
                     />
-                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} />
+                    <ItemLink to={adsHeadItem.linkUrl ?? '#'} target="_blank" />
                   </AdsHeadItem>
                 </SwiperSlide>
               );
