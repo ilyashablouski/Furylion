@@ -2,6 +2,8 @@
 
 namespace App\Tager\Templates;
 
+use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
+use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;

@@ -3,8 +3,6 @@
 namespace App\Tager\Templates;
 
 use App\Enums\FileScenario;
-use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
-use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
 use OZiTAG\Tager\Backend\Fields\Fields\ButtonField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
@@ -17,14 +15,6 @@ class VacanciesTemplate extends Template
     public function __construct()
     {
         parent::__construct('Вакансии', [
-            'contactsMenuLink' => new RepeaterField('Contacts Menu Link', [
-                'text' => new StringField('Text'),
-                'action' => new SelectField('Action', [
-                    'scroll' => 'Scroll',
-                ]),
-                'link' => new UrlField('Target'),
-            ]),
-
             new GroupField('Head Image', [
                 'headImage' => new ImageField('Изображение', FileScenario::HeadImage),
             ]),
