@@ -3,6 +3,8 @@
 namespace App\Tager\Templates;
 
 use App\Enums\FileScenario;
+use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
+use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
 use OZiTAG\Tager\Backend\Fields\Fields\ButtonField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
