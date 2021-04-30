@@ -23,6 +23,8 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
   const sliderPaginationRef = useRef<any>(null);
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
+
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
 
   useEffect(() => {
@@ -31,62 +33,60 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
 
   return (
     <ArtSwiperContainer>
-      {isMountedSwiper ? (
-        <>
-          <Swiper
-            className="art-swiper-1"
-            slidesPerView={1}
-            loop={true}
-            centeredSlides={true}
-            allowTouchMove={true}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            navigation={{
-              prevEl: `.swiper-prev1`,
-              nextEl: `.swiper-next1`,
-            }}
-            pagination={{
-              el: '.swiper-pagination1',
-              type: 'bullets',
-              clickable: true,
-            }}
-            observer={true}
-            observeParents={true}
-            onAfterInit={() => setTotalSlidesValue(images.length)}
-            onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
-          >
-            {images.map((image, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <SlidePicture
-                    mobileSmall={convertThumbnailToPictureImage(image)}
-                  />
-                </SwiperSlide>
-              );
-            })}
-            <NavButtons isRightSide={isRightSide}>
-              <NavButton className={`swiper-prev1`} prev>
-                <SlideArrowIcon />
-              </NavButton>
-              <NavButton className={`swiper-next1`} next>
-                <SlideArrowIcon />
-              </NavButton>
-            </NavButtons>
+      <>
+        <Swiper
+          className="art-swiper-1"
+          slidesPerView={1}
+          loop={true}
+          centeredSlides={true}
+          allowTouchMove={true}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          navigation={{
+            prevEl: `.swiper-prev1`,
+            nextEl: `.swiper-next1`,
+          }}
+          // pagination={{
+          //   el: '.swiper-pagination1',
+          //   type: 'bullets',
+          //   clickable: true,
+          // }}
+          pagination={{
+            // el: '.swiper-pagination1',
+            // type: 'bullets',
+            clickable: true,
+          }}
+          onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+        >
+          {images.map((image, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <SlidePicture
+                  mobileSmall={convertThumbnailToPictureImage(image)}
+                />
+              </SwiperSlide>
+            );
+          })}
+          <NavButtons isRightSide={isRightSide}>
+            <NavButton className={`swiper-prev1`} prev>
+              <SlideArrowIcon />
+            </NavButton>
+            <NavButton className={`swiper-next1`} next>
+              <SlideArrowIcon />
+            </NavButton>
+          </NavButtons>
 
-            <SwiperPaginationWrapper>
-              <BulletsPagination
-                className="swiper-pagination1"
-                // ref={sliderPaginationRef}
-              />
-              <FractionPagination>
-                <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
-                <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
-              </FractionPagination>
-            </SwiperPaginationWrapper>
-          </Swiper>
-        </>
-      ) : (
-        <SimplePlaceholder color="#3e3e3e" />
-      )}
+          <SwiperPaginationWrapper>
+            {/*<BulletsPagination*/}
+            {/*  className="swiper-pagination1"*/}
+            {/*  // ref={sliderPaginationRef}*/}
+            {/*/>*/}
+            <FractionPagination>
+              <CurrentValueLabel>{activeSlideIndex}</CurrentValueLabel>
+              <TotalValueLabel></TotalValueLabel>
+            </FractionPagination>
+          </SwiperPaginationWrapper>
+        </Swiper>
+      </>
     </ArtSwiperContainer>
   );
 }
