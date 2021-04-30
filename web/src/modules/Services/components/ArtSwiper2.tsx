@@ -22,69 +22,58 @@ type Props = {
 };
 
 function ArtSwiper2({ images, isRightSide = true }: Props) {
-  const sliderPaginationRef = useRef<HTMLInputElement>(null);
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
-  const [isMountedSwiper, setIsMountedSwiper] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsMountedSwiper(true);
-  }, []);
   return (
     <ArtSwiperContainer>
-      <>
-        <Swiper
-          className="art-swiper-2"
-          slidesPerView={1}
-          loop={true}
-          centeredSlides={true}
-          allowTouchMove={true}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          navigation={{
-            prevEl: `.swiper-prev2`,
-            nextEl: `.swiper-next2`,
-          }}
-          pagination={{
-            el: '.swiper-pagination2',
-            type: 'bullets',
-            clickable: true,
-          }}
-          observer={true}
-          observeParents={true}
-          onAfterInit={() => setTotalSlidesValue(images.length)}
-          onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
-        >
-          {images.map((image, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <SlidePicture
-                  mobileSmall={convertThumbnailToPictureImage(image)}
-                  className="swiper-image-container"
-                />
-              </SwiperSlide>
-            );
-          })}
-          <NavButtons isRightSide={isRightSide}>
-            <NavButton className={`swiper-prev2`} prev>
-              <SlideArrowIcon />
-            </NavButton>
-            <NavButton className={`swiper-next2`} next>
-              <SlideArrowIcon />
-            </NavButton>
-          </NavButtons>
+      <Swiper
+        className="art-swiper-2"
+        slidesPerView={1}
+        loop={true}
+        centeredSlides={true}
+        allowTouchMove={true}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        navigation={{
+          prevEl: `.swiper-prev2`,
+          nextEl: `.swiper-next2`,
+        }}
+        pagination={{
+          el: '.swiper-pagination2',
+          type: 'bullets',
+          clickable: true,
+        }}
+        observer={true}
+        observeParents={true}
+        onAfterInit={() => setTotalSlidesValue(images.length)}
+        onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
+      >
+        {images.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <SlidePicture
+                mobileSmall={convertThumbnailToPictureImage(image)}
+                className="swiper-image-container"
+              />
+            </SwiperSlide>
+          );
+        })}
+        <NavButtons isRightSide={isRightSide}>
+          <NavButton className={`swiper-prev2`} prev>
+            <SlideArrowIcon />
+          </NavButton>
+          <NavButton className={`swiper-next2`} next>
+            <SlideArrowIcon />
+          </NavButton>
+        </NavButtons>
 
-          <SwiperPaginationWrapper>
-            <BulletsPagination
-              className="swiper-pagination2"
-              // ref={sliderPaginationRef}
-            />
-            <FractionPagination>
-              <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
-              <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
-            </FractionPagination>
-          </SwiperPaginationWrapper>
-        </Swiper>
-      </>
+        <SwiperPaginationWrapper>
+          <BulletsPagination className="swiper-pagination2" />
+          <FractionPagination>
+            <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
+            <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
+          </FractionPagination>
+        </SwiperPaginationWrapper>
+      </Swiper>
     </ArtSwiperContainer>
   );
 }
@@ -113,7 +102,6 @@ const ArtSwiperContainer = styled.div`
 
 const SlidePicture = styled(Picture)`
   width: 100%;
-  background: #3e3e3e;
   picture {
     display: flex;
     width: 100%;

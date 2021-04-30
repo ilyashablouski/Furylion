@@ -17,7 +17,7 @@ function SecondArtSection() {
   return (
     <Wrapper>
       <Left>
-        {/*<ArtSwiper2 images={pageFields.secondArtImages} isRightSide={false} />*/}
+        <ArtSwiper2 images={pageFields.secondArtImages} isRightSide={false} />
       </Left>
       <Right>
         <ContentContainer>
