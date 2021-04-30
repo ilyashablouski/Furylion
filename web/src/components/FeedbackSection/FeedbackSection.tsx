@@ -21,6 +21,7 @@ type Props = {
   className?: string;
   isModal?: boolean;
   isProfileInfo?: boolean;
+  idAnchor?: string;
 };
 
 function FeedbackSection({
@@ -31,9 +32,10 @@ function FeedbackSection({
   className,
   isModal = false,
   isProfileInfo = false,
+  idAnchor,
 }: Props) {
   return (
-    <Wrapper isModal={isModal}>
+    <Wrapper isModal={isModal} id={idAnchor}>
       <ContentContainer>
         {isProfileInfo && (
           <TitleBlock>
