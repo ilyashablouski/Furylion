@@ -16,6 +16,13 @@ class PlayableAdsTemplate extends Template
     public function __construct()
     {
         parent::__construct('Игровые рекламы', [
+            'contactsMenuLink' => new RepeaterField('Contacts Menu Link', [
+                'text' => new StringField('Text'),
+                'action' => new SelectField('Action', [
+                    'scroll' => 'Scroll',
+                ]),
+                'link' => new UrlField('Target'),
+            ]),
             new GroupField('Head', [
                 'headAdsText' => new StringField('Text'),
                 'headAdsItems' => new RepeaterField('Slider Items', [

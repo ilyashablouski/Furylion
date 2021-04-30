@@ -16,6 +16,13 @@ class HomeTemplate extends Template
     public function __construct()
     {
         parent::__construct('Главная страница', [
+            'contactsMenuLink' => new RepeaterField('Contacts Menu Link', [
+                'text' => new StringField('Text'),
+                'action' => new SelectField('Action', [
+                    'scroll' => 'Scroll',
+                ]),
+                'link' => new UrlField('Target'),
+            ]),
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),

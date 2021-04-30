@@ -17,6 +17,13 @@ class ServicesTemplate extends Template
     public function __construct()
     {
         parent::__construct('Услуги', [
+            'contactsMenuLink' => new RepeaterField('Contacts Menu Link', [
+                'text' => new StringField('Text'),
+                'action' => new SelectField('Action', [
+                    'scroll' => 'Scroll',
+                ]),
+                'link' => new UrlField('Target'),
+            ]),
             new GroupField('Head', [
                 'headText' => new StringField('Text'),
             ]),
