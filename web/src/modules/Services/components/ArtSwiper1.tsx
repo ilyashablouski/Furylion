@@ -45,8 +45,8 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
             nextEl: `.swiper-next1`,
           }}
           pagination={{
-            el: '.swiper-pagination1',
-            type: 'bullets',
+            // el: '.swiper-pagination1',
+            // type: 'bullets',
             clickable: true,
           }}
           onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
