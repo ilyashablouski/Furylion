@@ -15,7 +15,7 @@ class HomeTemplate extends Template
 {
     public function __construct()
     {
-        parent::__construct('Главная страница', [
+        parent::__construct('Main page', [
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),

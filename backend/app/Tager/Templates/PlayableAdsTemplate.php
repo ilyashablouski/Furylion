@@ -15,7 +15,7 @@ class PlayableAdsTemplate extends Template
 {
     public function __construct()
     {
-        parent::__construct('Игровые рекламы', [
+        parent::__construct('Playable Ads', [
             new GroupField('Head', [
                 'headAdsText' => new StringField('Text'),
                 'headAdsItems' => new RepeaterField('Slider Items', [
