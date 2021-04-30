@@ -115,7 +115,7 @@ const Left = styled.div`
   }
 `;
 const Right = styled.div`
-  min-width: 673px;
+  flex: 0 0 673px;
   max-width: 673px;
   clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
 

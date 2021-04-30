@@ -21,14 +21,15 @@ type Props = {
 
 function ArtSwiper1({ images, isRightSide = true }: Props) {
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
-  const [totalSlidesValue, setTotalSlidesValue] = useState<number>(0);
 
   return (
     <ArtSwiperContainer>
       <Swiper
         className="art-swiper-1"
-        slidesPerView={1}
         loop={true}
+        initialSlide={0}
+        loopedSlides={1}
+        slidesPerView={1}
         centeredSlides={true}
         allowTouchMove={true}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -42,19 +43,17 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
           clickable: true,
         }}
         observer={true}
+        resizeObserver={true}
         observeParents={true}
-        onAfterInit={() => setTotalSlidesValue(images.length)}
-        onTransitionStart={(swiper) => setRealSlideIndex(swiper.realIndex)}
+        onSlideChange={({ previousIndex, realIndex }) => {
+          setRealSlideIndex(previousIndex === 0 ? previousIndex : realIndex);
+        }}
       >
-        {images.map((image, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <SlidePicture
-                mobileSmall={convertThumbnailToPictureImage(image)}
-              />
-            </SwiperSlide>
-          );
-        })}
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <SlidePicture mobileSmall={convertThumbnailToPictureImage(image)} />
+          </SwiperSlide>
+        ))}
         <NavButtons isRightSide={isRightSide}>
           <NavButton className={`swiper-prev1`} prev>
             <SlideArrowIcon />
@@ -68,7 +67,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
           <BulletsPagination className="swiper-pagination1" />
           <FractionPagination>
             <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
-            <TotalValueLabel>//&nbsp;00{totalSlidesValue}</TotalValueLabel>
+            <TotalValueLabel>//&nbsp;00{images.length}</TotalValueLabel>
           </FractionPagination>
         </SwiperPaginationWrapper>
       </Swiper>
@@ -133,13 +132,18 @@ const SwiperPaginationWrapper = styled.div`
   `)}
 
   ${media.mobile(css`
+    left: 20px;
+    right: 20px;
     bottom: 22px;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   `)}
 `;
 
 const BulletsPagination = styled.div`
   display: flex;
-  width: 100%;
+  flex: 1 1 326px;
   max-width: 326px;
   text-align: left;
   z-index: 1;
@@ -185,6 +189,13 @@ const BulletsPagination = styled.div`
       animation: ${animation} 4350ms linear;
     }
   }
+
+  ${media.mobile(css`
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+    order: 2;
+  `)}
 `;
 
 const FractionPagination = styled.div`
