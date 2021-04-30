@@ -136,13 +136,17 @@ const SwiperPaginationWrapper = styled.div`
 
   ${media.mobile(css`
     left: 20px;
+    right: 20px;
     bottom: 22px;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   `)}
 `;
 
 const BulletsPagination = styled.div`
   display: flex;
-  width: 100%;
+  flex: 1 1 326px;
   max-width: 326px;
   text-align: left;
   z-index: 1;
@@ -188,6 +192,13 @@ const BulletsPagination = styled.div`
       animation: ${animation} 4350ms linear;
     }
   }
+
+  ${media.mobile(css`
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+    order: 2;
+  `)}
 `;
 
 const FractionPagination = styled.div`
