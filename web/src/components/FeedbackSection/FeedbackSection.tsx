@@ -77,10 +77,10 @@ const Wrapper = styled.section<{ isModal: boolean }>`
   ${(props) =>
     props.isModal
       ? css`
-          margin-top: 0;
+          padding-top: 0;
         `
       : css`
-          margin-top: 120px;
+          padding-top: 120px;
           ${media.tabletSmall(css`
             margin-top: 70px;
           `)}

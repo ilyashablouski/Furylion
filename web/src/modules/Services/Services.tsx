@@ -28,7 +28,11 @@ function Services() {
       <CoDevelopmentSection />
       <AdsSection />
 
-      <FeedbackSection className="about-title--small" formTitle={formTitle} />
+      <FeedbackSection
+        className="about-title--small"
+        formTitle={formTitle}
+        idAnchor="contacts"
+      />
     </>
   );
 }
