@@ -2,8 +2,6 @@
 
 namespace App\Tager\Templates;
 
-use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
-use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
@@ -17,14 +15,7 @@ class HomeTemplate extends Template
 {
     public function __construct()
     {
-        parent::__construct('Главная страница', [
-            'contactsMenuLink' => new RepeaterField('Contacts Menu Link', [
-                'text' => new StringField('Text'),
-                'action' => new SelectField('Action', [
-                    'scroll' => 'Scroll',
-                ]),
-                'link' => new UrlField('Target'),
-            ]),
+        parent::__construct('Main page', [
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),

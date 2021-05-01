@@ -15,7 +15,11 @@ function Vacancies() {
       <HeaderSection />
       <JobsSection />
       <TeamLifeSection />
-      <FeedbackSection className="about-title--small" formTitle={formTitle} />
+      <FeedbackSection
+        className="about-title--small"
+        formTitle={formTitle}
+        idAnchor="contacts"
+      />
     </>
   );
 }

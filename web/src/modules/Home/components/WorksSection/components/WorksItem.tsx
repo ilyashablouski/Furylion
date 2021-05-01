@@ -1,43 +1,35 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
 import Picture from '@/components/Picture';
 import { WorksItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
-import Tag from '@/components/Tag';
 
-function WorksItem({ image, title, text, tags }: WorksItemType) {
-  const tagsArray = tags ? tags.split(',') : [];
-
+function WorksItem({ image, title, text, logos }: WorksItemType) {
   return (
     <WorksItemContainer>
       <Picture
-        //TODO: Ask Matvey
-        // usePlaceholder={true}
-        // placeholderColor={'#3e3e3e'}
-        mobileSmall={{
-          src: image?.url,
-          src2x: image?.url_2x,
-          webp: image?.url_webp,
-          webp2x: image?.url_webp_2x,
-        }}
+        mobileSmall={convertThumbnailToPictureImage(image)}
         className="swiper-image-block"
       />
-
       <Info>
         <Title>{title}</Title>
         <Text>{text}</Text>
-        <Tags>
-          {tagsArray.map((tag, index) => {
-            return <Tag key={index} tag={tag} />;
+        <Logos>
+          {logos.map((logo, index) => {
+            return (
+              <LogoPicture
+                key={index}
+                mobileSmall={convertThumbnailToPictureImage(logo)}
+              />
+            );
           })}
-        </Tags>
+        </Logos>
       </Info>
-
-      <WorksCopyright>
-        {/*TODO: Add picture from Admin or static*/}
-        <Picture />
-      </WorksCopyright>
+      {/*TODO: add copyright logo if we need*/}
+      <WorksCopyright>{/*<Picture />*/}</WorksCopyright>
     </WorksItemContainer>
   );
 }
@@ -55,20 +47,19 @@ const WorksItemContainer = styled.div`
     @media (max-width: 767.98px) {
       padding-top: 151.66%;
     }
-  }
 
-  img {
-    //noinspection CssInvalidPropertyValue
-    image-rendering: -webkit-optimize-contrast;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #3e3e3e;
-    object-fit: cover;
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #3e3e3e;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -78,6 +69,14 @@ const Info = styled.div`
   bottom: 40px;
   color: #fff;
   z-index: 1;
+
+  ${media.tabletSmallOnly(css`
+    bottom: 30px;
+  `)}
+
+  ${media.mobile(css`
+    bottom: 45px;
+  `)}
 
   .swiper-container-initialized & {
     left: 40px;
@@ -124,22 +123,20 @@ const WorksCopyright = styled.div`
   z-index: 1;
 `;
 
-//TODO: Change on image tags from admin panel
-const Tags = styled.div`
-  margin-top: 25px;
-  margin-left: -10px;
-  margin-right: -10px;
+const Logos = styled.div`
+  margin-top: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
   display: flex;
+  align-items: center;
+`;
 
-  ${media.tabletSmallOnly(css`
-    margin-top: 34px;
-  `)}
-
-  ${media.mobile(css`
-    margin-top: 15px;
-    margin-left: -5px;
-    margin-right: -5px;
-  `)}
+const LogoPicture = styled(Picture)`
+  padding: 0 15px;
+  img {
+    max-height: 36px;
+    image-rendering: -webkit-optimize-contrast;
+  }
 `;
 
 export default WorksItem;

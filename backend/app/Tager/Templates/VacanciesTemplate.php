@@ -14,14 +14,14 @@ class VacanciesTemplate extends Template
 {
     public function __construct()
     {
-        parent::__construct('Вакансии', [
+        parent::__construct('Vacancies', [
             new GroupField('Head Image', [
-                'headImage' => new ImageField('Изображение', FileScenario::HeadImage),
+                'headImage' => new ImageField('Image', FileScenario::HeadImage),
             ]),
             new GroupField('Team Life', [
-                'teamLifeTitle' => new StringField('Название'),
-                'teamLifeDescription' => new HtmlField('Описание'),
-                'teamLifeButton' => new ButtonField('Кнопка'),
+                'teamLifeTitle' => new StringField('Title'),
+                'teamLifeDescription' => new HtmlField('Text - Description'),
+                'teamLifeButton' => new ButtonField('Button'),
             ]),
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),

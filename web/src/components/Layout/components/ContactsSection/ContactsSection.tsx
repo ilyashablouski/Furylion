@@ -38,9 +38,6 @@ const Wrapper = styled.section`
   padding-bottom: 77px;
   background: ${colors.dark};
 
-  ${ContentContainer} {
-    max-width: 1920px;
-  }
   ${media.tabletSmallOnly(css`
     padding-top: 139px;
     padding-bottom: 40px;

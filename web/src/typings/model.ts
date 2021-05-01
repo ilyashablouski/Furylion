@@ -76,9 +76,9 @@ export interface HeroSectionType extends PageFullType {
 
 export type WorksItemType = {
   image: Nullable<ThumbnailType>;
-  tags: StringFieldType;
-  text: StringFieldType;
   title: StringFieldType;
+  text: StringFieldType;
+  logos: Array<ThumbnailType>;
 };
 
 export interface WorksSectionType extends PageFullType {
@@ -182,13 +182,6 @@ export interface VacancyFullType {
   responsibilities: StringFieldType;
   technologies: StringFieldType;
 }
-
-export interface CareersVacancyType {
-  data: VacancyFullType;
-}
-
-//TODO: Delete types if not need
-type testThumbnailType = string;
 
 export interface VacancyCardShortType {
   image: Nullable<ThumbnailType>;

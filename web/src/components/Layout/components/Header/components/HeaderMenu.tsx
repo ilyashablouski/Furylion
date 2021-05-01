@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { MouseEventHandler, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MenuItemType } from '@tager/web-modules';
@@ -18,6 +18,7 @@ type Props = {
   // FIXME: REFACTORING TYPINGS
   socialsData: Array<any>;
   onClickOverlay: () => void;
+  onClickLink: (e: MouseEvent) => void;
 };
 
 function HeaderMenu({
@@ -25,6 +26,7 @@ function HeaderMenu({
   isOpen,
   isAnimate,
   onClickOverlay,
+  onClickLink,
   mobileMenuRef,
   socialsData,
 }: Props) {
@@ -58,12 +60,23 @@ function HeaderMenu({
           {menuItemList.map((menuItem) => {
             return (
               <MenuItem key={menuItem.id}>
-                <ItemLink
-                  to={menuItem.link ?? '#'}
-                  target={menuItem.isNewTab ? '_blank' : '_self'}
-                >
-                  {menuItem.label}
-                </ItemLink>
+                {menuItem.link && menuItem.link.includes('#') ? (
+                  <ItemLink
+                    as="a"
+                    href={menuItem.link ?? '#'}
+                    //TODO:Fix correct type
+                    onClick={onClickLink as any}
+                  >
+                    {menuItem.label}
+                  </ItemLink>
+                ) : (
+                  <ItemLink
+                    to={menuItem.link ?? '#'}
+                    target={menuItem.isNewTab ? '_blank' : '_self'}
+                  >
+                    {menuItem.label}
+                  </ItemLink>
+                )}
               </MenuItem>
             );
           })}

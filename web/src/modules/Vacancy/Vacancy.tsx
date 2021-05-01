@@ -15,7 +15,7 @@ function Vacancy() {
       <TopSection />
       <JobSection />
       <GetSection />
-      <FeedbackSection formTitle={formVacancyTitle} />
+      <FeedbackSection formTitle={formVacancyTitle} idAnchor="contacts" />
     </>
   );
 }

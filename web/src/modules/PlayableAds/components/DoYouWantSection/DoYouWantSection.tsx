@@ -20,8 +20,9 @@ function DoYouWantSection() {
   return (
     <Wrapper>
       <Inner>
-        <Title>{pageFields.doYouWantTitle}</Title>
-
+        <TitleBlock>
+          <Title>{pageFields.doYouWantTitle}</Title>
+        </TitleBlock>
         <ImagesContainer>
           <ImagesRow imagesGallery={firstGalleryImages} />
           <ImagesRow imagesGallery={secondGalleryImages} />
@@ -53,8 +54,11 @@ const Inner = styled.div`
   overflow: hidden;
 `;
 
+const TitleBlock = styled.div`
+  display: flex;
+`;
+
 const Title = styled.span`
-  padding-left: 100%;
   display: inline-block;
   font-weight: 900;
   font-size: 178.605px;
@@ -75,6 +79,10 @@ const Title = styled.span`
     animation: none;
     white-space: normal;
     line-height: 130%;
+
+    &:last-child {
+      display: none;
+    }
   `)}
 
   ${media.tabletSmallOnly(css`
