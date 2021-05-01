@@ -51,9 +51,9 @@ function AdsSection() {
 
 const Wrapper = styled.section`
   position: relative;
-  margin: 52px auto 0;
+  margin-top: 52px;
   padding-bottom: 80px;
-  max-width: 1920px;
+  overflow: hidden;
 
   ${media.tabletSmallOnly(css`
     margin-top: 150px;
@@ -67,7 +67,7 @@ const Wrapper = styled.section`
 `;
 
 const Inner = styled.div`
-  margin-top: 110px;
+  margin: 110px auto 0;
 
   ${media.tabletSmallOnly(css`
     margin-top: 50px;
