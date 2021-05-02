@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MenuItemType } from '@tager/web-modules';
@@ -9,6 +9,7 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
+import VacanciesCounter from '@/components/VacanciesCounter';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -75,6 +76,11 @@ function HeaderMenu({
                     target={menuItem.isNewTab ? '_blank' : '_self'}
                   >
                     {menuItem.label}
+                    {menuItem.link && menuItem.link.includes('vacancies') ? (
+                      <VacanciesCounterWrapper>
+                        <VacanciesCounter />
+                      </VacanciesCounterWrapper>
+                    ) : null}
                   </ItemLink>
                 )}
               </MenuItem>
@@ -176,6 +182,23 @@ const MenuItems = styled.ul`
   `)}
 `;
 
+const ItemLink = styled(Link)`
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: ${colors.white};
+  text-transform: capitalize;
+  transition: 150ms all ease-in-out;
+
+  ${media.tabletSmall(css`
+    font-weight: 700;
+  `)}
+  &:hover {
+    color: #ccc;
+  }
+`;
+
 const MenuItem = styled.li`
   &:not(:last-child) {
     margin: 0 26px;
@@ -236,20 +259,14 @@ const MenuItem = styled.li`
   }
 `;
 
-const ItemLink = styled(Link)`
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 130%;
-  color: ${colors.white};
-  text-transform: capitalize;
-  transition: 150ms all ease-in-out;
+const VacanciesCounterWrapper = styled.div`
+  position: absolute;
+  right: -16px;
+  top: -10px;
 
   ${media.tabletSmall(css`
-    font-weight: 700;
+    display: none;
   `)}
-  &:hover {
-    color: #ccc;
-  }
 `;
 
 export default HeaderMenu;

@@ -61,9 +61,8 @@ export type FileType = {
   url: string;
 };
 
-export interface HeaderFooterType {
+export interface SocialsType {
   socialsData: Array<{ href: StringFieldType; svg: SVGProps<SVGSVGElement> }>;
-  vacanciesTotalValue: number;
 }
 
 export interface HeroSectionType extends PageFullType {

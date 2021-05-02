@@ -46,22 +46,15 @@ function Layout({ children, isPreloaderHidden, isWhite }: Props) {
       svg: <AndroidIcon />,
     },
   ];
-  const vacanciesTotalValue = useTypedSelector(selectVacanciesTotalValue);
 
   return (
     <Container>
       <Preloader hidden={isPreloaderHidden} />
 
-      <Header
-        socialsData={socialsData}
-        vacanciesTotalValue={vacanciesTotalValue}
-      />
+      <Header socialsData={socialsData} />
       <Main isWhite={isWhite}>{children}</Main>
       <ContactsSection />
-      <Footer
-        socialsData={socialsData}
-        vacanciesTotalValue={vacanciesTotalValue}
-      />
+      <Footer socialsData={socialsData} />
     </Container>
   );
 }

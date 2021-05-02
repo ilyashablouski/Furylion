@@ -6,6 +6,7 @@ import { MenuItemType } from '@tager/web-modules';
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import VacanciesCounter from '@/components/VacanciesCounter';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -22,6 +23,11 @@ function FooterMenu({ menuItemList }: Props) {
               target={menuItem.isNewTab ? '_blank' : '_self'}
             >
               {menuItem.label}
+              {menuItem.link && menuItem.link.includes('vacancies') ? (
+                <VacanciesCounterWrapper>
+                  <VacanciesCounter isRed={true} />
+                </VacanciesCounterWrapper>
+              ) : null}
             </ItemLink>
           </MenuItem>
         );
@@ -63,6 +69,7 @@ const MenuItem = styled.li`
 `;
 
 const ItemLink = styled(Link)`
+  position: relative;
   font-weight: 500;
   font-size: 14px;
   line-height: 130%;
@@ -74,6 +81,12 @@ const ItemLink = styled(Link)`
     color: ${colors.red};
     border-bottom-color: ${colors.red};
   }
+`;
+
+const VacanciesCounterWrapper = styled.div`
+  position: absolute;
+  right: -16px;
+  top: -10px;
 `;
 
 export default FooterMenu;
