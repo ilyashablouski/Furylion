@@ -70,12 +70,12 @@ function AdsSwiper({ adsImages }: Props) {
 
     window.addEventListener('resize', handleResize);
 
-    function handleDrag(draggable: Draggable) {
+    function handleDrag(this: Draggable) {
       if (disabled) return;
 
       const resultSlideIndex =
-        draggable.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-      const symbol = draggable.x < 0 ? '-' : '+';
+        this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
+      const symbol = this.x < 0 ? '-' : '+';
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
