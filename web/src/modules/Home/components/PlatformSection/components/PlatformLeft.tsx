@@ -86,13 +86,15 @@ const Container = styled.div`
   flex: 1 1 50%;
   max-width: 50%;
 
-  ${media.desktop1366(css`
-    padding-right: 0;
-  `)}
-
   ${media.tabletSmall(css`
     padding: 0;
     max-width: 50%;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    padding: 0;
+    flex: 1 1 65%;
+    max-width: 65%;
   `)}
 
   ${media.mobile(css`
@@ -134,7 +136,7 @@ const Text = styled.p`
   `)}
 
   ${media.tabletSmallOnly(css`
-    margin-top: 27px;
+    margin-top: 41px;
   `)}
 
   ${media.mobile(css`
@@ -149,12 +151,8 @@ const Logos = styled.div`
   max-width: 700px;
   justify-content: space-between;
 
-  ${media.desktop1366(css`
-    max-width: none;
-  `)}
-
   ${media.tabletSmallOnly(css`
-    margin-top: 53px;
+    margin-top: 43px;
   `)}
 
   ${media.mobile(css`
@@ -229,7 +227,7 @@ const Buttons = styled.div`
   `)}
 
   ${media.tabletSmallOnly(css`
-    bottom: 70px;
+    bottom: 75px;
   `)}
 
   ${media.mobile(css`

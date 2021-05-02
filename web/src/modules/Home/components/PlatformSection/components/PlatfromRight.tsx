@@ -83,11 +83,6 @@ const Container = styled.div`
   flex: 1 1 46.6%;
   max-width: 46.6%;
 
-  ${media.desktop1366(css`
-    margin-left: 100px;
-    padding-left: 0;
-  `)}
-
   ${media.tabletSmall(css`
     padding: 0;
     flex: 1 1 50%;
@@ -95,7 +90,10 @@ const Container = styled.div`
   `)}
 
   ${media.tabletSmallOnly(css`
+    margin-top: 2px;
     margin-left: 103px;
+    flex: 1 1 calc(35% + 103px);
+    max-width: calc(35% + 103px);
   `)}
 
   ${media.mobile(css`
