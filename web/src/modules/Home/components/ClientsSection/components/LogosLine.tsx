@@ -1,31 +1,29 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ThumbnailType } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
 
 import PlainPicture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
 type Props = {
-  top?: true;
+  isTop?: true;
   logosArray?: Array<ThumbnailType>;
 };
 
-function LogosLine({ top, logosArray }: Props) {
+function LogosLine({ isTop, logosArray }: Props) {
   return (
-    <Container top={top}>
+    <Container isTop={isTop}>
       <LogosWrapper>
         {logosArray
           ? logosArray.map((logo, index) => (
               <Logo
                 key={index}
-                mobileSmall={{
-                  src: logo?.url,
-                  src2x: logo?.url_2x,
-                  webp: logo?.url_webp,
-                  webp2x: logo?.url_webp_2x,
-                }}
+                mobileSmall={convertThumbnailToPictureImage(logo)}
                 className="logo-image"
               />
             ))
@@ -35,17 +33,17 @@ function LogosLine({ top, logosArray }: Props) {
   );
 }
 
-const Container = styled.div<{ top?: boolean }>`
+const Container = styled.div<{ isTop?: boolean }>`
   margin: 0 -20px;
   display: flex;
   align-items: center;
   height: 150px;
-  margin-top: ${(props) => (props.top ? '0' : '-6%')};
-  background: ${(props) => (props.top ? `${colors.white}` : `${colors.red}`)};
-  transform: ${(props) => (props.top ? 'rotate(-3deg)' : 'rotate(3deg)')};
+  margin-top: ${(props) => (props.isTop ? '0' : '-6%')};
+  background: ${(props) => (props.isTop ? `${colors.white}` : `${colors.red}`)};
+  transform: ${(props) => (props.isTop ? 'rotate(-3deg)' : 'rotate(3deg)')};
 
   @media (min-width: 1367px) {
-    margin-top: ${(props) => (props.top ? '0' : '-3%')};
+    margin-top: ${(props) => (props.isTop ? '0' : '-3%')};
   }
 
   ${media.tabletSmall(css`

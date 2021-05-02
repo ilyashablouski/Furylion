@@ -23,7 +23,6 @@ function NetworksLogosLine({ isTop, logosArray }: Props) {
           ? logosArray.map((logo, index) => (
               <Logo
                 key={index}
-                //TODO:Refactor to images thumbnail
                 mobileSmall={convertThumbnailToPictureImage(logo)}
                 className="logo-image"
               />

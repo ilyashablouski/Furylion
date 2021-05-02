@@ -5,6 +5,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { ClientsSectionType } from '@/typings/model';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
+import TickerLine from '@/components/TickerLine';
 
 import LogosLine from './components/LogosLine';
 
@@ -16,8 +17,10 @@ function ClientsSection() {
       <Title>{pageFields?.clientsTitle}</Title>
 
       <Inner>
-        <LogosLine top logosArray={pageFields?.clientsFirstGallery} />
-        <LogosLine logosArray={pageFields?.clientsSecondGallery} />
+        {/*TODO: combine into one component with networks line */}
+        {/*<LogosLine isTop logosArray={pageFields?.clientsFirstGallery} />*/}
+        {/*<LogosLine logosArray={pageFields?.clientsSecondGallery} />*/}
+        <TickerLine labelTicket="Инфо" rotateTicket={'-3'} />
       </Inner>
     </Wrapper>
   );
