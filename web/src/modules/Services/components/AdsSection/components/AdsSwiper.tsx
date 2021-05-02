@@ -18,10 +18,10 @@ type Props = {
 const rotate = 10;
 const translate = 20;
 const draggableBounds = {
-  minX: -10,
-  maxY: 10,
-  minY: -10,
-  maxX: 10,
+  minX: -5,
+  maxY: 5,
+  minY: -5,
+  maxX: 5,
 };
 
 function AdsSwiper({ adsImages }: Props) {
@@ -58,7 +58,6 @@ function AdsSwiper({ adsImages }: Props) {
       const resultIndex = activeSlideIndex - index;
 
       gsap.set(slide.current, {
-        transformOrigin: '50% 100%',
         translateY: translate * Math.abs(resultIndex) ** 2,
         translateX: translate * -resultIndex,
         rotate: rotate * -resultIndex,
@@ -106,13 +105,13 @@ function AdsSwiper({ adsImages }: Props) {
       throwProps: true,
       bounds: draggableBounds,
       trigger: containerElem,
-      inertia: true,
       type: 'x',
     });
 
     return () => {
       window.removeEventListener('resize', handleResize);
       draggable.forEach((item) => item.kill());
+      gsap.killTweensOf(window);
     };
   }, [adsImages.length]);
 
@@ -121,7 +120,7 @@ function AdsSwiper({ adsImages }: Props) {
   return (
     <Container ref={containerRef}>
       {adsImages.map((adsImage, index) => (
-        <Slide key={index} ref={slideListRef.current[index]} className="slide">
+        <Slide key={index} ref={slideListRef.current[index]}>
           <SwiperImage mobileSmall={convertThumbnailToPictureImage(adsImage)} />
         </Slide>
       ))}
@@ -139,6 +138,7 @@ const Container = styled.div`
 const Slide = styled.div`
   flex: 0 0 248px;
   max-width: 248px;
+  transform-origin: 50% 100%;
 
   ${media.tabletSmallOnly(css`
     flex-basis: 208px;
