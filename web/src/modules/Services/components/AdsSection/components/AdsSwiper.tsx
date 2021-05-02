@@ -70,12 +70,12 @@ function AdsSwiper({ adsImages }: Props) {
 
     window.addEventListener('resize', handleResize);
 
-    function updateProgress(this: any) {
+    function handleDrag(draggable: Draggable) {
       if (disabled) return;
 
       const resultSlideIndex =
-        this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-      const symbol = this.x < 0 ? '-' : '+';
+        draggable.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
+      const symbol = draggable.x < 0 ? '-' : '+';
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -100,8 +100,8 @@ function AdsSwiper({ adsImages }: Props) {
 
     const proxy = document.createElement('div');
     const draggable = Draggable.create(proxy, {
-      onDrag: updateProgress,
-      onThrowUpdate: updateProgress,
+      onDrag: handleDrag,
+      onThrowUpdate: handleDrag,
       throwProps: true,
       bounds: draggableBounds,
       trigger: containerElem,
