@@ -8,11 +8,11 @@ import { colors } from '@/constants/theme';
 import SocialNetwork from '@/components/SocialNetwork';
 import { media } from '@/utils/mixin';
 import Link from '@/components/Link';
-import { SocialsType } from '@/typings/model';
+import { HeaderFooterType } from '@/typings/model';
 
 import FooterMenu from './components/FooterMenu';
 
-function Footer({ socialsData }: SocialsType) {
+function Footer({ socialsData }: HeaderFooterType) {
   const footerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'footer')) ??
     [];

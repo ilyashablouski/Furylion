@@ -9,7 +9,8 @@ import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.s
 import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
 import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
 import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
-import { media } from '@/utils/mixin';
+import { useTypedSelector } from '@/store/store';
+import { selectVacanciesTotalValue } from '@/store/reducers/pages/vacancies';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -45,15 +46,22 @@ function Layout({ children, isPreloaderHidden, isWhite }: Props) {
       svg: <AndroidIcon />,
     },
   ];
+  const vacanciesTotalValue = useTypedSelector(selectVacanciesTotalValue);
 
   return (
     <Container>
       <Preloader hidden={isPreloaderHidden} />
 
-      <Header socialsData={socialsData} />
+      <Header
+        socialsData={socialsData}
+        vacanciesTotalValue={vacanciesTotalValue}
+      />
       <Main isWhite={isWhite}>{children}</Main>
       <ContactsSection />
-      <Footer socialsData={socialsData} />
+      <Footer
+        socialsData={socialsData}
+        vacanciesTotalValue={vacanciesTotalValue}
+      />
     </Container>
   );
 }

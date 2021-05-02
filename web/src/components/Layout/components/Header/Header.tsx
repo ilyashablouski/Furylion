@@ -9,12 +9,12 @@ import Link from '@/components/Link';
 import { useTypedSelector } from '@/store/store';
 import { selectMenuItemListByAlias } from '@/store/reducers/tager/menus';
 import { media } from '@/utils/mixin';
-import { SocialsType } from '@/typings/model';
+import { HeaderFooterType } from '@/typings/model';
 
 import HeaderMenu from './components/HeaderMenu';
 import MobileMenuToggle from './components/MobileMenuToggle';
 
-function Header({ socialsData }: SocialsType) {
+function Header({ socialsData }: HeaderFooterType) {
   const containerRef = useRef<HTMLDivElement>(null);
   const headerMenuItemList =
     useTypedSelector((state) => selectMenuItemListByAlias(state, 'header')) ??

@@ -36,22 +36,17 @@ export function getCareersVacancyByAlias(
 ): Promise<ResponseBody<VacancyFullType>> {
   return request.get({ path: `/vacancies/${alias}` });
 }
-//FIXME: fix for get meta & data
-// export function getCareersVacanciesList(): Promise<{
-//   data: ResponseBody<Array<VacancyShortListType>>;
-//   meta: {
-//     page: {
-//       number: number;
-//       size: number;
-//       count: number;
-//     };
-//     total: number;
-//   };
-// }> {
-//   return request.get({ path: `/vacancies` });
-// }
-export function getCareersVacanciesList(): Promise<
-  ResponseBody<Array<VacancyShortType>>
-> {
+
+export function getCareersVacanciesList(): Promise<{
+  data: ResponseBody<Array<VacancyShortType>>;
+  meta: {
+    page: {
+      number: number;
+      size: number;
+      count: number;
+    };
+    total: number;
+  };
+}> {
   return request.get({ path: `/vacancies` });
 }

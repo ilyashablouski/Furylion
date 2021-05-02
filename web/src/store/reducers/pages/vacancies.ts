@@ -29,7 +29,6 @@ type State = {
 const initialState: State = {
   VacancyShortListTypeList: vacancyListLoader.getInitialResource(),
   VacancyFullListTypeMap: {},
-  //FIXME: fix for get meta
   totalVacanciesValue: 0,
 };
 const vacanciesSlice = createSlice({
@@ -40,12 +39,9 @@ const vacanciesSlice = createSlice({
     vacanciesListRequestPending(state) {
       state.VacancyShortListTypeList = vacancyListLoader.pending();
     },
-    vacanciesListRequestFulfilled(
-      state,
-      action: PayloadAction<Array<VacancyShortType>>
-    ) {
+    vacanciesListRequestFulfilled(state, action: PayloadAction<{ data: any }>) {
       state.VacancyShortListTypeList = vacancyListLoader.fulfill(
-        action.payload
+        action.payload.data
       );
     },
     vacanciesListRequestRejected(state) {
@@ -100,13 +96,9 @@ export function getVacanciesListThunk(options?: {
     dispatch(vacanciesListRequestPending());
     try {
       const response = await getCareersVacanciesList();
-      //FIXME: fix for get meta & data
-      // dispatch(vacanciesListRequestFulfilled(response.data.data));
-      // dispatch(setTotalVacanciesValue({ total: response.meta.total }));
-      // return response.data.data;
-
-      dispatch(vacanciesListRequestFulfilled(response.data));
-      return response.data;
+      dispatch(vacanciesListRequestFulfilled({ data: response.data }));
+      dispatch(setTotalVacanciesValue({ total: response.meta.total }));
+      return response.data.data;
     } catch (error) {
       dispatch(vacanciesListRequestRejected());
       return [];
