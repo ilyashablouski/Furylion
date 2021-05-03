@@ -48,15 +48,15 @@ function TickerLine({
     if (!tickerElem) return;
 
     const fragment = new DocumentFragment();
-    generateNumberArray(2).forEach(() => {
+    generateNumberArray(0).forEach(() => {
       fragment.append(tickerElem.cloneNode(true));
     });
-    scrollInnerElem.append(fragment);
-    // scrollInnerElem.append(scrollLineElem.cloneNode(true));
+    scrollLineElem.append(fragment);
+    scrollInnerElem.append(scrollLineElem.cloneNode(true));
 
     const tween = gsap.to(scrollInnerElem, {
       duration: () => getScrollLineWidth() / 90,
-      x: () => getScrollLineWidth(),
+      x: () => -getScrollLineWidth(),
       ease: 'none',
       repeat: -1,
     });
@@ -93,15 +93,28 @@ function TickerLine({
     >
       {linkTicket ? <ComponentLink href={linkTicket} /> : null}
       <ScrollerInner ref={scrollInnerRef}>
-        <LogosWrapper ref={scrollLineRef} className="ticker">
+        <LogosWrapper ref={scrollLineRef} sizeTicket={sizeTicket}>
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
                   key={index}
                   mobileSmall={convertThumbnailToPictureImage(logo)}
+                  className="ticker"
                 />
               ))
             : null}
+          {logosArray
+            ? logosArray.map((logo, index) => (
+                <Logo
+                  key={index}
+                  mobileSmall={convertThumbnailToPictureImage(logo)}
+                  className="ticker"
+                />
+              ))
+            : null}
+          {/*<ScrollerItem colorTicket={colorTicket} className="ticker">*/}
+          {/*  {labelTicket}*/}
+          {/*</ScrollerItem>*/}
         </LogosWrapper>
       </ScrollerInner>
     </Container>
@@ -131,16 +144,10 @@ const Container = styled.div<{
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
 }>`
+  margin: 0 -20px;
   display: flex;
   align-items: center;
   height: 150px;
-  position: relative;
-  width: calc(100% + 80px);
-  position: relative;
-  left: -40px;
-  right: -30px;
-  overflow: hidden;
-  z-index: 3;
 
   background: ${(props) =>
     props.backgroundTicket ? `${props.backgroundTicket}` : `${colors.white}`};
@@ -213,19 +220,40 @@ const ComponentLink = styled.a`
 `;
 
 const ScrollerInner = styled.div`
-  margin-left: -50%;
   position: relative;
   display: flex;
 `;
 
-const LogosWrapper = styled.div`
+const LogosWrapper = styled.div<{
+  sizeTicket?: StringFieldType;
+}>`
   display: flex;
   align-items: center;
   width: 100%;
+  height: 150px;
+
+  ${(props) =>
+    props.sizeTicket === 'large'
+      ? css`
+          height: 150px;
+
+          ${media.laptop(css`
+            height: 120px;
+          `)}
+        `
+      : props.sizeTicket === 'middle'
+      ? css`
+          height: 140px;
+
+          ${media.laptop(css`
+            height: 120px;
+          `)}
+        `
+      : ''}
 `;
 
 const Logo = styled(PlainPicture)`
-  //padding: 0 50px;
+  padding: 0 50px;
 
   ${media.tabletSmallOnly(css`
     padding: 0 35px;
@@ -239,6 +267,7 @@ const Logo = styled(PlainPicture)`
     //noinspection CssInvalidPropertyValue
     image-rendering: -webkit-optimize-contrast;
     max-height: 90px;
+    max-width: initial;
 
     ${media.tabletSmallOnly(css`
       max-height: 55px;
