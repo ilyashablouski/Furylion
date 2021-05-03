@@ -12,7 +12,6 @@ export type FormValues = {
   urlAlias: string;
   location: Nullable<OptionType<number>>;
   excerpt: string;
-  body: string;
   pageTitle: string;
   pageDescription: string;
   openGraphImage: Nullable<SingleFileInputValueType>;
@@ -46,7 +45,6 @@ export function convertFormValuesToVacancyUpdatePayload(
     urlAlias: values.urlAlias,
     locationId: values.location?.value ?? null,
     excerpt: values.excerpt,
-    body: values.body,
     pageTitle: values.pageTitle,
     pageDescription: values.pageDescription,
     openGraphImage: values.openGraphImage?.file.id ?? null,
@@ -74,7 +72,6 @@ export function convertVacancyToFormValues(
       urlAlias: '',
       location: null,
       excerpt: '',
-      body: '',
       pageTitle: '',
       pageDescription: '',
       openGraphImage: null,
@@ -101,7 +98,6 @@ export function convertVacancyToFormValues(
     urlAlias: vacancy.urlAlias ?? '',
     location: foundVacancyLocationOption ?? null,
     excerpt: vacancy.excerpt ?? '',
-    body: vacancy.body ?? '',
     pageTitle: vacancy.pageTitle ?? '',
     pageDescription: vacancy.pageDescription ?? '',
     openGraphImage: vacancy.openGraphImage

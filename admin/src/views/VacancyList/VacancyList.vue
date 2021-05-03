@@ -108,6 +108,7 @@ import {
 import { useResourceDelete, useResourceMove } from '@tager/admin-services';
 import { VacancyLocationType, VacancyType, TagType } from '@/typings/model';
 import { getWebsiteOrigin } from '@/utils/common';
+import _ from 'lodash';
 
 const COLUMN_DEFS: Array<ColumnDefinition<VacancyType>> = [
   {
@@ -237,13 +238,17 @@ export default defineComponent({
     });
 
     watch(filterParams, () => {
-      context.root.$router.replace({
-        query: {
-          ...filterParams.value,
-          query: (context.root.$route.query.query ?? '') as string,
-        },
-      });
-      fetchVacanciesList();
+      const newQuery = {
+        ...filterParams.value,
+        query: context.root.$route.query.query,
+      };
+
+      if (!_.isEqual(context.root.$route.query, newQuery)) {
+        context.root.$router.replace({
+          query: newQuery,
+        });
+        fetchVacanciesList();
+      }
     });
 
     const {

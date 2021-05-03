@@ -109,12 +109,6 @@
           label="Third intro text"
         />
         <form-field-rich-text-input
-          v-model="values.body"
-          name="body"
-          label="Body"
-          :error="errors.body"
-        />
-        <form-field-rich-text-input
           v-model="values.duties"
           name="duties"
           :error="errors.duties"

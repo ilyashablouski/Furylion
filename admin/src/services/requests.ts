@@ -42,7 +42,6 @@ export type VacancyUpdatePayload = {
   urlAlias: string;
   locationId: Nullable<number>;
   excerpt: string;
-  body: string;
   pageTitle: string;
   pageDescription: string;
   openGraphImage: Nullable<string>;
