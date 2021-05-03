@@ -20,10 +20,20 @@ function ClientsSection() {
         {/*TODO: combine into one component with networks line */}
         {/*<LogosLine isTop logosArray={pageFields?.clientsFirstGallery} />*/}
         {/*<LogosLine logosArray={pageFields?.clientsSecondGallery} />*/}
-        <TickerLine
-          rotateTicket={'-3'}
-          logosArray={pageFields?.clientsFirstGallery}
-        />
+        <Row>
+          <TickerLine
+            rotateTicket={'-3'}
+            logosArray={pageFields?.clientsFirstGallery}
+          />
+        </Row>
+        <Row isBottom={true}>
+          <TickerLine
+            isReversed={true}
+            rotateTicket={'3'}
+            logosArray={pageFields?.clientsSecondGallery}
+            backgroundTicket={colors.red}
+          />
+        </Row>
       </Inner>
     </Wrapper>
   );
@@ -71,6 +81,21 @@ const Inner = styled.div`
   ${media.mobile(css`
     margin-top: 42px;
   `)}
+`;
+
+const Row = styled.div<{ isBottom?: boolean }>`
+  ${(props) =>
+    props.isBottom &&
+    css`
+      margin-top: -6%;
+
+      @media (min-width: 1367px) {
+        margin-top: -3%;
+      }
+      ${media.tabletSmall(css`
+        margin-top: 4%;
+      `)}
+    `}
 `;
 
 export default ClientsSection;

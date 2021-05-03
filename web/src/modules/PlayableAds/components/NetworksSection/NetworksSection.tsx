@@ -6,6 +6,7 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { NetworksSectionType } from '@/typings/model';
+import TickerLine from '@/components/TickerLine';
 
 import NetworksLogosLine from './components/NetworksLogosLine';
 
@@ -22,8 +23,27 @@ function NetworksSection() {
       </ContentContainer>
 
       <Inner>
-        <NetworksLogosLine isTop logosArray={pageFields.networksFirstGallery} />
-        <NetworksLogosLine logosArray={pageFields.networksSecondGallery} />
+        {/*<NetworksLogosLine isTop logosArray={pageFields.networksFirstGallery} />*/}
+        {/*<NetworksLogosLine logosArray={pageFields.networksSecondGallery} />*/}
+
+        <Row>
+          <TickerLine
+            isAbove={true}
+            rotateTicket={'-4'}
+            sizeTicket="middle"
+            logosArray={pageFields?.networksFirstGallery}
+          />
+        </Row>
+
+        <Row isBottom={true}>
+          <TickerLine
+            isReversed={true}
+            rotateTicket={'4'}
+            sizeTicket="middle"
+            logosArray={pageFields?.networksSecondGallery}
+            backgroundTicket={colors.dark}
+          />
+        </Row>
       </Inner>
     </Wrapper>
   );
@@ -71,6 +91,21 @@ const Inner = styled.div`
     margin-top: 55px;
     padding-bottom: 20px;
   `)}
+`;
+
+const Row = styled.div<{ isBottom?: boolean }>`
+  ${(props) =>
+    props.isBottom &&
+    css`
+      margin-top: 2%;
+
+      @media (min-width: 1367px) {
+        margin-top: -3%;
+      }
+      ${media.tabletSmall(css`
+        margin-top: 3%;
+      `)}
+    `}
 `;
 
 export default NetworksSection;

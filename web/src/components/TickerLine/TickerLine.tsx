@@ -23,6 +23,8 @@ type Props = {
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
   logosArray?: Array<ThumbnailType>;
+  isReversed?: boolean;
+  isAbove?: boolean;
 };
 
 function TickerLine({
@@ -33,6 +35,8 @@ function TickerLine({
   rotateTicket,
   sizeTicket,
   logosArray,
+  isReversed,
+  isAbove,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollInnerRef = useRef<HTMLDivElement>(null);
@@ -54,11 +58,13 @@ function TickerLine({
     scrollLineElem.append(fragment);
     scrollInnerElem.append(scrollLineElem.cloneNode(true));
 
+    //FIXME: Fix correct condition for two tween instance
     const tween = gsap.to(scrollInnerElem, {
       duration: () => getScrollLineWidth() / 90,
       x: () => -getScrollLineWidth(),
       ease: 'none',
       repeat: -1,
+      reversed: isReversed,
     });
 
     window.addEventListener('resize', onResize);
@@ -90,8 +96,9 @@ function TickerLine({
       rotateTicket={rotateTicket}
       sizeTicket={sizeTicket}
       ref={containerRef}
+      isReversed={isReversed}
+      isAbove={isAbove}
     >
-      {linkTicket ? <ComponentLink href={linkTicket} /> : null}
       <ScrollerInner ref={scrollInnerRef}>
         <LogosWrapper ref={scrollLineRef} sizeTicket={sizeTicket}>
           {logosArray
@@ -143,11 +150,19 @@ const Container = styled.div<{
   backgroundTicket?: StringFieldType;
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
+  isReversed?: boolean;
+  isAbove?: boolean;
 }>`
   margin: 0 -20px;
   display: flex;
   align-items: center;
   height: 150px;
+  ${(props) =>
+    props.isAbove &&
+    css`
+      position: relative;
+      z-index: 2;
+    `}
 
   background: ${(props) =>
     props.backgroundTicket ? `${props.backgroundTicket}` : `${colors.white}`};
@@ -155,10 +170,6 @@ const Container = styled.div<{
   transform: rotate(
     ${(props) => (props.rotateTicket ? `${props.rotateTicket}deg` : '0deg')}
   );
-
-  ${media.tabletSmall(css`
-    margin-top: 30px;
-  `)}
 
   ${media.tabletSmallOnly(css`
     height: 90px;
@@ -169,54 +180,16 @@ const Container = styled.div<{
   `)}
 
   ${(props) =>
-    props.sizeTicket === 'large'
-      ? css`
-          height: 150px;
+    props.sizeTicket === 'middle' &&
+    css`
+      ${media.tabletSmallOnly(css`
+        height: 98px;
+      `)}
 
-          ${ScrollerItem} {
-            font-weight: bold;
-            font-size: 110px;
-            line-height: 80px;
-          }
-
-          ${media.laptop(css`
-            height: 120px;
-            ${ScrollerItem} {
-              font-weight: bold;
-              font-size: 80px;
-              line-height: 80px;
-            }
-          `)}
-        `
-      : props.sizeTicket === 'middle'
-      ? css`
-          height: 140px;
-
-          ${ScrollerItem} {
-            font-weight: bold;
-            font-size: 100px;
-            line-height: 100px;
-          }
-
-          ${media.laptop(css`
-            height: 120px;
-            ${ScrollerItem} {
-              font-weight: bold;
-              font-size: 80px;
-              line-height: 80px;
-            }
-          `)}
-        `
-      : ''}
-`;
-
-const ComponentLink = styled.a`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
+      ${media.mobile(css`
+        height: 65px;
+      `)}
+    `}
 `;
 
 const ScrollerInner = styled.div`
@@ -232,24 +205,25 @@ const LogosWrapper = styled.div<{
   width: 100%;
   height: 150px;
 
+  ${media.tabletSmallOnly(css`
+    height: 90px;
+  `)}
+
+  ${media.mobile(css`
+    height: 40px;
+  `)}
+
   ${(props) =>
-    props.sizeTicket === 'large'
-      ? css`
-          height: 150px;
+    props.sizeTicket === 'middle' &&
+    css`
+      ${media.tabletSmallOnly(css`
+        height: 98px;
+      `)}
 
-          ${media.laptop(css`
-            height: 120px;
-          `)}
-        `
-      : props.sizeTicket === 'middle'
-      ? css`
-          height: 140px;
-
-          ${media.laptop(css`
-            height: 120px;
-          `)}
-        `
-      : ''}
+      ${media.mobile(css`
+        height: 65px;
+      `)}
+    `}
 `;
 
 const Logo = styled(PlainPicture)`
