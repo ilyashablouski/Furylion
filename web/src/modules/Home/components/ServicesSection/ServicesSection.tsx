@@ -36,6 +36,10 @@ const Wrapper = styled.section`
   ${media.tabletSmall(css`
     margin-top: 70px;
   `)}
+
+  ${media.mobile(css`
+    margin-top: 79px;
+  `)}
 `;
 
 const ServicesWrapper = styled.div`

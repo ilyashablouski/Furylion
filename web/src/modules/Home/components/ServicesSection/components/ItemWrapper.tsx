@@ -28,7 +28,7 @@ const Container = styled.div<{ singleItem?: boolean }>`
 
   ${media.mobile(css`
     margin-top: 30px;
-    padding-top: 83.33%;
+    padding-top: 83.88%;
   `)}
 
   &:hover {

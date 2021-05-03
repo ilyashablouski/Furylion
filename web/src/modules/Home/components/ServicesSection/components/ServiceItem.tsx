@@ -96,6 +96,10 @@ const ItemInfo = styled.div`
   ${media.tabletSmall(css`
     max-width: none;
   `)}
+
+  ${media.mobile(css`
+    bottom: 0;
+  `)}
 `;
 
 const ItemTitle = styled.span`
