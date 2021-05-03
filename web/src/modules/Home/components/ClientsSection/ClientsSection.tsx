@@ -20,7 +20,10 @@ function ClientsSection() {
         {/*TODO: combine into one component with networks line */}
         {/*<LogosLine isTop logosArray={pageFields?.clientsFirstGallery} />*/}
         {/*<LogosLine logosArray={pageFields?.clientsSecondGallery} />*/}
-        <TickerLine labelTicket="Инфо" rotateTicket={'-3'} />
+        <TickerLine
+          rotateTicket={'-3'}
+          logosArray={pageFields?.clientsFirstGallery}
+        />
       </Inner>
     </Wrapper>
   );

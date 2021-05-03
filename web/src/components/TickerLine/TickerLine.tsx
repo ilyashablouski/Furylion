@@ -3,10 +3,15 @@ import styled, { css } from 'styled-components';
 import { gsap } from 'gsap';
 
 import { generateNumberArray } from '@tager/web-core';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
 
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import { StringFieldType } from '@/typings/common';
+import PlainPicture from '@/components/Picture';
 
 import { createIntersectionObserver } from './TickerLine.helpers';
 
@@ -17,6 +22,7 @@ type Props = {
   linkTicket?: StringFieldType;
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
+  logosArray?: Array<ThumbnailType>;
 };
 
 function TickerLine({
@@ -26,10 +32,11 @@ function TickerLine({
   linkTicket,
   rotateTicket,
   sizeTicket,
+  logosArray,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollInnerRef = useRef<HTMLDivElement>(null);
-  const scrollLineRef = useRef<HTMLUListElement>(null);
+  const scrollLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const containerElem = containerRef.current;
@@ -41,14 +48,14 @@ function TickerLine({
     if (!tickerElem) return;
 
     const fragment = new DocumentFragment();
-    generateNumberArray(2).forEach(() => {
+    generateNumberArray(0).forEach(() => {
       fragment.append(tickerElem.cloneNode(true));
     });
     scrollLineElem.append(fragment);
     scrollInnerElem.append(scrollLineElem.cloneNode(true));
 
     const tween = gsap.to(scrollInnerElem, {
-      duration: () => getScrollLineWidth() / 150,
+      duration: () => getScrollLineWidth() / 90,
       x: () => -getScrollLineWidth(),
       ease: 'none',
       repeat: -1,
@@ -78,7 +85,7 @@ function TickerLine({
   }, []);
 
   return (
-    <Component
+    <Container
       backgroundTicket={backgroundTicket}
       rotateTicket={rotateTicket}
       sizeTicket={sizeTicket}
@@ -86,13 +93,22 @@ function TickerLine({
     >
       {linkTicket ? <ComponentLink href={linkTicket} /> : null}
       <ScrollerInner ref={scrollInnerRef}>
-        <ScrollLine ref={scrollLineRef}>
-          <ScrollerItem colorTicket={colorTicket} className="ticker">
-            {labelTicket}
-          </ScrollerItem>
-        </ScrollLine>
+        <LogosWrapper ref={scrollLineRef}>
+          {logosArray
+            ? logosArray.map((logo, index) => (
+                <Logo
+                  key={index}
+                  mobileSmall={convertThumbnailToPictureImage(logo)}
+                  className="ticker"
+                />
+              ))
+            : null}
+          {/*<ScrollerItem colorTicket={colorTicket} className="ticker">*/}
+          {/*  {labelTicket}*/}
+          {/*</ScrollerItem>*/}
+        </LogosWrapper>
       </ScrollerInner>
-    </Component>
+    </Container>
   );
 }
 
@@ -114,20 +130,15 @@ const ScrollerItem = styled.li<{ colorTicket?: StringFieldType }>`
   `)}
 `;
 
-const Component = styled.div<{
+const Container = styled.div<{
   backgroundTicket?: StringFieldType;
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
 }>`
-  width: calc(100% + 80px);
-  position: relative;
-  left: -40px;
-  right: -30px;
-  height: 80px;
+  margin: 0 -20px;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  z-index: 3;
+  height: 150px;
 
   background: ${(props) =>
     props.backgroundTicket ? `${props.backgroundTicket}` : `${colors.white}`};
@@ -136,11 +147,16 @@ const Component = styled.div<{
     ${(props) => (props.rotateTicket ? `${props.rotateTicket}deg` : '0deg')}
   );
 
-  ${media.laptop(css`
-    height: 58px;
-    width: calc(100% + 60px);
-    left: -30px;
-    right: -30px;
+  ${media.tabletSmall(css`
+    margin-top: 30px;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    height: 90px;
+  `)}
+
+  ${media.mobile(css`
+    height: 40px;
   `)}
 
   ${(props) =>
@@ -199,8 +215,36 @@ const ScrollerInner = styled.div`
   display: flex;
 `;
 
-const ScrollLine = styled.ul`
+const LogosWrapper = styled.div`
   display: flex;
+  align-items: center;
+  width: 100%;
+`;
+
+const Logo = styled(PlainPicture)`
+  //padding: 0 50px;
+
+  ${media.tabletSmallOnly(css`
+    padding: 0 35px;
+  `)}
+
+  ${media.mobile(css`
+    padding: 0 15px;
+  `)}
+
+  img {
+    //noinspection CssInvalidPropertyValue
+    image-rendering: -webkit-optimize-contrast;
+    max-height: 90px;
+
+    ${media.tabletSmallOnly(css`
+      max-height: 55px;
+    `)}
+
+    ${media.mobile(css`
+      max-height: 25px;
+    `)}
+  }
 `;
 
 export default TickerLine;
