@@ -13,7 +13,7 @@ function OutStaffingSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper>
+    <Wrapper className="section-wrapper">
       <ContentContainer>
         <Title>{pageFields.outStaffingTitle}</Title>
 
@@ -25,37 +25,41 @@ function OutStaffingSection() {
             <Text>{pageFields.outStaffingText2}</Text>
           </TextItem>
         </TextContainer>
-
-        <Main>
-          <MainWrapper>
-            {pageFields.outStaffingItems
-              ? pageFields.outStaffingItems.map((outStaffingItem, index) => {
-                  const tagsArray = outStaffingItem.tags
-                    ? outStaffingItem.tags.split(',')
-                    : [];
-                  return (
-                    <TagsBlock key={index}>
-                      <TagsTitle>{outStaffingItem.title}</TagsTitle>
-                      <TagsWrapper>
-                        <Tags>
-                          {tagsArray
-                            ? tagsArray.map((tag, index) => {
-                                return (
-                                  <TagItem key={index}>
-                                    <Tag>{tag}</Tag>
-                                  </TagItem>
-                                );
-                              })
-                            : null}
-                        </Tags>
-                      </TagsWrapper>
-                    </TagsBlock>
-                  );
-                })
-              : null}
-          </MainWrapper>
-        </Main>
       </ContentContainer>
+
+      <Main>
+        <MainWrapper>
+          {pageFields.outStaffingItems
+            ? pageFields.outStaffingItems.map((outStaffingItem, index) => {
+                const tagsArray = outStaffingItem.tags
+                  ? outStaffingItem.tags.split(',')
+                  : [];
+                return (
+                  <TagsInner key={index}>
+                    <TagsContainer>
+                      <TagsBlock>
+                        <TagsTitle>{outStaffingItem.title}</TagsTitle>
+                        <TagsWrapper>
+                          <Tags>
+                            {tagsArray
+                              ? tagsArray.map((tag, index) => {
+                                  return (
+                                    <TagItem key={index}>
+                                      <Tag>{tag}</Tag>
+                                    </TagItem>
+                                  );
+                                })
+                              : null}
+                          </Tags>
+                        </TagsWrapper>
+                      </TagsBlock>
+                    </TagsContainer>
+                  </TagsInner>
+                );
+              })
+            : null}
+        </MainWrapper>
+      </Main>
     </Wrapper>
   );
 }
@@ -121,14 +125,26 @@ const Text = styled.p`
 const Main = styled.div`
   margin-top: 30px;
   display: flex;
+  justify-content: center;
 
   ${media.tabletSmallOnly(css`
     margin-top: 50px;
+    margin-left: -10px;
+    margin-right: -10px;
+  `)}
+
+  ${media.tabletSmallOnly(css`
+    padding: 0 40px;
+  `)}
+
+  ${media.mobile(css`
+    padding: 0 20px;
   `)}
 `;
 
 const MainWrapper = styled.div`
   margin-top: -25px;
+  width: 100%;
   ${media.tabletSmallOnly(css`
     margin: -20px -10px 0;
     display: flex;
@@ -142,16 +158,24 @@ const MainWrapper = styled.div`
   `)}
 `;
 
-const TagsBlock = styled.div`
+const TagsContainer = styled.div`
+  max-width: 1368px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 68px;
+  
+  ${media.tabletSmall(css`
+    padding: 0;
+    height: 100%;
+  `)} 
+}
+`;
+
+const TagsInner = styled.div`
   margin-top: 25px;
-  display: inline-flex;
-  align-items: center;
-  border: 1px dashed rgba(194, 25, 30, 0.8);
 
   ${media.tabletSmall(css`
     margin: 20px 10px 0;
-    padding: 20px 25px;
-    display: block;
     flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
   `)}
@@ -159,6 +183,25 @@ const TagsBlock = styled.div`
   ${media.mobile(css`
     margin: 10px 0 0;
     max-width: none;
+  `)}
+`;
+
+const TagsBlock = styled.div`
+  display: inline-flex;
+  align-items: center;
+  border: 1px dashed rgba(194, 25, 30, 0.8);
+  @media (min-width: 1024px) {
+    &:hover {
+      .section-wrapper & {
+        background: ${colors.red};
+      }
+    }
+  }
+
+  ${media.tabletSmall(css`
+    padding: 20px 25px;
+    height: 100%;
+    display: block;
   `)}
 `;
 
@@ -179,6 +222,7 @@ const TagsTitle = styled.div`
 const TagsWrapper = styled.div`
   padding: 25px;
   display: inline-grid;
+  width: 100%;
 
   ${media.tabletSmall(css`
     margin-top: 20px;

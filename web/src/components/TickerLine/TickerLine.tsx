@@ -48,15 +48,15 @@ function TickerLine({
     if (!tickerElem) return;
 
     const fragment = new DocumentFragment();
-    generateNumberArray(0).forEach(() => {
+    generateNumberArray(2).forEach(() => {
       fragment.append(tickerElem.cloneNode(true));
     });
-    scrollLineElem.append(fragment);
-    scrollInnerElem.append(scrollLineElem.cloneNode(true));
+    scrollInnerElem.append(fragment);
+    // scrollInnerElem.append(scrollLineElem.cloneNode(true));
 
     const tween = gsap.to(scrollInnerElem, {
       duration: () => getScrollLineWidth() / 90,
-      x: () => -getScrollLineWidth(),
+      x: () => getScrollLineWidth(),
       ease: 'none',
       repeat: -1,
     });
@@ -93,19 +93,15 @@ function TickerLine({
     >
       {linkTicket ? <ComponentLink href={linkTicket} /> : null}
       <ScrollerInner ref={scrollInnerRef}>
-        <LogosWrapper ref={scrollLineRef}>
+        <LogosWrapper ref={scrollLineRef} className="ticker">
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
                   key={index}
                   mobileSmall={convertThumbnailToPictureImage(logo)}
-                  className="ticker"
                 />
               ))
             : null}
-          {/*<ScrollerItem colorTicket={colorTicket} className="ticker">*/}
-          {/*  {labelTicket}*/}
-          {/*</ScrollerItem>*/}
         </LogosWrapper>
       </ScrollerInner>
     </Container>
@@ -135,10 +131,16 @@ const Container = styled.div<{
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
 }>`
-  margin: 0 -20px;
   display: flex;
   align-items: center;
   height: 150px;
+  position: relative;
+  width: calc(100% + 80px);
+  position: relative;
+  left: -40px;
+  right: -30px;
+  overflow: hidden;
+  z-index: 3;
 
   background: ${(props) =>
     props.backgroundTicket ? `${props.backgroundTicket}` : `${colors.white}`};
@@ -211,6 +213,7 @@ const ComponentLink = styled.a`
 `;
 
 const ScrollerInner = styled.div`
+  margin-left: -50%;
   position: relative;
   display: flex;
 `;
