@@ -93,7 +93,16 @@ function TickerLine({
     >
       {linkTicket ? <ComponentLink href={linkTicket} /> : null}
       <ScrollerInner ref={scrollInnerRef}>
-        <LogosWrapper ref={scrollLineRef}>
+        <LogosWrapper ref={scrollLineRef} sizeTicket={sizeTicket}>
+          {logosArray
+            ? logosArray.map((logo, index) => (
+                <Logo
+                  key={index}
+                  mobileSmall={convertThumbnailToPictureImage(logo)}
+                  className="ticker"
+                />
+              ))
+            : null}
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
@@ -215,14 +224,36 @@ const ScrollerInner = styled.div`
   display: flex;
 `;
 
-const LogosWrapper = styled.div`
+const LogosWrapper = styled.div<{
+  sizeTicket?: StringFieldType;
+}>`
   display: flex;
   align-items: center;
   width: 100%;
+  height: 150px;
+
+  ${(props) =>
+    props.sizeTicket === 'large'
+      ? css`
+          height: 150px;
+
+          ${media.laptop(css`
+            height: 120px;
+          `)}
+        `
+      : props.sizeTicket === 'middle'
+      ? css`
+          height: 140px;
+
+          ${media.laptop(css`
+            height: 120px;
+          `)}
+        `
+      : ''}
 `;
 
 const Logo = styled(PlainPicture)`
-  //padding: 0 50px;
+  padding: 0 50px;
 
   ${media.tabletSmallOnly(css`
     padding: 0 35px;
@@ -236,6 +267,7 @@ const Logo = styled(PlainPicture)`
     //noinspection CssInvalidPropertyValue
     image-rendering: -webkit-optimize-contrast;
     max-height: 90px;
+    max-width: initial;
 
     ${media.tabletSmallOnly(css`
       max-height: 55px;
