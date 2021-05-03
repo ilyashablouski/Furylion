@@ -83,32 +83,24 @@ function JobsSection() {
     <Wrapper>
       <ContentContainer>
         <Tabs>
-          <Swiper
-            slidesPerView="auto"
-            spaceBetween={0}
-            speed={500}
-            onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-          >
-            {vacanciesCityList
-              ? vacanciesCityList.map((categoryItem) => {
-                  return (
-                    <SwiperSlide key={categoryItem.id}>
-                      <Tab
-                        active={isCurrentLocation === categoryItem.location}
-                        onClick={() =>
-                          setCurrentLocation(categoryItem.location ?? '')
-                        }
-                      >
-                        <TabText>
-                          {categoryItem.location}
-                          <TabLabel>{categoryItem.number}</TabLabel>
-                        </TabText>
-                      </Tab>
-                    </SwiperSlide>
-                  );
-                })
-              : null}
-          </Swiper>
+          {vacanciesCityList
+            ? vacanciesCityList.map((categoryItem) => {
+                return (
+                  <Tab
+                    key={categoryItem.id}
+                    active={isCurrentLocation === categoryItem.location}
+                    onClick={() =>
+                      setCurrentLocation(categoryItem.location ?? '')
+                    }
+                  >
+                    <TabText>
+                      {categoryItem.location}
+                      <TabLabel>{categoryItem.number}</TabLabel>
+                    </TabText>
+                  </Tab>
+                );
+              })
+            : null}
         </Tabs>
       </ContentContainer>
       <TabContent>
@@ -157,6 +149,12 @@ const Tabs = styled.div`
   position: relative;
   z-index: 1;
   display: flex;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .swiper-container {
     margin: 0;
@@ -214,6 +212,7 @@ const TabText = styled.span`
   font-size: 32px;
   line-height: 130%;
   color: ${colors.white};
+  white-space: nowrap;
   ${media.tabletSmall(css`
     font-size: 20px;
     line-height: 160%;
