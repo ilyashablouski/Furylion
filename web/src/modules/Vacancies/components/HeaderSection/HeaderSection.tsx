@@ -59,6 +59,10 @@ const Title = styled.span`
     font-size: 16.1vw;
   `)}
 
+  ${media.mobile(css`
+    font-size: 15.7vw;
+  `)}
+
   &:before {
     content: attr(data-text);
     position: absolute;
