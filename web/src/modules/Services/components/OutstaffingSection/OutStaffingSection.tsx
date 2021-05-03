@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -8,10 +8,13 @@ import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
 
 function OutStaffingSection() {
+  const [isShown, setIsShown] = useState(false);
+
   const page = useCurrentPage<OutStaffingSectionType>();
   if (!page) return null;
 
   const pageFields = page.templateFields;
+
   return (
     <Wrapper className="section-wrapper">
       <ContentContainer>
@@ -35,9 +38,12 @@ function OutStaffingSection() {
                   ? outStaffingItem.tags.split(',')
                   : [];
                 return (
-                  <TagsInner key={index}>
+                  <TagsInner key={index} isShown={isShown}>
                     <TagsContainer>
-                      <TagsBlock>
+                      <TagsBlock
+                        onMouseEnter={() => setIsShown(true)}
+                        onMouseLeave={() => setIsShown(false)}
+                      >
                         <TagsTitle>{outStaffingItem.title}</TagsTitle>
                         <TagsWrapper>
                           <Tags>
@@ -171,8 +177,9 @@ const TagsContainer = styled.div`
 }
 `;
 
-const TagsInner = styled.div`
+const TagsInner = styled.div<{ isShown: boolean }>`
   margin-top: 25px;
+  transition: all 150ms ease-in-out;
 
   ${media.tabletSmall(css`
     margin: 20px 10px 0;
@@ -190,13 +197,6 @@ const TagsBlock = styled.div`
   display: inline-flex;
   align-items: center;
   border: 1px dashed rgba(194, 25, 30, 0.8);
-  @media (min-width: 1024px) {
-    &:hover {
-      .section-wrapper & {
-        background: ${colors.red};
-      }
-    }
-  }
 
   ${media.tabletSmall(css`
     padding: 20px 25px;
