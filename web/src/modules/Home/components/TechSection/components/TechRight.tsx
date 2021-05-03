@@ -1,7 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ThumbnailType } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
 
 import { StringFieldType } from '@/typings/common';
 import Picture from '@/components/Picture';
@@ -26,22 +29,17 @@ function TechRight({ data }: Props) {
     <Container>
       <Title>{data.title}</Title>
       <Text>{data.text}</Text>
-      <Logos>
-        {data.logos
-          ? data.logos.map((logo, index) => (
-              <Logo key={index}>
-                <Picture
-                  mobileSmall={{
-                    src: logo?.url,
-                    src2x: logo?.url_2x,
-                    webp: logo?.url_webp,
-                    webp2x: logo?.url_webp_2x,
-                  }}
-                />
-              </Logo>
-            ))
-          : null}
-      </Logos>
+      <LogosWrapper>
+        <Logos>
+          {data.logos
+            ? data.logos.map((logo, index) => (
+                <Logo key={index}>
+                  <Picture mobileSmall={convertThumbnailToPictureImage(logo)} />
+                </Logo>
+              ))
+            : null}
+        </Logos>
+      </LogosWrapper>
 
       <AdditionalBlock>
         <AdditionalTitle>Additional:</AdditionalTitle>
@@ -124,10 +122,11 @@ const Text = styled.p`
     margin-top: 20px;
   `)}
 `;
-const Logos = styled.div`
+
+const LogosWrapper = styled.div`
   margin-top: 60px;
-  display: flex;
-  align-items: center;
+  position: relative;
+  height: 75px;
 
   ${media.tabletSmallOnly(css`
     margin-top: 40px;
@@ -135,6 +134,24 @@ const Logos = styled.div`
 
   ${media.mobile(css`
     margin-top: 30px;
+  `)}
+`;
+
+const Logos = styled.div`
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 61%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ${media.tabletSmall(css`
+    width: 53%;
   `)}
 `;
 const AdditionalBlock = styled.div`
