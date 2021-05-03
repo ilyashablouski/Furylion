@@ -146,7 +146,11 @@ const Wrapper = styled.section`
     margin-top: 56px;
   `)}
 
-  ${media.mobile(css``)}
+  ${media.mobile(css`
+    & > ${ContentContainer} {
+      padding: 0;
+    }
+  `)}
 `;
 
 const Tabs = styled.div`
