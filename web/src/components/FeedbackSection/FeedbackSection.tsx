@@ -59,9 +59,7 @@ function FeedbackSection({
 
           {!isProfileInfo && (
             <Left>
-              <Title className={className} isProfileInfo>
-                {formTitle}
-              </Title>
+              <Title className={className}>{formTitle}</Title>
             </Left>
           )}
           <Right>
