@@ -74,7 +74,12 @@ class HomeTemplate extends Template
                 'platformButtonSecondUrl' => new StringField('Button 2 - URL'),
             ]),
             new GroupField('Team', [
-                'teamGallery' => new GalleryField('Photos'),
+                'teamItems' => new RepeaterField('Items', [
+                    'image' => new ImageField('Image'),
+                    'width' => new StringField('Image width'),
+                    'leftX' => new StringField('Left Indent'),
+                    'topY' => new StringField('Top indent'),
+                ]),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),
             ]),
