@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { scroller } from '@tager/web-core';
@@ -34,26 +34,6 @@ function Header({ socialsData }: SocialsType) {
     setAnimate(false);
   }
 
-  function handleLinkClick(e: MouseEvent) {
-    e.preventDefault();
-
-    const headerElem = containerRef.current;
-    if (!headerElem) return;
-
-    const selector = 'contacts';
-    const target = document.getElementById(selector);
-    if (!target) return;
-
-    const headerHeight = headerElem.offsetHeight;
-    const pageOffsetTop = document.documentElement.scrollTop;
-    const targetOffsetTop = target.getBoundingClientRect().top;
-
-    window.scrollTo({
-      top: pageOffsetTop + targetOffsetTop - headerHeight,
-      behavior: 'smooth',
-    });
-  }
-
   return (
     <HeaderContainer ref={containerRef}>
       <ContentContainer>
@@ -79,7 +59,6 @@ function Header({ socialsData }: SocialsType) {
                 isAnimate={isAnimate}
                 socialsData={socialsData}
                 onClickOverlay={handleOverlayCloseClick}
-                onClickLink={handleLinkClick}
               />
             </HeaderRight>
           </HeaderInner>

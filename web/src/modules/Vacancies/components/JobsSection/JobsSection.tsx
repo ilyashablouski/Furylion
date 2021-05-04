@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useModal } from '@tager/web-components';
 
@@ -50,7 +49,6 @@ function getVacanciesByLocation(
   return vacanciesList.filter((vacancy) => vacancy.location === location);
 }
 
-//TODO:Refactor naming of states and types
 function JobsSection() {
   const openedVacancyTitle = useSettingItem('OPEN_VACANCY_TITLE');
   const openedVacancyImage = useSettingItem('OPEN_VACANCY_IMAGE');
@@ -68,8 +66,6 @@ function JobsSection() {
     vacanciesList,
     isCurrentLocation
   );
-
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
   const openModal = useModal();
 

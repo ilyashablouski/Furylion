@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { EventHandler, MouseEventHandler } from 'react';
 
 import { RequestError, useMedia } from '@tager/web-core';
 
@@ -55,4 +55,23 @@ export function scrollDown() {
     const y = section.getBoundingClientRect().top - headerHeight;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
+}
+
+export function handleLinkFeedbackClick(
+  e: React.MouseEvent<HTMLAnchorElement>
+) {
+  e.preventDefault();
+
+  const selector = 'contacts';
+  const target = document.getElementById(selector);
+  if (!target) return;
+
+  const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
+  const pageOffsetTop = document.documentElement.scrollTop;
+  const targetOffsetTop = target.getBoundingClientRect().top;
+
+  window.scrollTo({
+    top: pageOffsetTop + targetOffsetTop - headerHeight,
+    behavior: 'smooth',
+  });
 }

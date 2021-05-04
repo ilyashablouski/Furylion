@@ -11,6 +11,7 @@ import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
 import VacanciesCounter from '@/components/VacanciesCounter';
+import { handleLinkFeedbackClick } from '@/utils/common';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -20,7 +21,6 @@ type Props = {
   // FIXME: REFACTORING TYPINGS
   socialsData: Array<any>;
   onClickOverlay: () => void;
-  onClickLink: (e: MouseEvent) => void;
 };
 
 function HeaderMenu({
@@ -28,7 +28,6 @@ function HeaderMenu({
   isOpen,
   isAnimate,
   onClickOverlay,
-  onClickLink,
   mobileMenuRef,
   socialsData,
 }: Props) {
@@ -66,8 +65,7 @@ function HeaderMenu({
                   <ItemLink
                     as="a"
                     href={menuItem.link ?? '#'}
-                    //TODO:Fix correct type
-                    onClick={onClickLink as any}
+                    onClick={handleLinkFeedbackClick}
                   >
                     {menuItem.label}
                   </ItemLink>

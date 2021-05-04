@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import {
-  convertThumbnailToPictureImage,
-  ThumbnailType,
-} from '@tager/web-modules';
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import Picture from '@/components/Picture';
-import { media } from '@/utils/mixin';
+import { DoYouWantSectionItemType } from '@/typings/model';
+import Link from '@/components/Link';
+import { handleLinkFeedbackClick } from '@/utils/common';
 
 type Props = {
-  imagesGallery: Array<ThumbnailType>;
+  galleryItems: Array<DoYouWantSectionItemType>;
 };
 
-function ImagesRow({ imagesGallery }: Props) {
+function ImagesRow({ galleryItems }: Props) {
   return (
     <Container>
-      {imagesGallery.length > 0 &&
-        imagesGallery.map((image, index) => (
+      {galleryItems.length > 0 &&
+        galleryItems.map((galleryItem, index) => (
           <PictureItem key={index}>
+            {galleryItem.action === 'scroll' ? (
+              <ItemLink
+                as="a"
+                href={galleryItem.link ?? '#'}
+                onClick={handleLinkFeedbackClick}
+              />
+            ) : (
+              <ItemLink to={galleryItem.link ?? '#'} target="_blank" />
+            )}
+
             <Picture
-              mobileSmall={convertThumbnailToPictureImage(image)}
+              mobileSmall={convertThumbnailToPictureImage(galleryItem.image)}
               className="image-item"
             />
           </PictureItem>
@@ -35,6 +44,7 @@ const Container = styled.div`
 `;
 
 const PictureItem = styled.div`
+  position: relative;
   flex: 0 0 135px;
   max-width: 135px;
   height: 240px;
@@ -76,4 +86,14 @@ const PictureItem = styled.div`
   }
 `;
 
+const ItemLink = styled(Link)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
 export default ImagesRow;

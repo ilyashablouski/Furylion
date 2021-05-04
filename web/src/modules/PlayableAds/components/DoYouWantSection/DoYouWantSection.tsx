@@ -14,9 +14,9 @@ function DoYouWantSection() {
   if (!page) return null;
 
   const pageFields = page.templateFields;
-  const firstGalleryImages = page.templateFields.doYouWantFirstGallery;
-  const secondGalleryImages = page.templateFields.doYouWantSecondGallery;
-  const thirdGalleryImages = page.templateFields.doYouWantThirdGallery;
+  const firstGalleryItems = page.templateFields.doYouWantFirstGallery;
+  const secondGalleryItems = page.templateFields.doYouWantSecondGallery;
+  const thirdGalleryItems = page.templateFields.doYouWantThirdGallery;
 
   return (
     <Wrapper>
@@ -31,9 +31,9 @@ function DoYouWantSection() {
           </TickerLine>
         </TitleBlock>
         <ImagesContainer>
-          <ImagesRow imagesGallery={firstGalleryImages} />
-          <ImagesRow imagesGallery={secondGalleryImages} />
-          <ImagesRow imagesGallery={thirdGalleryImages} />
+          <ImagesRow galleryItems={firstGalleryItems} />
+          <ImagesRow galleryItems={secondGalleryItems} />
+          <ImagesRow galleryItems={thirdGalleryItems} />
         </ImagesContainer>
       </Inner>
     </Wrapper>

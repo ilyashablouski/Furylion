@@ -457,11 +457,17 @@ export interface EditorFormType extends PageFullType {
   };
 }
 
+export type DoYouWantSectionItemType = {
+  image: ThumbnailType;
+  action: StringFieldType;
+  link: StringFieldType;
+};
+
 export interface DoYouWantSectionType extends PageFullType {
   templateFields: {
     doYouWantTitle: StringFieldType;
-    doYouWantFirstGallery: Array<ThumbnailType>;
-    doYouWantSecondGallery: Array<ThumbnailType>;
-    doYouWantThirdGallery: Array<ThumbnailType>;
+    doYouWantFirstGallery: Array<DoYouWantSectionItemType>;
+    doYouWantSecondGallery: Array<DoYouWantSectionItemType>;
+    doYouWantThirdGallery: Array<DoYouWantSectionItemType>;
   };
 }
