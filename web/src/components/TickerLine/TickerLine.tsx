@@ -15,7 +15,7 @@ import PlainPicture from '@/components/Picture';
 
 import { createIntersectionObserver } from './TickerLine.helpers';
 
-type Props = {
+interface Props {
   backgroundTicket?: StringFieldType;
   colorTicket?: StringFieldType;
   labelTicket?: StringFieldType;
@@ -25,7 +25,7 @@ type Props = {
   logosArray?: Array<ThumbnailType>;
   isReversed?: boolean;
   isAbove?: boolean;
-};
+}
 
 function TickerLine({
   backgroundTicket,
@@ -58,7 +58,6 @@ function TickerLine({
     scrollLineElem.append(fragment);
     scrollInnerElem.append(scrollLineElem.cloneNode(true));
 
-    //FIXME: Fix correct condition for two tween instance
     const tween = gsap.to(scrollInnerElem, {
       duration: () => getScrollLineWidth() / 90,
       x: () => -getScrollLineWidth(),
@@ -74,18 +73,19 @@ function TickerLine({
 
     function getScrollLineWidth() {
       const scrollLineElem = scrollLineRef.current;
-      if (scrollLineElem) return scrollLineElem.clientWidth;
+      if (scrollLineElem) {
+        return scrollLineElem.clientWidth;
+      }
       return 0;
     }
 
     function onResize() {
       tween.restart();
-      tween.invalidate();
     }
 
     return () => {
       window.removeEventListener('resize', onResize);
-      tween.kill(scrollInnerElem);
+      tween.kill();
       observer?.disconnect();
     };
   }, []);

@@ -22,6 +22,7 @@ function ClientsSection() {
         {/*<LogosLine logosArray={pageFields?.clientsSecondGallery} />*/}
         <Row>
           <TickerLine
+            isReversed={false}
             rotateTicket={'-3'}
             logosArray={pageFields?.clientsFirstGallery}
           />
