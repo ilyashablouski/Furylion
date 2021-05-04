@@ -182,6 +182,19 @@ const TeammatePictureItem = styled.div<{
   position: absolute;
   border-radius: 100%;
   overflow: hidden;
+  transition: all 150ms ease-in-out;
+  will-change: transform;
+
+  @media (min-width: 1024px) {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
 
   ${(props) =>
     props.itemWidth &&
