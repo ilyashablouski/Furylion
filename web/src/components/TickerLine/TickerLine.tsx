@@ -18,25 +18,25 @@ import { createIntersectionObserver } from './TickerLine.helpers';
 interface Props {
   backgroundTicket?: StringFieldType;
   colorTicket?: StringFieldType;
-  labelTicket?: StringFieldType;
   linkTicket?: StringFieldType;
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
   logosArray?: Array<ThumbnailType>;
   isReversed?: boolean;
   isAbove?: boolean;
+  isLabelTicket?: boolean;
+  children?: React.ReactNode | string;
 }
 
 function TickerLine({
   backgroundTicket,
-  colorTicket,
-  labelTicket,
-  linkTicket,
   rotateTicket,
   sizeTicket,
   logosArray,
   isReversed,
   isAbove,
+  isLabelTicket,
+  children,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollInnerRef = useRef<HTMLDivElement>(null);
@@ -98,6 +98,7 @@ function TickerLine({
       ref={containerRef}
       isReversed={isReversed}
       isAbove={isAbove}
+      isLabelTicket={isLabelTicket}
     >
       <ScrollerInner ref={scrollInnerRef}>
         <LogosWrapper ref={scrollLineRef} sizeTicket={sizeTicket}>
@@ -119,31 +120,23 @@ function TickerLine({
                 />
               ))
             : null}
-          {/*<ScrollerItem colorTicket={colorTicket} className="ticker">*/}
-          {/*  {labelTicket}*/}
-          {/*</ScrollerItem>*/}
+          {children && (
+            <ScrollerItem isLabelTicket={isLabelTicket} className="ticker">
+              {children}
+            </ScrollerItem>
+          )}
         </LogosWrapper>
       </ScrollerInner>
     </Container>
   );
 }
 
-const ScrollerItem = styled.li<{ colorTicket?: StringFieldType }>`
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 26px;
-  white-space: nowrap;
-  text-transform: uppercase;
-  padding-left: 10px;
-  color: ${(props) =>
-    props.colorTicket ? `${props.colorTicket}` : `${colors.black}`};
-
-  &:first-child {
-    padding-left: 0;
-  }
-  ${media.laptop(css`
-    font-size: 20px;
-  `)}
+const ScrollerItem = styled.li<{ isLabelTicket?: boolean }>`
+  ${(props) =>
+    props.isLabelTicket &&
+    css`
+      display: flex;
+    `}
 `;
 
 const Container = styled.div<{
@@ -152,6 +145,7 @@ const Container = styled.div<{
   sizeTicket?: StringFieldType;
   isReversed?: boolean;
   isAbove?: boolean;
+  isLabelTicket?: boolean;
 }>`
   margin: 0 -20px;
   display: flex;
@@ -162,6 +156,16 @@ const Container = styled.div<{
     css`
       position: relative;
       z-index: 2;
+    `}
+
+  ${(props) =>
+    props.isLabelTicket &&
+    css`
+      height: auto !important;
+      transform: none !important;
+      ${LogosWrapper} {
+        height: auto;
+      }
     `}
 
   background: ${(props) =>

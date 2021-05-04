@@ -5,6 +5,7 @@ import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { DoYouWantSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
+import TickerLine from '@/components/TickerLine';
 
 import ImagesRow from './components/ImagesRow';
 
@@ -21,7 +22,13 @@ function DoYouWantSection() {
     <Wrapper>
       <Inner>
         <TitleBlock>
-          <Title>{pageFields.doYouWantTitle}</Title>
+          <TickerLine
+            backgroundTicket="transparent"
+            isLabelTicket={true}
+            isAbove={true}
+          >
+            <Title>{pageFields.doYouWantTitle}</Title>
+          </TickerLine>
         </TitleBlock>
         <ImagesContainer>
           <ImagesRow imagesGallery={firstGalleryImages} />
@@ -32,15 +39,6 @@ function DoYouWantSection() {
     </Wrapper>
   );
 }
-
-const animationMarquee = keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-`;
 
 const Wrapper = styled.section`
   display: flex;
@@ -69,7 +67,6 @@ const Title = styled.span`
   color: ${colors.white};
   position: relative;
   z-index: 1;
-  animation: ${animationMarquee} 10s infinite linear;
 
   ${media.tabletSmall(css`
     margin-top: 70px;
@@ -79,10 +76,6 @@ const Title = styled.span`
     animation: none;
     white-space: normal;
     line-height: 130%;
-
-    &:last-child {
-      display: none;
-    }
   `)}
 
   ${media.tabletSmallOnly(css`
