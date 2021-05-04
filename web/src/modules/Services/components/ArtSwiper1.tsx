@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -12,7 +12,6 @@ import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
-import SimplePlaceholder from '@/components/SimplePlaceholder';
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 type Props = {
   images: Array<ThumbnailType>;

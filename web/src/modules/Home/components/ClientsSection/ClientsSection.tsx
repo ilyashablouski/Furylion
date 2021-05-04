@@ -7,8 +7,6 @@ import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import TickerLine from '@/components/TickerLine';
 
-import LogosLine from './components/LogosLine';
-
 function ClientsSection() {
   const page = useCurrentPage<ClientsSectionType>();
   const pageFields = page?.templateFields;
@@ -17,9 +15,6 @@ function ClientsSection() {
       <Title>{pageFields?.clientsTitle}</Title>
 
       <Inner>
-        {/*TODO: combine into one component with networks line */}
-        {/*<LogosLine isTop logosArray={pageFields?.clientsFirstGallery} />*/}
-        {/*<LogosLine logosArray={pageFields?.clientsSecondGallery} />*/}
         <Row>
           <TickerLine
             isReversed={false}

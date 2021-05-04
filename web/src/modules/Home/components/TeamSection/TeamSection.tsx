@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { TeamSectionType } from '@/typings/model';
 import teamBgUrl from '@/assets/images/team/team-bg.png';
@@ -12,11 +14,12 @@ import { colors } from '@/constants/theme';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
 import { ButtonLink } from '@/components/Button';
+import { StringFieldType } from '@/typings/common';
 
 function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
   const pageFields = page?.templateFields;
-  const teamImagesArray = pageFields?.teamGallery;
+  const teamItems = pageFields?.teamItems;
   return (
     <Wrapper>
       <BackgroundPicture
@@ -32,17 +35,19 @@ function TeamSection() {
         <Title>Team</Title>
       </TitleBlock>
       <Inner>
-        {teamImagesArray
-          ? teamImagesArray.map((image, index) => (
-              <TeammatePicture
+        {teamItems
+          ? teamItems.map((item, index) => (
+              <TeammatePictureItem
                 key={index}
-                mobileSmall={{
-                  src: image?.url,
-                  src2x: image?.url_2x,
-                  webp: image?.url_webp,
-                  webp2x: image?.url_webp_2x,
-                }}
-              />
+                itemWidth={item.width}
+                itemLeftOffset={item.leftX}
+                itemTopOffset={item.topY}
+              >
+                <Picture
+                  mobileSmall={convertThumbnailToPictureImage(item.image)}
+                  className="teammate-image-block"
+                />
+              </TeammatePictureItem>
             ))
           : null}
       </Inner>
@@ -158,19 +163,33 @@ const BackgroundPicture = styled(Picture)`
 
 const Inner = styled.div`
   position: absolute;
-  top: 10%;
+  top: 0;
   left: 50%;
   display: flex;
   flex-wrap: wrap;
   max-width: 1920px;
+  width: 100%;
+  height: 100%;
   transform: translateX(-50%);
+  z-index: 1;
 `;
 
-const TeammatePicture = styled(Picture)`
-  flex: 1 1 25%;
-  max-width: 25%;
+const TeammatePictureItem = styled.div<{
+  itemWidth: StringFieldType;
+  itemLeftOffset: StringFieldType;
+  itemTopOffset: StringFieldType;
+}>`
+  position: absolute;
   border-radius: 100%;
   overflow: hidden;
+
+  ${(props) =>
+    props.itemWidth &&
+    css`
+      left: ${((Number(props.itemLeftOffset) * 100) / 1366).toFixed(2) + '%'};
+      top: ${((Number(props.itemTopOffset) * 100) / 1598).toFixed(2) + '%'};
+      max-width: ${((Number(props.itemWidth) * 100) / 1366).toFixed(2) + '%'};
+    `}
 `;
 
 const StyledButton = styled.div`

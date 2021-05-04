@@ -8,8 +8,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { NetworksSectionType } from '@/typings/model';
 import TickerLine from '@/components/TickerLine';
 
-import NetworksLogosLine from './components/NetworksLogosLine';
-
 function NetworksSection() {
   const page = useCurrentPage<NetworksSectionType>();
   if (!page) return null;
@@ -23,9 +21,6 @@ function NetworksSection() {
       </ContentContainer>
 
       <Inner>
-        {/*<NetworksLogosLine isTop logosArray={pageFields.networksFirstGallery} />*/}
-        {/*<NetworksLogosLine logosArray={pageFields.networksSecondGallery} />*/}
-
         <Row>
           <TickerLine
             isAbove={true}

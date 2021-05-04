@@ -133,9 +133,16 @@ export interface PlatformSectionType extends PageFullType {
   };
 }
 
+export type TeamSectionItemType = {
+  image: ThumbnailType;
+  width: StringFieldType;
+  leftX: StringFieldType;
+  topY: StringFieldType;
+};
+
 export interface TeamSectionType extends PageFullType {
   templateFields: {
-    teamGallery: Array<ThumbnailType>;
+    teamItems: Array<TeamSectionItemType>;
     teamButtonLabel: StringFieldType;
     teamButtonUrl: StringFieldType;
   };
