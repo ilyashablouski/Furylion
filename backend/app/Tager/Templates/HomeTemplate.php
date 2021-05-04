@@ -9,6 +9,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
+use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 
 class HomeTemplate extends Template
@@ -79,6 +80,7 @@ class HomeTemplate extends Template
                     'width' => new StringField('Image width'),
                     'leftX' => new StringField('Left Indent'),
                     'topY' => new StringField('Top indent'),
+                    'isShadow' => new TrueFalseField('Is shadow ?'),
                 ]),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),

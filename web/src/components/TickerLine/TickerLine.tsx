@@ -43,6 +43,9 @@ function TickerLine({
   const scrollLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isLabelTicket && window.matchMedia('(max-width: 1023.98px)').matches)
+      return;
+
     const containerElem = containerRef.current;
     const scrollLineElem = scrollLineRef.current;
     const scrollInnerElem = scrollInnerRef.current;
@@ -80,7 +83,15 @@ function TickerLine({
     }
 
     function onResize() {
-      tween.restart();
+      if (
+        isLabelTicket &&
+        window.matchMedia('(max-width: 1023.98px)').matches
+      ) {
+        tween.kill();
+        observer?.disconnect();
+      } else {
+        tween.restart();
+      }
     }
 
     return () => {
@@ -101,7 +112,11 @@ function TickerLine({
       isLabelTicket={isLabelTicket}
     >
       <ScrollerInner ref={scrollInnerRef}>
-        <LogosWrapper ref={scrollLineRef} sizeTicket={sizeTicket}>
+        <LogosWrapper
+          ref={scrollLineRef}
+          sizeTicket={sizeTicket}
+          isLabelTicket={isLabelTicket}
+        >
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
@@ -203,6 +218,7 @@ const ScrollerInner = styled.div`
 
 const LogosWrapper = styled.div<{
   sizeTicket?: StringFieldType;
+  isLabelTicket?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -226,6 +242,17 @@ const LogosWrapper = styled.div<{
 
       ${media.mobile(css`
         height: 65px;
+      `)}
+    `}
+
+  ${(props) =>
+    props.isLabelTicket &&
+    css`
+      ${media.tabletSmall(css`
+        display: none;
+        &:first-child {
+          display: flex;
+        }
       `)}
     `}
 `;
