@@ -110,10 +110,16 @@ const Container = styled.div`
 
   .swiper-container-initialized {
     padding-bottom: 175px;
+
+    .swiper-wrapper {
+      will-change: transform;
+    }
+
     .swiper-slide {
       width: 295px;
       height: 638px;
       border-radius: 30px;
+      will-change: transform;
 
       ${media.tabletSmallOnly(css`
         width: 228px;

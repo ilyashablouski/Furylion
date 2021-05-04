@@ -36,7 +36,6 @@ function AttachFile({
   const [field, meta, helpers] = useField<string>({ name, type });
   const error = customError ?? (meta.touched ? meta.error : '');
 
-  //TODO:Clear when request is success
   function clearFile(event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (event) {
       event.preventDefault();
@@ -72,7 +71,7 @@ function AttachFile({
           id="attach-file"
           type={'file'}
           name={'file'}
-          // accept=".doc,.pdf,.docx,.txt"
+          // accept=".doc,.pdf,.docx,.txt"я
           ref={fileInputRef}
           onChange={handleFileChange}
         />

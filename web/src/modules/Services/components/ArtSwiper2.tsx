@@ -12,7 +12,6 @@ import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import Picture from '@/components/Picture';
-import SimplePlaceholder from '@/components/SimplePlaceholder';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 

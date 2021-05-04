@@ -10,6 +10,8 @@ use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
+use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
+use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
 
 class PlayableAdsTemplate extends Template
 {
@@ -87,9 +89,30 @@ class PlayableAdsTemplate extends Template
 
             new GroupField('Do you want', [
                 'doYouWantTitle' => new StringField('Title'),
-                'doYouWantFirstGallery' => new GalleryField('Gallery 1'),
-                'doYouWantSecondGallery' => new GalleryField('Gallery 2'),
-                'doYouWantThirdGallery' => new GalleryField('Gallery 3'),
+                'doYouWantFirstGallery' => new RepeaterField('Gallery 1', [
+                    'image' => new ImageField('Image'),
+                    'action' => new SelectField('Action', [
+                        'scroll' => 'Scroll',
+                        'openPage' => 'Open page'
+                    ]),
+                    'link' => new UrlField('Target'),
+                ]),
+                'doYouWantSecondGallery' => new RepeaterField('Gallery 2', [
+                    'image' => new ImageField('Image'),
+                    'action' => new SelectField('Action', [
+                        'scroll' => 'Scroll',
+                        'openPage' => 'Open page'
+                    ]),
+                    'link' => new UrlField('Target'),
+                ]),
+                'doYouWantThirdGallery' => new RepeaterField('Gallery 3', [
+                    'image' => new ImageField('Image'),
+                    'action' => new SelectField('Action', [
+                        'scroll' => 'Scroll',
+                        'openPage' => 'Open page'
+                    ]),
+                    'link' => new UrlField('Target'),
+                ]),
             ]),
 
             new GroupField('Form', [

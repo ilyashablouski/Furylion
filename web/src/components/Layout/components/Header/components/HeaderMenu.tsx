@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-import { MenuItemType } from '@tager/web-modules';
 // import { scroller } from '@tager/web-core';
+
+import { MenuItemType } from '@tager/web-modules';
 
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';

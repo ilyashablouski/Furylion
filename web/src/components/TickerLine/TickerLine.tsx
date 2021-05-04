@@ -17,8 +17,6 @@ import { createIntersectionObserver } from './TickerLine.helpers';
 
 interface Props {
   backgroundTicket?: StringFieldType;
-  colorTicket?: StringFieldType;
-  linkTicket?: StringFieldType;
   rotateTicket?: StringFieldType;
   sizeTicket?: StringFieldType;
   logosArray?: Array<ThumbnailType>;
@@ -99,7 +97,7 @@ function TickerLine({
       tween.kill();
       observer?.disconnect();
     };
-  }, []);
+  });
 
   return (
     <Container
