@@ -246,12 +246,11 @@ const ListContent = styled.div`
     font-size: 12px;
   `)}
 
-  ul {
-  }
-
   li {
     position: relative;
     padding-left: 52px;
+    display: flex;
+    align-items: center;
     min-height: 44px;
     color: ${colors.white};
 
