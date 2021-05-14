@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { ThumbnailType } from '@tager/web-modules';
 
 import Picture from '@/components/Picture';
 import { StringFieldType } from '@/typings/common';
 import { media } from '@/utils/mixin';
-import Button, { ButtonLink } from '@/components/Button';
+import { ButtonLink } from '@/components/Button';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
   title: StringFieldType;
@@ -29,14 +33,141 @@ function PlatformLeft({
   btnSecondLabel,
   btnSecondUrl,
 }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLSpanElement>(null);
+  const subTitleRef = useRef<HTMLParagraphElement>(null);
+  const additionalTitleRef = useRef<HTMLDivElement>(null);
+  const additionTextRef = useRef<HTMLDivElement>(null);
+  const buttonLeft = useRef<HTMLDivElement>(null);
+  const buttonRight = useRef<HTMLDivElement>(null);
+  const logoRefList = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
+
+  useEffect(() => {
+    let timeline: gsap.core.Timeline;
+
+    gsap.delayedCall(0, () => {
+      if (!containerRef.current) return null;
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      });
+
+      timeline
+        .from(
+          titleRef.current,
+          {
+            stagger: 0.15,
+            ease: 'customEaseInOut',
+            transformOrigin: '50% 100%',
+            yPercent: 100,
+            duration: 0.5,
+          },
+          0
+        )
+        .from(
+          subTitleRef.current,
+          {
+            ease: 'customEaseInOut',
+            transformOrigin: '50% 100%',
+            yPercent: 100,
+            duration: 0.5,
+          },
+          0.5
+        );
+
+      logoRefList.forEach((ref, index) => {
+        timeline.from(ref.current, {
+          stagger: 0.15,
+          ease: 'customEaseInOut',
+          transformOrigin: '50% 100%',
+          yPercent: 110,
+          duration: 0.3,
+        });
+      });
+    });
+
+    gsap.delayedCall(0.5, () => {
+      if (!additionalTitleRef.current) return null;
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: additionalTitleRef.current,
+          start: 'top 90%',
+        },
+      });
+
+      timeline
+        .from(
+          additionalTitleRef.current,
+          {
+            ease: 'customEaseInOut',
+            transformOrigin: '50% 100%',
+            yPercent: 100,
+            duration: 0.5,
+          },
+          1.5
+        )
+        .from(
+          additionTextRef.current,
+          {
+            stagger: 0.15,
+            ease: 'customEaseInOut',
+            transformOrigin: '50% 100%',
+            yPercent: 100,
+            duration: 0.3,
+          },
+          2
+        )
+        .from(
+          buttonLeft.current,
+          {
+            stagger: 0.15,
+            ease: 'customEaseInOut',
+            transformOrigin: '-100%',
+            xPercent: -100,
+            duration: 0.3,
+          },
+          2
+        )
+        .from(
+          buttonRight.current,
+          {
+            stagger: 0.15,
+            ease: 'customEaseInOut',
+            transformOrigin: '100%',
+            xPercent: 100,
+            duration: 0.3,
+          },
+          2
+        );
+    });
+
+    return () => {
+      timeline?.kill();
+    };
+  }, []);
+
   return (
-    <Container>
-      <Title>{title}</Title>
-      <Text>{text}</Text>
+    <Container ref={containerRef}>
+      <WrapperText>
+        <Title ref={titleRef}>{title}</Title>
+      </WrapperText>
+      <WrapperText>
+        <Text ref={subTitleRef}>{text}</Text>
+      </WrapperText>
       <Logos>
         {logos
           ? logos.map((logo, index) => (
-              <Logo key={index}>
+              <Logo ref={logoRefList[index]} key={index}>
                 <Picture
                   mobileSmall={{
                     src: logo?.url,
@@ -50,14 +181,24 @@ function PlatformLeft({
           : null}
       </Logos>
       <AdditionalBlock>
-        <AdditionalTitle>Additional:</AdditionalTitle>
+        <WrapperText>
+          <AdditionalTitle ref={additionalTitleRef}>
+            Additional:
+          </AdditionalTitle>
+        </WrapperText>
+
         {addText ? (
-          <AdditionalText dangerouslySetInnerHTML={{ __html: addText }} />
+          <WrapperText>
+            <AdditionalText
+              ref={additionTextRef}
+              dangerouslySetInnerHTML={{ __html: addText }}
+            />
+          </WrapperText>
         ) : null}
       </AdditionalBlock>
 
       <Buttons>
-        <StyledButton>
+        <StyledButton ref={buttonLeft}>
           <ButtonLink
             href={btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-dark', 'w100']}
@@ -67,7 +208,7 @@ function PlatformLeft({
           </ButtonLink>
         </StyledButton>
 
-        <StyledButton right>
+        <StyledButton ref={buttonRight} right>
           <ButtonLink
             href={btnSecondUrl ?? '#'}
             variants={['cut-top', 'dark', 'w100']}
@@ -103,6 +244,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.span`
+  display: block;
   font-weight: 900;
   font-size: 64px;
   line-height: 130%;
@@ -121,6 +263,10 @@ const Title = styled.span`
   ${media.mobile(css`
     font-size: 32px;
   `)}
+`;
+
+const WrapperText = styled.div`
+  overflow: hidden;
 `;
 
 const Text = styled.p`
@@ -150,6 +296,7 @@ const Logos = styled.div`
   align-items: center;
   max-width: 700px;
   justify-content: space-between;
+  overflow: hidden;
 
   ${media.tabletSmallOnly(css`
     margin-top: 43px;
@@ -187,6 +334,7 @@ const AdditionalBlock = styled.div`
 `;
 
 const AdditionalTitle = styled.span`
+  display: block;
   font-weight: 900;
   font-size: 24px;
   line-height: 160%;
@@ -219,6 +367,7 @@ const AdditionalText = styled.div`
 const Buttons = styled.div`
   margin-top: 44px;
   display: inline-flex;
+  overflow: hidden;
 
   ${media.tabletSmall(css`
     position: absolute;

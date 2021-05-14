@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap, { Power3 } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { ReactComponent as AppleBlackIcon } from '@/assets/svg/apple-black.svg';
 import { ReactComponent as AndroidBlackIcon } from '@/assets/svg/android-black.svg';
@@ -10,22 +12,135 @@ import { media } from '@/utils/mixin';
 
 import SchemeListItem from './SchemeListItem';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function PlatformRight() {
   const leftLabels = ['DOTween', '2D Toolkit', 'UniTask', 'Spine'];
   const rightLabels = ['FL UI Kit', 'GRPC', 'Protobuf', 'FMOD'];
 
-  return (
-    <Container>
-      <Scheme>
-        <Title>Platform specific C#</Title>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
-        <Inner>
+  const osLeftItem = useRef<HTMLDivElement>(null);
+  const osRightItem = useRef<HTMLDivElement>(null);
+
+  const leftInfoItem = useRef<HTMLDivElement>(null);
+  const rightInfoItem = useRef<HTMLDivElement>(null);
+
+  const leftSchemeList = useRef<HTMLUListElement>(null);
+  const rightSchemeList = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    let timeline: gsap.core.Timeline;
+
+    gsap.delayedCall(0, () => {
+      if (!containerRef.current) return null;
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      });
+
+      timeline
+        .from(
+          titleRef.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '50% -100%',
+            yPercent: -100,
+            duration: 0.5,
+            opacity: 0,
+          },
+          0
+        )
+        .from(
+          osLeftItem.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '-110%',
+            xPercent: -110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          0.5
+        )
+        .from(
+          osRightItem.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '110%',
+            xPercent: 110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          0.5
+        )
+        .from(
+          leftInfoItem.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '-110%',
+            xPercent: -110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          1
+        )
+        .from(
+          rightInfoItem.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '110%',
+            xPercent: 110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          1
+        )
+        .from(
+          leftSchemeList.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '-110%',
+            xPercent: -110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          1.5
+        )
+        .from(
+          rightSchemeList.current,
+          {
+            ease: Power3.easeOut,
+            transformOrigin: '110%',
+            xPercent: 110,
+            duration: 0.5,
+            opacity: 0,
+          },
+          1.5
+        );
+    });
+
+    return () => {
+      timeline?.kill();
+    };
+  }, []);
+
+  return (
+    <Container ref={containerRef}>
+      <Scheme>
+        <WrapperItem ref={titleRef}>
+          <Title>Platform specific C#</Title>
           <DashedLine>
             <DashedTopLine />
           </DashedLine>
-
+        </WrapperItem>
+        <Inner>
           <Blocks>
-            <Block>
+            <Block ref={osLeftItem}>
               <BlockInfo>
                 <AppleBlackIcon />
                 <BlockTitle>App</BlockTitle>
@@ -34,7 +149,7 @@ function PlatformRight() {
               <BlockLabel>NATIVE CODE</BlockLabel>
             </Block>
 
-            <Block>
+            <Block ref={osRightItem}>
               <BlockInfo>
                 <AndroidBlackIcon />
                 <BlockTitle>App</BlockTitle>
@@ -45,7 +160,7 @@ function PlatformRight() {
           </Blocks>
 
           <DashedBlocks>
-            <DashedBlock>
+            <DashedBlock ref={leftInfoItem}>
               <DashedBlockTitle>C# user interface</DashedBlockTitle>
               <DashedBlockLabel>SHARED CODE</DashedBlockLabel>
               <DashedRectangle>
@@ -53,7 +168,7 @@ function PlatformRight() {
               </DashedRectangle>
             </DashedBlock>
 
-            <DashedBlock>
+            <DashedBlock ref={rightInfoItem}>
               <DashedBlockTitle>C# logic</DashedBlockTitle>
               <DashedBlockLabel>SHARED CODE</DashedBlockLabel>
               <DashedRectangle>
@@ -63,11 +178,11 @@ function PlatformRight() {
           </DashedBlocks>
 
           <SchemeBottom>
-            <SchemeListLeft>
+            <SchemeListLeft ref={leftSchemeList}>
               <SchemeListItem listItems={leftLabels} />
             </SchemeListLeft>
 
-            <SchemeListRight>
+            <SchemeListRight ref={rightSchemeList}>
               <SchemeListItem listItems={rightLabels} />
             </SchemeListRight>
           </SchemeBottom>
@@ -76,6 +191,10 @@ function PlatformRight() {
     </Container>
   );
 }
+
+const WrapperItem = styled.div`
+  overflow: hidden;
+`;
 
 const Container = styled.div`
   margin-top: 14px;
@@ -125,17 +244,7 @@ const Title = styled.span`
   `)}
 `;
 
-const Inner = styled.div`
-  margin-top: 5px;
-
-  ${media.tabletSmallOnly(css`
-    margin-top: 8px;
-  `)}
-
-  ${media.mobile(css`
-    margin-top: 10px;
-  `)}
-`;
+const Inner = styled.div``;
 
 const DashedLine = styled.div`
   margin: 0 21%;
@@ -156,6 +265,7 @@ const Blocks = styled.div`
   margin: 0 -10px;
   margin-top: -3px;
   display: flex;
+  overflow: hidden;
 
   ${media.tabletSmall(css`
     margin: 0 -6px;
@@ -195,6 +305,7 @@ const BlockInfo = styled.div`
 
   ${media.mobile(css`
     height: 40px;
+
     svg {
       max-height: 22px;
       max-width: 22px;
@@ -243,6 +354,7 @@ const BlockLabel = styled.span`
 
 const DashedBlocks = styled.div`
   margin-top: 20px;
+  overflow: hidden;
 
   ${media.tabletSmall(css`
     margin-top: 10px;
@@ -257,12 +369,9 @@ const DashedBlock = styled.div`
   ${media.tabletSmallOnly(css`
     padding: 11px 23px 23px;
   `)}
-
   ${media.mobile(css`
     padding: 13px 28px 28px;
   `)}
-
-
   &:first-child {
     svg {
       rect {
@@ -318,7 +427,7 @@ const SchemeBottom = styled.div`
   font-weight: 500;
   font-size: 20px;
   line-height: 130%;
-
+  overflow: hidden;
   ${media.tabletSmall(css`
     margin-top: 10px;
   `)}
@@ -339,7 +448,6 @@ const SchemeListLeft = styled.ul`
   ${media.tabletSmallOnly(css`
     padding-left: 13px;
   `)}
-
   &:before {
     content: '';
     position: absolute;
@@ -371,7 +479,6 @@ const SchemeListRight = styled.ul`
   ${media.tabletSmallOnly(css`
     padding-right: 13px;
   `)}
-
   &:after {
     content: '';
     position: absolute;
