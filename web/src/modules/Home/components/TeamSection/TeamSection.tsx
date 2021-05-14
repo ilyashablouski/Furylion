@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
@@ -15,21 +17,84 @@ import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
 import { StringFieldType } from '@/typings/common';
 
+gsap.registerPlugin(ScrollTrigger);
+
+const saveRef = (
+  key: number,
+  refList: React.MutableRefObject<(HTMLDivElement | null)[]>
+) => (ref: null | HTMLDivElement) => {
+  refList.current[key] = ref;
+};
+
 function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
   const pageFields = page?.templateFields;
   const teamItems = pageFields?.teamItems;
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bgPictureRef = useRef<HTMLImageElement>(null);
+  const teamItemRefList = useRef<Array<HTMLDivElement | null>>(
+    new Array(teamItems?.length).fill(null)
+  );
+
+  useEffect(() => {
+    let timeline: gsap.core.Timeline;
+    gsap.delayedCall(0, () => {
+      if (!containerRef.current) return null;
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: containerRef.current,
+          start: 'top 90%',
+        },
+      });
+
+      timeline.from(
+        bgPictureRef.current,
+        {
+          stagger: 0.15,
+          ease: 'customEaseInOut',
+          transformOrigin: '50% 40%',
+          yPercent: 40,
+          duration: 1,
+        },
+        0
+      );
+
+      teamItemRefList.current.forEach((teamItem, index) => {
+        timeline.from(
+          teamItem,
+          {
+            css: {
+              scale: 0.1,
+              opacity: 0,
+              duration: 0.1,
+              transition: 'linear',
+            },
+            delay: index / 3,
+          },
+          1.5
+        );
+      });
+    });
+  }, []);
+
   return (
-    <Wrapper>
-      <BackgroundPicture
-        mobileSmall={{
-          src: teamBgUrl,
-          src2x: teamBgUrl2x,
-          webp: teamBgUrlWebp,
-          webp2x: teamBgUrlWebp2x,
-        }}
-        className="team-background"
-      />
+    <Wrapper ref={containerRef}>
+      <WrapperItem>
+        <BackgroundPicture
+          imageRef={bgPictureRef}
+          mobileSmall={{
+            src: teamBgUrl,
+            src2x: teamBgUrl2x,
+            webp: teamBgUrlWebp,
+            webp2x: teamBgUrlWebp2x,
+          }}
+          className="team-background"
+        />
+      </WrapperItem>
+
       <TitleBlock>
         <Title>Team</Title>
       </TitleBlock>
@@ -37,6 +102,7 @@ function TeamSection() {
         {teamItems
           ? teamItems.map((item, index) => (
               <TeammatePictureItem
+                ref={saveRef(index, teamItemRefList)}
                 key={index}
                 itemWidth={item.width}
                 itemLeftOffset={item.leftX}
@@ -82,6 +148,8 @@ const Wrapper = styled.section`
     `
   )}
 `;
+
+const WrapperItem = styled.div``;
 
 const TitleBlock = styled.div`
   position: absolute;
@@ -187,7 +255,7 @@ const TeammatePictureItem = styled.div<{
   @media (min-width: 1024px) {
     cursor: pointer;
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.2) !important;
       z-index: 10;
     }
   }
