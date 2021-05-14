@@ -146,6 +146,7 @@ const Logos = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   width: 61%;
+
   &::-webkit-scrollbar {
     display: none;
   }

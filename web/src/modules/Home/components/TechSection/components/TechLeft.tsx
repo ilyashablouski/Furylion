@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import {
   convertThumbnailToPictureImage,
@@ -10,15 +12,34 @@ import { Nullish } from '@tager/web-core';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 
+gsap.registerPlugin(ScrollTrigger);
+
 type Props = {
   image: Nullish<ThumbnailType>;
   imageMobile: Nullish<ThumbnailType>;
 };
 
 function TechLeft({ image, imageMobile }: Props) {
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    gsap.delayedCall(0, () => {
+      if (!imageRef.current) return null;
+
+      gsap.to(imageRef.current, {
+        x: 200,
+        scrollTrigger: {
+          trigger: imageRef.current,
+          scrub: true,
+        },
+      });
+    });
+  }, []);
+
   return (
     <Container>
       <ImageContainer
+        imageRef={imageRef}
         tabletLarge={convertThumbnailToPictureImage(image)}
         mobileSmall={convertThumbnailToPictureImage(imageMobile)}
       />
@@ -40,7 +61,6 @@ const Container = styled.div`
     clip-path: polygon(74% 0, 100% 0, 100% 100%, 0 100%);
     shape-outside: polygon(74% 0, 100% 0, 100% 100%, 0 100%);
   `)}
-
   ${media.mobile(css`
     clip-path: polygon(100% 0, 0 100%, 100% 100%);
     shape-outside: polygon(100% 0, 0 100%, 100% 100%);
@@ -50,22 +70,21 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled(Picture)`
-  position: static;
+  position: relative;
   min-height: 750px;
+  width: 100vw;
 
   ${media.tabletSmallOnly(css`
     min-height: 663px;
   `)}
-
   ${media.mobile(css`
     min-height: 626px;
   `)}
-
   img {
     position: absolute;
     top: 0;
     right: 0;
-    width: auto;
+    transform: translateX(-200px);
     min-height: 750px;
     height: 100%;
     object-fit: cover;
