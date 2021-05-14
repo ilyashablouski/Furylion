@@ -13,7 +13,6 @@ import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
-import { ButtonLink } from '@/components/Button';
 import { StringFieldType } from '@/typings/common';
 
 function TeamSection() {
@@ -184,11 +183,12 @@ const TeammatePictureItem = styled.div<{
   overflow: hidden;
   transition: all 150ms ease-in-out;
   will-change: transform;
-
+  z-index: 1;
   @media (min-width: 1024px) {
     cursor: pointer;
     &:hover {
       transform: scale(1.2);
+      z-index: 10;
     }
   }
 
