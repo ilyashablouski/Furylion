@@ -34,7 +34,6 @@ function TeamLifeSection() {
         scrollTrigger: {
           start: 'bottom bottom',
           end: 'bottom 40%',
-          markers: true,
           trigger: teamLifeRef.current,
           scrub: true,
         },
