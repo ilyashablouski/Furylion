@@ -32,25 +32,28 @@ function HeaderSection() {
 const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
-  padding-top: 215px;
-  padding-bottom: 170px;
+  //padding-top: 215px;
+  //padding-bottom: 170px;
   max-width: 1920px;
   text-align: center;
+  min-height: 100vh;
 
   ${media.tabletSmallOnly(css`
-    padding-top: 140px;
-    padding-bottom: 115px;
+    //padding-top: 140px;
+    //padding-bottom: 115px;
   `)}
 
   ${media.mobile(css`
-    padding-top: 140px;
-    padding-bottom: 102px;
+    //padding-top: 140px;
+    //padding-bottom: 102px;
   `)}
 `;
 
 const Inner = styled.div`
   position: relative;
   display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 const Title = styled.span`
   position: relative;
@@ -66,11 +69,9 @@ const Title = styled.span`
   ${media.desktop1366(css`
     font-size: 19.2vw;
   `)}
-
   ${media.mobile(css`
     font-size: 18.7vw;
   `)}
-
   &:before {
     content: attr(data-text);
     position: absolute;
@@ -130,7 +131,6 @@ const DownArrow = styled.i`
   ${media.tabletSmall(css`
     display: none;
   `)}
-
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
