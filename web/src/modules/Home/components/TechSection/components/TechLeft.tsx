@@ -8,6 +8,7 @@ import {
   ThumbnailType,
 } from '@tager/web-modules';
 import { Nullish } from '@tager/web-core';
+import { createMediaMixin } from '@tager/web-components';
 
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
@@ -27,8 +28,10 @@ function TechLeft({ image, imageMobile }: Props) {
       if (!imageRef.current) return null;
 
       gsap.to(imageRef.current, {
-        x: 200,
+        left: '-15%',
         scrollTrigger: {
+          start: 'top 100%',
+          end: 'bottom 100%',
           trigger: imageRef.current,
           scrub: true,
         },
@@ -56,6 +59,18 @@ const Container = styled.div`
   shape-outside: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
 
+  ${createMediaMixin({ min: 4000 })(css`
+    width: 10.6vw;
+  `)}
+
+  ${createMediaMixin({ min: 4000 })(css`
+    width: 10.6vw;
+  `)}
+
+  ${createMediaMixin({ min: 3500 })(css`
+    width: 27.6vw;
+  `)}
+
   ${media.tabletSmallOnly(css`
     width: 67vw;
     clip-path: polygon(74% 0, 100% 0, 100% 100%, 0 100%);
@@ -73,6 +88,7 @@ const ImageContainer = styled(Picture)`
   position: relative;
   min-height: 750px;
   width: 100vw;
+  background: #a9a9a9;
 
   ${media.tabletSmallOnly(css`
     min-height: 663px;
@@ -84,10 +100,14 @@ const ImageContainer = styled(Picture)`
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(-200px);
+    //transform: translateX(-200px);
     min-height: 750px;
     height: 100%;
     object-fit: cover;
+    max-width: initial;
+
+    left: -100%;
+    transform: translateX(10%);
 
     ${media.tabletSmallOnly(css`
       min-height: 663px;
