@@ -10,6 +10,7 @@ import TickerLine from '@/components/TickerLine';
 function ClientsSection() {
   const page = useCurrentPage<ClientsSectionType>();
   const pageFields = page?.templateFields;
+
   return (
     <Wrapper>
       <Title>{pageFields?.clientsTitle}</Title>
@@ -34,6 +35,7 @@ function ClientsSection() {
     </Wrapper>
   );
 }
+
 const Wrapper = styled.section`
   position: relative;
   padding-top: 106px;

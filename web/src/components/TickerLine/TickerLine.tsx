@@ -37,84 +37,120 @@ function TickerLine({
   children,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollInnerRef = useRef<HTMLDivElement>(null);
-  const scrollLineRef = useRef<HTMLDivElement>(null);
+  const firstTickerLine = useRef<HTMLDivElement>(null);
+
+  function getTickerOffset(tickerRef: React.RefObject<HTMLDivElement>) {
+    const tickerElem = tickerRef.current;
+    const containerElem = containerRef.current;
+    if (!tickerElem || !containerElem) return 0;
+
+    return containerElem.clientWidth - tickerElem.offsetWidth;
+  }
 
   useEffect(() => {
-    if (isLabelTicket && window.matchMedia('(max-width: 1023.98px)').matches)
-      return;
+    let tl: gsap.core.Timeline;
 
-    const containerElem = containerRef.current;
-    const scrollLineElem = scrollLineRef.current;
-    const scrollInnerElem = scrollInnerRef.current;
-    if (!containerElem || !scrollInnerElem || !scrollLineElem) return;
+    const delayCall = gsap.delayedCall(0, () => {
+      if (!containerRef.current) return;
 
-    const tickerElem = containerElem.querySelector('.ticker');
-    if (!tickerElem) return;
-
-    const fragment = new DocumentFragment();
-    generateNumberArray(0).forEach(() => {
-      fragment.append(tickerElem.cloneNode(true));
+      tl = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          invalidateOnRefresh: true,
+          trigger: containerRef.current,
+          scrub: true,
+        },
+      });
+      tl.to(
+        firstTickerLine.current,
+        {
+          x: () =>
+            isReversed
+              ? -getTickerOffset(firstTickerLine)
+              : getTickerOffset(firstTickerLine),
+          ease: 'linear',
+        },
+        0
+      );
     });
-    scrollLineElem.append(fragment);
-    scrollInnerElem.append(scrollLineElem.cloneNode(true));
-
-    const tween = gsap.to(scrollInnerElem, {
-      duration: () => getScrollLineWidth() / 90,
-      x: () => -getScrollLineWidth(),
-      ease: 'none',
-      repeat: -1,
-      reversed: isReversed,
-    });
-
-    window.addEventListener('resize', onResize);
-
-    const observer = createIntersectionObserver(tween);
-    observer?.observe(containerElem);
-
-    function getScrollLineWidth() {
-      const scrollLineElem = scrollLineRef.current;
-      if (scrollLineElem) {
-        return scrollLineElem.clientWidth;
-      }
-      return 0;
-    }
-
-    function onResize() {
-      if (
-        isLabelTicket &&
-        window.matchMedia('(max-width: 1023.98px)').matches
-      ) {
-        tween.kill();
-        observer?.disconnect();
-      } else {
-        tween.restart();
-      }
-    }
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      tween.kill();
-      observer?.disconnect();
+      delayCall.kill();
+      tl?.kill();
     };
-  });
+  }, []);
+
+  // useEffect(() => {
+  //   if (isLabelTicket && window.matchMedia('(max-width: 1023.98px)').matches)
+  //     return;
+  //
+  //   const containerElem = containerRef.current;
+  //   const scrollLineElem = scrollLineRef.current;
+  //   const scrollInnerElem = scrollInnerRef.current;
+  //   if (!containerElem || !scrollInnerElem || !scrollLineElem) return;
+  //
+  //   const tickerElem = containerElem.querySelector('.ticker');
+  //   if (!tickerElem) return;
+  //
+  //   const fragment = new DocumentFragment();
+  //   generateNumberArray(0).forEach(() => {
+  //     fragment.append(tickerElem.cloneNode(true));
+  //   });
+  //   scrollLineElem.append(fragment);
+  //   scrollInnerElem.append(scrollLineElem.cloneNode(true));
+  //
+  //   const tween = gsap.to(scrollInnerElem, {
+  //     duration: () => getScrollLineWidth() / 90,
+  //     x: () => -getScrollLineWidth(),
+  //     ease: 'none',
+  //     repeat: -1,
+  //     reversed: isReversed,
+  //   });
+  //
+  //   window.addEventListener('resize', onResize);
+  //
+  //   const observer = createIntersectionObserver(tween);
+  //   observer?.observe(containerElem);
+  //
+  //   function getScrollLineWidth() {
+  //     const scrollLineElem = scrollLineRef.current;
+  //     if (scrollLineElem) {
+  //       return scrollLineElem.clientWidth;
+  //     }
+  //     return 0;
+  //   }
+  //
+  //   function onResize() {
+  //     if (
+  //       isLabelTicket &&
+  //       window.matchMedia('(max-width: 1023.98px)').matches
+  //     ) {
+  //       tween.kill();
+  //       observer?.disconnect();
+  //     } else {
+  //       tween.restart();
+  //     }
+  //   }
+  //
+  //   return () => {
+  //     window.removeEventListener('resize', onResize);
+  //     tween.kill();
+  //     observer?.disconnect();
+  //   };
+  // });
 
   return (
     <Container
       backgroundTicket={backgroundTicket}
       rotateTicket={rotateTicket}
       sizeTicket={sizeTicket}
-      ref={containerRef}
       isReversed={isReversed}
       isAbove={isAbove}
       isLabelTicket={isLabelTicket}
+      ref={containerRef}
     >
-      <ScrollerInner ref={scrollInnerRef}>
-        <LogosWrapper
-          ref={scrollLineRef}
-          sizeTicket={sizeTicket}
-          isLabelTicket={isLabelTicket}
-        >
+      <ScrollerInner ref={firstTickerLine}>
+        <LogosWrapper sizeTicket={sizeTicket} isLabelTicket={isLabelTicket}>
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
@@ -176,6 +212,7 @@ const Container = styled.div<{
     css`
       height: auto !important;
       transform: none !important;
+
       ${LogosWrapper} {
         height: auto;
       }
@@ -248,6 +285,7 @@ const LogosWrapper = styled.div<{
     css`
       ${media.tabletSmall(css`
         display: none;
+
         &:first-child {
           display: flex;
         }
@@ -261,11 +299,9 @@ const Logo = styled(PlainPicture)`
   ${media.tabletSmallOnly(css`
     padding: 0 35px;
   `)}
-
   ${media.mobile(css`
     padding: 0 15px;
   `)}
-
   img {
     //noinspection CssInvalidPropertyValue
     image-rendering: -webkit-optimize-contrast;
