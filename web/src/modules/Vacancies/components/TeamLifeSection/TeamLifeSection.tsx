@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import teamLifeBgUrl from '@/assets/images/team-life/team-life-bg.png';
 import teamLifeBgUrl2x from '@/assets/images/team-life/team-life-bg@2x.png';
@@ -16,9 +18,34 @@ import { TeamLifeSectionType } from '@/typings/model';
 
 import InstagramFeed from './components/InstagramFeed';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function TeamLifeSection() {
   const page = useCurrentPage<TeamLifeSectionType>();
   const pageFields = page?.templateFields;
+  const teamLifeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const delayedCall = gsap.delayedCall(0, () => {
+      if (!teamLifeRef.current) return null;
+
+      gsap.to(teamLifeRef.current, {
+        yPercent: 110,
+        scrollTrigger: {
+          start: 'bottom bottom',
+          end: 'bottom 40%',
+          markers: true,
+          trigger: teamLifeRef.current,
+          scrub: true,
+        },
+      });
+    });
+
+    return () => {
+      delayedCall.kill();
+    };
+  }, []);
+
   return (
     <Wrapper>
       <BackgroundPicture
@@ -31,7 +58,7 @@ function TeamLifeSection() {
         className="team-life-background"
       />
       <TitleBlock>
-        <Title>Team Life</Title>
+        <Title ref={teamLifeRef}>Team Life</Title>
       </TitleBlock>
 
       <InstagramBlock>
@@ -85,10 +112,12 @@ const TitleBlock = styled.div`
   position: relative;
   max-width: 1920px;
   text-align: center;
+  overflow: hidden;
   z-index: 1;
 `;
 
 const Title = styled.span`
+  display: block;
   width: 100%;
   font-weight: 900;
   font-size: 263px;
@@ -96,6 +125,7 @@ const Title = styled.span`
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.red};
+  transform: translateY(-110%);
 
   ${media.desktop1366(
     css`

@@ -24,7 +24,7 @@ function TechLeft({ image, imageMobile }: Props) {
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    gsap.delayedCall(0, () => {
+    const delayedCall = gsap.delayedCall(0, () => {
       if (!imageRef.current) return null;
 
       gsap.to(imageRef.current, {
@@ -37,6 +37,10 @@ function TechLeft({ image, imageMobile }: Props) {
         },
       });
     });
+
+    return () => {
+      delayedCall.kill();
+    };
   }, []);
 
   return (
