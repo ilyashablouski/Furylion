@@ -1,5 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+import { useMedia } from '@tager/web-core';
 
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -11,6 +15,30 @@ import { ButtonLink } from '@/components/Button';
 
 function FirstArtSection() {
   const page = useCurrentPage<FirstArtSectionType>();
+  const vectorRef = useRef<HTMLDivElement>(null);
+  const blockRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const delayedCall = gsap.delayedCall(0, () => {
+      if (!vectorRef.current) return null;
+
+      gsap.to(vectorRef.current, {
+        left: '-103%',
+        scrollTrigger: {
+          start: 'center 100%',
+          end: '70% 70%',
+          markers: true,
+          trigger: vectorRef.current,
+          scrub: true,
+        },
+      });
+    });
+
+    return () => {
+      delayedCall.kill();
+    };
+  }, []);
+
   if (!page) return null;
 
   const pageFields = page.templateFields;
@@ -67,7 +95,8 @@ function FirstArtSection() {
           </Bottom>
         </ContentContainer>
       </Left>
-      <Right>
+      <Right ref={blockRef}>
+        <Vector ref={vectorRef} />
         <ArtSwiper1 images={pageFields.firstArtImages} />
       </Right>
     </Wrapper>
@@ -91,13 +120,43 @@ const Wrapper = styled.section`
   `)}
 `;
 
+const Vector = styled.span`
+  display: block;
+  position: absolute;
+  width: 140%;
+  height: 200%;
+  top: -74%;
+  left: -8%;
+  right: 0;
+  bottom: 0;
+  background: #191919;
+  z-index: 10;
+  transform: rotate(30deg);
+
+  ${media.tablet(css`
+    height: 223%;
+    top: -111%;
+    left: -8%;
+    transform: rotate(45deg);
+  `)}
+
+  ${media.mobile(css`
+    height: 223%;
+    top: -111%;
+    left: -93%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(36deg);
+  `)}
+`;
+
 const Left = styled.div`
   margin-top: 100px;
+
   ${media.tablet(css`
     margin-top: 0;
     order: 2;
   `)}
-
   ${ContentContainer} {
     padding-right: 0;
 
@@ -115,18 +174,21 @@ const Left = styled.div`
   }
 `;
 const Right = styled.div`
+  position: relative;
   flex: 0 0 673px;
   max-width: 673px;
-  clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
+  overflow: hidden;
+  //clip-path: polygon(65% 0, 100% 0, 100% 100%, 0 100%);
+  //clip-path: polygon(94% 92%, 100% 86%, 100% 100%, 86% 100%);
 
   ${media.tablet(css`
     order: 1;
     max-width: none;
-    clip-path: polygon(57% 0, 100% 0, 100% 100%, 0 100%);
+    //clip-path: polygon(57% 0, 100% 0, 100% 100%, 0 100%);
   `)}
 
   ${media.mobile(css`
-    clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%, 0% 29%);
+    //clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%, 0% 29%);
   `)}
 `;
 
@@ -143,6 +205,7 @@ const Title = styled.span`
     left: auto;
     right: auto;
     font-size: 56px;
+    z-index: 15;
   `)}
 
   ${media.mobile(css`
@@ -245,13 +308,10 @@ const Bottom = styled.div`
     margin-top: 40px;
     justify-content: center;
   `)}
-
   ${media.mobile(css`
     margin-left: -20px;
     margin-right: -20px;
   `)}
-  
-
   .cut-button-left {
     ${media.tabletSmallOnly(css`
       padding: 25px 35px 25px 24px;
