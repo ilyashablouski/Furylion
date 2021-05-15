@@ -66,8 +66,8 @@ function TickerLine({
         {
           x: () =>
             isReversed
-              ? -getTickerOffset(firstTickerLine)
-              : getTickerOffset(firstTickerLine),
+              ? getTickerOffset(firstTickerLine)
+              : -getTickerOffset(firstTickerLine),
           ease: 'linear',
         },
         0
