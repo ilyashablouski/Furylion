@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { EffectCoverflow } from 'swiper';
 
@@ -7,8 +7,7 @@ import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import { AdsHeadItemType } from '@/typings/model';
 import { media } from '@/utils/mixin';
-import { breakpoints, colors } from '@/constants/theme';
-import PlaceholderCard from '@/components/PlaceholderCard';
+import { breakpoints } from '@/constants/theme';
 import Picture from '@/components/Picture';
 import Link from '@/components/Link';
 import SimplePlaceholder from '@/components/SimplePlaceholder';
@@ -25,6 +24,8 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  if (!adsHeadItems) return null;
 
   return (
     <Container>
@@ -98,16 +99,15 @@ export default AdsHeadSwiper;
 const Container = styled.div`
   margin-top: 30px;
   min-height: 813px;
+
   ${media.tabletSmallOnly(css`
     margin-top: 70px;
     min-height: 676px;
   `)}
-
   ${media.mobile(css`
     margin-top: 46px;
     min-height: 485px;
   `)}
-
   .swiper-container-initialized {
     padding-bottom: 175px;
 
@@ -160,7 +160,6 @@ const AdsHeadPicture = styled(Picture)`
   ${media.mobile(css`
     border-radius: 11px;
   `)}
-
   picture {
     width: 100%;
     height: 100%;

@@ -26,7 +26,7 @@ function HeaderSection() {
           <SmallArrowIcon />
         </DownArrow>
 
-        <AdsHeadSwiper adsHeadItems={pageFields.headAdsItems} />
+        <AdsHeadSwiper adsHeadItems={pageFields.headAdsItemsTop} />
       </InnerWrapper>
     </Wrapper>
   );

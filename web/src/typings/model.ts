@@ -357,7 +357,8 @@ export type AdsHeadItemType = {
 export interface AdsHeadSectionType extends PageFullType {
   templateFields: {
     headAdsText: StringFieldType;
-    headAdsItems: Array<AdsHeadItemType>;
+    headAdsItemsTop: Array<AdsHeadItemType>;
+    headAdsItemsBottom: Array<AdsHeadItemType>;
   };
 }
 
