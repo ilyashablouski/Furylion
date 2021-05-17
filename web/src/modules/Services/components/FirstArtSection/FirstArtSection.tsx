@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { useMedia } from '@tager/web-core';
-
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { FirstArtSectionType } from '@/typings/model';
@@ -19,12 +17,34 @@ function FirstArtSection() {
   const blockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let tw: gsap.core.Tween;
     const delayedCall = gsap.delayedCall(0, () => {
       if (!vectorRef.current) return null;
 
-      gsap.to(vectorRef.current, {
-        left: '-103%',
+      let left: gsap.TweenValue | undefined;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          left = '-103%';
+        },
+        '(max-width: 1259px)': function () {
+          left = '-90%';
+        },
+        '(max-width: 1024px)': function () {
+          left = '-90%';
+        },
+        '(max-width: 768px)': function () {
+          left = '-154%';
+        },
+        '(max-width: 414px)': function () {
+          left = '-167%';
+        },
+      });
+
+      tw = gsap.to(vectorRef.current, {
+        left: left,
         scrollTrigger: {
+          markers: true,
           start: 'center 100%',
           end: '70% 70%',
           trigger: vectorRef.current,
@@ -35,6 +55,7 @@ function FirstArtSection() {
 
     return () => {
       delayedCall.kill();
+      tw?.kill();
     };
   }, []);
 
@@ -134,14 +155,18 @@ const Vector = styled.span`
 
   ${media.tablet(css`
     height: 223%;
-    top: -111%;
+    top: -134%;
     left: -8%;
     transform: rotate(45deg);
   `)}
 
+  ${media.tabletSmall(css`
+    transform: rotate(38deg);
+  `)}
+
   ${media.mobile(css`
     height: 223%;
-    top: -111%;
+    top: -75%;
     left: -93%;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
