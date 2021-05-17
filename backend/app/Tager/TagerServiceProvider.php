@@ -2,7 +2,9 @@
 
 namespace App\Tager;
 
+use App\Web\Vacancies\Jobs\GetVacanciesCountJob;
 use Illuminate\Support\ServiceProvider;
+use OZiTAG\Tager\Backend\Core\Utils\TagerVariables;
 use OZiTAG\Tager\Backend\Panel\TagerPanel;
 use OZiTAG\Tager\Backend\Rbac\TagerScopes;
 use OZiTAG\Tager\Backend\Seo\Structures\ParamsTemplate;
@@ -37,6 +39,8 @@ class TagerServiceProvider extends ServiceProvider
         TagerMenus::registerMenu('footer', 'Footer Menu', false);
 
         TagerPanel::registerRouteHandler('/careers/(.+?)$', VacancyPanelRouteHandler::class);
+
+        TagerVariables::register('vacancies_count', GetVacanciesCountJob::class, 0);
 
         TagerScopes::registerGroup('Vacancies', [
             UsersScope::VacanciesView => 'View',
