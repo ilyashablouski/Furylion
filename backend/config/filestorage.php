@@ -34,12 +34,12 @@ return [
         FileScenario::HomeHeroImage => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+            'thumbnail' => ConfigHelper::backgroundThumbnails()
         ],
         FileScenario::HomeHeroImageMobile => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+            'thumbnail' => ConfigHelper::backgroundThumbnails()
         ],
         FileScenario::HomeWorksItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
