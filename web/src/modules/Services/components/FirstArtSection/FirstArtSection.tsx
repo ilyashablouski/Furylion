@@ -27,7 +27,6 @@ function FirstArtSection() {
         scrollTrigger: {
           start: 'center 100%',
           end: '70% 70%',
-          markers: true,
           trigger: vectorRef.current,
           scrub: true,
         },
