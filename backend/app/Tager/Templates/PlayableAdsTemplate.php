@@ -20,9 +20,13 @@ class PlayableAdsTemplate extends Template
         parent::__construct('Playable Ads', [
             new GroupField('Head', [
                 'headAdsText' => new StringField('Text'),
-                'headAdsItems' => new RepeaterField('Slider Items', [
+                'headAdsItemsTop' => new RepeaterField('Slider Items Top', [
                     'image' => new ImageField('Image'),
                     'linkUrl' => new StringField('URL'),
+                ]),
+                'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
+                'image' => new ImageField('Image'),
+                'linkUrl' => new StringField('URL'),
                 ]),
             ]),
 
