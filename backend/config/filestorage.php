@@ -44,12 +44,12 @@ return [
         FileScenario::HomeWorksItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP)
+            'thumbnails' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP)
         ],
         FileScenario::HomeServicesItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1270)
+            'thumbnails' => ConfigHelper::thumbWithWebpAnd2x(1270)
         ],
         FileScenario::HomeTechnologiesGallery => [
             'storage' => ConfigHelper::fileStorage('home-page'),
