@@ -2,6 +2,7 @@
 
 namespace App\Tager\Templates;
 
+use App\Enums\FileScenario;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
@@ -31,7 +32,7 @@ class ServicesTemplate extends Template
                 'firstArtButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'firstArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'firstArtButtonSecondUrl' => new StringField('Button 2 - URL'),
-                'firstArtImages' => new GalleryField('Slider Images'),
+                'firstArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
             ]),
 
             new GroupField('Art 2', [
@@ -44,7 +45,7 @@ class ServicesTemplate extends Template
                 'secondArtButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'secondArtButtonSecondUrl' => new StringField('Button 2 - URL'),
-                'secondArtImages' => new GalleryField('Slider Images'),
+                'secondArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
             ]),
 
             new GroupField('Production', [
@@ -52,11 +53,11 @@ class ServicesTemplate extends Template
                 'productionText1' => new TextField('Text - 1'),
                 'productionText2' => new TextField('Text - 2'),
                 'productionMediaTop' => new RepeaterField('Production Media Top', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::ServicesProductionMedia),
                     'videoId' => new StringField('Video - ID'),
                 ]),
                 'productionMediaBottom' => new RepeaterField('Production Media Bottom', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::ServicesProductionMedia),
                     'videoId' => new StringField('Video - ID'),
                 ]),
                 'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
@@ -74,7 +75,7 @@ class ServicesTemplate extends Template
                 'portingButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'portingButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'portingButtonSecondUrl' => new StringField('Button 2 - URL'),
-                'portingImage' => new ImageField('Image'),
+                'portingImage' => new ImageField('Image', FileScenario::ServicesPorting),
             ]),
 
             new GroupField('Development', [
@@ -106,8 +107,8 @@ class ServicesTemplate extends Template
                 'coDevelopmentText1' => new TextField('Text - 1'),
                 'coDevelopmentText2' => new TextField('Text - 2'),
                 'coDevelopmentText3' => new TextField('Text - 3'),
-                'leftLogo' => new ImageField('Left logo'),
-                'rightLogo' => new ImageField('Right logo'),
+                'leftLogo' => new ImageField('Left logo', FileScenario::ServicesCoDevelopmentLogos),
+                'rightLogo' => new ImageField('Right logo', FileScenario::ServicesCoDevelopmentLogos),
                 'coDevelopmentButtonLabel' => new StringField('Button - Text'),
                 'coDevelopmentButtonUrl' => new StringField('Button - URL'),
             ]),
@@ -116,7 +117,7 @@ class ServicesTemplate extends Template
                 'adsText1' => new TextField('Text - 1'),
                 'adsText2' => new TextField('Text - 2'),
                 'adsText3' => new TextField('Text - 3'),
-                'adsImages' => new GalleryField('Slider Images'),
+                'adsImages' => new GalleryField('Slider Images', FileScenario::ServicesAds),
                 'adsButtonLabel' => new StringField('Button - Text'),
                 'adsButtonUrl' => new StringField('Button - URL'),
             ]),
