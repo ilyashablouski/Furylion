@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -12,6 +13,8 @@ import Picture from '@/components/Picture';
 import ServicesTop from './components/ServicesTop';
 import ServicesBottom from './components/ServicesBottom';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function ServicesSection() {
   const page = useCurrentPage<ServicesSectionType>();
   const pageFields = page?.templateFields;
@@ -22,10 +25,27 @@ function ServicesSection() {
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    let tweenImage: gsap.core.Tween;
+    let tweenTitle: gsap.core.Tween;
     const delayedCall = gsap.delayedCall(0, () => {
       if (!imageRef.current || !titleRef.current) return null;
 
-      gsap.to(imageRef.current, {
+      let endTitleAnimation:
+        | string
+        | number
+        | gsap.plugins.StartEndFunc
+        | undefined;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 767px)': function () {
+          endTitleAnimation = '260% 50%';
+        },
+        '(max-width: 767px)': function () {
+          endTitleAnimation = '450% 20%';
+        },
+      });
+
+      tweenImage = gsap.to(imageRef.current, {
         yPercent: 100,
         scrollTrigger: {
           start: '90% 90%',
@@ -35,12 +55,12 @@ function ServicesSection() {
         },
       });
 
-      gsap.to(titleRef.current, {
+      tweenTitle = gsap.to(titleRef.current, {
         top: '100%',
         scale: 0.2,
         scrollTrigger: {
           start: 'center 50%',
-          end: '260% 50%',
+          end: endTitleAnimation,
           trigger: titleRef.current,
           scrub: true,
         },
@@ -49,6 +69,8 @@ function ServicesSection() {
 
     return () => {
       delayedCall.kill();
+      tweenImage?.kill();
+      tweenTitle?.kill();
     };
   }, []);
 
