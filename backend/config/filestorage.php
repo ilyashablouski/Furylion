@@ -34,22 +34,22 @@ return [
         FileScenario::HomeHeroImage => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::backgroundThumbnails()
+            'thumbnails' => ConfigHelper::backgroundThumbnails()
         ],
         FileScenario::HomeHeroImageMobile => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::backgroundThumbnails()
+            'thumbnails' => ConfigHelper::backgroundThumbnails()
         ],
         FileScenario::HomeWorksItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnails' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP)
         ],
         FileScenario::HomeServicesItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnails' => ConfigHelper::thumbWithWebpAnd2x(1270)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1270)
         ],
         FileScenario::HomeTechnologiesGallery => [
             'storage' => ConfigHelper::fileStorage('home-page'),
