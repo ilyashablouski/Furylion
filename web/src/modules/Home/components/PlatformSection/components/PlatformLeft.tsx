@@ -48,8 +48,9 @@ function PlatformLeft({
 
   useEffect(() => {
     let timeline: gsap.core.Timeline;
+    let delayedCall: gsap.core.Tween;
 
-    gsap.delayedCall(0, () => {
+    delayedCall = gsap.delayedCall(0, () => {
       if (!containerRef.current) return null;
 
       timeline = gsap.timeline({
@@ -94,7 +95,7 @@ function PlatformLeft({
       });
     });
 
-    gsap.delayedCall(0.5, () => {
+    delayedCall = gsap.delayedCall(0, () => {
       if (!additionalTitleRef.current) return null;
 
       timeline = gsap.timeline({
@@ -114,7 +115,7 @@ function PlatformLeft({
             yPercent: 100,
             duration: 0.5,
           },
-          1.5
+          1
         )
         .from(
           additionTextRef.current,
@@ -153,6 +154,7 @@ function PlatformLeft({
 
     return () => {
       timeline?.kill();
+      delayedCall?.kill();
     };
   }, []);
 
