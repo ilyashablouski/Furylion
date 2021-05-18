@@ -38,6 +38,7 @@ function ServicesTop({ servicesItems }: Props) {
           singleItem
           linkUrl={servicesMarkupArray[0].props.linkUrl}
           scrollTo={servicesMarkupArray[0].props.scrollTo}
+          isNewTab={servicesMarkupArray[0].props.isNewTab}
         >
           {servicesMarkupArray[0]}
         </ItemWrapper>
@@ -48,6 +49,7 @@ function ServicesTop({ servicesItems }: Props) {
           className="item-wrapper"
           linkUrl={servicesMarkupArray[1].props.linkUrl}
           scrollTo={servicesMarkupArray[1].props.scrollTo}
+          isNewTab={servicesMarkupArray[1].props.isNewTab}
         >
           {servicesMarkupArray[1]}
         </ItemWrapper>
@@ -55,6 +57,7 @@ function ServicesTop({ servicesItems }: Props) {
           className="item-wrapper"
           linkUrl={servicesMarkupArray[2].props.linkUrl}
           scrollTo={servicesMarkupArray[2].props.scrollTo}
+          isNewTab={servicesMarkupArray[2].props.isNewTab}
         >
           {servicesMarkupArray[2]}
         </ItemWrapper>

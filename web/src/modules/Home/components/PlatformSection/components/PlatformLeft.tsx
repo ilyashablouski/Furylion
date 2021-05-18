@@ -21,6 +21,8 @@ type Props = {
   btnFirstUrl: StringFieldType;
   btnSecondLabel: StringFieldType;
   btnSecondUrl: StringFieldType;
+  btnFirstIsNewTab: boolean;
+  btnSecondIsNewTab: boolean;
 };
 
 function PlatformLeft({
@@ -32,6 +34,8 @@ function PlatformLeft({
   btnFirstUrl,
   btnSecondLabel,
   btnSecondUrl,
+  btnFirstIsNewTab,
+  btnSecondIsNewTab,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
@@ -204,7 +208,7 @@ function PlatformLeft({
           <ButtonLink
             href={btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-dark', 'w100']}
-            target="_blank"
+            target={btnFirstIsNewTab ? '_blank' : '_self'}
           >
             {btnFirstLabel}
           </ButtonLink>
@@ -214,7 +218,7 @@ function PlatformLeft({
           <ButtonLink
             href={btnSecondUrl ?? '#'}
             variants={['cut-top', 'dark', 'w100']}
-            target="_blank"
+            target={btnSecondIsNewTab ? '_blank' : '_self'}
           >
             {btnSecondLabel}
           </ButtonLink>

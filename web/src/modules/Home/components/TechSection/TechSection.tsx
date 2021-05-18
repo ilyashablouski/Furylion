@@ -27,6 +27,8 @@ function TechSection() {
     logos: pageFields.technologiesLogos,
     addText: pageFields.technologiesTextAdditional,
     btnFirstLabel: pageFields.technologiesButtonFirstLabel,
+    btnFirstIsNewTab: pageFields.technologiesButtonFirstIsNewTab,
+    btnSecondIsNewTab: pageFields.technologiesButtonSecondIsNewTab,
     btnFirstUrl: pageFields.technologiesButtonFirstUrl,
     btnSecondLabel: pageFields.technologiesButtonSecondLabel,
     btnSecondUrl: pageFields.technologiesButtonSecondUrl,

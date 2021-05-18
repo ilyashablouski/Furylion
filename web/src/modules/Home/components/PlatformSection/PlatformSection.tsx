@@ -27,6 +27,8 @@ function PlatformSection() {
             logos={pageFields.platformLogos}
             addText={pageFields.platformAdditional}
             btnFirstLabel={pageFields.platformButtonFirstLabel}
+            btnFirstIsNewTab={pageFields.platformButtonFirstIsNewTab}
+            btnSecondIsNewTab={pageFields.platformButtonSecondIsNewTab}
             btnFirstUrl={pageFields.platformButtonFirstUrl}
             btnSecondLabel={pageFields.platformButtonSecondLabel}
             btnSecondUrl={pageFields.platformButtonSecondUrl}

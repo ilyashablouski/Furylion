@@ -35,12 +35,14 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[0].props.linkUrl}
+          isNewTab={servicesMarkupArray[0].props.isNewTab}
         >
           {servicesMarkupArray[0]}
         </ItemWrapper>
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[1].props.linkUrl}
+          isNewTab={servicesMarkupArray[0].props.isNewTab}
         >
           {servicesMarkupArray[1]}
         </ItemWrapper>
@@ -50,6 +52,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[2].props.linkUrl}
+          isNewTab={servicesMarkupArray[2].props.isNewTab}
           singleItem
         >
           {servicesMarkupArray[2]}

@@ -6,8 +6,7 @@ import { StringFieldType } from '@/typings/common';
 import { ButtonVariant } from '@/components/Button/Button.types';
 
 type Props = {
-  //FIXME: Fix any typing
-  children?: any;
+  children?: React.ReactNode;
   href?: StringFieldType;
   color: ButtonVariant;
   className?: string;

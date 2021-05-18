@@ -21,6 +21,8 @@ type Props = {
     btnFirstUrl?: StringFieldType;
     btnSecondLabel?: StringFieldType;
     btnSecondUrl?: StringFieldType;
+    btnFirstIsNewTab: boolean;
+    btnSecondIsNewTab: boolean;
   };
 };
 
@@ -53,7 +55,7 @@ function TechRight({ data }: Props) {
           <ButtonLink
             href={data.btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-red', 'w100']}
-            target="_blank"
+            target={data.btnFirstIsNewTab ? '_blank' : '_self'}
           >
             {data.btnFirstLabel}
           </ButtonLink>
@@ -63,7 +65,7 @@ function TechRight({ data }: Props) {
           <ButtonLink
             href={data.btnSecondUrl ?? '#'}
             variants={['cut-top', 'red', 'w100']}
-            target="_blank"
+            target={data.btnSecondIsNewTab ? '_blank' : '_self'}
           >
             {data.btnSecondLabel}
           </ButtonLink>

@@ -13,6 +13,7 @@ type Props = {
   rightAlign?: boolean;
   linkUrl?: string;
   scrollTo?: Nullish<string>;
+  isNewTab: boolean;
 };
 
 function getPath(linkUrl: string | undefined, id: Nullish<string>) {
@@ -30,10 +31,14 @@ function ItemWrapper({
   singleItem,
   linkUrl,
   children,
+  isNewTab,
 }: Props) {
   return (
     <Container className={className} singleItem={singleItem}>
-      <ItemLink to={getPath(linkUrl, scrollTo)} />
+      <ItemLink
+        to={getPath(linkUrl, scrollTo)}
+        target={isNewTab ? '_blank' : '_self'}
+      />
       {children}
     </Container>
   );

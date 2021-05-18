@@ -36,7 +36,6 @@ function TeamSection() {
   const teamItemRefList = useRef<Array<HTMLDivElement | null>>(
     new Array(teamItems?.length).fill(null)
   );
-
   useEffect(() => {
     let timeline: gsap.core.Timeline;
     gsap.delayedCall(0, () => {
@@ -121,7 +120,7 @@ function TeamSection() {
         <SkewButton
           href={pageFields?.teamButtonUrl}
           color="red"
-          isNewTab={true}
+          isNewTab={pageFields?.teamButtonIsNewTab}
         >
           {pageFields?.teamButtonLabel}
         </SkewButton>
