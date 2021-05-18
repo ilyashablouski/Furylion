@@ -1,13 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { convertThumbnailToPictureImage } from '@tager/web-modules';
-
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { AdsSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
-import Picture from '@/components/Picture';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
 import AdsSwiper from '@/modules/Services/components/AdsSection/components/AdsSwiper';
