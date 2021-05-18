@@ -54,7 +54,7 @@ class HomeTemplate extends Template
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new BooleanField('Новая вкладка?'),
+                    'isNewTab' => new BooleanField('Is new tab??'),
                 ])
             ]),
             new GroupField('Technologies', [
@@ -66,8 +66,10 @@ class HomeTemplate extends Template
                 'technologiesTextAdditional' => new HtmlField('Text - Additional'),
                 'technologiesButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'technologiesButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'technologiesButtonFirstIsNewTab' => new BooleanField('Button 1 - Is new tab?'),
                 'technologiesButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'technologiesButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'technologiesButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Platform', [
                 'platformTitle' => new StringField('Title'),
@@ -76,8 +78,10 @@ class HomeTemplate extends Template
                 'platformAdditional' => new HtmlField('Text - Additional'),
                 'platformButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'platformButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'platformButtonFirstIsNewTab' => new BooleanField('Button 1 - Is new tab?'),
                 'platformButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'platformButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'platformButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Team', [
                 'teamItems' => new RepeaterField('Items', [
@@ -88,6 +92,7 @@ class HomeTemplate extends Template
                 ]),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),
+                'teamButtonIsNewTab' => new BooleanField('Button - Is New Tab?'),
             ]),
             new GroupField('Clients', [
                 'clientsTitle' => new StringField('Title'),
