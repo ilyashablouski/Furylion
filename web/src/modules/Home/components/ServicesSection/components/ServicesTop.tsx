@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import { ServiceItemType } from '@/typings/model';
@@ -24,6 +24,7 @@ function ServicesTop({ servicesItems }: Props) {
         linkLabel={serviceItem.linkLabel}
         linkUrl={serviceItem.linkUrl}
         className="service-item-info"
+        scrollTo={serviceItem.scrollTo}
       />
     );
   });
@@ -35,6 +36,7 @@ function ServicesTop({ servicesItems }: Props) {
           className="item-wrapper"
           singleItem
           linkUrl={servicesMarkupArray[0].props.linkUrl}
+          scrollTo={servicesMarkupArray[0].props.scrollTo}
         >
           {servicesMarkupArray[0]}
         </ItemWrapper>
@@ -44,12 +46,14 @@ function ServicesTop({ servicesItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[1].props.linkUrl}
+          scrollTo={servicesMarkupArray[1].props.scrollTo}
         >
           {servicesMarkupArray[1]}
         </ItemWrapper>
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[2].props.linkUrl}
+          scrollTo={servicesMarkupArray[2].props.scrollTo}
         >
           {servicesMarkupArray[2]}
         </ItemWrapper>
@@ -57,6 +61,7 @@ function ServicesTop({ servicesItems }: Props) {
     </ServicesBlock>
   );
 }
+
 const BlockLeft = styled.div`
   clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
   flex: 0 1 66.1%;
@@ -71,11 +76,9 @@ const BlockLeft = styled.div`
     max-width: 100%;
     clip-path: initial;
   `)}
-
   ${media.mobile(css`
     margin-top: -30px;
   `)}
-
   .item-wrapper {
     ${media.tabletSmallOnly(css`
       margin-top: 10px;
@@ -106,14 +109,13 @@ const BlockRight = styled.div`
   height: 100%;
   z-index: 1;
   transform: translateZ(0);
-  transform: translateZ(0);
+
   ${media.tabletSmall(css`
     position: relative;
     width: 100%;
     max-width: 100%;
     clip-path: initial;
   `)}
-
   .item-wrapper {
     &:nth-child(1) {
       margin-bottom: 11px;
@@ -150,7 +152,6 @@ const BlockRight = styled.div`
       right: auto;
       text-align: left;
     `)}
-
     p {
       margin-left: auto;
 

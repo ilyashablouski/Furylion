@@ -6,7 +6,7 @@ import {
   SettingsItemString,
   ThumbnailType,
 } from '@tager/web-modules';
-import { Nullable } from '@tager/web-core';
+import { Nullable, Nullish } from '@tager/web-core';
 import { SettingsItemCommon } from '@tager/web-modules/src/typings/models';
 
 import { StringFieldType } from '@/typings/common';
@@ -101,6 +101,7 @@ export type ServiceItemType = {
   text: StringFieldType;
   linkLabel: StringFieldType;
   linkUrl: StringFieldType;
+  scrollTo?: Nullish<string>;
 };
 
 export interface ServicesSectionType extends PageFullType {

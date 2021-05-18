@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { Nullish } from '@tager/web-core';
+
 import { media } from '@/utils/mixin';
 import Link from '@/components/Link';
 
@@ -10,12 +12,28 @@ type Props = {
   singleItem?: boolean;
   rightAlign?: boolean;
   linkUrl?: string;
+  scrollTo?: Nullish<string>;
 };
 
-function ItemWrapper({ className, singleItem, linkUrl, children }: Props) {
+function getPath(linkUrl: string | undefined, id: Nullish<string>) {
+  if (linkUrl && id) {
+    return linkUrl + `?scroll=${id}`;
+  }
+  if (!id) {
+    return linkUrl ?? '#';
+  }
+}
+
+function ItemWrapper({
+  className,
+  scrollTo,
+  singleItem,
+  linkUrl,
+  children,
+}: Props) {
   return (
     <Container className={className} singleItem={singleItem}>
-      <ItemLink to={linkUrl ?? '#'} />
+      <ItemLink to={getPath(linkUrl, scrollTo)} />
       {children}
     </Container>
   );
