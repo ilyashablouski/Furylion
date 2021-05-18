@@ -15,7 +15,7 @@ function HeaderSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper>
+    <Wrapper id="playableAdsHeader">
       <InnerWrapper>
         <Inner>
           <Title data-text="PLAYABLE ADS">Playable ADS</Title>
@@ -36,7 +36,7 @@ const animateUpDown = keyframes`
   from {
     transform: translateY(0);
   }
-  
+
   to {
     transform: translateY(-10px);
   }
@@ -85,11 +85,9 @@ const Title = styled.span`
   ${media.desktop1366(css`
     font-size: 12.7vw;
   `)}
-
   ${media.mobile(css`
     font-size: 12.4vw;
   `)}
-
   &:before {
     content: attr(data-text);
     position: absolute;

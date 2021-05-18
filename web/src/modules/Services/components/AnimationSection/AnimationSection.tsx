@@ -35,7 +35,7 @@ function AnimationSection() {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper id="servicesAnimation">
       <TitleBlock>
         <Title ref={animationTitleRef}>Animation</Title>
       </TitleBlock>

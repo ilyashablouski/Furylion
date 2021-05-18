@@ -216,7 +216,6 @@ const ProfileImage = styled(Picture)`
   ${media.mobile(css`
     margin-top: 20px;
   `)}
-
   img {
     width: 257px;
     height: 257px;

@@ -15,7 +15,7 @@ function ReengagementSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper>
+    <Wrapper id="playableReengagement">
       <ContentContainer>
         <Title>{pageFields.reengagementTitle}</Title>
 

@@ -75,7 +75,7 @@ function ServicesSection() {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper id="homeServices">
       <ServicesPreviewContent>
         <PreviewImageWrapper>
           <Picture imageRef={imageRef} src={Vector} />

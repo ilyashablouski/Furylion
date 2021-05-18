@@ -22,7 +22,7 @@ function OutStaffingSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper isChangedColor={isChangedColor}>
+    <Wrapper id="servicesOutStaffing" isChangedColor={isChangedColor}>
       <ContentContainer>
         <Title>{pageFields.outStaffingTitle}</Title>
 

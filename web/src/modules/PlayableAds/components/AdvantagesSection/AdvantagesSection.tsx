@@ -14,7 +14,7 @@ function AdvantagesSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper>
+    <Wrapper id="playableAdvantages">
       <ContentContainer>
         <Title>{pageFields.advantagesTitle}</Title>
 
@@ -157,7 +157,6 @@ const Lists = styled.div`
     margin: 0;
     display: block;
   `)}
-
   ul {
     padding: 0 10px;
     flex: 1 1 50%;
@@ -191,11 +190,9 @@ const Lists = styled.div`
     ${media.tabletSmall(css`
       font-size: 20px;
     `)}
-
     ${media.mobile(css`
       padding-left: 54px;
     `)}
-
     &:not(:first-child) {
       margin-top: 37px;
 

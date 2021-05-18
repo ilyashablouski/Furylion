@@ -22,7 +22,6 @@ import withRedux from '@/hocs/withRedux';
 import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
 import { breakpoints } from '@/constants/theme';
-import ScrollProvider from '@/providers/ScrollProvider';
 
 Sentry.init({
   enabled:

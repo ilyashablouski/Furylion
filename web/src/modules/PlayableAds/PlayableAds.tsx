@@ -3,8 +3,7 @@ import React from 'react';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import EditorSection from '@/modules/PlayableAds/components/EditorSection';
 import FeedbackSection from '@/components/FeedbackSection';
-import useSettingItem from '@/hooks/useSettingItem';
-import { EditorFormType, FrameworkSectionType } from '@/typings/model';
+import { EditorFormType } from '@/typings/model';
 
 import AdvantagesSection from './components/AdvantagesSection';
 import CpiSection from './components/CpiSection';

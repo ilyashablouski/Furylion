@@ -18,7 +18,7 @@ function CpiSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper>
+    <Wrapper id="playableCpi">
       <ContentContainer>
         <Title>{pageFields.cpiTitle}</Title>
 

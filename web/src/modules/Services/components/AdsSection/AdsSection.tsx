@@ -16,7 +16,7 @@ function AdsSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper>
+    <Wrapper id="servicesAdsSection">
       <ContentContainer>
         <Title>{pageFields.adsTitle}</Title>
 

@@ -15,7 +15,7 @@ function RateSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper>
+    <Wrapper id="playableRate">
       <ContentContainer>
         <Title>{pageFields.rateMainTitle}</Title>
 

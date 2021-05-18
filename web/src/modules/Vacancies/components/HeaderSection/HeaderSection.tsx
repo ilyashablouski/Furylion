@@ -14,7 +14,7 @@ function HeaderSection() {
   const pageFields = page?.templateFields;
   const image = pageFields?.headImage;
   return (
-    <Wrapper>
+    <Wrapper id="vacanciesHeader">
       <Inner>
         <Title data-text="VACANCIES">Vacancies</Title>
         <ImageContainer>

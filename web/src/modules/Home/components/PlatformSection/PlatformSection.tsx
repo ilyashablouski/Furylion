@@ -18,7 +18,7 @@ function PlatformSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper>
+    <Wrapper id="homePlatform">
       <ContentContainer>
         <InnerWrapper>
           <PlatformLeft
@@ -44,7 +44,6 @@ const Wrapper = styled.section`
   ${media.mobile(css`
     margin-top: 60px;
   `)}
-
   ${ContentContainer} {
     max-width: 1920px;
   }

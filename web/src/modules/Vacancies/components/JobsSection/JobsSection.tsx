@@ -76,7 +76,7 @@ function JobsSection() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper id="vacanciesJobs">
       <ContentContainer>
         <Tabs>
           {vacanciesCityList

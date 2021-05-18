@@ -63,7 +63,7 @@ function SecondArtSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper>
+    <Wrapper id="servicesSecondArt">
       <Left ref={blockRef}>
         <Vector ref={vectorRef} />
         <ArtSwiper2 images={pageFields.secondArtImages} isRightSide={false} />

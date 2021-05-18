@@ -27,7 +27,7 @@ function CoDevelopmentSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper>
+    <Wrapper id="servicesCoDevelopment">
       <ContentContainer>
         <Title>{pageFields.coDevelopmentTitle}</Title>
 
