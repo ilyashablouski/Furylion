@@ -69,7 +69,6 @@ function DoubleTickerLine({
           start: 'top 70%',
           invalidateOnRefresh: true,
           trigger: containerRef.current,
-          markers: true,
           scrub: true,
         },
       });

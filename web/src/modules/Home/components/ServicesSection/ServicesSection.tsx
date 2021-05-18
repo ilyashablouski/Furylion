@@ -51,7 +51,6 @@ function ServicesSection() {
           start: '90% 90%',
           end: '160% 40%',
           trigger: imageRef.current,
-          markers: true,
           scrub: true,
         },
       });

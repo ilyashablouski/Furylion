@@ -44,7 +44,6 @@ function FirstArtSection() {
       tw = gsap.to(vectorRef.current, {
         left: left,
         scrollTrigger: {
-          markers: true,
           start: 'center 100%',
           end: '70% 70%',
           trigger: vectorRef.current,

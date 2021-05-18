@@ -111,27 +111,19 @@ function PlatformLeft({
       });
 
       timeline
-        .from(
-          additionalTitleRef.current,
-          {
-            ease: 'customEaseInOut',
-            transformOrigin: '50% 100%',
-            yPercent: 100,
-            duration: 0.5,
-          },
-          1
-        )
-        .from(
-          additionTextRef.current,
-          {
-            stagger: 0.15,
-            ease: 'customEaseInOut',
-            transformOrigin: '50% 100%',
-            yPercent: 100,
-            duration: 0.3,
-          },
-          2
-        )
+        .from(additionalTitleRef.current, {
+          ease: 'customEaseInOut',
+          transformOrigin: '50% 100%',
+          yPercent: 100,
+          duration: 0.3,
+        })
+        .from(additionTextRef.current, {
+          stagger: 0.15,
+          ease: 'customEaseInOut',
+          transformOrigin: '50% 100%',
+          yPercent: 100,
+          duration: 0.2,
+        })
         .from(
           buttonLeft.current,
           {
@@ -139,9 +131,9 @@ function PlatformLeft({
             ease: 'customEaseInOut',
             transformOrigin: '-100%',
             xPercent: -100,
-            duration: 0.3,
+            duration: 0.2,
           },
-          2
+          0.5
         )
         .from(
           buttonRight.current,
@@ -150,9 +142,9 @@ function PlatformLeft({
             ease: 'customEaseInOut',
             transformOrigin: '100%',
             xPercent: 100,
-            duration: 0.3,
+            duration: 0.2,
           },
-          2
+          0.5
         );
     });
 
