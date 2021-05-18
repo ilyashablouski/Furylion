@@ -30,7 +30,6 @@ const Container = styled.div<{ singleItem?: boolean }>`
     margin-top: 30px;
     padding-top: 83.88%;
   `)}
-
   &:hover {
     .item-label {
       border-bottom-color: transparent;
@@ -39,6 +38,10 @@ const Container = styled.div<{ singleItem?: boolean }>`
 
     .service-item-info {
       opacity: 0.85;
+    }
+
+    img {
+      transform: scale(1.2);
     }
   }
 

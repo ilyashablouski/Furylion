@@ -45,7 +45,6 @@ const ImageContainer = styled.div`
     left: 0;
     right: 0;
   `)}
-
   .item-image-container {
     display: block;
 
@@ -65,7 +64,6 @@ const ImageContainer = styled.div`
         z-index: 1;
       }
     `)}
-
     img {
       ${media.tabletSmall(css`
         position: absolute;
@@ -81,6 +79,7 @@ const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s ease-in-out;
   }
 `;
 
