@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
 
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
+
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
@@ -22,18 +24,10 @@ function HeroSection() {
   return (
     <Wrapper>
       <BackgroundPicture
-        tabletLarge={{
-          src: image?.url,
-          src2x: image?.url_2x,
-          webp: image?.url_webp,
-          webp2x: image?.url_webp_2x,
-        }}
-        mobileSmall={{
-          src: imageMobile?.url,
-          src2x: imageMobile?.url_2x,
-          webp: imageMobile?.url_webp,
-          webp2x: imageMobile?.url_webp_2x,
-        }}
+        desktop={convertThumbnailToPictureImage(image?.desktop)}
+        laptop={convertThumbnailToPictureImage(image?.laptop)}
+        tabletLarge={convertThumbnailToPictureImage(image?.tablet)}
+        mobileSmall={convertThumbnailToPictureImage(imageMobile?.mobile)}
         className="hero-background"
       />
 

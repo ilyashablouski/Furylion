@@ -61,6 +61,13 @@ export type FileType = {
   url: string;
 };
 
+interface BaseImageType {
+  desktop: Nullable<ThumbnailType>;
+  mobile: Nullable<ThumbnailType>;
+  laptop: Nullable<ThumbnailType>;
+  tablet: Nullable<ThumbnailType>;
+}
+
 export interface SocialsType {
   socialsData: Array<{ href: StringFieldType; svg: SVGProps<SVGSVGElement> }>;
 }
@@ -69,8 +76,8 @@ export interface HeroSectionType extends PageFullType {
   templateFields: {
     heroTitle: StringFieldType;
     heroText: StringFieldType;
-    heroImage: Nullable<ThumbnailType>;
-    heroMobileImage: Nullable<ThumbnailType>;
+    heroImage: Nullable<BaseImageType>;
+    heroMobileImage: Nullable<BaseImageType>;
   };
 }
 
