@@ -9,6 +9,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
+use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 
@@ -32,8 +33,10 @@ class ServicesTemplate extends Template
                 'firstArtTextAdditional' => new HtmlField('Additional Text'),
                 'firstArtButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'firstArtButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'firstArtButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'firstArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'firstArtButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'firstArtButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
                 'firstArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
             ]),
 
@@ -46,8 +49,10 @@ class ServicesTemplate extends Template
                 'secondArtTextAdditional' => new HtmlField('Additional Text'),
                 'secondArtButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'secondArtButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'secondArtButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'secondArtButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'secondArtButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
                 'secondArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
             ]),
 
@@ -66,8 +71,10 @@ class ServicesTemplate extends Template
                 ]),
                 'productionButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'productionButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'productionButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'productionButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'productionButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'productionButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
             ]),
 
             new GroupField('Porting', [
@@ -78,8 +85,10 @@ class ServicesTemplate extends Template
                 'portingText3' => new TextField('Text - 2'),
                 'portingButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'portingButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'portingButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'portingButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'portingButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'portingButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
                 'portingImage' => new ImageField('Image', FileScenario::ServicesPorting),
             ]),
 
@@ -119,6 +128,7 @@ class ServicesTemplate extends Template
                 'rightLogo' => new ImageField('Right logo', FileScenario::ServicesCoDevelopmentLogos),
                 'coDevelopmentButtonLabel' => new StringField('Button - Text'),
                 'coDevelopmentButtonUrl' => new StringField('Button - URL'),
+                'coDevelopmentButtonIsNewTab' => new TrueFalseField('Button - Is new tab?'),
             ]),
             new GroupField('Ads', [
                 'adsId' => new StringField('id'),
@@ -129,6 +139,7 @@ class ServicesTemplate extends Template
                 'adsImages' => new GalleryField('Slider Images', FileScenario::ServicesAds),
                 'adsButtonLabel' => new StringField('Button - Text'),
                 'adsButtonUrl' => new StringField('Button - URL'),
+                'adsButtonIsNewTab' => new TrueFalseField('Button - Is new tab?'),
             ]),
         ]);
     }

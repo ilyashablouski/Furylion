@@ -10,7 +10,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
-use OZiTAG\Tager\Backend\Fields\Fields\BooleanField;
+use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 
 class HomeTemplate extends Template
@@ -45,7 +45,7 @@ class HomeTemplate extends Template
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new BooleanField('Is new Tab?'),
+                    'isNewTab' => new TrueFalseField('Is new Tab?'),
                 ])
             ]),
             new GroupField('Services Bottom', [
@@ -58,7 +58,7 @@ class HomeTemplate extends Template
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new BooleanField('Is new tab??'),
+                    'isNewTab' => new TrueFalseField('Is new tab??'),
                 ])
             ]),
             new GroupField('Technologies', [
@@ -71,10 +71,10 @@ class HomeTemplate extends Template
                 'technologiesTextAdditional' => new HtmlField('Text - Additional'),
                 'technologiesButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'technologiesButtonFirstUrl' => new StringField('Button 1 - URL'),
-                'technologiesButtonFirstIsNewTab' => new BooleanField('Button 1 - Is new tab?'),
+                'technologiesButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'technologiesButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'technologiesButtonSecondUrl' => new StringField('Button 2 - URL'),
-                'technologiesButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
+                'technologiesButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Platform', [
                 'platformId' => new StringField('id'),
@@ -84,10 +84,10 @@ class HomeTemplate extends Template
                 'platformAdditional' => new HtmlField('Text - Additional'),
                 'platformButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'platformButtonFirstUrl' => new StringField('Button 1 - URL'),
-                'platformButtonFirstIsNewTab' => new BooleanField('Button 1 - Is new tab?'),
+                'platformButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
                 'platformButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'platformButtonSecondUrl' => new StringField('Button 2 - URL'),
-                'platformButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
+                'platformButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Team', [
                 'teamId' => new StringField('id'),
@@ -99,7 +99,7 @@ class HomeTemplate extends Template
                 ]),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),
-                'teamButtonIsNewTab' => new BooleanField('Button - Is New Tab?'),
+                'teamButtonIsNewTab' => new TrueFalseField('Button - Is New Tab?'),
             ]),
             new GroupField('Clients', [
                 'clientsId' => new StringField('id'),
