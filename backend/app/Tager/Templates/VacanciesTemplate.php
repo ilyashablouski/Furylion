@@ -16,9 +16,11 @@ class VacanciesTemplate extends Template
     {
         parent::__construct('Vacancies', [
             new GroupField('Head Image', [
+                'headId' => new StringField('id'),
                 'headImage' => new ImageField('Image', FileScenario::HeadImage),
             ]),
             new GroupField('Team Life', [
+                'teamLifeId' => new StringField('id'),
                 'teamLifeTitle' => new StringField('Title'),
                 'teamLifeDescription' => new HtmlField('Text - Description'),
                 'teamLifeButton' => new ButtonField('Button'),
