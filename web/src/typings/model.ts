@@ -74,6 +74,7 @@ export interface SocialsType {
 
 export interface HeroSectionType extends PageFullType {
   templateFields: {
+    heroId: StringFieldType;
     heroTitle: StringFieldType;
     heroText: StringFieldType;
     heroImage: Nullable<BaseImageType>;
@@ -90,6 +91,7 @@ export type WorksItemType = {
 
 export interface WorksSectionType extends PageFullType {
   templateFields: {
+    worksId: StringFieldType;
     worksTitle: StringFieldType;
     worksItems: Array<WorksItemType>;
   };
@@ -101,11 +103,14 @@ export type ServiceItemType = {
   text: StringFieldType;
   linkLabel: StringFieldType;
   linkUrl: StringFieldType;
+  isNewTab: boolean;
   scrollTo?: Nullish<string>;
 };
 
 export interface ServicesSectionType extends PageFullType {
   templateFields: {
+    servicesId: StringFieldType;
+    servicesBottomId: StringFieldType;
     servicesTitle: StringFieldType;
     servicesItems: Array<ServiceItemType>;
     servicesBottomTitle: StringFieldType;
@@ -115,6 +120,7 @@ export interface ServicesSectionType extends PageFullType {
 
 export interface TechSectionType extends PageFullType {
   templateFields: {
+    technologiesId: StringFieldType;
     technologiesTitle: StringFieldType;
     technologiesText: StringFieldType;
     technologiesLogos: Array<ThumbnailType>;
@@ -123,21 +129,26 @@ export interface TechSectionType extends PageFullType {
     technologiesTextAdditional: StringFieldType;
     technologiesButtonFirstLabel: StringFieldType;
     technologiesButtonFirstUrl: StringFieldType;
+    technologiesButtonFirstIsNewTab: boolean;
     technologiesButtonSecondLabel: StringFieldType;
     technologiesButtonSecondUrl: StringFieldType;
+    technologiesButtonSecondIsNewTab: boolean;
   };
 }
 
 export interface PlatformSectionType extends PageFullType {
   templateFields: {
+    platformId: StringFieldType;
     platformTitle: StringFieldType;
     platformText: StringFieldType;
     platformLogos: Array<ThumbnailType>;
     platformAdditional: StringFieldType;
     platformButtonFirstLabel: StringFieldType;
     platformButtonFirstUrl: StringFieldType;
+    platformButtonFirstIsNewTab: boolean;
     platformButtonSecondLabel: StringFieldType;
     platformButtonSecondUrl: StringFieldType;
+    platformButtonSecondIsNewTab: boolean;
   };
 }
 
@@ -150,14 +161,17 @@ export type TeamSectionItemType = {
 
 export interface TeamSectionType extends PageFullType {
   templateFields: {
+    teamId: StringFieldType;
     teamItems: Array<TeamSectionItemType>;
     teamButtonLabel: StringFieldType;
     teamButtonUrl: StringFieldType;
+    teamButtonIsNewTab: boolean;
   };
 }
 
 export interface ClientsSectionType extends PageFullType {
   templateFields: {
+    clientsId: StringFieldType;
     clientsTitle: StringFieldType;
     clientsFirstGallery: Array<ThumbnailType>;
     clientsSecondGallery: Array<ThumbnailType>;

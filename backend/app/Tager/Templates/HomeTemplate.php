@@ -45,7 +45,7 @@ class HomeTemplate extends Template
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new BooleanField('Новая вкладка?'),
+                    'isNewTab' => new BooleanField('Is new Tab?'),
                 ])
             ]),
             new GroupField('Services Bottom', [
