@@ -227,6 +227,8 @@ export interface VacancyCardFullType extends VacancyCardShortType {
 
 export interface TeamLifeSectionType extends PageFullType {
   templateFields: {
+    teamLifeId: StringFieldType;
+    headId: StringFieldType;
     headImage: Nullable<ThumbnailType>;
     teamLifeTitle: StringFieldType;
     teamLifeDescription: StringFieldType;
@@ -252,6 +254,7 @@ export interface ServiceHeaderSectionType extends PageFullType {
 
 export interface FirstArtSectionType extends PageFullType {
   templateFields: {
+    firstArtId: StringFieldType;
     firstArtTitle: StringFieldType;
     firstArtText1: StringFieldType;
     firstArtText2: StringFieldType;
@@ -267,6 +270,7 @@ export interface FirstArtSectionType extends PageFullType {
 
 export interface SecondArtSectionType extends PageFullType {
   templateFields: {
+    secondArtId: StringFieldType;
     secondArtTitle: StringFieldType;
     secondArtText1: StringFieldType;
     secondArtText2: StringFieldType;
@@ -287,6 +291,7 @@ export type ProductionMediaItemType = {
 
 export interface ProductionBlockType extends PageFullType {
   templateFields: {
+    productionId: StringFieldType;
     productionTitle: StringFieldType;
     productionText1: StringFieldType;
     productionText2: StringFieldType;
@@ -301,6 +306,7 @@ export interface ProductionBlockType extends PageFullType {
 
 export interface PortingBlockType extends PageFullType {
   templateFields: {
+    portingId: StringFieldType;
     portingTitle: StringFieldType;
     portingText1: StringFieldType;
     portingText2: StringFieldType;
@@ -327,6 +333,7 @@ export type DevelopmentItemType = {
 
 export interface DevelopmentSectionType extends PageFullType {
   templateFields: {
+    developmentId: StringFieldType;
     developmentTitle: StringFieldType;
     developmentItems: Array<DevelopmentItemType>;
   };
@@ -339,6 +346,7 @@ export type OutStaffingItemType = {
 
 export interface OutStaffingSectionType extends PageFullType {
   templateFields: {
+    outStaffingId: StringFieldType;
     outStaffingTitle: StringFieldType;
     outStaffingText1: StringFieldType;
     outStaffingText2: StringFieldType;
@@ -348,6 +356,7 @@ export interface OutStaffingSectionType extends PageFullType {
 
 export interface CoDevelopmentSectionType extends PageFullType {
   templateFields: {
+    coDevelopmentId: StringFieldType;
     coDevelopmentTitle: StringFieldType;
     coDevelopmentText1: StringFieldType;
     coDevelopmentText2: StringFieldType;
@@ -361,6 +370,7 @@ export interface CoDevelopmentSectionType extends PageFullType {
 
 export interface AdsSectionType extends PageFullType {
   templateFields: {
+    adsId: StringFieldType;
     adsTitle: StringFieldType;
     adsText1: StringFieldType;
     adsText2: StringFieldType;
@@ -378,6 +388,7 @@ export type AdsHeadItemType = {
 
 export interface AdsHeadSectionType extends PageFullType {
   templateFields: {
+    headAdsId: StringFieldType;
     headAdsText: StringFieldType;
     headAdsItemsTop: Array<AdsHeadItemType>;
     headAdsItemsBottom: Array<AdsHeadItemType>;
@@ -386,6 +397,7 @@ export interface AdsHeadSectionType extends PageFullType {
 
 export interface AdvantagesSectionType extends PageFullType {
   templateFields: {
+    advantagesId: StringFieldType;
     advantagesTitle: StringFieldType;
     advantagesText1: StringFieldType;
     advantagesText2: StringFieldType;
@@ -396,6 +408,7 @@ export interface AdvantagesSectionType extends PageFullType {
 
 export interface RateSectionType extends PageFullType {
   templateFields: {
+    rateMainId: StringFieldType;
     rateMainTitle: StringFieldType;
     rateText: StringFieldType;
     rateLeftTitle: StringFieldType;
@@ -409,6 +422,7 @@ export interface RateSectionType extends PageFullType {
 
 export interface CpiSectionType extends PageFullType {
   templateFields: {
+    cpiId: StringFieldType;
     cpiTitle: StringFieldType;
     cpiImage: ThumbnailType;
     cpiButtonLabel: StringFieldType;
@@ -418,6 +432,7 @@ export interface CpiSectionType extends PageFullType {
 
 export interface ReengagementSectionType extends PageFullType {
   templateFields: {
+    reengagementId: StringFieldType;
     reengagementTitle: StringFieldType;
     reengagementText1: StringFieldType;
     reengagementText2: StringFieldType;
@@ -435,6 +450,7 @@ export type FrameworkItemType = {
 
 export interface FrameworkSectionType extends PageFullType {
   templateFields: {
+    frameworkId: StringFieldType;
     frameworkTitle: StringFieldType;
     frameworkText: StringFieldType;
     frameworkItems: Array<FrameworkItemType>;
@@ -445,6 +461,7 @@ export interface FrameworkSectionType extends PageFullType {
 
 export interface NetworksSectionType extends PageFullType {
   templateFields: {
+    networksId: StringFieldType;
     networksTitle: StringFieldType;
     networksFirstGallery: Array<ThumbnailType>;
     networksSecondGallery: Array<ThumbnailType>;
@@ -453,16 +470,7 @@ export interface NetworksSectionType extends PageFullType {
 
 export interface EditorSectionType extends PageFullType {
   templateFields: {
-    editorTitle: StringFieldType;
-    editorText: StringFieldType;
-    editorButtonLabel: StringFieldType;
-    editorButtonUrl: StringFieldType;
-    editorImage: ThumbnailType;
-  };
-}
-
-export interface EditorSectionType extends PageFullType {
-  templateFields: {
+    editorId: StringFieldType;
     editorTitle: StringFieldType;
     editorText: StringFieldType;
     editorButtonLabel: StringFieldType;
@@ -488,6 +496,7 @@ export type DoYouWantSectionItemType = {
 
 export interface DoYouWantSectionType extends PageFullType {
   templateFields: {
+    doYouWantId: StringFieldType;
     doYouWantTitle: StringFieldType;
     doYouWantFirstGallery: Array<DoYouWantSectionItemType>;
     doYouWantSecondGallery: Array<DoYouWantSectionItemType>;
