@@ -19,6 +19,7 @@ class PlayableAdsTemplate extends Template
     {
         parent::__construct('Playable Ads', [
             new GroupField('Head', [
+                'headAdsId' => new StringField('id'),
                 'headAdsText' => new StringField('Text'),
                 'headAdsItemsTop' => new RepeaterField('Slider Items Top', [
                     'image' => new ImageField('Image'),
@@ -31,6 +32,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Advantages', [
+                'advantagesId' => new StringField('id'),
                 'advantagesTitle' => new StringField('Title'),
                 'advantagesText1' => new TextField('Text - 1'),
                 'advantagesText2' => new TextField('Text - 2'),
@@ -39,6 +41,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Click-through rate', [
+                'rateMainId' => new StringField('id'),
                 'rateMainTitle' => new StringField('Main Title'),
                 'rateText' => new TextField('Text'),
                 'rateLeftTitle' => new StringField('Left Title'),
@@ -50,6 +53,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('CPI', [
+                'cpiId' => new StringField('id'),
                 'cpiTitle' => new StringField('Title'),
                 'cpiImage' => new ImageField('Image'),
                 'cpiButtonLabel' => new StringField('Button - Text'),
@@ -57,6 +61,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Reengagement', [
+                'reengagementId' => new StringField('id'),
                 'reengagementTitle' => new StringField('Title'),
                 'reengagementText1' => new TextField('Text - 1'),
                 'reengagementText2' => new TextField('Text - 2'),
@@ -66,6 +71,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Framework', [
+                'frameworkId' => new StringField('id'),
                 'frameworkTitle' => new StringField('Title'),
                 'frameworkText' => new TextField('Text'),
                 'frameworkItems' => new RepeaterField('Items', [
@@ -78,12 +84,14 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Networks', [
+                'networksId' => new StringField('id'),
                 'networksTitle' => new StringField('Title'),
                 'networksFirstGallery' => new GalleryField('Gallery 1'),
                 'networksSecondGallery' => new GalleryField('Gallery 2'),
             ]),
 
             new GroupField('Editor', [
+                'editorId' => new StringField('id'),
                 'editorTitle' => new StringField('Title'),
                 'editorText' => new TextField('Text'),
                 'editorImage' => new ImageField('Image'),
@@ -92,6 +100,7 @@ class PlayableAdsTemplate extends Template
             ]),
 
             new GroupField('Do you want', [
+                'doYouWantId' => new StringField('id'),
                 'doYouWantTitle' => new StringField('Title'),
                 'doYouWantFirstGallery' => new RepeaterField('Gallery 1', [
                     'image' => new ImageField('Image'),
