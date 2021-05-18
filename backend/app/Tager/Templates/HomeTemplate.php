@@ -40,6 +40,7 @@ class HomeTemplate extends Template
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
+                    'scrollTo' => new StringField('id'),
                 ])
             ]),
             new GroupField('Services Bottom', [
@@ -50,6 +51,7 @@ class HomeTemplate extends Template
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
+                    'scrollTo' => new StringField('id'),
                 ])
             ]),
             new GroupField('Technologies', [
