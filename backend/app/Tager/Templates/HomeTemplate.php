@@ -2,6 +2,7 @@
 
 namespace App\Tager\Templates;
 
+use App\Enums\FileScenario;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
@@ -19,13 +20,13 @@ class HomeTemplate extends Template
             new GroupField('Hero Block', [
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),
-                'heroImage' => new ImageField('Image'),
-                'heroMobileImage' => new ImageField('Mobile Image'),
+                'heroImage' => new ImageField('Image', FileScenario::HomeHeroImage),
+                'heroMobileImage' => new ImageField('Mobile Image', FileScenario::HomeHeroImageMobile),
             ]),
             new GroupField('Works', [
                 'worksTitle' => new StringField('Title'),
                 'worksItems' => new RepeaterField('Items', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::HomeWorksItems),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
                     'logos' => new GalleryField('Gallery'),
@@ -34,7 +35,7 @@ class HomeTemplate extends Template
             new GroupField('Services Top', [
                 'servicesTitle' => new StringField('Title'),
                 'servicesItems' => new RepeaterField('Services', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::HomeServicesItems),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
@@ -44,7 +45,7 @@ class HomeTemplate extends Template
             new GroupField('Services Bottom', [
                 'servicesBottomTitle' => new StringField('Title'),
                 'servicesBottomItems' => new RepeaterField('Services', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::HomeServicesItems),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
@@ -54,9 +55,9 @@ class HomeTemplate extends Template
             new GroupField('Technologies', [
                 'technologiesTitle' => new StringField('Title'),
                 'technologiesText' => new TextField('Text'),
-                'technologiesLogos' => new GalleryField('Gallery'),
-                'technologiesImage' => new ImageField('Image'),
-                'technologiesMobileImage' => new ImageField('Mobile Image'),
+                'technologiesLogos' => new GalleryField('Gallery', FileScenario::HomeTechnologiesGallery),
+                'technologiesImage' => new ImageField('Image', FileScenario::HomeTechnologiesImage),
+                'technologiesMobileImage' => new ImageField('Mobile Image', FileScenario::HomeTechnologiesImageMobile),
                 'technologiesTextAdditional' => new HtmlField('Text - Additional'),
                 'technologiesButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'technologiesButtonFirstUrl' => new StringField('Button 1 - URL'),
@@ -75,7 +76,7 @@ class HomeTemplate extends Template
             ]),
             new GroupField('Team', [
                 'teamItems' => new RepeaterField('Items', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::HomeTeamImage),
                     'width' => new StringField('Image width'),
                     'leftX' => new StringField('Left Indent'),
                     'topY' => new StringField('Top indent'),

@@ -45,6 +45,7 @@
           name="image"
           :error="errors.image"
           label="Image"
+          scenario="vacancy-image"
         />
         <form-field-select
           v-model="values.location"
