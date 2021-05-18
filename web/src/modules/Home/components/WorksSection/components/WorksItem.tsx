@@ -37,6 +37,23 @@ function WorksItem({ image, title, text, logos }: WorksItemType) {
 const WorksItemContainer = styled.div`
   position: relative;
 
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0.52) 0%,
+      rgba(0, 0, 0, 0) 35.78%
+    );
+    z-index: 10;
+  }
+
   .swiper-image-block {
     padding-top: 56.01%;
 
@@ -61,6 +78,8 @@ const WorksItemContainer = styled.div`
       object-fit: cover;
     }
   }
+
+  cursor: pointer;
 `;
 
 const Info = styled.div`
@@ -73,11 +92,9 @@ const Info = styled.div`
   ${media.tabletSmallOnly(css`
     bottom: 30px;
   `)}
-
   ${media.mobile(css`
     bottom: 45px;
   `)}
-
   .swiper-container-initialized & {
     left: 40px;
     right: 40px;
@@ -133,6 +150,7 @@ const Logos = styled.div`
 
 const LogoPicture = styled(Picture)`
   padding: 0 15px;
+
   img {
     max-height: 36px;
     image-rendering: -webkit-optimize-contrast;

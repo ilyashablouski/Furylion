@@ -12,6 +12,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
+use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
 
 class HomeTemplate extends Template
 {
@@ -47,7 +48,7 @@ class HomeTemplate extends Template
                     'scrollTo' => new StringField('Scroll id Element'),
                     'isNewTab' => new TrueFalseField('Is new Tab?'),
                 ])
-            ]),
+            ], RepeaterView::Block),
             new GroupField('Services Bottom', [
                 'servicesBottomId' => new StringField('id'),
                 'servicesBottomTitle' => new StringField('Title'),
@@ -59,7 +60,7 @@ class HomeTemplate extends Template
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
                     'isNewTab' => new TrueFalseField('Is new tab??'),
-                ])
+                ], RepeaterView::Block)
             ]),
             new GroupField('Technologies', [
                 'technologiesId' => new StringField('id'),

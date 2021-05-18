@@ -49,8 +49,9 @@ function ServicesSection() {
         yPercent: 100,
         scrollTrigger: {
           start: '90% 90%',
-          end: 'bottom 40%',
+          end: '160% 40%',
           trigger: imageRef.current,
+          markers: true,
           scrub: true,
         },
       });

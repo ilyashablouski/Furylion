@@ -38,7 +38,7 @@ function WorksSwiper({ worksItems }: Props) {
             slidesPerView="auto"
             loop={true}
             centeredSlides={true}
-            allowTouchMove={false}
+            allowTouchMove={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             effect="coverflow"
             coverflowEffect={{
@@ -131,7 +131,7 @@ const ItemsPagination = styled.div`
     justify-content: center;
     transform: translateX(0);
   `)}
-    .swiper-pagination-bullet {
+  .swiper-pagination-bullet {
     width: 4px;
     height: 4px;
     background: ${colors.black};
@@ -139,6 +139,7 @@ const ItemsPagination = styled.div`
     border-radius: 50%;
     opacity: 1;
     box-sizing: content-box;
+
     &:not(:first-child) {
       margin-left: 15px;
     }
@@ -201,7 +202,6 @@ const WorksSwiperContainer = styled.div`
   ${media.mobile(css`
     margin-top: 16px;
   `)}
-
   .swiper-container-initialized {
     .swiper-slide {
       max-width: 1230px;
@@ -225,10 +225,10 @@ const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
   transform: translate(0, -50%);
   z-index: 1;
   transition: 150ms all ease-in-out;
+
   ${media.mobile(css`
     display: none;
   `)}
-
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
@@ -246,6 +246,7 @@ const NavButton = styled.button<{ prev?: boolean; next?: boolean }>`
       left: 40px;
     `)}
   }
+
   &.swiper-next {
     svg {
       margin-left: 4px;
