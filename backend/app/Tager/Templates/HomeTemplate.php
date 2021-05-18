@@ -19,12 +19,14 @@ class HomeTemplate extends Template
     {
         parent::__construct('Main page', [
             new GroupField('Hero Block', [
+                'heroId' => new StringField('id'),
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new TextField('Text'),
                 'heroImage' => new ImageField('Image', FileScenario::HomeHeroImage),
                 'heroMobileImage' => new ImageField('Mobile Image', FileScenario::HomeHeroImageMobile),
             ]),
             new GroupField('Works', [
+                'worksId' => new StringField('id'),
                 'worksTitle' => new StringField('Title'),
                 'worksItems' => new RepeaterField('Items', [
                     'image' => new ImageField('Image', FileScenario::HomeWorksItems),
@@ -34,6 +36,7 @@ class HomeTemplate extends Template
                 ])
             ]),
             new GroupField('Services Top', [
+                'servicesId' => new StringField('id'),
                 'servicesTitle' => new StringField('Title'),
                 'servicesItems' => new RepeaterField('Services', [
                     'image' => new ImageField('Image', FileScenario::HomeServicesItems),
@@ -46,6 +49,7 @@ class HomeTemplate extends Template
                 ])
             ]),
             new GroupField('Services Bottom', [
+                'servicesBottomId' => new StringField('id'),
                 'servicesBottomTitle' => new StringField('Title'),
                 'servicesBottomItems' => new RepeaterField('Services', [
                     'image' => new ImageField('Image', FileScenario::HomeServicesItems),
@@ -58,6 +62,7 @@ class HomeTemplate extends Template
                 ])
             ]),
             new GroupField('Technologies', [
+                'technologiesId' => new StringField('id'),
                 'technologiesTitle' => new StringField('Title'),
                 'technologiesText' => new TextField('Text'),
                 'technologiesLogos' => new GalleryField('Gallery', FileScenario::HomeTechnologiesGallery),
@@ -72,6 +77,7 @@ class HomeTemplate extends Template
                 'technologiesButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Platform', [
+                'platformId' => new StringField('id'),
                 'platformTitle' => new StringField('Title'),
                 'platformText' => new TextField('Text'),
                 'platformLogos' => new GalleryField('Gallery'),
@@ -84,6 +90,7 @@ class HomeTemplate extends Template
                 'platformButtonSecondIsNewTab' => new BooleanField('Button 2 - Is new tab?'),
             ]),
             new GroupField('Team', [
+                'teamId' => new StringField('id'),
                 'teamItems' => new RepeaterField('Items', [
                     'image' => new ImageField('Image', FileScenario::HomeTeamImage),
                     'width' => new StringField('Image width'),
@@ -95,6 +102,7 @@ class HomeTemplate extends Template
                 'teamButtonIsNewTab' => new BooleanField('Button - Is New Tab?'),
             ]),
             new GroupField('Clients', [
+                'clientsId' => new StringField('id'),
                 'clientsTitle' => new StringField('Title'),
                 'clientsFirstGallery' => new GalleryField('Gallery 1'),
                 'clientsSecondGallery' => new GalleryField('Gallery 2'),
