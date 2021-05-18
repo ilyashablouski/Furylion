@@ -10,6 +10,7 @@ import Head from 'next/head';
 import { AdminBar } from '@tager/web-panel';
 import { useAnalytics } from '@tager/web-analytics';
 import {
+  getSearchParamsFromUrl,
   useFixedVhProperty,
   useIsomorphicLayoutEffect,
   useMedia,
@@ -21,6 +22,7 @@ import withRedux from '@/hocs/withRedux';
 import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
 import { breakpoints } from '@/constants/theme';
+import ScrollProvider from '@/providers/ScrollProvider';
 
 Sentry.init({
   enabled:
@@ -55,6 +57,20 @@ const CustomApp: CustomApp_Component = (props) => {
       max: breakpoints.tabletSmall,
     })
   );
+
+  useEffect(() => {
+    const searchParams = getSearchParamsFromUrl(document.location.href);
+    const scrollParam = searchParams.get('scroll');
+    if (scrollParam) {
+      const targetElement = document.getElementById(scrollParam);
+      if (targetElement) {
+        window.scroll({
+          top: targetElement.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    }
+  });
 
   useIsomorphicLayoutEffect(() => {
     function updateVhProperty() {

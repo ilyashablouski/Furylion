@@ -10,6 +10,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
+use OZiTAG\Tager\Backend\Fields\Fields\BooleanField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 
 class HomeTemplate extends Template
@@ -40,7 +41,8 @@ class HomeTemplate extends Template
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
-                    'scrollTo' => new StringField('id'),
+                    'scrollTo' => new StringField('Scroll id Element'),
+                    'isNewTab' => new BooleanField('Новая вкладка?'),
                 ])
             ]),
             new GroupField('Services Bottom', [
@@ -51,7 +53,8 @@ class HomeTemplate extends Template
                     'text' => new TextField('Text'),
                     'linkLabel' => new StringField('Button Text'),
                     'linkUrl' => new StringField('Button URL'),
-                    'scrollTo' => new StringField('id'),
+                    'scrollTo' => new StringField('Scroll id Element'),
+                    'isNewTab' => new BooleanField('Новая вкладка?'),
                 ])
             ]),
             new GroupField('Technologies', [
