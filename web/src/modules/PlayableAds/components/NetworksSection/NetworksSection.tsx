@@ -6,7 +6,7 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { NetworksSectionType } from '@/typings/model';
-import TickerLine from '@/components/TickerLine';
+import DoubleTickerLine from '@/components/TickerLine/DoubleTickerLine';
 
 function NetworksSection() {
   const page = useCurrentPage<NetworksSectionType>();
@@ -21,24 +21,19 @@ function NetworksSection() {
       </ContentContainer>
 
       <Inner>
-        <Row>
-          <TickerLine
-            isAbove={true}
-            rotateTicket={'-4'}
-            sizeTicket="middle"
-            logosArray={pageFields?.networksFirstGallery}
-          />
-        </Row>
-
-        <Row isBottom={true}>
-          <TickerLine
-            isReversed={true}
-            rotateTicket={'4'}
-            sizeTicket="middle"
-            logosArray={pageFields?.networksSecondGallery}
-            backgroundTicket={colors.dark}
-          />
-        </Row>
+        <DoubleTickerLine
+          firstTickerRotation={'-4'}
+          secondTickerRotation={'4'}
+          firstLogosArray={pageFields?.networksFirstGallery}
+          secondLogosArray={pageFields?.networksSecondGallery}
+          firstTickerIsReserved={false}
+          secondTickerIsReserved={true}
+          secondTickerBg={colors.dark}
+          firstTickerSize={'middle'}
+          secondTickerSize={'middle'}
+          firstTickerIsAbove={true}
+          secondTickerIsAbove={false}
+        />
       </Inner>
     </Wrapper>
   );

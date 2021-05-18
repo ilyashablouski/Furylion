@@ -24,6 +24,10 @@ interface DoubleTickerLineType {
   secondTickerRotation: string;
   firstTickerBg?: string;
   secondTickerBg?: string;
+  firstTickerSize?: string;
+  secondTickerSize?: string;
+  firstTickerIsAbove?: boolean;
+  secondTickerIsAbove?: boolean;
 }
 
 function DoubleTickerLine({
@@ -35,6 +39,10 @@ function DoubleTickerLine({
   secondTickerBg,
   secondTickerIsReserved,
   secondTickerRotation,
+  firstTickerSize,
+  secondTickerSize,
+  firstTickerIsAbove,
+  secondTickerIsAbove,
 }: DoubleTickerLineType) {
   const containerRef = useRef<HTMLDivElement>(null);
   const refsTickerList = useRef<Array<RefObject<HTMLDivElement>>>(
@@ -95,12 +103,16 @@ function DoubleTickerLine({
       rotateTicket: firstTickerRotation,
       logosArray: firstLogosArray,
       backgroundTicket: firstTickerBg,
+      isAbove: firstTickerIsAbove,
+      sizeTicket: firstTickerSize,
     },
     {
       isReserved: secondTickerIsReserved,
       rotateTicket: secondTickerRotation,
       logosArray: secondLogosArray,
       backgroundTicket: secondTickerBg,
+      isAbove: secondTickerIsAbove,
+      sizeTicket: secondTickerSize,
     },
   ];
 
@@ -112,9 +124,11 @@ function DoubleTickerLine({
             backgroundTicket={ticker.backgroundTicket}
             rotateTicket={ticker.rotateTicket}
             isReversed={ticker.isReserved}
+            isAbove={ticker.isAbove}
+            sizeTicket={ticker.sizeTicket}
           >
             <ScrollerInner ref={refsTickerList.current[index]}>
-              <LogosWrapper>
+              <LogosWrapper sizeTicket={ticker.sizeTicket}>
                 {ticker.logosArray
                   ? ticker.logosArray.map((logo, index) => (
                       <Logo
