@@ -30,7 +30,7 @@ function TechLeft({ image, imageMobile }: Props) {
       gsap.to(imageRef.current, {
         left: '-15%',
         scrollTrigger: {
-          start: 'top 100%',
+          start: '10% 70%',
           end: 'bottom 100%',
           trigger: imageRef.current,
           scrub: true,
