@@ -25,7 +25,7 @@ function AdsHeadSwiper({ adsHeadItems }: Props) {
     setIsMounted(true);
   }, []);
 
-  if (!adsHeadItems) return null;
+  if (!adsHeadItems || adsHeadItems.length === 0) return null;
 
   return (
     <Container>
