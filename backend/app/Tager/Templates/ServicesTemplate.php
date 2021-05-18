@@ -19,10 +19,12 @@ class ServicesTemplate extends Template
     {
         parent::__construct('Services', [
             new GroupField('Head', [
+                'headId' => new StringField('id'),
                 'headText' => new StringField('Text'),
             ]),
 
             new GroupField('Art 1', [
+                'firstArtId' => new StringField('id'),
                 'firstArtTitle' => new StringField('Title'),
                 'firstArtText1' => new TextField('Text - 1'),
                 'firstArtText2' => new TextField('Text - 2'),
@@ -36,6 +38,7 @@ class ServicesTemplate extends Template
             ]),
 
             new GroupField('Art 2', [
+                'secondArtId' => new StringField('id'),
                 'secondArtTitle' => new StringField('Title'),
                 'secondArtText1' => new TextField('Text - 1'),
                 'secondArtText2' => new TextField('Text - 2'),
@@ -49,6 +52,7 @@ class ServicesTemplate extends Template
             ]),
 
             new GroupField('Production', [
+                'productionId' => new StringField('id'),
                 'productionTitle' => new StringField('Title'),
                 'productionText1' => new TextField('Text - 1'),
                 'productionText2' => new TextField('Text - 2'),
@@ -67,6 +71,7 @@ class ServicesTemplate extends Template
             ]),
 
             new GroupField('Porting', [
+                'portingId' => new StringField('id'),
                 'portingTitle' => new StringField('Title'),
                 'portingText1' => new TextField('Text - 1'),
                 'portingText2' => new TextField('Text - 2'),
@@ -79,6 +84,7 @@ class ServicesTemplate extends Template
             ]),
 
             new GroupField('Development', [
+                'developmentId' => new StringField('id'),
                 'developmentTitle' => new StringField('Title'),
                 'developmentItems' => new RepeaterField('Items', [
                     'image' => new ImageField('Image'),
@@ -93,6 +99,7 @@ class ServicesTemplate extends Template
 
 
             new GroupField('OutStaffing', [
+                'outStaffingId' => new StringField('id'),
                 'outStaffingTitle' => new StringField('Title'),
                 'outStaffingText1' => new TextField('Text - 1'),
                 'outStaffingText2' => new TextField('Text - 2'),
@@ -103,6 +110,7 @@ class ServicesTemplate extends Template
             ]),
 
             new GroupField('Co-development', [
+                'coDevelopmentId' => new StringField('id'),
                 'coDevelopmentTitle' => new StringField('Title'),
                 'coDevelopmentText1' => new TextField('Text - 1'),
                 'coDevelopmentText2' => new TextField('Text - 2'),
@@ -113,6 +121,7 @@ class ServicesTemplate extends Template
                 'coDevelopmentButtonUrl' => new StringField('Button - URL'),
             ]),
             new GroupField('Ads', [
+                'adsId' => new StringField('id'),
                 'adsTitle' => new StringField('Title'),
                 'adsText1' => new TextField('Text - 1'),
                 'adsText2' => new TextField('Text - 2'),
