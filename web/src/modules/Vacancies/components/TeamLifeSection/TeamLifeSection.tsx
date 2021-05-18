@@ -46,7 +46,7 @@ function TeamLifeSection() {
   }, []);
 
   return (
-    <Wrapper id="vacanciesTeam">
+    <Wrapper id={pageFields?.teamLifeId ?? ''}>
       <BackgroundPicture
         mobileSmall={{
           src: teamLifeBgUrl,

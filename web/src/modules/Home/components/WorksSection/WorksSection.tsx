@@ -13,7 +13,7 @@ function WorksSection() {
   const sectionTitle = pageFields?.worksTitle;
   const worksItems = pageFields?.worksItems ?? [];
   return (
-    <Wrapper id="homeWorks" className="anchor-section">
+    <Wrapper id={pageFields?.worksId ?? ''} className="anchor-section">
       <Title>{sectionTitle}</Title>
       <WorksSwiper worksItems={worksItems} />
     </Wrapper>

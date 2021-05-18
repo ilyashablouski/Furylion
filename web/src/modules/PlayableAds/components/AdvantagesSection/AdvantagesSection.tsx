@@ -14,7 +14,7 @@ function AdvantagesSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper id="playableAdvantages">
+    <Wrapper id={pageFields?.advantagesId ?? ''}>
       <ContentContainer>
         <Title>{pageFields.advantagesTitle}</Title>
 

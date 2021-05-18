@@ -18,7 +18,7 @@ function PlatformSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="homePlatform">
+    <Wrapper id={pageFields?.platformId ?? ''}>
       <ContentContainer>
         <InnerWrapper>
           <PlatformLeft

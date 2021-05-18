@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { ServiceItemType } from '@/typings/model';
@@ -18,6 +18,7 @@ function ServicesTop({ servicesItems }: Props) {
   const servicesMarkupArray = servicesItems.map((serviceItem) => {
     return (
       <ServiceItem
+        isNewTab={serviceItem.isNewTab}
         image={serviceItem.image}
         title={serviceItem.title}
         text={serviceItem.text}

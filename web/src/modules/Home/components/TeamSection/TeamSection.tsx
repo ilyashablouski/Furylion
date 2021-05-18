@@ -81,7 +81,7 @@ function TeamSection() {
   }, []);
 
   return (
-    <Wrapper id="homeTeam" ref={containerRef}>
+    <Wrapper id={pageFields?.teamId ?? ''} ref={containerRef}>
       <WrapperItem>
         <BackgroundPicture
           imageRef={bgPictureRef}

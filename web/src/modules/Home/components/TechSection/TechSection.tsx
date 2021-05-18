@@ -33,7 +33,7 @@ function TechSection() {
   };
 
   return (
-    <Wrapper id="homeTechnologies">
+    <Wrapper id={pageFields?.technologiesId ?? ''}>
       <TechLeft
         image={leftBlockProps.image}
         imageMobile={leftBlockProps.imageMobile}

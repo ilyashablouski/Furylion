@@ -18,7 +18,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { CoDevelopmentSectionType } from '@/typings/model';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
-import { ButtonLink } from '@/components/Button';
 
 function CoDevelopmentSection() {
   const page = useCurrentPage<CoDevelopmentSectionType>();
@@ -27,7 +26,7 @@ function CoDevelopmentSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="servicesCoDevelopment">
+    <Wrapper id={pageFields?.coDevelopmentId ?? ''}>
       <ContentContainer>
         <Title>{pageFields.coDevelopmentTitle}</Title>
 
@@ -182,15 +181,12 @@ const ImagesContainer = styled.div`
   ${media.tabletSmallOnly(css`
     padding-bottom: 40px;
   `)}
-
   ${media.mobile(css`
     padding-bottom: 170px;
   `)}
-
   ${media.mobileLargeOnly(css`
     margin-top: 110px;
   `)}
-
   &:before {
     content: '';
     position: absolute;
@@ -228,6 +224,7 @@ const SecondBackgroundImage = styled(Picture)`
   margin: 0 auto;
   width: 100%;
   height: 100%;
+
   &.second-background-image {
     position: absolute;
     top: 115px;

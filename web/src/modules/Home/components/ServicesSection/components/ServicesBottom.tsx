@@ -18,6 +18,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
   const servicesMarkupArray = servicesBottomItems.map((serviceItem) => {
     return (
       <ServiceItem
+        isNewTab={serviceItem.isNewTab}
         image={serviceItem.image}
         title={serviceItem.title}
         text={serviceItem.text}
@@ -57,6 +58,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
     </ServicesBlock>
   );
 }
+
 const BlockLeft = styled.div`
   clip-path: polygon(0 0, 61% 0, 100% 100%, 0 100%);
   position: absolute;
@@ -75,7 +77,6 @@ const BlockLeft = styled.div`
     max-width: 100%;
     clip-path: initial;
   `)}
-
   .item-wrapper {
     &:nth-child(1) {
       margin-bottom: 11px;
@@ -119,13 +120,11 @@ const BlockLeft = styled.div`
       left: auto;
       text-align: right;
     `)}
-
     ${media.mobile(css`
       left: 0;
       right: auto;
       text-align: left;
     `)}
-
     p {
       ${media.tabletSmall(css`
         margin-left: auto;
@@ -146,6 +145,7 @@ const BlockRight = styled.div`
   max-width: 66.1%;
   z-index: 3;
   transform: translateZ(0);
+
   ${media.tabletSmall(css`
     order: 1;
     position: relative;
@@ -171,7 +171,6 @@ const BlockRight = styled.div`
       left: 0;
       text-align: left;
     `)}
-
     p {
       margin-left: auto;
       max-width: 485px;

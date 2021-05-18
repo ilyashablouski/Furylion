@@ -248,6 +248,7 @@ export type LocationType = {
 
 export interface ServiceHeaderSectionType extends PageFullType {
   templateFields: {
+    headId: StringFieldType;
     headText: StringFieldType;
   };
 }

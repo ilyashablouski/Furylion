@@ -22,7 +22,10 @@ function OutStaffingSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="servicesOutStaffing" isChangedColor={isChangedColor}>
+    <Wrapper
+      id={pageFields?.outStaffingId ?? ''}
+      isChangedColor={isChangedColor}
+    >
       <ContentContainer>
         <Title>{pageFields.outStaffingTitle}</Title>
 
@@ -71,7 +74,8 @@ const Wrapper = styled.section<{ isChangedColor: boolean }>`
     props.isChangedColor &&
     css`
       background: ${colors.red};
-    `}}
+    `}
+}
 `;
 
 const Title = styled.span`

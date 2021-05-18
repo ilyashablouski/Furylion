@@ -64,7 +64,7 @@ function FirstArtSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="servicesFirstArt">
+    <Wrapper id={pageFields?.firstArtId ?? ''}>
       <Left>
         <ContentContainer>
           <Title>{pageFields.firstArtTitle}</Title>

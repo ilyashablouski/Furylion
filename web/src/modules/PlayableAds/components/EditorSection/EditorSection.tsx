@@ -17,7 +17,7 @@ function EditorSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper id="playableEditor">
+    <Wrapper id={pageFields?.editorId ?? ''}>
       <ContentContainer>
         <Title>{pageFields.editorTitle}</Title>
         <Inner>

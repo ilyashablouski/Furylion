@@ -16,7 +16,7 @@ function HeaderSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="servicesHeader">
+    <Wrapper id={pageFields?.headId ?? ''}>
       <Inner>
         <Title data-text="SERVICES">Services</Title>
         <Text>{pageFields.headText}</Text>

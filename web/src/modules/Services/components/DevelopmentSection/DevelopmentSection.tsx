@@ -19,7 +19,7 @@ function DevelopmentSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="servicesDevelopment">
+    <Wrapper id={pageFields?.developmentId ?? ''}>
       <Inner>
         <ContentContainer>
           <Title>{pageFields.developmentTitle}</Title>

@@ -22,7 +22,7 @@ function HeroSection() {
 
   const arrowRef = useRef<HTMLElement>(null);
   return (
-    <Wrapper id="homeHero">
+    <Wrapper id={pageFields?.heroId ?? ''}>
       <BackgroundPicture
         desktop={convertThumbnailToPictureImage(image?.desktop)}
         laptop={convertThumbnailToPictureImage(image?.laptop)}

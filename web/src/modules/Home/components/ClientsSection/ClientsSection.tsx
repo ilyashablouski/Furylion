@@ -14,7 +14,7 @@ function ClientsSection() {
   const pageFields = page?.templateFields;
 
   return (
-    <Wrapper id="homeClients">
+    <Wrapper id={pageFields?.clientsId ?? ''}>
       <Title>{pageFields?.clientsTitle}</Title>
 
       <Inner>

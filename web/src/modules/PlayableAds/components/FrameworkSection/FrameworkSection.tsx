@@ -16,7 +16,7 @@ function FrameworkSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper id="playableFramework">
+    <Wrapper id={pageFields?.frameworkId ?? ''}>
       <ContentContainer>
         <Title>{pageFields.frameworkTitle}</Title>
 

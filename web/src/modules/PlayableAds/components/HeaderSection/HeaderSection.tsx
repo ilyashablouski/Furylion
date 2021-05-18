@@ -15,7 +15,7 @@ function HeaderSection() {
 
   const pageFields = page.templateFields;
   return (
-    <Wrapper id="playableAdsHeader">
+    <Wrapper id={pageFields?.headAdsId ?? ''}>
       <InnerWrapper>
         <Inner>
           <Title data-text="PLAYABLE ADS">Playable ADS</Title>

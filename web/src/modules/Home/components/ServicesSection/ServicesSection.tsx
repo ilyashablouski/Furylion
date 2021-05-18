@@ -75,7 +75,7 @@ function ServicesSection() {
   }, []);
 
   return (
-    <Wrapper id="homeServices">
+    <Wrapper id={pageFields?.servicesId ?? ''}>
       <ServicesPreviewContent>
         <PreviewImageWrapper>
           <Picture imageRef={imageRef} src={Vector} />

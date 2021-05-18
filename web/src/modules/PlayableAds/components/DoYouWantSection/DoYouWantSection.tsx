@@ -19,7 +19,7 @@ function DoYouWantSection() {
   const thirdGalleryItems = page.templateFields.doYouWantThirdGallery;
 
   return (
-    <Wrapper id="playableDoYouWant">
+    <Wrapper id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
           <TickerLine

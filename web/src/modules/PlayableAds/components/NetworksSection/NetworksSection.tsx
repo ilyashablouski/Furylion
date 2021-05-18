@@ -15,7 +15,7 @@ function NetworksSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id="playableNetwork">
+    <Wrapper id={pageFields?.networksId ?? ''}>
       <ContentContainer>
         <Title>{pageFields.networksTitle}</Title>
       </ContentContainer>
