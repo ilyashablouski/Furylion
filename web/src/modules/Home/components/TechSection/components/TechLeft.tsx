@@ -28,12 +28,26 @@ function TechLeft({ image, imageMobile }: Props) {
     const delayedCall = gsap.delayedCall(0, () => {
       if (!imageRef.current) return null;
 
+      let leftPosition: gsap.TweenValue | undefined;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1500px)': function () {
+          leftPosition = '-5%';
+        },
+        '(max-width: 1500px)': function () {
+          leftPosition = '-5%';
+        },
+        '(max-width: 1024px)': function () {},
+        '(max-width: 767px)': function () {},
+        '(max-width: 414px)': function () {},
+      });
+
       gsap.to(imageRef.current, {
-        left: '-15%',
+        left: leftPosition,
         ease: 'linear',
         scrollTrigger: {
           start: 'top 70%',
-          end: 'bottom 80%',
+          end: 'bottom 90%',
           trigger: imageRef.current,
           scrub: 1.5,
         },
