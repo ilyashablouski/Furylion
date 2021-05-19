@@ -49,7 +49,7 @@ function ServicesSection() {
         '(max-width: 1024px)': function () {
           topPositionForTitle = '85%';
         },
-        '(max-width: 767px)': function () {
+        '(max-width: 768px)': function () {
           endTitleAnimation = '450% 20%';
         },
         '(max-width: 414px)': function () {
@@ -162,7 +162,10 @@ const Title = styled.span`
 
   ${media.mobile(css`
     font-size: 32px;
+    top: 97% !important;
+    left: 50%;
     transform: translate(-50%, -50%) scale(1) !important;
+    text-shadow: 0px 51px 100px rgb(0 0 0 / 60%);
   `)}
 `;
 
