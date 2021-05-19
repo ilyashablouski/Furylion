@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import SecondArtSection from '@/modules/Services/components/SecondArtSection';
 import AnimationSection from '@/modules/Services/components/AnimationSection';
@@ -15,12 +15,22 @@ import OutStaffingSection from './components/OutstaffingSection';
 
 function Services() {
   const formTitle = useSettingItem('FORM_TITLE');
+  const artSectionRef = useRef<HTMLDivElement>(null);
+
+  function scrollToArtSection() {
+    if (artSectionRef.current) {
+      window.scroll({
+        top: artSectionRef.current.offsetTop ?? 0,
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return (
     <>
-      <HeaderSection />
+      <HeaderSection scrollDown={scrollToArtSection} />
       <TextBannerSection />
-      <FirstArtSection />
+      <FirstArtSection artRef={artSectionRef} />
       <SecondArtSection />
       <AnimationSection />
       <DevelopmentSection />

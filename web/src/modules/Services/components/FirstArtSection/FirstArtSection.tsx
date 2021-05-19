@@ -11,7 +11,11 @@ import { colors } from '@/constants/theme';
 import ArtSwiper1 from '@/modules/Services/components/ArtSwiper1';
 import { ButtonLink } from '@/components/Button';
 
-function FirstArtSection() {
+function FirstArtSection({
+  artRef,
+}: {
+  artRef: React.RefObject<HTMLDivElement>;
+}) {
   const page = useCurrentPage<FirstArtSectionType>();
   const vectorRef = useRef<HTMLDivElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
@@ -63,7 +67,7 @@ function FirstArtSection() {
   const pageFields = page.templateFields;
 
   return (
-    <Wrapper id={pageFields?.firstArtId ?? ''}>
+    <Wrapper ref={artRef} id={pageFields?.firstArtId ?? ''}>
       <Left>
         <ContentContainer>
           <Title>{pageFields.firstArtTitle}</Title>

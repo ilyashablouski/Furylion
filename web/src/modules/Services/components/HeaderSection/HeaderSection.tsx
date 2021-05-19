@@ -4,11 +4,10 @@ import styled, { css } from 'styled-components';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
-import { scrollDown } from '@/utils/common';
 import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
 import { ServiceHeaderSectionType } from '@/typings/model';
 
-function HeaderSection() {
+function HeaderSection({ scrollDown }: { scrollDown: () => void }) {
   const arrowRef = useRef<HTMLElement>(null);
   const page = useCurrentPage<ServiceHeaderSectionType>();
   if (!page) return null;
