@@ -250,7 +250,7 @@ const TextContainer = styled.div`
   margin-top: 35px;
   margin-left: -180px;
   position: relative;
-  z-index: 5;
+  z-index: 12;
 
   ${media.tablet(css`
     margin-top: 40px;
@@ -305,6 +305,8 @@ const Text = styled.p`
 
 const AdditionalBlock = styled.div`
   margin-top: 70px;
+  position: relative;
+  z-index: 12;
 
   ${media.tablet(css`
     margin-top: 40px;

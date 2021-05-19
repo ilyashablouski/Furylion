@@ -148,7 +148,7 @@ const Vector = styled.span`
   left: -8%;
   right: 0;
   bottom: 0;
-  background: #191919;
+  background: #191814;
   z-index: 10;
   transform: rotate(30deg);
 
@@ -239,6 +239,8 @@ const Title = styled.span`
 const TextContainer = styled.div`
   margin-top: 35px;
   margin-right: -173px;
+  position: relative;
+  z-index: 12;
 
   ${media.tablet(css`
     margin-top: 40px;
@@ -293,6 +295,8 @@ const Text = styled.p`
 
 const AdditionalBlock = styled.div`
   margin-top: 70px;
+  position: relative;
+  z-index: 12;
 
   ${media.tablet(css`
     margin-top: 40px;
