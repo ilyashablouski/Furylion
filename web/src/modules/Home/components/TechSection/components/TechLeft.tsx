@@ -35,8 +35,7 @@ function TechLeft({ image, imageMobile }: Props) {
           start: 'top 70%',
           end: 'bottom 80%',
           trigger: imageRef.current,
-          markers: true,
-          scrub: true,
+          scrub: 1.5,
         },
       });
     });

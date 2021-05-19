@@ -36,12 +36,24 @@ function ServicesSection() {
         | gsap.plugins.StartEndFunc
         | undefined;
 
+      let topPositionForTitle: gsap.TweenValue | undefined;
+
       ScrollTrigger.matchMedia({
+        '(min-width: 1024px)': function () {
+          topPositionForTitle = '90%';
+        },
+
         '(min-width: 767px)': function () {
-          endTitleAnimation = '260% 50%';
+          endTitleAnimation = '260% 10%';
+        },
+        '(max-width: 1024px)': function () {
+          topPositionForTitle = '85%';
         },
         '(max-width: 767px)': function () {
           endTitleAnimation = '450% 20%';
+        },
+        '(max-width: 414px)': function () {
+          topPositionForTitle = '100%';
         },
       });
 
@@ -49,20 +61,20 @@ function ServicesSection() {
         yPercent: 100,
         scrollTrigger: {
           start: '90% 90%',
-          end: '160% 40%',
+          end: '160% 90%',
           trigger: imageRef.current,
-          scrub: true,
+          scrub: 2,
         },
       });
 
       tweenTitle = gsap.to(titleRef.current, {
-        top: '100%',
+        top: topPositionForTitle,
         scale: 0.2,
         scrollTrigger: {
-          start: 'center 50%',
+          start: 'center 30%',
           end: endTitleAnimation,
           trigger: titleRef.current,
-          scrub: true,
+          scrub: 1,
         },
       });
     });
@@ -132,9 +144,9 @@ const ServicesWrapper = styled.div`
 
 const Title = styled.span`
   position: absolute;
-  top: 40%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%);
   display: block;
   font-weight: 900;
   line-height: 130%;
