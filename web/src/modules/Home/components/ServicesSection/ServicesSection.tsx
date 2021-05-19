@@ -47,6 +47,7 @@ function ServicesSection() {
 
       tweenImage = gsap.to(imageRef.current, {
         yPercent: 100,
+        ease: 'linear',
         scrollTrigger: {
           start: '90% 90%',
           end: '160% 40%',
