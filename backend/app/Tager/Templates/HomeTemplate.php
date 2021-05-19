@@ -47,8 +47,8 @@ class HomeTemplate extends Template
                     'linkUrl' => new StringField('Button URL'),
                     'scrollTo' => new StringField('Scroll id Element'),
                     'isNewTab' => new TrueFalseField('Is new Tab?'),
-                ])
-            ], RepeaterView::Block),
+                ], RepeaterView::Block)
+            ]),
             new GroupField('Services Bottom', [
                 'servicesBottomId' => new StringField('id'),
                 'servicesBottomTitle' => new StringField('Title'),
