@@ -47,6 +47,7 @@ const ImageContainer = styled.div`
   `)}
   .item-image-container {
     display: block;
+    overflow: hidden;
 
     ${media.mobile(css`
       &:before {

@@ -172,6 +172,10 @@ const AdditionalBlock = styled.div`
 const Logo = styled.div`
   flex: 0 0 auto;
 
+  ${media.laptop(css`
+    flex: 1 1 auto;
+  `)}
+
   &:not(:first-child) {
     margin-left: 69px;
   }
