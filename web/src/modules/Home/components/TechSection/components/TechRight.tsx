@@ -175,9 +175,19 @@ const Logo = styled.div`
   ${media.laptop(css`
     flex: 1 1 auto;
   `)}
-
+  ${media.mobile(css`
+    flex: 0 0 auto;
+  `)}
   &:not(:first-child) {
     margin-left: 69px;
+
+    ${media.tabletSmall(css`
+      margin-left: 30px;
+    `)}
+
+    ${media.mobile(css`
+      margin-left: 69px;
+    `)}
   }
 
   img {
