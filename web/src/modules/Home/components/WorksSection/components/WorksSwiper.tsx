@@ -139,6 +139,12 @@ const ItemsPagination = styled.div`
     border-radius: 50%;
     opacity: 1;
     box-sizing: content-box;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: white;
+      opacity: 0.6;
+    }
 
     &:not(:first-child) {
       margin-left: 15px;
