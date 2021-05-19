@@ -109,6 +109,7 @@ const ImageContainer = styled(Picture)`
   min-height: 750px;
   width: 100vw;
   background: #a9a9a9;
+  transform: translateZ(0);
 
   ${media.tabletSmallOnly(css`
     min-height: 663px;
