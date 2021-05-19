@@ -12,6 +12,7 @@ import { createMediaMixin } from '@tager/web-components';
 
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
+import { breakpoints } from '@/constants/theme';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,10 +30,12 @@ function TechLeft({ image, imageMobile }: Props) {
 
       gsap.to(imageRef.current, {
         left: '-15%',
+        ease: 'linear',
         scrollTrigger: {
-          start: '10% 70%',
-          end: 'bottom 100%',
+          start: 'top 70%',
+          end: 'bottom 80%',
           trigger: imageRef.current,
+          markers: true,
           scrub: true,
         },
       });
@@ -112,6 +115,18 @@ const ImageContainer = styled(Picture)`
 
     left: -100%;
     transform: translateX(10%);
+
+    ${createMediaMixin({ min: breakpoints.desktop })(css`
+      left: -55%;
+    `)}
+
+    ${createMediaMixin({ max: breakpoints.desktop })(css`
+      left: -50%;
+    `)}
+
+    ${createMediaMixin({ max: 1366 })(css`
+      left: -75%;
+    `)}
 
     ${media.tabletSmallOnly(css`
       min-height: 663px;
