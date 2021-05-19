@@ -35,6 +35,7 @@ export const Container = styled.div<{
   isReversed?: boolean;
   isAbove?: boolean;
   isLabelTicket?: boolean;
+  positionLeft?: boolean;
 }>`
   margin: 0 -20px;
   display: flex;
@@ -57,6 +58,13 @@ export const Container = styled.div<{
         height: auto;
       }
     `}
+
+  ${(props) =>
+    props.positionLeft
+      ? css`
+          justify-content: flex-end;
+        `
+      : null}
 
   background: ${(props) =>
     props.backgroundTicket ? `${props.backgroundTicket}` : `${colors.white}`};

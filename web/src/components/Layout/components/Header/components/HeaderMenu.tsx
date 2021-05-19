@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-// import { scroller } from '@tager/web-core';
-
 import { MenuItemType } from '@tager/web-modules';
 
 import Link from '@/components/Link';
@@ -22,6 +20,10 @@ type Props = {
   socialsData: Array<any>;
   onClickOverlay: () => void;
 };
+
+function isNewPage(link: string) {
+  return link !== window.location.pathname;
+}
 
 function HeaderMenu({
   menuItemList,
@@ -60,7 +62,14 @@ function HeaderMenu({
         <MenuItems>
           {menuItemList.map((menuItem) => {
             return (
-              <MenuItem key={menuItem.id}>
+              <MenuItem
+                onClick={() => {
+                  if (isNewPage(menuItem.link ?? '#')) {
+                    onClickOverlay();
+                  }
+                }}
+                key={menuItem.id}
+              >
                 {menuItem.link && menuItem.link.includes('#') ? (
                   <ItemLink
                     as="a"

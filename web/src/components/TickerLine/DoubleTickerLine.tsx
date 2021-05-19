@@ -125,28 +125,31 @@ function DoubleTickerLine({
             isReversed={ticker.isReserved}
             isAbove={ticker.isAbove}
             sizeTicket={ticker.sizeTicket}
+            positionLeft={index === 1}
           >
             <ScrollerInner ref={refsTickerList.current[index]}>
-              <LogosWrapper sizeTicket={ticker.sizeTicket}>
-                {ticker.logosArray
-                  ? ticker.logosArray.map((logo, index) => (
-                      <Logo
-                        key={index}
-                        mobileSmall={convertThumbnailToPictureImage(logo)}
-                        className="ticker"
-                      />
-                    ))
-                  : null}
-                {ticker.logosArray
-                  ? ticker.logosArray.map((logo, index) => (
-                      <Logo
-                        key={index}
-                        mobileSmall={convertThumbnailToPictureImage(logo)}
-                        className="ticker"
-                      />
-                    ))
-                  : null}
-              </LogosWrapper>
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <LogosWrapper sizeTicket={ticker.sizeTicket}>
+                  {ticker.logosArray
+                    ? ticker.logosArray.map((logo, index) => (
+                        <Logo
+                          key={index}
+                          mobileSmall={convertThumbnailToPictureImage(logo)}
+                          className="ticker"
+                        />
+                      ))
+                    : null}
+                  {ticker.logosArray
+                    ? ticker.logosArray.map((logo, index) => (
+                        <Logo
+                          key={index}
+                          mobileSmall={convertThumbnailToPictureImage(logo)}
+                          className="ticker"
+                        />
+                      ))
+                    : null}
+                </LogosWrapper>
+              </div>
             </ScrollerInner>
           </Container>
         </Row>
