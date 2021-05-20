@@ -6,6 +6,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import { AdsHeadSectionType } from '@/typings/model';
+import Gallery from '@/modules/PlayableAds/components/Gallery';
 
 import AdsHeadSwiper from './components/AdsHeadSwiper';
 
@@ -21,12 +22,12 @@ function HeaderSection() {
           <Title data-text="PLAYABLE ADS">Playable ADS</Title>
           <Text>{pageFields.headAdsText}</Text>
         </Inner>
-
         <DownArrow>
           <SmallArrowIcon />
         </DownArrow>
-
-        <AdsHeadSwiper adsHeadItems={pageFields.headAdsItemsTop} />
+        <Gallery itemList={pageFields.headAdsItemsTop} />
+        <Gallery isRevert={true} itemList={pageFields.headAdsItemsBottom} />
+        {/*<AdsHeadSwiper adsHeadItems={pageFields.headAdsItemsTop} />*/}
       </InnerWrapper>
     </Wrapper>
   );
