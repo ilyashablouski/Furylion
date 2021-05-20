@@ -36,6 +36,11 @@ function TeamSection() {
   const teamItemRefList = useRef<Array<HTMLDivElement | null>>(
     new Array(teamItems?.length).fill(null)
   );
+
+  useEffect(() => {
+    console.log(teamItems);
+  });
+
   useEffect(() => {
     let timeline: gsap.core.Timeline;
     gsap.delayedCall(0, () => {
