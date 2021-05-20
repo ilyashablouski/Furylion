@@ -106,5 +106,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(248)
         ],
+        FileScenario::PlayableAdsHead => [
+            'storage' => ConfigHelper::fileStorage('playable-page-head'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(468, 263)
+        ],
     ]
 ];
