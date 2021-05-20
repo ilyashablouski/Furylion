@@ -8,6 +8,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
+use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
@@ -92,11 +93,8 @@ class HomeTemplate extends Template
             ]),
             new GroupField('Team', [
                 'teamId' => new StringField('id'),
-                'teamItems' => new RepeaterField('Items', [
-                    'image' => new ImageField('Image', FileScenario::HomeTeamImage),
-                    'width' => new StringField('Image width'),
-                    'leftX' => new StringField('Left Indent'),
-                    'topY' => new StringField('Top indent'),
+                'teamItems' => new GalleryField('Items', [
+                    'image' => new ImageField('Image', FileScenario::HomeTeamImage)
                 ]),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),

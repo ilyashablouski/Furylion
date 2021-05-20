@@ -38,10 +38,6 @@ function TeamSection() {
   );
 
   useEffect(() => {
-    console.log(teamItems);
-  });
-
-  useEffect(() => {
     let timeline: gsap.core.Timeline;
     gsap.delayedCall(0, () => {
       if (!containerRef.current) return null;
