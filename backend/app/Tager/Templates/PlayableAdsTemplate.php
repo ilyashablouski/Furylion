@@ -2,6 +2,7 @@
 
 namespace App\Tager\Templates;
 
+use App\Enums\FileScenario;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
@@ -26,7 +27,7 @@ class PlayableAdsTemplate extends Template
                     'linkUrl' => new StringField('URL'),
                 ]),
                 'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
-                'image' => new ImageField('Image'),
+                'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
                 'linkUrl' => new StringField('URL'),
                 ]),
             ]),

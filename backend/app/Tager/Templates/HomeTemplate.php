@@ -92,9 +92,7 @@ class HomeTemplate extends Template
             ]),
             new GroupField('Team', [
                 'teamId' => new StringField('id'),
-                'teamItems' => new GalleryField('Items', [
-                    'image' => new ImageField('Image', FileScenario::HomeTeamImage)
-                ]),
+                'teamItems' => new GalleryField('Items', FileScenario::HomeTeamImage),
                 'teamButtonLabel' => new StringField('Button Text'),
                 'teamButtonUrl' => new StringField('Button URL'),
                 'teamButtonIsNewTab' => new TrueFalseField('Button - Is New Tab?'),
