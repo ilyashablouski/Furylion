@@ -40,7 +40,10 @@ function OutStaffingSection() {
       </ContentContainer>
 
       <Main>
-        <MainWrapper>
+        <MainWrapper
+          onMouseEnter={onChangeBackgroundColor}
+          onMouseLeave={onChangeBackgroundColor}
+        >
           {pageFields.outStaffingItems
             ? pageFields.outStaffingItems.map((outStaffingItem, index) => {
                 const tagsArray = outStaffingItem.tags
@@ -51,7 +54,6 @@ function OutStaffingSection() {
                     key={index}
                     tagsArray={tagsArray}
                     title={outStaffingItem.title}
-                    onChangeBackgroundColor={onChangeBackgroundColor}
                   />
                 );
               })
