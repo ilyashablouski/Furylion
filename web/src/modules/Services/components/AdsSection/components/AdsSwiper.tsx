@@ -83,7 +83,6 @@ function AdsSwiper({ adsImages }: Props) {
           trigger: containerElem,
           start: 'top 70%',
           end: '200% 70%',
-          markers: true,
           scrub: true,
         },
         rotate: rotate * -resultIndex,
