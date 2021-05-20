@@ -47,6 +47,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
           ref={wrapperRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          isRevert={isRevert}
         >
           <Content>
             {itemList.map((item, index) => {
@@ -77,7 +78,9 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
 const Component = styled.div``;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div<{ isRevert: boolean }>`
+  transform: translateX(${({ isRevert }) => (isRevert ? '-5%' : '5%')});
+`;
 const Card = styled.div<{ xPixels: '-40px' | '40px' | 'initial' }>`
   width: 100%;
   margin-right: 30px;
