@@ -141,6 +141,19 @@ const Item = styled.div<{ isVideo: boolean }>`
   //position: relative;
   //max-height: 411px;
   transition: all 150ms ease-in-out;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+
+  img {
+    transition: all 0.3s ease-in-out !important;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
 
   ${(props) =>
     props.isVideo
