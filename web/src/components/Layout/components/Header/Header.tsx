@@ -73,7 +73,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   top: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 100;
 
   ${ContentContainer} {
     padding-right: 0;

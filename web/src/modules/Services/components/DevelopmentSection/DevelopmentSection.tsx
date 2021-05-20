@@ -235,6 +235,7 @@ const Logo = styled.div`
 
   img {
     image-rendering: -webkit-optimize-contrast;
+    height: 32px;
   }
 `;
 
