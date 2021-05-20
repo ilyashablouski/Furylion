@@ -1,4 +1,4 @@
-export const coordinate = [
+export const coordinateTeamItems = [
   { leftX: '0', topY: '329', width: '150' },
   { leftX: '400', topY: '951', width: '137' },
   { leftX: '99', topY: '713', width: '260' },

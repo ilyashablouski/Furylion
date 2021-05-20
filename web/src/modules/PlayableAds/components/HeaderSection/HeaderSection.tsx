@@ -8,8 +8,6 @@ import { colors } from '@/constants/theme';
 import { AdsHeadSectionType } from '@/typings/model';
 import Gallery from '@/modules/PlayableAds/components/Gallery';
 
-import AdsHeadSwiper from './components/AdsHeadSwiper';
-
 function HeaderSection() {
   const page = useCurrentPage<AdsHeadSectionType>();
   if (!page) return null;
@@ -25,9 +23,10 @@ function HeaderSection() {
         <DownArrow>
           <SmallArrowIcon />
         </DownArrow>
-        <Gallery itemList={pageFields.headAdsItemsTop} />
-        <Gallery isRevert={true} itemList={pageFields.headAdsItemsBottom} />
-        {/*<AdsHeadSwiper adsHeadItems={pageFields.headAdsItemsTop} />*/}
+        <WrapperGallery>
+          <Gallery itemList={pageFields.headAdsItemsTop} />
+          <Gallery isRevert={true} itemList={pageFields.headAdsItemsBottom} />
+        </WrapperGallery>
       </InnerWrapper>
     </Wrapper>
   );
@@ -58,6 +57,11 @@ const Wrapper = styled.section`
   ${media.mobile(css`
     padding-top: 138px;
   `)}
+`;
+
+const WrapperGallery = styled.div`
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
 const InnerWrapper = styled.div`

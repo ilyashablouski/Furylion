@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import _ from 'lodash';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
@@ -17,6 +16,10 @@ function Gallery({ isRevert = false, itemList }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  useEffect(() => {
+    console.log(itemList);
+  });
+
   function handleMouseMove(event: React.MouseEvent) {
     const contentElement = wrapperRef.current;
     if (contentElement) {
@@ -28,7 +31,14 @@ function Gallery({ isRevert = false, itemList }: Props) {
     }
   }
 
-  function handleMouseOverOnCard(index: number) {
+  function handleMouseOverOnCard(
+    index: number,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    // if (event.target instanceof HTMLDivElement) {
+    //   const coordinate = event.target.getBoundingClientRect();
+    //   console.log(coordinate);
+    // }
     return () => setActiveIndex(index);
   }
 
@@ -55,6 +65,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
                 activeIndex !== null
                   ? activeIndex > index
                     ? '-40px'
+                    : activeIndex === index
+                    ? 'initial'
                     : '40px'
                   : 'initial';
 
@@ -62,7 +74,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                 <Card
                   key={index}
                   xPixels={style}
-                  onMouseOver={handleMouseOverOnCard(index)}
+                  onMouseOver={(event) => handleMouseOverOnCard(index, event)}
                   onMouseLeave={handleMouseLeaveOnCard}
                 >
                   <Picture {...convertThumbnailToPictureImage(item.image)} />
@@ -76,16 +88,19 @@ function Gallery({ isRevert = false, itemList }: Props) {
   );
 }
 
-const Component = styled.div``;
+const Component = styled.div`
+  padding: 15px 0;
+`;
 
 const Wrapper = styled.div<{ isRevert: boolean }>`
-  transform: translateX(${({ isRevert }) => (isRevert ? '-5%' : '5%')});
+  transform: translateX(${({ isRevert }) => (isRevert ? '-30%' : '-20%')});
 `;
 const Card = styled.div<{ xPixels: '-40px' | '40px' | 'initial' }>`
+  flex: 1 1 100%;
   width: 100%;
-  margin-right: 30px;
+  padding-right: 30px;
   border-radius: 22px;
-  transition: transform 0.3s linear;
+  transition: transform 0.2s linear;
   transform: translateX(${({ xPixels }) => xPixels});
 
   &:last-child {
@@ -93,16 +108,15 @@ const Card = styled.div<{ xPixels: '-40px' | '40px' | 'initial' }>`
   }
 
   &:hover {
-    img {
-      transition: transform 0.3s linear;
-      transform: scale(1.3);
-    }
+    transition: transform 0.2s linear;
+    transform: scale(1.1);
   }
 
   img {
     transition: transform 0.3s linear !important;
     object-fit: cover;
     cursor: pointer;
+    max-width: initial;
   }
 `;
 const Content = styled.div`

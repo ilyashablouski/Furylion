@@ -16,6 +16,7 @@ import { colors } from '@/constants/theme';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
 import { StringFieldType } from '@/typings/common';
+import { coordinateTeamItems } from '@/modules/Home/components/TeamSection/TeamSection.constans';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,20 +101,32 @@ function TeamSection() {
       </TitleBlock>
       <Inner>
         {teamItems
-          ? teamItems.map((item, index) => (
-              <TeammatePictureItem
-                ref={saveRef(index, teamItemRefList)}
-                key={index}
-                itemWidth={item.width}
-                itemLeftOffset={item.leftX}
-                itemTopOffset={item.topY}
-              >
-                <Picture
-                  mobileSmall={convertThumbnailToPictureImage(item.image)}
-                  className="teammate-image-block"
-                />
-              </TeammatePictureItem>
-            ))
+          ? teamItems.map((item, index) => {
+              const width =
+                coordinateTeamItems[index]?.width ??
+                coordinateTeamItems[0]?.width;
+              const left =
+                coordinateTeamItems[index]?.leftX ??
+                coordinateTeamItems[0]?.leftX;
+              const top =
+                coordinateTeamItems[index]?.topY ??
+                coordinateTeamItems[0]?.topY;
+
+              return (
+                <TeammatePictureItem
+                  ref={saveRef(index, teamItemRefList)}
+                  key={index}
+                  itemWidth={width}
+                  itemLeftOffset={left}
+                  itemTopOffset={top}
+                >
+                  <Picture
+                    mobileSmall={convertThumbnailToPictureImage(item)}
+                    className="teammate-image-block"
+                  />
+                </TeammatePictureItem>
+              );
+            })
           : null}
       </Inner>
 
