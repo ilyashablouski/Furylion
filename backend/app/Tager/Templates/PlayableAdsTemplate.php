@@ -23,7 +23,7 @@ class PlayableAdsTemplate extends Template
                 'headAdsId' => new StringField('id'),
                 'headAdsText' => new StringField('Text'),
                 'headAdsItemsTop' => new RepeaterField('Slider Items Top', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
                     'linkUrl' => new StringField('URL'),
                 ]),
                 'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
