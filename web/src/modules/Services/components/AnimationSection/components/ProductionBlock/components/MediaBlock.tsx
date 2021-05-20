@@ -3,13 +3,19 @@ import styled, { css } from 'styled-components';
 // @ts-ignore
 import ModalVideo from 'react-modal-video';
 
-import { convertThumbnailToPictureImage } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  ThumbnailType,
+} from '@tager/web-modules';
+import { useModal } from '@tager/web-components';
+import { Nullish } from '@tager/web-core';
 
 import { ReactComponent as YoutubeIcon } from '@/assets/svg/youtube-icon.svg';
 import { ProductionMediaItemType } from '@/typings/model';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
+import PictureModal from '@/components/modals/PictureModal';
 
 type Props = {
   mediaInfo: Array<ProductionMediaItemType>;
@@ -18,6 +24,14 @@ type Props = {
 
 function MediaBlock({ mediaInfo, isTop = true }: Props) {
   const [isOpen, setOpen] = useState(false);
+  const instanceModal = useModal();
+
+  function openGalleryModal(image: Nullish<ThumbnailType>) {
+    if (!image) return null;
+    instanceModal(PictureModal, {
+      image: image,
+    });
+  }
 
   return (
     <Container>
@@ -34,7 +48,11 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
           >
             <Item
               onClick={() => {
-                setOpen(true);
+                if (mediaItem.videoId) {
+                  setOpen(true);
+                } else {
+                  openGalleryModal(mediaItem.image);
+                }
               }}
               isVideo={isVideo}
             >
@@ -159,6 +177,7 @@ const Item = styled.div<{ isVideo: boolean }>`
     props.isVideo
       ? css`
           cursor: pointer;
+
           &:hover {
             opacity: 0.75;
           }

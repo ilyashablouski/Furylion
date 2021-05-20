@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 import ContentContainer from '@/components/ContentContainer';
@@ -112,6 +112,7 @@ const TextItem = styled.div`
   ${media.mobile(css`
     padding: 0;
     max-width: none;
+
     &:not(:first-child) {
       margin-top: 20px;
     }
@@ -149,13 +150,11 @@ const Bottom = styled.div`
   ${media.tablet(css`
     margin-top: 40px;
   `)}
-
   ${media.mobile(css`
     margin-top: 30px;
     margin-left: -20px;
     margin-right: -20px;
   `)}
-
   .cut-button-left {
     ${media.tabletSmallOnly(css`
       padding: 25px 35px 25px 24px;
