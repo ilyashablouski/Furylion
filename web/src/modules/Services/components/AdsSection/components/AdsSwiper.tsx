@@ -93,13 +93,6 @@ function AdsSwiper({ adsImages }: Props) {
           disabled = true;
         },
       });
-
-      console.dir({
-        rotate: rotate * -resultIndex,
-        resultIndex: resultIndex,
-        translateY: translate * Math.abs(resultIndex) ** 2,
-        translateX: `${symbol}=${slideWidth}`,
-      });
     });
 
     // gsap.registerPlugin(Draggable);
