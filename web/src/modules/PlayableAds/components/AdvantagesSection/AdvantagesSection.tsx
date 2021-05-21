@@ -43,7 +43,7 @@ function AdvantagesSection() {
 }
 
 const Wrapper = styled.section`
-  margin-top: -642px;
+  margin-top: -505px;
   padding-top: 438px;
   padding-bottom: 100px;
   background: ${colors.red};
@@ -51,16 +51,21 @@ const Wrapper = styled.section`
   ${ContentContainer} {
     position: relative;
     z-index: 1;
+    margin-top: 60px;
+
+    ${media.mobile(css`
+      margin-top: 150px;
+    `)}
   }
 
   ${media.tabletSmallOnly(css`
-    margin-top: -596px;
+    margin-top: -523px;
     padding-top: 400px;
     padding-bottom: 70px;
   `)}
 
   ${media.mobile(css`
-    margin-top: -507px;
+    margin-top: -372px;
     padding-top: 233px;
     padding-bottom: 70px;
   `)}

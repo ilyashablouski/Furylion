@@ -6,7 +6,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import { AdsHeadSectionType } from '@/typings/model';
-import Gallery from '@/modules/PlayableAds/components/Gallery';
 
 function HeaderSection() {
   const page = useCurrentPage<AdsHeadSectionType>();
@@ -23,10 +22,6 @@ function HeaderSection() {
         <DownArrow>
           <SmallArrowIcon />
         </DownArrow>
-        <WrapperGallery>
-          <Gallery itemList={pageFields.headAdsItemsTop} />
-          <Gallery isRevert={true} itemList={pageFields.headAdsItemsBottom} />
-        </WrapperGallery>
       </InnerWrapper>
     </Wrapper>
   );
@@ -45,10 +40,10 @@ const animateUpDown = keyframes`
 const Wrapper = styled.section`
   position: relative;
   padding-top: 164px;
-  padding-bottom: 170px;
   display: flex;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 
   ${media.tabletSmallOnly(css`
     padding-top: 143px;
@@ -59,14 +54,8 @@ const Wrapper = styled.section`
   `)}
 `;
 
-const WrapperGallery = styled.div`
-  margin-top: 30px;
-  margin-bottom: 30px;
-`;
-
 const InnerWrapper = styled.div`
   max-width: 1920px;
-  overflow: hidden;
 `;
 
 const Inner = styled.div`

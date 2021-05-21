@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
-import ContentContainer from '@/components/ContentContainer';
 import { AdsHeadItemType } from '@/typings/model';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
@@ -13,18 +12,16 @@ interface Props {
   itemList: Array<AdsHeadItemType>;
 }
 
-const transition = 'transform .2s';
-
-function getDifferenceCoordinate<T extends number>(
-  leftCoordinateWithCurrentWidth: T,
-  leftCoordinateOnRightBlock: T
-): number {
-  if (leftCoordinateWithCurrentWidth > leftCoordinateOnRightBlock) {
-    return leftCoordinateWithCurrentWidth - leftCoordinateOnRightBlock;
-  } else {
-    return 0;
-  }
-}
+// function getDifferenceCoordinate<T extends number>(
+//   leftCoordinateWithCurrentWidth: T,
+//   leftCoordinateOnRightBlock: T
+// ): number {
+//   if (leftCoordinateWithCurrentWidth > leftCoordinateOnRightBlock) {
+//     return leftCoordinateWithCurrentWidth - leftCoordinateOnRightBlock;
+//   } else {
+//     return 0;
+//   }
+// }
 
 function Gallery({ isRevert = false, itemList }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -47,67 +44,57 @@ function Gallery({ isRevert = false, itemList }: Props) {
   function handleMouseLeave(
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) {
-    if (event.currentTarget instanceof HTMLDivElement) {
-      event.currentTarget.style.paddingLeft = '0px';
-    }
-    contentRef.current?.style.setProperty('--transition', transition);
     contentRef.current?.style.setProperty('--x', '0');
   }
 
-  function onMouseOverOnCard(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) {
-    if (event.currentTarget instanceof HTMLDivElement) {
-      const wrapperCoordinate = wrapperRef.current?.getBoundingClientRect();
-      const wrapperLeft = wrapperCoordinate?.left ?? 0;
-      const wrapperWidth = wrapperCoordinate?.width ?? 0;
-
-      const currentTargetCoordinate = event.currentTarget.getBoundingClientRect();
-
-      const currentTargetLeft = currentTargetCoordinate.left ?? 0;
-      const currentTargetWidth = currentTargetCoordinate.width ?? 0;
-
-      const leftCoordinateOnRightBlock = wrapperLeft + wrapperWidth;
-      const leftCoordinateWithCurrentWidth =
-        currentTargetLeft + currentTargetWidth;
-
-      const resultDifference = getDifferenceCoordinate(
-        leftCoordinateWithCurrentWidth,
-        leftCoordinateOnRightBlock
-      );
-
-      if (currentTargetLeft < wrapperLeft) {
-        const result = wrapperLeft - currentTargetLeft;
-        event.currentTarget.style.marginLeft = `${result}px`;
-      } else if (resultDifference) {
-        event.currentTarget.style.marginRight = `${resultDifference}px`;
-      }
-    }
-  }
+  // function onMouseOverOnCard(
+  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  // ) {
+  //   // if (event.currentTarget instanceof HTMLDivElement) {
+  //   //   const wrapperCoordinate = wrapperRef.current?.getBoundingClientRect();
+  //   //   const wrapperLeft = wrapperCoordinate?.left ?? 0;
+  //   //   const wrapperWidth = wrapperCoordinate?.width ?? 0;
+  //   //
+  //   //   const currentTargetCoordinate = event.currentTarget.getBoundingClientRect();
+  //   //
+  //   //   const currentTargetLeft = currentTargetCoordinate.left ?? 0;
+  //   //   const currentTargetWidth = currentTargetCoordinate.width ?? 0;
+  //   //
+  //   //   const leftCoordinateOnRightBlock = wrapperLeft + wrapperWidth;
+  //   //   const leftCoordinateWithCurrentWidth =
+  //   //     currentTargetLeft + currentTargetWidth;
+  //   //
+  //   //   const resultDifference = getDifferenceCoordinate(
+  //   //     leftCoordinateWithCurrentWidth,
+  //   //     leftCoordinateOnRightBlock
+  //   //   );
+  //   //
+  //   //   if (currentTargetLeft < wrapperLeft) {
+  //   //     const result = wrapperLeft - currentTargetLeft;
+  //   //     //event.currentTarget.style.marginLeft = `${result}px`;
+  //   //   } else if (resultDifference) {
+  //   //     //event.currentTarget.style.marginRight = `${resultDifference}px`;
+  //   //   }
+  //   // }
+  // }
 
   return (
-    <Component ref={wrapperRef}>
-      <ContentContainer>
-        <Wrapper isRevert={isRevert}>
-          <Content
-            ref={contentRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            {itemList.map((item, index) => {
-              return (
-                <Card
-                  onMouseOver={onMouseOverOnCard}
-                  data-index={index}
-                  key={index}
-                >
-                  <Picture {...convertThumbnailToPictureImage(item.image)} />
-                </Card>
-              );
-            })}
-          </Content>
-        </Wrapper>
-      </ContentContainer>
+    <Component
+      ref={wrapperRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Wrapper isRevert={isRevert}>
+        <Content ref={contentRef}>
+          {itemList.map((item, index) => {
+            return (
+              <Card data-index={index} key={index}>
+                <Picture {...convertThumbnailToPictureImage(item.image)} />
+              </Card>
+            );
+          })}
+        </Content>
+      </Wrapper>
     </Component>
   );
 }
@@ -117,22 +104,26 @@ const Component = styled.div`
 `;
 
 const Wrapper = styled.div<{ isRevert: boolean }>`
-  transform: translateX(${({ isRevert }) => (isRevert ? '-30%' : '-20%')});
+  transform: translateX(${({ isRevert }) => (isRevert ? '-5%' : 'initial')});
 
   ${media.mobileMedium(css`
     transform: translateX(-88%);
   `)}
 `;
 const Card = styled.div`
+  max-width: 468px;
   flex: 1 1 100%;
   width: 100%;
-  padding-right: 30px;
+  margin-right: 30px;
 
   transition: all 0.2s linear;
 
   & > div {
     overflow: hidden;
     border-radius: 22px;
+    -webkit-box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
+    box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
   }
 
   &:last-child {
@@ -142,7 +133,7 @@ const Card = styled.div`
   &:hover {
     transition: all 0.2s linear;
     transform: scale(1.1);
-    padding: 0 60px 0 30px;
+    margin: 0 60px 0 30px;
   }
 
   img {
@@ -165,10 +156,12 @@ const Card = styled.div`
   `)}
 `;
 const Content = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  transform: translateX(calc(var(--x) / 3 * 0.5px));
+  justify-content: center;
+  transition: all 0.3s linear;
+  transform: translate(calc(var(--x) / 5 * 1px));
 `;
 
 export default Gallery;

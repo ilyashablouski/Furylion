@@ -4,6 +4,7 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 import EditorSection from '@/modules/PlayableAds/components/EditorSection';
 import FeedbackSection from '@/components/FeedbackSection';
 import { EditorFormType } from '@/typings/model';
+import GallerySection from '@/modules/PlayableAds/components/GallerySection';
 
 import AdvantagesSection from './components/AdvantagesSection';
 import CpiSection from './components/CpiSection';
@@ -23,6 +24,7 @@ function PlayableAds() {
   return (
     <>
       <HeaderSection />
+      <GallerySection />
       <AdvantagesSection />
       <RateSection />
       <CpiSection />
