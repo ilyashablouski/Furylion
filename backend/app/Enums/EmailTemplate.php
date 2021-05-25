@@ -8,4 +8,5 @@ final class EmailTemplate extends Enum
 {
     const Contact = 'Contact';
     const Feedback = 'Feedback';
+    const Cv = 'Cv';
 }

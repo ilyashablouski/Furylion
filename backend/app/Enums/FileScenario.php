@@ -10,8 +10,9 @@ final class FileScenario extends Enum
     const Content = 'content';
 
     const Feedback = 'Feedback';
-    const VacancyImage = 'vacancy-image';
+    const Cv = 'Cv';
 
+    const VacancyImage = 'vacancy-image';
     const HeadImage = 'head-image';
 
     const HomeHeroImage = 'home-hero-image';
