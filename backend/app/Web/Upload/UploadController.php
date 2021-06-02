@@ -16,4 +16,13 @@ class UploadController extends Controller
             'scenario' => FileScenario::Feedback,
         ]);
     }
+
+    public function cv()
+    {
+        return $this->serve(UploadFileFeature::class, [
+            'supportFile' => true,
+            'supportUrl' => false,
+            'scenario' => FileScenario::Cv,
+        ]);
+    }
 }

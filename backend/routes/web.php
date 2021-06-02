@@ -15,4 +15,7 @@ Route::group(['middleware' => 'api.cache'], function () {
 
     Route::post('/leads/feedback', [LeadsController::class, 'feedback']);
     Route::post('/upload/feedback', [UploadController::class, 'feedback']);
+
+    Route::post('/leads/cv', [LeadsController::class, 'cv']);
+    Route::post('/upload/cv', [UploadController::class, 'cv']);
 });

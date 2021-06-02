@@ -32,5 +32,19 @@ return [
                 'v.ozierski@ozitag.com'
             ],
         ],
+        EmailTemplate::Cv => [
+            'name' => 'Cv form',
+            'templateParams' => [
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'email' => 'E-Mail',
+                'message' => 'Message',
+            ],
+            'subject' => 'New Cv',
+            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail</b> {{email}}</p><p><b>Message</b> {{message}}</p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
     ]
 ];
