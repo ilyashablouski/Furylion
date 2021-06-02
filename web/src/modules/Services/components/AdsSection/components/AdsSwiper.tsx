@@ -65,35 +65,38 @@ function AdsSwiper({ adsImages }: Props) {
       });
     });
 
-    let x = 5;
-    const resultSlideIndex =
-      x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-    const symbol = x < 0 ? '-' : '+';
+    function onScroll() {
+      if (!containerElem) return;
+      let x = 5;
+      const resultSlideIndex =
+        x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
+      const symbol = x < 0 ? '-' : '+';
 
-    if (resultSlideIndex < 0) return;
-    if (resultSlideIndex > slideList.length - 1) return;
+      if (resultSlideIndex < 0) return;
+      if (resultSlideIndex > slideList.length - 1) return;
 
-    disabled = true;
+      disabled = true;
 
-    slideList.forEach((slide, index) => {
-      const resultIndex = resultSlideIndex - index;
+      slideList.forEach((slide, index) => {
+        const resultIndex = resultSlideIndex - index;
 
-      gsap.to(slide.current, {
-        scrollTrigger: {
-          trigger: containerElem,
-          start: 'top 70%',
-          end: '200% 70%',
-          scrub: true,
-        },
-        rotate: rotate * -resultIndex,
-        translateY: translate * Math.abs(resultIndex) ** 2,
-        translateX: `${symbol}=${slideWidth}`,
-        onComplete: () => {
-          activeSlideIndex = resultSlideIndex;
-          disabled = true;
-        },
+        gsap.to(slide.current, {
+          scrollTrigger: {
+            trigger: containerElem,
+            scrub: true,
+          },
+          rotate: rotate * -resultIndex,
+          translateY: translate * Math.abs(resultIndex) ** 2,
+          translateX: `${symbol}=${slideWidth}`,
+          onComplete: () => {
+            activeSlideIndex = resultSlideIndex;
+            disabled = false;
+          },
+        });
       });
-    });
+    }
+
+    //window.addEventListener('scroll', onScroll);
 
     // gsap.registerPlugin(Draggable);
     //
@@ -119,6 +122,7 @@ function AdsSwiper({ adsImages }: Props) {
     //
     // function handleDrag(this: Draggable) {
     //   if (disabled) return;
+    //
     //
     //   const resultSlideIndex =
     //     this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;

@@ -24,7 +24,7 @@ function DoYouWantSection() {
       scrollTrigger: {
         trigger: titleRef.current,
         scrub: 1,
-        start: '-400% 30%',
+        start: '-470% 30%',
         end: 'bottom 10%',
         markers: true,
       },
