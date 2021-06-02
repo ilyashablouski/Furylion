@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { DoYouWantSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
-import TickerLine from '@/components/TickerLine';
 
 import ImagesRow from './components/ImagesRow';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function DoYouWantSection() {
   const page = useCurrentPage<DoYouWantSectionType>();
+  const titleRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    let tw: gsap.core.Tween;
+    if (!titleRef.current) return;
+
+    tw = gsap.to(titleRef.current, {
+      xPercent: 100,
+      scrollTrigger: {
+        trigger: titleRef.current,
+        scrub: 1,
+        start: '-400% 30%',
+        end: 'bottom 10%',
+        markers: true,
+      },
+    });
+
+    return () => {
+      tw?.kill();
+    };
+  }, []);
+
   if (!page) return null;
 
   const pageFields = page.templateFields;
@@ -22,13 +46,12 @@ function DoYouWantSection() {
     <Wrapper id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
-          <TickerLine
-            backgroundTicket="transparent"
-            isLabelTicket={true}
-            isAbove={true}
-          >
-            <Title>{pageFields.doYouWantTitle}</Title>
-          </TickerLine>
+          {/*<TickerLine*/}
+          {/*  backgroundTicket="transparent"*/}
+          {/*  isLabelTicket={true}*/}
+          {/*  isAbove={true}*/}
+          {/*></TickerLine>*/}
+          <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
         </TitleBlock>
         <ImagesContainer>
           <ImagesRow galleryItems={firstGalleryItems} />
@@ -66,6 +89,7 @@ const Title = styled.span`
   white-space: nowrap;
   color: ${colors.white};
   position: relative;
+  transform: translateX(-100%);
   z-index: 1;
 
   ${media.tabletSmall(css`
