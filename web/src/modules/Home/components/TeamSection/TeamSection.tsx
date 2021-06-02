@@ -38,48 +38,48 @@ function TeamSection() {
     new Array(teamItems?.length).fill(null)
   );
 
-  useEffect(() => {
-    let timeline: gsap.core.Timeline;
-    gsap.delayedCall(0, () => {
-      if (!containerRef.current) return null;
-
-      timeline = gsap.timeline({
-        scrollTrigger: {
-          scroller: 'body',
-          trigger: containerRef.current,
-          start: 'top 90%',
-        },
-      });
-
-      timeline.from(
-        bgPictureRef.current,
-        {
-          stagger: 0.15,
-          ease: 'customEaseInOut',
-          transformOrigin: '50% 40%',
-          yPercent: 40,
-          duration: 1,
-        },
-        0
-      );
-
-      teamItemRefList.current.forEach((teamItem, index) => {
-        timeline.from(
-          teamItem,
-          {
-            css: {
-              scale: 0.1,
-              opacity: 0,
-              duration: 0.1,
-              transition: 'linear',
-            },
-            delay: index / 3,
-          },
-          1.5
-        );
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   let timeline: gsap.core.Timeline;
+  //   gsap.delayedCall(0, () => {
+  //     if (!containerRef.current) return null;
+  //
+  //     timeline = gsap.timeline({
+  //       scrollTrigger: {
+  //         scroller: 'body',
+  //         trigger: containerRef.current,
+  //         start: 'top 90%',
+  //       },
+  //     });
+  //
+  //     timeline.from(
+  //       bgPictureRef.current,
+  //       {
+  //         stagger: 0.15,
+  //         ease: 'customEaseInOut',
+  //         transformOrigin: '50% 40%',
+  //         yPercent: 40,
+  //         duration: 1,
+  //       },
+  //       0
+  //     );
+  //
+  //     teamItemRefList.current.forEach((teamItem, index) => {
+  //       timeline.from(
+  //         teamItem,
+  //         {
+  //           css: {
+  //             scale: 0.1,
+  //             opacity: 0,
+  //             duration: 0.1,
+  //             transition: 'linear',
+  //           },
+  //           delay: index / 3,
+  //         },
+  //         1.5
+  //       );
+  //     });
+  //   });
+  // }, []);
 
   return (
     <Wrapper id={pageFields?.teamId ?? ''} ref={containerRef}>
