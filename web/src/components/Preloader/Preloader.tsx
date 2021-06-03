@@ -22,7 +22,7 @@ type Props = {
   debug?: boolean;
 };
 
-function Preloader({ hidden: hiddenProp = false, className, debug }: Props) {
+function Preloader({ hidden: hiddenProp, className, debug }: Props) {
   const isControlled = hiddenProp !== undefined;
 
   function isInitiallyVisible(): boolean {

@@ -51,10 +51,11 @@ function DevelopmentSection() {
                                     to={logo.linkUrl ?? '#'}
                                     target="_blank"
                                   >
-                                    <iframe
-                                      src={logo.image.url ?? ''}
-                                      frameBorder="0"
-                                    ></iframe>
+                                    <Picture
+                                      mobileSmall={convertThumbnailToPictureImage(
+                                        logo.image
+                                      )}
+                                    />
                                   </LogoLink>
                                 </Logo>
                               );

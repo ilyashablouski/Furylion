@@ -19,7 +19,7 @@ type Props = {
   isWhite?: boolean;
 };
 
-function Layout({ children, isWhite }: Props) {
+function Layout({ children, isPreloaderHidden, isWhite }: Props) {
   const instagramUrl = useSettingItem('INSTAGRAM_URL');
   const vkontakteUrl = useSettingItem('VKONTAKTE_URL');
   const appstoreUrl = useSettingItem('APPSTORE_URL');
@@ -46,6 +46,7 @@ function Layout({ children, isWhite }: Props) {
 
   return (
     <Container>
+      <Preloader hidden={isPreloaderHidden} />
       <Header socialsData={socialsData} />
       <Main isWhite={isWhite}>{children}</Main>
       <ContactsSection />

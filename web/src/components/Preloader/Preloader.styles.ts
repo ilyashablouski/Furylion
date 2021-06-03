@@ -31,10 +31,6 @@ export const Inner = styled.div`
   svg {
     position: absolute;
   }
-
-  svg:nth-child(2) {
-    z-index: 11;
-  }
 `;
 
 export const WrapperIconLogo = styled.div`
@@ -61,4 +57,8 @@ export const Overlay = styled.div`
   will-change: opacity;
   z-index: 1000;
   overflow: hidden;
+
+  &.fade-out {
+    animation: ${fadeOutCss} 1s ease-in-out forwards;
+  }
 `;
