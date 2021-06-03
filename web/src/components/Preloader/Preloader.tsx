@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { isBrowser, notFalsy, useUpdateEffect } from '@tager/web-core';
 
+import { ReactComponent as BlackLogo } from '@/assets/svg/preloader/black-logo.svg';
+import { ReactComponent as RedLogo } from '@/assets/svg/preloader/red-logo.svg';
+
 import { isPreloaderEnabled } from './Preloder.helpers';
 import * as S from './Preloader.styles';
 
@@ -19,7 +22,7 @@ type Props = {
   debug?: boolean;
 };
 
-function Preloader({ hidden: hiddenProp, className, debug }: Props) {
+function Preloader({ hidden: hiddenProp = false, className, debug }: Props) {
   const isControlled = hiddenProp !== undefined;
 
   function isInitiallyVisible(): boolean {
@@ -89,42 +92,12 @@ function Preloader({ hidden: hiddenProp, className, debug }: Props) {
       onAnimationEnd={handleAnimationEnd}
       data-preloader-overlay
     >
-      <div id="ctn-preloader" className="ctn-preloader">
-        <div className="animation-preloader">
-          <div className="txt-loading">
-            <span data-text-preloader="F" className="letters-loading">
-              F
-            </span>
-
-            <span data-text-preloader="u" className="letters-loading">
-              u
-            </span>
-
-            <span data-text-preloader="r" className="letters-loading">
-              r
-            </span>
-
-            <span data-text-preloader="y" className="letters-loading">
-              y
-            </span>
-
-            <span data-text-preloader="L" className="letters-loading">
-              L
-            </span>
-
-            <span data-text-preloader="i" className="letters-loading">
-              i
-            </span>
-
-            <span data-text-preloader="o" className="letters-loading">
-              o
-            </span>
-            <span data-text-preloader="n" className="letters-loading">
-              n
-            </span>
-          </div>
-        </div>
-      </div>
+      <S.Inner>
+        <BlackLogo />
+        <S.WrapperIconLogo>
+          <RedLogo />
+        </S.WrapperIconLogo>
+      </S.Inner>
     </S.Overlay>
   );
 }
