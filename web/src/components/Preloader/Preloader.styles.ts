@@ -11,13 +11,13 @@ export const fadeOutCss = keyframes`
 
 export const animationLogo = keyframes`
   0% {
-    width: 0%;
+    max-width: 0px;
   }
   50% {
-    width: 100%;
+    max-width: 180px;
   }
   100% {
-    width: 0%;
+    max-width: 0px;
   }
 
 `;
