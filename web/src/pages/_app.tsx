@@ -22,6 +22,7 @@ import withRedux from '@/hocs/withRedux';
 import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
 import { breakpoints } from '@/constants/theme';
+import Preloader from '@/components/Preloader';
 
 Sentry.init({
   enabled:
@@ -116,6 +117,7 @@ const CustomApp: CustomApp_Component = (props) => {
         />
       </Head>
       <AdminBar />
+      <Preloader />
       <ModalProvider>
         <Component {...modifiedPageProps} />
       </ModalProvider>

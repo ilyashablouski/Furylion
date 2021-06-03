@@ -1,7 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-
-import { Preloader } from '@tager/web-components';
+import styled from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import useSettingItem from '@/hooks/useSettingItem';
@@ -9,8 +7,7 @@ import { ReactComponent as InstagramIcon } from '@/assets/svg/social/instagram.s
 import { ReactComponent as VkIcon } from '@/assets/svg/social/vk.svg';
 import { ReactComponent as AppleIcon } from '@/assets/svg/social/apple.svg';
 import { ReactComponent as AndroidIcon } from '@/assets/svg/social/android.svg';
-import { useTypedSelector } from '@/store/store';
-import { selectVacanciesTotalValue } from '@/store/reducers/pages/vacancies';
+import Preloader from '@/components/Preloader';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -22,7 +19,7 @@ type Props = {
   isWhite?: boolean;
 };
 
-function Layout({ children, isPreloaderHidden, isWhite }: Props) {
+function Layout({ children, isWhite }: Props) {
   const instagramUrl = useSettingItem('INSTAGRAM_URL');
   const vkontakteUrl = useSettingItem('VKONTAKTE_URL');
   const appstoreUrl = useSettingItem('APPSTORE_URL');
@@ -49,8 +46,6 @@ function Layout({ children, isPreloaderHidden, isWhite }: Props) {
 
   return (
     <Container>
-      <Preloader hidden={isPreloaderHidden} />
-
       <Header socialsData={socialsData} />
       <Main isWhite={isWhite}>{children}</Main>
       <ContactsSection />

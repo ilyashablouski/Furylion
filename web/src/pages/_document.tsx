@@ -76,14 +76,6 @@ class CustomDocument extends Document<CustomDocumentProps> {
             google={settings?.googleVerification}
             yandex={settings?.yandexVerification}
           />
-
-          {/*<link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="" />*/}
-          {/*<link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="" />*/}
-          {/*<link*/}
-          {/*  href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap&subset=cyrillic"*/}
-          {/*  rel="stylesheet"*/}
-          {/*/>*/}
-
           <link
             rel="preload"
             href="/static/fonts/Inter/Medium.woff2"
@@ -144,7 +136,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
             </>
           ) : null}
         </Head>
-        <body>
+        <body style={{ display: 'block', overflow: 'hidden' }}>
           <Main />
           <script src="/static/js/global.js" defer />
           <script

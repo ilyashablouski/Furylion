@@ -51,11 +51,10 @@ function DevelopmentSection() {
                                     to={logo.linkUrl ?? '#'}
                                     target="_blank"
                                   >
-                                    <Picture
-                                      mobileSmall={convertThumbnailToPictureImage(
-                                        logo.image
-                                      )}
-                                    />
+                                    <iframe
+                                      src={logo.image.url ?? ''}
+                                      frameBorder="0"
+                                    ></iframe>
                                   </LogoLink>
                                 </Logo>
                               );
@@ -127,11 +126,39 @@ const Items = styled.div`
   `)}
 `;
 
+const ItemTitle = styled.span`
+  margin-top: 25px;
+  display: block;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 130%;
+  color: ${colors.white};
+  transition: color 0.3s ease;
+
+  ${media.tabletSmall(css`
+    margin-top: 20px;
+  `)}
+`;
+
+const ItemText = styled.p`
+  margin-top: 15px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+  color: ${colors.white};
+  transition: color 0.3s ease;
+
+  ${media.tabletSmall(css`
+    margin-top: 10px;
+    font-size: 12px;
+  `)}
+`;
+
 const Item = styled.div`
   padding: 0 10px;
   flex: 1 1 33.33%;
   max-width: 33.33%;
-
+  transition: background 0.3s ease;
   margin-top: 35px;
 
   ${media.tabletSmallOnly(css`
@@ -139,12 +166,26 @@ const Item = styled.div`
     flex: 1 1 50%;
     max-width: 50%;
   `)}
-
   ${media.mobile(css`
     margin-top: 80px;
     padding: 0;
     max-width: none;
   `)}
+  &:hover {
+    background: ${colors.white};
+
+    ${ItemTitle} {
+      color: ${colors.black} !important;
+    }
+
+    ${ItemText} {
+      color: ${colors.black} !important;
+    }
+
+    svg {
+      fill: ${colors.black} !important;
+    }
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -169,32 +210,6 @@ const ImageContainer = styled.div`
       max-height: 177px;
     `)}
   }
-`;
-
-const ItemTitle = styled.span`
-  margin-top: 25px;
-  display: block;
-  font-weight: 900;
-  font-size: 32px;
-  line-height: 130%;
-  color: ${colors.white};
-
-  ${media.tabletSmall(css`
-    margin-top: 20px;
-  `)}
-`;
-
-const ItemText = styled.p`
-  margin-top: 15px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 160%;
-  color: ${colors.white};
-
-  ${media.tabletSmall(css`
-    margin-top: 10px;
-    font-size: 12px;
-  `)}
 `;
 
 const Logos = styled.div`
@@ -229,6 +244,16 @@ const Logo = styled.div`
   img {
     image-rendering: -webkit-optimize-contrast;
     height: 32px;
+  }
+
+  svg {
+    fill: white;
+    stroke: white;
+  }
+
+  svg path {
+    fill: white;
+    stroke: white;
   }
 `;
 
