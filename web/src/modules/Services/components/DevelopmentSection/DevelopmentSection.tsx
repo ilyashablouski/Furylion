@@ -105,16 +105,7 @@ const Title = styled.span`
 `;
 
 const ItemsWrapper = styled.div`
-  margin-top: 35px;
   display: flex;
-
-  ${media.tabletSmallOnly(css`
-    margin-top: 40px;
-  `)}
-
-  ${media.mobile(css`
-    margin-top: 30px; ;
-  `)}
 `;
 
 const Items = styled.div`
@@ -141,14 +132,16 @@ const Item = styled.div`
   flex: 1 1 33.33%;
   max-width: 33.33%;
 
+  margin-top: 35px;
+
   ${media.tabletSmallOnly(css`
-    margin-top: 45px;
+    margin-top: 85px;
     flex: 1 1 50%;
     max-width: 50%;
   `)}
 
   ${media.mobile(css`
-    margin-top: 50px;
+    margin-top: 80px;
     padding: 0;
     max-width: none;
   `)}
