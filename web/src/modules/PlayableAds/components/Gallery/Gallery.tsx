@@ -2,30 +2,27 @@ import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
+import { useModal } from '@tager/web-components';
 
 import { AdsHeadItemType } from '@/typings/model';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
+import Game from '@/modules/PlayableAds/components/Game';
 
 interface Props {
   isRevert?: boolean;
   itemList: Array<AdsHeadItemType>;
 }
 
-// function getDifferenceCoordinate<T extends number>(
-//   leftCoordinateWithCurrentWidth: T,
-//   leftCoordinateOnRightBlock: T
-// ): number {
-//   if (leftCoordinateWithCurrentWidth > leftCoordinateOnRightBlock) {
-//     return leftCoordinateWithCurrentWidth - leftCoordinateOnRightBlock;
-//   } else {
-//     return 0;
-//   }
-// }
-
 function Gallery({ isRevert = false, itemList }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const openModal = useModal();
+
+  function onClick() {
+    openModal(Game, {});
+  }
 
   function handleMouseMove(event: React.MouseEvent) {
     const contentElement = contentRef.current;
@@ -47,37 +44,6 @@ function Gallery({ isRevert = false, itemList }: Props) {
     contentRef.current?.style.setProperty('--x', '0');
   }
 
-  // function onMouseOverOnCard(
-  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  // ) {
-  //   // if (event.currentTarget instanceof HTMLDivElement) {
-  //   //   const wrapperCoordinate = wrapperRef.current?.getBoundingClientRect();
-  //   //   const wrapperLeft = wrapperCoordinate?.left ?? 0;
-  //   //   const wrapperWidth = wrapperCoordinate?.width ?? 0;
-  //   //
-  //   //   const currentTargetCoordinate = event.currentTarget.getBoundingClientRect();
-  //   //
-  //   //   const currentTargetLeft = currentTargetCoordinate.left ?? 0;
-  //   //   const currentTargetWidth = currentTargetCoordinate.width ?? 0;
-  //   //
-  //   //   const leftCoordinateOnRightBlock = wrapperLeft + wrapperWidth;
-  //   //   const leftCoordinateWithCurrentWidth =
-  //   //     currentTargetLeft + currentTargetWidth;
-  //   //
-  //   //   const resultDifference = getDifferenceCoordinate(
-  //   //     leftCoordinateWithCurrentWidth,
-  //   //     leftCoordinateOnRightBlock
-  //   //   );
-  //   //
-  //   //   if (currentTargetLeft < wrapperLeft) {
-  //   //     const result = wrapperLeft - currentTargetLeft;
-  //   //     //event.currentTarget.style.marginLeft = `${result}px`;
-  //   //   } else if (resultDifference) {
-  //   //     //event.currentTarget.style.marginRight = `${resultDifference}px`;
-  //   //   }
-  //   // }
-  // }
-
   return (
     <Component
       ref={wrapperRef}
@@ -88,7 +54,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
         <Content ref={contentRef}>
           {itemList.map((item, index) => {
             return (
-              <Card data-index={index} key={index}>
+              <Card onClick={onClick} data-index={index} key={index}>
                 <Picture {...convertThumbnailToPictureImage(item.image)} />
               </Card>
             );
