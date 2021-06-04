@@ -4,6 +4,7 @@ namespace App\Web\Leads\Cv\Requests;
 
 use Ozerich\FileStorage\Models\File;
 use Ozerich\FileStorage\Rules\FileRule;
+use OZiTAG\Tager\Backend\Core\Http\FormRequest;
 
 /**
  * Class LeadsCvRequest
@@ -15,7 +16,7 @@ use Ozerich\FileStorage\Rules\FileRule;
  * @property string $message
  * @property File $file
  */
-class LeadsCvRequest
+class LeadsCvRequest extends FormRequest
 {
     public function rules()
     {
