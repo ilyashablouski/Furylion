@@ -7,6 +7,7 @@ import Tag from '@/components/Tag';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import useSettingItem from '@/hooks/useSettingItem';
 
 import VacancyCard from './components/VacancyCard';
 
@@ -21,6 +22,10 @@ function JobSection() {
   const introThirdText = vacancyFullListTypeData?.data?.introductionThird;
   const responsibilitiesList = vacancyFullListTypeData?.data?.responsibilities;
   const requirementsList = vacancyFullListTypeData?.data?.requirements;
+
+  const firstTitle = useSettingItem('FirstHeaderTitle');
+  const secondTitle = useSettingItem('SecondHeaderTitle');
+
   return (
     <Wrapper>
       <ContentContainer>
@@ -49,7 +54,7 @@ function JobSection() {
           </Right>
           <Lists>
             <List>
-              <ListTitle>Your responsibilities:</ListTitle>
+              <ListTitle>{firstTitle}</ListTitle>
               <ListContent
                 dangerouslySetInnerHTML={{
                   __html: responsibilitiesList ?? '',
@@ -57,7 +62,7 @@ function JobSection() {
               />
             </List>
             <List>
-              <ListTitle>Requirements:</ListTitle>
+              <ListTitle>{secondTitle}</ListTitle>
               <ListContent
                 dangerouslySetInnerHTML={{ __html: requirementsList ?? '' }}
               />

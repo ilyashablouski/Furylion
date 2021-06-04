@@ -13,16 +13,26 @@ import MessageSuccess from '@/components/modals/MessageSuccess';
 import TextInputFormik from '@/components/TextInput/TextInput.formik';
 
 export type ContactsFormValues = ContactsFormPayload;
+export type CvFormValues = {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  file: number | null;
+};
 
 type Props = FormikProps<ContactsFormValues> & {
   isModal?: boolean;
   isSentSuccess: boolean;
   fileId: number;
+  isCvForm: boolean;
   setFileId: (value: number) => void;
 };
+
 function ContactsForm({
   isModal = false,
   isSentSuccess,
+  isCvForm = false,
   isSubmitting,
   fileId,
   setFileId,
@@ -39,13 +49,24 @@ function ContactsForm({
             placeholder="Name"
             autoComplete="off"
           />
-          <Input
-            type="text"
-            name="company"
-            required
-            placeholder="Company"
-            autoComplete="off"
-          />
+          {isCvForm ? (
+            <Input
+              type="tel"
+              name="phone"
+              required
+              placeholder="Phone"
+              autoComplete="off"
+            />
+          ) : (
+            <Input
+              type="text"
+              name="company"
+              required
+              placeholder="Company"
+              autoComplete="off"
+            />
+          )}
+
           <Input
             type="email"
             name="email"
@@ -128,7 +149,6 @@ const Input = styled(TextInputFormik)`
   ${media.tabletSmallOnly(css`
     margin-top: 50px;
   `)}
-
   ${media.mobile(css`
     margin-top: 60px;
   `)}
@@ -163,6 +183,7 @@ const Input = styled(TextInputFormik)`
 const TextAreaContainer = styled.div`
   position: relative;
   margin-top: 85px;
+
   .textarea-field {
     line-height: 0;
   }

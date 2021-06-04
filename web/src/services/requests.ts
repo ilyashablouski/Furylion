@@ -2,9 +2,10 @@ import { request, ResponseBody } from '@tager/web-core';
 
 import { FileType, VacancyFullType, VacancyShortType } from '@/typings/model';
 
-export type ContactsFormPayload = {
+export type FormPayload = {
   name: string;
-  company: string;
+  company?: string;
+  phone?: string;
   email: string;
   message: string;
   file: number | null;
@@ -22,9 +23,7 @@ export function createExample() {
   return request.post({ path: '/tager/example', body: { name: 'example' } });
 }
 
-export function sendContactsForm(
-  payload: ContactsFormPayload
-): Promise<ContactsFormPayload> {
+export function sendContactsForm(payload: FormPayload): Promise<FormPayload> {
   return request.post({ path: '/leads/feedback', body: payload });
 }
 

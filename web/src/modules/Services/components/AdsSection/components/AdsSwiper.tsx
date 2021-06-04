@@ -43,6 +43,53 @@ function AdsSwiper({ adsImages }: Props) {
       : translate;
   }
 
+  // function onScroll() {
+  //   if (!containerElem) return;
+  //   let x = 5;
+  //   const resultSlideIndex =
+  //     x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
+  //   const symbol = x < 0 ? '-' : '+';
+  //
+  //   if (resultSlideIndex < 0) return;
+  //   if (resultSlideIndex > slideList.length - 1) return;
+  //
+  //   disabled = true;
+  //
+  //   slideList.forEach((slide, index) => {
+  //     const resultIndex = resultSlideIndex - index;
+  //
+  //     gsap.to(slide.current, {
+  //       scrollTrigger: {
+  //         trigger: containerElem,
+  //         scrub: true,
+  //       },
+  //       rotate: rotate * -resultIndex,
+  //       translateY: translate * Math.abs(resultIndex) ** 2,
+  //       translateX: `${symbol}=${slideWidth}`,
+  //       onComplete: () => {
+  //         activeSlideIndex = resultSlideIndex;
+  //         disabled = false;
+  //       },
+  //     });
+  //   });
+  // }
+
+  // let disabled = false;
+  // let activeSlideIndex = Math.floor(slideList.length / 2);
+  // let slideWidth = getSlideWidth();
+
+  // slideList.forEach((slide, index) => {
+  //   const resultIndex = activeSlideIndex - index;
+  //
+  //   gsap.set(slide.current, {
+  //     translateY: translate * Math.abs(resultIndex) ** 2,
+  //     translateX: translate * -resultIndex,
+  //     rotate: rotate * -resultIndex,
+  //   });
+  // });
+
+  //window.addEventListener('scroll', onScroll);
+
   useEffect(() => {
     const slideList = slideListRef.current;
     const containerElem = containerRef.current;
@@ -65,12 +112,20 @@ function AdsSwiper({ adsImages }: Props) {
       });
     });
 
-    function onScroll() {
-      if (!containerElem) return;
-      let x = 5;
+    gsap.registerPlugin(Draggable);
+
+    function handleResize() {
+      slideWidth = getSlideWidth();
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    function handleDrag(this: Draggable) {
+      if (disabled) return;
+
       const resultSlideIndex =
-        x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-      const symbol = x < 0 ? '-' : '+';
+        this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
+      const symbol = this.x < 0 ? '-' : '+';
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -81,10 +136,7 @@ function AdsSwiper({ adsImages }: Props) {
         const resultIndex = resultSlideIndex - index;
 
         gsap.to(slide.current, {
-          scrollTrigger: {
-            trigger: containerElem,
-            scrub: true,
-          },
+          duration: 0.25,
           rotate: rotate * -resultIndex,
           translateY: translate * Math.abs(resultIndex) ** 2,
           translateX: `${symbol}=${slideWidth}`,
@@ -94,74 +146,24 @@ function AdsSwiper({ adsImages }: Props) {
           },
         });
       });
+
+      // console.log('RESULT SLIDE INDEX', resultSlideIndex);
+      // console.log('SYMBOL', symbol);
     }
 
-    //window.addEventListener('scroll', onScroll);
-
-    // gsap.registerPlugin(Draggable);
-    //
-    // let disabled = false;
-    // let activeSlideIndex = Math.floor(slideList.length / 2);
-    // let slideWidth = getSlideWidth();
-    //
-    // slideList.forEach((slide, index) => {
-    //   const resultIndex = activeSlideIndex - index;
-    //
-    //   gsap.set(slide.current, {
-    //     translateY: translate * Math.abs(resultIndex) ** 2,
-    //     translateX: translate * -resultIndex,
-    //     rotate: rotate * -resultIndex,
-    //   });
-    // });
-    //
-    // function handleResize() {
-    //   slideWidth = getSlideWidth();
-    // }
-    //
-    // window.addEventListener('resize', handleResize);
-    //
-    // function handleDrag(this: Draggable) {
-    //   if (disabled) return;
-    //
-    //
-    //   const resultSlideIndex =
-    //     this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-    //   const symbol = this.x < 0 ? '-' : '+';
-    //
-    //   if (resultSlideIndex < 0) return;
-    //   if (resultSlideIndex > slideList.length - 1) return;
-    //
-    //   disabled = true;
-    //
-    //   slideList.forEach((slide, index) => {
-    //     const resultIndex = resultSlideIndex - index;
-    //
-    //     gsap.to(slide.current, {
-    //       duration: 0.25,
-    //       rotate: rotate * -resultIndex,
-    //       translateY: translate * Math.abs(resultIndex) ** 2,
-    //       translateX: `${symbol}=${slideWidth}`,
-    //       onComplete: () => {
-    //         activeSlideIndex = resultSlideIndex;
-    //         disabled = false;
-    //       },
-    //     });
-    //   });
-    // }
-    //
-    // const proxy = document.createElement('div');
-    // const draggable = Draggable.create(proxy, {
-    //   onDrag: handleDrag,
-    //   onThrowUpdate: handleDrag,
-    //   throwProps: true,
-    //   bounds: draggableBounds,
-    //   trigger: containerElem,
-    //   type: 'x',
-    // });
+    const proxy = document.createElement('div');
+    const draggable = Draggable.create(proxy, {
+      onDrag: handleDrag,
+      onThrowUpdate: handleDrag,
+      throwProps: true,
+      bounds: draggableBounds,
+      trigger: containerElem,
+      type: 'x',
+    });
 
     return () => {
-      // window.removeEventListener('resize', handleResize);
-      // draggable.forEach((item) => item.kill());
+      window.removeEventListener('resize', handleResize);
+      draggable.forEach((item) => item.kill());
       gsap.killTweensOf(window);
     };
   }, [adsImages.length]);

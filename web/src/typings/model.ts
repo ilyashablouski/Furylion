@@ -51,7 +51,10 @@ export type SettingsItemType =
   | SettingsInstagramOptions<'INSTAGRAM'>
   | SettingsItemString<'NOT_FOUND_TEXT'>
   | SettingsItemString<'NOT_FOUND_BUTTON_LABEL'>
-  | SettingsItemString<'NOT_FOUND_BUTTON_URL'>;
+  | SettingsItemString<'NOT_FOUND_BUTTON_URL'>
+  | SettingsItemString<'FirstHeaderTitle'>
+  | SettingsItemString<'SecondHeaderTitle'>
+  | SettingsItemString<'BenefitsTitle'>;
 
 export type FileType = {
   id: number;

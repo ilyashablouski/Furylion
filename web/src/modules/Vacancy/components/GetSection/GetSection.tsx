@@ -6,16 +6,19 @@ import ContentContainer from '@/components/ContentContainer';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 import checkMarkFillUrl from '@/assets/svg/vacancy/check-mark-fill.svg';
 import { media } from '@/utils/mixin';
+import useSettingItem from '@/hooks/useSettingItem';
 
 function GetSection() {
   const vacancyResource = useCurrentVacancy();
   const vacancyData = vacancyResource?.data;
   const conditionsList = vacancyData?.conditions;
 
+  const title = useSettingItem('BenefitsTitle');
+
   return (
     <Wrapper>
       <ContentContainer>
-        <Title>You will get:</Title>
+        <Title>{title}</Title>
         <Inner>
           <Lists dangerouslySetInnerHTML={{ __html: conditionsList ?? '' }} />
         </Inner>
@@ -73,14 +76,12 @@ const Lists = styled.div`
     flex-wrap: wrap;
     justify-content: center;
   `)}
-
   ${media.mobile(css`
     margin-top: -20px;
     margin-left: 0;
     margin-right: 0;
     display: block;
   `)}
-
   ul {
     padding: 0 10px;
     flex: 1 1 33.33%;
@@ -112,10 +113,10 @@ const Lists = styled.div`
     font-size: 14px;
     line-height: 160%;
     color: ${colors.white};
+
     ${media.mobile(css`
       margin-top: 20px;
     `)}
-
     &:not(:first-child) {
       margin-top: 25px;
 

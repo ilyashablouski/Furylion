@@ -65,7 +65,7 @@ function FeedbackSection({
             </Left>
           )}
           <Right>
-            <ContactsFormContainer />
+            <ContactsFormContainer isCvForm={isCvForm} />
           </Right>
         </Inner>
       </ContentContainer>

@@ -3,27 +3,36 @@ import { Formik, FormikErrors, FormikHelpers } from 'formik';
 
 import { convertRequestErrorToMap } from '@tager/web-core';
 
-import { ContactsFormPayload, sendContactsForm } from '@/services/requests';
+import { FormPayload, sendContactsForm, sendCvForm } from '@/services/requests';
 
 import ContactsForm, { ContactsFormValues } from './ContactsForm';
 
-function ContactsFormContainer() {
+function getSendMethod(isCvForm: boolean) {
+  return isCvForm ? sendCvForm : sendContactsForm;
+}
+
+function getOnlyTrueValues(values: Record<string, string | number>) {
+  Object.keys(values).forEach((key) => {
+    if (!values[key]) {
+      delete values[key];
+    }
+  });
+  return values as FormPayload;
+}
+
+function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
   const [isSentSuccess, setSentSuccess] = useState(false);
   const [fileId, setFileId] = useState<number>(0);
 
   function handleSubmit(
-    values: ContactsFormValues,
-    formikHelpers: FormikHelpers<ContactsFormValues>
+    values: FormPayload,
+    formikHelpers: FormikHelpers<FormPayload>
   ) {
-    const payload: ContactsFormPayload = {
-      name: values.name,
-      company: values.company,
-      email: values.email,
-      message: values.message,
-      file: fileId ?? null,
-    };
+    const preValues = { ...values, file: fileId ?? null };
 
-    sendContactsForm(payload)
+    const payload = getOnlyTrueValues(preValues);
+
+    getSendMethod(isCvForm)(payload)
       .then(() => {
         formikHelpers.resetForm();
         setSentSuccess(true);
@@ -48,6 +57,7 @@ function ContactsFormContainer() {
       initialValues={{
         name: '',
         company: '',
+        phone: '',
         email: '',
         message: '',
         file: null,
@@ -58,6 +68,7 @@ function ContactsFormContainer() {
       {(formProps) => (
         <ContactsForm
           {...formProps}
+          isCvForm={isCvForm}
           isSentSuccess={isSentSuccess}
           fileId={fileId}
           setFileId={(value: number) => setFileId(value)}
