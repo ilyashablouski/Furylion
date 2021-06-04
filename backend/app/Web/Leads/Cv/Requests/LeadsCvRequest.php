@@ -24,7 +24,7 @@ class LeadsCvRequest
             'phone' => 'required|string',
             'email' => 'required|string|email',
             'message' => 'required|string',
-            'file' => ['nullable', new FileRule()],
+            'file' => ['required', new FileRule()],
         ];
     }
 }
