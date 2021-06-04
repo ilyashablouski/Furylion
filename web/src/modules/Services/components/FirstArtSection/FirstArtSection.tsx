@@ -72,19 +72,24 @@ function FirstArtSection({
         <ContentContainer>
           <Title>{pageFields.firstArtTitle}</Title>
           <TextContainer>
+            <AdditionalTitle>{pageFields.firstArtTitle1}</AdditionalTitle>
             <Text>{pageFields.firstArtText1}</Text>
             <TextInner>
               <TextItem>
+                <AdditionalTitle>{pageFields.firstArtTitle2}</AdditionalTitle>
                 <Text>{pageFields.firstArtText2}</Text>
               </TextItem>
               <TextItem>
+                <AdditionalTitle>{pageFields.firstArtTitle3}</AdditionalTitle>
                 <Text>{pageFields.firstArtText3}</Text>
               </TextItem>
             </TextInner>
           </TextContainer>
 
           <AdditionalBlock>
-            <AdditionalTitle>Technology stack:</AdditionalTitle>
+            <AdditionalTitle>
+              {pageFields.firstArtTitleAdditional}
+            </AdditionalTitle>
             <AdditionalText
               dangerouslySetInnerHTML={{
                 __html: pageFields.firstArtTextAdditional ?? '',

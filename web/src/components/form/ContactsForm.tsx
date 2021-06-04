@@ -6,13 +6,13 @@ import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
-import { ContactsFormPayload } from '@/services/requests';
+import { FormPayload } from '@/services/requests';
 import AttachFile from '@/components/AttachFile';
 import { TextAreaFormik } from '@/components/TextArea';
 import MessageSuccess from '@/components/modals/MessageSuccess';
 import TextInputFormik from '@/components/TextInput/TextInput.formik';
 
-export type ContactsFormValues = ContactsFormPayload;
+export type ContactsFormValues = FormPayload;
 export type CvFormValues = {
   name: string;
   phone: string;

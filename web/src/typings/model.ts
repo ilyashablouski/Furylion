@@ -254,8 +254,12 @@ export interface FirstArtSectionType extends PageFullType {
     firstArtId: StringFieldType;
     firstArtTitle: StringFieldType;
     firstArtText1: StringFieldType;
+    firstArtTitle1: StringFieldType;
     firstArtText2: StringFieldType;
+    firstArtTitle2: StringFieldType;
     firstArtText3: StringFieldType;
+    firstArtTitle3: StringFieldType;
+    firstArtTitleAdditional: StringFieldType;
     firstArtTextAdditional: StringFieldType;
     firstArtButtonFirstLabel: StringFieldType;
     firstArtButtonFirstUrl: StringFieldType;
@@ -269,9 +273,13 @@ export interface SecondArtSectionType extends PageFullType {
   templateFields: {
     secondArtId: StringFieldType;
     secondArtTitle: StringFieldType;
+    secondArtTitle1: StringFieldType;
     secondArtText1: StringFieldType;
+    secondArtTitle2: StringFieldType;
     secondArtText2: StringFieldType;
+    secondArtTitle3: StringFieldType;
     secondArtText3: StringFieldType;
+    secondArtTitleAdditional: StringFieldType;
     secondArtTextAdditional: StringFieldType;
     secondArtButtonFirstLabel: StringFieldType;
     secondArtButtonFirstUrl: StringFieldType;
