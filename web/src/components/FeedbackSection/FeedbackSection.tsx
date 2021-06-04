@@ -22,6 +22,7 @@ type Props = {
   isModal?: boolean;
   isProfileInfo?: boolean;
   idAnchor?: string;
+  isCvForm?: boolean;
 };
 
 function FeedbackSection({
@@ -30,6 +31,7 @@ function FeedbackSection({
   formProfileImage,
   formProfileLabel,
   className,
+  isCvForm = false,
   isModal = false,
   isProfileInfo = false,
   idAnchor,

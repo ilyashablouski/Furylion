@@ -15,7 +15,11 @@ function Vacancy() {
       <TopSection />
       <JobSection />
       <GetSection />
-      <FeedbackSection formTitle={formVacancyTitle} idAnchor="contacts" />
+      <FeedbackSection
+        isCvForm={true}
+        formTitle={formVacancyTitle}
+        idAnchor="contacts"
+      />
     </>
   );
 }

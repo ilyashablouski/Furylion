@@ -182,6 +182,7 @@ const Lists = styled.div`
 const List = styled.div`
   flex: 1 1 50%;
   max-width: 50%;
+
   &:first-child {
     ${media.tabletSmallOnly(css`
       margin-left: auto;
@@ -240,12 +241,10 @@ const ListContent = styled.div`
   ${media.tabletSmallOnly(css`
     margin-top: 56px;
   `)}
-
   ${media.mobile(css`
     margin-top: 30px;
     font-size: 12px;
   `)}
-
   li {
     position: relative;
     padding-left: 52px;

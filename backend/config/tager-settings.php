@@ -20,6 +20,20 @@ return [
             'label' => 'Description'
         ],
     ],
+    'Single Vacancy' => [
+        SettingKey::FirstHeaderTitle => [
+            'type' => FieldType::String,
+            'label' => 'First title'
+        ],
+        SettingKey::SecondHeaderTitle => [
+            'type' => FieldType::String,
+            'label' => 'Second title'
+        ],
+        SettingKey::BenefitsTitle => [
+            'type' => FieldType::String,
+            'label' => 'Benefits'
+        ],
+    ],
     'Footer' => [
         SettingKey::FormTitle => [
             'type' => FieldType::String,

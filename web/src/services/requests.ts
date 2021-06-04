@@ -10,6 +10,10 @@ export type ContactsFormPayload = {
   file: number | null;
 };
 
+export type CvFormPayload = {
+  name: string;
+};
+
 export function getExampleList() {
   return request.get({ path: '/tager/example' });
 }
@@ -22,6 +26,13 @@ export function sendContactsForm(
   payload: ContactsFormPayload
 ): Promise<ContactsFormPayload> {
   return request.post({ path: '/leads/feedback', body: payload });
+}
+
+export function sendCvForm(payload: any) {
+  return request.post({
+    path: '/leads/cv',
+    body: payload,
+  });
 }
 
 export function uploadFile(file: File): Promise<FileType> {

@@ -23,4 +23,8 @@ final class SettingKey extends Enum
     const NotFoundText = 'NOT_FOUND_TEXT';
     const NotFoundButtonLabel = 'NOT_FOUND_BUTTON_LABEL';
     const NotFoundButtonUrl = 'NOT_FOUND_BUTTON_URL';
+
+    const FirstHeaderTitle = 'FirstHeaderTitle';
+    const SecondHeaderTitle = 'SecondHeaderTitle';
+    const BenefitsTitle = 'BenefitsTitle';
 }
