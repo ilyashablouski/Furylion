@@ -27,8 +27,11 @@ class ServicesTemplate extends Template
             new GroupField('Art 1', [
                 'firstArtId' => new StringField('id'),
                 'firstArtTitle' => new StringField('Title'),
+                'firstArtTitle1' => new StringField('Title - 1'),
                 'firstArtText1' => new TextField('Text - 1'),
+                'firstArtTitle2' => new StringField('Title - 2'),
                 'firstArtText2' => new TextField('Text - 2'),
+                'firstArtTitle3' => new StringField('Title - 3'),
                 'firstArtText3' => new TextField('Text - 3'),
                 'firstArtTitleAdditional' => new StringField('Additional Title'),
                 'firstArtTextAdditional' => new HtmlField('Additional Text'),
@@ -44,8 +47,11 @@ class ServicesTemplate extends Template
             new GroupField('Art 2', [
                 'secondArtId' => new StringField('id'),
                 'secondArtTitle' => new StringField('Title'),
+                'secondArtTitle1' => new StringField('Title - 1'),
                 'secondArtText1' => new TextField('Text - 1'),
+                'secondArtTitle2' => new StringField('Title - 2'),
                 'secondArtText2' => new TextField('Text - 2'),
+                'secondArtTitle3' => new StringField('Title - 3'),
                 'secondArtText3' => new TextField('Text - 3'),
                 'secondArtTitleAdditional' => new StringField('Additional Title'),
                 'secondArtTextAdditional' => new HtmlField('Additional Text'),
