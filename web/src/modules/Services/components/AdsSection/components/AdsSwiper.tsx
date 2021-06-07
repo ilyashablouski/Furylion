@@ -61,7 +61,7 @@ function AdsSwiper({ adsImages }: Props) {
       slideWidth = getSlideWidth();
     }
 
-    let lastScrollPosition = 0;
+    let lastScrollPosition = window.pageYOffset;
 
     function handleScroll() {
       if (disabled) return;
@@ -76,6 +76,8 @@ function AdsSwiper({ adsImages }: Props) {
         resultSlideIndex = activeSlideIndex + 1;
         symbol = '-';
       }
+
+      lastScrollPosition = window.pageYOffset;
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -95,8 +97,6 @@ function AdsSwiper({ adsImages }: Props) {
           },
         });
       });
-
-      lastScrollPosition = window.pageYOffset;
     }
 
     const containerPosition =
