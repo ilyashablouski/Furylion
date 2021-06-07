@@ -1,7 +1,6 @@
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
-import { Draggable } from 'gsap/dist/Draggable';
 
 import {
   convertThumbnailToPictureImage,
@@ -17,12 +16,6 @@ type Props = {
 
 const rotate = 9.5;
 const translate = 22;
-const draggableBounds = {
-  minX: -5,
-  maxY: 5,
-  minY: -5,
-  maxX: 5,
-};
 
 function AdsSwiper({ adsImages }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,7 +82,6 @@ function AdsSwiper({ adsImages }: Props) {
 
       slideList.forEach((slide, index) => {
         const resultIndex = resultSlideIndex - index;
-
         gsap.to(slide.current, {
           duration: 0.4,
           rotate: rotate * -resultIndex,
