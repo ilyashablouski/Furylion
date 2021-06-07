@@ -72,15 +72,24 @@ function FirstArtSection({
         <ContentContainer>
           <Title>{pageFields.firstArtTitle}</Title>
           <TextContainer>
-            <AdditionalTitle>{pageFields.firstArtTitle1}</AdditionalTitle>
+            {pageFields.firstArtTitle1 ? (
+              <AdditionalTitle>{pageFields.firstArtTitle1}</AdditionalTitle>
+            ) : null}
+
             <Text>{pageFields.firstArtText1}</Text>
             <TextInner>
               <TextItem>
-                <AdditionalTitle>{pageFields.firstArtTitle2}</AdditionalTitle>
+                {pageFields.firstArtTitle2 ? (
+                  <AdditionalTitle>{pageFields.firstArtTitle2}</AdditionalTitle>
+                ) : null}
+
                 <Text>{pageFields.firstArtText2}</Text>
               </TextItem>
               <TextItem>
-                <AdditionalTitle>{pageFields.firstArtTitle3}</AdditionalTitle>
+                {pageFields.firstArtTitle3 ? (
+                  <AdditionalTitle>{pageFields.firstArtTitle3}</AdditionalTitle>
+                ) : null}
+
                 <Text>{pageFields.firstArtText3}</Text>
               </TextItem>
             </TextInner>

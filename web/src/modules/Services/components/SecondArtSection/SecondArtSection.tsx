@@ -72,19 +72,36 @@ function SecondArtSection() {
         <ContentContainer>
           <Title>{pageFields.secondArtTitle}</Title>
           <TextContainer>
+            {pageFields.secondArtTitle1 ? (
+              <AdditionalTitle>{pageFields.secondArtTitle1}</AdditionalTitle>
+            ) : null}
             <Text>{pageFields.secondArtText1}</Text>
             <TextInner>
               <TextItem>
+                {pageFields.secondArtTitle2 ? (
+                  <AdditionalTitle>
+                    {pageFields.secondArtTitle2}
+                  </AdditionalTitle>
+                ) : null}
+
                 <Text>{pageFields.secondArtText2}</Text>
               </TextItem>
               <TextItem>
+                {pageFields.secondArtTitle3 ? (
+                  <AdditionalTitle>
+                    {pageFields.secondArtTitle3}
+                  </AdditionalTitle>
+                ) : null}
+                <AdditionalTitle>{pageFields.secondArtTitle3}</AdditionalTitle>
                 <Text>{pageFields.secondArtText3}</Text>
               </TextItem>
             </TextInner>
           </TextContainer>
 
           <AdditionalBlock>
-            <AdditionalTitle>Technology stack:</AdditionalTitle>
+            <AdditionalTitle>
+              {pageFields.secondArtTitleAdditional}
+            </AdditionalTitle>
             <AdditionalText
               dangerouslySetInnerHTML={{
                 __html: pageFields.secondArtTextAdditional ?? '',

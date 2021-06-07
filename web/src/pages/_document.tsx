@@ -138,7 +138,6 @@ class CustomDocument extends Document<CustomDocumentProps> {
         </Head>
         <body style={{ display: 'block', overflow: 'hidden' }}>
           <Main />
-          <script src="/static/js/preloader.js" />
           <script src="/static/js/global.js" defer />
 
           <script

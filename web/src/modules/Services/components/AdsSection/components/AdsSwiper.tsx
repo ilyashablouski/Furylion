@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useRef } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
@@ -15,8 +15,8 @@ type Props = {
   adsImages: Array<ThumbnailType>;
 };
 
-const rotate = 10;
-const translate = 20;
+const rotate = 9.5;
+const translate = 22;
 const draggableBounds = {
   minX: -5,
   maxY: 5,
@@ -27,6 +27,9 @@ const draggableBounds = {
 function AdsSwiper({ adsImages }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slideListRef = useRef<Array<RefObject<HTMLDivElement>>>([]);
+  const [currentIndex, setCurrentIndex] = useState(
+    Math.floor(adsImages.length / 2)
+  );
 
   if (slideListRef.current.length !== adsImages.length) {
     slideListRef.current = Array.from({ length: adsImages.length }).map(() => {
@@ -43,53 +46,6 @@ function AdsSwiper({ adsImages }: Props) {
       : translate;
   }
 
-  // function onScroll() {
-  //   if (!containerElem) return;
-  //   let x = 5;
-  //   const resultSlideIndex =
-  //     x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-  //   const symbol = x < 0 ? '-' : '+';
-  //
-  //   if (resultSlideIndex < 0) return;
-  //   if (resultSlideIndex > slideList.length - 1) return;
-  //
-  //   disabled = true;
-  //
-  //   slideList.forEach((slide, index) => {
-  //     const resultIndex = resultSlideIndex - index;
-  //
-  //     gsap.to(slide.current, {
-  //       scrollTrigger: {
-  //         trigger: containerElem,
-  //         scrub: true,
-  //       },
-  //       rotate: rotate * -resultIndex,
-  //       translateY: translate * Math.abs(resultIndex) ** 2,
-  //       translateX: `${symbol}=${slideWidth}`,
-  //       onComplete: () => {
-  //         activeSlideIndex = resultSlideIndex;
-  //         disabled = false;
-  //       },
-  //     });
-  //   });
-  // }
-
-  // let disabled = false;
-  // let activeSlideIndex = Math.floor(slideList.length / 2);
-  // let slideWidth = getSlideWidth();
-
-  // slideList.forEach((slide, index) => {
-  //   const resultIndex = activeSlideIndex - index;
-  //
-  //   gsap.set(slide.current, {
-  //     translateY: translate * Math.abs(resultIndex) ** 2,
-  //     translateX: translate * -resultIndex,
-  //     rotate: rotate * -resultIndex,
-  //   });
-  // });
-
-  //window.addEventListener('scroll', onScroll);
-
   useEffect(() => {
     const slideList = slideListRef.current;
     const containerElem = containerRef.current;
@@ -99,7 +55,7 @@ function AdsSwiper({ adsImages }: Props) {
 
     if (disabled) return;
 
-    let activeSlideIndex = Math.floor(slideList.length / 2);
+    let activeSlideIndex = currentIndex;
     let slideWidth = getSlideWidth();
 
     slideList.forEach((slide, index) => {
@@ -112,20 +68,23 @@ function AdsSwiper({ adsImages }: Props) {
       });
     });
 
-    gsap.registerPlugin(Draggable);
-
     function handleResize() {
       slideWidth = getSlideWidth();
     }
 
-    window.addEventListener('resize', handleResize);
-
-    function handleDrag(this: Draggable) {
+    function handleDrag(mode: 'up' | 'down') {
       if (disabled) return;
 
-      const resultSlideIndex =
-        this.x < 0 ? activeSlideIndex + 1 : activeSlideIndex - 1;
-      const symbol = this.x < 0 ? '-' : '+';
+      let resultSlideIndex: number = 5;
+      let symbol: string;
+
+      if (mode === 'down') {
+        resultSlideIndex = activeSlideIndex - 1;
+        symbol = '+';
+      } else {
+        resultSlideIndex = activeSlideIndex + 1;
+        symbol = '-';
+      }
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -136,7 +95,7 @@ function AdsSwiper({ adsImages }: Props) {
         const resultIndex = resultSlideIndex - index;
 
         gsap.to(slide.current, {
-          duration: 0.25,
+          duration: 0.4,
           rotate: rotate * -resultIndex,
           translateY: translate * Math.abs(resultIndex) ** 2,
           translateX: `${symbol}=${slideWidth}`,
@@ -146,24 +105,28 @@ function AdsSwiper({ adsImages }: Props) {
           },
         });
       });
-
-      // console.log('RESULT SLIDE INDEX', resultSlideIndex);
-      // console.log('SYMBOL', symbol);
     }
 
-    const proxy = document.createElement('div');
-    const draggable = Draggable.create(proxy, {
-      onDrag: handleDrag,
-      onThrowUpdate: handleDrag,
-      throwProps: true,
-      bounds: draggableBounds,
-      trigger: containerElem,
-      type: 'x',
+    const containerPosition =
+      containerElem.getBoundingClientRect().top + document.body.scrollTop ?? 0;
+
+    window.addEventListener('wheel', (event) => {
+      if (
+        containerRef.current &&
+        window.pageYOffset >= containerPosition + window.innerHeight / 2.5
+      ) {
+        if (Math.sign(event.wheelDelta) === -1) {
+          handleDrag('down');
+        } else {
+          handleDrag('up');
+        }
+      }
     });
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      draggable.forEach((item) => item.kill());
       gsap.killTweensOf(window);
     };
   }, [adsImages.length]);
