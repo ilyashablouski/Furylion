@@ -171,9 +171,7 @@ const Card = styled.div`
     cursor: pointer;
     max-width: initial;
     border-radius: 22px;
-    -webkit-box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
-    -moz-box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
-    box-shadow: 0px 0px 50px 21px rgba(0, 0, 0, 0.21);
+    box-shadow: 0px 0px 20px 2px rgb(0 0 0 / 50%);
 
     ${media.mobile(css`
       max-width: 294px;
