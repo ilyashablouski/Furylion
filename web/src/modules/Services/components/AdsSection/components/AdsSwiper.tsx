@@ -27,10 +27,6 @@ const draggableBounds = {
 function AdsSwiper({ adsImages }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slideListRef = useRef<Array<RefObject<HTMLDivElement>>>([]);
-  const [currentIndex, setCurrentIndex] = useState(
-    Math.floor(adsImages.length / 2)
-  );
-
   if (slideListRef.current.length !== adsImages.length) {
     slideListRef.current = Array.from({ length: adsImages.length }).map(() => {
       return React.createRef();
@@ -55,7 +51,7 @@ function AdsSwiper({ adsImages }: Props) {
 
     if (disabled) return;
 
-    let activeSlideIndex = currentIndex;
+    let activeSlideIndex = Math.floor(slideList.length / 2);
     let slideWidth = getSlideWidth();
 
     slideList.forEach((slide, index) => {
@@ -72,7 +68,7 @@ function AdsSwiper({ adsImages }: Props) {
       slideWidth = getSlideWidth();
     }
 
-    function handleDrag(mode: 'up' | 'down') {
+    function handleScroll(mode: 'up' | 'down') {
       if (disabled) return;
 
       let resultSlideIndex: number = 5;
@@ -110,23 +106,25 @@ function AdsSwiper({ adsImages }: Props) {
     const containerPosition =
       containerElem.getBoundingClientRect().top + document.body.scrollTop ?? 0;
 
-    window.addEventListener('wheel', (event) => {
+    function onWheel(event: WheelEvent) {
       if (
         containerRef.current &&
         window.pageYOffset >= containerPosition + window.innerHeight / 2.5
       ) {
-        if (Math.sign(event.wheelDelta) === -1) {
-          handleDrag('down');
+        if (Math.sign(event.deltaY) !== -1) {
+          handleScroll('down');
         } else {
-          handleDrag('up');
+          handleScroll('up');
         }
       }
-    });
+    }
 
+    window.addEventListener('wheel', onWheel);
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('wheel', onWheel);
       gsap.killTweensOf(window);
     };
   }, [adsImages.length]);
