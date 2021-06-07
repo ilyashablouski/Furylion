@@ -62,6 +62,7 @@ const PictureItem = styled.div`
   .image-item {
     height: 100%;
   }
+
   @media (min-width: 1024px) {
     &:hover {
       transform: matrix(0.72, 0.51, -0.95, 0.72, 0, 0) rotate(-20deg) scale(1.2);

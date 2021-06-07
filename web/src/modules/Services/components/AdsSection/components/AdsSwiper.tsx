@@ -15,11 +15,12 @@ type Props = {
 };
 
 const rotate = 9.5;
-const translate = 22;
+const translate = 20;
 
 function AdsSwiper({ adsImages }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slideListRef = useRef<Array<RefObject<HTMLDivElement>>>([]);
+  const scrollPosition = useRef<number>(0);
   if (slideListRef.current.length !== adsImages.length) {
     slideListRef.current = Array.from({ length: adsImages.length }).map(() => {
       return React.createRef();
@@ -38,6 +39,7 @@ function AdsSwiper({ adsImages }: Props) {
   useEffect(() => {
     const slideList = slideListRef.current;
     const containerElem = containerRef.current;
+
     if (!containerElem || !slideList.length) return;
 
     let disabled = false;
@@ -61,15 +63,13 @@ function AdsSwiper({ adsImages }: Props) {
       slideWidth = getSlideWidth();
     }
 
-    let lastScrollPosition = window.pageYOffset;
-
     function handleScroll() {
       if (disabled) return;
 
       let resultSlideIndex: number = 5;
       let symbol: string;
 
-      if (window.pageYOffset > lastScrollPosition) {
+      if (window.pageYOffset > scrollPosition.current) {
         resultSlideIndex = activeSlideIndex - 1;
         symbol = '+';
       } else {
@@ -77,7 +77,7 @@ function AdsSwiper({ adsImages }: Props) {
         symbol = '-';
       }
 
-      lastScrollPosition = window.pageYOffset;
+      scrollPosition.current = window.pageYOffset;
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -87,7 +87,6 @@ function AdsSwiper({ adsImages }: Props) {
       slideList.forEach((slide, index) => {
         const resultIndex = resultSlideIndex - index;
         gsap.to(slide.current, {
-          duration: 0.4,
           rotate: rotate * -resultIndex,
           translateY: translate * Math.abs(resultIndex) ** 2,
           translateX: `${symbol}=${slideWidth}`,
@@ -107,7 +106,9 @@ function AdsSwiper({ adsImages }: Props) {
         containerRef.current &&
         window.pageYOffset >= containerPosition + window.innerHeight / 2.5
       ) {
-        handleScroll();
+        setTimeout(() => {
+          handleScroll();
+        }, 100);
       }
     }
 

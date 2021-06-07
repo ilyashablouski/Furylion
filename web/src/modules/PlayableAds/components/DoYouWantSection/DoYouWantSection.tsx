@@ -45,11 +45,6 @@ function DoYouWantSection() {
     <Wrapper id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
-          {/*<TickerLine*/}
-          {/*  backgroundTicket="transparent"*/}
-          {/*  isLabelTicket={true}*/}
-          {/*  isAbove={true}*/}
-          {/*></TickerLine>*/}
           <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
         </TitleBlock>
         <ImagesContainer>
