@@ -265,7 +265,7 @@ export interface FirstArtSectionType extends PageFullType {
     firstArtButtonFirstUrl: StringFieldType;
     firstArtButtonSecondLabel: StringFieldType;
     firstArtButtonSecondUrl: StringFieldType;
-    firstArtImages: Array<ThumbnailType>;
+    firstArtImages: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   };
 }
 
@@ -285,7 +285,7 @@ export interface SecondArtSectionType extends PageFullType {
     secondArtButtonFirstUrl: StringFieldType;
     secondArtButtonSecondLabel: StringFieldType;
     secondArtButtonSecondUrl: StringFieldType;
-    secondArtImages: Array<ThumbnailType>;
+    secondArtImages: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   };
 }
 

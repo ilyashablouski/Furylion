@@ -16,7 +16,7 @@ import Picture from '@/components/Picture';
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 type Props = {
-  images: Array<ThumbnailType>;
+  images: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   isRightSide?: boolean;
 };
 
@@ -54,7 +54,8 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <SlidePicture
-              mobileSmall={convertThumbnailToPictureImage(image)}
+              mobileSmall={convertThumbnailToPictureImage(image.mobile)}
+              mobileLarge={convertThumbnailToPictureImage(image.desktop)}
               className="swiper-image-container"
             />
           </SwiperSlide>
@@ -119,6 +120,10 @@ const SlidePicture = styled(Picture)`
     ${media.tablet(css`
       width: 100%;
       max-height: 750px;
+    `)}
+
+    ${media.mobile(css`
+      transform: scale(-1, 1);
     `)}
   }
 `;

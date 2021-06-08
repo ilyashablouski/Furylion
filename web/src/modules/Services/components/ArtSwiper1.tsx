@@ -12,9 +12,11 @@ import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
+
 SwiperCore.use([Pagination, Navigation, Autoplay]);
+
 type Props = {
-  images: Array<ThumbnailType>;
+  images: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   isRightSide?: boolean;
 };
 
@@ -51,7 +53,10 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <SlidePicture mobileSmall={convertThumbnailToPictureImage(image)} />
+            <SlidePicture
+              mobileSmall={convertThumbnailToPictureImage(image.mobile)}
+              mobileLarge={convertThumbnailToPictureImage(image.desktop)}
+            />
           </SwiperSlide>
         ))}
         <NavButtons isRightSide={isRightSide}>
@@ -99,6 +104,7 @@ const ArtSwiperContainer = styled.div`
 
 const SlidePicture = styled(Picture)`
   width: 100%;
+
   picture {
     display: flex;
     width: 100%;
@@ -260,10 +266,10 @@ const NavButton = styled.button<{
   transform: translate(0, -50%);
   z-index: 1;
   transition: 150ms all ease-in-out;
+
   ${media.tabletSmall(css`
     display: none;
   `)}
-
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
@@ -281,6 +287,7 @@ const NavButton = styled.button<{
       left: 40px;
     `)}
   }
+
   &.swiper-next {
     svg {
       margin-left: 4px;
