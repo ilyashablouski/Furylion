@@ -97,7 +97,7 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
     ${(props) =>
       props.heroCard
         ? css`
-            border: 15px dashed ${colors.dark};
+            border: 15.2px dashed ${colors.dark};
           `
         : css`
             border: 16px solid ${colors.dark};
@@ -189,7 +189,7 @@ const Container = styled.div<{ isHeroCard?: boolean }>`
         ? css`
             ${ImageContainer} {
               &:before {
-                border: 15px dashed ${colors.white};
+                border: 15.2px dashed ${colors.white};
               }
             }
           `
