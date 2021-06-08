@@ -65,7 +65,7 @@ function CoDevelopmentSection() {
 
         <SecondBackgroundImage
           mobileSmall={{
-            src: chartsBgUrl,
+            src: chartsBgUrl2x,
             src2x: chartsBgUrl2x,
             webp: chartsBgUrlWebp,
             webp2x: chartsBgUrlWebp2x,
