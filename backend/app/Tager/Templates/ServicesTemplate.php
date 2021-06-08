@@ -41,7 +41,10 @@ class ServicesTemplate extends Template
                 'firstArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'firstArtButtonSecondUrl' => new StringField('Button 2 - URL'),
                 'firstArtButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
-                'firstArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
+                'firstArtImages' =>  new RepeaterField('Slider Images', [
+                 'desktop' => new ImageField('Desktop Image', FileScenario::ServicesArtImages),
+                 'mobile' => new ImageField('Mobile Image', FileScenario::ServicesArtImages),
+             ]),
             ]),
 
             new GroupField('Art 2', [
@@ -61,7 +64,10 @@ class ServicesTemplate extends Template
                 'secondArtButtonSecondLabel' => new StringField('Button 2 - Text'),
                 'secondArtButtonSecondUrl' => new StringField('Button 2 - URL'),
                 'secondArtButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
-                'secondArtImages' => new GalleryField('Slider Images', FileScenario::ServicesArtImages),
+                'secondArtImages' =>  new RepeaterField('Slider Images', [
+                     'desktop' => new ImageField('Desktop Image', FileScenario::ServicesArtImages),
+                     'mobile' => new ImageField('Mobile Image', FileScenario::ServicesArtImages),
+                 ]),
             ]),
 
             new GroupField('Production', [
