@@ -29,6 +29,8 @@ class PlayableAdsTemplate extends Template
                 'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
                 'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
                 'linkUrl' => new StringField('URL'),
+                'titleGame' => new StringField('Title Game'),
+                'descriptionGame' => new StringField('Description Game'),
                 ]),
             ]),
 
