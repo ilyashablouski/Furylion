@@ -1,6 +1,6 @@
 import React, { EventHandler, MouseEventHandler } from 'react';
 
-import { RequestError, useMedia } from '@tager/web-core';
+import { Nullish, RequestError, useMedia } from '@tager/web-core';
 
 import ErrorPage from '@/pages/_error';
 
@@ -74,4 +74,30 @@ export function handleLinkFeedbackClick(
     top: pageOffsetTop + targetOffsetTop - headerHeight,
     behavior: 'smooth',
   });
+}
+
+export function getPathWithScrollParam(
+  linkUrl: string | undefined,
+  id: Nullish<string>
+) {
+  if (linkUrl && id) {
+    return linkUrl + `?scroll=${id}`;
+  }
+  if (!id) {
+    return linkUrl ?? '#';
+  }
+}
+
+export function getBasePath({ href }: { href: string }) {
+  const splitHref = href.split('');
+  const indexAnchor = splitHref.indexOf('#');
+  if (indexAnchor !== -1) {
+    return (
+      href.slice(0, indexAnchor) +
+      '?scroll=' +
+      splitHref.slice(indexAnchor + 1).join('')
+    );
+  } else {
+    return href;
+  }
 }

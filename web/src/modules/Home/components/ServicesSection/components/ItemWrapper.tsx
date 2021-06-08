@@ -5,6 +5,7 @@ import { Nullish } from '@tager/web-core';
 
 import { media } from '@/utils/mixin';
 import Link from '@/components/Link';
+import { getPathWithScrollParam } from '@/utils/common';
 
 type Props = {
   className?: string;
@@ -15,15 +16,6 @@ type Props = {
   scrollTo?: Nullish<string>;
   isNewTab: boolean;
 };
-
-function getPath(linkUrl: string | undefined, id: Nullish<string>) {
-  if (linkUrl && id) {
-    return linkUrl + `?scroll=${id}`;
-  }
-  if (!id) {
-    return linkUrl ?? '#';
-  }
-}
 
 function ItemWrapper({
   className,
@@ -36,7 +28,7 @@ function ItemWrapper({
   return (
     <Container className={className} singleItem={singleItem}>
       <ItemLink
-        to={getPath(linkUrl, scrollTo)}
+        to={getPathWithScrollParam(linkUrl, scrollTo)}
         target={isNewTab ? '_blank' : '_self'}
       />
       {children}

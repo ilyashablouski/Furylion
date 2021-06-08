@@ -6,6 +6,7 @@ import 'scroll-behavior-polyfill';
 import '@/assets/css/index.css';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { AdminBar } from '@tager/web-panel';
 import { useAnalytics } from '@tager/web-analytics';
@@ -40,6 +41,7 @@ Sentry.init({
  */
 const CustomApp: CustomApp_Component = (props) => {
   useProgressBar({ showSpinner: false });
+  const router = useRouter();
 
   useAnalytics();
   useFixedVhProperty();
@@ -62,14 +64,25 @@ const CustomApp: CustomApp_Component = (props) => {
     const scrollParam = searchParams.get('scroll');
     if (scrollParam) {
       const targetElement = document.getElementById(scrollParam);
+
+      let top: number;
+
       if (targetElement) {
+        if (scrollParam === 'contacts') {
+          const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
+
+          top = targetElement.offsetTop - headerHeight;
+        } else {
+          top = targetElement.offsetTop;
+        }
+
         window.scroll({
-          top: targetElement.offsetTop,
+          top: top,
           behavior: 'smooth',
         });
       }
     }
-  });
+  }, [router.events]);
 
   useIsomorphicLayoutEffect(() => {
     function updateVhProperty() {

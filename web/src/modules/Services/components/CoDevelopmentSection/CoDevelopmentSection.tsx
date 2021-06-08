@@ -8,7 +8,6 @@ import coDevelopmentBgUrl from '@/assets/images/co-development/co-development-bg
 import coDevelopmentBgUrl2x from '@/assets/images/co-development/co-development-bg@2x.png';
 import coDevelopmentBgUrlWebp from '@/assets/images/co-development/co-development-bg.webp';
 import coDevelopmentBgUrlWebp2x from '@/assets/images/co-development/co-development-bg@2x.webp';
-import chartsBgUrl from '@/assets/images/co-development/charts.png';
 import chartsBgUrl2x from '@/assets/images/co-development/charts@2x.png';
 import chartsBgUrlWebp from '@/assets/images/co-development/charts.webp';
 import chartsBgUrlWebp2x from '@/assets/images/co-development/charts@2x.webp';
@@ -16,8 +15,8 @@ import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { CoDevelopmentSectionType } from '@/typings/model';
-import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
+import SkewButton from '@/components/SkewButton';
 
 function CoDevelopmentSection() {
   const page = useCurrentPage<CoDevelopmentSectionType>();
@@ -62,7 +61,6 @@ function CoDevelopmentSection() {
             webp2x: coDevelopmentBgUrlWebp2x,
           }}
         />
-
         <SecondBackgroundImage
           mobileSmall={{
             src: chartsBgUrl2x,
@@ -73,13 +71,8 @@ function CoDevelopmentSection() {
           className="second-background-image"
         />
       </ImagesContainer>
-
       <StyledButton>
-        <SkewButton
-          href={pageFields.coDevelopmentButtonUrl}
-          color="red"
-          isNewTab={true}
-        >
+        <SkewButton href={pageFields.coDevelopmentButtonUrl} color="red">
           {pageFields.coDevelopmentButtonLabel}
         </SkewButton>
       </StyledButton>

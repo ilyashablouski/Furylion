@@ -92,7 +92,6 @@ function SecondArtSection() {
                     {pageFields.secondArtTitle3}
                   </AdditionalTitle>
                 ) : null}
-                <AdditionalTitle>{pageFields.secondArtTitle3}</AdditionalTitle>
                 <Text>{pageFields.secondArtText3}</Text>
               </TextItem>
             </TextInner>
