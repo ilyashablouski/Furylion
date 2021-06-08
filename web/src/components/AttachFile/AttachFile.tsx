@@ -32,6 +32,7 @@ function AttachFile({
   const [isLoadingFile, setIsLoadingFile] = useState<boolean>(false);
   const [isLoadedFile, setIsLoadedFile] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [loadingError, setLoadingError] = useState<string | null>(null);
 
   const [field, meta, helpers] = useField<string>({ name, type });
   const error = customError ?? (meta.touched ? meta.error : '');
@@ -49,22 +50,29 @@ function AttachFile({
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setLoadingError(null);
     const fileList = event.target.files;
-    console.log('FILE LIST', fileList);
     if (!fileList || fileList.length === 0) return;
     const fileItem = fileList.item(0);
+
     if (!fileItem) return;
     setFile(fileItem);
     setIsLoadingFile(true);
 
-    return uploadFile(fileItem).then((res) => {
-      console.log(file);
-      setFileId(res.id);
-      setTimeout(() => {
+    return uploadFile(fileItem)
+      .then((res) => {
+        setFileId(res.id);
+
+        setTimeout(() => {
+          setIsLoadingFile(false);
+          setIsLoadedFile(true);
+        }, 500);
+      })
+      .catch((error) => {
+        setFile(null);
         setIsLoadingFile(false);
-        setIsLoadedFile(true);
-      }, 500);
-    });
+        setLoadingError(error.body.message);
+      });
   }
 
   return (
@@ -95,7 +103,9 @@ function AttachFile({
           ) : null}
         </Content>
       </Inner>
-      {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+      {error || loadingError ? (
+        <ErrorMessage>{error || loadingError}</ErrorMessage>
+      ) : null}
     </Component>
   );
 }
@@ -205,11 +215,7 @@ const ErrorMessage = styled.span`
   font-size: 11px;
   line-height: 15px;
   color: ${colors.red};
-  margin-top: 8px;
-
-  ${media.mobile(css`
-    margin-top: 4px;
-  `)}
+  margin-top: 4px;
 `;
 
 export default AttachFile;
