@@ -24,7 +24,9 @@ return [
         ]),
         FileScenario::Cv => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('cv'),
-            'validator' => ConfigHelper::defaultValidator(),
+            'validator' => [
+                'extensions' => ['csv', 'pdf', 'doc', 'txt', 'docx', 'xls', 'xlsx', 'png', 'jpeg', 'jpg']
+            ]
         ]),
         FileScenario::HeadImage => [
             'storage' => ConfigHelper::fileStorage('head'),

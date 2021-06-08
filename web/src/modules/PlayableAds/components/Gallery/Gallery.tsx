@@ -124,20 +124,35 @@ const NavButton = styled.button<{
   position: 'left' | 'right';
 }>`
   position: absolute;
-
-  width: 100px;
   z-index: 10;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  color: ${colors.red};
+  border-radius: 50%;
 
   ${(props) =>
     props.position === 'left'
       ? css`
           left: 3%;
+
+          svg {
+            margin-left: -5px;
+          }
         `
       : css`
           right: 3%;
-          transform: rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+
+          svg {
+            margin-left: -5px;
+          }
         `}
   ${media.tabletSmall(css`
     display: none;

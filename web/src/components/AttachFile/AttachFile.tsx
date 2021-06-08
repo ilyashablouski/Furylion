@@ -50,12 +50,15 @@ function AttachFile({
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const fileList = event.target.files;
+    console.log('FILE LIST', fileList);
     if (!fileList || fileList.length === 0) return;
     const fileItem = fileList.item(0);
     if (!fileItem) return;
     setFile(fileItem);
     setIsLoadingFile(true);
+
     return uploadFile(fileItem).then((res) => {
+      console.log(file);
       setFileId(res.id);
       setTimeout(() => {
         setIsLoadingFile(false);
@@ -71,7 +74,7 @@ function AttachFile({
           id="attach-file"
           type={'file'}
           name={'file'}
-          // accept=".doc,.pdf,.docx,.txt"я
+          accept=".doc,.pdf,.docx,.txt"
           ref={fileInputRef}
           onChange={handleFileChange}
         />
@@ -170,7 +173,6 @@ const ClearFileButton = styled.button`
       right: 15px;
     `
   )}
-
   &:hover {
     color: ${colors.red};
   }

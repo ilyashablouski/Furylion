@@ -182,14 +182,14 @@ const Input = styled(TextInputFormik)`
 
 const TextAreaContainer = styled.div`
   position: relative;
-  margin-top: 85px;
+  margin-top: 59px;
 
   .textarea-field {
     line-height: 0;
   }
 
   ${media.mobile(css`
-    margin-top: 90px;
+    margin-top: 60px;
   `)}
 `;
 
