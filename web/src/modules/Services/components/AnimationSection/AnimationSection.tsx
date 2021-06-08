@@ -3,13 +3,19 @@ import styled, { css } from 'styled-components';
 
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import useCurrentPage from '@/hooks/useCurrentPage';
+import { ProductionBlockType } from '@/typings/model';
 
 import ProductionBlock from './components/ProductionBlock';
 import PortingBlock from './components/PortingBlock';
 
 function AnimationSection() {
+  const page = useCurrentPage<ProductionBlockType>();
+
+  const id = page?.templateFields.productionId;
+
   return (
-    <Wrapper id="servicesAnimation">
+    <Wrapper id={id ?? ''}>
       <TitleBlock>
         <Title>Animation</Title>
       </TitleBlock>

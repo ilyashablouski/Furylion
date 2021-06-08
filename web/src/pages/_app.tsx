@@ -68,13 +68,9 @@ const CustomApp: CustomApp_Component = (props) => {
       let top: number;
 
       if (targetElement) {
-        if (scrollParam === 'contacts') {
-          const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
+        const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
 
-          top = targetElement.offsetTop - headerHeight;
-        } else {
-          top = targetElement.offsetTop;
-        }
+        top = targetElement.offsetTop - headerHeight;
 
         window.scroll({
           top: top,
@@ -82,7 +78,7 @@ const CustomApp: CustomApp_Component = (props) => {
         });
       }
     }
-  }, [router.events]);
+  }, [router.query]);
 
   useIsomorphicLayoutEffect(() => {
     function updateVhProperty() {
