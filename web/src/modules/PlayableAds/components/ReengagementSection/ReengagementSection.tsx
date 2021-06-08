@@ -34,7 +34,7 @@ function ReengagementSection() {
         <ButtonWrapper>
           <SkewButton
             href={pageFields.reengagementButtonUrl}
-            color="dark"
+            color="redDark"
             isNewTab={true}
           >
             {pageFields.reengagementButtonLabel}

@@ -7,6 +7,7 @@ export type ButtonVariant =
   | 'white-red'
   | 'dark'
   | 'darkRed'
+  | 'redDark'
   | 'red'
   | 'w100'
   | 'skew'
