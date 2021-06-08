@@ -192,6 +192,10 @@ const Logo = styled.div`
 
   img {
     max-height: 75px;
+
+    ${media.mobileLarge(css`
+      max-height: 67px;
+    `)}
   }
 `;
 

@@ -101,6 +101,15 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
       color: ${colors.dark};
     }
   `,
+  darkRed: css`
+    background: ${colors.red};
+    color: ${colors.white};
+
+    &:hover {
+      background: ${colors.dark};
+      color: ${colors.red};
+    }
+  `,
 
   red: css`
     background: ${colors.red};
@@ -180,6 +189,7 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   'curve-white': css`
     color: ${colors.dark};
     font-size: 20px;
+
     &:before {
       content: url(${curveBgWhiteUrl});
     }
@@ -187,6 +197,7 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
 
   'curve-dark-small': css`
     color: ${colors.white};
+
     &:before {
       content: url(${curveBgDarkSmallUrl});
     }

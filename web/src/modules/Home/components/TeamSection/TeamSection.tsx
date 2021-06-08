@@ -3,7 +3,11 @@ import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { convertThumbnailToPictureImage } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  convertThumbnailToPictureProps,
+} from '@tager/web-modules';
+import { useModal } from '@tager/web-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { TeamSectionType } from '@/typings/model';
@@ -17,6 +21,7 @@ import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
 import { StringFieldType } from '@/typings/common';
 import { coordinateTeamItems } from '@/modules/Home/components/TeamSection/TeamSection.constans';
+import PictureModal from '@/components/modals/PictureModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +36,7 @@ function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
   const pageFields = page?.templateFields;
   const teamItems = pageFields?.teamItems;
+  const openModal = useModal();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const bgPictureRef = useRef<HTMLImageElement>(null);
@@ -124,6 +130,8 @@ function TeamSection() {
                   itemWidth={width}
                   itemLeftOffset={left}
                   itemTopOffset={top}
+                  data-index={index}
+                  onClick={() => openModal(PictureModal, { image: item })}
                 >
                   <Picture
                     mobileSmall={convertThumbnailToPictureImage(item)}
@@ -138,7 +146,7 @@ function TeamSection() {
       <StyledButton>
         <SkewButton
           href={pageFields?.teamButtonUrl}
-          color="red"
+          color="darkRed"
           isNewTab={pageFields?.teamButtonIsNewTab}
         >
           {pageFields?.teamButtonLabel}
