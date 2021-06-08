@@ -88,7 +88,6 @@ const Lists = styled.div`
     max-width: 33.33%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     ${media.tabletSmallOnly(css`
       margin-top: 70px;
