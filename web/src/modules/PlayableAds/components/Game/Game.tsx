@@ -8,13 +8,22 @@ import Frame from '@/modules/PlayableAds/components/Game/Frame';
 import { colors } from '@/constants/theme';
 import Button from '@/components/Button';
 import { ReactComponent as CloseIcon } from '@/assets/svg/close-icon-2.svg';
+import { StringFieldType } from '@/typings/common';
 
-function Game({ closeModal }: ModalProps) {
+type Props = ModalProps<{
+  gameTitle: StringFieldType;
+  gameDescription: StringFieldType;
+}>;
+
+function Game({
+  closeModal,
+  innerProps: { gameDescription, gameTitle },
+}: Props) {
   return (
     <Component>
       <Panel>
-        <Title>Sabway serfers</Title>
-        <SubTitle>Landscape adaptive playable</SubTitle>
+        <Title>{gameTitle}</Title>
+        <SubTitle>{gameDescription}</SubTitle>
         <StyledButton onClick={closeModal}>
           <CloseIcon />
         </StyledButton>

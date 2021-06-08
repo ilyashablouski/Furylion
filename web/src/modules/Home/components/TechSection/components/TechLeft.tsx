@@ -39,17 +39,19 @@ function TechLeft({ image, imageMobile }: Props) {
         },
         '(max-width: 1024px)': function () {},
         '(max-width: 767px)': function () {},
-        '(max-width: 414px)': function () {},
+        '(max-width: 414px)': function () {
+          leftPosition = '-30%';
+        },
       });
 
       gsap.to(imageRef.current, {
         left: leftPosition,
         ease: 'linear',
         scrollTrigger: {
-          start: 'top 70%',
+          start: 'top 50%',
           end: 'bottom 90%',
           trigger: imageRef.current,
-          scrub: 1.5,
+          scrub: 2.5,
         },
       });
     });
@@ -107,9 +109,17 @@ const Container = styled.div`
 const ImageContainer = styled(Picture)`
   position: relative;
   min-height: 750px;
-  width: 100vw;
+  width: 100%;
   background: #a9a9a9;
   transform: translateZ(0);
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
 
   ${media.tabletSmallOnly(css`
     min-height: 663px;
@@ -121,7 +131,6 @@ const ImageContainer = styled(Picture)`
     position: absolute;
     top: 0;
     right: 0;
-    //transform: translateX(-200px);
     min-height: 750px;
     height: 100%;
     object-fit: cover;
