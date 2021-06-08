@@ -33,6 +33,7 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
         slidesPerView={1}
         centeredSlides={true}
         allowTouchMove={true}
+        speed={600}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         navigation={{
           prevEl: `.swiper-prev2`,
@@ -103,6 +104,7 @@ const ArtSwiperContainer = styled.div`
 
 const SlidePicture = styled(Picture)`
   width: 100%;
+
   picture {
     display: flex;
     width: 100%;
@@ -264,10 +266,10 @@ const NavButton = styled.button<{
   transform: translate(0, -50%);
   z-index: 1;
   transition: 150ms all ease-in-out;
+
   ${media.tabletSmall(css`
     display: none;
   `)}
-
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
@@ -285,6 +287,7 @@ const NavButton = styled.button<{
       left: 40px;
     `)}
   }
+
   &.swiper-next {
     svg {
       margin-left: 4px;

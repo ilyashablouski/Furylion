@@ -1,7 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
@@ -9,35 +7,11 @@ import { media } from '@/utils/mixin';
 import ProductionBlock from './components/ProductionBlock';
 import PortingBlock from './components/PortingBlock';
 
-gsap.registerPlugin(ScrollTrigger);
-
 function AnimationSection() {
-  const animationTitleRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const delayedCall = gsap.delayedCall(0, () => {
-      if (!animationTitleRef.current) return null;
-
-      gsap.to(animationTitleRef.current, {
-        yPercent: 105,
-        scrollTrigger: {
-          start: 'bottom 90%',
-          end: 'bottom 40%',
-          trigger: animationTitleRef.current,
-          scrub: true,
-        },
-      });
-    });
-
-    return () => {
-      delayedCall.kill();
-    };
-  }, []);
-
   return (
     <Wrapper id="servicesAnimation">
       <TitleBlock>
-        <Title ref={animationTitleRef}>Animation</Title>
+        <Title>Animation</Title>
       </TitleBlock>
       <ProductionBlock />
       <PortingBlock />
@@ -66,7 +40,6 @@ const Title = styled.span`
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.white};
-  transform: translateY(-105%);
 
   ${media.desktop1366(
     css`

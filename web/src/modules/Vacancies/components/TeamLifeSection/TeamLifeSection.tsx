@@ -1,7 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import teamLifeBgUrl from '@/assets/images/team-life/team-life-bg.png';
 import teamLifeBgUrl2x from '@/assets/images/team-life/team-life-bg@2x.png';
@@ -17,8 +15,6 @@ import SkewButton from '@/components/SkewButton';
 import { TeamLifeSectionType } from '@/typings/model';
 
 import InstagramFeed from './components/InstagramFeed';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function TeamLifeSection() {
   const page = useCurrentPage<TeamLifeSectionType>();

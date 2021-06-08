@@ -30,6 +30,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
         loopedSlides={1}
         slidesPerView={1}
         centeredSlides={true}
+        speed={600}
         allowTouchMove={true}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         navigation={{
