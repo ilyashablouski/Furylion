@@ -13,7 +13,7 @@ function Game({ closeModal }: ModalProps) {
   return (
     <Component>
       <Panel>
-        <Title>Sabway serfers</Title>C
+        <Title>Sabway serfers</Title>
         <SubTitle>Landscape adaptive playable</SubTitle>
         <StyledButton onClick={closeModal}>
           <CloseIcon />
