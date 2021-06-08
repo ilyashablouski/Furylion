@@ -23,27 +23,6 @@ gsap.registerPlugin(ScrollTrigger);
 function TeamLifeSection() {
   const page = useCurrentPage<TeamLifeSectionType>();
   const pageFields = page?.templateFields;
-  const teamLifeRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const delayedCall = gsap.delayedCall(0, () => {
-      if (!teamLifeRef.current) return null;
-
-      gsap.to(teamLifeRef.current, {
-        yPercent: 110,
-        scrollTrigger: {
-          start: 'bottom bottom',
-          end: 'bottom 40%',
-          trigger: teamLifeRef.current,
-          scrub: true,
-        },
-      });
-    });
-
-    return () => {
-      delayedCall.kill();
-    };
-  }, []);
 
   return (
     <Wrapper id={pageFields?.teamLifeId ?? ''}>
@@ -57,7 +36,7 @@ function TeamLifeSection() {
         className="team-life-background"
       />
       <TitleBlock>
-        <Title ref={teamLifeRef}>Team Life</Title>
+        <Title>Team Life</Title>
       </TitleBlock>
 
       <InstagramBlock>
@@ -124,7 +103,6 @@ const Title = styled.span`
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.red};
-  transform: translateY(-110%);
 
   ${media.desktop1366(
     css`
