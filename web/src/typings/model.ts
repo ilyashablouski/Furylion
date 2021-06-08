@@ -389,6 +389,8 @@ export interface AdsSectionType extends PageFullType {
 export type AdsHeadItemType = {
   image: ThumbnailType;
   linkUrl: StringFieldType;
+  gameTitle: StringFieldType;
+  gameDescription: StringFieldType;
 };
 
 export interface AdsHeadSectionType extends PageFullType {

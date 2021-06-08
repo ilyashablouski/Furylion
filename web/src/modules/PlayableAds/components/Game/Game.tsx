@@ -22,8 +22,8 @@ function Game({
   return (
     <Component>
       <Panel>
-        <Title>{gameTitle}</Title>
-        <SubTitle>{gameDescription}</SubTitle>
+        {gameTitle ? <Title>{gameTitle}</Title> : null}
+        {gameDescription ? <SubTitle>{gameDescription}</SubTitle> : null}
         <StyledButton onClick={closeModal}>
           <CloseIcon />
         </StyledButton>
@@ -56,6 +56,7 @@ const Panel = styled.div`
   padding: 10px 20px;
   background: rgba(0, 0, 0, 0.75);
   z-index: 10;
+  min-height: 56px;
 
   ${media.mobile(css`
     flex-direction: column;

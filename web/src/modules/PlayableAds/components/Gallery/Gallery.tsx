@@ -29,8 +29,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
   const openModal = useModal();
 
-  function onClick() {
-    openModal(Game, {});
+  function onClick(gameDescription: string, gameTitle: string) {
+    openModal(Game, { gameDescription, gameTitle });
   }
 
   return (
@@ -57,7 +57,12 @@ function Gallery({ isRevert = false, itemList }: Props) {
           >
             {itemList.map((item, index) => {
               return (
-                <SwiperSlide key={index} onClick={onClick}>
+                <SwiperSlide
+                  key={index}
+                  onClick={() =>
+                    onClick(item.gameDescription ?? '', item.gameTitle ?? '')
+                  }
+                >
                   <Card>
                     <Picture
                       useSpinner
