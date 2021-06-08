@@ -10,7 +10,10 @@ import { media } from '@/utils/mixin';
 
 import CloseButton from '../shared/CloseButton';
 
-type FeedbackModalProps = ModalProps<{ formTitle: Nullable<string> }>;
+type FeedbackModalProps = ModalProps<{
+  formTitle: Nullable<string>;
+  isCvForm?: boolean;
+}>;
 
 function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
   const { formTitle } = innerProps;
@@ -20,7 +23,11 @@ function FeedbackModal({ innerProps, closeModal }: FeedbackModalProps) {
       <ButtonWrapper>
         <CloseButton onClick={closeModal} />
       </ButtonWrapper>
-      <FeedbackSection formTitle={formTitle} isModal={true} />
+      <FeedbackSection
+        isCvForm={innerProps.isCvForm}
+        formTitle={formTitle}
+        isModal={true}
+      />
     </Wrapper>
   );
 }

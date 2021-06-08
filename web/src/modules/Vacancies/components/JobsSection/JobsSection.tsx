@@ -72,6 +72,7 @@ function JobsSection() {
   function handleOpenFeedbackModal() {
     openModal(FeedbackModal, {
       formTitle: formVacanciesTitle,
+      isCvForm: true,
     });
   }
 
@@ -148,6 +149,7 @@ const Tabs = styled.div`
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -191,7 +193,6 @@ const Tab = styled.div<{ active?: boolean }>`
   ${media.tabletSmall(css`
     padding: 8px 32px 8px 24px;
   `)}
-
   ${TabLabel} {
     ${(props) =>
       props.active

@@ -16,6 +16,7 @@ interface Props {
   isHeroCard?: boolean;
   onClick?: () => void;
 }
+
 function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
   const { title, image, urlAlias, excerpt, level, typeOfWork, tags } = card;
 
@@ -82,7 +83,6 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
   ${media.tabletSmall(css`
     margin-top: 15px;
   `)}
-
   &:before {
     content: '';
     position: absolute;
@@ -100,7 +100,7 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
             border: 15px dashed ${colors.dark};
           `
         : css`
-            border: 15px solid ${colors.dark};
+            border: 16px solid ${colors.dark};
           `};
   }
 
@@ -180,7 +180,7 @@ const Container = styled.div<{ isHeroCard?: boolean }>`
   &:hover {
     ${ImageContainer} {
       &:before {
-        border: 15px solid ${colors.white};
+        border: 16px solid ${colors.white};
       }
     }
 
@@ -194,7 +194,6 @@ const Container = styled.div<{ isHeroCard?: boolean }>`
             }
           `
         : ''}
-
     ${Labels} {
       color: ${colors.white};
     }
@@ -222,12 +221,12 @@ const Title = styled.span<{ heroCard: boolean }>`
           color: ${colors.white};
         `
       : css`
-          font-family: 'Inter', sans-serif;
-          color: transparent;
-          text-stroke: 1px ${colors.white};
+        font-family: 'Inter', sans-serif;
+        color: transparent;
+        text-stroke: 1px ${colors.white};
         -webkit-text-stroke: 1px ${colors.white};
       }
-        `}
+      `}
   font-weight: 900;
   font-size: 24px;
   line-height: 160%;

@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { scroller } from '@tager/web-core';
-
 import { ReactComponent as Logo } from '@/assets/svg/logo.svg';
 import ContentContainer from '@/components/ContentContainer';
 import Link from '@/components/Link';
