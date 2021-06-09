@@ -25,6 +25,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         linkLabel={serviceItem.linkLabel}
         linkUrl={serviceItem.linkUrl}
         className="service-item-info"
+        scrollTo={serviceItem.scrollTo}
       />
     );
   });
@@ -35,6 +36,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[0].props.linkUrl}
+          scrollTo={servicesMarkupArray[0].props.scrollTo}
           isNewTab={servicesMarkupArray[0].props.isNewTab}
         >
           {servicesMarkupArray[0]}
@@ -42,7 +44,8 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[1].props.linkUrl}
-          isNewTab={servicesMarkupArray[0].props.isNewTab}
+          scrollTo={servicesMarkupArray[1].props.scrollTo}
+          isNewTab={servicesMarkupArray[1].props.isNewTab}
         >
           {servicesMarkupArray[1]}
         </ItemWrapper>
@@ -52,6 +55,7 @@ function ServicesBottom({ servicesBottomItems }: Props) {
         <ItemWrapper
           className="item-wrapper"
           linkUrl={servicesMarkupArray[2].props.linkUrl}
+          scrollTo={servicesMarkupArray[2].props.scrollTo}
           isNewTab={servicesMarkupArray[2].props.isNewTab}
           singleItem
         >

@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Frame() {
-  return <Iframe src="game.html" />;
+import { StringFieldType } from '@/typings/common';
+
+function Frame({ url }: { url: StringFieldType }) {
+  return <Iframe src={url ?? undefined} />;
 }
 
 const Iframe = styled.iframe`

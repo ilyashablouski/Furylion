@@ -44,11 +44,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
     const widthComponent = component.getBoundingClientRect().width;
 
-    const widthWrapper = wrapper.getBoundingClientRect().width;
-
     const coordinateFirstElement = firstElement.getBoundingClientRect();
     const leftPositionFirstElement = coordinateFirstElement.left;
-    const widthFirstElement = coordinateFirstElement.width;
 
     const coordinateLastElement = lastElement.getBoundingClientRect();
     const leftPositionLastElement = coordinateLastElement.left;
@@ -98,8 +95,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
   const openModal = useModal();
 
-  function onClick(gameDescription: string, gameTitle: string) {
-    openModal(Game, { gameDescription, gameTitle });
+  function onClick(gameDescription: string, gameTitle: string, url: string) {
+    openModal(Game, { gameDescription, gameTitle, url });
   }
 
   return (
@@ -117,7 +114,11 @@ function Gallery({ isRevert = false, itemList }: Props) {
               <Card
                 ref={ref}
                 onClick={() =>
-                  onClick(item.gameDescription ?? '', item.gameTitle ?? '')
+                  onClick(
+                    item.gameDescription ?? '',
+                    item.gameTitle ?? '',
+                    item.linkUrl ?? ''
+                  )
                 }
               >
                 <Picture
