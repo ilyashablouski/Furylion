@@ -48,7 +48,6 @@ const Container = styled.div<{ singleItem?: boolean }>`
   &:hover {
     .item-label {
       border-bottom-color: transparent;
-      color: rgba(157, 20, 24, 0.85);
     }
 
     .service-item-info {
