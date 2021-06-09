@@ -213,6 +213,39 @@ const ItemText = styled.p`
   `)}
 `;
 
+const Logo = styled.div`
+  margin-top: 15px;
+  padding-left: 17.5px;
+  padding-right: 17.5px;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    transition: all 0.3s ease;
+    height: 32px;
+  }
+
+  svg {
+    fill: white;
+    stroke: white;
+  }
+
+  svg path {
+    fill: white;
+    stroke: white;
+  }
+`;
+
+const LogoLink = styled(Link)`
+  &:hover {
+    img {
+      opacity: 0.75;
+    }
+  }
+`;
+
 const Item = styled.div`
   position: relative;
   padding: 40px 10px 40px;
@@ -272,9 +305,10 @@ const Item = styled.div`
       color: ${colors.black} !important;
     }
 
-    img {
-      transition: all 0.3s ease;
-      filter: invert();
+    ${Logo} {
+      img {
+        filter: invert();
+      }
     }
   }
 `;
@@ -322,38 +356,6 @@ const LogosWrapper = styled.div`
   ${media.tabletSmall(css`
     justify-content: space-between;
   `)}
-`;
-
-const Logo = styled.div`
-  margin-top: 15px;
-  padding-left: 17.5px;
-  padding-right: 17.5px;
-  flex: 0 1 auto;
-  display: flex;
-  align-items: center;
-
-  img {
-    image-rendering: -webkit-optimize-contrast;
-    height: 32px;
-  }
-
-  svg {
-    fill: white;
-    stroke: white;
-  }
-
-  svg path {
-    fill: white;
-    stroke: white;
-  }
-`;
-
-const LogoLink = styled(Link)`
-  &:hover {
-    img {
-      opacity: 0.75;
-    }
-  }
 `;
 
 export default DevelopmentSection;
