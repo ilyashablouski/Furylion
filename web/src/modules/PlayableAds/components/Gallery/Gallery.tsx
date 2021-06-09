@@ -1,10 +1,11 @@
-import React, { RefObject, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import SwiperCore, { Navigation } from 'swiper';
 import gsap from 'gsap';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 import { useModal } from '@tager/web-components';
+import { useMedia } from '@tager/web-core';
 
 import { AdsHeadItemType } from '@/typings/model';
 import Picture from '@/components/Picture';
@@ -26,6 +27,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
   const firstCardRef = useRef<HTMLDivElement>(null);
   const lastCardRef = useRef<HTMLDivElement>(null);
 
+  const isMobile = useMedia(`(max-width: ${breakpoints.mobileLarge}px)`);
+
   useEffect(() => {
     const wrapper = innerWrapperRef.current;
     const component = componentRef.current;
@@ -37,6 +40,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
     let leftScroll: number = 0;
     let rightScroll: number = 0;
+    const duration = isMobile ? 15 : 10;
 
     const widthComponent = component.getBoundingClientRect().width;
 
@@ -57,42 +61,33 @@ function Gallery({ isRevert = false, itemList }: Props) {
     const resultRightScroll =
       Math.sign(rightScroll) === -1 ? -rightScroll : rightScroll;
 
+    tl = gsap.timeline({
+      defaults: {
+        repeat: -1,
+        yoyo: true,
+        yoyoEase: true,
+        duration: duration,
+      },
+    });
+
     if (isRevert) {
-      tl = gsap.timeline({
-        defaults: {
-          repeat: -1,
-          yoyo: true,
-          yoyoEase: true,
-        },
-      });
       tl.to(wrapper, {
         ease: 'linear',
         x: `${-leftScroll}px`,
-        duration: 10,
       });
 
       tl.to(wrapper, {
         ease: 'linear',
         x: `${resultRightScroll}px`,
-        duration: 10,
       });
     } else {
-      tl = gsap.timeline({
-        defaults: {
-          repeat: -1,
-          yoyo: true,
-          yoyoEase: true,
-        },
-      });
       tl.to(wrapper, {
         ease: 'linear',
         x: `${resultRightScroll}px`,
-        duration: 10,
       });
       tl.to(wrapper, {
         ease: 'linear',
         x: `${-leftScroll}px`,
-        duration: 10,
       });
     }
 
