@@ -272,8 +272,9 @@ const Item = styled.div`
       color: ${colors.black} !important;
     }
 
-    svg {
-      fill: ${colors.black} !important;
+    img {
+      transition: all 0.3s ease;
+      filter: invert();
     }
   }
 `;
