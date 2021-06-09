@@ -15,6 +15,8 @@ function PortingBlock() {
   const page = useCurrentPage<PortingBlockType>();
   if (!page) return null;
 
+  console.log(page);
+
   const pageFields = page.templateFields;
   return (
     <Container>
@@ -42,7 +44,11 @@ function PortingBlock() {
                     href={pageFields.portingButtonFirstUrl ?? '#'}
                     variants={['cut-bottom', 'white-red', 'w100']}
                     className="cut-button-left"
-                    target="_blank"
+                    target={
+                      pageFields.portingButtonFirstIsNewTab
+                        ? '_blank'
+                        : undefined
+                    }
                   >
                     {pageFields.portingButtonFirstLabel}
                   </ButtonLink>
@@ -53,7 +59,11 @@ function PortingBlock() {
                     href={pageFields.portingButtonSecondUrl ?? '#'}
                     variants={['cut-top', 'red', 'w100']}
                     className="cut-button-right"
-                    target="_blank"
+                    target={
+                      pageFields.portingButtonSecondIsNewTab
+                        ? '_blank'
+                        : undefined
+                    }
                   >
                     {pageFields.portingButtonSecondLabel}
                   </ButtonLink>
@@ -113,7 +123,6 @@ const BlockItem = styled.div`
     margin: 0 auto;
     padding: 0;
   `)}
-
   &:first-child {
     flex: 1 1 calc(597px + 28px);
     max-width: calc(597px + 28px);
@@ -208,13 +217,11 @@ const ButtonsWrapper = styled.div`
     display: flex;
     justify-content: center;
   `)}
-
   ${media.mobile(css`
     margin-top: 30px;
     margin-left: -20px;
     margin-right: -20px;
   `)}
-
   .cut-button-left {
     ${media.tabletSmallOnly(css`
       padding: 25px 35px 25px 24px;

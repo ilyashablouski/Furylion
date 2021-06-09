@@ -23,7 +23,6 @@ function CoDevelopmentSection() {
   if (!page) return null;
 
   const pageFields = page.templateFields;
-
   return (
     <Wrapper id={pageFields?.coDevelopmentId ?? ''}>
       <ContentContainer>
@@ -72,7 +71,11 @@ function CoDevelopmentSection() {
         />
       </ImagesContainer>
       <StyledButton>
-        <SkewButton href={pageFields.coDevelopmentButtonUrl} color="red">
+        <SkewButton
+          href={pageFields.coDevelopmentButtonUrl}
+          color="redTransparent"
+          isNewTab={pageFields.coDevelopmentButtonIsNewTab}
+        >
           {pageFields.coDevelopmentButtonLabel}
         </SkewButton>
       </StyledButton>

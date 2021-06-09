@@ -265,6 +265,8 @@ export interface FirstArtSectionType extends PageFullType {
     firstArtButtonFirstUrl: StringFieldType;
     firstArtButtonSecondLabel: StringFieldType;
     firstArtButtonSecondUrl: StringFieldType;
+    firstArtButtonSecondIsNewTab: boolean;
+    firstArtButtonFirstIsNewTab: boolean;
     firstArtImages: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   };
 }
@@ -285,6 +287,8 @@ export interface SecondArtSectionType extends PageFullType {
     secondArtButtonFirstUrl: StringFieldType;
     secondArtButtonSecondLabel: StringFieldType;
     secondArtButtonSecondUrl: StringFieldType;
+    secondArtButtonSecondIsNewTab: boolean;
+    secondArtButtonFirstIsNewTab: boolean;
     secondArtImages: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   };
 }
@@ -304,6 +308,8 @@ export interface ProductionBlockType extends PageFullType {
     productionButtonFirstUrl: StringFieldType;
     productionButtonSecondLabel: StringFieldType;
     productionButtonSecondUrl: StringFieldType;
+    productionButtonFirstIsNewTab: boolean;
+    productionButtonSecondIsNewTab: boolean;
     productionMediaTop: Array<ProductionMediaItemType>;
     productionMediaBottom: Array<ProductionMediaItemType>;
   };
@@ -319,6 +325,8 @@ export interface PortingBlockType extends PageFullType {
     portingButtonFirstLabel: StringFieldType;
     portingButtonFirstUrl: StringFieldType;
     portingButtonSecondLabel: StringFieldType;
+    portingButtonFirstIsNewTab: boolean;
+    portingButtonSecondIsNewTab: boolean;
     portingButtonSecondUrl: StringFieldType;
     portingImage: ThumbnailType;
   };
@@ -370,6 +378,7 @@ export interface CoDevelopmentSectionType extends PageFullType {
     rightLogo: ThumbnailType;
     coDevelopmentButtonLabel: StringFieldType;
     coDevelopmentButtonUrl: StringFieldType;
+    coDevelopmentButtonIsNewTab: boolean;
   };
 }
 

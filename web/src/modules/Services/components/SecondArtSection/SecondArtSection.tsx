@@ -114,7 +114,11 @@ function SecondArtSection() {
                   href={pageFields.secondArtButtonFirstUrl ?? '#'}
                   variants={['cut-bottom', 'white-dark', 'w100']}
                   className="cut-button-left"
-                  target="_blank"
+                  target={
+                    pageFields.secondArtButtonFirstIsNewTab
+                      ? '_target'
+                      : undefined
+                  }
                 >
                   {pageFields.secondArtButtonFirstLabel}
                 </ButtonLink>
@@ -125,7 +129,11 @@ function SecondArtSection() {
                   href={pageFields.secondArtButtonSecondUrl ?? '#'}
                   variants={['cut-top', 'dark', 'w100']}
                   className="cut-button-right"
-                  target="_blank"
+                  target={
+                    pageFields.secondArtButtonSecondIsNewTab
+                      ? '_target'
+                      : undefined
+                  }
                 >
                   {pageFields.secondArtButtonSecondLabel}
                 </ButtonLink>

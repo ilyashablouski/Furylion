@@ -20,6 +20,8 @@ function FirstArtSection({
   const vectorRef = useRef<HTMLDivElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
 
+  console.log(page);
+
   useEffect(() => {
     let tw: gsap.core.Tween;
     const delayedCall = gsap.delayedCall(0, () => {
@@ -112,7 +114,11 @@ function FirstArtSection({
                   href={pageFields.firstArtButtonFirstUrl ?? '#'}
                   variants={['cut-bottom', 'white-red', 'w100']}
                   className="cut-button-left"
-                  target="_blank"
+                  target={
+                    pageFields.firstArtButtonFirstIsNewTab
+                      ? '_blank'
+                      : undefined
+                  }
                 >
                   {pageFields.firstArtButtonFirstLabel}
                 </ButtonLink>
@@ -123,7 +129,11 @@ function FirstArtSection({
                   href={pageFields.firstArtButtonSecondUrl ?? '#'}
                   variants={['cut-top', 'red', 'w100']}
                   className="cut-button-right"
-                  target="_blank"
+                  target={
+                    pageFields.firstArtButtonSecondIsNewTab
+                      ? '_blank'
+                      : undefined
+                  }
                 >
                   {pageFields.firstArtButtonSecondLabel}
                 </ButtonLink>
