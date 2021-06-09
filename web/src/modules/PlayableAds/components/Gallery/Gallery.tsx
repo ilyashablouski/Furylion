@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
+import gsap from 'gsap';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
 import { useModal } from '@tager/web-components';
@@ -10,7 +10,6 @@ import { AdsHeadItemType } from '@/typings/model';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 import Game from '@/modules/PlayableAds/components/Game';
-import { ReactComponent as ArrowNavigation } from '@/assets/svg/slide-arrow.svg';
 import { breakpoints, colors } from '@/constants/theme';
 
 interface Props {
@@ -21,10 +20,85 @@ interface Props {
 SwiperCore.use([Navigation]);
 
 function Gallery({ isRevert = false, itemList }: Props) {
-  const [isMounted, setMounted] = useState(false);
+  const innerWrapperRef = useRef<HTMLDivElement>(null);
+  const componentRef = useRef<HTMLDivElement>(null);
+
+  const firstCardRef = useRef<HTMLDivElement>(null);
+  const lastCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const wrapper = innerWrapperRef.current;
+    const component = componentRef.current;
+    const firstElement = firstCardRef.current;
+    const lastElement = lastCardRef.current;
+    let tl: gsap.core.Timeline;
+
+    if (!wrapper || !component || !firstElement || !lastElement) return;
+
+    let leftScroll: number = 0;
+    let rightScroll: number = 0;
+
+    const widthComponent = component.getBoundingClientRect().width;
+
+    const widthWrapper = wrapper.getBoundingClientRect().width;
+
+    const coordinateFirstElement = firstElement.getBoundingClientRect();
+    const leftPositionFirstElement = coordinateFirstElement.left;
+    const widthFirstElement = coordinateFirstElement.width;
+
+    const coordinateLastElement = lastElement.getBoundingClientRect();
+    const leftPositionLastElement = coordinateLastElement.left;
+    const widthLastElement = coordinateLastElement.width;
+
+    leftScroll =
+      leftPositionLastElement - (widthComponent - widthLastElement) + 100;
+    rightScroll = leftPositionFirstElement - 100;
+
+    const resultRightScroll =
+      Math.sign(rightScroll) === -1 ? -rightScroll : rightScroll;
+
+    if (isRevert) {
+      tl = gsap.timeline({
+        defaults: {
+          repeat: -1,
+          yoyo: true,
+          yoyoEase: true,
+        },
+      });
+      tl.to(wrapper, {
+        ease: 'linear',
+        x: `${-leftScroll}px`,
+        duration: 10,
+      });
+
+      tl.to(wrapper, {
+        ease: 'linear',
+        x: `${resultRightScroll}px`,
+        duration: 10,
+      });
+    } else {
+      tl = gsap.timeline({
+        defaults: {
+          repeat: -1,
+          yoyo: true,
+          yoyoEase: true,
+        },
+      });
+      tl.to(wrapper, {
+        ease: 'linear',
+        x: `${resultRightScroll}px`,
+        duration: 10,
+      });
+      tl.to(wrapper, {
+        ease: 'linear',
+        x: `${-leftScroll}px`,
+        duration: 10,
+      });
+    }
+
+    return () => {
+      tl?.kill();
+    };
   }, []);
 
   const openModal = useModal();
@@ -34,52 +108,31 @@ function Gallery({ isRevert = false, itemList }: Props) {
   }
 
   return (
-    <Component>
+    <Component ref={componentRef}>
       <Wrapper isRevert={isRevert}>
-        {isMounted ? (
-          <Swiper
-            slidesPerView={'auto'}
-            spaceBetween={25}
-            loop={true}
-            allowTouchMove={true}
-            navigation={{
-              prevEl: `.swiper-prev`,
-              nextEl: `.swiper-next`,
-            }}
-            breakpoints={{
-              [breakpoints.mobileSmall]: {
-                spaceBetween: 10,
-              },
-              [breakpoints.mobileLarge]: {
-                spaceBetween: 25,
-              },
-            }}
-          >
-            {itemList.map((item, index) => {
-              return (
-                <SwiperSlide
-                  key={index}
-                  onClick={() =>
-                    onClick(item.gameDescription ?? '', item.gameTitle ?? '')
-                  }
-                >
-                  <Card>
-                    <Picture
-                      useSpinner
-                      {...convertThumbnailToPictureImage(item.image)}
-                    />
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-            <NavButton position={'left'} className={'swiper-prev'}>
-              <ArrowNavigation />
-            </NavButton>
-            <NavButton position={'right'} className={'swiper-next'}>
-              <ArrowNavigation />
-            </NavButton>
-          </Swiper>
-        ) : null}
+        <WrapperInner ref={innerWrapperRef} isRevert={isRevert}>
+          {itemList.map((item, index) => {
+            const ref =
+              index === 0
+                ? firstCardRef
+                : index !== itemList.length - 1
+                ? null
+                : lastCardRef;
+            return (
+              <Card
+                ref={ref}
+                onClick={() =>
+                  onClick(item.gameDescription ?? '', item.gameTitle ?? '')
+                }
+              >
+                <Picture
+                  useSpinner
+                  {...convertThumbnailToPictureImage(item.image)}
+                />
+              </Card>
+            );
+          })}
+        </WrapperInner>
       </Wrapper>
     </Component>
   );
@@ -90,8 +143,54 @@ const Component = styled.div`
   padding: 15px 0;
 `;
 
+// const AnimationIsNotRevert = keyframes`
+//   0% {
+//     transform: translateX(-10%);
+//   }
+//   50% {
+//     transform: translateX(100%);
+//   }
+//   100% {
+//     transform: translateX(-10%);
+//   }
+// `;
+//
+// const AnimationIsRevert = keyframes`
+//   0% {
+//     transform: translateX(10%);
+//   }
+//   50% {
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(10%);
+//   }
+// `;
+
+const WrapperInner = styled.div<{ isRevert: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+// ${(props) =>
+//   props.isRevert
+//     ? css`
+//         animation-name: ${AnimationIsRevert};
+// animation-duration: 40s;
+// animation-iteration-count: infinite;
+// `
+//       : css`
+// animation-name: ${AnimationIsNotRevert};
+// animation-duration: 40s;
+// animation-iteration-count: infinite;
+// `}
+
 const Wrapper = styled.div<{ isRevert: boolean }>`
   margin-left: ${({ isRevert }) => (isRevert ? '-5%' : 'initial')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   ${(props) =>
     props.isRevert
@@ -178,6 +277,7 @@ const Card = styled.div`
   max-width: 468px;
   flex: 1 1 100%;
   width: 100%;
+  margin-right: 20px;
 
   transition: all 0.2s linear;
 
