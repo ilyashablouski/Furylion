@@ -144,14 +144,16 @@ const Logos = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 61%;
+  z-index: 10;
 
   &::-webkit-scrollbar {
     display: none;
   }
+
+  -ms-overflow-style: none;
 
   ${media.tabletSmall(css`
     width: 53%;

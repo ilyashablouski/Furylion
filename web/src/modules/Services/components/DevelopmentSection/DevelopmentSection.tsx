@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
@@ -10,26 +10,58 @@ import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
-import { ButtonLink } from '@/components/Button';
+import { getStringAsHtml } from '@/utils/common';
 
 function DevelopmentSection() {
   const page = useCurrentPage<DevelopmentSectionType>();
-  if (!page) return null;
+  const styledTitleElement = useRef<HTMLSpanElement>(null);
 
+  useEffect(() => {
+    const el = document.getElementById(styledTitleId);
+    if (el) {
+      // @ts-ignore
+      styledTitleElement.current = el as HTMLSpanElement;
+    }
+  }, []);
+
+  if (!page) return null;
   const pageFields = page.templateFields;
+
+  const styledTitleId = 'fs-title';
+
+  function onMouseOver() {
+    if (styledTitleElement.current) {
+      styledTitleElement.current.style.color = colors.black;
+    }
+  }
+
+  function onMouseLeave() {
+    if (styledTitleElement.current) {
+      styledTitleElement.current.style.color = colors.white;
+    }
+  }
+
+  const title = getStringAsHtml(
+    pageFields.developmentTitle ?? '',
+    styledTitleId
+  );
 
   return (
     <Wrapper id={pageFields?.developmentId ?? ''}>
       <Inner>
         <ContentContainer>
-          <Title>{pageFields.developmentTitle}</Title>
+          <Title dangerouslySetInnerHTML={{ __html: title }} />
 
           <ItemsWrapper>
             <Items>
               {pageFields.developmentItems.length > 0
                 ? pageFields.developmentItems.map((item, index) => {
                     return (
-                      <Item key={index}>
+                      <Item
+                        key={index}
+                        onMouseOver={index === 0 ? onMouseOver : undefined}
+                        onMouseLeave={index === 0 ? onMouseLeave : undefined}
+                      >
                         <ImageContainer>
                           <Picture
                             mobileSmall={convertThumbnailToPictureImage(
@@ -94,6 +126,10 @@ const Title = styled.span`
   line-height: 130%;
   text-transform: uppercase;
   color: ${colors.white};
+
+  span {
+    transition: color 0.3s ease;
+  }
 
   ${media.tabletSmallOnly(css`
     font-size: 56px;

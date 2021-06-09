@@ -101,3 +101,23 @@ export function getBasePath({ href }: { href: string }) {
     return href;
   }
 }
+
+export function getStringAsHtml(value: string, id?: string) {
+  const splitValue = value.split('');
+  let isCloseTag = false;
+  let tagWithId = id ? `<span id="${id}">` : `<span>`;
+
+  for (let i = 0; i < splitValue.length; i++) {
+    if (splitValue[i] === '*') {
+      if (!isCloseTag) {
+        splitValue[i] = tagWithId;
+        isCloseTag = !isCloseTag;
+      } else {
+        splitValue[i] = '</span>';
+        isCloseTag = !isCloseTag;
+      }
+    }
+  }
+
+  return splitValue.join('');
+}
