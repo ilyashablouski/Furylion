@@ -12,15 +12,22 @@ import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
 import { getStringAsHtml } from '@/utils/common';
 
+declare global {
+  interface CSSStyleDeclaration {
+    mixBlendMode: string;
+  }
+}
+
 function DevelopmentSection() {
   const page = useCurrentPage<DevelopmentSectionType>();
   const styledTitleElement = useRef<HTMLSpanElement>(null);
+  const componentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = document.getElementById(styledTitleId);
+    const el = document.getElementById(pageFields?.developmentId ?? '');
     if (el) {
       // @ts-ignore
-      styledTitleElement.current = el as HTMLSpanElement;
+      componentRef.current = el as HTMLSpanElement;
     }
   }, []);
 
@@ -30,14 +37,16 @@ function DevelopmentSection() {
   const styledTitleId = 'fs-title';
 
   function onMouseOver() {
-    if (styledTitleElement.current) {
-      styledTitleElement.current.style.color = colors.black;
+    if (styledTitleElement.current && componentRef.current) {
+      styledTitleElement.current.style.mixBlendMode = 'difference';
+      componentRef.current.style.background = colors.black;
     }
   }
 
   function onMouseLeave() {
-    if (styledTitleElement.current) {
-      styledTitleElement.current.style.color = colors.white;
+    if (styledTitleElement.current && componentRef.current) {
+      styledTitleElement.current.style.mixBlendMode = 'initial';
+      componentRef.current.style.background = colors.red;
     }
   }
 
@@ -50,7 +59,10 @@ function DevelopmentSection() {
     <Wrapper id={pageFields?.developmentId ?? ''}>
       <Inner>
         <ContentContainer>
-          <Title dangerouslySetInnerHTML={{ __html: title }} />
+          <Title
+            ref={styledTitleElement}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
 
           <ItemsWrapper>
             <Items>
@@ -59,8 +71,10 @@ function DevelopmentSection() {
                     return (
                       <Item
                         key={index}
-                        onMouseOver={index === 0 ? onMouseOver : undefined}
-                        onMouseLeave={index === 0 ? onMouseLeave : undefined}
+                        onMouseOver={index === 0 || 1 ? onMouseOver : undefined}
+                        onMouseLeave={
+                          index === 0 || 1 ? onMouseLeave : undefined
+                        }
                       >
                         <ImageContainer>
                           <Picture
@@ -107,11 +121,13 @@ function DevelopmentSection() {
 }
 
 const Wrapper = styled.section`
-  padding: 100px 0 100px;
+  position: relative;
+  padding: 0 0 100px;
   background: ${colors.red};
+  transition: background 0.3s ease;
 
   ${media.tabletSmall(css`
-    padding: 70px 0 70px;
+    padding: 0 0 70px;
   `)}
 `;
 
@@ -121,11 +137,15 @@ const Inner = styled.div`
 `;
 
 const Title = styled.span`
+  position: absolute;
   font-weight: 900;
   font-size: 64px;
   line-height: 130%;
   text-transform: uppercase;
+  transition: color 0.3s ease;
   color: ${colors.white};
+  z-index: 10;
+  top: 138px;
 
   span {
     transition: color 0.3s ease;
@@ -133,10 +153,12 @@ const Title = styled.span`
 
   ${media.tabletSmallOnly(css`
     font-size: 56px;
+    top: 80px;
   `)}
 
   ${media.mobile(css`
     font-size: 32px;
+    top: 60px;
   `)}
 `;
 
@@ -151,12 +173,12 @@ const Items = styled.div`
   flex-wrap: wrap;
 
   ${media.tabletSmallOnly(css`
-    margin-top: -45px;
+    //margin-top: -45px;
     justify-content: center;
   `)}
 
   ${media.mobile(css`
-    margin-top: -50px;
+    //margin-top: -50px;
     margin-left: 0;
     margin-right: 0;
     display: block;
@@ -192,21 +214,52 @@ const ItemText = styled.p`
 `;
 
 const Item = styled.div`
-  padding: 0 10px;
+  position: relative;
+  padding: 40px 10px 40px;
+
   flex: 1 1 33.33%;
   max-width: 33.33%;
   transition: background 0.3s ease;
-  margin-top: 35px;
+  z-index: 2;
 
-  ${media.tabletSmallOnly(css`
-    margin-top: 85px;
+  &:nth-child(1) {
+    padding: 256px 10px 40px;
+  }
+
+  &:nth-child(2) {
+    padding: 256px 10px 40px;
+  }
+
+  &:nth-child(3) {
+    padding: 256px 10px 40px;
+  }
+
+  ${media.tabletSmall(css`
     flex: 1 1 50%;
     max-width: 50%;
+
+    &:nth-child(3) {
+      padding: 40px 10px 20px;
+    }
+
+    padding-bottom: 20px !important;
   `)}
   ${media.mobile(css`
-    margin-top: 80px;
-    padding: 0;
     max-width: none;
+
+    &:nth-child(1) {
+      padding: 174px 20px 20px !important;
+      margin: 0 -20px !important;
+    }
+
+    &:nth-child(2) {
+      padding: 40px 20px 20px;
+      margin: 0 -20px 0;
+    }
+
+    margin: 0 -20px 0 !important;
+
+    padding: 40px 10px 20px;
   `)}
   &:hover {
     background: ${colors.white};
