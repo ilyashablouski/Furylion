@@ -50,10 +50,6 @@ const Container = styled.div<{ singleItem?: boolean }>`
       border-bottom-color: transparent;
     }
 
-    .service-item-info {
-      opacity: 0.85;
-    }
-
     img {
       transform: scale(1.2);
     }
