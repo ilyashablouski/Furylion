@@ -13,7 +13,7 @@ function ContactsSection() {
   const contactsArray = useSettingItem('FOOTER_OFFICES');
   if (!contactsArray) return null;
   return (
-    <Wrapper>
+    <Wrapper id="contacts-section">
       <ContentContainer>
         <ContentWrapper>
           <LogoWrapper>
