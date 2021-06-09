@@ -27,7 +27,7 @@ function EditorSection() {
             </TextBlock>
             <ButtonWrapper>
               <SkewButton
-                color="white-dark"
+                color="redWhite"
                 href={pageFields.editorButtonUrl ?? '#'}
                 className="skew-button"
                 isNewTab={true}

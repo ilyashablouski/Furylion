@@ -48,7 +48,7 @@ function TeamLifeSection() {
         <StyledButton>
           <SkewButton
             href={pageFields?.teamLifeButton.link}
-            color="red"
+            color="darkRed"
             isNewTab={true}
           >
             {pageFields?.teamLifeButton?.label}
