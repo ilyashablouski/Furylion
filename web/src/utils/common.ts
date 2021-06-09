@@ -121,3 +121,7 @@ export function getStringAsHtml(value: string, id?: string) {
 
   return splitValue.join('');
 }
+
+export function isNewPage(link: string) {
+  return link !== window.location.pathname;
+}

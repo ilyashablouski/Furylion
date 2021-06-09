@@ -9,7 +9,7 @@ import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
 import VacanciesCounter from '@/components/VacanciesCounter';
-import { handleLinkFeedbackClick } from '@/utils/common';
+import { handleLinkFeedbackClick, isNewPage } from '@/utils/common';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -20,10 +20,6 @@ type Props = {
   socialsData: Array<any>;
   onClickOverlay: () => void;
 };
-
-function isNewPage(link: string) {
-  return link !== window.location.pathname;
-}
 
 function HeaderMenu({
   menuItemList,
@@ -65,6 +61,12 @@ function HeaderMenu({
               <MenuItem
                 onClick={() => {
                   if (isNewPage(menuItem.link ?? '#')) {
+                    onClickOverlay();
+                  } else {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
                     onClickOverlay();
                   }
                 }}

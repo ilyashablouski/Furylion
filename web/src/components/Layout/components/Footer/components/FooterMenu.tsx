@@ -7,17 +7,29 @@ import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import VacanciesCounter from '@/components/VacanciesCounter';
+import { isNewPage } from '@/utils/common';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
 };
 
 function FooterMenu({ menuItemList }: Props) {
+  function onClick(menuItem: MenuItemType) {
+    return () => {
+      if (!isNewPage(menuItem.link ?? '#')) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
+    };
+  }
+
   return (
     <MenuItems>
       {menuItemList.map((menuItem) => {
         return (
-          <MenuItem key={menuItem.id}>
+          <MenuItem key={menuItem.id} onClick={onClick(menuItem)}>
             <ItemLink
               to={menuItem.link ?? '#'}
               target={menuItem.isNewTab ? '_blank' : '_self'}
