@@ -125,6 +125,9 @@ const ServicesPreviewContent = styled.div`
 `;
 
 const PreviewImageWrapper = styled.div`
+  ${media.mobile(css`
+    display: none;
+  `)}
   img {
     transform: translateY(-100%);
   }
@@ -164,7 +167,7 @@ const Title = styled.span`
     font-size: 32px;
     top: 97% !important;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1) !important;
+    transform: translate(-50%, -100%) scale(1) !important;
     text-shadow: 0px 51px 100px rgb(0 0 0 / 60%);
   `)}
 `;
