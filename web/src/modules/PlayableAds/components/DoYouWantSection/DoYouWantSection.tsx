@@ -84,6 +84,7 @@ const Title = styled.span`
   color: ${colors.white};
   position: relative;
   transform: translateX(-100%);
+  pointer-events: none;
   z-index: 1;
 
   ${media.tabletSmall(css`
