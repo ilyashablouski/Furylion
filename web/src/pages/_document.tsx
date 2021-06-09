@@ -78,7 +78,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
           />
           <link
             rel="preload"
-            href="/static/fonts/Inter/Medium.woff2"
+            href="/static/fonts/Inter/Inter-Medium.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""
@@ -86,7 +86,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
 
           <link
             rel="preload"
-            href="/static/fonts/Inter/Heavy.woff2"
+            href="/static/fonts/Inter/Inter-Black.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""
