@@ -31,28 +31,18 @@ function HeaderSection({ scrollDown }: { scrollDown: () => void }) {
 const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
-  //padding-top: 215px;
-  //padding-bottom: 170px;
+
   max-width: 1920px;
   text-align: center;
   min-height: 100vh;
-
-  ${media.tabletSmallOnly(css`
-    //padding-top: 140px;
-    //padding-bottom: 115px;
-  `)}
-
-  ${media.mobile(css`
-    //padding-top: 140px;
-    //padding-bottom: 102px;
-  `)}
 `;
 
 const Inner = styled.div`
-  position: relative;
+  position: absolute;
   display: inline-block;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 const Title = styled.span`
   position: relative;
@@ -62,7 +52,7 @@ const Title = styled.span`
   font-size: 265px;
   line-height: 100%;
   text-transform: uppercase;
-  word-break: break-word;
+
   color: ${colors.white};
 
   ${media.desktop1366(css`
