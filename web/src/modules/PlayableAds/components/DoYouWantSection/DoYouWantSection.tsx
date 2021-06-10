@@ -61,12 +61,12 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   background: ${colors.red};
+  overflow: hidden;
 `;
 
 const Inner = styled.div`
   max-width: 1920px;
   min-height: 966px;
-  overflow: hidden;
 `;
 
 const TitleBlock = styled.div`
