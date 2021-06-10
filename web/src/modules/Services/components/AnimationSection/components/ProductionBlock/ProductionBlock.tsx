@@ -77,6 +77,10 @@ function ProductionBlock() {
 
 const Container = styled.div`
   margin-top: 82px;
+
+  .modal-video-close-btn {
+    right: 0;
+  }
 `;
 
 const Title = styled.span`
