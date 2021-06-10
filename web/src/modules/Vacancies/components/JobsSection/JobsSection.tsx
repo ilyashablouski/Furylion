@@ -7,10 +7,11 @@ import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
 import { selectVacanciesList } from '@/store/reducers/pages/vacancies';
 import { colors } from '@/constants/theme';
-import { LocationType, VacancyShortType } from '@/typings/model';
+import { LocationType, VacanciesPage, VacancyShortType } from '@/typings/model';
 import useSettingItem from '@/hooks/useSettingItem';
 import FeedbackModal from '@/components/modals/FeedbackModal';
 import { media } from '@/utils/mixin';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 import JobCard from './components/JobCard';
 
@@ -50,6 +51,7 @@ function getVacanciesByLocation(
 }
 
 function JobsSection() {
+  const page = useCurrentPage<VacanciesPage>();
   const openedVacancyTitle = useSettingItem('OPEN_VACANCY_TITLE');
   const openedVacancyImage = useSettingItem('OPEN_VACANCY_IMAGE');
   const openedVacancyDescription = useSettingItem('OPEN_VACANCY_DESCRIPTION');
@@ -75,6 +77,8 @@ function JobsSection() {
       isCvForm: true,
     });
   }
+
+  const jobCardButtonTitle = page?.templateFields.buttonTitle ?? '';
 
   return (
     <Wrapper id="vacanciesJobs">
@@ -106,12 +110,16 @@ function JobsSection() {
             {filteredVacancyList
               ? filteredVacancyList.map((vacancyItem) => (
                   <Card key={vacancyItem.id}>
-                    <JobCard card={vacancyItem} />
+                    <JobCard
+                      buttonTitle={jobCardButtonTitle}
+                      card={vacancyItem}
+                    />
                   </Card>
                 ))
               : null}
             <Card>
               <JobCard
+                buttonTitle={jobCardButtonTitle}
                 card={{
                   title: openedVacancyTitle,
                   image: openedVacancyImage,

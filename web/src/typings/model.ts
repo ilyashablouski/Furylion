@@ -236,6 +236,25 @@ export interface TeamLifeSectionType extends PageFullType {
   };
 }
 
+export interface VacanciesPage extends PageFullType {
+  templateFields: {
+    buttonTitle: StringFieldType;
+    formTitle: StringFieldType;
+    headId: StringFieldType;
+    headImage: Nullable<{
+      url: StringFieldType;
+    }>;
+    teamLifeButton: Nullable<{
+      label: StringFieldType;
+      link: StringFieldType;
+      isNewTab: boolean;
+    }>;
+    teamLifeDescription: StringFieldType;
+    teamLifeId: StringFieldType;
+    teamLifeTitle: StringFieldType;
+  };
+}
+
 export type LocationType = {
   id: number;
   location: string;

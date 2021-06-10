@@ -15,9 +15,16 @@ interface Props {
   className?: string;
   isHeroCard?: boolean;
   onClick?: () => void;
+  buttonTitle: string;
 }
 
-function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
+function JobCard({
+  card,
+  buttonTitle,
+  isHeroCard = false,
+  className,
+  onClick,
+}: Props) {
   const { title, image, urlAlias, excerpt, level, typeOfWork, tags } = card;
 
   const tagsArray = tags ? tags.split(',') : [];
@@ -63,9 +70,13 @@ function JobCard({ card, isHeroCard = false, className, onClick }: Props) {
 
         <ButtonContainer>
           {!isHeroCard ? (
-            <CardButton variants={['dark', 'w100']}>Apply</CardButton>
+            <CardButton variants={['dark', 'w100']}>
+              <span>{buttonTitle}</span>
+            </CardButton>
           ) : (
-            <CardButton variants={['dashed', 'w100']}>Apply</CardButton>
+            <CardButton variants={['dashed', 'w100']}>
+              <span>{buttonTitle}</span>
+            </CardButton>
           )}
         </ButtonContainer>
       </Bottom>
@@ -168,6 +179,13 @@ const LabelRight = styled.span`
 
 const CardButton = styled(Button)`
   font-weight: 700;
+
+  span {
+    display: block;
+    width: 100%;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
 `;
 
 const ButtonContainer = styled.div`
