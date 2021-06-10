@@ -7,6 +7,7 @@ import Picture from '@/components/Picture';
 import { DoYouWantSectionItemType } from '@/typings/model';
 import Link from '@/components/Link';
 import { handleLinkFeedbackClick } from '@/utils/common';
+import { media } from '@/utils/mixin';
 
 type Props = {
   galleryItems: Array<DoYouWantSectionItemType>;
@@ -85,6 +86,14 @@ const PictureItem = styled.div`
     border-radius: 16px;
     image-rendering: -webkit-optimize-contrast;
   }
+
+  ${media.mobileLarge(css`
+    &:not(:first-child) {
+      margin-left: 40px;
+    }
+    flex-basis: 100px;
+    height: 190px;
+  `)}
 `;
 
 const ItemLink = styled(Link)`

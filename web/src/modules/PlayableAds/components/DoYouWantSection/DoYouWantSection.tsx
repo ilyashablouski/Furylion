@@ -3,10 +3,13 @@ import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
+import { useMedia } from '@tager/web-core';
+
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { DoYouWantSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
+import ContentContainer from '@/components/ContentContainer';
 
 import ImagesRow from './components/ImagesRow';
 
@@ -15,17 +18,23 @@ gsap.registerPlugin(ScrollTrigger);
 function DoYouWantSection() {
   const page = useCurrentPage<DoYouWantSectionType>();
   const titleRef = useRef<HTMLSpanElement>(null);
+
+  const isDesktop = useMedia(`(min-width: 1400px)`);
+
   useEffect(() => {
     let tw: gsap.core.Tween;
     if (!titleRef.current) return;
 
+    const xPercent = isDesktop ? -10 : 0;
+
     tw = gsap.to(titleRef.current, {
-      xPercent: 100,
+      translateX: xPercent,
       scrollTrigger: {
         trigger: titleRef.current,
         scrub: 1,
         start: '-520% 30%',
-        end: 'bottom 10%',
+        end: 'top 15%',
+        markers: true,
       },
     });
 
@@ -45,7 +54,9 @@ function DoYouWantSection() {
     <Wrapper id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
-          <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
+          <ContentContainer>
+            <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
+          </ContentContainer>
         </TitleBlock>
         <ImagesContainer>
           <ImagesRow galleryItems={firstGalleryItems} />
@@ -82,8 +93,9 @@ const Title = styled.span`
   text-transform: uppercase;
   white-space: nowrap;
   color: ${colors.white};
-  position: relative;
   transform: translateX(-100%);
+  position: relative;
+
   pointer-events: none;
   z-index: 1;
 
@@ -104,9 +116,8 @@ const Title = styled.span`
   `)}
 
   ${media.mobile(css`
-    padding: 0 20px;
     font-size: 32px;
-    max-width: 328px;
+    max-width: 365px;
   `)}
 `;
 
