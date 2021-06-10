@@ -69,7 +69,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                   onClick={onClick(
                     item.descriptionGame ?? '',
                     item.titleGame ?? '',
-                    item.titleGame ?? ''
+                    item.linkUrl ?? ''
                   )}
                 >
                   <Card>
