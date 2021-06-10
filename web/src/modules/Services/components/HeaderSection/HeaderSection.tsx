@@ -117,9 +117,6 @@ const DownArrow = styled.i`
   transition: all 150ms ease-in-out;
   z-index: 2;
 
-  ${media.tabletSmall(css`
-    display: none;
-  `)}
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
