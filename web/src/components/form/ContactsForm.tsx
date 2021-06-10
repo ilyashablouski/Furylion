@@ -116,7 +116,7 @@ function ContactsForm({
               isSubmitting={isSubmitting}
             >
               {!isSubmitting ? (
-                `${isCvForm ? 'Отправить' : 'SendMessage'}`
+                `${isCvForm ? 'Отправить' : 'Send Message'}`
               ) : (
                 <Spinner color="dark" absolute={true} />
               )}

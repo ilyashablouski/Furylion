@@ -42,7 +42,7 @@ function Footer({ socialsData }: SocialsType) {
             © 2010-2021 FuryLion Development LLC.
           </FooterCopyright>
 
-          <FooterCreatorLink to="#">
+          <FooterCreatorLink to="https://69pixels.com/" target="_blank">
             Made with fury in&nbsp;
             <FooterCreatorFirst>69</FooterCreatorFirst>
             <FooterCreatorSecond>pixels.</FooterCreatorSecond>
@@ -136,6 +136,7 @@ const FooterCreatorLink = styled(Link)`
   text-align: right;
   color: ${colors.dark};
   transition: all 150ms ease-in-out;
+
   &:hover {
     opacity: 0.85;
   }
@@ -165,16 +166,16 @@ const SocialWrapper = styled.div`
   color: ${colors.dark};
   border: 1px solid ${colors.red};
   transition: 150ms all ease-in-out;
-  
-    &:hover {
-      background: #000;
-      color: ${colors.white};
-    }
+
+  &:hover {
+    background: #000;
+    color: ${colors.white};
+  }
 
   ${media.tabletSmall(css`
     margin: 0 16px;
   `)}
-  }
+}
 `;
 
 export default Footer;
