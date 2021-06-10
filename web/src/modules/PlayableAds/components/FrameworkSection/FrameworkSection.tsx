@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { createMediaMixin } from '@tager/web-components';
+
 import ContentContainer from '@/components/ContentContainer';
-import { colors } from '@/constants/theme';
+import { breakpoints, colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { FrameworkSectionType } from '@/typings/model';
@@ -152,6 +154,12 @@ const ButtonWrapper = styled.div`
 
   ${media.mobile(css`
     margin-top: 27px;
+  `)}
+
+
+  ${createMediaMixin({ max: breakpoints.mobileSmall + 1 })(css`
+    position: relative;
+    right: 20px;
   `)}
 `;
 

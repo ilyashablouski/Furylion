@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { createMediaMixin } from '@tager/web-components';
+
 import ContentContainer from '@/components/ContentContainer';
-import { colors } from '@/constants/theme';
+import { breakpoints, colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { RateSectionType } from '@/typings/model';
@@ -172,6 +174,11 @@ const ItemText = styled.span<{ isGray?: boolean }>`
         font-size: 96px;
       `)}
     `}
+
+  ${createMediaMixin({ max: breakpoints.mobileSmall + 1 })(css`
+    position: relative;
+    right: 15px;
+  `)}
 `;
 
 const Item = styled.div`
@@ -207,6 +214,7 @@ const ItemTitle = styled.span<{ isGray?: boolean }>`
     font-size: 24px;
   `)}
 
+
   ${(props) =>
     props.isGray &&
     css`
@@ -226,6 +234,12 @@ const ButtonWrapper = styled.div`
   ${media.mobile(css`
     margin-top: 43px;
     justify-content: center;
+  `)}
+
+
+  ${createMediaMixin({ max: breakpoints.mobileSmall + 1 })(css`
+    position: relative;
+    right: 20px;
   `)}
 `;
 
