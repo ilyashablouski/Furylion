@@ -52,7 +52,7 @@ function ContactsForm({
             type="text"
             name="name"
             required
-            placeholder="Name"
+            placeholder={isCvForm ? 'Имя' : 'Name'}
             autoComplete="off"
           />
           {isCvForm ? (
@@ -60,7 +60,7 @@ function ContactsForm({
               type="tel"
               name="phone"
               required
-              placeholder="Phone"
+              placeholder={'Телефон'}
               autoComplete="off"
             />
           ) : (
@@ -77,14 +77,14 @@ function ContactsForm({
             type="email"
             name="email"
             required
-            placeholder="E-mail"
+            placeholder={isCvForm ? 'Почта' : 'E-mail'}
             autoComplete="off"
           />
 
           <TextAreaContainer>
             <TextAreaFormik
               className="textarea-field"
-              placeholder={'Message'}
+              placeholder={isCvForm ? 'Сообщение' : 'Message'}
               name="message"
               required
               autoHeight
@@ -93,6 +93,7 @@ function ContactsForm({
           </TextAreaContainer>
           <AttachWrapper>
             <AttachFile
+              isCvForm={isCvForm}
               file={file}
               setFile={setFile}
               name={'file'}
@@ -108,7 +109,7 @@ function ContactsForm({
               isSubmitting={isSubmitting}
             >
               {!isSubmitting ? (
-                'Send Message'
+                `${isCvForm ? 'Отправить' : 'SendMessage'}`
               ) : (
                 <Spinner color="dark" absolute={true} />
               )}

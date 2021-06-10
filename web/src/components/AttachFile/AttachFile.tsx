@@ -21,6 +21,7 @@ type Props = {
   type?: string;
   file?: Nullable<File>;
   setFile: (file: Nullable<File>) => void;
+  isCvForm: boolean;
 };
 
 function AttachFile({
@@ -28,6 +29,7 @@ function AttachFile({
   isFeedback,
   setFileId,
   file,
+  isCvForm,
   setFile,
   error: customError,
   name = 'fileId',
@@ -98,7 +100,9 @@ function AttachFile({
           ) : file ? (
             <FileName>{file.name}</FileName>
           ) : (
-            <Description>+Add file</Description>
+            <Description>
+              {isCvForm ? '+ Добавить файл' : '+Add file'}
+            </Description>
           )}
           {file && !isLoadingFile ? (
             <ClearFileButton onClick={clearFile}>
