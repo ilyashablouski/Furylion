@@ -138,14 +138,15 @@ const SwiperPaginationWrapper = styled.div`
   z-index: 1;
 
   ${media.tablet(css`
-    left: 0;
-    justify-content: center;
+    justify-content: flex-start;
+    left: 40px;
+    bottom: 120px;
   `)}
 
   ${media.mobile(css`
     left: 20px;
     right: 20px;
-    bottom: 22px;
+    bottom: 100px;
     width: auto;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -221,6 +222,10 @@ const CurrentValueLabel = styled.span`
   font-size: 40px;
 
   color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 30px;
+  `)}
 `;
 
 const TotalValueLabel = styled.span`
@@ -231,6 +236,10 @@ const TotalValueLabel = styled.span`
   font-weight: 500;
   font-size: 24px;
   color: rgba(255, 255, 255, 0.6);
+
+  ${media.mobile(css`
+    font-size: 20px;
+  `)}
 `;
 
 const NavButtons = styled.div<{ isRightSide?: boolean }>`
