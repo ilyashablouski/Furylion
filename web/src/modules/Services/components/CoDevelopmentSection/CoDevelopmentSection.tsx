@@ -195,6 +195,7 @@ const ImagesContainer = styled.div`
     clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);
     z-index: 1;
     overflow: hidden;
+    transform: translateZ(0);
 
     ${media.tabletSmallOnly(css`
       height: 71%;
@@ -202,6 +203,7 @@ const ImagesContainer = styled.div`
 
     ${media.mobile(css`
       height: 49%;
+      bottom: -2px;
     `)}
   }
 `;
@@ -307,7 +309,7 @@ const StyledButton = styled.div`
   ${media.mobile(css`
     max-width: 302px;
     top: auto;
-    bottom: 0;
+    bottom: -1px;
   `)}
 `;
 export default CoDevelopmentSection;
