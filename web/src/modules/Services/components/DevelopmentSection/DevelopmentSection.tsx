@@ -146,6 +146,7 @@ const Title = styled.span`
   color: ${colors.white};
   z-index: 10;
   top: 138px;
+  pointer-events: none;
 
   span {
     transition: color 0.3s ease;
