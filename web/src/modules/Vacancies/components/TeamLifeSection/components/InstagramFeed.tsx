@@ -124,9 +124,8 @@ const InstagramItem = styled.div`
       display: none;
     }
   `)}
-
   ${media.mobile(css`
-    margin: 0 auto;
+    margin: 0 auto 2px;
     flex: 0 0 360px;
     max-width: 360px;
     max-height: 360px;
@@ -145,7 +144,6 @@ const InstagramItem = styled.div`
       display: block;
     }
   `)}
-
   &:hover {
     ${ItemLink} {
       background: rgba(0, 0, 0, 0.3);
