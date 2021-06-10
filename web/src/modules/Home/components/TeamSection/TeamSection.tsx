@@ -3,10 +3,7 @@ import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import {
-  convertThumbnailToPictureImage,
-  convertThumbnailToPictureProps,
-} from '@tager/web-modules';
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
 import { useModal } from '@tager/web-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';

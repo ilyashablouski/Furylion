@@ -26,7 +26,7 @@ function SecondArtSection() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          left = '63%';
+          left = '62%';
         },
         '(max-width: 1259px)': function () {
           left = '49%';
@@ -176,7 +176,7 @@ const Vector = styled.span`
   bottom: 0;
   background: ${colors.red};
   z-index: 10;
-  transform: rotate(-30deg);
+  transform: rotate(-26.5deg);
 
   ${media.tablet(css`
     height: 223%;
@@ -207,6 +207,7 @@ const Left = styled.div`
   flex: 0 0 673px;
   max-width: 673px;
   overflow: hidden;
+
   //clip-path: polygon(0 0, 35% 0, 100% 100%, 0% 100%);
 
   ${media.tablet(css`
@@ -220,9 +221,11 @@ const Left = styled.div`
 
 const Right = styled.div`
   margin-top: 100px;
+  padding-bottom: 100px;
 
   ${media.tablet(css`
     margin-top: 0;
+    padding-bottom: 0;
   `)}
   ${ContentContainer} {
     padding-left: 0;

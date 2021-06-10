@@ -29,7 +29,7 @@ function FirstArtSection({
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          left = '-103%';
+          left = '-100%';
         },
         '(max-width: 1259px)': function () {
           left = '-90%';
@@ -176,7 +176,7 @@ const Vector = styled.span`
   bottom: 0;
   background: #191814;
   z-index: 10;
-  transform: rotate(30deg);
+  transform: rotate(25.8deg);
 
   ${media.tablet(css`
     height: 223%;
@@ -201,9 +201,11 @@ const Vector = styled.span`
 
 const Left = styled.div`
   margin-top: 100px;
+  padding-bottom: 100px;
 
   ${media.tablet(css`
     margin-top: 0;
+    padding-bottom: 0;
     order: 2;
   `)}
   ${ContentContainer} {
