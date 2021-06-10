@@ -52,17 +52,14 @@ const Title = styled.span`
   font-size: 223px;
   line-height: 100%;
   text-transform: uppercase;
-  word-break: break-word;
   color: ${colors.white};
 
   ${media.desktop1366(css`
     font-size: 16.1vw;
   `)}
-
   ${media.mobile(css`
     font-size: 15.7vw;
   `)}
-
   &:before {
     content: attr(data-text);
     position: absolute;

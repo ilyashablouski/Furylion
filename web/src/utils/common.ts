@@ -66,7 +66,7 @@ export function handleLinkFeedbackClick(
   const target = document.getElementById(selector);
   if (!target) return;
 
-  const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
+  const headerHeight = window.innerWidth < 1024 ? 56 : 100;
   const pageOffsetTop = document.documentElement.scrollTop;
   const targetOffsetTop = target.getBoundingClientRect().top;
 
