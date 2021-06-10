@@ -28,6 +28,9 @@ class VacanciesTemplate extends Template
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),
             ]),
+            new GroupField('Job Card', [
+                'buttonTitle' => new StringField('Button Title'),
+            ]),
         ]);
     }
 }

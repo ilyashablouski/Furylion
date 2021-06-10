@@ -19,6 +19,8 @@ function getLocationList(
 ): Array<LocationType> {
   const locationMap = new Map<string, LocationType>();
 
+  console.log(vacanciesList);
+
   vacanciesList.forEach((item) => {
     const location = item.location;
 

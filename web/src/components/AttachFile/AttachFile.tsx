@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useField } from 'formik';
-import { GranularChunksConformanceCheck } from 'next/dist/build/webpack/plugins/webpack-conformance-plugin';
 
 import { Nullable } from '@tager/web-core';
 
