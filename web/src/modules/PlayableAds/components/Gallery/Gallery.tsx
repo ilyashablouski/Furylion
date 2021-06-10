@@ -187,6 +187,7 @@ const Card = styled.div`
   max-width: 468px;
   flex: 1 1 100%;
   width: 100%;
+  min-height: 263px;
 
   transition: all 0.2s linear;
 
@@ -198,19 +199,21 @@ const Card = styled.div`
   img {
     object-fit: cover;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
     max-width: initial;
     border-radius: 22px;
     box-shadow: 0px 0px 20px 2px rgb(0 0 0 / 50%);
-
-    ${media.mobile(css`
-      max-width: 294px;
-      height: 165px;
-    `)}
-    ${media.mobileMedium(css`
-      width: 288px;
-      height: 160px;
-    `)}
   }
+
+  ${media.mobile(css`
+    max-width: 294px;
+    min-height: 165px;
+  `)}
+  ${media.mobileMedium(css`
+    width: 288px;
+    min-height: 160px;
+  `)}
 `;
 
 export default Gallery;
