@@ -22,7 +22,7 @@ export const coordinateTeamItems = [
   { leftX: '470', topY: '317', width: '32' },
   { leftX: '390', topY: '325', width: '24' },
   { leftX: '809', topY: '572', width: '118' },
-  { leftX: '676', topY: '545', width: '118' },
+  { leftX: '290', topY: '530', width: '42' },
   { leftX: '791', topY: '884', width: '72' },
   { leftX: '695', topY: '949', width: '88' },
   { leftX: '589', topY: '978', width: '40' },
