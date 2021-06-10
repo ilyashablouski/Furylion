@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Form, FormikProps } from 'formik';
+import {} from 'formik';
 
 import { Nullable } from '@tager/web-core';
 
@@ -37,6 +38,7 @@ function ContactsForm({
   isModal = false,
   isSentSuccess,
   isCvForm = false,
+  handleChange,
   isSubmitting,
   fileId,
   file,
@@ -58,6 +60,11 @@ function ContactsForm({
           {isCvForm ? (
             <Input
               type="tel"
+              onChange={(event) => {
+                event.target.value = event.target.value.replace(/[^0-9+]/, '');
+                handleChange(event);
+              }}
+              pattern={`/[^0-9+]/`}
               name="phone"
               required
               placeholder={'Телефон'}
