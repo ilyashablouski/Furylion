@@ -33,7 +33,6 @@ function TeamSection() {
   const page = useCurrentPage<TeamSectionType>();
   const pageFields = page?.templateFields;
   const teamItems = pageFields?.teamItems;
-  const openModal = useModal();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const bgPictureRef = useRef<HTMLImageElement>(null);
@@ -128,7 +127,6 @@ function TeamSection() {
                   itemLeftOffset={left}
                   itemTopOffset={top}
                   data-index={index}
-                  onClick={() => openModal(PictureModal, { image: item })}
                 >
                   <Picture
                     mobileSmall={convertThumbnailToPictureImage(item)}
