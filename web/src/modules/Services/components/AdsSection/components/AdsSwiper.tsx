@@ -15,7 +15,7 @@ type Props = {
   adsImages: Array<ThumbnailType>;
 };
 
-const rotate = 9.5;
+const rotate = 10;
 const translate = 20;
 
 function AdsSwiper({ adsImages }: Props) {
@@ -55,7 +55,7 @@ function AdsSwiper({ adsImages }: Props) {
 
       gsap.set(slide.current, {
         translateY: translate * Math.abs(resultIndex) ** 2,
-        translateX: translate * -resultIndex,
+        translateX: translate - 5 * -resultIndex,
         rotate: rotate * -resultIndex,
       });
     });
