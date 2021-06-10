@@ -1,5 +1,5 @@
 export const coordinateTeamItems = [
-  { leftX: '0', topY: '329', width: '150' },
+  { leftX: '300', topY: '150', width: '24' },
   { leftX: '99', topY: '713', width: '260' },
   { leftX: '489', topY: '758', width: '118' },
   { leftX: '819', topY: '451', width: '96' },

@@ -8,6 +8,7 @@ export type ButtonVariant =
   | 'redWhite'
   | 'dark'
   | 'darkRed'
+  | 'redTransparent'
   | 'redDark'
   | 'red'
   | 'w100'

@@ -1,6 +1,7 @@
 import React, { RefObject, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
+import { throttle, debounce } from 'lodash';
 
 import {
   convertThumbnailToPictureImage,
@@ -69,15 +70,13 @@ function AdsSwiper({ adsImages }: Props) {
       let resultSlideIndex: number = 5;
       let symbol: string;
 
-      if (window.pageYOffset > scrollPosition.current) {
+      if (window.pageYOffset >= scrollPosition.current) {
         resultSlideIndex = activeSlideIndex - 1;
         symbol = '+';
       } else {
         resultSlideIndex = activeSlideIndex + 1;
         symbol = '-';
       }
-
-      scrollPosition.current = window.pageYOffset;
 
       if (resultSlideIndex < 0) return;
       if (resultSlideIndex > slideList.length - 1) return;
@@ -106,9 +105,8 @@ function AdsSwiper({ adsImages }: Props) {
         containerRef.current &&
         window.pageYOffset >= containerPosition + window.innerHeight / 2.5
       ) {
-        setTimeout(() => {
-          handleScroll();
-        }, 100);
+        handleScroll();
+        scrollPosition.current = window.pageYOffset;
       }
     }
 

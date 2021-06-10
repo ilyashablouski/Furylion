@@ -23,6 +23,7 @@ type Props = {
 };
 
 function MediaBlock({ mediaInfo, isTop = true }: Props) {
+  const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [isOpen, setOpen] = useState(false);
   const instanceModal = useModal();
 
@@ -49,6 +50,7 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
             <Item
               onClick={() => {
                 if (mediaItem.videoId) {
+                  setCurrentVideo(mediaItem.videoId);
                   setOpen(true);
                 } else {
                   openGalleryModal(mediaItem.image);
@@ -69,13 +71,13 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
                 />
               </ImageContainer>
             </Item>
-            {mediaItem.videoId && (
+            {currentVideo && (
               <ModalVideo
                 // @ts-ignore
                 channel="youtube"
                 autoplay
                 isOpen={isOpen}
-                videoId={mediaItem.videoId}
+                videoId={currentVideo}
                 onClose={() => setOpen(false)}
               />
             )}

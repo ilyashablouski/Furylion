@@ -13,6 +13,8 @@ function ProductionBlock() {
   const page = useCurrentPage<ProductionBlockType>();
   if (!page) return null;
 
+  console.log(page);
+
   const pageFields = page.templateFields;
   return (
     <Container>
@@ -42,7 +44,11 @@ function ProductionBlock() {
                 href={pageFields.productionButtonFirstUrl ?? '#'}
                 variants={['cut-bottom', 'white-red', 'w100']}
                 className="cut-button-left"
-                target="_blank"
+                target={
+                  pageFields.productionButtonFirstIsNewTab
+                    ? '_blank'
+                    : undefined
+                }
               >
                 {pageFields.productionButtonFirstLabel}
               </ButtonLink>
@@ -53,7 +59,11 @@ function ProductionBlock() {
                 href={pageFields.productionButtonSecondUrl ?? '#'}
                 variants={['cut-top', 'red', 'w100']}
                 className="cut-button-right"
-                target="_blank"
+                target={
+                  pageFields.productionButtonSecondIsNewTab
+                    ? '_blank'
+                    : undefined
+                }
               >
                 {pageFields.productionButtonSecondLabel}
               </ButtonLink>
