@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useField } from 'formik';
+import { GranularChunksConformanceCheck } from 'next/dist/build/webpack/plugins/webpack-conformance-plugin';
 
 import { Nullable } from '@tager/web-core';
 
@@ -18,17 +19,20 @@ type Props = {
   error?: string;
   name: string;
   type?: string;
+  file?: Nullable<File>;
+  setFile: (file: Nullable<File>) => void;
 };
 
 function AttachFile({
   isSmall,
   isFeedback,
   setFileId,
+  file,
+  setFile,
   error: customError,
   name = 'fileId',
   type = 'file',
 }: Props) {
-  const [file, setFile] = useState<Nullable<File>>(null);
   const [isLoadingFile, setIsLoadingFile] = useState<boolean>(false);
   const [isLoadedFile, setIsLoadedFile] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);

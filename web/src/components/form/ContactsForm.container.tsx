@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, FormikErrors, FormikHelpers } from 'formik';
 
-import { convertRequestErrorToMap } from '@tager/web-core';
+import { convertRequestErrorToMap, Nullable } from '@tager/web-core';
 
 import { FormPayload, sendContactsForm, sendCvForm } from '@/services/requests';
 
@@ -23,6 +23,7 @@ function getOnlyTrueValues(values: Record<string, string | number>) {
 function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
   const [isSentSuccess, setSentSuccess] = useState(false);
   const [fileId, setFileId] = useState<number>(0);
+  const [file, setFile] = useState<Nullable<File>>(null);
 
   function handleSubmit(
     values: FormPayload,
@@ -36,6 +37,7 @@ function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
       .then(() => {
         formikHelpers.resetForm();
         setSentSuccess(true);
+        setFile(null);
         setTimeout(() => {
           setSentSuccess(false);
         }, 2500);
@@ -68,6 +70,8 @@ function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
       {(formProps) => (
         <ContactsForm
           {...formProps}
+          file={file}
+          setFile={setFile}
           isCvForm={isCvForm}
           isSentSuccess={isSentSuccess}
           fileId={fileId}

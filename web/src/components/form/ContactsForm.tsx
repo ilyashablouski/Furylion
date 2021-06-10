@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Form, FormikProps } from 'formik';
 
+import { Nullable } from '@tager/web-core';
+
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import Button from '@/components/Button';
@@ -27,6 +29,8 @@ type Props = FormikProps<ContactsFormValues> & {
   fileId: number;
   isCvForm: boolean;
   setFileId: (value: number) => void;
+  file: Nullable<File>;
+  setFile: (file: Nullable<File>) => void;
 };
 
 function ContactsForm({
@@ -35,6 +39,8 @@ function ContactsForm({
   isCvForm = false,
   isSubmitting,
   fileId,
+  file,
+  setFile,
   setFileId,
 }: Props) {
   return (
@@ -87,6 +93,8 @@ function ContactsForm({
           </TextAreaContainer>
           <AttachWrapper>
             <AttachFile
+              file={file}
+              setFile={setFile}
               name={'file'}
               type={'file'}
               isSmall={true}
