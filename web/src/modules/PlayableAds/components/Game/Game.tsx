@@ -11,20 +11,17 @@ import { ReactComponent as CloseIcon } from '@/assets/svg/close-icon-2.svg';
 import { StringFieldType } from '@/typings/common';
 
 type Props = ModalProps<{
-  gameTitle: StringFieldType;
-  gameDescription: StringFieldType;
+  titleGame: StringFieldType;
+  descGame: StringFieldType;
   url: StringFieldType;
 }>;
 
-function Game({
-  closeModal,
-  innerProps: { gameDescription, gameTitle, url },
-}: Props) {
+function Game({ closeModal, innerProps: { descGame, titleGame, url } }: Props) {
   return (
     <Component>
       <Panel>
-        {gameTitle ? <Title>{gameTitle}</Title> : null}
-        {gameDescription ? <SubTitle>{gameDescription}</SubTitle> : null}
+        {titleGame ? <Title>{titleGame}</Title> : null}
+        {descGame ? <SubTitle>{descGame}</SubTitle> : null}
         <StyledButton onClick={closeModal}>
           <CloseIcon />
         </StyledButton>

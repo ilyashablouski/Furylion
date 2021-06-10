@@ -29,11 +29,11 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
   const openModal = useModal();
 
-  function onClick(gameDesc: string, gameTitle: string, url: string) {
+  function onClick(descGame: string, titleGame: string, url: string) {
     return () => {
       openModal(Game, {
-        gameDescription: gameDesc,
-        gameTitle: gameTitle,
+        descGame: descGame,
+        titleGame: titleGame,
         url: url,
       });
     };
@@ -62,13 +62,14 @@ function Gallery({ isRevert = false, itemList }: Props) {
             }}
           >
             {itemList.map((item, index) => {
+              console.log(item);
               return (
                 <SwiperSlide
                   key={index}
                   onClick={onClick(
-                    item.gameDescription ?? '',
-                    item.gameTitle ?? '',
-                    item.linkUrl ?? ''
+                    item.descriptionGame ?? '',
+                    item.titleGame ?? '',
+                    item.titleGame ?? ''
                   )}
                 >
                   <Card>
