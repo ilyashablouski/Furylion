@@ -15,8 +15,6 @@ function PortingBlock() {
   const page = useCurrentPage<PortingBlockType>();
   if (!page) return null;
 
-  console.log(page);
-
   const pageFields = page.templateFields;
   return (
     <Container>

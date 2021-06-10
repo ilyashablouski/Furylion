@@ -1,7 +1,6 @@
 import React, { RefObject, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
-import { throttle, debounce } from 'lodash';
 
 import {
   convertThumbnailToPictureImage,
@@ -15,7 +14,7 @@ type Props = {
   adsImages: Array<ThumbnailType>;
 };
 
-const rotate = 10;
+const rotate = 9.5;
 const translate = 20;
 
 function AdsSwiper({ adsImages }: Props) {
@@ -55,7 +54,7 @@ function AdsSwiper({ adsImages }: Props) {
 
       gsap.set(slide.current, {
         translateY: translate * Math.abs(resultIndex) ** 2,
-        translateX: translate - 5 * -resultIndex,
+        translateX: translate * -resultIndex,
         rotate: rotate * -resultIndex,
       });
     });
