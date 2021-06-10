@@ -83,6 +83,10 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
   ${media.tabletSmall(css`
     margin-top: 15px;
   `)}
+  & > {
+    position: absolute;
+  }
+
   &:before {
     content: '';
     position: absolute;
