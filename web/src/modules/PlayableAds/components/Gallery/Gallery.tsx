@@ -188,6 +188,7 @@ const Card = styled.div`
   flex: 1 1 100%;
   width: 100%;
   min-height: 263px;
+  max-height: 263px;
 
   transition: all 0.2s linear;
 
