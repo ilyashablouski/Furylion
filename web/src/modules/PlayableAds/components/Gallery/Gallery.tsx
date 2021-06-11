@@ -26,20 +26,18 @@ SwiperCore.use([Navigation]);
 function Gallery({ isRevert = false, itemList }: Props) {
   const [isMounted, setMounted] = useState(false);
 
-  console.log(itemList);
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const openModal = useModal();
 
-  function onClick(descGame: string, titleGame: string, url: string) {
+  function onClick(descGame: string, titleGame: string, file: File) {
     return () => {
       openModal(Game, {
         descGame: descGame,
         titleGame: titleGame,
-        url: url,
+        file: file,
       });
     };
   }
@@ -67,14 +65,13 @@ function Gallery({ isRevert = false, itemList }: Props) {
             }}
           >
             {itemList.map((item, index) => {
-              console.log(item);
               return (
                 <SwiperSlide
                   key={index}
                   onClick={onClick(
                     item.descriptionGame ?? '',
                     item.titleGame ?? '',
-                    item.linkUrl ?? ''
+                    item.file ?? ''
                   )}
                 >
                   <Card>

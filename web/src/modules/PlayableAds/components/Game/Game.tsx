@@ -13,10 +13,13 @@ import { StringFieldType } from '@/typings/common';
 type Props = ModalProps<{
   titleGame: StringFieldType;
   descGame: StringFieldType;
-  url: StringFieldType;
+  file: File;
 }>;
 
-function Game({ closeModal, innerProps: { descGame, titleGame, url } }: Props) {
+function Game({
+  closeModal,
+  innerProps: { descGame, titleGame, file },
+}: Props) {
   return (
     <Component>
       <Panel>
@@ -26,7 +29,7 @@ function Game({ closeModal, innerProps: { descGame, titleGame, url } }: Props) {
           <CloseIcon />
         </StyledButton>
       </Panel>
-      <Frame url={url} />
+      <Frame file={file} />
     </Component>
   );
 }

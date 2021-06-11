@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { useModal } from '@tager/web-components';
+import { ThumbnailType } from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';
@@ -112,7 +113,10 @@ function JobsSection() {
                   <Card key={vacancyItem.id}>
                     <JobCard
                       buttonTitle={jobCardButtonTitle}
-                      card={vacancyItem}
+                      card={{
+                        ...vacancyItem,
+                        image: vacancyItem?.image?.default ?? null,
+                      }}
                     />
                   </Card>
                 ))

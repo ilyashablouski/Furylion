@@ -18,13 +18,15 @@ return [
             'storage' => ConfigHelper::fileStorage('content'),
             'validator' => ConfigHelper::imageValidator(),
         ]),
-        FileScenario::Feedback => TagerImageScenario::wrap([
+        FileScenario::Feedback => [
             'storage' => ConfigHelper::fileStorage('feedback'),
             'validator' => ConfigHelper::defaultValidator(),
-        ]),
+        ],
         FileScenario::PlayableGame => [
             'storage' => ConfigHelper::fileStorage('playable'),
             'validator' => [
+                'maxSize' => 50 * 1024 * 1024,
+                'checkExtensionByMimeType' => false,
                 'extensions' => ['html']
             ]
         ],

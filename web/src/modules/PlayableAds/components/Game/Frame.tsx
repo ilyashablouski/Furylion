@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 import { ReactComponent as BlackLogo } from '@/assets/svg/preloader/black-logo.svg';
 import { ReactComponent as RedLogo } from '@/assets/svg/preloader/red-logo.svg';
-import { StringFieldType } from '@/typings/common';
 import { animationLogo } from '@/components/Preloader/Preloader.styles';
 
-function Frame({ url }: { url: StringFieldType }) {
+function Frame({ file }: { file: File }) {
   const loaderRef = useRef<HTMLDivElement>(null);
+
+  const instance = new FileReader();
+  instance.readAsText(file);
+
+  const data = typeof instance.result === 'string' ? instance.result : '';
 
   function onLoad() {
     if (loaderRef.current) {
@@ -25,7 +29,7 @@ function Frame({ url }: { url: StringFieldType }) {
           </WrapperIconLogo>
         </Inner>
       </Loader>
-      <Iframe onLoad={onLoad} src={url ?? ''} frameBorder="0" />
+      <Iframe onLoad={onLoad} srcDoc={data} frameBorder="0" />
     </>
   );
 }

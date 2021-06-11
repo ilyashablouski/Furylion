@@ -3,6 +3,7 @@
 namespace App\Tager\Templates;
 
 use App\Enums\FileScenario;
+use OZiTAG\Tager\Backend\Fields\Fields\FileField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
@@ -25,15 +26,15 @@ class PlayableAdsTemplate extends Template
                 'headAdsText' => new StringField('Text'),
                 'headAdsItemsTop' => new RepeaterField('Slider Items Top', [
                     'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
-                    'linkUrl' => new StringField('URL'),
+                    'file' => new FileField('File', FileScenario::PlayableGame),
                     'titleGame' => new StringField('Title Game'),
                     'descriptionGame' => new StringField('Description Game'),
                 ]),
                 'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
-                'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
-                'linkUrl' => new StringField('URL'),
-                'titleGame' => new StringField('Title Game'),
-                'descriptionGame' => new StringField('Description Game'),
+                    'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
+                    'file' => new FileField('File', FileScenario::PlayableGame),
+                    'titleGame' => new StringField('Title Game'),
+                    'descriptionGame' => new StringField('Description Game'),
                 ]),
             ]),
 

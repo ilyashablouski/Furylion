@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { convertThumbnailToPictureProps } from '@tager/web-modules';
+import { convertThumbnailToPictureImage } from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
 import { ServiceItemType } from '@/typings/model';
@@ -18,10 +18,10 @@ function ServiceItem({ image, title, text, linkLabel, className }: Props) {
     <>
       <ImageContainer>
         <Picture
-          mobileSmall={convertThumbnailToPictureProps(image?.mobile)}
-          mobileLarge={convertThumbnailToPictureProps(image?.tablet)}
-          tabletSmall={convertThumbnailToPictureProps(image?.laptop)}
-          desktop={convertThumbnailToPictureProps(image?.desktop)}
+          mobileSmall={convertThumbnailToPictureImage(image?.mobile)}
+          mobileLarge={convertThumbnailToPictureImage(image?.tablet)}
+          tabletSmall={convertThumbnailToPictureImage(image?.laptop)}
+          desktop={convertThumbnailToPictureImage(image?.desktop)}
           className="item-image-container"
         />
       </ImageContainer>

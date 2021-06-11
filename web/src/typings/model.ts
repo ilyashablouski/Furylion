@@ -131,7 +131,7 @@ export interface TechSectionType extends PageFullType {
     technologiesId: StringFieldType;
     technologiesTitle: StringFieldType;
     technologiesText: StringFieldType;
-    technologiesLogos: Array<ThumbnailType>;
+    technologiesLogos: Array<{ default: ThumbnailType }>;
     technologiesImage: Nullable<ThumbnailType>;
     technologiesMobileImage: Nullable<ThumbnailType>;
     technologiesTextAdditional: StringFieldType;
@@ -163,7 +163,7 @@ export interface PlatformSectionType extends PageFullType {
 export interface TeamSectionType extends PageFullType {
   templateFields: {
     teamId: StringFieldType;
-    teamItems: Array<ThumbnailType>;
+    teamItems: Array<{ default: ThumbnailType }>;
     teamButtonLabel: StringFieldType;
     teamButtonUrl: StringFieldType;
     teamButtonIsNewTab: boolean;
@@ -186,7 +186,7 @@ export interface VacancyShortType {
   tags: StringFieldType;
   urlAlias: StringFieldType;
   location: StringFieldType;
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{ default: ThumbnailType }>;
   typeOfWork: StringFieldType;
   level: StringFieldType;
 }
@@ -413,7 +413,7 @@ export interface AdsSectionType extends PageFullType {
     adsText1: StringFieldType;
     adsText2: StringFieldType;
     adsText3: StringFieldType;
-    adsImages: Array<ThumbnailType>;
+    adsImages: Array<{ default: ThumbnailType }>;
     adsButtonLabel: StringFieldType;
     adsButtonUrl: StringFieldType;
   };
@@ -421,7 +421,7 @@ export interface AdsSectionType extends PageFullType {
 
 export type AdsHeadItemType = {
   image: ThumbnailType;
-  linkUrl: StringFieldType;
+  file: File;
   titleGame: StringFieldType;
   descriptionGame: StringFieldType;
 };
