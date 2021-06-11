@@ -7,6 +7,8 @@
 .yalc
 yalc.lock
 
+public/app-ads.txt
+
 # testing
 /coverage
 
