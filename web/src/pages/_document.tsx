@@ -2,7 +2,6 @@ import React from 'react';
 import Document, {
   DocumentContext,
   DocumentInitialProps,
-  Head,
   Html,
   Main,
 } from 'next/document';
@@ -14,7 +13,7 @@ import {
   getAnalyticsSettings,
   SiteVerificationMeta,
 } from '@tager/web-analytics';
-import { TagerNextScript } from '@tager/web-components';
+import { TagerNextScript, TagerNextHead } from '@tager/web-components';
 
 type CustomDocumentProps = {
   settings: Nullable<AnalyticsSettingsType>;
@@ -67,11 +66,10 @@ class CustomDocument extends Document<CustomDocumentProps> {
     const { settings } = this.props;
 
     const themeColor = '#000000';
-    //const appName = 'TAGER Web App';
 
     return (
       <Html lang="en">
-        <Head>
+        <TagerNextHead>
           <SiteVerificationMeta
             google={settings?.googleVerification}
             yandex={settings?.yandexVerification}
@@ -135,7 +133,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
               <meta name="msapplication-TileColor" content={themeColor} />
             </>
           ) : null}
-        </Head>
+        </TagerNextHead>
         <body style={{ display: 'block', overflow: 'hidden' }}>
           <Main />
           <script src="/static/js/global.js" defer />
