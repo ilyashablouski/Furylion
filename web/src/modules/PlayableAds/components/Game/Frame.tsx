@@ -1,27 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as BlackLogo } from '@/assets/svg/preloader/black-logo.svg';
 import { ReactComponent as RedLogo } from '@/assets/svg/preloader/red-logo.svg';
 import { animationLogo } from '@/components/Preloader/Preloader.styles';
+import { StringFieldType } from '@/typings/common';
 
-function Frame({ file }: { file: File }) {
+function Frame({ file }: { file: { url: StringFieldType } }) {
   const loaderRef = useRef<HTMLDivElement>(null);
-  const [htmlFile, setFile] = useState<string | ArrayBuffer | null>(null);
-
-  const instance = new FileReader();
-  instance.readAsText(file);
-  instance.onload = function () {
-    setFile(instance.result);
-  };
-
-  const data = typeof htmlFile === 'string' ? htmlFile : '';
 
   function onLoad() {
-    if (loaderRef.current && htmlFile) {
+    if (loaderRef.current) {
       loaderRef.current.style.display = 'none';
     }
   }
+
+  if (!file.url) return null;
 
   return (
     <>
@@ -33,7 +27,7 @@ function Frame({ file }: { file: File }) {
           </WrapperIconLogo>
         </Inner>
       </Loader>
-      <Iframe onLoad={onLoad} srcDoc={data} frameBorder="0" />
+      <Iframe onLoad={onLoad} src={file.url} frameBorder="0" />
     </>
   );
 }

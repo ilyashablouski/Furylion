@@ -16,7 +16,8 @@ type Props = {
 function ImagesRow({ galleryItems }: Props) {
   return (
     <Container>
-      {galleryItems.length > 0 &&
+      {galleryItems &&
+        galleryItems.length > 0 &&
         galleryItems.map((galleryItem, index) => (
           <PictureItem key={index}>
             {galleryItem.action === 'scroll' ? (
@@ -91,6 +92,7 @@ const PictureItem = styled.div`
     &:not(:first-child) {
       margin-left: 40px;
     }
+
     flex-basis: 100px;
     height: 190px;
   `)}
