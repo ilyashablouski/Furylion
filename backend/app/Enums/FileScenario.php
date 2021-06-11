@@ -32,4 +32,5 @@ final class FileScenario extends Enum
     const ServicesCoDevelopmentLogos = 'services-co-development-logos';
     const ServicesAds = 'services-ads';
     const PlayableAdsHead = 'playable-ads-head';
+    const PlayableGame = 'playable-game';
 }
