@@ -22,6 +22,12 @@ return [
             'storage' => ConfigHelper::fileStorage('feedback'),
             'validator' => ConfigHelper::defaultValidator(),
         ]),
+        FileScenario::PlayableGame => [
+            'storage' => ConfigHelper::fileStorage('playable'),
+            'validator' => [
+                'extensions' => ['html']
+            ]
+        ],
         FileScenario::Cv => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('cv'),
             'validator' => [
