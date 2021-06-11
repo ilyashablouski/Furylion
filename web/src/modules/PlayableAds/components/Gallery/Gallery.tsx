@@ -26,8 +26,6 @@ SwiperCore.use([Navigation]);
 function Gallery({ isRevert = false, itemList }: Props) {
   const [isMounted, setMounted] = useState(false);
 
-  console.log(itemList);
-
   useEffect(() => {
     setMounted(true);
   }, []);
