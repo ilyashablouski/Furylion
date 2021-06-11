@@ -93,6 +93,11 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(null, 750)
         ]),
+        FileScenario::ServicesFullStackDevelopment => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('services-page'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(null, 219)
+        ]),
         FileScenario::ServicesProductionMedia => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('services-page'),
             'validator' => ConfigHelper::imageValidator(),

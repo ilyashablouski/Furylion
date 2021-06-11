@@ -35,7 +35,7 @@ function ReengagementSection() {
           <SkewButton
             href={pageFields.reengagementButtonUrl}
             color="redDark"
-            isNewTab={true}
+            isNewTab={pageFields.reengagementButtonIsNewTab}
           >
             {pageFields.reengagementButtonLabel}
           </SkewButton>

@@ -36,7 +36,7 @@ function CpiSection() {
           <SkewButton
             href={pageFields.cpiButtonUrl}
             color="dark"
-            isNewTab={true}
+            isNewTab={pageFields.cpiButtonIsNewTab}
           >
             {pageFields.cpiButtonLabel}
           </SkewButton>

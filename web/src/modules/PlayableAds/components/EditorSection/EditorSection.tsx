@@ -30,7 +30,7 @@ function EditorSection() {
                 color="redWhite"
                 href={pageFields.editorButtonUrl ?? '#'}
                 className="skew-button"
-                isNewTab={true}
+                isNewTab={pageFields.editorButtonIsNewTab}
               >
                 {pageFields.editorButtonLabel}
               </SkewButton>
