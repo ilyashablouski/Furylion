@@ -2,10 +2,9 @@
 
 use App\Enums\SettingKey;
 use App\Enums\FileScenario;
-use \OZiTAG\Tager\Backend\Fields\Enums\FieldType;
+use OZiTAG\Tager\Backend\Fields\Enums\FieldType;
 use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
 use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
-use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 
 return [
     'Open vacancy' => [
@@ -13,7 +12,13 @@ return [
             'type' => FieldType::String,
             'label' => 'Title'
         ],
-        SettingKey::OpenVacancyImage => new ImageField('Image', FileScenario::VacancyImage),
+        SettingKey::OpenVacancyImage => [
+            'type' => FieldType::Image,
+            'label' => 'Image',
+            'meta' => [
+                'scenario' => FileScenario::VacancyImage
+            ]
+        ],
         SettingKey::OpenVacancyDescription => [
             'type' => FieldType::Text,
             'label' => 'Description'
