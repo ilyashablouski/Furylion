@@ -91,7 +91,7 @@
 import { getVacancyListUrl, getVacancyLocationFormUrl } from '@/utils/paths';
 import { computed, defineComponent } from '@vue/composition-api';
 import {
-  deleteVacancy,
+  deleteVacancyLocation,
   getVacancyLocationsList,
   moveVacancyLocation,
 } from '@/services/requests';
@@ -169,7 +169,7 @@ export default defineComponent({
       handleResourceDelete: handleVacancyLocationDelete,
       isDeleting,
     } = useResourceDelete({
-      deleteResource: deleteVacancy,
+      deleteResource: deleteVacancyLocation,
       resourceName: 'Location',
       onSuccess: fetchVacancyLocationsList,
       context,
