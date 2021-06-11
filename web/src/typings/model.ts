@@ -525,6 +525,8 @@ export interface EditorFormType extends PageFullType {
     formProfileTitle: StringFieldType;
     formProfileImage: ThumbnailType;
     formProfileLabel: StringFieldType;
+    formProfileEmail: StringFieldType;
+    formProfilePosition: StringFieldType;
   };
 }
 

@@ -12,12 +12,15 @@ import { StringFieldType } from '@/typings/common';
 import ContactsFormContainer from '@/components/form';
 import { media } from '@/utils/mixin';
 import Picture from '@/components/Picture';
+import Link from '@/components/Link';
 
 type Props = {
   formTitle?: StringFieldType;
   formProfileTitle?: StringFieldType;
   formProfileImage?: ThumbnailType;
   formProfileLabel?: StringFieldType;
+  formProfileEmail?: StringFieldType;
+  formProfilePosition?: StringFieldType;
   className?: string;
   isModal?: boolean;
   isProfileInfo?: boolean;
@@ -30,6 +33,8 @@ function FeedbackSection({
   formProfileTitle,
   formProfileImage,
   formProfileLabel,
+  formProfileEmail,
+  formProfilePosition,
   className,
   isCvForm = false,
   isModal = false,
@@ -55,6 +60,14 @@ function FeedbackSection({
                   mobileSmall={convertThumbnailToPictureImage(formProfileImage)}
                 />
                 <ProfileName>{formProfileLabel}</ProfileName>
+                {formProfilePosition ? (
+                  <ProfileName>{formProfilePosition}</ProfileName>
+                ) : null}
+                {formProfileEmail ? (
+                  <ProfileEmail to={`mailto:${formProfileEmail}`}>
+                    {formProfileEmail}
+                  </ProfileEmail>
+                ) : null}
               </ProfileInfo>
             </Left>
           )}
@@ -224,6 +237,20 @@ const ProfileImage = styled(Picture)`
   }
 `;
 const ProfileName = styled.span`
+  margin-top: 20px;
+  display: block;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+  text-transform: capitalize;
+  color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 20px;
+  `)}
+`;
+
+const ProfileEmail = styled(Link)`
   margin-top: 20px;
   display: block;
   font-weight: 500;
