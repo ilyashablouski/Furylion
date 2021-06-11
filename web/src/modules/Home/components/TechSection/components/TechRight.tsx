@@ -15,7 +15,7 @@ type Props = {
   data: {
     title?: StringFieldType;
     text?: StringFieldType;
-    logos?: Array<ThumbnailType>;
+    logos?: Array<{ default: ThumbnailType }>;
     addText?: StringFieldType;
     btnFirstLabel?: StringFieldType;
     btnFirstUrl?: StringFieldType;
@@ -27,6 +27,8 @@ type Props = {
 };
 
 function TechRight({ data }: Props) {
+  console.log(data);
+
   return (
     <Container>
       <Title>{data.title}</Title>
@@ -36,7 +38,9 @@ function TechRight({ data }: Props) {
           {data.logos
             ? data.logos.map((logo, index) => (
                 <Logo key={index}>
-                  <Picture mobileSmall={convertThumbnailToPictureImage(logo)} />
+                  <Picture
+                    mobileSmall={convertThumbnailToPictureImage(logo.default)}
+                  />
                 </Logo>
               ))
             : null}
