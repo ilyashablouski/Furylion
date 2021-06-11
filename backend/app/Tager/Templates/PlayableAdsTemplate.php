@@ -13,6 +13,7 @@ use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
 use OZiTAG\Tager\Backend\Fields\Fields\UrlField;
+use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 
 class PlayableAdsTemplate extends Template
 {
@@ -55,6 +56,7 @@ class PlayableAdsTemplate extends Template
                 'rateRightText' => new TextField('Right Text'),
                 'rateButtonLabel' => new StringField('Button - Text'),
                 'rateButtonUrl' => new StringField('Button - URL'),
+                'rateButtonIsNewTab' => new TrueFalseField('Button - is new tab?'),
             ]),
 
             new GroupField('CPI', [
@@ -63,6 +65,7 @@ class PlayableAdsTemplate extends Template
                 'cpiImage' => new ImageField('Image'),
                 'cpiButtonLabel' => new StringField('Button - Text'),
                 'cpiButtonUrl' => new StringField('Button - URL'),
+                'cpiButtonIsNewTab' => new TrueFalseField('Button - is new tab?'),
             ]),
 
             new GroupField('Reengagement', [
@@ -73,6 +76,7 @@ class PlayableAdsTemplate extends Template
                 'reengagementText3' => new TextField('Text - 3'),
                 'reengagementButtonLabel' => new StringField('Button - Text'),
                 'reengagementButtonUrl' => new StringField('Button - URL'),
+                'reengagementButtonIsNewTab' => new TrueFalseField('Button - is new tab?'),
             ]),
 
             new GroupField('Framework', [
@@ -86,6 +90,7 @@ class PlayableAdsTemplate extends Template
                 ]),
                 'frameworkButtonLabel' => new StringField('Button - Text'),
                 'frameworkButtonUrl' => new StringField('Button - URL'),
+                'frameworkButtonIsNewTab' => new TrueFalseField('Button - is new tab?'),
             ]),
 
             new GroupField('Networks', [
@@ -101,7 +106,8 @@ class PlayableAdsTemplate extends Template
                 'editorText' => new TextField('Text'),
                 'editorImage' => new ImageField('Image'),
                 'editorButtonLabel' => new StringField('Button - Text'),
-                'editorButtonUrl' => new StringField('Button - URL')
+                'editorButtonUrl' => new StringField('Button - URL'),
+                'editorButtonIsNewTab' => new TrueFalseField('Button - is new tab?'),
             ]),
 
             new GroupField('Do you want', [
