@@ -144,6 +144,8 @@ class PlayableAdsTemplate extends Template
                 'formProfileTitle' => new StringField('Profile Title'),
                 'formProfileImage' => new ImageField('Profile Image'),
                 'formProfileLabel' => new StringField('Profile Label'),
+                'formProfileEmail' => new StringField('Profile Email'),
+                'formProfilePosition' => new StringField('Profile Position'),
             ]),
         ]);
     }
