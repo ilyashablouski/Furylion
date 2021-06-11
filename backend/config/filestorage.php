@@ -6,7 +6,11 @@ use App\Enums\FileScenario;
 
 return [
     'defaultStorage' => ConfigHelper::temporaryStorage(),
-    'defaultValidator' => ConfigHelper::defaultValidator(),
+    'defaultValidator' => [
+        'maxSize' => 50 * 1024 * 1024,
+        'checkExtensionByMimeType' => false,
+        'extensions' => ['html', 'jpg', 'jpeg', 'png', 'zip', 'docx', 'pdf', 'doc', 'rar', 'xls', 'xlsx', 'pptx', 'ppt', 'gif', 'mp4', 'svg', 'fig', 'psd', 'txt', 'csv']
+    ],
 
     'scenarios' => [
         FileScenario::OpenGraph => TagerImageScenario::wrap([
