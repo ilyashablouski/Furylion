@@ -18,10 +18,10 @@ return [
             'storage' => ConfigHelper::fileStorage('content'),
             'validator' => ConfigHelper::imageValidator(),
         ]),
-        FileScenario::Feedback => TagerImageScenario::wrap([
+        FileScenario::Feedback => [
             'storage' => ConfigHelper::fileStorage('feedback'),
             'validator' => ConfigHelper::defaultValidator(),
-        ]),
+        ],
         FileScenario::PlayableGame => [
             'storage' => ConfigHelper::fileStorage('playable'),
             'validator' => [
