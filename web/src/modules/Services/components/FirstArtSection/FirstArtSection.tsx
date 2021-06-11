@@ -20,6 +20,8 @@ function FirstArtSection({
   const vectorRef = useRef<HTMLDivElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
 
+  console.log(page?.templateFields.firstArtImages);
+
   useEffect(() => {
     let tw: gsap.core.Tween;
     const delayedCall = gsap.delayedCall(0, () => {

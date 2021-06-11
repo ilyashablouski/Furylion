@@ -110,7 +110,7 @@ class ServicesTemplate extends Template
                 'developmentId' => new StringField('id'),
                 'developmentTitle' => new StringField('Title'),
                 'developmentItems' => new RepeaterField('Items', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::ServicesFullStackDevelopment),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
                     'logos' => new RepeaterField('Logo Items', [

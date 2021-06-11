@@ -3,13 +3,10 @@ import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { useMedia } from '@tager/web-core';
-
 import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { DoYouWantSectionType } from '@/typings/model';
 import { colors } from '@/constants/theme';
-import ContentContainer from '@/components/ContentContainer';
 
 import ImagesRow from './components/ImagesRow';
 
@@ -19,28 +16,36 @@ function DoYouWantSection() {
   const page = useCurrentPage<DoYouWantSectionType>();
   const titleRef = useRef<HTMLSpanElement>(null);
 
-  const isDesktop = useMedia(`(min-width: 1400px)`);
-
   useEffect(() => {
     let tw: gsap.core.Tween;
     if (!titleRef.current) return;
 
-    const xPercent = isDesktop ? -10 : 0;
+    let percent: gsap.TweenValue = 100;
+
+    ScrollTrigger.matchMedia({
+      '(min-width: 768px)': function () {
+        percent = 110;
+      },
+      '(min-width: 1367px)': function () {
+        percent = 100;
+      },
+    });
 
     tw = gsap.to(titleRef.current, {
-      translateX: xPercent,
+      xPercent: percent,
       scrollTrigger: {
         trigger: titleRef.current,
         scrub: 1,
         start: '-520% 30%',
         end: 'top 15%',
+        markers: true,
       },
     });
 
     return () => {
       tw?.kill();
     };
-  }, []);
+  }, [titleRef.current]);
 
   if (!page) return null;
 
@@ -53,9 +58,7 @@ function DoYouWantSection() {
     <Wrapper id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
-          <ContentContainer>
-            <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
-          </ContentContainer>
+          <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
         </TitleBlock>
         <ImagesContainer>
           <ImagesRow galleryItems={firstGalleryItems} />
@@ -115,6 +118,7 @@ const Title = styled.span`
   `)}
 
   ${media.mobile(css`
+    padding: 0 20px;
     font-size: 32px;
     max-width: 365px;
   `)}
