@@ -3199,16 +3199,16 @@
         },
         {
             "name": "ozerich/laravel-filestorage-db",
-            "version": "0.5.4",
+            "version": "0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ozerich/laravel-filestorage-db.git",
-                "reference": "f5540334887dd87c97eaac59bf72376b33dd6c4f"
+                "reference": "adb6ec009ef7ef519edd14a2210852e5ae367b59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ozerich/laravel-filestorage-db/zipball/f5540334887dd87c97eaac59bf72376b33dd6c4f",
-                "reference": "f5540334887dd87c97eaac59bf72376b33dd6c4f",
+                "url": "https://api.github.com/repos/Ozerich/laravel-filestorage-db/zipball/adb6ec009ef7ef519edd14a2210852e5ae367b59",
+                "reference": "adb6ec009ef7ef519edd14a2210852e5ae367b59",
                 "shasum": ""
             },
             "require": {
@@ -3248,9 +3248,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Ozerich/laravel-filestorage-db/issues",
-                "source": "https://github.com/Ozerich/laravel-filestorage-db/tree/0.5.4"
+                "source": "https://github.com/Ozerich/laravel-filestorage-db/tree/0.5.5"
             },
-            "time": "2021-04-21T14:44:12+00:00"
+            "time": "2021-06-11T17:22:08+00:00"
         },
         {
             "name": "ozitag/tager-backend-admin",
