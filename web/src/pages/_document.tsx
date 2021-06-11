@@ -67,7 +67,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
     const { settings } = this.props;
 
     const themeColor = '#000000';
-    const appName = 'TAGER Web App';
+    //const appName = 'TAGER Web App';
 
     return (
       <Html lang="en">
@@ -121,7 +121,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
             content="/favicon/browserconfig.xml"
           />
 
-          {appName ? <meta name="application-name" content={appName} /> : null}
+          {/*{appName ? <meta name="application-name" content={appName} /> : null}*/}
 
           {themeColor ? (
             <>
