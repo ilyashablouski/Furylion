@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 
-import { convertThumbnailToPictureImage } from '@tager/web-modules';
+import {
+  convertThumbnailToPictureImage,
+  convertThumbnailToPictureProps,
+} from '@tager/web-modules';
 import { useModal } from '@tager/web-components';
 
 import { AdsHeadItemType } from '@/typings/model';
@@ -22,6 +25,8 @@ SwiperCore.use([Navigation]);
 
 function Gallery({ isRevert = false, itemList }: Props) {
   const [isMounted, setMounted] = useState(false);
+
+  console.log(itemList);
 
   useEffect(() => {
     setMounted(true);
@@ -75,7 +80,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                   <Card>
                     <Picture
                       useSpinner
-                      {...convertThumbnailToPictureImage(item.image)}
+                      {...convertThumbnailToPictureProps(item.image)}
                     />
                   </Card>
                 </SwiperSlide>

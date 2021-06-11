@@ -1,6 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import {
+  convertThumbnailToPictureImage,
+  convertThumbnailToPictureProps,
+} from '@tager/web-modules';
+
 import { ReactComponent as ClockIcon } from '@/assets/svg/vacancy/clock.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
@@ -29,18 +34,15 @@ function JobCard({
 
   const tagsArray = tags ? tags.split(',') : [];
 
+  console.log(image);
+
   return (
     <Container className={className} onClick={onClick} isHeroCard={isHeroCard}>
       {!isHeroCard && <JobLink to={`careers/${urlAlias}`} />}
       <Title heroCard={isHeroCard}>{title}</Title>
       <ImageContainer heroCard={isHeroCard}>
         <Picture
-          mobileSmall={{
-            src: image?.url,
-            src2x: image?.url_2x,
-            webp: image?.url_webp,
-            webp2x: image?.url_webp_2x,
-          }}
+          {...convertThumbnailToPictureProps(image)}
           className={'vacancy-image-block'}
         />
 

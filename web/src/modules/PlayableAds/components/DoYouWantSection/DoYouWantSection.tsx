@@ -38,7 +38,6 @@ function DoYouWantSection() {
         scrub: 1,
         start: '-520% 30%',
         end: 'top 15%',
-        markers: true,
       },
     });
 
