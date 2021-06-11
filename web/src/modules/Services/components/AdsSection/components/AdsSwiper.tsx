@@ -27,8 +27,6 @@ function AdsSwiper({ adsImages }: Props) {
     });
   }
 
-  console.log(adsImages);
-
   function getSlideWidth() {
     const slideList = slideListRef.current;
     if (!slideList.length) return 0;
