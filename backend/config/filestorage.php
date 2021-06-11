@@ -61,7 +61,12 @@ return [
         FileScenario::HomeServicesItems => [
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1270)
+            'thumbnails' => [
+                "mobile" => ConfigHelper::thumbWithWebpAnd2x(768),
+                "tablet" => ConfigHelper::thumbWithWebpAnd2x(1024),
+                "laptop" => ConfigHelper::thumbWithWebpAnd2x(1260),
+                "desktop" => ConfigHelper::thumbWithWebpAnd2x(1400),
+            ]
         ],
         FileScenario::HomeTechnologiesGallery => [
             'storage' => ConfigHelper::fileStorage('home-page'),
