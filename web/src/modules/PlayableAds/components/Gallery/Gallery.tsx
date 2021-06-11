@@ -34,12 +34,12 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
   const openModal = useModal();
 
-  function onClick(descGame: string, titleGame: string, url: string) {
+  function onClick(descGame: string, titleGame: string, file: File) {
     return () => {
       openModal(Game, {
         descGame: descGame,
         titleGame: titleGame,
-        url: url,
+        file: file,
       });
     };
   }
@@ -74,7 +74,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                   onClick={onClick(
                     item.descriptionGame ?? '',
                     item.titleGame ?? '',
-                    item.linkUrl ?? ''
+                    item.file ?? ''
                   )}
                 >
                   <Card>
