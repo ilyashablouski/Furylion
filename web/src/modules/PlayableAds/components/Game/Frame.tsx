@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as BlackLogo } from '@/assets/svg/preloader/black-logo.svg';
@@ -7,14 +7,18 @@ import { animationLogo } from '@/components/Preloader/Preloader.styles';
 
 function Frame({ file }: { file: File }) {
   const loaderRef = useRef<HTMLDivElement>(null);
+  const [htmlFile, setFile] = useState<string | ArrayBuffer | null>(null);
 
   const instance = new FileReader();
   instance.readAsText(file);
+  instance.onload = function () {
+    setFile(instance.result);
+  };
 
-  const data = typeof instance.result === 'string' ? instance.result : '';
+  const data = typeof htmlFile === 'string' ? htmlFile : '';
 
   function onLoad() {
-    if (loaderRef.current) {
+    if (loaderRef.current && htmlFile) {
       loaderRef.current.style.display = 'none';
     }
   }
