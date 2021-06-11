@@ -34,8 +34,6 @@ function JobCard({
 
   const tagsArray = tags ? tags.split(',') : [];
 
-  console.log(image);
-
   return (
     <Container className={className} onClick={onClick} isHeroCard={isHeroCard}>
       {!isHeroCard && <JobLink to={`careers/${urlAlias}`} />}

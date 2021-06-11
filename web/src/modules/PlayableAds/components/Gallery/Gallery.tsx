@@ -65,7 +65,6 @@ function Gallery({ isRevert = false, itemList }: Props) {
             }}
           >
             {itemList.map((item, index) => {
-              console.log(item);
               return (
                 <SwiperSlide
                   key={index}

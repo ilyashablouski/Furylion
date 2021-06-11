@@ -27,8 +27,6 @@ type Props = {
 };
 
 function TechRight({ data }: Props) {
-  console.log(data);
-
   return (
     <Container>
       <Title>{data.title}</Title>
