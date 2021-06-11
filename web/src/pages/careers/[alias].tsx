@@ -37,7 +37,7 @@ function CareersVacancy(props: Props) {
     <Page
       title={props.vacancy.pageTitle}
       description={props.vacancy.pageDescription}
-      openGraphImage={props.vacancy.openGraphImage ?? props.vacancy.image?.url}
+      openGraphImage={props.vacancy.openGraphImage ?? props.vacancy.image?.default?.url}
     >
       <Layout>
         <Vacancy />
