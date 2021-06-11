@@ -31,10 +31,10 @@ class PlayableAdsTemplate extends Template
                     'descriptionGame' => new StringField('Description Game'),
                 ]),
                 'headAdsItemsBottom' => new RepeaterField('Slider Items Bottom', [
-                'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
-                'file' => new FileField('File', FileScenario::PlayableGame),
-                'titleGame' => new StringField('Title Game'),
-                'descriptionGame' => new StringField('Description Game'),
+                    'image' => new ImageField('Image', FileScenario::PlayableAdsHead),
+                    'file' => new FileField('File', FileScenario::PlayableGame),
+                    'titleGame' => new StringField('Title Game'),
+                    'descriptionGame' => new StringField('Description Game'),
                 ]),
             ]),
 
