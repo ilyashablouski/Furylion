@@ -14,7 +14,7 @@ import VacancyCard from './components/VacancyCard';
 function JobSection() {
   const vacancyFullListTypeData = useCurrentVacancy();
   const vacancyData = vacancyFullListTypeData?.data;
-  const image = vacancyFullListTypeData?.data?.image;
+  const image = vacancyFullListTypeData?.data?.image?.default;
   const tags = vacancyFullListTypeData?.data?.tags;
   const tagsArray = tags ? tags.split(',') : [];
   const introFirstText = vacancyFullListTypeData?.data?.introduction;

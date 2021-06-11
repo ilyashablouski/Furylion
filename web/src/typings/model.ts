@@ -199,7 +199,7 @@ export interface VacancyFullType {
   conditions: StringFieldType;
   excerpt: StringFieldType;
   title: StringFieldType;
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{ default: ThumbnailType }>;
   introduction: StringFieldType;
   introductionSecond: StringFieldType;
   introductionThird: StringFieldType;
