@@ -101,7 +101,12 @@ export interface WorksSectionType extends PageFullType {
 }
 
 export type ServiceItemType = {
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{
+    mobile: ThumbnailType;
+    tablet: ThumbnailType;
+    laptop: ThumbnailType;
+    desktop: ThumbnailType;
+  }>;
   title: StringFieldType;
   text: StringFieldType;
   linkLabel: StringFieldType;
