@@ -452,6 +452,7 @@ export interface RateSectionType extends PageFullType {
     rateRightText: StringFieldType;
     rateButtonLabel: StringFieldType;
     rateButtonUrl: StringFieldType;
+    rateButtonIsNewTab: boolean;
   };
 }
 
@@ -462,6 +463,7 @@ export interface CpiSectionType extends PageFullType {
     cpiImage: ThumbnailType;
     cpiButtonLabel: StringFieldType;
     cpiButtonUrl: StringFieldType;
+    cpiButtonIsNewTab: boolean;
   };
 }
 
@@ -474,6 +476,7 @@ export interface ReengagementSectionType extends PageFullType {
     reengagementText3: StringFieldType;
     reengagementButtonLabel: StringFieldType;
     reengagementButtonUrl: StringFieldType;
+    reengagementButtonIsNewTab: boolean;
   };
 }
 
@@ -491,6 +494,7 @@ export interface FrameworkSectionType extends PageFullType {
     frameworkItems: Array<FrameworkItemType>;
     frameworkButtonLabel: StringFieldType;
     frameworkButtonUrl: StringFieldType;
+    frameworkButtonIsNewTab: boolean;
   };
 }
 
@@ -511,6 +515,7 @@ export interface EditorSectionType extends PageFullType {
     editorButtonLabel: StringFieldType;
     editorButtonUrl: StringFieldType;
     editorImage: ThumbnailType;
+    editorButtonIsNewTab: boolean;
   };
 }
 
