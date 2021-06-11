@@ -38,6 +38,8 @@ function PlayableAds() {
         formProfileTitle={pageFields.formProfileTitle}
         formProfileImage={pageFields.formProfileImage}
         formProfileLabel={pageFields.formProfileLabel}
+        formProfileEmail={pageFields.formProfileEmail}
+        formProfilePosition={pageFields.formProfilePosition}
         isProfileInfo={true}
         idAnchor="contacts"
       />

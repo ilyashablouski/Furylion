@@ -5,6 +5,7 @@ use App\Enums\FileScenario;
 use \OZiTAG\Tager\Backend\Fields\Enums\FieldType;
 use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
 use OZiTAG\Tager\Backend\Fields\Fields\SelectField;
+use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 
 return [
     'Open vacancy' => [
