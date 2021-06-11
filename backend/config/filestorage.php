@@ -30,7 +30,7 @@ return [
             'storage' => ConfigHelper::fileStorage('playable'),
             'validator' => [
                 'maxSize' => 50 * 1024 * 1024,
-                'checkExtensionByMimeType' => false,
+                'checkExtensionByMimeType' => true,
                 'extensions' => ['html']
             ]
         ],
