@@ -1,9 +1,11 @@
 <?php
 
+use App\Enums\EmailTemplate;
+
 return [
     'debug' => env('TAGER_MAIL_DEBUG'),
     'templates' => [
-        \App\Enums\EmailTemplate::Contact => [
+        EmailTemplate::Contact => [
             'name' => 'Contact form',
             'templateParams' => [
                 'name' => 'Name',
@@ -15,6 +17,34 @@ return [
             'recipients' => [
                 'v.ozierski@ozitag.com'
             ],
-        ]
+        ],
+        EmailTemplate::Feedback => [
+            'name' => 'Home feedback form',
+            'templateParams' => [
+                'name' => 'Name',
+                'company' => 'Company',
+                'email' => 'E-Mail',
+                'message' => 'Message',
+            ],
+            'subject' => 'New feedback',
+            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Company:</b> {{company}}</p><p><b>E-Mail</b> {{email}}</p><p><b>Message</b> {{message}}</p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
+        EmailTemplate::Cv => [
+            'name' => 'Cv form',
+            'templateParams' => [
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'email' => 'E-Mail',
+                'message' => 'Message',
+            ],
+            'subject' => 'New Cv',
+            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail</b> {{email}}</p><p><b>Message</b> {{message}}</p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
     ]
 ];

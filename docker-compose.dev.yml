@@ -40,13 +40,11 @@ services:
       dockerfile: Dockerfile
     environment:
       BASE_PATH: /admin/auth
-      PAGE_TITLE: "OZiTAG - Login - Dev"
+      PAGE_TITLE: "FuryLion - Login - Dev"
       LOGO: "logo.svg"
       LANGUAGE: "EN"
-      BRAND_COLOR: "#DD6900"
-      # RECAPTCHA_SITE_KEY: "..."
-      # RECAPTCHA_VERSION: "2" | "2-invisible" | "3"
-      # GOOGLE_CLIENT_ID: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      BRAND_COLOR: "#C2191E"
+      GOOGLE_CLIENT_ID: "160741798000-t304q24ksfik1mr3kaj5mtlctf8l8747"
     networks:
       - app-network
   backend:
@@ -72,6 +70,7 @@ services:
       PHP_POST_MAX_SIZE: 64M
       PHP_MAX_EXECUTION_TIME: 18000
       SERVICE_NGINX_CLIENT_MAX_BODY_SIZE: 100M
+      php.opcache.optimization_level: 0
     networks:
       - app-network
   db:

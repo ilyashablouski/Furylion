@@ -2,6 +2,7 @@ import React from 'react';
 import Document, {
   DocumentContext,
   DocumentInitialProps,
+  Head,
   Html,
   Main,
 } from 'next/document';
@@ -13,7 +14,7 @@ import {
   getAnalyticsSettings,
   SiteVerificationMeta,
 } from '@tager/web-analytics';
-import { TagerNextHead, TagerNextScript } from '@tager/web-components';
+import { TagerNextScript } from '@tager/web-components';
 
 type CustomDocumentProps = {
   settings: Nullable<AnalyticsSettingsType>;
@@ -66,22 +67,30 @@ class CustomDocument extends Document<CustomDocumentProps> {
     const { settings } = this.props;
 
     const themeColor = '#000000';
-    const appName = 'TAGER Web App';
+    //const appName = 'TAGER Web App';
 
     return (
       <Html lang="en">
-        <TagerNextHead>
+        <Head>
           <SiteVerificationMeta
             google={settings?.googleVerification}
             yandex={settings?.yandexVerification}
           />
+          <link
+            rel="preload"
+            href="/static/fonts/Inter/Inter-Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
 
-          {/*<link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="" />*/}
-          {/*<link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="" />*/}
-          {/*<link*/}
-          {/*  href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap&subset=cyrillic"*/}
-          {/*  rel="stylesheet"*/}
-          {/*/>*/}
+          <link
+            rel="preload"
+            href="/static/fonts/Inter/Inter-Black.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
 
           <link
             rel="apple-touch-icon"
@@ -112,7 +121,7 @@ class CustomDocument extends Document<CustomDocumentProps> {
             content="/favicon/browserconfig.xml"
           />
 
-          {appName ? <meta name="application-name" content={appName} /> : null}
+          {/*{appName ? <meta name="application-name" content={appName} /> : null}*/}
 
           {themeColor ? (
             <>
@@ -126,10 +135,11 @@ class CustomDocument extends Document<CustomDocumentProps> {
               <meta name="msapplication-TileColor" content={themeColor} />
             </>
           ) : null}
-        </TagerNextHead>
-        <body>
+        </Head>
+        <body style={{ display: 'block', overflow: 'hidden' }}>
           <Main />
           <script src="/static/js/global.js" defer />
+
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"
             defer

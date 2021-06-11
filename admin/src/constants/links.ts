@@ -5,10 +5,16 @@ import { getEmailLogListUrl, getEmailTemplateListUrl } from '@tager/admin-mail';
 import { getSettingItemListUrl } from '@tager/admin-settings';
 import { getSeoSettingsUrl, getSeoTemplatesUrl } from '@tager/admin-seo';
 import { getAdminListUrl, getRoleListUrl } from '@tager/admin-administrators';
+import { getVacancyListUrl, getVacancyLocationListUrl } from '@/utils/paths';
+import { getMenuPageUrl } from '@tager/admin-menus';
 
 type LinkKey =
   | 'HOME'
+  | 'VACANCIES_LIST'
+  | 'VACANCY_LOCATIONS'
   | 'PAGE_LIST'
+  | 'MENU_TOP'
+  | 'MENU_BOTTOM'
   | 'EMAIL_TEMPLATE_LIST'
   | 'EMAIL_LOG_LIST'
   | 'SETTINGS_COMMON'
@@ -24,9 +30,25 @@ export const getLinks = (
     url: '/',
     text: t('admin:home'),
   },
+  VACANCIES_LIST: {
+    url: getVacancyListUrl(),
+    text: 'Vacancies',
+  },
+  VACANCY_LOCATIONS: {
+    url: getVacancyLocationListUrl(),
+    text: 'Locations',
+  },
   PAGE_LIST: {
     url: getPageListUrl(),
     text: t('admin:pages'),
+  },
+  MENU_TOP: {
+    url: getMenuPageUrl({ menuAlias: 'header' }),
+    text: 'Header Menu',
+  },
+  MENU_BOTTOM: {
+    url: getMenuPageUrl({ menuAlias: 'footer' }),
+    text: 'Footer Menu',
   },
   EMAIL_TEMPLATE_LIST: {
     url: getEmailTemplateListUrl(),

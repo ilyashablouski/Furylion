@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 
 function DefaultTemplate() {
-  const page = useCurrentPage();
-
   return (
     <Container>
-      <h1>{page?.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: page?.body ?? '' }} />
+      {/*<h1>{page?.title}</h1>*/}
+      {/*<div dangerouslySetInnerHTML={{ __html: page?.body ?? '' }} />*/}
     </Container>
   );
 }

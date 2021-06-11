@@ -22,6 +22,7 @@ svg {
 html, body {
   width: 100%;
   min-width: 320px;
+  scroll-behavior: smooth;
 }
 
 input, textarea {
@@ -78,7 +79,8 @@ img {
 }
 
 body {
-  font-family: -apple-system,
+  font-family: 'Inter',
+  -apple-system,
   'BlickMacSystemFont',
   'Segoe UI',
   'Roboto',
@@ -90,8 +92,12 @@ body {
   'Helvetica Neue',
   sans-serif;
   font-size: 14px;
-  color: #000;
+  color: #191814;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+div[data-testid=modal-overlay] {
+  background: rgba(0, 0, 0, 0.35);
 }
 

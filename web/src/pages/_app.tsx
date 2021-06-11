@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+// eslint-disable-next-line import/order
 import * as Sentry from '@sentry/node';
-import Head from 'next/head';
 
+import 'scroll-behavior-polyfill';
 import '@/assets/css/index.css';
+
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { AdminBar } from '@tager/web-panel';
 import { useAnalytics } from '@tager/web-analytics';
-import { useFixedVhProperty, useProgressBar } from '@tager/web-core';
-import { ModalProvider } from '@tager/web-components';
+import {
+  getSearchParamsFromUrl,
+  useFixedVhProperty,
+  useIsomorphicLayoutEffect,
+  useMedia,
+  useProgressBar,
+} from '@tager/web-core';
+import { createMediaQuery, ModalProvider } from '@tager/web-components';
 
 import withRedux from '@/hocs/withRedux';
 import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
+import { breakpoints } from '@/constants/theme';
 
 Sentry.init({
   enabled:
@@ -30,6 +41,7 @@ Sentry.init({
  */
 const CustomApp: CustomApp_Component = (props) => {
   useProgressBar({ showSpinner: false });
+  const router = useRouter();
 
   useAnalytics();
   useFixedVhProperty();
@@ -40,6 +52,70 @@ const CustomApp: CustomApp_Component = (props) => {
   // @ts-ignore
   const { err } = props;
   const modifiedPageProps = { ...pageProps, err };
+
+  const isMobile = useMedia(
+    createMediaQuery({
+      max: breakpoints.tabletSmall,
+    })
+  );
+
+  useEffect(() => {
+    const searchParams = getSearchParamsFromUrl(document.location.href);
+    const scrollParam = searchParams.get('scroll');
+    if (scrollParam) {
+      const targetElement = document.getElementById(scrollParam);
+
+      let top: number;
+
+      if (targetElement) {
+        const headerHeight = window.innerWidth <= 1023 ? 56 : 100;
+
+        top = targetElement.offsetTop - headerHeight;
+
+        window.scroll({
+          top: top,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [router.query]);
+
+  useIsomorphicLayoutEffect(() => {
+    function updateVhProperty() {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+      });
+    }
+
+    updateVhProperty();
+
+    window.addEventListener('orientationchange', updateVhProperty);
+
+    if (isMobile) {
+      window.removeEventListener('resize', updateVhProperty);
+    } else {
+      window.addEventListener('resize', updateVhProperty);
+    }
+
+    return () => {
+      window.removeEventListener('orientationchange', updateVhProperty);
+      window.removeEventListener('resize', updateVhProperty);
+    };
+  }, [isMobile]);
+
+  useEffect(() => {
+    updateContainerHeight();
+
+    function updateContainerHeight() {
+      document.body.style.height = `${window.innerHeight}px`;
+    }
+
+    window.addEventListener('resize', updateContainerHeight);
+    return () => window.removeEventListener('resize', updateContainerHeight);
+  }, []);
   return (
     <>
       <Head>
@@ -49,6 +125,7 @@ const CustomApp: CustomApp_Component = (props) => {
         />
       </Head>
       <AdminBar />
+
       <ModalProvider>
         <Component {...modifiedPageProps} />
       </ModalProvider>

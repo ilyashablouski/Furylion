@@ -21,6 +21,19 @@ export default defineComponent({
     const sidebarMenuList: Array<MenuItemType> = [
       { id: 'home', icon: 'home', ...links.value.HOME },
       {
+        id: 'vacancies',
+        icon: 'viewList',
+        text: 'Vacancies',
+        children: [links.value.VACANCIES_LIST, links.value.VACANCY_LOCATIONS],
+      },
+      { id: 'pages', icon: 'viewList', ...links.value.PAGE_LIST },
+      {
+        id: 'menu',
+        icon: 'viewList',
+        text: 'Menu',
+        children: [links.value.MENU_TOP, links.value.MENU_BOTTOM],
+      },
+      {
         id: 'settings',
         icon: 'settings',
         text: t('admin:settings'),

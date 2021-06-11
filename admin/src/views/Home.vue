@@ -7,13 +7,13 @@ import {
   computed,
   defineComponent,
   onMounted,
-  ref,
   SetupContext,
 } from '@vue/composition-api';
 import { NavigationGridItem, useTranslation } from '@tager/admin-ui';
 import { useResource } from '@tager/admin-services';
 import { getPageCount } from '@tager/admin-pages';
 import { getLinks } from '@/constants/links';
+import { getVacanciesCount } from '@/services/requests';
 
 export default defineComponent({
   name: 'Home',
@@ -30,19 +30,38 @@ export default defineComponent({
       context,
     });
 
+    const [
+      fetchVacancyCount,
+      { data: vacancyCountData, status: vacancyCountDataStatus },
+    ] = useResource({
+      fetchResource: getVacanciesCount,
+      initialValue: null,
+      resourceName: 'Vacancies count',
+      context,
+    });
+
     onMounted(() => {
       fetchPageCount();
+      fetchVacancyCount();
     });
 
     const links = computed(() => getLinks(t));
 
-    const navItemList = ref<Array<NavigationGridItem>>([
+    const navItemList = computed<Array<NavigationGridItem>>(() => [
       {
         name: links.value.PAGE_LIST.text,
         url: links.value.PAGE_LIST.url,
         total: {
           value: pageCountData.value?.count ?? 0,
           status: pageCountDataStatus.value,
+        },
+      },
+      {
+        name: links.value.VACANCIES_LIST.text,
+        url: links.value.VACANCIES_LIST.url,
+        total: {
+          value: vacancyCountData.value?.count ?? 0,
+          status: vacancyCountDataStatus.value,
         },
       },
       {

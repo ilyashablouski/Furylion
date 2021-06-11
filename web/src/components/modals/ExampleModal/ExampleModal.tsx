@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ModalProps } from '@tager/web-components';
 
-import TextInput from '@/components/TextInput';
+import TextInput from '@/components/TextInput/TextInput';
 
 import CloseButton from '../shared/CloseButton';
 import {
