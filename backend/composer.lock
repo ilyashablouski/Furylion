@@ -1038,16 +1038,16 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.9.1",
+            "version": "v2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "2fb6e702aca5d68203fa737f89f6f774022494c6"
+                "reference": "e9ef4c26a044b8d39a46bcf296be795fe24a1849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/2fb6e702aca5d68203fa737f89f6f774022494c6",
-                "reference": "2fb6e702aca5d68203fa737f89f6f774022494c6",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/e9ef4c26a044b8d39a46bcf296be795fe24a1849",
+                "reference": "e9ef4c26a044b8d39a46bcf296be795fe24a1849",
                 "shasum": ""
             },
             "require": {
@@ -1062,7 +1062,7 @@
             },
             "require-dev": {
                 "cache/filesystem-adapter": "^0.3.2|^1.1",
-                "composer/composer": "^1.10",
+                "composer/composer": "^1.10.22",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
                 "phpcompatibility/php-compatibility": "^9.2",
                 "phpunit/phpunit": "^5.7||^8.5.13",
@@ -1101,22 +1101,22 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client/issues",
-                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.9.1"
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.9.2"
             },
-            "time": "2021-01-19T17:48:59+00:00"
+            "time": "2021-06-09T22:15:08+00:00"
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.179.0",
+            "version": "v0.180.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "c161f1e3529f2de7ef2dd8352c4e0999608f9440"
+                "reference": "69b977fd15de892432f7f29ea93d57845cf26974"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/c161f1e3529f2de7ef2dd8352c4e0999608f9440",
-                "reference": "c161f1e3529f2de7ef2dd8352c4e0999608f9440",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/69b977fd15de892432f7f29ea93d57845cf26974",
+                "reference": "69b977fd15de892432f7f29ea93d57845cf26974",
                 "shasum": ""
             },
             "require": {
@@ -1142,9 +1142,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.179.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.180.0"
             },
-            "time": "2021-06-02T18:20:04+00:00"
+            "time": "2021-06-06T11:20:02+00:00"
         },
         {
             "name": "google/auth",
@@ -1925,16 +1925,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.45.1",
+            "version": "v8.46.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "dc2f0bb02c3eb4b27669d626bb3e810db8e7749d"
+                "reference": "a18266c612e0e6aba5e0174b3c873d2d217dccfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/dc2f0bb02c3eb4b27669d626bb3e810db8e7749d",
-                "reference": "dc2f0bb02c3eb4b27669d626bb3e810db8e7749d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a18266c612e0e6aba5e0174b3c873d2d217dccfb",
+                "reference": "a18266c612e0e6aba5e0174b3c873d2d217dccfb",
                 "shasum": ""
             },
             "require": {
@@ -2089,7 +2089,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-06-03T16:39:17+00:00"
+            "time": "2021-06-08T13:36:46+00:00"
         },
         {
             "name": "laravel/passport",
@@ -2908,16 +2908,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.48.1",
+            "version": "2.49.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "8d1f50f1436fb4b05e7127360483dd9c6e73da16"
+                "reference": "93d9db91c0235c486875d22f1e08b50bdf3e6eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8d1f50f1436fb4b05e7127360483dd9c6e73da16",
-                "reference": "8d1f50f1436fb4b05e7127360483dd9c6e73da16",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/93d9db91c0235c486875d22f1e08b50bdf3e6eee",
+                "reference": "93d9db91c0235c486875d22f1e08b50bdf3e6eee",
                 "shasum": ""
             },
             "require": {
@@ -2997,7 +2997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T22:08:38+00:00"
+            "time": "2021-06-02T07:31:40+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3345,16 +3345,16 @@
         },
         {
             "name": "ozitag/tager-backend-auth",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ozitag/tager-backend-auth.git",
-                "reference": "da3bae87b87463c58f26bf435f8963e821204788"
+                "reference": "1f607036f5f289359e0b83e0c6b7c41a1becacf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ozitag/tager-backend-auth/zipball/da3bae87b87463c58f26bf435f8963e821204788",
-                "reference": "da3bae87b87463c58f26bf435f8963e821204788",
+                "url": "https://api.github.com/repos/ozitag/tager-backend-auth/zipball/1f607036f5f289359e0b83e0c6b7c41a1becacf5",
+                "reference": "1f607036f5f289359e0b83e0c6b7c41a1becacf5",
                 "shasum": ""
             },
             "require": {
@@ -3385,9 +3385,9 @@
             "homepage": "https://github.com/ozitag/tager-backend-auth",
             "support": {
                 "issues": "https://github.com/ozitag/tager-backend-auth/issues",
-                "source": "https://github.com/ozitag/tager-backend-auth/tree/1.4.4"
+                "source": "https://github.com/ozitag/tager-backend-auth/tree/1.4.5"
             },
-            "time": "2021-05-16T20:42:00+00:00"
+            "time": "2021-06-10T16:14:13+00:00"
         },
         {
             "name": "ozitag/tager-backend-core",
@@ -4115,16 +4115,16 @@
         },
         {
             "name": "ozitag/tager-backend-validation",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ozitag/tager-backend-validation.git",
-                "reference": "75f46b0b22e1b4609e4818dde35efb12b4ac6eb4"
+                "reference": "ac9ba1170f2ec2db351aaead05605f34db916c3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ozitag/tager-backend-validation/zipball/75f46b0b22e1b4609e4818dde35efb12b4ac6eb4",
-                "reference": "75f46b0b22e1b4609e4818dde35efb12b4ac6eb4",
+                "url": "https://api.github.com/repos/ozitag/tager-backend-validation/zipball/ac9ba1170f2ec2db351aaead05605f34db916c3d",
+                "reference": "ac9ba1170f2ec2db351aaead05605f34db916c3d",
                 "shasum": ""
             },
             "require": {
@@ -4153,9 +4153,9 @@
             "homepage": "https://github.com/ozitag/tager-backend-validation",
             "support": {
                 "issues": "https://github.com/ozitag/tager-backend-validation/issues",
-                "source": "https://github.com/ozitag/tager-backend-validation/tree/1.0.2"
+                "source": "https://github.com/ozitag/tager-backend-validation/tree/1.0.3"
             },
-            "time": "2021-04-15T09:14:22+00:00"
+            "time": "2021-06-10T16:40:08+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5539,16 +5539,16 @@
         },
         {
             "name": "s-ichikawa/laravel-sendgrid-driver",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/s-ichikawa/laravel-sendgrid-driver.git",
-                "reference": "d054933d4b4e089e6ee8cfe2107b98b39d80faec"
+                "reference": "55cddf5288cde0fdd49083bba9fe5a2023c59d8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/s-ichikawa/laravel-sendgrid-driver/zipball/d054933d4b4e089e6ee8cfe2107b98b39d80faec",
-                "reference": "d054933d4b4e089e6ee8cfe2107b98b39d80faec",
+                "url": "https://api.github.com/repos/s-ichikawa/laravel-sendgrid-driver/zipball/55cddf5288cde0fdd49083bba9fe5a2023c59d8f",
+                "reference": "55cddf5288cde0fdd49083bba9fe5a2023c59d8f",
                 "shasum": ""
             },
             "require": {
@@ -5561,7 +5561,7 @@
                 "illuminate/filesystem": ">=7.0",
                 "laravel/helpers": "^1.2",
                 "phpunit/phpunit": "^8.5",
-                "vlucas/phpdotenv": "^4.1"
+                "vlucas/phpdotenv": "^4.1 || ^5.2"
             },
             "suggest": {
                 "s-ichikawa/sendgrid-api-builder": "support to build json for sendgrid api"
@@ -5596,9 +5596,23 @@
             ],
             "support": {
                 "issues": "https://github.com/s-ichikawa/laravel-sendgrid-driver/issues",
-                "source": "https://github.com/s-ichikawa/laravel-sendgrid-driver/tree/3.0.3"
+                "source": "https://github.com/s-ichikawa/laravel-sendgrid-driver/tree/3.0.4"
             },
-            "time": "2021-01-06T01:39:59+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/[user1",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/s-ichikawa]# Replace with up to 4 GitHub Sponsors-enabled usernames e.g.",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/user2",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-06T15:18:57+00:00"
         },
         {
             "name": "sendinblue/api-v3-sdk",

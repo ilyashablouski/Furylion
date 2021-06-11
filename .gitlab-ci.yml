@@ -21,6 +21,6 @@ deploy-production:
     - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
     - echo -e "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-    - ssh user@XXX.XX.XXX.XXX < /builds/ozitag/path/to/project/scripts/deploy-master.sh
+    - ssh ozitag@164.68.114.41 -p 2222 < /builds/ozitag/furylion.net/scripts/deploy-master.sh
   only:
     - master

@@ -2382,15 +2382,15 @@
     react-ga "^3.1.2"
     react-gtm-module "^2.0.11"
 
-"@tager/web-components@^0.3.8":
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/@tager/web-components/-/web-components-0.3.8.tgz#6ebb25d6ceabe7ec36987d1b3bc4a31afd35fc6d"
-  integrity sha512-Imd4nVSm6CCFeqqEP7EOKeIm/AuXlaMpdiGeMPB/YvKkfkcuuPWgSXwlPT8IZ1GPwNwo7otCsIgki3eEs6iioQ==
+"@tager/web-components@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@tager/web-components/-/web-components-0.3.11.tgz#81c8c16a24eaf2736b1acbf9626de4d61718247c"
+  integrity sha512-b5uoYIHOhznzmZzWg9mgT4RerwXUZvEQPNEctzs0sxWAPd0lLm1+FO4IMOet2Nqa7cWD/64gf46toDawOs3TVw==
 
-"@tager/web-core@^0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@tager/web-core/-/web-core-0.3.12.tgz#8e3099b179f048f208a545676da2327907fb8e93"
-  integrity sha512-3oS89no69rkk8as4WGSrEGTLo2gL7N6VsrbwJEr5IWnf49AdQEKHqzIq+pa7fZ9fvnak/vPpnRlqRNsYnvO8vw==
+"@tager/web-core@^0.3.15":
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/@tager/web-core/-/web-core-0.3.15.tgz#dfdd8badc79220c57ce64f3ea36925cafe756022"
+  integrity sha512-m1Q748VciZ74PKL5wy6LX5R51h7RUEIJ7KPCjDt91ZS1XJ3WizypjpRCDyxiJtD/hbnfWFUyip0z3qxnmpvViw==
   dependencies:
     cookie "^0.4.1"
     js-cookie "^3.0.0-rc.1"
@@ -2401,10 +2401,10 @@
     typed-contracts "^2.3.0"
     uuid "^8.3.2"
 
-"@tager/web-modules@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.npmjs.org/@tager/web-modules/-/web-modules-0.1.6.tgz"
-  integrity sha512-tXgQSNcZX/C0cAtOpx2A23vCFsr8byLbPN+OW1pUtUI8pOpUU48Emk+Xx4a9nazQdJMZ66BEUFV+HXzk5HS27Q==
+"@tager/web-modules@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tager/web-modules/-/web-modules-0.1.7.tgz#2edb64f4214b5267e3a3c45273db60b3f82d3efa"
+  integrity sha512-4+oNB1/xYw/oFslkigvS6MuZbY0xlUdQe+EqutSOfuaMgiL9cVTvQPio7GMv0YwD56zh9kH5Ghqi+MuOncf9Bg==
 
 "@tager/web-panel@^0.1.9":
   version "0.1.11"
