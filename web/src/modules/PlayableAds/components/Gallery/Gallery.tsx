@@ -200,6 +200,8 @@ const Card = styled.div`
   min-height: 263px;
   max-height: 263px;
   background: #fefefe;
+  border-radius: 22px;
+  overflow: hidden;
 
   transition: all 0.2s linear;
 
