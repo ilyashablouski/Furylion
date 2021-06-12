@@ -133,6 +133,8 @@ class CustomDocument extends Document<CustomDocumentProps> {
               <meta name="msapplication-TileColor" content={themeColor} />
             </>
           ) : null}
+
+          <script>SC_DISABLE_SPEEDY=true</script>
         </TagerNextHead>
         <body style={{ display: 'block', overflow: 'hidden' }}>
           <Main />
