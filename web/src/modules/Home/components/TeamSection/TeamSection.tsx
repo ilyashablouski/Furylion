@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { convertThumbnailToPictureImage } from '@tager/web-modules';
-import { useModal } from '@tager/web-components';
 
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { TeamSectionType } from '@/typings/model';
@@ -72,9 +71,9 @@ function TeamSection() {
             css: {
               scale: 0.1,
               opacity: 0,
-              duration: 0.1,
               transition: 'linear',
             },
+            duration: 0.5,
             delay: index / 3,
           },
           1.5
