@@ -133,6 +133,7 @@ function DoubleTickerLine({
                   {ticker.logosArray
                     ? ticker.logosArray.map((logo, index) => (
                         <Logo
+                          loading={'lazy'}
                           key={index}
                           mobileSmall={convertThumbnailToPictureImage(logo)}
                           className="ticker"
@@ -143,6 +144,7 @@ function DoubleTickerLine({
                     ? ticker.logosArray.map((logo, index) => (
                         <Logo
                           key={index}
+                          loading={'lazy'}
                           mobileSmall={convertThumbnailToPictureImage(logo)}
                           className="ticker"
                         />

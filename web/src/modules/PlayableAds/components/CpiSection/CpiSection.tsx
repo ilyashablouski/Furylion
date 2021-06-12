@@ -24,6 +24,7 @@ function CpiSection() {
 
         <ImageContainer>
           <Picture
+            loading={'lazy'}
             mobileSmall={convertThumbnailToPictureImage(pageFields.cpiImage)}
           />
         </ImageContainer>
