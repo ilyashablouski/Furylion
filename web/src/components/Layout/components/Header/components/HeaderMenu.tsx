@@ -123,7 +123,7 @@ const BackgroundContainer = styled.div`
   left: 0;
   right: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background: rgba(0, 0, 0, 0.5);
 `;
 

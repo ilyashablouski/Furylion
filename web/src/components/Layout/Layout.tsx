@@ -57,7 +57,7 @@ function Layout({ children, isPreloaderHidden, isWhite }: Props) {
 
 const Container = styled.div`
   background-color: #fff;
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
   overflow: hidden;

@@ -42,7 +42,7 @@ const Component = styled.div`
 
   ${media.tabletSmall(css`
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
   `)}
 `;
 
