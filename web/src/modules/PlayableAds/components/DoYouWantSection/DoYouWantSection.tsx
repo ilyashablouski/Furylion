@@ -64,7 +64,6 @@ function DoYouWantSection() {
             scrub: 1,
             start: '-30% 30%',
             end: '0% 15%',
-            markers: true,
           },
         });
       }
