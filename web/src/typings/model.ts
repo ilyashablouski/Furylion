@@ -413,7 +413,7 @@ export interface AdsSectionType extends PageFullType {
     adsText1: StringFieldType;
     adsText2: StringFieldType;
     adsText3: StringFieldType;
-    adsImages: Array<ThumbnailType>;
+    adsImages: Array<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
     adsButtonLabel: StringFieldType;
     adsButtonUrl: StringFieldType;
   };
