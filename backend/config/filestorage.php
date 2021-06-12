@@ -139,5 +139,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(468, 263)
         ]),
+        FileScenario::Instagram => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('instagram'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385)
+        ]),
     ]
 ];
