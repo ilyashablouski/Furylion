@@ -72,6 +72,7 @@ function PortingBlock() {
 
           <BlockItem>
             <Picture
+              loading={'lazy'}
               mobileSmall={convertThumbnailToPictureImage(
                 pageFields.portingImage
               )}

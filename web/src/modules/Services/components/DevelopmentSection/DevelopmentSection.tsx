@@ -78,6 +78,7 @@ function DevelopmentSection() {
                       >
                         <ImageContainer>
                           <Picture
+                            loading={'lazy'}
                             mobileSmall={convertThumbnailToPictureImage(
                               item.image
                             )}
@@ -98,6 +99,7 @@ function DevelopmentSection() {
                                     target="_blank"
                                   >
                                     <Picture
+                                      loading={'lazy'}
                                       mobileSmall={convertThumbnailToPictureImage(
                                         logo.image
                                       )}
