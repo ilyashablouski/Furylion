@@ -136,7 +136,10 @@ return [
         FileScenario::ServicesAds => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('services-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(248)
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(248),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(188),
+            ]
         ]),
         FileScenario::PlayableAdsHead => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('playable-page-head'),
