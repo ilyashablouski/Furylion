@@ -14,6 +14,7 @@ final class FileScenario extends Enum
 
     const VacancyImage = 'vacancy-image';
     const HeadImage = 'head-image';
+    const Instagram = 'instagram';
 
     const HomeHeroImage = 'home-hero-image';
     const HomeHeroImageMobile = 'home-hero-image-mobile';

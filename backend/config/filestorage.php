@@ -44,7 +44,7 @@ return [
             'storage' => ConfigHelper::fileStorage('head'),
             'validator' => ConfigHelper::imageValidator(),
         ]),
-        FileScenario::VacancyImage => TagerImageScenario::wrap([
+        FileScenario::VacancyImage => TagerImageScenario::wrapWithList([
             'storage' => ConfigHelper::fileStorage('vacancies'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(293)
@@ -138,6 +138,11 @@ return [
             'storage' => ConfigHelper::fileStorage('playable-page-head'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(468, 263)
+        ]),
+        FileScenario::Instagram => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('instagram'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385)
         ]),
     ]
 ];
