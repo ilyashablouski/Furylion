@@ -123,7 +123,7 @@ class PlayableAdsTemplate extends Template
                     'link' => new UrlField('Target'),
                 ]),
                 'doYouWantSecondGallery' => new RepeaterField('Gallery 2', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'
@@ -131,7 +131,7 @@ class PlayableAdsTemplate extends Template
                     'link' => new UrlField('Target'),
                 ]),
                 'doYouWantThirdGallery' => new RepeaterField('Gallery 3', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'
