@@ -65,7 +65,7 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnails' => [
                 'desktop' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP),
-                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null, ConfigHelper::MODE_CROP),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null, ConfigHelper::MODE_AUTO),
             ]
         ]),
         FileScenario::HomeServicesItems => TagerImageScenario::wrap([
