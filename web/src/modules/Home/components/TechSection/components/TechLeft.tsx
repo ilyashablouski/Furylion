@@ -64,6 +64,7 @@ function TechLeft({ image, imageMobile }: Props) {
   return (
     <Container>
       <ImageContainer
+        loading="lazy"
         imageRef={imageRef}
         tabletLarge={convertThumbnailToPictureImage(image)}
         mobileSmall={convertThumbnailToPictureImage(imageMobile)}
