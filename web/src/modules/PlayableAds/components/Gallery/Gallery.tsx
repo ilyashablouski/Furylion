@@ -103,6 +103,10 @@ function Gallery({ isRevert = false, itemList }: Props) {
 const Component = styled.div`
   position: relative;
   padding: 15px 0;
+  height: 293px;
+  ${media.mobile(css`
+    height: 195px;
+  `)}
 `;
 
 const Wrapper = styled.div<{ isRevert: boolean }>`

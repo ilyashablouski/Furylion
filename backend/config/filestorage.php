@@ -153,5 +153,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(328, 219)
         ]),
+        FileScenario::FeedbackPhoto => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('feedback'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(257, 257)
+        ]),
     ]
 ];
