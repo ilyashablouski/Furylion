@@ -80,7 +80,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                 >
                   <Card>
                     <Picture
-                      useSpinner
+                      loading="lazy"
                       {...convertThumbnailToPictureProps(item.image)}
                     />
                   </Card>
@@ -199,6 +199,9 @@ const Card = styled.div`
   width: 100%;
   min-height: 263px;
   max-height: 263px;
+  background: #fefefe;
+  border-radius: 22px;
+  overflow: hidden;
 
   transition: all 0.2s linear;
 
