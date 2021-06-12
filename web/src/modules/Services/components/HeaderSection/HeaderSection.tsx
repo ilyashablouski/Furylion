@@ -34,7 +34,7 @@ const Wrapper = styled.section`
 
   max-width: 1920px;
   text-align: center;
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 `;
 
 const Inner = styled.div`
