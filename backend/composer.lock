@@ -3535,16 +3535,16 @@
         },
         {
             "name": "ozitag/tager-backend-fields",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ozitag/tager-backend-fields.git",
-                "reference": "3d30cb9f856f9b5957b0683a6c999b2790e5d784"
+                "reference": "92209cfd84f1b5e05d215299894bb8ba2faa794e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ozitag/tager-backend-fields/zipball/3d30cb9f856f9b5957b0683a6c999b2790e5d784",
-                "reference": "3d30cb9f856f9b5957b0683a6c999b2790e5d784",
+                "url": "https://api.github.com/repos/ozitag/tager-backend-fields/zipball/92209cfd84f1b5e05d215299894bb8ba2faa794e",
+                "reference": "92209cfd84f1b5e05d215299894bb8ba2faa794e",
                 "shasum": ""
             },
             "require": {
@@ -3572,9 +3572,9 @@
             "homepage": "https://github.com/ozitag/tager-backend-core",
             "support": {
                 "issues": "https://github.com/ozitag/tager-backend-fields/issues",
-                "source": "https://github.com/ozitag/tager-backend-fields/tree/1.4.5"
+                "source": "https://github.com/ozitag/tager-backend-fields/tree/1.4.6"
             },
-            "time": "2021-04-16T13:11:30+00:00"
+            "time": "2021-06-12T12:04:35+00:00"
         },
         {
             "name": "ozitag/tager-backend-files",
