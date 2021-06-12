@@ -24,6 +24,17 @@ import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
 import { breakpoints } from '@/constants/theme';
 
+Sentry.init({
+  enabled:
+    process.env.NODE_ENV === 'production' &&
+    process.env.NEXT_PUBLIC_ENV !== 'local',
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  environment: [
+    process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
+    process.env.NEXT_PUBLIC_ENV,
+  ].join('_'),
+});
+
 /**
  * Custom App documentation
  * https://nextjs.org/docs/advanced-features/custom-app
