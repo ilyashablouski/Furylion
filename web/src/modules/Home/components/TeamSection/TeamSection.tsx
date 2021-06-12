@@ -93,6 +93,7 @@ function TeamSection() {
       <WrapperItem>
         <BackgroundPicture
           imageRef={bgPictureRef}
+          loading={'lazy'}
           mobileSmall={{
             src: teamBgUrl,
             src2x: teamBgUrl2x,
