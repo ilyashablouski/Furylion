@@ -39,6 +39,7 @@ function EditorSection() {
 
           <Right>
             <Picture
+              loading={'lazy'}
               mobileSmall={convertThumbnailToPictureImage(
                 pageFields.editorImage
               )}
