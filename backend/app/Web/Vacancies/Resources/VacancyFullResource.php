@@ -31,7 +31,7 @@ class VacancyFullResource extends JsonResource
             'image' => $model->image ? $model->image->getFullJson() : null,
             'pageTitle' => $model->getPageTitle(),
             'pageDescription' => $model->getPageDescription(),
-            'openGraphImage' => $model->openGraphImage ? $model->openGraphImage->getFullJson() : null,
+            'openGraphImage' => $model->openGraphImage ? $model->openGraphImage->getUrl() : ($model->image ? $model->image->getUrl() : null),
         ];
     }
 }
