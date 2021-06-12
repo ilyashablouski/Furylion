@@ -43,8 +43,9 @@ return [
         FileScenario::HeadImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('head'),
             'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebp()
         ]),
-        FileScenario::VacancyImage => TagerImageScenario::wrap([
+        FileScenario::VacancyImage => TagerImageScenario::wrapWithList([
             'storage' => ConfigHelper::fileStorage('vacancies'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(293)
@@ -139,10 +140,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(468, 263)
         ]),
-        FileScenario::PlayableDoYoWantCard => TagerImageScenario::wrap([
-            'storage' => ConfigHelper::fileStorage('playable-card'),
+        FileScenario::Instagram => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('instagram'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(328, 219)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP),
         ]),
     ]
 ];

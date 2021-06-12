@@ -2,6 +2,7 @@
 
 namespace App\Console\Operations;
 
+use App\Enums\FileScenario;
 use App\Enums\SettingKey;
 use Ozerich\FileStorage\Storage;
 use OZiTAG\Tager\Backend\Core\Jobs\Operation;
@@ -42,7 +43,7 @@ class SetInstagramPreviewsOperation extends Operation
 
             if ($allowDownloadImage) {
                 $storage = new Storage();
-                $image = $storage->createFromUrl($item->$imageKey);
+                $image = $storage->createFromUrl($item->$imageKey, FileScenario::Instagram);
                 $imageUuid = $image->uuid;
             }
 
