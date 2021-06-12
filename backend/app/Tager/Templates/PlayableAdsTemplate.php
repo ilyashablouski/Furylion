@@ -143,7 +143,7 @@ class PlayableAdsTemplate extends Template
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),
                 'formProfileTitle' => new StringField('Profile Title'),
-                'formProfileImage' => new ImageField('Profile Image'),
+                'formProfileImage' => new ImageField('Profile Image', FileScenario::FeedbackPhoto),
                 'formProfileLabel' => new StringField('Profile Label'),
                 'formProfileEmail' => new StringField('Profile Email'),
                 'formProfilePosition' => new StringField('Profile Position'),

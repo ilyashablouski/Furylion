@@ -65,7 +65,7 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnails' => [
                 'desktop' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP),
-                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null, ConfigHelper::MODE_CROP),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null, ConfigHelper::MODE_AUTO),
             ]
         ]),
         FileScenario::HomeServicesItems => TagerImageScenario::wrap([
@@ -152,6 +152,11 @@ return [
             'storage' => ConfigHelper::fileStorage('playable-card'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(328, 219)
+        ]),
+        FileScenario::FeedbackPhoto => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('feedback'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(257, 257)
         ]),
     ]
 ];
