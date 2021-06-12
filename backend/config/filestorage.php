@@ -142,7 +142,7 @@ return [
         FileScenario::Instagram => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('instagram'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP)
         ]),
     ]
 ];
