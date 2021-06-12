@@ -13,3 +13,7 @@ php artisan tager:settings-flush
 php artisan tager:http-cache-clear
 
 php artisan storage:link
+
+if [ ! -f "/var/www/app/storage/oauth-private.key" ]; then
+    php artisan passport:keys
+fi

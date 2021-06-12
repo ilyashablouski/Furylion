@@ -129,6 +129,7 @@ function TeamSection() {
                   data-index={index}
                 >
                   <Picture
+                    loading={'lazy'}
                     mobileSmall={convertThumbnailToPictureImage(item.default)}
                     className="teammate-image-block"
                   />
