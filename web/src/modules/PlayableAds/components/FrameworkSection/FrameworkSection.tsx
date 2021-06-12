@@ -28,7 +28,7 @@ function FrameworkSection() {
 
         <Inner>
           <Items>
-            {pageFields.frameworkItems.length > 0
+            {pageFields.frameworkItems && pageFields.frameworkItems.length > 0
               ? pageFields.frameworkItems.map((frameworkItem, index) => (
                   <Item key={index}>
                     <FrameworkItem

@@ -13,7 +13,7 @@ import { StringFieldType } from '@/typings/common';
 type Props = ModalProps<{
   titleGame: StringFieldType;
   descGame: StringFieldType;
-  file: File;
+  file: { url: StringFieldType };
 }>;
 
 function Game({

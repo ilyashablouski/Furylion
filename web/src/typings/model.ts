@@ -199,7 +199,7 @@ export interface VacancyFullType {
   conditions: StringFieldType;
   excerpt: StringFieldType;
   title: StringFieldType;
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{ default: ThumbnailType }>;
   introduction: StringFieldType;
   introductionSecond: StringFieldType;
   introductionThird: StringFieldType;
@@ -421,7 +421,7 @@ export interface AdsSectionType extends PageFullType {
 
 export type AdsHeadItemType = {
   image: ThumbnailType;
-  file: File;
+  file: { url: StringFieldType };
   titleGame: StringFieldType;
   descriptionGame: StringFieldType;
 };

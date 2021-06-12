@@ -3,10 +3,7 @@ import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 
-import {
-  convertThumbnailToPictureImage,
-  convertThumbnailToPictureProps,
-} from '@tager/web-modules';
+import { convertThumbnailToPictureProps } from '@tager/web-modules';
 import { useModal } from '@tager/web-components';
 
 import { AdsHeadItemType } from '@/typings/model';
@@ -15,6 +12,7 @@ import { media } from '@/utils/mixin';
 import Game from '@/modules/PlayableAds/components/Game';
 import { ReactComponent as ArrowNavigation } from '@/assets/svg/slide-arrow.svg';
 import { breakpoints, colors } from '@/constants/theme';
+import { StringFieldType } from '@/typings/common';
 
 interface Props {
   isRevert?: boolean;
@@ -32,7 +30,12 @@ function Gallery({ isRevert = false, itemList }: Props) {
 
   const openModal = useModal();
 
-  function onClick(descGame: string, titleGame: string, file: File) {
+  function onClick(
+    descGame: string,
+    titleGame: string,
+    file: { url: StringFieldType }
+  ) {
+    console.log(file);
     return () => {
       openModal(Game, {
         descGame: descGame,
@@ -41,6 +44,8 @@ function Gallery({ isRevert = false, itemList }: Props) {
       });
     };
   }
+
+  if (!itemList || itemList.length === 0) return null;
 
   return (
     <Component>
@@ -71,7 +76,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                   onClick={onClick(
                     item.descriptionGame ?? '',
                     item.titleGame ?? '',
-                    item.file ?? ''
+                    item.file
                   )}
                 >
                   <Card>
