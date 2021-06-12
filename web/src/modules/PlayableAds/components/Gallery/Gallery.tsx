@@ -35,7 +35,6 @@ function Gallery({ isRevert = false, itemList }: Props) {
     titleGame: string,
     file: { url: StringFieldType }
   ) {
-    console.log(file);
     return () => {
       openModal(Game, {
         descGame: descGame,

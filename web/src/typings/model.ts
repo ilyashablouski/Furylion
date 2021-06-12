@@ -536,7 +536,7 @@ export interface EditorFormType extends PageFullType {
 }
 
 export type DoYouWantSectionItemType = {
-  image: ThumbnailType;
+  image: { default: ThumbnailType };
   action: StringFieldType;
   link: StringFieldType;
 };

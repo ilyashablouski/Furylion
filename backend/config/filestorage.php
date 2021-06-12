@@ -145,5 +145,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP),
         ]),
+        FileScenario::PlayableDoYoWantCard => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('playable-card'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(328, 219)
+        ]),
     ]
 ];
