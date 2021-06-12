@@ -167,6 +167,7 @@ function PlatformLeft({
           ? logos.map((logo, index) => (
               <Logo ref={logoRefList[index]} key={index}>
                 <Picture
+                  loading="lazy"
                   mobileSmall={{
                     src: logo?.url,
                     src2x: logo?.url_2x,
