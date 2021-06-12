@@ -36,7 +36,10 @@ function TechRight({ data }: Props) {
           {data.logos
             ? data.logos.map((logo, index) => (
                 <Logo key={index}>
-                  <Picture mobileSmall={convertThumbnailToPictureImage(logo)} />
+                  <Picture
+                    loading="lazy"
+                    mobileSmall={convertThumbnailToPictureImage(logo)}
+                  />
                 </Logo>
               ))
             : null}
