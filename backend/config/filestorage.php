@@ -43,6 +43,7 @@ return [
         FileScenario::HeadImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('head'),
             'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebp()
         ]),
         FileScenario::VacancyImage => TagerImageScenario::wrapWithList([
             'storage' => ConfigHelper::fileStorage('vacancies'),
@@ -142,7 +143,7 @@ return [
         FileScenario::Instagram => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('instagram'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP),
         ]),
     ]
 ];
