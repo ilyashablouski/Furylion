@@ -31,9 +31,7 @@ function ImagesRow({ galleryItems }: Props) {
             )}
 
             <Picture
-              mobileSmall={convertThumbnailToPictureImage(
-                galleryItem.image.default
-              )}
+              mobileSmall={convertThumbnailToPictureImage(galleryItem.image)}
               className="image-item"
             />
           </PictureItem>

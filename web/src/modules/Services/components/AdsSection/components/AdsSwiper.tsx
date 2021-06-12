@@ -11,7 +11,7 @@ import { media } from '@/utils/mixin';
 import Picture from '@/components/Picture';
 
 type Props = {
-  adsImages: Array<{ default: ThumbnailType }>;
+  adsImages: Array<ThumbnailType>;
 };
 
 const rotate = 9.5;
@@ -125,9 +125,7 @@ function AdsSwiper({ adsImages }: Props) {
     <Container ref={containerRef}>
       {adsImages.map((adsImage, index) => (
         <Slide key={index} ref={slideListRef.current[index]}>
-          <SwiperImage
-            mobileSmall={convertThumbnailToPictureImage(adsImage.default)}
-          />
+          <SwiperImage mobileSmall={convertThumbnailToPictureImage(adsImage)} />
         </Slide>
       ))}
     </Container>

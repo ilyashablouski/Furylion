@@ -131,7 +131,7 @@ function TeamSection() {
                 >
                   <Picture
                     loading={'lazy'}
-                    mobileSmall={convertThumbnailToPictureImage(item.default)}
+                    mobileSmall={convertThumbnailToPictureImage(item)}
                     className="teammate-image-block"
                   />
                 </TeammatePictureItem>
