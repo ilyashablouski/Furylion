@@ -53,6 +53,7 @@ function CoDevelopmentSection() {
           />
         </RightLogo>
         <FirstBackgroundImage
+          loading={'lazy'}
           mobileSmall={{
             src: coDevelopmentBgUrl,
             src2x: coDevelopmentBgUrl2x,
@@ -61,6 +62,7 @@ function CoDevelopmentSection() {
           }}
         />
         <SecondBackgroundImage
+          loading={'lazy'}
           mobileSmall={{
             src: chartsBgUrl2x,
             src2x: chartsBgUrl2x,

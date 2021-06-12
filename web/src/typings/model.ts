@@ -86,7 +86,7 @@ export interface HeroSectionType extends PageFullType {
 }
 
 export type WorksItemType = {
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   title: StringFieldType;
   text: StringFieldType;
   logos: Array<ThumbnailType>;
