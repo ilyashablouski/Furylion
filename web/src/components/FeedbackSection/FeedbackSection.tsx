@@ -57,6 +57,7 @@ function FeedbackSection({
               <ProfileInfo>
                 <ProfileTitle>{formProfileTitle}</ProfileTitle>
                 <ProfileImage
+                  loading={'lazy'}
                   mobileSmall={convertThumbnailToPictureImage(formProfileImage)}
                 />
                 <ProfileName>{formProfileLabel}</ProfileName>

@@ -18,6 +18,7 @@ function ServiceItem({ image, title, text, linkLabel, className }: Props) {
     <>
       <ImageContainer>
         <Picture
+          loading={'lazy'}
           mobileSmall={convertThumbnailToPictureImage(image?.mobile)}
           mobileLarge={convertThumbnailToPictureImage(image?.tablet)}
           tabletSmall={convertThumbnailToPictureImage(image?.laptop)}

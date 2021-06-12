@@ -35,7 +35,6 @@ function Gallery({ isRevert = false, itemList }: Props) {
     titleGame: string,
     file: { url: StringFieldType }
   ) {
-    console.log(file);
     return () => {
       openModal(Game, {
         descGame: descGame,
@@ -81,7 +80,7 @@ function Gallery({ isRevert = false, itemList }: Props) {
                 >
                   <Card>
                     <Picture
-                      useSpinner
+                      loading="lazy"
                       {...convertThumbnailToPictureProps(item.image)}
                     />
                   </Card>
@@ -104,6 +103,10 @@ function Gallery({ isRevert = false, itemList }: Props) {
 const Component = styled.div`
   position: relative;
   padding: 15px 0;
+  height: 293px;
+  ${media.mobile(css`
+    height: 195px;
+  `)}
 `;
 
 const Wrapper = styled.div<{ isRevert: boolean }>`
@@ -196,6 +199,9 @@ const Card = styled.div`
   width: 100%;
   min-height: 263px;
   max-height: 263px;
+  background: #fefefe;
+  border-radius: 22px;
+  overflow: hidden;
 
   transition: all 0.2s linear;
 

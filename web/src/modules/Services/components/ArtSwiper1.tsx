@@ -54,6 +54,7 @@ function ArtSwiper1({ images, isRightSide = true }: Props) {
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <SlidePicture
+              loading={'lazy'}
               mobileSmall={convertThumbnailToPictureImage(image.mobile)}
               mobileLarge={convertThumbnailToPictureImage(image.desktop)}
             />

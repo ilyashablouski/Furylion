@@ -15,7 +15,7 @@ type Props = {
   data: {
     title?: StringFieldType;
     text?: StringFieldType;
-    logos?: Array<{ default: ThumbnailType }>;
+    logos?: Array<ThumbnailType>;
     addText?: StringFieldType;
     btnFirstLabel?: StringFieldType;
     btnFirstUrl?: StringFieldType;
@@ -37,7 +37,8 @@ function TechRight({ data }: Props) {
             ? data.logos.map((logo, index) => (
                 <Logo key={index}>
                   <Picture
-                    mobileSmall={convertThumbnailToPictureImage(logo.default)}
+                    loading="lazy"
+                    mobileSmall={convertThumbnailToPictureImage(logo)}
                   />
                 </Logo>
               ))

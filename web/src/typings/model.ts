@@ -86,7 +86,7 @@ export interface HeroSectionType extends PageFullType {
 }
 
 export type WorksItemType = {
-  image: Nullable<ThumbnailType>;
+  image: Nullable<{ desktop: ThumbnailType; mobile: ThumbnailType }>;
   title: StringFieldType;
   text: StringFieldType;
   logos: Array<ThumbnailType>;
@@ -131,7 +131,7 @@ export interface TechSectionType extends PageFullType {
     technologiesId: StringFieldType;
     technologiesTitle: StringFieldType;
     technologiesText: StringFieldType;
-    technologiesLogos: Array<{ default: ThumbnailType }>;
+    technologiesLogos: Array<ThumbnailType>;
     technologiesImage: Nullable<ThumbnailType>;
     technologiesMobileImage: Nullable<ThumbnailType>;
     technologiesTextAdditional: StringFieldType;
@@ -163,7 +163,7 @@ export interface PlatformSectionType extends PageFullType {
 export interface TeamSectionType extends PageFullType {
   templateFields: {
     teamId: StringFieldType;
-    teamItems: Array<{ default: ThumbnailType }>;
+    teamItems: Array<ThumbnailType>;
     teamButtonLabel: StringFieldType;
     teamButtonUrl: StringFieldType;
     teamButtonIsNewTab: boolean;
@@ -413,7 +413,7 @@ export interface AdsSectionType extends PageFullType {
     adsText1: StringFieldType;
     adsText2: StringFieldType;
     adsText3: StringFieldType;
-    adsImages: Array<{ default: ThumbnailType }>;
+    adsImages: Array<ThumbnailType>;
     adsButtonLabel: StringFieldType;
     adsButtonUrl: StringFieldType;
   };

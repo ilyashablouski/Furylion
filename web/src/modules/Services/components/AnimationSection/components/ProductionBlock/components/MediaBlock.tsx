@@ -66,6 +66,7 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
 
               <ImageContainer>
                 <Picture
+                  loading={'lazy'}
                   mobileSmall={convertThumbnailToPictureImage(mediaItem.image)}
                   className="media-image-block"
                 />

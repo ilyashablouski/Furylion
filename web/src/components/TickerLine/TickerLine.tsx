@@ -97,6 +97,7 @@ function TickerLine({
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
+                  loading={'lazy'}
                   key={index}
                   mobileSmall={convertThumbnailToPictureImage(logo)}
                   className="ticker"
@@ -106,6 +107,7 @@ function TickerLine({
           {logosArray
             ? logosArray.map((logo, index) => (
                 <Logo
+                  loading={'lazy'}
                   key={index}
                   mobileSmall={convertThumbnailToPictureImage(logo)}
                   className="ticker"

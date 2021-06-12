@@ -63,13 +63,16 @@ return [
         FileScenario::HomeWorksItems => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP)
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(1230, 689, ConfigHelper::MODE_CROP),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null, ConfigHelper::MODE_AUTO),
+            ]
         ]),
         FileScenario::HomeServicesItems => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('home-page'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnails' => [
-                'mobile' => ConfigHelper::thumbWithWebpAnd2x(768),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420),
                 'tablet' => ConfigHelper::thumbWithWebpAnd2x(1024),
                 'laptop' => ConfigHelper::thumbWithWebpAnd2x(1260),
                 'desktop' => ConfigHelper::thumbWithWebpAnd2x(1400),
@@ -133,7 +136,10 @@ return [
         FileScenario::ServicesAds => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('services-page'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(248)
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(248),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(188),
+            ]
         ]),
         FileScenario::PlayableAdsHead => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('playable-page-head'),
@@ -144,6 +150,16 @@ return [
             'storage' => ConfigHelper::fileStorage('instagram'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(385, 385, ConfigHelper::MODE_CROP),
+        ]),
+        FileScenario::PlayableDoYoWantCard => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('playable-card'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(328, 219)
+        ]),
+        FileScenario::FeedbackPhoto => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('feedback'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(257, 257)
         ]),
     ]
 ];

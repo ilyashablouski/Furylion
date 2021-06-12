@@ -11,7 +11,8 @@ function WorksItem({ image, title, text, logos }: WorksItemType) {
   return (
     <WorksItemContainer>
       <Picture
-        mobileSmall={convertThumbnailToPictureImage(image)}
+        mobileSmall={convertThumbnailToPictureImage(image?.mobile)}
+        tabletLarge={convertThumbnailToPictureImage(image?.desktop)}
         className="swiper-image-block"
       />
       <Info>

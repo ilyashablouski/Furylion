@@ -93,6 +93,7 @@ function TeamSection() {
       <WrapperItem>
         <BackgroundPicture
           imageRef={bgPictureRef}
+          loading={'lazy'}
           mobileSmall={{
             src: teamBgUrl,
             src2x: teamBgUrl2x,
@@ -130,7 +131,7 @@ function TeamSection() {
                 >
                   <Picture
                     loading={'lazy'}
-                    mobileSmall={convertThumbnailToPictureImage(item.default)}
+                    mobileSmall={convertThumbnailToPictureImage(item)}
                     className="teammate-image-block"
                   />
                 </TeammatePictureItem>

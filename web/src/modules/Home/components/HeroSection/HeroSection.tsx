@@ -102,7 +102,7 @@ const Title = styled.span`
   `)}
 
   ${media.mobile(css`
-    font-size: 40px;
+    font-size: 38px;
     text-transform: initial;
   `)}
 `;

@@ -115,7 +115,7 @@ class PlayableAdsTemplate extends Template
                 'doYouWantId' => new StringField('id'),
                 'doYouWantTitle' => new StringField('Title'),
                 'doYouWantFirstGallery' => new RepeaterField('Gallery 1', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'
@@ -123,7 +123,7 @@ class PlayableAdsTemplate extends Template
                     'link' => new UrlField('Target'),
                 ]),
                 'doYouWantSecondGallery' => new RepeaterField('Gallery 2', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'
@@ -131,7 +131,7 @@ class PlayableAdsTemplate extends Template
                     'link' => new UrlField('Target'),
                 ]),
                 'doYouWantThirdGallery' => new RepeaterField('Gallery 3', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'
@@ -143,7 +143,7 @@ class PlayableAdsTemplate extends Template
             new GroupField('Form', [
                 'formTitle' => new StringField('Title'),
                 'formProfileTitle' => new StringField('Profile Title'),
-                'formProfileImage' => new ImageField('Profile Image'),
+                'formProfileImage' => new ImageField('Profile Image', FileScenario::FeedbackPhoto),
                 'formProfileLabel' => new StringField('Profile Label'),
                 'formProfileEmail' => new StringField('Profile Email'),
                 'formProfilePosition' => new StringField('Profile Position'),
