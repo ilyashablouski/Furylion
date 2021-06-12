@@ -44,7 +44,7 @@ return [
             'storage' => ConfigHelper::fileStorage('head'),
             'validator' => ConfigHelper::imageValidator(),
         ]),
-        FileScenario::VacancyImage => TagerImageScenario::wrap([
+        FileScenario::VacancyImage => TagerImageScenario::wrapWithList([
             'storage' => ConfigHelper::fileStorage('vacancies'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(293)
