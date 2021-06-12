@@ -115,7 +115,7 @@ class PlayableAdsTemplate extends Template
                 'doYouWantId' => new StringField('id'),
                 'doYouWantTitle' => new StringField('Title'),
                 'doYouWantFirstGallery' => new RepeaterField('Gallery 1', [
-                    'image' => new ImageField('Image'),
+                    'image' => new ImageField('Image', FileScenario::PlayableDoYoWantCard),
                     'action' => new SelectField('Action', [
                         'scroll' => 'Scroll',
                         'openPage' => 'Open page'

@@ -34,4 +34,5 @@ final class FileScenario extends Enum
     const PlayableAdsHead = 'playable-ads-head';
     const PlayableGame = 'playable-game';
     const ServicesFullStackDevelopment = 'services-fullstack-development';
+    const PlayableDoYoWantCard = 'playable-card';
 }
