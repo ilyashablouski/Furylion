@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -15,36 +15,65 @@ gsap.registerPlugin(ScrollTrigger);
 function DoYouWantSection() {
   const page = useCurrentPage<DoYouWantSectionType>();
   const titleRef = useRef<HTMLSpanElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hasAnimation, setAnimationStatus] = useState<boolean>(false);
+
+  useEffect(() => {
+    function onScroll() {
+      if (hasAnimation) return;
+      if (containerRef.current) {
+        if (
+          window.pageYOffset + window.innerHeight >
+            containerRef.current.offsetTop ??
+          0
+        ) {
+          setAnimationStatus(true);
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   useEffect(() => {
     let tw: gsap.core.Tween;
-    if (!titleRef.current) return;
 
-    let percent: gsap.TweenValue = 100;
+    const delayedCall = gsap.delayedCall(0, () => {
+      if (hasAnimation) {
+        if (!titleRef.current || !containerRef.current) return;
 
-    ScrollTrigger.matchMedia({
-      '(min-width: 768px)': function () {
-        percent = 110;
-      },
-      '(min-width: 1367px)': function () {
-        percent = 100;
-      },
-    });
+        let percent: gsap.TweenValue = 100;
 
-    tw = gsap.to(titleRef.current, {
-      xPercent: percent,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        scrub: 1,
-        start: '-520% 30%',
-        end: 'top 15%',
-      },
+        ScrollTrigger.matchMedia({
+          '(min-width: 768px)': function () {
+            percent = 110;
+          },
+          '(min-width: 1367px)': function () {
+            percent = 100;
+          },
+        });
+
+        tw = gsap.to(titleRef.current, {
+          xPercent: percent,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            scrub: 1,
+            start: '-30% 30%',
+            end: '0% 15%',
+          },
+        });
+      }
     });
 
     return () => {
+      delayedCall?.kill();
       tw?.kill();
     };
-  }, [titleRef.current]);
+  }, [hasAnimation]);
 
   if (!page) return null;
 
@@ -54,10 +83,12 @@ function DoYouWantSection() {
   const thirdGalleryItems = page.templateFields.doYouWantThirdGallery;
 
   return (
-    <Wrapper id={pageFields?.doYouWantId ?? ''}>
+    <Wrapper ref={containerRef} id={pageFields?.doYouWantId ?? ''}>
       <Inner>
         <TitleBlock>
-          <Title ref={titleRef}>{pageFields.doYouWantTitle}</Title>
+          <Title className="do-you-want-title" ref={titleRef}>
+            {pageFields.doYouWantTitle}
+          </Title>
         </TitleBlock>
         <ImagesContainer>
           <ImagesRow galleryItems={firstGalleryItems} />

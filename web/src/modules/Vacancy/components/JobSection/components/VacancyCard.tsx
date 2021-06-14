@@ -48,7 +48,7 @@ const ImageContainer = styled.div`
   height: 419px;
   background: ${colors.white};
   border: 15px solid ${colors.white};
-  filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.25));
+  box-shadow: 0 2px 10px 4px rgba(255, 255, 255, 0.25);
 
   ${media.mobile(css`
     width: 320px;

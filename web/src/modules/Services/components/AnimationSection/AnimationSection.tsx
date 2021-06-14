@@ -35,7 +35,7 @@ function AnimationSection() {
     });
 
     return () => {
-      delayedCall.kill();
+      delayedCall?.kill();
     };
   }, []);
 
