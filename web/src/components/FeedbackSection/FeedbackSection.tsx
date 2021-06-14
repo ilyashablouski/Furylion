@@ -62,11 +62,11 @@ function FeedbackSection({
                 />
                 <ProfileName>{formProfileLabel}</ProfileName>
                 {formProfilePosition ? (
-                  <ProfileName>{formProfilePosition}</ProfileName>
+                  <ProfilePosition>{formProfilePosition}</ProfilePosition>
                 ) : null}
                 {formProfileEmail ? (
                   <ProfileEmail to={`mailto:${formProfileEmail}`}>
-                    {formProfileEmail}
+                    <span>{formProfileEmail}</span>
                   </ProfileEmail>
                 ) : null}
               </ProfileInfo>
@@ -116,6 +116,14 @@ const TitleBlock = styled.div`
     max-width: 612px;
     text-align: center;
   `)}
+`;
+
+const ProfilePosition = styled.span`
+  display: block;
+  font-size: 20px;
+  line-height: 160%;
+  text-align: center;
+  color: ${colors.white};
 `;
 
 const Title = styled.span<{ isProfileInfo?: boolean }>`
@@ -187,6 +195,8 @@ const Left = styled.div<{ isProfileInfo?: boolean }>`
 `;
 
 const Right = styled.div`
+  display: flex;
+  align-items: flex-end;
   margin-left: 20px;
   flex: 1 1 50%;
   max-width: 50%;
@@ -195,14 +205,15 @@ const Right = styled.div`
     margin-left: 0;
     max-width: none;
   `)}
-
   ${media.tabletSmallOnly(css`
     margin-top: 80px;
   `)}
-
   ${media.mobile(css`
     margin-top: 35px;
   `)}
+  form {
+    width: 100%;
+  }
 `;
 
 const ProfileInfo = styled.div`
@@ -238,9 +249,9 @@ const ProfileImage = styled(Picture)`
   }
 `;
 const ProfileName = styled.span`
-  margin-top: 20px;
+  margin-top: 30px;
   display: block;
-  font-weight: 500;
+  font-weight: 900;
   font-size: 24px;
   line-height: 160%;
   text-transform: capitalize;
@@ -252,21 +263,45 @@ const ProfileName = styled.span`
 `;
 
 const ProfileEmail = styled(Link)`
-  margin-top: 20px;
-  display: block;
-  font-weight: 500;
-  font-size: 24px;
+  position: relative;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
   line-height: 160%;
   text-transform: capitalize;
   color: ${colors.white};
   transition: color 0.3s ease;
   cursor: pointer;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: center;
+
+  span {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      height: 1px;
+      width: 100%;
+      bottom: 0px;
+      background: ${colors.white};
+      transition: background 0.3s ease;
+    }
+  }
 
   ${media.mobile(css`
     font-size: 20px;
   `)}
   &:hover {
     color: ${colors.grayLight};
+
+    span {
+      &:before {
+        background: ${colors.grayLight};
+      }
+    }
   }
 `;
 
