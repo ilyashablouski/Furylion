@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { useModal } from '@tager/web-components';
-import { ThumbnailType } from '@tager/web-modules';
 
 import ContentContainer from '@/components/ContentContainer';
 import { useTypedSelector } from '@/store/store';

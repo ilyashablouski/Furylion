@@ -40,6 +40,7 @@ function JobCard({
       <Title heroCard={isHeroCard}>{title}</Title>
       <ImageContainer heroCard={isHeroCard}>
         <Picture
+          useSpinner
           {...convertThumbnailToPictureProps(image)}
           className={'vacancy-image-block'}
         />
