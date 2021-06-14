@@ -205,6 +205,10 @@ const Card = styled.div`
 
   transition: all 0.2s linear;
 
+  &[data-picture-status='success'] {
+    background: transparent;
+  }
+
   &:hover {
     transition: all 0.2s linear;
     transform: scale(1.05);
