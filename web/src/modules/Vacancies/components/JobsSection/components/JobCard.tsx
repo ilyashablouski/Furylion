@@ -90,7 +90,7 @@ const ImageContainer = styled.div<{ heroCard: boolean }>`
   margin-top: 19px;
   min-height: 419px;
   max-height: 419px;
-  filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.25));
+  box-shadow: 0 2px 10px 1px rgba(255, 255, 255, 0.25);
 
   ${media.tabletSmall(css`
     margin-top: 15px;
