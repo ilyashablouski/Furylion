@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-// eslint-disable-next-line import/order
-import * as Sentry from '@sentry/node';
-
 import 'scroll-behavior-polyfill';
 import '@/assets/css/index.css';
-
+import * as Sentry from '@sentry/node';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -13,16 +10,13 @@ import { useAnalytics } from '@tager/web-analytics';
 import {
   getSearchParamsFromUrl,
   useFixedVhProperty,
-  useIsomorphicLayoutEffect,
-  useMedia,
   useProgressBar,
 } from '@tager/web-core';
-import { createMediaQuery, ModalProvider } from '@tager/web-components';
+import { ModalProvider } from '@tager/web-components';
 
 import withRedux from '@/hocs/withRedux';
 import withPerfLogs from '@/hocs/withPerfLogs';
 import { CustomApp_Component } from '@/typings/hocs';
-import { breakpoints } from '@/constants/theme';
 
 Sentry.init({
   enabled:
@@ -44,7 +38,7 @@ const CustomApp: CustomApp_Component = (props) => {
   const router = useRouter();
 
   useAnalytics();
-  useFixedVhProperty();
+  useFixedVhProperty({ shouldListenResize: true });
 
   const { Component, pageProps } = props;
 
@@ -52,12 +46,6 @@ const CustomApp: CustomApp_Component = (props) => {
   // @ts-ignore
   const { err } = props;
   const modifiedPageProps = { ...pageProps, err };
-
-  const isMobile = useMedia(
-    createMediaQuery({
-      max: breakpoints.tabletSmall,
-    })
-  );
 
   useEffect(() => {
     const searchParams = getSearchParamsFromUrl(document.location.href);
@@ -80,32 +68,6 @@ const CustomApp: CustomApp_Component = (props) => {
     }
   }, [router.query]);
 
-  useIsomorphicLayoutEffect(() => {
-    function updateVhProperty() {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const vh = window.innerHeight * 0.01;
-          document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-      });
-    }
-
-    updateVhProperty();
-
-    window.addEventListener('orientationchange', updateVhProperty);
-
-    if (isMobile) {
-      window.removeEventListener('resize', updateVhProperty);
-    } else {
-      window.addEventListener('resize', updateVhProperty);
-    }
-
-    return () => {
-      window.removeEventListener('orientationchange', updateVhProperty);
-      window.removeEventListener('resize', updateVhProperty);
-    };
-  }, [isMobile]);
-
   useEffect(() => {
     updateContainerHeight();
 
@@ -116,6 +78,7 @@ const CustomApp: CustomApp_Component = (props) => {
     window.addEventListener('resize', updateContainerHeight);
     return () => window.removeEventListener('resize', updateContainerHeight);
   }, []);
+
   return (
     <>
       <Head>

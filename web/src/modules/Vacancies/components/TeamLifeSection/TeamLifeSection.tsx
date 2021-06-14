@@ -23,11 +23,12 @@ function TeamLifeSection() {
   return (
     <Wrapper id={pageFields?.teamLifeId ?? ''}>
       <BackgroundPicture
+        loading={'lazy'}
         mobileSmall={{
           src: teamLifeBgUrl,
           src2x: teamLifeBgUrl2x,
-          //webp: teamLifeBgUrlWebp,
-          //webp2x: teamLifeBgUrlWebp2x,
+          webp: teamLifeBgUrlWebp,
+          webp2x: teamLifeBgUrlWebp2x,
         }}
         className="team-life-background"
       />
