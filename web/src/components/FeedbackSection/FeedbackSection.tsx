@@ -259,10 +259,15 @@ const ProfileEmail = styled(Link)`
   line-height: 160%;
   text-transform: capitalize;
   color: ${colors.white};
+  transition: color 0.3s ease;
+  cursor: pointer;
 
   ${media.mobile(css`
     font-size: 20px;
   `)}
+  &:hover {
+    color: ${colors.grayLight};
+  }
 `;
 
 export default FeedbackSection;
