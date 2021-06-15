@@ -268,7 +268,6 @@ const ProfileEmail = styled(Link)`
   display: flex;
   justify-content: center;
   line-height: 160%;
-  text-transform: capitalize;
   color: ${colors.white};
   transition: color 0.3s ease;
   cursor: pointer;
