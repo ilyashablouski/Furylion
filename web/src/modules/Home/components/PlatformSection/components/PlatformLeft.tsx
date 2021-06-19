@@ -9,6 +9,7 @@ import Picture from '@/components/Picture';
 import { StringFieldType } from '@/typings/common';
 import { media } from '@/utils/mixin';
 import { ButtonLink } from '@/components/Button';
+import { StyledButtonLink } from '@/components/Button/Button';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -198,23 +199,23 @@ function PlatformLeft({
 
       <Buttons>
         <StyledButton ref={buttonLeft}>
-          <ButtonLink
+          <StyledButtonLink
             href={btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-dark', 'w100']}
             target={btnFirstIsNewTab ? '_blank' : '_self'}
           >
             {btnFirstLabel}
-          </ButtonLink>
+          </StyledButtonLink>
         </StyledButton>
 
         <StyledButton ref={buttonRight} right>
-          <ButtonLink
+          <StyledButtonLink
             href={btnSecondUrl ?? '#'}
             variants={['cut-top', 'dark', 'w100']}
             target={btnSecondIsNewTab ? '_blank' : '_self'}
           >
             {btnSecondLabel}
-          </ButtonLink>
+          </StyledButtonLink>
         </StyledButton>
       </Buttons>
     </Container>
