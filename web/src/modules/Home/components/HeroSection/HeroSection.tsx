@@ -8,7 +8,7 @@ import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { HeroSectionType } from '@/typings/model';
-import { ReactComponent as ArrowIcon } from '@/assets/svg/strelka.svg';
+import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
 import { media } from '@/utils/mixin';
 import { scrollDown } from '@/utils/common';
 
@@ -130,16 +130,27 @@ const DownArrow = styled.i`
   align-items: center;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
   transform: translate(-50%, 0);
   cursor: pointer;
   z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
 
-  svg g {
+  svg {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+  }
+
+  svg path {
+    fill: rgba(142, 143, 140);
+
     transition: all 350ms ease-in-out;
+    opacity: 0.7;
   }
 
   &:hover {
-    svg g {
+    svg path {
       opacity: 1;
     }
   }
