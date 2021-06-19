@@ -4,6 +4,7 @@ import { Formik, FormikErrors, FormikHelpers } from 'formik';
 import { convertRequestErrorToMap, Nullable } from '@tager/web-core';
 
 import { FormPayload, sendContactsForm, sendCvForm } from '@/services/requests';
+import useCurrentVacancy from '@/hooks/useCurrentVacancy';
 
 import ContactsForm, { ContactsFormValues } from './ContactsForm';
 
@@ -24,6 +25,7 @@ function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
   const [isSentSuccess, setSentSuccess] = useState(false);
   const [fileId, setFileId] = useState<number>(0);
   const [file, setFile] = useState<Nullable<File>>(null);
+  const vacancy = useCurrentVacancy();
 
   function handleSubmit(
     values: FormPayload,
@@ -33,7 +35,9 @@ function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
 
     const payload = getOnlyTrueValues(preValues);
 
-    getSendMethod(isCvForm)(payload)
+    let params = isCvForm && vacancy ? { vacancyId: vacancy.data?.id } : {};
+
+    getSendMethod(isCvForm)(payload, params)
       .then(() => {
         formikHelpers.resetForm();
         setSentSuccess(true);

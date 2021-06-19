@@ -16,13 +16,6 @@ import MessageSuccess from '@/components/modals/MessageSuccess';
 import TextInputFormik from '@/components/TextInput/TextInput.formik';
 
 export type ContactsFormValues = FormPayload;
-export type CvFormValues = {
-  name: string;
-  phone: string;
-  email: string;
-  message: string;
-  file: number | null;
-};
 
 type Props = FormikProps<ContactsFormValues> & {
   isModal?: boolean;
