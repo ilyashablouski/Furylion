@@ -86,7 +86,7 @@ function HeaderMenu({
                     target={menuItem.isNewTab ? '_blank' : '_self'}
                   >
                     {menuItem.label}
-                    {menuItem.link && menuItem.link.includes('vacancies') ? (
+                    {menuItem.link && menuItem.link.includes('careers') ? (
                       <VacanciesCounterWrapper>
                         <VacanciesCounter />
                       </VacanciesCounterWrapper>
