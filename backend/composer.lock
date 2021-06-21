@@ -3202,16 +3202,16 @@
         },
         {
             "name": "ozerich/laravel-filestorage-db",
-            "version": "0.5.9",
+            "version": "0.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ozerich/laravel-filestorage-db.git",
-                "reference": "34e61e16393de403b294832fba27fe06beaba4a5"
+                "reference": "e182a64c8211036f0eaef8fd12160539fe47319b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ozerich/laravel-filestorage-db/zipball/34e61e16393de403b294832fba27fe06beaba4a5",
-                "reference": "34e61e16393de403b294832fba27fe06beaba4a5",
+                "url": "https://api.github.com/repos/Ozerich/laravel-filestorage-db/zipball/e182a64c8211036f0eaef8fd12160539fe47319b",
+                "reference": "e182a64c8211036f0eaef8fd12160539fe47319b",
                 "shasum": ""
             },
             "require": {
@@ -3251,9 +3251,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Ozerich/laravel-filestorage-db/issues",
-                "source": "https://github.com/Ozerich/laravel-filestorage-db/tree/0.5.9"
+                "source": "https://github.com/Ozerich/laravel-filestorage-db/tree/0.5.10"
             },
-            "time": "2021-06-19T13:34:17+00:00"
+            "time": "2021-06-21T12:54:09+00:00"
         },
         {
             "name": "ozitag/tager-backend-admin",
@@ -3394,16 +3394,16 @@
         },
         {
             "name": "ozitag/tager-backend-core",
-            "version": "1.7.27",
+            "version": "1.7.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ozitag/tager-backend-core.git",
-                "reference": "c3f6e7e7bdd27bf2057eb8e7de0137d6e5fb6160"
+                "reference": "6c299f3ba3d61619c907efa9165eb933f4fa6899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ozitag/tager-backend-core/zipball/c3f6e7e7bdd27bf2057eb8e7de0137d6e5fb6160",
-                "reference": "c3f6e7e7bdd27bf2057eb8e7de0137d6e5fb6160",
+                "url": "https://api.github.com/repos/ozitag/tager-backend-core/zipball/6c299f3ba3d61619c907efa9165eb933f4fa6899",
+                "reference": "6c299f3ba3d61619c907efa9165eb933f4fa6899",
                 "shasum": ""
             },
             "require": {
@@ -3443,9 +3443,9 @@
             "homepage": "https://github.com/ozitag/tager-backend-core",
             "support": {
                 "issues": "https://github.com/ozitag/tager-backend-core/issues",
-                "source": "https://github.com/ozitag/tager-backend-core/tree/1.7.27"
+                "source": "https://github.com/ozitag/tager-backend-core/tree/1.7.28"
             },
-            "time": "2021-06-02T13:38:42+00:00"
+            "time": "2021-06-21T15:18:05+00:00"
         },
         {
             "name": "ozitag/tager-backend-cron",
