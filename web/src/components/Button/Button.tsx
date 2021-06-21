@@ -32,6 +32,20 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, AnchorProps>(
   }
 );
 
+type StyledLinkProps = {};
+
+export function StyledButtonLink({
+  children,
+  href,
+  ...rest
+}: StyledLinkProps & AnchorProps) {
+  return (
+    <S.StyledLink to={href} {...rest}>
+      {children}
+    </S.StyledLink>
+  );
+}
+
 type ButtonNextLinkProps = {
   to: LinkToPropType;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &

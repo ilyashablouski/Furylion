@@ -38,7 +38,11 @@ function AdsSection() {
       </Inner>
 
       <StyledButton>
-        <SkewButton href={pageFields.adsButtonUrl} color="red" isNewTab={false}>
+        <SkewButton
+          href={pageFields.adsButtonUrl}
+          color="red"
+          isNewTab={pageFields.adsButtonIsNewTab}
+        >
           {pageFields.adsButtonLabel}
         </SkewButton>
       </StyledButton>

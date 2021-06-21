@@ -39,6 +39,7 @@ const Component = styled.div`
   min-width: 750px;
   min-height: 562px;
   color: ${colors.white};
+  background: ${colors.black};
 
   ${media.tabletSmall(css`
     min-width: 100vw;
@@ -56,7 +57,7 @@ const Panel = styled.div`
   align-items: center;
   padding: 10px 20px;
   background: rgba(0, 0, 0, 0.75);
-  z-index: 10;
+  z-index: 20;
   min-height: 56px;
 
   ${media.mobile(css`

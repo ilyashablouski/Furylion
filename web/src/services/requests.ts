@@ -11,10 +11,6 @@ export type FormPayload = {
   file: number | null;
 };
 
-export type CvFormPayload = {
-  name: string;
-};
-
 export function getExampleList() {
   return request.get({ path: '/tager/example' });
 }
@@ -27,10 +23,14 @@ export function sendContactsForm(payload: FormPayload): Promise<FormPayload> {
   return request.post({ path: '/leads/feedback', body: payload });
 }
 
-export function sendCvForm(payload: any) {
+export function sendCvForm(
+  payload: FormPayload,
+  params?: { vacancyId?: number }
+): Promise<FormPayload> {
   return request.post({
     path: '/leads/cv',
     body: payload,
+    params,
   });
 }
 

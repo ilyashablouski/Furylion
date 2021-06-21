@@ -10,6 +10,7 @@ import { StringFieldType } from '@/typings/common';
 import Picture from '@/components/Picture';
 import { ButtonLink } from '@/components/Button';
 import { media } from '@/utils/mixin';
+import { StyledButtonLink } from '@/components/Button/Button';
 
 type Props = {
   data: {
@@ -55,23 +56,23 @@ function TechRight({ data }: Props) {
 
       <Buttons>
         <StyledButton>
-          <ButtonLink
+          <StyledButtonLink
             href={data.btnFirstUrl ?? '#'}
             variants={['cut-bottom', 'white-red', 'w100']}
-            target={data.btnFirstIsNewTab ? '_blank' : '_self'}
+            target={data.btnFirstIsNewTab ? '_blank' : undefined}
           >
             {data.btnFirstLabel}
-          </ButtonLink>
+          </StyledButtonLink>
         </StyledButton>
 
         <StyledButton right>
-          <ButtonLink
+          <StyledButtonLink
             href={data.btnSecondUrl ?? '#'}
             variants={['cut-top', 'red', 'w100']}
-            target={data.btnSecondIsNewTab ? '_blank' : '_self'}
+            target={data.btnSecondIsNewTab ? '_blank' : undefined}
           >
             {data.btnSecondLabel}
-          </ButtonLink>
+          </StyledButtonLink>
         </StyledButton>
       </Buttons>
     </Container>

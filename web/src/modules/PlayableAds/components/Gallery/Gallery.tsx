@@ -194,6 +194,7 @@ const NavButton = styled.button<{
 `;
 
 const Card = styled.div`
+  position: relative;
   max-width: 468px;
   flex: 1 1 100%;
   width: 100%;
@@ -202,6 +203,7 @@ const Card = styled.div`
   background: #fefefe;
   border-radius: 22px;
   overflow: hidden;
+  z-index: 1;
 
   transition: all 0.2s linear;
 

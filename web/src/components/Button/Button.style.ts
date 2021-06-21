@@ -8,6 +8,7 @@ import curveBgRedSmallUrl from '@/assets/svg/curve-button-redSm.svg';
 import curveBgRedUrl from '@/assets/svg/curve-button-red.svg';
 import curveBgWhiteUrl from '@/assets/svg/curve-button-whiteSm.svg';
 import curveBgDarkSmallUrl from '@/assets/svg/curve-btn-darkSm.svg';
+import Link from '@/components/Link';
 
 import { ButtonVariant } from './Button.types';
 
@@ -229,10 +230,7 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
   `,
 };
 
-export const StyledButton = styled.button<{
-  variant?: ButtonVariant;
-  variants?: Array<ButtonVariant>;
-}>`
+const baseButtonStyles = css`
   padding: 23px 25px;
   display: inline-block;
   line-height: 100%;
@@ -245,6 +243,30 @@ export const StyledButton = styled.button<{
   text-transform: uppercase;
   cursor: pointer;
   transition: all 150ms ease-in-out;
+`;
+
+export const StyledButton = styled.button<{
+  variant?: ButtonVariant;
+  variants?: Array<ButtonVariant>;
+}>`
+  ${baseButtonStyles}
+
+  ${(props) =>
+    typeof props.variant === 'string'
+      ? variantCssMap[props.variant]
+      : props.variant};
+
+  ${(props) =>
+    Array.isArray(props.variants)
+      ? props.variants.map((variant) => variantCssMap[variant])
+      : props.variants};
+`;
+
+export const StyledLink = styled(Link)<{
+  variant?: ButtonVariant;
+  variants?: Array<ButtonVariant>;
+}>`
+  ${baseButtonStyles}
 
   ${(props) =>
     typeof props.variant === 'string'
