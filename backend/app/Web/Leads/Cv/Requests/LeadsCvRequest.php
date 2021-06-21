@@ -15,6 +15,7 @@ use OZiTAG\Tager\Backend\Core\Http\FormRequest;
  * @property string $email
  * @property string $message
  * @property File $file
+ * @property int $vacancyId
  */
 class LeadsCvRequest extends FormRequest
 {
@@ -26,6 +27,7 @@ class LeadsCvRequest extends FormRequest
             'email' => 'required|string|email',
             'message' => 'required|string',
             'file' => ['required', new FileRule()],
+            'vacancyId' => 'required|integer',
         ];
     }
 }
