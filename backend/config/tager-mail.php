@@ -43,7 +43,21 @@ return [
                 'vacancyUrl' => 'Vacancy Url'
             ],
             'subject' => 'New Cv',
-            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail</b> {{email}}</p><p><b>Message</b> {{message}}</p>><p><b>Vacancy</b><a href="{{vacancyUrl}}" target="_blank">{{vacancyName}}</a></p>',
+            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail:</b> {{email}}</p><p><b>Message:</b> {{message}}</p><p><b>Vacancy:</b><a href="{{vacancyUrl}}" target="_blank"> {{vacancyName}}</a></p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
+        EmailTemplate::CvWithoutVacancy => [
+            'name' => 'Cv form without vacancy',
+            'templateParams' => [
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'email' => 'E-Mail',
+                'message' => 'Message',
+            ],
+            'subject' => 'New Cv without vacancy',
+            'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail:</b> {{email}}</p><p><b>Message:</b> {{message}}</p>',
             'recipients' => [
                 'v.ozierski@ozitag.com'
             ],

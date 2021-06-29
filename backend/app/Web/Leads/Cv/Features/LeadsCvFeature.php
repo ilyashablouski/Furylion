@@ -15,7 +15,6 @@ use OZiTAG\Tager\Backend\Core\Resources\SuccessResource;
 use OZiTAG\Tager\Backend\Mail\Exceptions\TagerMailInvalidMessageException;
 use OZiTAG\Tager\Backend\Mail\TagerMail;
 use OZiTAG\Tager\Backend\Mail\Utils\TagerMailAttachments;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LeadsCvFeature
 {
@@ -27,21 +26,26 @@ class LeadsCvFeature
             $attachments->addFile($file);
         }
 
-        /** @var Vacancy $vacancy */
-        $vacancy = $vacancyRepository->find($request->vacancyId);
-        if (!$vacancy) {
-            throw new NotFoundHttpException('Vacancy not found');
-        }
-
-        $template = EmailTemplate::Cv;
+        $template = EmailTemplate::CvWithoutVacancy;
         $templateData = [
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'message' => $request->message,
-            'vacancyName' => $vacancy->title,
-            'vacancyUrl' => $vacancy->full_url,
         ];
+
+        if ($request->vacancyId) {
+            /** @var Vacancy $vacancy */
+            $vacancy = $vacancyRepository->find($request->vacancyId);
+
+            if ($vacancy) {
+                $template = EmailTemplate::Cv;
+                $templateData = array_merge($templateData, [
+                    'vacancyName' => $vacancy->title,
+                    'vacancyUrl' => $vacancy->full_url,
+                ]);
+            }
+        }
 
         try {
             $tagerMail->sendMailUsingTemplate($template, $templateData, null, $attachments);
