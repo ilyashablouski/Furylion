@@ -27,7 +27,7 @@ class LeadsCvRequest extends FormRequest
             'email' => 'required|string|email',
             'message' => 'required|string',
             'file' => ['required', new FileRule()],
-            'vacancyId' => 'required|integer',
+            'vacancyId' => 'nullable|integer',
         ];
     }
 }
