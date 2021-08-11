@@ -1325,18 +1325,18 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-dynamic-field@^0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@tager/admin-dynamic-field/-/admin-dynamic-field-0.1.14.tgz#a1a2c36bf253bd8473c5636ed131420ce2fda307"
-  integrity sha512-wuPkN9Pj9velkkM5Lof9L8A+bX6xA6be1m2gZjxf0hq7wz6C/inirpSVgu/4/hh6Iwi0T87gLkgXqUPGeO9ojA==
+"@tager/admin-dynamic-field@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@tager/admin-dynamic-field/-/admin-dynamic-field-0.1.17.tgz#a655c0b273cb9f59b74e62b106085a7a8922a9de"
+  integrity sha512-FRX5D7TkSJLZS/nxC+GL8aohN4JOvi18PhyXL3CKXDu6fGoJUt4LmCm3r2nox3CnL60FI1vWA6nB7cbhaS2cMw==
   dependencies:
     "@babel/runtime" "^7.11.2"
     lodash.kebabcase "^4.1.1"
 
-"@tager/admin-layout@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@tager/admin-layout/-/admin-layout-0.5.2.tgz#dec27dc8ee8399a1196f82929fabff8a985d4d71"
-  integrity sha512-i6Qri53Tl/yToXCnAkVGsmIvY7DAvPx6y7Hy5xjkr34LJaYhIUSpmzcDLXOMFuI+QX3AjZ4xJ5jJRBFmQ/sBIA==
+"@tager/admin-layout@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tager/admin-layout/-/admin-layout-0.5.3.tgz#cef3f490f750803d5bbe292b826c67a4a813ea36"
+  integrity sha512-88SUJ4ky6x/yX8ZnH/f67mBfJdOeLn2DQTiyMjD9ajkiwnJ8JNwu3lpSN+F8xCwW4PzybRoudhR8cpMjxsHzZg==
   dependencies:
     "@babel/runtime" "^7.10.4"
 
@@ -1354,10 +1354,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-pages@^0.3.15":
-  version "0.3.15"
-  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.15.tgz#6360660519da43152af672ba62f71749e6025e69"
-  integrity sha512-63LZCnbrepywDFnUuxUWdSRqKtGMTjK2/noJDizrMxYfqCAHr6QQZ1yna+UmDAULKyZMTu/g0rFmd5lvH3BhSw==
+"@tager/admin-pages@^0.3.18":
+  version "0.3.18"
+  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.18.tgz#19e2dbb0eb86178d6037c92daa34cc01b3b266c1"
+  integrity sha512-R2EbQeNKTSMeopKk8nXCA3a6siRtEsbR4uvq4oVW8QgYhJDjD/Nd9Vpks4O00aMNLD21kzg6ncKZ/njzCYoUNQ==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
@@ -1370,27 +1370,27 @@
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-services@^0.2.23":
-  version "0.2.23"
-  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.23.tgz#86f10c8a865f975bf2c5bb939a706750ec47d3f2"
-  integrity sha512-9fIWMi5b6wyA/MPDUSag95km5I4Bx6bBmO7lizM56U2ZmCKoPM7zvauDOc2kAH/aT4HikkvZCIxH+rzuli633g==
+"@tager/admin-services@^0.2.24":
+  version "0.2.24"
+  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.24.tgz#6c252b71fce2b501de0df9371411bccadd01b62b"
+  integrity sha512-ZVdX329hTM5F7PUeOt/yavOA9oDCYWm1nZLPWagmnFGNRbDWzPBI/Cp5XJQaSAgnwFGkFONJ9440Hbs0p92iWA==
   dependencies:
     i18next "^19.7.0"
     nanoid "^3.1.12"
     zod "^1.11.9"
 
-"@tager/admin-settings@^0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@tager/admin-settings/-/admin-settings-0.3.12.tgz#3bd60fe3ec208482395e4dfc8a0a3e9f41124272"
-  integrity sha512-g7+CuQUwmMIjjqI2BFajAo9uy2i3b+RRis8p9njU3UHUwHYjIkNNe2nEnShdyQP4ghY/9geOxniPL7mpm8XUmg==
+"@tager/admin-settings@^0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@tager/admin-settings/-/admin-settings-0.3.13.tgz#993fa0664d74924861cae2e7c456cf63cdb1b221"
+  integrity sha512-9w6uW30U3c7Y3d1XqetedmTxjp5DeJiK03sBMiEs4BXcWEgzuO7+xQpiMhkTxX4UP2KiBNxUWLWfEp76aqRnpQ==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-ui@^0.8.62":
-  version "0.8.62"
-  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.62.tgz#6c0a719bd7aefdce0c786bb600eb7db35bafb86d"
-  integrity sha512-KMFaIVNS0jk398na78vFYe1GjFJ0/BJzrJwk1Lz+TVEwDgktiNwk2SqTpBZ7xbroShXyieuhGO0vXBPf92IRBw==
+"@tager/admin-ui@^0.8.79":
+  version "0.8.79"
+  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.79.tgz#0489c14a50525197f7167e17bef0e0aa300a9111"
+  integrity sha512-NVFnWa6n7fvoEMdu5zb3xW5CqKowFBcQYSLbvaax27H9QBD6ee0ZGuIOEyKL9VIjQXfRTjzpq2gOxelVxzdHvA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@ckeditor/ckeditor5-vue" "^1.0.2"
