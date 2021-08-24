@@ -7,12 +7,14 @@ import { getSeoSettingsUrl, getSeoTemplatesUrl } from '@tager/admin-seo';
 import { getAdminListUrl, getRoleListUrl } from '@tager/admin-administrators';
 import { getVacancyListUrl, getVacancyLocationListUrl } from '@/utils/paths';
 import { getMenuPageUrl } from '@tager/admin-menus';
+import {getFilesListUrl} from "@tager/admin-files";
 
 type LinkKey =
   | 'HOME'
   | 'VACANCIES_LIST'
   | 'VACANCY_LOCATIONS'
   | 'PAGE_LIST'
+  | 'FILES_LIST'
   | 'MENU_TOP'
   | 'MENU_BOTTOM'
   | 'EMAIL_TEMPLATE_LIST'
@@ -41,6 +43,10 @@ export const getLinks = (
   PAGE_LIST: {
     url: getPageListUrl(),
     text: t('admin:pages'),
+  },
+  FILES_LIST: {
+    url: getFilesListUrl(),
+    text: 'Files',
   },
   MENU_TOP: {
     url: getMenuPageUrl({ menuAlias: 'header' }),

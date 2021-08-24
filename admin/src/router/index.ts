@@ -6,6 +6,7 @@ import {
   EMAIL_TEMPLATE_LIST_ROUTE,
 } from '@tager/admin-mail';
 import { SEO_SETTINGS_ROUTE, SEO_TEMPLATES_ROUTE } from '@tager/admin-seo';
+import { FILES_LIST_ROUTE, FILES_FORM_ROUTE } from '@tager/admin-files';
 import {
   SETTINGS_ITEM_FORM_ROUTE,
   SETTINGS_ITEM_LIST_ROUTE,
@@ -117,6 +118,8 @@ const router = createRouter({
     ADMIN_LIST_ROUTE,
     ROLE_FORM_ROUTE,
     ROLE_LIST_ROUTE,
+    FILES_LIST_ROUTE,
+    FILES_FORM_ROUTE,
     createMenuRoute('Menu'),
   ],
 });
