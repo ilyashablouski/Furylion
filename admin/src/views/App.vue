@@ -43,6 +43,7 @@ export default defineComponent({
           links.value.SEO_SETTINGS,
         ],
       },
+      { id: 'files', icon: 'viewList', ...links.value.FILES_LIST },
       {
         id: 'email',
         text: t('admin:eMail'),

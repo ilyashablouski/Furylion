@@ -14,6 +14,7 @@ import { useResource } from '@tager/admin-services';
 import { getPageCount } from '@tager/admin-pages';
 import { getLinks } from '@/constants/links';
 import { getVacanciesCount } from '@/services/requests';
+import {getFilesCount} from "@tager/admin-files";
 
 export default defineComponent({
   name: 'Home',
@@ -40,9 +41,20 @@ export default defineComponent({
       context,
     });
 
+    const [
+      fetchFilesCount,
+      { data: filesCountData, status: filesCountDataStatus },
+    ] = useResource({
+      fetchResource: getFilesCount,
+      initialValue: null,
+      resourceName: 'Files count',
+      context,
+    });
+
     onMounted(() => {
       fetchPageCount();
       fetchVacancyCount();
+      fetchFilesCount();
     });
 
     const links = computed(() => getLinks(t));
@@ -62,6 +74,14 @@ export default defineComponent({
         total: {
           value: vacancyCountData.value?.count ?? 0,
           status: vacancyCountDataStatus.value,
+        },
+      },
+      {
+        name: links.value.FILES_LIST.text,
+        url: links.value.FILES_LIST.url,
+        total: {
+          value: filesCountData.value?.count ?? 0,
+          status: filesCountDataStatus.value,
         },
       },
       {

@@ -1325,13 +1325,21 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-dynamic-field@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@tager/admin-dynamic-field/-/admin-dynamic-field-0.1.17.tgz#a655c0b273cb9f59b74e62b106085a7a8922a9de"
-  integrity sha512-FRX5D7TkSJLZS/nxC+GL8aohN4JOvi18PhyXL3CKXDu6fGoJUt4LmCm3r2nox3CnL60FI1vWA6nB7cbhaS2cMw==
+"@tager/admin-dynamic-field@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@tager/admin-dynamic-field/-/admin-dynamic-field-0.1.18.tgz#97bbb96c2613c206c3f5bb663640b2e7010e4a7c"
+  integrity sha512-vifxOzcYBPlRJqsCN8Cbrf06zhgK+K13e2dmyOyewyluyf5ytpkzbPni8EHCUQbzLDC0zCm090u0EPKkQuMpMA==
   dependencies:
     "@babel/runtime" "^7.11.2"
+
+"@tager/admin-files@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@tager/admin-files/-/admin-files-0.0.5.tgz#c70d61f89e5a3835f31484aa0d760d911dc1863e"
+  integrity sha512-gFB2q/cYPYj8S17xF0/bRd4YQMzPuSmPLPLbP5534p0O3bc5uITBbun8+MRktH1KwT+x/G//A9Fu+vKyIVX0gQ==
+  dependencies:
+    filesize "^7.0.0"
     lodash.kebabcase "^4.1.1"
+    path-to-regexp "^6.1.0"
 
 "@tager/admin-layout@^0.5.3":
   version "0.5.3"
@@ -1354,10 +1362,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-pages@^0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.18.tgz#19e2dbb0eb86178d6037c92daa34cc01b3b266c1"
-  integrity sha512-R2EbQeNKTSMeopKk8nXCA3a6siRtEsbR4uvq4oVW8QgYhJDjD/Nd9Vpks4O00aMNLD21kzg6ncKZ/njzCYoUNQ==
+"@tager/admin-pages@^0.3.25":
+  version "0.3.25"
+  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.25.tgz#c1c601f64f805e120cf12459aa54ff6c7b5d1866"
+  integrity sha512-VlDByk5QvkosFkgRbDWaN6dv1VgkWuxFIiQs7sG9Jvfrf0Pst6UcFOR6cNWZ8LoJV3EEzONwre/N6rqFHGLrEw==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
@@ -1387,10 +1395,10 @@
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-ui@^0.8.79":
-  version "0.8.79"
-  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.79.tgz#0489c14a50525197f7167e17bef0e0aa300a9111"
-  integrity sha512-NVFnWa6n7fvoEMdu5zb3xW5CqKowFBcQYSLbvaax27H9QBD6ee0ZGuIOEyKL9VIjQXfRTjzpq2gOxelVxzdHvA==
+"@tager/admin-ui@^0.8.84":
+  version "0.8.84"
+  resolved "https://registry.yarnpkg.com/@tager/admin-ui/-/admin-ui-0.8.84.tgz#9180fd5cfa9bae74252b6b6aac2de92026ce7852"
+  integrity sha512-OP+YISIM7IbUZgQAXHNlef8irX09mRxOiDxd+kOFI2IUlIebEF5hcb1As/o1b4HH3F543DTZm+5aYC0DRjam4Q==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@ckeditor/ckeditor5-vue" "^1.0.2"
@@ -4697,6 +4705,11 @@ filesize@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
+
+filesize@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-7.0.0.tgz#9d4b3ce384ec7731a9e68c64ee29fb4934ad657d"
+  integrity sha512-Wsstw+O1lZ9gVmOI1thyeQvODsaoId2qw14lCqIzUhoHKXX7T2hVpB7BR6SvgodMBgWccrx/y2eyV8L7tDmY6A==
 
 fill-range@^4.0.0:
   version "4.0.0"

@@ -8,6 +8,7 @@ final class FileScenario extends Enum
 {
     const OpenGraph = 'open-graph';
     const Content = 'content';
+    const UserFile = 'userfile';
 
     const Feedback = 'Feedback';
     const Cv = 'Cv';
