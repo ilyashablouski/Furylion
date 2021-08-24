@@ -80,8 +80,8 @@ export default defineComponent({
         name: links.value.FILES_LIST.text,
         url: links.value.FILES_LIST.url,
         total: {
-          value: pageCountData.value?.count ?? 0,
-          status: pageCountDataStatus.value,
+          value: filesCountData.value?.count ?? 0,
+          status: filesCountDataStatus.value,
         },
       },
       {
