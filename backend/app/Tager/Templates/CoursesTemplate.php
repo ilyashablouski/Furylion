@@ -77,19 +77,6 @@ class CoursesTemplate extends Template
                 'chooseCourseScrollTo' => new StringField('Scroll id Element'),
                 'chooseCourseIsNewTab' => new TrueFalseField('Is new tab?'),
             ]),
-            new GroupField('Steps', [
-                'stepsId' => new StringField('id'),
-                'stepsTitle' => new StringField('Title'),
-                'stepsItems' =>  new RepeaterField('Steps', [
-                    'title' => new StringField('Title'),
-                    'description' => new TextField('Subtitle'),
-                    'image' => new ImageField('Image', FileScenario::StepsCardImage),
-                ], RepeaterView::Block),
-                'chooseCourseLabel' => new StringField('Button title'),
-                'chooseCourseLinkUrl' => new StringField('Button URL'),
-                'chooseCourseScrollTo' => new StringField('Scroll id Element'),
-                'chooseCourseIsNewTab' => new TrueFalseField('Is new tab?'),
-            ]),
             new GroupField('Popular questions', [
                 'questionsId' => new StringField('id'),
                 'questionsTitle' => new StringField('Title'),
