@@ -186,8 +186,8 @@ return [
             'storage' => ConfigHelper::fileStorage('courses'),
             'validator' => ConfigHelper::imageValidator(),
             'thumbnails' => [
-                'desktop' => ConfigHelper::thumbWithWebpAnd2x(293, 510),
-                'mobile' => ConfigHelper::thumbWithWebpAnd2x(320, 460),
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(293),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(293),
             ]
         ]),
         FileScenario::AvatarImage => TagerImageScenario::wrap([
