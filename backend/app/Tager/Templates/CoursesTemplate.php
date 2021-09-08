@@ -23,6 +23,7 @@ class CoursesTemplate extends Template
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new StringField('Text'),
                 'heroImage' => new ImageField('Image', FileScenario::CoursesHeroImage),
+                'heroMobileImage' => new ImageField('Mobile Image', FileScenario::CoursesHeroImage),
             ]),
             new GroupField('About us', [
                 'aboutUsId' => new StringField('id'),
