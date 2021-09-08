@@ -6,6 +6,7 @@ import Home from '@/modules/Home';
 import Vacancies from '@/modules/Vacancies';
 import Services from '@/modules/Services';
 import PlayableAds from '@/modules/PlayableAds';
+import Courses from '@/modules/Courses';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
@@ -28,6 +29,10 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   {
     template: 'playable-ads',
     component: PlayableAds,
+  },
+  {
+    template: 'courses',
+    component: Courses,
   },
 ];
 

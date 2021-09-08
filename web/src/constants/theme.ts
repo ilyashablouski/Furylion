@@ -9,6 +9,8 @@ export const colors = {
   red: '#c2191e',
   dark: '#191814',
   white: '#ffffff',
+  white01: 'rgba(255, 255, 255, 0.1)',
+  white08: 'rgba(255, 255, 255, 0.8)',
 } as const;
 
 /** Source: https://htmlacademy.ru/blog/useful/css/short-14 */
