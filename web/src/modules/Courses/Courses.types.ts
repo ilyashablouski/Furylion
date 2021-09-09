@@ -17,10 +17,11 @@ export interface Course {
   placesLeftCount?: string | null;
   trainingPeriodTitle?: string | null;
   trainingPeriodDate?: string | null;
-  linkLabel: string | null;
-  linkUrl: string | null;
-  scrollTo: string | null;
-  isNewTab: boolean;
+  linkLabel?: string | null;
+  linkUrl?: string | null;
+  scrollTo?: string | null;
+  isNewTab?: boolean;
+  isComingSoon?: boolean;
 }
 
 export interface Fact {

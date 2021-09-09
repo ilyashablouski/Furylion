@@ -35,6 +35,7 @@ export default Facts;
 const Component = styled.section`
   padding: 80px 0;
   background: ${colors.dark};
+  z-index: 1;
 `;
 
 const Title = styled.span`

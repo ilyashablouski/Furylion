@@ -3,6 +3,7 @@ export const colors = {
   black100: '#101010',
   black200: '#262626',
   black300: '#3b3b3b',
+  black032: 'rgba(0, 0, 0, 0.32)',
   gray: '#888888',
   grayDark: '#5f5f5f',
   grayLight: '#999999',
