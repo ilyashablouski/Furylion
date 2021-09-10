@@ -11,6 +11,7 @@ export const colors = {
   dark: '#191814',
   white: '#ffffff',
   white01: 'rgba(255, 255, 255, 0.1)',
+  white05: 'rgba(255, 255, 255, 0.5)',
   white08: 'rgba(255, 255, 255, 0.8)',
 } as const;
 

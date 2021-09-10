@@ -5,23 +5,20 @@ export interface PictureType {
   mobile: ThumbnailType;
 }
 
+export interface Information {
+  title?: string;
+  content?: string;
+}
+
 export interface Course {
   image: PictureType;
   title: string | null;
   subtitle: string | null;
-  termRegistrationTitle?: string | null;
-  termRegistrationDate?: string | null;
-  educationStartTitle?: string | null;
-  educationStartDate?: string | null;
-  placesLeftTitle?: string | null;
-  placesLeftCount?: string | null;
-  trainingPeriodTitle?: string | null;
-  trainingPeriodDate?: string | null;
+  information: Information[];
   linkLabel?: string | null;
   linkUrl?: string | null;
   scrollTo?: string | null;
   isNewTab?: boolean;
-  isComingSoon?: boolean;
 }
 
 export interface Fact {
