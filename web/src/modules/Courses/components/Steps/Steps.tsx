@@ -17,11 +17,9 @@ function Steps() {
     stepsItems,
     chooseCourseLabel,
     chooseCourseLinkUrl,
-    chooseCourseScrollTo,
-    chooseCourseIsNewTab,
   } = useCoursesData();
 
-  console.log(chooseCourseLinkUrl);
+  const baseUrl = 'courses/';
 
   return (
     <Component id={stepsId ?? ''}>
@@ -37,11 +35,14 @@ function Steps() {
             />
           ))}
           <Course>
-            <CourseLink to={chooseCourseLinkUrl}>
+            <CourseLink to={`${baseUrl}${chooseCourseLinkUrl}`}>
               {chooseCourseLabel}
             </CourseLink>
 
-            <StyledSkewButton href={chooseCourseLinkUrl} color="white-black">
+            <StyledSkewButton
+              href={`${baseUrl}${chooseCourseLinkUrl}`}
+              color="white-black"
+            >
               {chooseCourseLabel}
             </StyledSkewButton>
           </Course>

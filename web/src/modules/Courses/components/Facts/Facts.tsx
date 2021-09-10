@@ -11,7 +11,7 @@ import FactsCard from './Card';
 function Facts() {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
   return (
-    <Component id={factsId ?? ''} className="anchor-section">
+    <Component id={factsId ?? ''}>
       <ContentContainer>
         <Title>{factsTitle}</Title>
         <Cards>

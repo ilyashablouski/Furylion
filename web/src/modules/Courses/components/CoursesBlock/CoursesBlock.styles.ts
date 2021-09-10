@@ -34,7 +34,6 @@ export const Title = styled.span`
 
 export const Cards = styled.div`
   position: relative;
-  margin-top: 65px;
 
   & > div:nth-child(3) > div:first-child {
     &:after {

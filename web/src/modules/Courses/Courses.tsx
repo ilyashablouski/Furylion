@@ -8,11 +8,13 @@ import PopularQuestions from '@/modules/Courses/components/PopularQuestions';
 import Projects from '@/modules/Courses/components/Projects';
 import RecentEvents from '@/modules/Courses/components/RecentEvents';
 import CoursesBlock from '@/modules/Courses/components/CoursesBlock';
+import AboutUs from '@/modules/Courses/components/AboutUs';
 
 function Courses() {
   return (
     <Component>
       <HeroSection />
+      <AboutUs />
       <CoursesBlock />
       <Facts />
       <Steps />
