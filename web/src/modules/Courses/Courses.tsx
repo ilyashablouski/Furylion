@@ -9,16 +9,18 @@ import Projects from '@/modules/Courses/components/Projects';
 import RecentEvents from '@/modules/Courses/components/RecentEvents';
 import CoursesBlock from '@/modules/Courses/components/CoursesBlock';
 import AboutUs from '@/modules/Courses/components/AboutUs';
+import StudentWork from '@/modules/Courses/components/StudentWork';
 
 function Courses() {
   return (
     <Component>
-      <HeroSection />
+      <HeroSection courses={true} />
       <AboutUs />
       <CoursesBlock />
       <Facts />
       <Steps />
       <PopularQuestions />
+      <StudentWork />
       <Projects />
       <RecentEvents />
     </Component>

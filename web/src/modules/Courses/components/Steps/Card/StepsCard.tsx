@@ -27,6 +27,14 @@ export default StepsCard;
 
 const Component = styled.div`
   position: relative;
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s;
+    opacity: 1;
+  }
 `;
 
 const Background = styled(Picture)`
@@ -55,8 +63,8 @@ const Background = styled(Picture)`
     width: 100%;
     height: 100%;
     z-index: 3;
-    transition: all 150ms ease-in-out 0s;
-    border: 15px solid ${colors.white};
+    transition: 0.3s;
+    border: 15px solid ${colors.black};
   }
 
   &:after {
@@ -72,7 +80,7 @@ const Background = styled(Picture)`
 
   &:hover {
     &:before {
-      border-color: ${colors.black};
+      border-color: ${colors.white};
     }
   }
 

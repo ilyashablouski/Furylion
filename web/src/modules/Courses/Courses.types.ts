@@ -1,5 +1,7 @@
 import { ThumbnailType } from '@tager/web-modules';
 
+import { ServiceItemType } from '@/typings/model';
+
 export interface PictureType {
   desktop: ThumbnailType;
   mobile: ThumbnailType;
@@ -64,6 +66,16 @@ export interface Courses {
   questionsId: string | null;
   questionsTitle: string | null;
   questionsItems: Question[];
+  studentsId: string | null;
+  studentsTitle: string | null;
+  studentsItems: ServiceItemType[];
+  studentsBottomTitle: string | null;
+  studentsBottomItems: ServiceItemType[];
+  studentsBottomText: string | null;
+  studentsBottomLabel: string | null;
+  studentsBottomLinkUrl: string | null;
+  studentsBottomScrollTo: string | null;
+  studentsBottomIsNewTab: boolean;
   reviewsId: string | null;
   reviewsTitle: string | null;
   reviewsItems: [];

@@ -36,6 +36,7 @@ function CourseCard({
       />
       <Container>
         <Content>
+          <CardLink to={`${baseUrl}${linkUrl}`} />
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
 
@@ -73,6 +74,7 @@ function CourseCard({
             <ToLearnMore
               to={`${baseUrl}${linkUrl}`}
               target={isNewTab ? '_blank' : undefined}
+              className="soon-link"
             >
               {linkLabel}
               <ButtonArrowIcon />
@@ -93,6 +95,14 @@ const Component = styled.div`
   &:first-child {
     margin-top: 0;
   }
+
+  ${media.tablet(css`
+    &:hover {
+      .soon-link {
+        color: ${colors.white};
+      }
+    }
+  `)}
 `;
 
 const Container = styled.div`
@@ -160,9 +170,12 @@ const ToLearnMore = styled(Link)`
   transform: translateY(-50%);
   z-index: 2;
 
+  width: 100%;
+  height: 100%;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   font-size: 24px;
   line-height: 130%;
@@ -197,6 +210,7 @@ const ToLearnMore = styled(Link)`
     right: 0;
     margin-top: 32px;
     align-self: flex-start;
+    justify-content: flex-start;
   `)}
 
   ${media.mobile(css`
@@ -205,9 +219,29 @@ const ToLearnMore = styled(Link)`
   `)}
 `;
 
+const CardLink = styled(Link)`
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+
+  ${media.tablet(css`
+    display: block;
+  `)}
+`;
+
 const StyledButton = styled.div`
   margin-top: 16px;
   z-index: 2;
+
+  ${media.tablet(css`
+    z-index: 4;
+  `)}
 `;
 
 const InformationList = styled.div`

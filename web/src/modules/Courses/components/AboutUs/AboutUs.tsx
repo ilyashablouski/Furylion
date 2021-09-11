@@ -84,7 +84,7 @@ const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 1920px;
+  //max-width: 1920px;
   min-height: 750px;
   display: flex;
   background: ${colors.red};
@@ -176,7 +176,7 @@ const Title = styled.p`
   color: ${colors.white};
   position: relative;
   z-index: 10;
-  text-align: left;
+  max-width: 800px;
 
   ${media.tablet(css`
     margin-left: 0;

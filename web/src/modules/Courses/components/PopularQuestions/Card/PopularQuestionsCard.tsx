@@ -24,6 +24,11 @@ const Component = styled.div`
 
   &:last-child {
     border-bottom: none;
+    align-items: flex-start;
+
+    & > p:nth-child(2) {
+      margin-top: 12px;
+    }
   }
 
   ${media.tablet(css`

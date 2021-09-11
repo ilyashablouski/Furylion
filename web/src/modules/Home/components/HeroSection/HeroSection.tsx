@@ -12,7 +12,11 @@ import { ReactComponent as ArrowIcon } from '@/assets/svg/down-arrow.svg';
 import { media } from '@/utils/mixin';
 import { scrollDown } from '@/utils/common';
 
-function HeroSection() {
+export interface HeroSectionProps {
+  courses?: boolean;
+}
+
+function HeroSection({ courses }: HeroSectionProps) {
   const page = useCurrentPage<HeroSectionType>();
   const pageFields = page?.templateFields;
   const image = pageFields?.heroImage;
@@ -33,8 +37,8 @@ function HeroSection() {
 
       <ContentContainer>
         <Inner>
-          <Title>{title}</Title>
-          <Text>{text}</Text>
+          <Title courses={courses}>{title}</Title>
+          <Text courses={courses}>{text}</Text>
         </Inner>
 
         <DownArrow ref={arrowRef} onClick={scrollDown}>
@@ -87,7 +91,7 @@ const BackgroundPicture = styled(Picture)`
   }
 `;
 
-const Title = styled.span`
+const Title = styled.span<{ courses: HeroSectionProps['courses'] }>`
   margin: 0 auto;
   display: block;
   max-width: 642px;
@@ -97,22 +101,68 @@ const Title = styled.span`
   text-align: center;
   text-transform: uppercase;
 
+  ${({ courses }) =>
+    courses &&
+    css`
+      font-size: 126px;
+      line-height: 90%;
+
+      ${media.tablet(css`
+        font-size: 96px;
+      `)}
+    `};
+
   ${media.tabletSmallOnly(css`
     font-size: 64px;
   `)}
+
+  ${({ courses }) =>
+    courses &&
+    css`
+      ${media.tabletSmallOnly(css`
+        font-size: 96px;
+      `)}
+    `};
 
   ${media.mobile(css`
     font-size: 38px;
     text-transform: initial;
   `)}
+
+  ${({ courses }) =>
+    courses &&
+    css`
+      ${media.mobile(css`
+        text-transform: uppercase;
+        font-size: 54px;
+      `)}
+    `};
 `;
 
-const Text = styled.p`
+const Text = styled.p<{ courses: HeroSectionProps['courses'] }>`
   margin: 30px auto 0;
   max-width: 660px;
   font-weight: normal;
   font-size: 14px;
   line-height: 160%;
+
+  ${({ courses }) =>
+    courses &&
+    css`
+      font-weight: 900;
+      font-size: 32px;
+      line-height: 130%;
+
+      ${media.tablet(css`
+        font-size: 24px;
+      `)}
+
+      ${media.tablet(css`
+        font-size: 18px;
+        line-height: 160%;
+        text-transform: uppercase;
+      `)}
+    `};
 `;
 
 const Inner = styled.div`
