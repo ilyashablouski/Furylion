@@ -82,6 +82,37 @@ class CoursesTemplate extends Template
                     'answer' => new TextField('Answer'),
                 ], RepeaterView::Table),
             ]),
+            new GroupField('Student work Top', [
+                'studentsId' => new StringField('id'),
+                'studentsTitle' => new StringField('Title'),
+                'studentsItems' => new RepeaterField('Student work', [
+                    'image' => new ImageField('Image', FileScenario::HomeServicesItems),
+                    'title' => new StringField('Title'),
+                    'text' => new TextField('Text'),
+                    'linkLabel' => new StringField('Button Text'),
+                    'linkUrl' => new StringField('Button URL'),
+                    'scrollTo' => new StringField('Scroll id Element'),
+                    'isNewTab' => new TrueFalseField('Is new Tab?'),
+                ], RepeaterView::Block)
+            ]),
+            new GroupField('Student work Bottom', [
+                'studentsBottomId' => new StringField('id'),
+                'studentsBottomTitle' => new StringField('Title'),
+                'studentsBottomItems' => new RepeaterField('Student work', [
+                    'image' => new ImageField('Image', FileScenario::HomeServicesItems),
+                    'title' => new StringField('Title'),
+                    'text' => new TextField('Text'),
+                    'linkLabel' => new StringField('Button Text'),
+                    'linkUrl' => new StringField('Button URL'),
+                    'scrollTo' => new StringField('Scroll id Element'),
+                    'isNewTab' => new TrueFalseField('Is new tab??'),
+                ], RepeaterView::Block),
+                'studentsBottomText' => new StringField('Bottom text'),
+                'studentsBottomLabel' => new StringField('Button title'),
+                'studentsBottomLinkUrl' => new StringField('Button URL'),
+                'studentsBottomScrollTo' => new StringField('Scroll id Element'),
+                'studentsBottomIsNewTab' => new TrueFalseField('Is new tab?'),
+            ]),
             new GroupField('Reviews', [
                 'reviewsId' => new StringField('id'),
                 'reviewsTitle' => new StringField('Title'),
