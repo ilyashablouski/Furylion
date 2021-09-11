@@ -113,6 +113,17 @@ class CoursesTemplate extends Template
                 'studentsBottomScrollTo' => new StringField('Scroll id Element'),
                 'studentsBottomIsNewTab' => new TrueFalseField('Is new tab?'),
             ]),
+            new GroupField('Office life', [
+                'officeLifeId' => new StringField('id'),
+                'officeLifeTitle' => new StringField('Title'),
+                'officeLifeImage' => new ImageField('Image', FileScenario::OfficeLifeImage),
+                'officeLifeButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'officeLifeButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'officeLifeButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
+                'officeLifeButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'officeLifeButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'officeLifeButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
+            ]),
             new GroupField('Reviews', [
                 'reviewsId' => new StringField('id'),
                 'reviewsTitle' => new StringField('Title'),

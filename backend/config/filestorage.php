@@ -195,6 +195,11 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(28, 28)
         ]),
+        FileScenario::OfficeLifeImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(330, 670)
+        ]),
         FileScenario::ProjectsImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),
             'validator' => ConfigHelper::imageValidator(),
