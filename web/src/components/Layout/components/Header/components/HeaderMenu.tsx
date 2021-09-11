@@ -218,30 +218,12 @@ const MenuItem = styled.li`
     `)}
   }
 
-  &:nth-child(1) {
-    ${media.tabletSmall(css`
-      order: 1;
-    `)}
-  }
-
-  &:nth-child(2) {
-    ${media.tabletSmall(css`
-      order: 2;
-    `)}
-  }
-
   &:nth-child(3) {
     margin-right: 46px;
 
     ${media.tabletSmall(css`
       margin: 0;
-      order: 4;
-    `)}
-  }
-
-  &:nth-child(4) {
-    ${media.tabletSmall(css`
-      order: 3;
+      order: 5;
     `)}
   }
 
