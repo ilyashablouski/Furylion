@@ -79,6 +79,15 @@ export interface Courses {
   reviewsId: string | null;
   reviewsTitle: string | null;
   reviewsItems: [];
+  officeLifeId: string | null;
+  officeLifeTitle: string | null;
+  officeLifeImage: ThumbnailType;
+  officeLifeButtonFirstLabel: string | null;
+  officeLifeButtonFirstUrl: string | null;
+  officeLifeButtonFirstIsNewTab: boolean | null;
+  officeLifeButtonSecondLabel: string | null;
+  officeLifeButtonSecondUrl: string | null;
+  officeLifeButtonSecondIsNewTab: boolean | null;
   projectsId: string | null;
   projectsTitle: string | null;
   projectsImages: ThumbnailType[];

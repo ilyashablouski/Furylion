@@ -91,9 +91,14 @@ export default CourseCard;
 const Component = styled.div`
   position: relative;
   margin-top: 20px;
+  transition: 0.3s;
 
   &:first-child {
     margin-top: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px 2px ${colors.red};
   }
 
   ${media.tablet(css`
