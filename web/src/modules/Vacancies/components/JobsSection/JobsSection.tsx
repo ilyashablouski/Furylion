@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { useModal } from '@tager/web-components';
 
@@ -14,6 +16,8 @@ import { media } from '@/utils/mixin';
 import useCurrentPage from '@/hooks/useCurrentPage';
 
 import JobCard from './components/JobCard';
+
+const cityPath = '/vacancies?city=';
 
 function getLocationList(
   vacanciesList: Array<VacancyShortType>
@@ -47,7 +51,9 @@ function getVacanciesByLocation(
   vacanciesList: Array<VacancyShortType>,
   location: string
 ) {
-  return vacanciesList.filter((vacancy) => vacancy.location === location);
+  return vacanciesList.filter(
+    (vacancy) => `${cityPath}${vacancy.location}` === location
+  );
 }
 
 function JobsSection() {
@@ -61,7 +67,7 @@ function JobsSection() {
   const vacanciesCityList = getLocationList(vacanciesList);
 
   const [isCurrentLocation, setCurrentLocation] = useState<string>(
-    vacanciesCityList[0].location
+    `${cityPath}${vacanciesCityList[0].location}`
   );
 
   const filteredVacancyList = getVacanciesByLocation(
@@ -70,6 +76,19 @@ function JobsSection() {
   );
 
   const openModal = useModal();
+
+  const router = useRouter();
+
+  const defaultLocationPath = `${cityPath}${vacanciesCityList[0].location}`;
+
+  useEffect(() => {
+    if (router.asPath === '/vacancies') {
+      setCurrentLocation(defaultLocationPath);
+      router.push(defaultLocationPath);
+    } else {
+      setCurrentLocation(router.asPath);
+    }
+  }, [defaultLocationPath, router, router.asPath]);
 
   function handleOpenFeedbackModal() {
     openModal(FeedbackModal, {
@@ -86,19 +105,20 @@ function JobsSection() {
         <Tabs>
           {vacanciesCityList
             ? vacanciesCityList.map((categoryItem) => {
+                const locationPath = `${cityPath}${categoryItem.location}`;
+
                 return (
-                  <Tab
-                    key={categoryItem.id}
-                    active={isCurrentLocation === categoryItem.location}
-                    onClick={() =>
-                      setCurrentLocation(categoryItem.location ?? '')
-                    }
-                  >
-                    <TabText>
-                      {categoryItem.location}
-                      <TabLabel>{categoryItem.number}</TabLabel>
-                    </TabText>
-                  </Tab>
+                  <TabLink href={locationPath} scroll={false}>
+                    <Tab
+                      key={categoryItem.id}
+                      active={isCurrentLocation === locationPath}
+                    >
+                      <TabText>
+                        {categoryItem.location}
+                        <TabLabel>{categoryItem.number}</TabLabel>
+                      </TabText>
+                    </Tab>
+                  </TabLink>
                 );
               })
             : null}
@@ -188,6 +208,8 @@ const TabLabel = styled.sup`
     font-size: 12px;
   `)}
 `;
+
+const TabLink = styled(Link)``;
 
 const Tab = styled.div<{ active?: boolean }>`
   position: relative;
