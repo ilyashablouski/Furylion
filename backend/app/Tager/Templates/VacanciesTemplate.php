@@ -3,11 +3,15 @@
 namespace App\Tager\Templates;
 
 use App\Enums\FileScenario;
+use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
 use OZiTAG\Tager\Backend\Fields\Fields\ButtonField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
+use OZiTAG\Tager\Backend\Fields\Fields\RepeaterField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
+use OZiTAG\Tager\Backend\Fields\Fields\TextField;
+use OZiTAG\Tager\Backend\Fields\Fields\TrueFalseField;
 use OZiTAG\Tager\Backend\Pages\Structures\Template;
 
 class VacanciesTemplate extends Template
@@ -18,6 +22,26 @@ class VacanciesTemplate extends Template
             new GroupField('Head Image', [
                 'headId' => new StringField('id'),
                 'headImage' => new ImageField('Image', FileScenario::HeadImage),
+            ]),
+            new GroupField('Fl school', [
+                'flSchoolId' => new StringField('id'),
+                'flSchoolTitle' => new StringField('Title'),
+                'flSchoolSubtitle'=> new HtmlField('Subtitle'),
+                'flSchoolLabel' => new StringField('Button title'),
+                'flSchoolLinkUrl' => new StringField('Button URL'),
+                'flSchoolScrollTo' => new StringField('Scroll id Element'),
+                'flSchoolIsNewTab' => new TrueFalseField('Is new tab?'),
+                'flSchoolCoursesTitle' => new StringField('Courses title'),
+                'flSchoolCourses' =>  new RepeaterField('Courses', [
+                    'date' => new StringField('Date of recording'),
+                    'title' => new StringField('Course name'),
+                    'subtitle' => new StringField('Course subtitle'),
+                    'description' => new StringField('Course description'),
+                    'buttonLabel' => new StringField('Button title'),
+                    'buttonLinkUrl' => new StringField('Button URL'),
+                    'buttonScrollTo' => new StringField('Scroll id Element'),
+                    'buttonIsNewTab' => new TrueFalseField('Is new tab?'),
+                ],RepeaterView::Block),
             ]),
             new GroupField('Team Life', [
                 'teamLifeId' => new StringField('id'),
