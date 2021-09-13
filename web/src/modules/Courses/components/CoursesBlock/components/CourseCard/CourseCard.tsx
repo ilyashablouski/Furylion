@@ -52,6 +52,7 @@ function CourseCard({
             <ToLearnMore
               to={`${baseUrl}${linkUrl}`}
               target={isNewTab ? '_blank' : undefined}
+              className="white-link"
             >
               {linkLabel}
               <ButtonArrowIcon />
@@ -74,7 +75,7 @@ function CourseCard({
             <ToLearnMore
               to={`${baseUrl}${linkUrl}`}
               target={isNewTab ? '_blank' : undefined}
-              className="soon-link"
+              className="white-link"
             >
               {linkLabel}
               <ButtonArrowIcon />
@@ -91,6 +92,7 @@ export default CourseCard;
 const Component = styled.div`
   position: relative;
   margin-top: 20px;
+  cursor: pointer;
   transition: 0.3s;
 
   &:first-child {
@@ -99,15 +101,11 @@ const Component = styled.div`
 
   &:hover {
     box-shadow: 0 0 10px 2px ${colors.red};
-  }
 
-  ${media.tablet(css`
-    &:hover {
-      .soon-link {
-        color: ${colors.white};
-      }
+    .white-link {
+      color: ${colors.white};
     }
-  `)}
+  }
 `;
 
 const Container = styled.div`
@@ -226,7 +224,6 @@ const ToLearnMore = styled(Link)`
 
 const CardLink = styled(Link)`
   position: absolute;
-  display: none;
   top: 0;
   right: 0;
   left: 0;
@@ -234,10 +231,6 @@ const CardLink = styled(Link)`
   width: 100%;
   height: 100%;
   z-index: 3;
-
-  ${media.tablet(css`
-    display: block;
-  `)}
 `;
 
 const StyledButton = styled.div`
