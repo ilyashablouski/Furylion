@@ -61,6 +61,12 @@ const Component = styled.div`
     `)}
   }
 
+  &:nth-child(n) {
+    ${media.mobile(css`
+      padding-bottom: 65px;
+    `)}
+  }
+
   &:hover {
     transition: 0.3s;
     border-top-color: ${colors.red};
@@ -73,6 +79,11 @@ const Component = styled.div`
 
   ${media.tablet(css`
     padding-top: 25px;
+  `)}
+
+  ${media.mobile(css`
+    flex-direction: column;
+    padding-top: 20px;
   `)}
 `;
 
@@ -93,6 +104,11 @@ const Left = styled.div`
   flex: 1 1 35%;
   max-width: 35%;
   justify-content: space-between;
+
+  ${media.mobile(css`
+    flex: auto;
+    max-width: none;
+  `)}
 `;
 
 const Date = styled.span`
@@ -113,6 +129,12 @@ const CourseLink = styled(Link)`
     color: ${colors.white};
     text-decoration-color: transparent;
   }
+
+  ${media.mobile(css`
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+  `)}
 `;
 
 const Right = styled.div`
@@ -128,6 +150,13 @@ const Right = styled.div`
     max-width: none;
     justify-content: space-between;
   `)}
+
+  ${media.mobile(css`
+    margin-left: 0;
+    margin-top: 20px;
+    justify-content: flex-start;
+    flex-direction: column;
+  `)}
 `;
 
 const Title = styled.p`
@@ -136,11 +165,20 @@ const Title = styled.p`
   line-height: 130%;
   max-width: 292px;
   color: ${colors.white};
+
+  ${media.mobile(css`
+    font-size: 24px;
+  `)}
 `;
 
 const Content = styled.div`
   ${media.tablet(css`
     margin-left: 20px;
+  `)}
+
+  ${media.mobile(css`
+    margin-left: 0;
+    margin-top: 4px;
   `)}
 `;
 
@@ -154,6 +192,10 @@ const Subtitle = styled.p`
   ${media.tablet(css`
     margin-top: 0;
   `)}
+
+  ${media.mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 const Description = styled.p`
@@ -164,5 +206,10 @@ const Description = styled.p`
 
   ${media.tablet(css`
     max-width: 300px;
+  `)}
+
+  ${media.mobile(css`
+    font-size: 12px;
+    max-width: none;
   `)}
 `;
