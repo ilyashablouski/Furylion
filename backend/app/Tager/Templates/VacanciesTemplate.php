@@ -5,6 +5,7 @@ namespace App\Tager\Templates;
 use App\Enums\FileScenario;
 use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
 use OZiTAG\Tager\Backend\Fields\Fields\ButtonField;
+use OZiTAG\Tager\Backend\Fields\Fields\FileField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\HtmlField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
@@ -41,6 +42,12 @@ class VacanciesTemplate extends Template
                     'buttonLinkUrl' => new StringField('Button URL'),
                     'buttonScrollTo' => new StringField('Scroll id Element'),
                     'buttonIsNewTab' => new TrueFalseField('Is new tab?'),
+                ],RepeaterView::Block),
+                'sliderItems' =>  new RepeaterField('Slider items', [
+                    'video' => new FileField('Video', FileScenario::VideoReview),
+                    'text' => new TextField('Text'),
+                    'author' => new StringField('Author name'),
+                    'authorPosition' => new StringField('Author position'),
                 ],RepeaterView::Block),
             ]),
             new GroupField('Team Life', [

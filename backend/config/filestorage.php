@@ -205,5 +205,13 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(410, 65)
         ]),
+        FileScenario::VideoReview => [
+            'storage' => ConfigHelper::fileStorage('vacancies'),
+            'validator' => [
+                'maxSize' => 50 * 1024 * 1024,
+                'checkExtensionByMimeType' => true,
+                'extensions' => ['mp4']
+            ]
+        ],
     ]
 ];
