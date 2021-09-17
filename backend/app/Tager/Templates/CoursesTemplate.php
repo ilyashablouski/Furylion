@@ -4,6 +4,7 @@ namespace App\Tager\Templates;
 
 use App\Enums\FileScenario;
 use OZiTAG\Tager\Backend\Fields\Enums\RepeaterView;
+use OZiTAG\Tager\Backend\Fields\Fields\FileField;
 use OZiTAG\Tager\Backend\Fields\Fields\GalleryField;
 use OZiTAG\Tager\Backend\Fields\Fields\GroupField;
 use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
@@ -131,6 +132,7 @@ class CoursesTemplate extends Template
                     'avatar' => new ImageField('Avatar', FileScenario::AvatarImage),
                     'name' => new StringField('Name'),
                     'position' => new StringField('Position'),
+                    'video' => new FileField('Video', FileScenario::VideoReview),
                 ], RepeaterView::Table),
             ]),
             new GroupField('Projects', [
