@@ -11,6 +11,7 @@ import CoursesBlock from '@/modules/Courses/components/CoursesBlock';
 import AboutUs from '@/modules/Courses/components/AboutUs';
 import StudentWork from '@/modules/Courses/components/StudentWork';
 import OfficeLife from '@/modules/Courses/components/OfficeLife';
+import Reviews from '@/modules/Courses/components/Reviews';
 
 function Courses() {
   return (
@@ -21,6 +22,7 @@ function Courses() {
       <Facts />
       <Steps />
       <PopularQuestions />
+      <Reviews />
       <StudentWork />
       <OfficeLife />
       <Projects />

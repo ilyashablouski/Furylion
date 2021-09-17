@@ -40,6 +40,15 @@ export interface Question {
   answer: string | null;
 }
 
+export interface Review {
+  avatar: ThumbnailType;
+  name: string | null;
+  position: string | null;
+  video: {
+    url: string | null;
+  };
+}
+
 export interface Courses {
   heroId: string | null;
   heroTitle: string | null;
@@ -78,7 +87,7 @@ export interface Courses {
   studentsBottomIsNewTab: boolean;
   reviewsId: string | null;
   reviewsTitle: string | null;
-  reviewsItems: [];
+  reviewsItems: Review[];
   officeLifeId: string | null;
   officeLifeTitle: string | null;
   officeLifeImage: ThumbnailType;

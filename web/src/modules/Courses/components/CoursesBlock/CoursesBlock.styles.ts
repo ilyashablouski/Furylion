@@ -35,7 +35,7 @@ export const Title = styled.span`
 export const Cards = styled.div`
   position: relative;
 
-  & > div:nth-child(3) > div:first-child {
+  & > div:last-child > div:first-child {
     &:after {
       background: rgba(25, 24, 20, 0.6);
       backdrop-filter: blur(7px);
