@@ -6,6 +6,7 @@ import { colors } from '@/constants/theme';
 import { useFlSchoolData } from '@/modules/Vacancies/components/FlSchool/FlSchool.hooks';
 import SkewButton from '@/components/SkewButton';
 import { media } from '@/utils/mixin';
+import FlSchoolSlider from '@/modules/Vacancies/components/FlSchool/Slider';
 
 import CourseCard from './Card';
 
@@ -19,6 +20,7 @@ function FlSchool() {
     flSchoolIsNewTab,
     flSchoolCoursesTitle,
     flSchoolCourses,
+    sliderItems,
   } = useFlSchoolData();
   return (
     <Component id={flSchoolId ?? ''}>
@@ -48,6 +50,9 @@ function FlSchool() {
             </Cards>
           </Right>
         </Top>
+        <Bottom>
+          <FlSchoolSlider sliderItems={sliderItems} isRightSide={false} />
+        </Bottom>
       </ContentContainer>
     </Component>
   );
@@ -67,6 +72,10 @@ const Top = styled.div`
   ${media.tablet(css`
     flex-direction: column;
   `)}
+`;
+
+const Bottom = styled.div`
+  margin-top: 80px;
 `;
 
 const Left = styled.div`
@@ -151,6 +160,10 @@ const Right = styled.div`
     flex: auto;
     max-width: none;
   `)}
+
+  ${media.mobile(css`
+    margin-top: 60px;
+  `)}
 `;
 
 const CoursesTitle = styled.p`
@@ -161,6 +174,10 @@ const CoursesTitle = styled.p`
 
   ${media.tablet(css`
     font-size: 20px;
+  `)}
+
+  ${media.mobile(css`
+    text-transform: uppercase;
   `)}
 `;
 

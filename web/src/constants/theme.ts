@@ -9,6 +9,7 @@ export const colors = {
   grayLight: '#999999',
   red: '#c2191e',
   dark: '#191814',
+  dark05: 'rgba(25, 24, 20, 0.5)',
   white: '#ffffff',
   white01: 'rgba(255, 255, 255, 0.1)',
   white05: 'rgba(255, 255, 255, 0.5)',

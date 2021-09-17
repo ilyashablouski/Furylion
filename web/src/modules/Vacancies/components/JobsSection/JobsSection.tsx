@@ -104,11 +104,11 @@ function JobsSection() {
       <ContentContainer>
         <Tabs>
           {vacanciesCityList
-            ? vacanciesCityList.map((categoryItem) => {
+            ? vacanciesCityList.map((categoryItem, index) => {
                 const locationPath = `${cityPath}${categoryItem.location}`;
 
                 return (
-                  <TabLink href={locationPath} scroll={false}>
+                  <TabLink href={locationPath} scroll={false} key={index}>
                     <Tab
                       key={categoryItem.id}
                       active={isCurrentLocation === locationPath}

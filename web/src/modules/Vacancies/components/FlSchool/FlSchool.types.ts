@@ -9,6 +9,15 @@ export interface FlCourse {
   buttonIsNewTab: boolean | null;
 }
 
+export interface Slide {
+  video: {
+    url: string | null;
+  };
+  text: string | null;
+  author: string | null;
+  authorPosition: string | null;
+}
+
 export interface FlSchool {
   flSchoolId: string | null;
   flSchoolTitle: string | null;
@@ -19,4 +28,5 @@ export interface FlSchool {
   flSchoolIsNewTab: boolean;
   flSchoolCoursesTitle: string | null;
   flSchoolCourses: FlCourse[];
+  sliderItems: Slide[];
 }
