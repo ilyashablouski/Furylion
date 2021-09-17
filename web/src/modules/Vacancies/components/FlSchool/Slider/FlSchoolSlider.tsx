@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { useTimer } from 'use-timer';
 
 import { ReactComponent as SlideArrowIcon } from '@/assets/svg/slide-arrow.svg';
-import { ReactComponent as AuthorTextIcon } from '@/assets/svg/vacancies/author-text.svg';
 import { media } from '@/utils/mixin';
 import { colors } from '@/constants/theme';
 import { Slide } from '@/modules/Vacancies/components/FlSchool/FlSchool.types';
+import SlideComponent from '@/modules/Vacancies/components/FlSchool/Slider/Slide';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
@@ -22,8 +22,6 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [sliderProgress, setSliderProgress] = useState<number>(0);
   const { time, start, pause, reset } = useTimer();
-
-  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (!swiper) {
@@ -41,18 +39,8 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
   }, [reset, start, swiper, time]);
 
   const handleSlideChange = () => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    reset();
-
     setSliderProgress(0);
-
-    video.pause();
-
+    reset();
     start();
   };
 
@@ -87,34 +75,21 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
         }}
       >
         {sliderItems.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <Content>
-              <Left>
-                <VideoContainer>
-                  <Video
-                    ref={videoRef}
-                    controls={true}
-                    preload="true"
-                    onPlay={pause}
-                    onPause={start}
-                    onEnded={start}
-                    src={slide.video.url ?? ''}
-                  />
-                </VideoContainer>
-              </Left>
-              <Right>
-                <Top>
-                  <AuthorTextIcon />
-                  <AuthorText>{slide.text}</AuthorText>
-                </Top>
-                <Bottom>
-                  <Author>{slide.author}</Author>
-                  <AuthorPosition>{slide.authorPosition}</AuthorPosition>
-                </Bottom>
-              </Right>
-            </Content>
+          <SwiperSlide>
+            <SlideComponent
+              swiper={swiper}
+              key={index}
+              onPlay={pause}
+              onPause={start}
+              onEnded={start}
+              url={slide.video.url}
+              text={slide.text}
+              author={slide.author}
+              authorPosition={slide.authorPosition}
+            />
           </SwiperSlide>
         ))}
+
         <NavButtons isRightSide={isRightSide}>
           <NavButton className={`swiper-prev2`} prev>
             <SlideArrowIcon />
@@ -150,135 +125,6 @@ const Container = styled.div`
       display: flex;
     }
   }
-`;
-
-const Content = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex: auto;
-  position: relative;
-`;
-
-const Left = styled.div`
-  position: relative;
-  flex: 0 0 501px;
-  max-width: 501px;
-  padding: 15px;
-  background: ${colors.white};
-  z-index: 0;
-
-  ${media.tabletSmallOnly(css`
-    flex: 1 1 600px;
-    max-width: 600px;
-  `)}
-
-  ${media.mobile(css`
-    position: absolute;
-    right: 0;
-  `)}
-`;
-
-const VideoContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-`;
-
-const Video = styled.video`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  background-color: ${colors.black};
-`;
-
-const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: auto;
-  background: ${colors.white};
-  margin-left: 20px;
-  padding: 52px;
-
-  ${media.tablet(css`
-    margin-left: 0;
-    padding: 20px 30px;
-  `)}
-
-  ${media.mobile(css`
-    padding: 20px;
-  `)}
-`;
-
-const Top = styled.div`
-  display: flex;
-
-  svg {
-    flex: 0 0 58px;
-
-    ${media.mobile(css`
-      flex: auto;
-    `)}
-  }
-
-  ${media.tablet(css`
-    flex-direction: column;
-  `)}
-`;
-
-const AuthorText = styled.p`
-  font-weight: 900;
-  font-size: 32px;
-  line-height: 130%;
-  color: ${colors.dark};
-  margin-left: 24px;
-  max-width: 523px;
-
-  ${media.tablet(css`
-    margin-left: 0;
-    margin-top: 20px;
-  `)}
-
-  ${media.mobile(css`
-    font-size: 20px;
-    max-width: none;
-  `)}
-`;
-
-const Bottom = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Author = styled.span`
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 160%;
-  text-transform: uppercase;
-  color: ${colors.dark};
-
-  ${media.tablet(css`
-    font-size: 20px;
-  `)}
-
-  ${media.mobile(css`
-    line-height: 130%;
-  `)}
-`;
-
-const AuthorPosition = styled(Author)`
-  line-height: 120%;
-  margin-top: 8px;
-
-  ${media.tablet(css`
-    line-height: 160%;
-  `)}
-
-  ${media.mobile(css`
-    line-height: 130%;
-  `)}
 `;
 
 const SwiperPaginationWrapper = styled.div`
