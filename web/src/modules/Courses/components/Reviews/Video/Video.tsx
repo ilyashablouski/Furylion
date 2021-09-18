@@ -106,8 +106,8 @@ const ReviewVideo = styled.video`
 const Scale = styled.div`
   position: absolute;
   top: 14px;
-  width: 94%;
-  left: calc((100% - 94%) / 2);
+  width: 96%;
+  left: calc((100% - 96%) / 2);
   height: 2px;
   background: ${colors.white05};
   border-radius: 2px;

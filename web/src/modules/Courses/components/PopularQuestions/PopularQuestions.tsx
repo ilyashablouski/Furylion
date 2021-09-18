@@ -35,6 +35,10 @@ export default PopularQuestions;
 const Component = styled.section`
   padding: 80px 0;
   background: ${colors.dark};
+
+  ${media.tablet(css`
+    padding: 70px 0 40px 0;
+  `)}
 `;
 
 const Title = styled.span`
