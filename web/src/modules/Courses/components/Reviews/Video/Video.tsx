@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
+import { useTimer } from 'use-timer';
 
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
@@ -7,10 +8,22 @@ import { Review } from '@/modules/Courses/Courses.types';
 
 function Video({ video, avatar, name, position }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoProgress, setVideoProgress] = useState<number>(0);
+  const { time, start, pause, reset } = useTimer();
 
-  useEffect(() => {});
+  const videoDurationMs = Math.floor(videoRef.current?.duration!) * 1000;
+  const videoDurationSec = Math.floor(videoRef.current?.duration!);
 
-  async function handleVideoPointerDown() {
+  useEffect(() => {
+    setVideoProgress((videoDurationMs + time * 1000) / videoDurationMs - 1);
+
+    if (time === videoDurationSec) {
+      reset();
+      setVideoProgress(0);
+    }
+  }, [reset, time, videoDurationMs, videoDurationSec, videoProgress]);
+
+  async function handleVideoPointerEnter() {
     const video = videoRef.current;
 
     try {
@@ -35,14 +48,17 @@ function Video({ video, avatar, name, position }: Review) {
       <Background />
       <ReviewVideo
         ref={videoRef}
+        src={video.url ?? ''}
         controls={true}
         preload="metadata"
-        onMouseEnter={handleVideoPointerDown}
         muted
-        src={video.url ?? ''}
-        onMouseLeave={handleVideoPointerOut}
+        onPointerEnter={handleVideoPointerEnter}
+        onPointerOut={handleVideoPointerOut}
+        onPlay={start}
+        onPause={pause}
+        onEnded={reset}
       />
-      <Scale />
+      <Scale scale={videoProgress} />
       <Content>
         <Avatar
           src={avatar.url}
@@ -103,7 +119,7 @@ const ReviewVideo = styled.video`
   background: ${colors.black};
 `;
 
-const Scale = styled.div`
+const Scale = styled.div<{ scale: number }>`
   position: absolute;
   top: 14px;
   width: 96%;
@@ -112,6 +128,23 @@ const Scale = styled.div`
   background: ${colors.white05};
   border-radius: 2px;
   z-index: 1;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform-origin: 0 50%;
+    ${(props) =>
+      props.scale &&
+      css`
+        transform: scaleX(${props.scale});
+      `};
+    background: ${colors.white};
+  }
 `;
 
 const Content = styled.div`

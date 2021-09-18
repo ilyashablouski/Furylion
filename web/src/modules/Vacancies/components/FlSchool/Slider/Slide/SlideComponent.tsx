@@ -42,7 +42,8 @@ function SlideComponent({
           <Video
             ref={videoRef}
             controls={true}
-            preload="true"
+            preload="metadata"
+            muted
             onPlay={onPlay}
             onPause={onPause}
             onEnded={onEnded}
