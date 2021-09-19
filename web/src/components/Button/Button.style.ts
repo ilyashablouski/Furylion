@@ -92,6 +92,17 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
       color: ${colors.white};
     }
   `,
+
+  'white-black': css`
+    background: ${colors.white};
+    color: ${colors.black};
+
+    &:hover {
+      background: ${colors.black};
+      color: ${colors.white};
+    }
+  `,
+
   redWhite: css`
     background: ${colors.white};
     color: ${colors.dark};

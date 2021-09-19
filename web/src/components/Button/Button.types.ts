@@ -5,6 +5,7 @@ export type ButtonVariant =
   | 'cut-bottom'
   | 'white-dark'
   | 'white-red'
+  | 'white-black'
   | 'redWhite'
   | 'dark'
   | 'darkRed'
