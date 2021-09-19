@@ -1348,10 +1348,10 @@
   dependencies:
     "@babel/runtime" "^7.10.4"
 
-"@tager/admin-mail@^0.3.7":
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/@tager/admin-mail/-/admin-mail-0.3.7.tgz#7737175981f4dcb788e606534b4fb4a74b188195"
-  integrity sha512-HaOl53SyXMsT6AeAcxX6lQgorv8lyfqdBSMtt7VAub1x+Mtf1dq2Nwkd0uWsCdCnLUKd8Ox9ZbUo/+K/Mi0c6g==
+"@tager/admin-mail@^0.3.9":
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/@tager/admin-mail/-/admin-mail-0.3.9.tgz#50a6f1dc350bc08b5ac8d71aa69c0ed36659dbda"
+  integrity sha512-SL3shAfOJSFsHbINgUA7ZtEvrsJ1eBxvE9vKOxuGlTLOlFK10Dyc7F+uuG74X2UHQQIOtxatuL2y8R0OedUKFw==
   dependencies:
     path-to-regexp "^6.1.0"
 
@@ -1362,10 +1362,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-pages@^0.3.25":
-  version "0.3.25"
-  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.25.tgz#c1c601f64f805e120cf12459aa54ff6c7b5d1866"
-  integrity sha512-VlDByk5QvkosFkgRbDWaN6dv1VgkWuxFIiQs7sG9Jvfrf0Pst6UcFOR6cNWZ8LoJV3EEzONwre/N6rqFHGLrEw==
+"@tager/admin-pages@^0.3.28":
+  version "0.3.28"
+  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.28.tgz#e517820fc9e4978753fbc5771b475646efcccc5f"
+  integrity sha512-wT5fYSY7yQ9Q+1OFDu337jIaoOgmoIyF65Ydf3CNqPDNpAJvU5FmZz0SEZLK3PACwx6AxX83jBecDVFubfZ97g==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
@@ -1378,10 +1378,10 @@
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-services@^0.2.24":
-  version "0.2.24"
-  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.24.tgz#6c252b71fce2b501de0df9371411bccadd01b62b"
-  integrity sha512-ZVdX329hTM5F7PUeOt/yavOA9oDCYWm1nZLPWagmnFGNRbDWzPBI/Cp5XJQaSAgnwFGkFONJ9440Hbs0p92iWA==
+"@tager/admin-services@^0.2.25":
+  version "0.2.25"
+  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.25.tgz#54ef018f497835bfccec40d82b8cd35e0a409d60"
+  integrity sha512-fDkHWzbrlM0CHTar4KkbYO5Iv7Hw7IUSxdbyluJDdVLrq0VKUXJlvYp6blsUyWMHqDHshqxOoaV8FoFsU7gU1Q==
   dependencies:
     i18next "^19.7.0"
     nanoid "^3.1.12"
