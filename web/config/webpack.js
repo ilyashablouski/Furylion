@@ -20,8 +20,8 @@ function supportSvg(config) {
 }
 
 function supportImages(config, { isServer }) {
-  config.module.rules.push({
-    test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/],
+  const customImageRule = {
+    test: /\.(png|jpg|jpeg|gif|webp|ico|bmp)$/i,
     use: [
       {
         loader: require.resolve('url-loader'),
@@ -33,7 +33,13 @@ function supportImages(config, { isServer }) {
         },
       },
     ],
-  });
+  };
+
+  const nextImageRuleIndex = config.module.rules.findIndex(
+    (rule) => rule.loader === 'next-image-loader'
+  );
+
+  config.module.rules.splice(nextImageRuleIndex, 1, customImageRule);
 }
 
 function supportPolyfills(config) {

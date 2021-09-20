@@ -27,7 +27,7 @@ type Props =
     }
   | {
       pageType: 'ERROR';
-      error: Error;
+      error: any;
     };
 
 function DynamicPage(props: Props) {

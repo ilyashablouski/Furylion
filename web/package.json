@@ -4,7 +4,7 @@
   "private": true,
   "main": "server-build/index.js",
   "engines": {
-    "node": ">=12"
+    "node": "14.x"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -55,7 +55,7 @@
     "@storybook/react": "^6.1.10",
     "@svgr/webpack": "^5.5.0",
     "@types/lodash": "^4.14.165",
-    "@types/node": "12.x",
+    "@types/node": "14.x",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^16.14.1",
     "@types/react-dom": "^16.9.10",
@@ -68,7 +68,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
-    "case-sensitive-paths-webpack-plugin": "^2.3.0",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
@@ -79,18 +79,18 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "fs-extra": "^9.0.1",
     "husky": "^4.3.5",
     "lint-staged": "^10.5.3",
     "next-compose-plugins": "^2.2.1",
-    "next-transpile-modules": "^6.0.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "start-server-and-test": "^1.11.6",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
     "url-loader": "^4.1.1",
-    "webpack": "^4.44.2"
+    "webpack": "^5.53.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -106,9 +106,11 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 years",
+      ">1%",
+      "not ie 11",
+      "not op_mini all",
+      "not dead"
     ],
     "development": [
       "last 1 chrome version",
