@@ -193,7 +193,7 @@ return [
         FileScenario::AvatarImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(28, 28)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
         ]),
         FileScenario::OfficeLifeImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),

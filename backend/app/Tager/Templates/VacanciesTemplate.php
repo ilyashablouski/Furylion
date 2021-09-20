@@ -25,6 +25,7 @@ class VacanciesTemplate extends Template
                 'headImage' => new ImageField('Image', FileScenario::HeadImage),
             ]),
             new GroupField('Fl school', [
+                'flSchoolIsActuallyBlock' => new TrueFalseField('Is actually block?'),
                 'flSchoolId' => new StringField('id'),
                 'flSchoolTitle' => new StringField('Title'),
                 'flSchoolSubtitle'=> new HtmlField('Subtitle'),
