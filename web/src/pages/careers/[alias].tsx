@@ -21,7 +21,7 @@ type Props =
   | { pageType: 'DYNAMIC_PAGE'; vacancy: VacancyFullType }
   | {
       pageType: 'ERROR';
-      error: Error;
+      error: any;
     };
 
 function CareersVacancy(props: Props) {

@@ -118,7 +118,7 @@ function DoubleTickerLine({
   return (
     <Wrapper ref={containerRef}>
       {ticketLineList.map((ticker, index) => (
-        <Row>
+        <Row key={index}>
           <Container
             backgroundTicket={ticker.backgroundTicket}
             rotateTicket={ticker.rotateTicket}
