@@ -35,6 +35,10 @@ const Component = styled.div`
     transition: 0.3s;
     opacity: 1;
   }
+
+  ${media.tablet(css`
+    opacity: 1;
+  `)}
 `;
 
 const Background = styled(Picture)`
@@ -65,6 +69,10 @@ const Background = styled(Picture)`
     z-index: 3;
     transition: 0.3s;
     border: 15px solid ${colors.black};
+
+    ${media.tablet(css`
+      border-color: ${colors.white};
+    `)}
   }
 
   &:after {

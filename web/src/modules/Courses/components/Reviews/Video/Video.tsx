@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTimer } from 'use-timer';
 
+import { ReactComponent as PlayIcon } from '@/assets/svg/play.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { Review } from '@/modules/Courses/Courses.types';
@@ -45,7 +46,9 @@ function Video({ video, avatar, name, position }: Review) {
 
   return (
     <Component>
-      <Background />
+      <Background>
+        <PlayIcon />
+      </Background>
       <ReviewVideo
         ref={videoRef}
         src={video.url ?? ''}
@@ -91,6 +94,10 @@ const Background = styled.div`
   opacity: 1;
   visibility: visible;
   transition: visibility 0.2s, opacity 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Component = styled.div`

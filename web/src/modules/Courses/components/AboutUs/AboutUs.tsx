@@ -84,14 +84,13 @@ const Wrapper = styled.section`
   position: relative;
   margin: 0 auto;
   width: 100%;
-  //max-width: 1920px;
   min-height: 750px;
   display: flex;
   background: ${colors.red};
   overflow: hidden;
 
   ${media.tablet(css`
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-bottom: 70px;
   `)}
 `;
@@ -110,26 +109,7 @@ const Vector = styled.span`
   transform: rotate(-26.5deg);
 
   ${media.tablet(css`
-    height: 223%;
-    top: -134%;
-    left: -8%;
-    width: 130%;
-    transform: rotate(-44deg);
-  `)}
-
-  ${media.tabletSmall(css`
-    height: 232%;
-    width: 140%;
-    transform: rotate(51.5deg);
-  `)}
-
-  ${media.mobile(css`
-    height: 223%;
-    top: -75%;
-    left: -93%;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(36deg);
+    display: none;
   `)}
 `;
 
@@ -150,7 +130,7 @@ const Right = styled.div`
 
   ${media.tablet(css`
     margin-top: 0;
-    padding-bottom: 0;
+    padding: 70px 0 32px 0;
   `)}
   ${ContentContainer} {
     padding-left: 0;
@@ -180,8 +160,6 @@ const Title = styled.p`
 
   ${media.tablet(css`
     margin-left: 0;
-
-    margin-top: 70px;
     font-size: 56px;
   `)}
 

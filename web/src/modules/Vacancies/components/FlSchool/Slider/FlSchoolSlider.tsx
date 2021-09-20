@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { useTimer } from 'use-timer';
@@ -21,6 +21,7 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
   const [realSlideIndex, setRealSlideIndex] = useState<number>(0);
   const [sliderProgress, setSliderProgress] = useState<number>(0);
+  const [isAnimationStop, setAnimationStop] = useState<boolean>(false);
   const { time, start, pause, reset } = useTimer();
 
   useEffect(() => {
@@ -37,6 +38,21 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
       start();
     }
   }, [reset, start, swiper, time]);
+
+  const handlePlayVideo = () => {
+    pause();
+    setAnimationStop(!isAnimationStop);
+  };
+
+  const handlePauseVideo = () => {
+    start();
+    setAnimationStop(!isAnimationStop);
+  };
+
+  const handleEndedVideo = () => {
+    start();
+    setAnimationStop(false);
+  };
 
   const handleSlideChange = () => {
     setSliderProgress(0);
@@ -75,13 +91,12 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
         }}
       >
         {sliderItems.map((slide, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <SlideComponent
               swiper={swiper}
-              key={index}
-              onPlay={pause}
-              onPause={start}
-              onEnded={start}
+              onPlay={handlePlayVideo}
+              onPause={handlePauseVideo}
+              onEnded={handleEndedVideo}
               url={slide.video.url}
               text={slide.text}
               author={slide.author}
@@ -103,6 +118,7 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
           <BulletsPagination
             className="swiper-pagination2"
             scale={sliderProgress}
+            isAnimationStop={isAnimationStop}
           />
           <FractionPagination>
             <CurrentValueLabel>00{realSlideIndex + 1}</CurrentValueLabel>
@@ -113,6 +129,15 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
     </Container>
   );
 }
+
+const animation = keyframes`
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
 
 const Container = styled.div`
   position: relative;
@@ -147,7 +172,10 @@ const SwiperPaginationWrapper = styled.div`
   `)}
 `;
 
-const BulletsPagination = styled.div<{ scale: number }>`
+const BulletsPagination = styled.div<{
+  scale: number;
+  isAnimationStop: boolean;
+}>`
   display: flex;
   flex: auto;
   max-width: 240px;
@@ -175,15 +203,10 @@ const BulletsPagination = styled.div<{ scale: number }>`
       bottom: 0;
       left: 0;
       width: 0;
-      content: '';
-      transform-origin: 0 50%;
-      ${(props) =>
-        props.scale &&
-        css`
-          transform: scaleX(${props.scale});
-        `};
       background: #6b1a1a;
       opacity: 1;
+      content: '';
+      transform-origin: 0 50%;
     }
   }
 
@@ -198,6 +221,16 @@ const BulletsPagination = styled.div<{ scale: number }>`
       position: absolute;
       width: 100%;
       will-change: transform;
+      animation: ${animation} 5000ms linear;
+
+      ${(props) =>
+        props.isAnimationStop
+          ? css`
+              animation-play-state: paused;
+            `
+          : css`
+              animation-play-state: running;
+            `}
     }
   }
 

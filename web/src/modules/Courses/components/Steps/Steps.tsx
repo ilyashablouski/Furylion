@@ -109,6 +109,10 @@ const Course = styled.div`
 
   &:hover {
     background: ${colors.black};
+
+    ${media.mobile(css`
+      background: none;
+    `)}
   }
 
   ${media.mobile(css`

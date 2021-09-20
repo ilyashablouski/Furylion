@@ -19,6 +19,7 @@ export interface Slide {
 }
 
 export interface FlSchool {
+  flSchoolIsActuallyBlock: boolean;
   flSchoolId: string | null;
   flSchoolTitle: string | null;
   flSchoolSubtitle: string | null;
