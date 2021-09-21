@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { useTimer } from 'use-timer';
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 import { ReactComponent as PlayIcon } from '@/assets/svg/play.svg';
 import Picture from '@/components/Picture';
@@ -9,20 +8,6 @@ import { Review } from '@/modules/Courses/Courses.types';
 
 function Video({ video, avatar, name, position }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [videoProgress, setVideoProgress] = useState<number>(0);
-  const { time, start, pause, reset } = useTimer();
-
-  const videoDurationMs = Math.floor(videoRef.current?.duration!) * 1000;
-  const videoDurationSec = Math.floor(videoRef.current?.duration!);
-
-  useEffect(() => {
-    setVideoProgress((videoDurationMs + time * 1000) / videoDurationMs - 1);
-
-    if (time === videoDurationSec) {
-      reset();
-      setVideoProgress(0);
-    }
-  }, [reset, time, videoDurationMs, videoDurationSec, videoProgress]);
 
   async function handleVideoPointerEnter() {
     const video = videoRef.current;
@@ -53,15 +38,12 @@ function Video({ video, avatar, name, position }: Review) {
         ref={videoRef}
         src={video.url ?? ''}
         controls={true}
+        controlsList="nofullscreen nodownload noremoteplayback noplaybackrate"
         preload="metadata"
         muted
         onPointerEnter={handleVideoPointerEnter}
         onPointerOut={handleVideoPointerOut}
-        onPlay={start}
-        onPause={pause}
-        onEnded={reset}
       />
-      <Scale scale={videoProgress} />
       <Content>
         <Avatar
           src={avatar.url}
@@ -124,33 +106,21 @@ const ReviewVideo = styled.video`
   width: 100%;
   height: 100%;
   background: ${colors.black};
-`;
 
-const Scale = styled.div<{ scale: number }>`
-  position: absolute;
-  top: 14px;
-  width: 96%;
-  left: calc((100% - 96%) / 2);
-  height: 2px;
-  background: ${colors.white05};
-  border-radius: 2px;
-  z-index: 1;
-
-  &:before {
-    content: '';
+  &::-webkit-media-controls-timeline {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform-origin: 0 50%;
-    ${(props) =>
-      props.scale &&
-      css`
-        transform: scaleX(${props.scale});
-      `};
-    background: ${colors.white};
+    padding: 0;
+    top: 14px;
+    width: 96%;
+    left: 2%;
+  }
+
+  &::-webkit-media-controls {
+    z-index: 3;
+  }
+
+  &::-webkit-media-controls-fullscreen-button {
+    display: none;
   }
 `;
 
@@ -158,7 +128,7 @@ const Content = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  top: 24px;
+  top: 28px;
   left: 6px;
   z-index: 2;
 `;
