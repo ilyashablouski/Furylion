@@ -46,4 +46,5 @@ final class FileScenario extends Enum
     const ProjectsImage = 'projects-image';
     const OfficeLifeImage = 'office-life-image';
     const VideoReview = 'video-review';
+    const VideoPreviewImage = 'video-preview-image';
 }

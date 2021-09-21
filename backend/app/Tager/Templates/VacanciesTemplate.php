@@ -49,6 +49,8 @@ class VacanciesTemplate extends Template
                     'text' => new TextField('Text'),
                     'author' => new StringField('Author name'),
                     'authorPosition' => new StringField('Author position'),
+                    'videoPreviewImage' => new ImageField('Mobile video preview image', FileScenario::VideoPreviewImage),
+                    'videoButtonText' => new StringField('Mobile video button text'),
                 ],RepeaterView::Block),
             ]),
             new GroupField('Team Life', [

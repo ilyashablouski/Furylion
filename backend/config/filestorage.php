@@ -213,5 +213,10 @@ return [
                 'extensions' => ['mp4']
             ]
         ],
+        FileScenario::VideoPreviewImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('vacancies'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
     ]
 ];
