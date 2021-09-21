@@ -1,5 +1,7 @@
 import SwiperCore from 'swiper';
 
+import { ThumbnailType } from '@tager/web-modules';
+
 export interface SlideComponentProps {
   swiper: SwiperCore | null;
 
@@ -7,6 +9,8 @@ export interface SlideComponentProps {
   text: string | null;
   author: string | null;
   authorPosition: string | null;
+  videoPreviewImage: ThumbnailType;
+  videoButtonText: string | null;
 
   onPlay?: () => void;
   onPause?: () => void;

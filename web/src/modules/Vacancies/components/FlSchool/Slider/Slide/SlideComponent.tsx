@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
+import { useModal } from '@tager/web-components';
+
 import { ReactComponent as AuthorTextIcon } from '@/assets/svg/vacancies/author-text.svg';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import Picture from '@/components/Picture';
 
+import VideoReviewModal from './VideoModal';
 import { SlideComponentProps } from './SlideComponent.types';
 
 function SlideComponent({
@@ -13,11 +17,14 @@ function SlideComponent({
   text,
   author,
   authorPosition,
+  videoPreviewImage,
+  videoButtonText,
   onEnded,
   onPause,
   onPlay,
 }: SlideComponentProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const videoModal = useModal();
 
   useEffect(() => {
     if (!swiper) {
@@ -34,6 +41,19 @@ function SlideComponent({
       video.pause();
     });
   }, [swiper]);
+
+  function openVideoModal() {
+    videoModal(VideoReviewModal, {
+      videoUrl: url,
+      author: author,
+      authorPosition: authorPosition,
+      onModalClose: onPause,
+    });
+
+    if (onPlay) {
+      onPlay();
+    }
+  }
 
   return (
     <Content>
@@ -60,6 +80,16 @@ function SlideComponent({
           <Author>{author}</Author>
           <AuthorPosition>{authorPosition}</AuthorPosition>
         </Bottom>
+
+        <ModalButton onClick={openVideoModal}>
+          <PreviewImage
+            src={videoPreviewImage.url}
+            src2x={videoPreviewImage.url_2x}
+            srcWebp={videoPreviewImage.url_webp}
+            srcWebp2x={videoPreviewImage.url_webp_2x}
+          />
+          <ButtonText>{videoButtonText}</ButtonText>
+        </ModalButton>
       </Right>
     </Content>
   );
@@ -88,8 +118,7 @@ const Left = styled.div`
   `)}
 
   ${media.mobile(css`
-    position: absolute;
-    right: 0;
+    display: none;
   `)}
 `;
 
@@ -106,6 +135,10 @@ const Video = styled.video`
   height: 100%;
   z-index: 5;
   background-color: ${colors.black};
+
+  &::-webkit-media-controls-fullscreen-button {
+    display: none;
+  }
 `;
 
 const Right = styled.div`
@@ -165,6 +198,42 @@ const AuthorText = styled.p`
 const Bottom = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${media.mobile(css`
+    margin-bottom: 120px;
+  `)}
+`;
+
+const ModalButton = styled.div`
+  display: none;
+
+  ${media.mobile(css`
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 280px;
+    padding: 10px;
+    border: 1px dashed ${colors.dark};
+  `)}
+`;
+
+const PreviewImage = styled(Picture)`
+  img {
+    width: 54px;
+    height: 80px;
+    object-fit: cover;
+  }
+`;
+
+const ButtonText = styled.span`
+  font-size: 12px;
+  line-height: 160%;
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+  color: ${colors.dark};
+  margin-left: 20px;
 `;
 
 const Author = styled.span`

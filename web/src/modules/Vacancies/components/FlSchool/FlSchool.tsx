@@ -63,6 +63,14 @@ export default FlSchool;
 const Component = styled.section`
   padding: 80px 0;
   background: ${colors.dark};
+
+  ${media.tablet(css`
+    padding: 70px 0;
+  `)}
+
+  ${media.mobile(css`
+    padding: 60px 0;
+  `)}
 `;
 
 const Top = styled.div`
@@ -76,6 +84,10 @@ const Top = styled.div`
 
 const Bottom = styled.div`
   margin-top: 80px;
+
+  ${media.mobile(css`
+    margin-top: 60px;
+  `)}
 `;
 
 const Left = styled.div`

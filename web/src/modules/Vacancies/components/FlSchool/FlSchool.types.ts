@@ -1,3 +1,5 @@
+import { ThumbnailType } from '@tager/web-modules';
+
 export interface FlCourse {
   date: string | null;
   title: string | null;
@@ -16,6 +18,8 @@ export interface Slide {
   text: string | null;
   author: string | null;
   authorPosition: string | null;
+  videoPreviewImage: ThumbnailType;
+  videoButtonText: string | null;
 }
 
 export interface FlSchool {

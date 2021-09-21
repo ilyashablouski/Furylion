@@ -101,6 +101,8 @@ function FlSchoolSlider({ sliderItems, isRightSide = true }: Props) {
               text={slide.text}
               author={slide.author}
               authorPosition={slide.authorPosition}
+              videoPreviewImage={slide.videoPreviewImage}
+              videoButtonText={slide.videoButtonText}
             />
           </SwiperSlide>
         ))}
@@ -150,6 +152,10 @@ const Container = styled.div`
       display: flex;
     }
   }
+
+  ${media.mobile(css`
+    min-height: 560px;
+  `)}
 `;
 
 const SwiperPaginationWrapper = styled.div`
