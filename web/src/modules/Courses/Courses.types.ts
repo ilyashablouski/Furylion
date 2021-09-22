@@ -31,6 +31,7 @@ export interface Fact {
 
 export interface Step {
   title: string | null;
+  position?: string | null;
   description: string | null;
   image: PictureType;
 }

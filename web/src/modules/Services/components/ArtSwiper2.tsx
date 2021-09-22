@@ -51,16 +51,17 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
           setRealSlideIndex(previousIndex === 0 ? previousIndex : realIndex);
         }}
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <SlidePicture
-              loading={'lazy'}
-              mobileSmall={convertThumbnailToPictureImage(image.mobile)}
-              mobileLarge={convertThumbnailToPictureImage(image.desktop)}
-              className="swiper-image-container"
-            />
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <SlidePicture
+                loading={'lazy'}
+                mobileSmall={convertThumbnailToPictureImage(image.mobile)}
+                mobileLarge={convertThumbnailToPictureImage(image.desktop)}
+                className="swiper-image-container"
+              />
+            </SwiperSlide>
+          ))}
         <NavButtons isRightSide={isRightSide}>
           <NavButton className={`swiper-prev2`} prev>
             <SlideArrowIcon />

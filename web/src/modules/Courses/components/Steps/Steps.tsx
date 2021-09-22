@@ -7,10 +7,11 @@ import { media } from '@/utils/mixin';
 import { useCoursesData } from '@/modules/Courses/Courses.hooks';
 import SkewButton from '@/components/SkewButton';
 import Link from '@/components/Link';
+import { SingleCourseProps } from '@/modules/Courses/pages/SingleCourse/SingleCourse.types';
 
 import StepsCard from './Card';
 
-function Steps() {
+function Steps({ singleCourse }: SingleCourseProps) {
   const {
     stepsId,
     stepsTitle,
@@ -21,31 +22,42 @@ function Steps() {
 
   const baseUrl = 'courses/';
 
+  const stepsItemsLength = stepsItems?.length;
+
   return (
     <Component id={stepsId ?? ''}>
       <ContentContainer>
         <Title>{stepsTitle}</Title>
-        <Cards>
-          {stepsItems.map(({ image, title, description }, index: number) => (
-            <StepsCard
-              image={image}
-              title={title}
-              description={description}
-              key={index}
-            />
-          ))}
-          <Course>
-            <CourseLink to={`${baseUrl}${chooseCourseLinkUrl}`}>
-              {chooseCourseLabel}
-            </CourseLink>
+        <Cards singleCourse={singleCourse} stepsItemsLength={stepsItemsLength}>
+          {stepsItems &&
+            stepsItems.map(
+              ({ image, title, position, description }, index: number) => (
+                <StepsCard
+                  image={image}
+                  title={title}
+                  position={position}
+                  description={description}
+                  key={index}
+                />
+              )
+            )}
 
-            <StyledSkewButton
-              href={`${baseUrl}${chooseCourseLinkUrl}`}
-              color="white-black"
-            >
-              {chooseCourseLabel}
-            </StyledSkewButton>
-          </Course>
+          {singleCourse ? (
+            ''
+          ) : (
+            <Course>
+              <CourseLink to={`${baseUrl}${chooseCourseLinkUrl}`}>
+                {chooseCourseLabel}
+              </CourseLink>
+
+              <StyledSkewButton
+                href={`${baseUrl}${chooseCourseLinkUrl}`}
+                color="white-black"
+              >
+                {chooseCourseLabel}
+              </StyledSkewButton>
+            </Course>
+          )}
         </Cards>
       </ContentContainer>
     </Component>
@@ -78,7 +90,10 @@ const Title = styled.p`
   `)}
 `;
 
-const Cards = styled.div`
+const Cards = styled.div<{
+  singleCourse: SingleCourseProps['singleCourse'];
+  stepsItemsLength: number;
+}>`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -91,6 +106,27 @@ const Cards = styled.div`
   ${media.mobile(css`
     grid-template-columns: repeat(1, 1fr);
   `)}
+  
+  ${({ singleCourse, stepsItemsLength }) =>
+    singleCourse &&
+    css`
+      grid-template-columns: repeat(3, 1fr);
+
+      ${media.tablet(css`
+        ${stepsItemsLength % 2 === 1 &&
+        css`
+          & > div:last-child {
+            transform: translateX(calc(50% + 10px));
+          }
+        `};
+      `)}
+
+      ${media.mobile(css`
+        & > div:last-child {
+          transform: translateX(0);
+        }
+      `)}
+    `};
 `;
 
 const StyledSkewButton = styled(SkewButton)``;

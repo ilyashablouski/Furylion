@@ -7,6 +7,7 @@ import Vacancies from '@/modules/Vacancies';
 import Services from '@/modules/Services';
 import PlayableAds from '@/modules/PlayableAds';
 import Courses from '@/modules/Courses';
+import SingleCourse from '@/modules/Courses/pages/SingleCourse';
 
 const DEFAULT_PAGE_MODULE: PageModuleType = {
   component: DefaultTemplate,
@@ -33,6 +34,10 @@ const PAGE_MODULE_LIST: Array<PageModuleType> = [
   {
     template: 'courses',
     component: Courses,
+  },
+  {
+    template: 'single-course',
+    component: SingleCourse,
   },
 ];
 

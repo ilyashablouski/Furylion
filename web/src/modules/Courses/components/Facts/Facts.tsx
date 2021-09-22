@@ -15,14 +15,17 @@ function Facts() {
       <ContentContainer>
         <Title>{factsTitle}</Title>
         <Cards>
-          {factsItems.map(({ title, subtitle, description }, index: number) => (
-            <FactsCard
-              title={title}
-              subtitle={subtitle}
-              description={description}
-              key={index}
-            />
-          ))}
+          {factsItems &&
+            factsItems.map(
+              ({ title, subtitle, description }, index: number) => (
+                <FactsCard
+                  title={title}
+                  subtitle={subtitle}
+                  description={description}
+                  key={index}
+                />
+              )
+            )}
         </Cards>
         <Text>{factsText}</Text>
       </ContentContainer>
