@@ -80,14 +80,14 @@ class SingleCourseTemplate extends Template
             ]),
 
             new GroupField('Profession facts', [
-                'professionFactsId' => new StringField('id'),
-                'professionFactsTitle' => new StringField('Title'),
-                'professionFactsItems' =>  new RepeaterField('Facts', [
+                'factsId' => new StringField('id'),
+                'factsTitle' => new StringField('Title'),
+                'factsItems' =>  new RepeaterField('Facts', [
                     'title' => new StringField('Title'),
                     'subtitle' => new StringField('Subtitle'),
                     'description' => new TextField('Description'),
                 ], RepeaterView::Table),
-                'professionFactsText' => new StringField('Text'),
+                'factsText' => new StringField('Text'),
             ]),
 
             new GroupField('Projects', [
