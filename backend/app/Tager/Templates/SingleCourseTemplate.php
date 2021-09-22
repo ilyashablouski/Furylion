@@ -69,9 +69,9 @@ class SingleCourseTemplate extends Template
             ]),
 
             new GroupField('Specialists', [
-                'specialistsId' => new StringField('id'),
-                'specialistsTitle' => new StringField('Title'),
-                'specialistsItems' =>  new RepeaterField('Specialists cards', [
+                'stepsId' => new StringField('id'),
+                'stepsTitle' => new StringField('Title'),
+                'stepsItems' =>  new RepeaterField('Specialists cards', [
                     'title' => new StringField('Title'),
                     'position' => new StringField('Specialist position'),
                     'description' => new TextField('Description'),
