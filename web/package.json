@@ -25,7 +25,7 @@
     "@sentry/browser": "^5.29.0",
     "@sentry/node": "^5.29.0",
     "@sentry/webpack-plugin": "^1.14.0",
-    "@tager/web-analytics": "^0.2.0",
+    "@tager/web-analytics": "^0.2.5",
     "@tager/web-components": "^0.4.3",
     "@tager/web-core": "^0.3.22",
     "@tager/web-modules": "^0.1.7",

@@ -42,7 +42,7 @@ return [
                 'vacancyName' => 'Vacancy Name',
                 'vacancyUrl' => 'Vacancy Url'
             ],
-            'subject' => 'New Cv',
+            'subject' => 'New CV',
             'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail:</b> {{email}}</p><p><b>Message:</b> {{message}}</p><p><b>Vacancy:</b><a href="{{vacancyUrl}}" target="_blank"> {{vacancyName}}</a></p>',
             'recipients' => [
                 'v.ozierski@ozitag.com'
@@ -58,6 +58,32 @@ return [
             ],
             'subject' => 'New Cv without vacancy',
             'body' => '<p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail:</b> {{email}}</p><p><b>Message:</b> {{message}}</p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
+        EmailTemplate::Subscription => [
+            'name' => 'Subscription Form',
+            'templateParams' => [
+                'email' => 'E-Mail',
+            ],
+            'subject' => 'New subscription request',
+            'body' => '<p><b>E-Mail:</b> {{email}}</p>',
+            'recipients' => [
+                'v.ozierski@ozitag.com'
+            ],
+        ],
+        EmailTemplate::Course => [
+            'name' => 'Course request',
+            'templateParams' => [
+                'course' => 'Course',
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'email' => 'E-Mail',
+                'message' => 'Message',
+            ],
+            'subject' => 'Course Request',
+            'body' => '<p><b>Course:</b> {{course}}</p><p><b>Name:</b> {{name}}</p><p><b>Phone:</b> {{phone}}</p><p><b>E-Mail:</b> {{email}}</p><p><b>Message:</b> {{message}}</p>',
             'recipients' => [
                 'v.ozierski@ozitag.com'
             ],
