@@ -2452,10 +2452,10 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tager/web-analytics@^0.2.0":
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/@tager/web-analytics/-/web-analytics-0.2.1.tgz"
-  integrity sha512-fMflQgC76ncq/l5J99aVMks5HIx6acjsLyuiH+alO5K9VPqfO2cnuCu10DGd9O2meZGeiGs68ym2KD1YkL3Jdg==
+"@tager/web-analytics@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@tager/web-analytics/-/web-analytics-0.2.5.tgz#ee70f417d9484d124049dbd31ba1f9b521ef5c1a"
+  integrity sha512-y1YMYwDVw2Lp9bjmxevkoEQ8b5Avp1fPUKgBe4cQM5TRUZk7Fy9hp6v9K1qgvxYwU0Si6ls3mIQzQfnkrqOhig==
   dependencies:
     react-ga "^3.1.2"
     react-gtm-module "^2.0.11"

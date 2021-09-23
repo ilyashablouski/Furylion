@@ -1,24 +1,21 @@
 <?php
 
 
-namespace App\Web\Leads\Cv\Features;
-
+namespace App\Web\Leads\Course;
 
 use App\Enums\EmailTemplate;
-use App\Models\Vacancy;
-use App\Repositories\VacancyRepository;
-use App\Web\Leads\Cv\Requests\CourseRequest;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Ozerich\FileStorage\Repositories\FileRepository;
 use OZiTAG\Tager\Backend\Core\Resources\FailureResource;
 use OZiTAG\Tager\Backend\Core\Resources\SuccessResource;
 use OZiTAG\Tager\Backend\Mail\Exceptions\TagerMailInvalidMessageException;
 use OZiTAG\Tager\Backend\Mail\TagerMail;
 use OZiTAG\Tager\Backend\Mail\Utils\TagerMailAttachments;
+use OZiTAG\Tager\Backend\Pages\Models\TagerPage;
+use OZiTAG\Tager\Backend\Pages\Repositories\PagesRepository;
 
-class LeadsCvFeature
+class CourseFeature
 {
-    public function handle(CourseRequest $request, FileRepository $fileRepository, VacancyRepository $vacancyRepository, TagerMail $tagerMail): JsonResource
+    public function handle(CourseRequest $request, FileRepository $fileRepository, PagesRepository $pagesRepository, TagerMail $tagerMail)
     {
         $attachments = new TagerMailAttachments();
         if ($request->file) {
@@ -26,7 +23,6 @@ class LeadsCvFeature
             $attachments->addFile($file);
         }
 
-        $template = EmailTemplate::CvWithoutVacancy;
         $templateData = [
             'name' => $request->name,
             'phone' => $request->phone,
@@ -34,21 +30,17 @@ class LeadsCvFeature
             'message' => $request->message,
         ];
 
-        if ($request->vacancyId) {
-            /** @var Vacancy $vacancy */
-            $vacancy = $vacancyRepository->find($request->vacancyId);
 
-            if ($vacancy) {
-                $template = EmailTemplate::Cv;
-                $templateData = array_merge($templateData, [
-                    'vacancyName' => $vacancy->title,
-                    'vacancyUrl' => $vacancy->full_url,
-                ]);
-            }
+        /** @var TagerPage $page */
+        $page = $pagesRepository->find($request->courseId);
+        if ($page) {
+            $templateData = array_merge($templateData, [
+                'course' => $page->title,
+            ]);
         }
 
         try {
-            $tagerMail->sendMailUsingTemplate($template, $templateData, null, $attachments);
+            $tagerMail->sendMailUsingTemplate(EmailTemplate::Course, $templateData, null, $attachments);
             return new SuccessResource();
         } catch (TagerMailInvalidMessageException $exception) {
             return new FailureResource($exception);
