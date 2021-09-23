@@ -3,7 +3,11 @@ import styled, { css } from 'styled-components';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 
-export const Component = styled.div`
+import { InformationProps } from './Information.types';
+
+export const Component = styled.div<{
+  singleCourse: InformationProps['singleCourse'];
+}>`
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -16,7 +20,23 @@ export const Component = styled.div`
     ${media.tablet(css`
       margin-left: 0;
     `)}
+
+    ${({ singleCourse }) =>
+      singleCourse &&
+      css`
+        margin-left: 0;
+      `}
   }
+
+  ${({ singleCourse }) =>
+    singleCourse &&
+    css`
+      padding: 24px;
+
+      ${media.mobile(css`
+        padding: 10px;
+      `)}
+    `}
 `;
 
 export const Title = styled.span`
@@ -25,7 +45,9 @@ export const Title = styled.span`
   color: ${colors.white};
 `;
 
-export const Content = styled.span`
+export const Content = styled.span<{
+  singleCourse: InformationProps['singleCourse'];
+}>`
   font-weight: 900;
   font-size: 32px;
   line-height: 130%;
@@ -35,4 +57,12 @@ export const Content = styled.span`
   ${media.tablet(css`
     font-size: 24px;
   `)}
+
+  ${({ singleCourse }) =>
+    singleCourse &&
+    css`
+      ${media.mobile(css`
+        font-size: 21px;
+      `)}
+    `}
 `;

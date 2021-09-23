@@ -10,6 +10,7 @@ import Projects from '@/modules/Courses/components/Projects';
 
 import CourseAudience from './components/CourseAudience';
 import TargetCourse from './components/TargetCourse';
+import AfterCompleteCourse from './components/AfterCompleteCourse';
 
 function SingleCourse() {
   return (
@@ -20,6 +21,7 @@ function SingleCourse() {
       <CourseAudience />
       <TargetCourse />
       <Projects />
+      <AfterCompleteCourse />
       <PopularQuestions />
       <CoursesBlock singleCourse />
     </Component>

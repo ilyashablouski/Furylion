@@ -8,8 +8,9 @@ export interface PictureType {
 }
 
 export interface Information {
-  title?: string;
-  content?: string;
+  title?: string | null;
+  content?: string | null;
+  singleCourse?: boolean;
 }
 
 export interface Course {

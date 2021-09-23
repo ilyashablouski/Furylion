@@ -19,4 +19,5 @@ export type ButtonVariant =
   | 'curve'
   | 'curve-red'
   | 'curve-white'
+  | 'curve-dark'
   | 'curve-dark-small';

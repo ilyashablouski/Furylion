@@ -3,11 +3,11 @@ import React from 'react';
 import { InformationProps } from './Information.types';
 import { Component, Title, Content } from './Information.styles';
 
-function Information({ title, content }: InformationProps) {
+function Information({ title, content, singleCourse }: InformationProps) {
   return (
-    <Component>
+    <Component singleCourse={singleCourse}>
       <Title>{title}</Title>
-      <Content>{content}</Content>
+      <Content singleCourse={singleCourse}>{content}</Content>
     </Component>
   );
 }
