@@ -8,6 +8,7 @@ import PopularQuestions from '@/modules/Courses/components/PopularQuestions';
 import StudentWork from '@/modules/Courses/components/StudentWork';
 import Projects from '@/modules/Courses/components/Projects';
 
+import LearnTo from './components/LearnTo';
 import CourseAudience from './components/CourseAudience';
 import TargetCourse from './components/TargetCourse';
 import AfterCompleteCourse from './components/AfterCompleteCourse';
@@ -15,11 +16,12 @@ import AfterCompleteCourse from './components/AfterCompleteCourse';
 function SingleCourse() {
   return (
     <Component>
+      <TargetCourse />
+      <CourseAudience />
+      <LearnTo />
       <StudentWork />
       <Steps singleCourse />
       <Facts />
-      <CourseAudience />
-      <TargetCourse />
       <Projects />
       <AfterCompleteCourse />
       <PopularQuestions />

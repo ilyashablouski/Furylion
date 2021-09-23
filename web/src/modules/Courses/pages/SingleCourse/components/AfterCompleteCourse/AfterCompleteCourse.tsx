@@ -30,9 +30,10 @@ function AfterCompleteCourse() {
         <Title>{afterCompleteTitle}</Title>
 
         <Items>
-          {afterCompleteItems.map(({ skill }, index) => (
-            <ListItem skill={skill} key={index} />
-          ))}
+          {afterCompleteItems &&
+            afterCompleteItems.map(({ skill }, index) => (
+              <ListItem skill={skill} key={index} />
+            ))}
         </Items>
 
         <Information>
