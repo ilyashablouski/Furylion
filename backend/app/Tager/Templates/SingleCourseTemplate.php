@@ -19,6 +19,24 @@ class SingleCourseTemplate extends Template
     public function __construct()
     {
         parent::__construct('Single course', [
+            new GroupField('Hero Block', [
+                'heroId' => new StringField('id'),
+                'heroTitle' => new StringField('Title'),
+                'heroSubtitle' => new StringField('Subtitle'),
+                'heroDescription' => new StringField('Description'),
+                'courseRegistrationTitle' => new StringField('Course registration title'),
+                'courseRegistration' => new StringField('Course registration date'),
+                'heroCoursePlacesTitle' => new StringField('Places left title'),
+                'heroCoursePlaces' => new StringField('Places left'),
+                'heroButtonFirstLabel' => new StringField('Button 1 - Text'),
+                'heroButtonFirstUrl' => new StringField('Button 1 - URL'),
+                'heroButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
+                'heroButtonSecondLabel' => new StringField('Button 2 - Text'),
+                'heroButtonSecondUrl' => new StringField('Button 2 - URL'),
+                'heroButtonSecondIsNewTab' => new TrueFalseField('Button 2 - Is new tab?'),
+                'heroImage' => new ImageField('Background image', FileScenario::WillLearnImage),
+            ]),
+
             new GroupField('Target of the course', [
                 'targetCourseId' => new StringField('id'),
                 'targetCourseTitle' => new StringField('Title'),
@@ -33,6 +51,16 @@ class SingleCourseTemplate extends Template
                 'courseAudienceId' => new StringField('id'),
                 'courseAudienceTitle' => new StringField('Title'),
                 'courseAudienceList' => new HtmlField('List'),
+            ]),
+
+            new GroupField('You will learn', [
+                'learnId' => new StringField('id'),
+                'learnTitle' => new StringField('Title'),
+                'learnItems' =>  new RepeaterField('Items', [
+                    'title' => new StringField('Title'),
+                    'description' => new TextField('Description'),
+                    'image' => new ImageField('Image', FileScenario::WillLearnImage),
+                ], RepeaterView::Table),
             ]),
 
             new GroupField('Student work Top', [

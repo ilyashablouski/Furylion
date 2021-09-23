@@ -218,5 +218,10 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
         ]),
+        FileScenario::WillLearnImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('single-course'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
     ]
 ];
