@@ -1,26 +1,30 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { getSettingValueByKey } from '@tager/web-modules';
-
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
-import { useTypedSelector } from '@/store/store';
-import { selectSettingItemList } from '@/store/reducers/tager/settings';
 
 type Props = {
   isSentSuccess: boolean;
+  isCoursesPage?: boolean;
 };
 
-function MessageSuccess({ isSentSuccess }: Props) {
+function MessageSuccess({ isSentSuccess, isCoursesPage }: Props) {
   return (
-    <Message isSentSuccess={isSentSuccess}>
-      <Title>Thank you for your message!</Title>
+    <Message isSentSuccess={isSentSuccess} isCoursesPage={isCoursesPage}>
+      {isCoursesPage ? (
+        <Title>Спасибо за подписку!</Title>
+      ) : (
+        <Title>Thank you for your message!</Title>
+      )}
     </Message>
   );
 }
 
-const Message = styled.div<{ isSentSuccess: boolean }>`
+const Message = styled.div<{
+  isSentSuccess: boolean;
+  isCoursesPage: Props['isCoursesPage'];
+}>`
   position: absolute;
   top: 50%;
   bottom: 0;
@@ -43,6 +47,18 @@ const Message = styled.div<{ isSentSuccess: boolean }>`
           visibility: hidden;
           opacity: 0;
         `}
+
+  ${(props) =>
+    props.isCoursesPage
+      ? css`
+          position: relative;
+
+          ${media.tablet(css`
+            transform: translateY(0);
+            margin-top: 30px;
+          `)}
+        `
+      : css``}
 `;
 
 const Title = styled.span`

@@ -5,11 +5,20 @@ import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
 import { useCoursesData } from '@/modules/Courses/Courses.hooks';
 import { media } from '@/utils/mixin';
+import { submitFormCourses } from '@/services/requests';
 
+import { RecentEventsFormData } from './Form/RecentEventsForm.types';
 import RecentEventsForm from './Form';
 
 function RecentEvents() {
   const { recentEventsId, recentEventsTitle } = useCoursesData();
+
+  const saveFormSubscription = async (
+    email: RecentEventsFormData
+  ): Promise<void> => {
+    await submitFormCourses(email);
+  };
+
   return (
     <Component id={recentEventsId ?? ''}>
       <ContentContainer>
@@ -18,7 +27,7 @@ function RecentEvents() {
             <Title>{recentEventsTitle}</Title>
           </Left>
           <Right>
-            <RecentEventsForm />
+            <RecentEventsForm save={saveFormSubscription} />
           </Right>
         </Inner>
       </ContentContainer>
@@ -70,13 +79,12 @@ const Title = styled.p`
 `;
 
 const Right = styled.div`
+  position: relative;
   flex: 1 1 50%;
   max-width: 50%;
   margin-left: 20px;
-  margin-top: 81px;
 
   ${media.tablet(css`
-    margin-top: 24px;
     margin-left: 0;
     flex: auto;
     max-width: 100%;

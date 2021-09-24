@@ -60,3 +60,7 @@ export function getCareersVacanciesList(): Promise<{
 }> {
   return request.get({ path: `/vacancies` });
 }
+
+export function submitFormCourses(params: { email: string }) {
+  return request.post({ path: '/leads/subscription', body: params });
+}
