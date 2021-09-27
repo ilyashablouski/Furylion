@@ -13,6 +13,7 @@ import LearnTo from './components/LearnTo';
 import CourseAudience from './components/CourseAudience';
 import TargetCourse from './components/TargetCourse';
 import AfterCompleteCourse from './components/AfterCompleteCourse';
+import CourseProgram from './components/CourseProgram';
 
 function SingleCourse() {
   return (
@@ -21,6 +22,7 @@ function SingleCourse() {
       <TargetCourse />
       <CourseAudience />
       <LearnTo />
+      <CourseProgram />
       <StudentWork />
       <Steps singleCourse />
       <Facts />

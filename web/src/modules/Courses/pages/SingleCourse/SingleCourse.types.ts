@@ -21,6 +21,21 @@ export interface LearnItem {
   isActive?: boolean;
 }
 
+export interface ProgramStepsItem {
+  title: string | null;
+  time: string | null;
+  list: string | null;
+}
+
+export interface CourseProgramItem {
+  title: string | null;
+  subtitle: string | null;
+  time: string | null;
+  descriptionTitle: string | null;
+  description: string | null;
+  programStepsItems: ProgramStepsItem[];
+}
+
 export interface SingleCourse {
   heroId: string | null;
   heroTitle: string | null;
@@ -47,6 +62,10 @@ export interface SingleCourse {
   learnId: string | null;
   learnTitle: string | null;
   learnItems: LearnItem[];
+  courseProgramId: string | null;
+  courseProgramTitle: string | null;
+  courseProgramDescription: string | null;
+  courseProgramItems: CourseProgramItem[];
   afterCompleteId: string | null;
   afterCompleteTitle: string | null;
   afterCompleteItems: AfterCompleteItem[];
