@@ -1,12 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { useModal } from '@tager/web-components';
+
 import { useSingleCourseData } from '@/modules/Courses/pages/SingleCourse/SingleCourse.hooks';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 import Button, { StyledButtonLink } from '@/components/Button/Button';
+import SignUpCourseModal from '@/components/modals/SignUpCourseModal';
 
 function Hero() {
   const {
@@ -24,6 +27,13 @@ function Hero() {
     heroButtonSecondLabel,
     heroImage,
   } = useSingleCourseData();
+
+  const openModal = useModal();
+
+  function handleOpenSignUpCourseModal() {
+    openModal(SignUpCourseModal, {});
+  }
+
   return (
     <Component id={heroId ?? ''}>
       <BackgroundImage
@@ -69,7 +79,10 @@ function Hero() {
             </StyledButton>
 
             <StyledButton right>
-              <CourseButton variants={['cut-top', 'red', 'w100']}>
+              <CourseButton
+                variants={['cut-top', 'red', 'w100']}
+                onClick={handleOpenSignUpCourseModal}
+              >
                 {heroButtonSecondLabel}
               </CourseButton>
             </StyledButton>
