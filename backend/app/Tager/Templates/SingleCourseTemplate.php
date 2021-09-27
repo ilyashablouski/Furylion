@@ -69,6 +69,7 @@ class SingleCourseTemplate extends Template
                 'courseProgramDescription' => new StringField('Description'),
                 'courseProgramItems' =>  new RepeaterField('Items', [
                     'title' => new StringField('Title'),
+                    'subtitle' => new StringField('Subtitle'),
                     'time' => new StringField('Time'),
                     'descriptionTitle' => new StringField('Description title'),
                     'description' => new TextField('Description'),
