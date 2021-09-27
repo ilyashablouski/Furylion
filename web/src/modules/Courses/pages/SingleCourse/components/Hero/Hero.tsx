@@ -27,10 +27,10 @@ function Hero() {
   return (
     <Component id={heroId ?? ''}>
       <BackgroundImage
-        src={heroImage.url}
-        src2x={heroImage.url_2x}
-        srcWebp={heroImage.url_webp}
-        srcWebp2x={heroImage.url_webp_2x}
+        src={heroImage?.url}
+        src2x={heroImage?.url_2x}
+        srcWebp={heroImage?.url_webp}
+        srcWebp2x={heroImage?.url_webp_2x}
       />
       <ContentContainer>
         <Top>

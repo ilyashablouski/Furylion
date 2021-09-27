@@ -25,8 +25,6 @@ function StudentWork() {
     studentsBottomText,
   } = useCoursesData();
 
-  const baseUrl = 'courses/';
-
   const imageRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
 
@@ -109,10 +107,7 @@ function StudentWork() {
       <BottomContent>
         <Text>{studentsBottomText}</Text>
 
-        <StyledSkewButton
-          href={`${baseUrl}${studentsBottomLinkUrl}`}
-          color="redWhite"
-        >
+        <StyledSkewButton href={studentsBottomLinkUrl} color="redWhite">
           {studentsBottomLabel}
         </StyledSkewButton>
       </BottomContent>

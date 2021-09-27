@@ -41,13 +41,14 @@ function LearnTo() {
             </Left>
 
             <Right>
-              <CardImage
-                src={learnItems[activeIndexCard].image?.url}
-                src2x={learnItems[activeIndexCard].image?.url_2x}
-                srcWebp={learnItems[activeIndexCard].image?.url_webp}
-                srcWebp2x={learnItems[activeIndexCard].image?.url_webp_2x}
-              />
-
+              {learnItems && (
+                <CardImage
+                  src={learnItems[activeIndexCard].image?.url}
+                  src2x={learnItems[activeIndexCard].image?.url_2x}
+                  srcWebp={learnItems[activeIndexCard].image?.url_webp}
+                  srcWebp2x={learnItems[activeIndexCard].image?.url_webp_2x}
+                />
+              )}
               <CardImageFilter />
             </Right>
           </Content>
