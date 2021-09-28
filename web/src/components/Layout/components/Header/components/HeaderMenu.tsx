@@ -10,6 +10,7 @@ import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
 import VacanciesCounter from '@/components/VacanciesCounter';
 import { handleLinkFeedbackClick, isNewPage } from '@/utils/common';
+import CoursesCounter from '@/components/CoursesCounter';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -86,10 +87,16 @@ function HeaderMenu({
                     target={menuItem.isNewTab ? '_blank' : '_self'}
                   >
                     {menuItem.label}
-                    {menuItem.link && menuItem.link.includes('careers') ? (
+                    {menuItem.link && menuItem.link.includes('vacancies') ? (
                       <VacanciesCounterWrapper>
                         <VacanciesCounter />
                       </VacanciesCounterWrapper>
+                    ) : null}
+
+                    {menuItem.link && menuItem.link.includes('courses') ? (
+                      <CoursesCounterWrapper>
+                        <CoursesCounter />
+                      </CoursesCounterWrapper>
                     ) : null}
                   </ItemLink>
                 )}
@@ -255,10 +262,8 @@ const VacanciesCounterWrapper = styled.div`
   position: absolute;
   right: -16px;
   top: -10px;
-
-  ${media.tabletSmall(css`
-    display: none;
-  `)}
 `;
+
+const CoursesCounterWrapper = styled(VacanciesCounterWrapper)``;
 
 export default HeaderMenu;

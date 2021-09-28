@@ -8,6 +8,7 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import VacanciesCounter from '@/components/VacanciesCounter';
 import { isNewPage } from '@/utils/common';
+import CoursesCounter from '@/components/CoursesCounter';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -39,6 +40,11 @@ function FooterMenu({ menuItemList }: Props) {
                 <VacanciesCounterWrapper>
                   <VacanciesCounter isRed={true} />
                 </VacanciesCounterWrapper>
+              ) : null}
+              {menuItem.link && menuItem.link.includes('courses') ? (
+                <CoursesCounterWrapper>
+                  <CoursesCounter isDark />
+                </CoursesCounterWrapper>
               ) : null}
             </ItemLink>
           </MenuItem>
@@ -100,5 +106,7 @@ const VacanciesCounterWrapper = styled.div`
   right: -16px;
   top: -10px;
 `;
+
+const CoursesCounterWrapper = styled(VacanciesCounterWrapper)``;
 
 export default FooterMenu;
