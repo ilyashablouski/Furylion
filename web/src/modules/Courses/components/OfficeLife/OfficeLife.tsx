@@ -46,8 +46,8 @@ function OfficeLife() {
       tw = gsap.to(phoneRef.current, {
         translateY: translateY,
         scrollTrigger: {
-          start: 'center 80%',
-          end: '0% 0%',
+          start: 'center 67%',
+          end: '-100% -100%',
           trigger: phoneRef.current,
           scrub: true,
         },
