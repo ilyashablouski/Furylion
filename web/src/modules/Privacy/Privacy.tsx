@@ -1,12 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import ContentContainer from '@/components/ContentContainer';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { colors } from '@/constants/theme';
+import { media } from '@/utils/mixin';
 
 function Privacy() {
   const page = useCurrentPage();
+
   return (
     <Component>
       <ContentContainer>
@@ -28,6 +30,10 @@ const Content = styled.div`
   margin-top: 180px;
   color: ${colors.white};
 
+  ${media.mobile(css`
+    margin-top: 100px;
+  `)}
+
   p {
     font-size: 20px;
     margin-top: 20px;
@@ -38,27 +44,39 @@ const Content = styled.div`
     i {
       color: ${colors.white08};
     }
+
+    ${media.mobile(css`
+      font-size: 17px;
+    `)}
   }
 
   h2 {
     font-size: 40px;
     font-weight: 900;
     margin-top: 25px;
-    text-decoration: underline ${colors.red};
-    text-underline-offset: 8px;
-    text-decoration-thickness: 3px;
     color: ${colors.white};
     text-align: center;
     line-height: 56px;
     text-transform: uppercase;
+
+    ${media.mobile(css`
+      font-size: 31px;
+      text-align: left;
+    `)}
   }
 
   h3 {
     font-size: 25px;
     font-weight: 700;
     margin-top: 20px;
+    line-height: 30px;
     text-align: center;
     color: ${colors.gray};
+
+    ${media.mobile(css`
+      font-size: 22px;
+      text-align: left;
+    `)}
   }
 
   ul {
@@ -67,7 +85,7 @@ const Content = styled.div`
     li {
       font-size: 17px;
       line-height: 25px;
-      text-align: justify;
+      word-wrap: break-word;
 
       &:not(:first-child) {
         margin-top: 10px;
@@ -76,12 +94,6 @@ const Content = styled.div`
       &:before {
         content: '—';
         margin-right: 5px;
-      }
-
-      strong {
-        text-decoration: underline ${colors.red};
-        text-underline-offset: 2px;
-        text-decoration-thickness: 3px;
       }
 
       a {
