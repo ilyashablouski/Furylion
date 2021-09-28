@@ -51,6 +51,18 @@ export const Cards = styled.div<{
         `};
     }
   }
+
+  ${media.mobile(css`
+    margin-top: 50px;
+  `)}
+
+  ${({ singleCourse }) =>
+    singleCourse &&
+    css`
+      ${media.mobile(css`
+        margin-top: 0;
+      `)}
+    `};
 `;
 
 export const SingleCourseTitle = styled.span`
