@@ -83,6 +83,7 @@ function CourseCard({
           )}
         </Content>
       </Container>
+      <ButtonVector className="button-vector" />
     </Component>
   );
 }
@@ -100,6 +101,10 @@ const Component = styled.div`
 
     .white-link {
       color: ${colors.white};
+    }
+
+    .button-vector {
+      right: 0;
     }
   }
 `;
@@ -121,6 +126,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 
   ${media.tablet(css`
     align-items: stretch;
@@ -165,7 +171,6 @@ const Subtitle = styled.div`
 const ToLearnMore = styled(Link)`
   position: absolute;
   top: 50%;
-  right: 68px;
   transform: translateY(-50%);
   z-index: 2;
 
@@ -286,4 +291,22 @@ const Background = styled(Picture)`
     z-index: 1;
     background: linear-gradient(90deg, rgba(25, 24, 20, 0) 0%, #191814 100.6%);
   }
+`;
+
+const ButtonVector = styled.span`
+  display: block;
+  position: absolute;
+  width: 45.5%;
+  height: 100%;
+  bottom: 0;
+  right: -46%;
+  background: ${colors.red};
+  z-index: 1;
+
+  transition: right 0.4s linear;
+  clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
+
+  ${media.tablet(css`
+    display: none;
+  `)}
 `;
