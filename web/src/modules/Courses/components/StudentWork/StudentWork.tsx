@@ -43,28 +43,16 @@ function StudentWork() {
       let topPositionForTitle: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 1024px)': function () {
-          topPositionForTitle = '90%';
-        },
-
-        '(min-width: 767px)': function () {
-          endTitleAnimation = '260% 10%';
-        },
-        '(max-width: 1024px)': function () {
-          topPositionForTitle = '85%';
-        },
-        '(max-width: 768px)': function () {
-          endTitleAnimation = '450% 20%';
-        },
-        '(max-width: 414px)': function () {
-          topPositionForTitle = '100%';
+        '(min-width: 768px)': function () {
+          topPositionForTitle = '96%';
+          endTitleAnimation = '700% 20%';
         },
       });
 
       tweenImage = gsap.to(imageRef.current, {
         yPercent: 100,
         scrollTrigger: {
-          start: '90% 90%',
+          start: '70% 70%',
           end: '160% 90%',
           trigger: imageRef.current,
           scrub: 2,
@@ -73,9 +61,9 @@ function StudentWork() {
 
       tweenTitle = gsap.to(titleRef.current, {
         top: topPositionForTitle,
-        scale: 0.4,
+        scale: 0.7,
         scrollTrigger: {
-          start: 'center 30%',
+          start: 'center 20%',
           end: endTitleAnimation,
           trigger: titleRef.current,
           scrub: 1,
@@ -168,7 +156,7 @@ const Title = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: ${colors.white};
-  font-size: 180.885px;
+  font-size: 90.885px;
   text-shadow: 0 51px 100px rgba(0, 0, 0, 0.25);
   min-width: 100%;
 
