@@ -6,9 +6,7 @@ import { MenuItemType } from '@tager/web-modules';
 import Link from '@/components/Link';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
-import VacanciesCounter from '@/components/VacanciesCounter';
 import { isNewPage } from '@/utils/common';
-import CoursesCounter from '@/components/CoursesCounter';
 
 type Props = {
   menuItemList: Array<MenuItemType>;
@@ -34,19 +32,9 @@ function FooterMenu({ menuItemList }: Props) {
             <ItemLink
               to={menuItem.link ?? '#'}
               target={menuItem.isNewTab ? '_blank' : '_self'}
-            >
-              {menuItem.label}
-              {menuItem.link && menuItem.link.includes('vacancies') ? (
-                <VacanciesCounterWrapper>
-                  <VacanciesCounter isRed={true} />
-                </VacanciesCounterWrapper>
-              ) : null}
-              {menuItem.link && menuItem.link.includes('courses') ? (
-                <CoursesCounterWrapper>
-                  <CoursesCounter isDark />
-                </CoursesCounterWrapper>
-              ) : null}
-            </ItemLink>
+              dangerouslySetInnerHTML={{ __html: menuItem.label ?? '' }}
+              isRed={menuItem.link?.includes('vacancies')}
+            />
           </MenuItem>
         );
       })}
@@ -86,7 +74,7 @@ const MenuItem = styled.li`
   `)}
 `;
 
-const ItemLink = styled(Link)`
+const ItemLink = styled(Link)<{ isRed?: boolean }>`
   position: relative;
   font-weight: 500;
   font-size: 14px;
@@ -99,14 +87,25 @@ const ItemLink = styled(Link)`
     color: ${colors.red};
     border-bottom-color: ${colors.red};
   }
-`;
 
-const VacanciesCounterWrapper = styled.div`
-  position: absolute;
-  right: -16px;
-  top: -10px;
-`;
+  i {
+    display: block;
+    position: absolute;
+    top: -50%;
+    right: -29%;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    font-style: normal;
 
-const CoursesCounterWrapper = styled(VacanciesCounterWrapper)``;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+
+    color: ${colors.white};
+    background: ${(props) =>
+      props.isRed ? `${colors.red}` : `${colors.dark}`};
+  }
+`;
 
 export default FooterMenu;
