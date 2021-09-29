@@ -1,6 +1,6 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
-import { isServer } from '@tager/web-core';
 import { Page } from '@tager/web-components';
 import { convertSeoParamsToPageProps } from '@tager/web-modules';
 
@@ -11,11 +11,12 @@ import Layout from '@/components/Layout';
 import {
   getPageByPathThunk,
   getPageListThunk,
+  selectPageByPath,
 } from '@/store/reducers/tager/pages';
-import useCurrentPage from '@/hooks/useCurrentPage';
 import { getPageModuleByTemplate } from '@/services/pageModules';
 import { convertErrorToProps, convertSlugToPath } from '@/utils/common';
 import { getSharedThunkList } from '@/utils/thunks';
+import { useTypedSelector } from '@/store/store';
 
 type Props =
   | {
@@ -31,7 +32,11 @@ type Props =
     };
 
 function DynamicPage(props: Props) {
-  const page = useCurrentPage();
+  const router = useRouter();
+  const currentPath = convertSlugToPath(router.query.slug);
+  const page = useTypedSelector((state) =>
+    selectPageByPath(state, currentPath)
+  );
 
   if (props.pageType === 'NOT_FOUND') {
     return <NotFoundPage />;
@@ -60,11 +65,11 @@ DynamicPage.getInitialProps = async (
   try {
     const [pageList] = await Promise.all([
       store.dispatch(getPageListThunk()),
-      store.dispatch(getPageByPathThunk(currentPath)),
       ...getSharedThunkList(store.dispatch),
     ]);
 
     const foundPage = pageList.find((page) => page.path === currentPath);
+    const foundPageModule = getPageModuleByTemplate(foundPage?.template);
 
     if (!foundPage) {
       if (context.res) {
@@ -73,15 +78,12 @@ DynamicPage.getInitialProps = async (
       return { pageType: 'NOT_FOUND' };
     }
 
-    const foundPageModule = getPageModuleByTemplate(foundPage?.template);
-
-    const requestsPromise = foundPageModule.getInitialProps
-      ? foundPageModule.getInitialProps(context)
-      : Promise.resolve();
-
-    if (isServer()) {
-      await requestsPromise;
-    }
+    await Promise.all([
+      store.dispatch(getPageByPathThunk(currentPath)),
+      foundPageModule.getInitialProps
+        ? foundPageModule.getInitialProps(context)
+        : Promise.resolve(),
+    ]);
 
     return { pageType: 'DYNAMIC_PAGE', template: foundPageModule.template };
   } catch (error) {
