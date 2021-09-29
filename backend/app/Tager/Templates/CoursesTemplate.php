@@ -133,6 +133,7 @@ class CoursesTemplate extends Template
                     'name' => new StringField('Name'),
                     'position' => new StringField('Position'),
                     'video' => new FileField('Video', FileScenario::VideoReview),
+                    'preview' => new ImageField('Video preview image', FileScenario::VideoPreviewImage),
                 ], RepeaterView::Table),
             ]),
             new GroupField('Projects', [
