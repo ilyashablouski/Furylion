@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { Nullable, Nullish } from '@tager/web-core';
 
@@ -11,9 +10,10 @@ type Props = {
   href?: Nullish<string>;
   variants: Array<ButtonVariant>;
   isNewTab?: boolean;
+  onClick?: () => void;
 };
 
-function CurveButton({ href, label, variants, isNewTab }: Props) {
+function CurveButton({ href, label, variants, isNewTab, onClick }: Props) {
   return href ? (
     <ButtonLink
       href={href ?? '#'}
@@ -23,7 +23,9 @@ function CurveButton({ href, label, variants, isNewTab }: Props) {
       {label}
     </ButtonLink>
   ) : (
-    <Button variants={variants}>{label}</Button>
+    <Button variants={variants} onClick={onClick}>
+      {label}
+    </Button>
   );
 }
 

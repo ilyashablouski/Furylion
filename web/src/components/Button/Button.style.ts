@@ -8,6 +8,8 @@ import curveBgRedSmallUrl from '@/assets/svg/curve-button-redSm.svg';
 import curveBgRedUrl from '@/assets/svg/curve-button-red.svg';
 import curveBgWhiteUrl from '@/assets/svg/curve-button-whiteSm.svg';
 import curveBgDarkSmallUrl from '@/assets/svg/curve-btn-darkSm.svg';
+import curveBgDarkDesktopUrl from '@/assets/svg/curve-btn-darkDesktop.svg';
+import curveBgDarkMobileUrl from '@/assets/svg/curve-btn-darkMobile.svg';
 import Link from '@/components/Link';
 
 import { ButtonVariant } from './Button.types';
@@ -92,6 +94,17 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
       color: ${colors.white};
     }
   `,
+
+  'white-black': css`
+    background: ${colors.white};
+    color: ${colors.black};
+
+    &:hover {
+      background: ${colors.black};
+      color: ${colors.white};
+    }
+  `,
+
   redWhite: css`
     background: ${colors.white};
     color: ${colors.dark};
@@ -218,6 +231,23 @@ const variantCssMap: Record<ButtonVariant, CssSnippet> = {
 
     &:before {
       content: url(${curveBgWhiteUrl});
+    }
+  `,
+
+  'curve-dark': css`
+    font-size: 24px;
+    color: ${colors.white};
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:before {
+      content: url(${curveBgDarkDesktopUrl});
+
+      ${media.mobile(css`
+        content: url(${curveBgDarkMobileUrl});
+      `)}
     }
   `,
 

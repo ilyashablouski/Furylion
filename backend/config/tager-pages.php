@@ -12,5 +12,7 @@ return [
         'vacancies' => \App\Tager\Templates\VacanciesTemplate::class,
         'services' => \App\Tager\Templates\ServicesTemplate::class,
         'playable-ads' => \App\Tager\Templates\PlayableAdsTemplate::class,
+        'courses' => \App\Tager\Templates\CoursesTemplate::class,
+        'single-course' => \App\Tager\Templates\SingleCourseTemplate::class,
     ]
 ];

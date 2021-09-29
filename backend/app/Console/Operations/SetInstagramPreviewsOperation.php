@@ -6,6 +6,7 @@ use App\Enums\FileScenario;
 use App\Enums\SettingKey;
 use Ozerich\FileStorage\Storage;
 use OZiTAG\Tager\Backend\Core\Jobs\Operation;
+use OZiTAG\Tager\Backend\HttpCache\HttpCache;
 use OZiTAG\Tager\Backend\Settings\Repositories\SettingsRepository;
 
 class SetInstagramPreviewsOperation extends Operation
@@ -17,7 +18,7 @@ class SetInstagramPreviewsOperation extends Operation
         $this->data = $data;
     }
 
-    public function handle(SettingsRepository $settingsRepository)
+    public function handle(SettingsRepository $settingsRepository, HttpCache $httpCache)
     {
         $model = $settingsRepository->findOneByKey(SettingKey::Instagram);
 
@@ -64,6 +65,12 @@ class SetInstagramPreviewsOperation extends Operation
         }
 
         $model->value = $result;
-        return $model->save();
+
+        if ($model->save()) {
+            $httpCache->clear('/tager/settings');
+            return true;
+        }
+
+        return false;
     }
 }

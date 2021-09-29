@@ -166,5 +166,62 @@ return [
             'validator' => ConfigHelper::imageValidator(),
             'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(257, 257)
         ]),
+        FileScenario::CoursesHeroImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(null, 720),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null),
+            ]
+        ]),
+        FileScenario::CoursesCardImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(null, 412),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(420, null),
+            ]
+        ]),
+        FileScenario::StepsCardImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnails' => [
+                'desktop' => ConfigHelper::thumbWithWebpAnd2x(293),
+                'mobile' => ConfigHelper::thumbWithWebpAnd2x(293),
+            ]
+        ]),
+        FileScenario::AvatarImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
+        FileScenario::OfficeLifeImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(330, 670)
+        ]),
+        FileScenario::ProjectsImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(410, 65)
+        ]),
+        FileScenario::VideoReview => [
+            'storage' => ConfigHelper::fileStorage('vacancies'),
+            'validator' => [
+                'maxSize' => 50 * 1024 * 1024,
+                'checkExtensionByMimeType' => true,
+                'extensions' => ['mp4']
+            ]
+        ],
+        FileScenario::VideoPreviewImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('vacancies'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
+        FileScenario::WillLearnImage => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('single-course'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
     ]
 ];

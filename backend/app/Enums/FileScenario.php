@@ -38,4 +38,15 @@ final class FileScenario extends Enum
     const ServicesFullStackDevelopment = 'services-fullstack-development';
     const PlayableDoYoWantCard = 'playable-card';
     const FeedbackPhoto = 'feedback-photo';
+
+    const CoursesHeroImage = 'courses-hero-image';
+    const CoursesCardImage = 'courses-card-image';
+    const StepsCardImage = 'steps-card-image';
+    const AvatarImage = 'avatar-image';
+    const ProjectsImage = 'projects-image';
+    const OfficeLifeImage = 'office-life-image';
+    const VideoReview = 'video-review';
+    const VideoPreviewImage = 'video-preview-image';
+
+    const WillLearnImage = 'will-learn-image';
 }

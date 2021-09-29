@@ -27,7 +27,7 @@ type Props =
     }
   | {
       pageType: 'ERROR';
-      error: Error;
+      error: any;
     };
 
 function DynamicPage(props: Props) {
@@ -58,11 +58,10 @@ DynamicPage.getInitialProps = async (
   const currentPath = convertSlugToPath(query.slug);
 
   try {
-    const pageList = await store.dispatch(getPageListThunk());
-
-    await Promise.all([
-      ...getSharedThunkList(store.dispatch),
+    const [pageList] = await Promise.all([
+      store.dispatch(getPageListThunk()),
       store.dispatch(getPageByPathThunk(currentPath)),
+      ...getSharedThunkList(store.dispatch),
     ]);
 
     const foundPage = pageList.find((page) => page.path === currentPath);

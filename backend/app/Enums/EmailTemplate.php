@@ -10,4 +10,6 @@ final class EmailTemplate extends Enum
     const Feedback = 'Feedback';
     const Cv = 'Cv';
     const CvWithoutVacancy = 'CvWithoutVacancy';
+    const Subscription = 'Subscription';
+    const Course = 'Course';
 }

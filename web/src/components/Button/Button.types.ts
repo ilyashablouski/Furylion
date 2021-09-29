@@ -5,6 +5,7 @@ export type ButtonVariant =
   | 'cut-bottom'
   | 'white-dark'
   | 'white-red'
+  | 'white-black'
   | 'redWhite'
   | 'dark'
   | 'darkRed'
@@ -18,4 +19,5 @@ export type ButtonVariant =
   | 'curve'
   | 'curve-red'
   | 'curve-white'
+  | 'curve-dark'
   | 'curve-dark-small';

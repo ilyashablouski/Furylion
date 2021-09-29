@@ -7,7 +7,7 @@ namespace App\Web\Leads\Cv\Features;
 use App\Enums\EmailTemplate;
 use App\Models\Vacancy;
 use App\Repositories\VacancyRepository;
-use App\Web\Leads\Cv\Requests\LeadsCvRequest;
+use App\Web\Leads\Cv\Requests\CourseRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Ozerich\FileStorage\Repositories\FileRepository;
 use OZiTAG\Tager\Backend\Core\Resources\FailureResource;
@@ -18,7 +18,7 @@ use OZiTAG\Tager\Backend\Mail\Utils\TagerMailAttachments;
 
 class LeadsCvFeature
 {
-    public function handle(LeadsCvRequest $request, FileRepository $fileRepository, VacancyRepository $vacancyRepository, TagerMail $tagerMail): JsonResource
+    public function handle(CourseRequest $request, FileRepository $fileRepository, VacancyRepository $vacancyRepository, TagerMail $tagerMail): JsonResource
     {
         $attachments = new TagerMailAttachments();
         if ($request->file) {

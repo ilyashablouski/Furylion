@@ -3,12 +3,17 @@ export const colors = {
   black100: '#101010',
   black200: '#262626',
   black300: '#3b3b3b',
+  black032: 'rgba(0, 0, 0, 0.32)',
   gray: '#888888',
   grayDark: '#5f5f5f',
   grayLight: '#999999',
   red: '#c2191e',
   dark: '#191814',
+  dark05: 'rgba(25, 24, 20, 0.5)',
   white: '#ffffff',
+  white01: 'rgba(255, 255, 255, 0.1)',
+  white05: 'rgba(255, 255, 255, 0.5)',
+  white08: 'rgba(255, 255, 255, 0.8)',
 } as const;
 
 /** Source: https://htmlacademy.ru/blog/useful/css/short-14 */
