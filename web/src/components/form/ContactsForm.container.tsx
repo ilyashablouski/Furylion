@@ -3,12 +3,22 @@ import { Formik, FormikErrors, FormikHelpers } from 'formik';
 
 import { convertRequestErrorToMap, Nullable } from '@tager/web-core';
 
-import { FormPayload, sendContactsForm, sendCvForm } from '@/services/requests';
+import {
+  FormPayload,
+  sendContactsForm,
+  sendCvForm,
+  sendSingleCourseForm,
+} from '@/services/requests';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 import ContactsForm, { ContactsFormValues } from './ContactsForm';
 
-function getSendMethod(isCvForm: boolean) {
+function getSendMethod(isCvForm: boolean, isSingleCourseForm: boolean) {
+  if (isSingleCourseForm) {
+    return sendSingleCourseForm;
+  }
+
   return isCvForm ? sendCvForm : sendContactsForm;
 }
 
@@ -21,11 +31,18 @@ function getOnlyTrueValues(values: Record<string, string | number>) {
   return values as FormPayload;
 }
 
-function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
+function ContactsFormContainer({
+  isCvForm = false,
+  isSingleCourseForm = false,
+}: {
+  isCvForm?: boolean;
+  isSingleCourseForm?: boolean;
+}) {
   const [isSentSuccess, setSentSuccess] = useState(false);
   const [fileId, setFileId] = useState<number>(0);
   const [file, setFile] = useState<Nullable<File>>(null);
   const vacancy = useCurrentVacancy();
+  const course = useCurrentPage();
 
   function handleSubmit(
     values: FormPayload,
@@ -35,9 +52,14 @@ function ContactsFormContainer({ isCvForm = false }: { isCvForm?: boolean }) {
 
     const payload = getOnlyTrueValues(preValues);
 
-    let params = isCvForm && vacancy ? { vacancyId: vacancy.data?.id } : {};
+    let params =
+      isCvForm && vacancy
+        ? { vacancyId: vacancy.data?.id }
+        : isCvForm && isSingleCourseForm
+        ? { courseId: course?.id }
+        : {};
 
-    getSendMethod(isCvForm)(payload, params)
+    getSendMethod(isCvForm, isSingleCourseForm)(payload, params)
       .then(() => {
         formikHelpers.resetForm();
         setSentSuccess(true);

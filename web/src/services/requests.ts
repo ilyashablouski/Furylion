@@ -60,3 +60,14 @@ export function getCareersVacanciesList(): Promise<{
 }> {
   return request.get({ path: `/vacancies` });
 }
+
+export function submitFormCourses(params: { email: string }) {
+  return request.post({ path: '/leads/subscription', body: params });
+}
+
+export function sendSingleCourseForm(
+  payload: FormPayload,
+  params?: { courseId?: number }
+): Promise<FormPayload> {
+  return request.post({ path: '/leads/course', body: payload, params });
+}

@@ -6,6 +6,7 @@ import Button from '@/components/Button';
 import { useCoursesData } from '@/modules/Courses/Courses.hooks';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
+import MessageSuccess from '@/components/modals/MessageSuccess';
 
 import TextField from './Components/TextField';
 import {
@@ -46,7 +47,9 @@ function RecentEventsForm({ save }: RecentEventsFormProps) {
     },
   });
 
-  return (
+  return isFormSend ? (
+    <MessageSuccess isSentSuccess={isFormSend} isCoursesPage />
+  ) : (
     <Form onSubmit={handleSubmit} noValidate autoComplete="off">
       <TextField
         placeholder="Email"
@@ -77,6 +80,15 @@ export default RecentEventsForm;
 
 const Form = styled.form`
   position: relative;
+  margin-top: 81px;
+
+  ${media.tablet(css`
+    margin-top: 32px;
+  `)}
+
+  ${media.mobile(css`
+    margin-top: 24px;
+  `)}
 `;
 
 const SendButton = styled(Button)<{ isSubmitting: boolean }>`

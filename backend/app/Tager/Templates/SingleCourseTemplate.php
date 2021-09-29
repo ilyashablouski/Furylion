@@ -63,6 +63,24 @@ class SingleCourseTemplate extends Template
                 ], RepeaterView::Table),
             ]),
 
+            new GroupField('Course program', [
+                'courseProgramId' => new StringField('id'),
+                'courseProgramTitle' => new StringField('Title'),
+                'courseProgramDescription' => new StringField('Description'),
+                'courseProgramItems' =>  new RepeaterField('Items', [
+                    'title' => new StringField('Title'),
+                    'subtitle' => new StringField('Subtitle'),
+                    'time' => new StringField('Time'),
+                    'descriptionTitle' => new StringField('Description title'),
+                    'description' => new TextField('Description'),
+                    'programStepsItems' =>  new RepeaterField('Program steps items', [
+                        'title' => new StringField('Title'),
+                        'time' => new StringField('Time'),
+                        'list' => new HtmlField('List'),
+                    ], RepeaterView::Block),
+                ], RepeaterView::Block),
+            ]),
+
             new GroupField('Student work Top', [
                 'studentsId' => new StringField('id'),
                 'studentsTitle' => new StringField('Title'),

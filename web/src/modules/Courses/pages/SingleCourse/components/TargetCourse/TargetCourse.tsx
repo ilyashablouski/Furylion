@@ -27,14 +27,15 @@ function TargetCourse() {
             />
           </Left>
           <Cards>
-            {targetCourseItems.map(({ title, content }, index) => (
-              <Information
-                title={title}
-                content={content}
-                singleCourse
-                key={index}
-              />
-            ))}
+            {targetCourseItems &&
+              targetCourseItems.map(({ title, content }, index) => (
+                <Information
+                  title={title}
+                  content={content}
+                  singleCourse
+                  key={index}
+                />
+              ))}
           </Cards>
         </Content>
       </ContentContainer>

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { store } from 'next/dist/build/output/store';
 
 import {
   createResourceLoader,

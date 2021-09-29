@@ -1,11 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { useModal } from '@tager/web-components';
+
 import { useSingleCourseData } from '@/modules/Courses/pages/SingleCourse/SingleCourse.hooks';
 import { colors } from '@/constants/theme';
 import ContentContainer from '@/components/ContentContainer';
 import { media } from '@/utils/mixin';
 import CurveButton from '@/components/CurveButton';
+import SignUpCourseModal from '@/components/modals/SignUpCourseModal';
 
 import ListItem from './Card';
 
@@ -21,8 +24,13 @@ function AfterCompleteCourse() {
     coursePlacesTitle,
     coursePlaces,
     singUpCourseButtonLabel,
-    singUpCourseButtonIsNewTab,
   } = useSingleCourseData();
+
+  const openModal = useModal();
+
+  function handleOpenSignUpCourseModal() {
+    openModal(SignUpCourseModal, {});
+  }
 
   return (
     <Component id={afterCompleteId ?? ''}>
@@ -30,9 +38,10 @@ function AfterCompleteCourse() {
         <Title>{afterCompleteTitle}</Title>
 
         <Items>
-          {afterCompleteItems.map(({ skill }, index) => (
-            <ListItem skill={skill} key={index} />
-          ))}
+          {afterCompleteItems &&
+            afterCompleteItems.map(({ skill }, index) => (
+              <ListItem skill={skill} key={index} />
+            ))}
         </Items>
 
         <Information>
@@ -58,7 +67,7 @@ function AfterCompleteCourse() {
           <StyledCurveButton
             label={singUpCourseButtonLabel}
             variants={['curve', 'curve-dark', 'w100']}
-            isNewTab={singUpCourseButtonIsNewTab}
+            onClick={handleOpenSignUpCourseModal}
           />
         </ButtonWrapper>
       </ContentContainer>

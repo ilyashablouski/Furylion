@@ -8,7 +8,6 @@ import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import SocialNetwork from '@/components/SocialNetwork';
 import FadeElement from '@/components/FadeElement';
-import VacanciesCounter from '@/components/VacanciesCounter';
 import { handleLinkFeedbackClick, isNewPage } from '@/utils/common';
 
 type Props = {
@@ -84,14 +83,9 @@ function HeaderMenu({
                   <ItemLink
                     to={menuItem.link ?? '#'}
                     target={menuItem.isNewTab ? '_blank' : '_self'}
-                  >
-                    {menuItem.label}
-                    {menuItem.link && menuItem.link.includes('careers') ? (
-                      <VacanciesCounterWrapper>
-                        <VacanciesCounter />
-                      </VacanciesCounterWrapper>
-                    ) : null}
-                  </ItemLink>
+                    dangerouslySetInnerHTML={{ __html: menuItem.label ?? '' }}
+                    isDark={menuItem.link?.includes('vacancies')}
+                  />
                 )}
               </MenuItem>
             );
@@ -192,7 +186,7 @@ const MenuItems = styled.ul`
   `)}
 `;
 
-const ItemLink = styled(Link)`
+const ItemLink = styled(Link)<{ isDark?: boolean }>`
   position: relative;
   font-weight: 500;
   font-size: 14px;
@@ -206,6 +200,30 @@ const ItemLink = styled(Link)`
   `)}
   &:hover {
     color: #ccc;
+  }
+
+  i {
+    display: block;
+    position: absolute;
+    top: -50%;
+    right: -29%;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    font-style: normal;
+
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+
+    color: ${(props) => (props.isDark ? `${colors.white}` : `${colors.dark}`)};
+    background: ${(props) =>
+      props.isDark ? `${colors.dark}` : `${colors.white}`};
+
+    ${media.tabletSmall(css`
+      color: ${colors.white};
+      background: ${colors.dark};
+    `)}
   }
 `;
 
@@ -249,16 +267,6 @@ const MenuItem = styled.li`
       line-height: initial;
     `)}
   }
-`;
-
-const VacanciesCounterWrapper = styled.div`
-  position: absolute;
-  right: -16px;
-  top: -10px;
-
-  ${media.tabletSmall(css`
-    display: none;
-  `)}
 `;
 
 export default HeaderMenu;

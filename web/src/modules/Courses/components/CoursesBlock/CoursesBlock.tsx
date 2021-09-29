@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { useCoursesData } from '@/modules/Courses/Courses.hooks';
 import ContentContainer from '@/components/ContentContainer';
@@ -15,6 +17,44 @@ import {
 
 function CoursesBlock({ singleCourse }: SingleCourseProps) {
   const { coursesId, coursesTitle, coursesItems } = useCoursesData();
+  const coursesCardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let tw: gsap.core.Tween;
+    const delayedCall = gsap.delayedCall(0, () => {
+      if (!coursesCardsRef.current) return null;
+
+      let marginTop: gsap.TweenValue | undefined;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          marginTop = '14%';
+        },
+        '(max-width: 1259.9px)': function () {
+          marginTop = '27%';
+        },
+
+        '(max-width: 768px)': function () {
+          marginTop = '0%';
+        },
+      });
+
+      tw = gsap.to(coursesCardsRef.current, {
+        marginTop: marginTop,
+        scrollTrigger: {
+          start: 'center 120%',
+          end: '50% 50%',
+          trigger: coursesCardsRef.current,
+          scrub: true,
+        },
+      });
+    });
+
+    return () => {
+      delayedCall.kill();
+      tw?.kill();
+    };
+  }, []);
 
   return (
     <Component id={coursesId ?? ''}>
@@ -28,7 +68,10 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
         </Header>
       )}
 
-      <Cards singleCourse={singleCourse}>
+      <Cards
+        singleCourse={singleCourse}
+        ref={!singleCourse ? coursesCardsRef : null}
+      >
         {coursesItems &&
           coursesItems.map((course, index) => (
             <CourseCard {...course} key={index} />

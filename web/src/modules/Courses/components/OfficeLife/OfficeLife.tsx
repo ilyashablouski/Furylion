@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
@@ -26,6 +28,38 @@ function OfficeLife() {
     officeLifeButtonSecondIsNewTab,
   } = useCoursesData();
 
+  const phoneRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let tw: gsap.core.Tween;
+    const delayedCall = gsap.delayedCall(0, () => {
+      if (!phoneRef.current) return null;
+
+      let translateY: gsap.TweenValue | undefined;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1260px)': function () {
+          translateY = '0%';
+        },
+      });
+
+      tw = gsap.to(phoneRef.current, {
+        translateY: translateY,
+        scrollTrigger: {
+          start: 'center 67%',
+          end: '-100% -100%',
+          trigger: phoneRef.current,
+          scrub: true,
+        },
+      });
+    });
+
+    return () => {
+      delayedCall.kill();
+      tw?.kill();
+    };
+  }, []);
+
   return (
     <Component id={officeLifeId ?? ''}>
       <FirstVector src={Vector1} />
@@ -36,12 +70,14 @@ function OfficeLife() {
             <Header>
               <Title>{officeLifeTitle}</Title>
             </Header>
-            <Phone
-              src={officeLifeImage.url}
-              src2x={officeLifeImage.url_2x}
-              srcWebp={officeLifeImage.url_webp}
-              srcWebp2x={officeLifeImage.url_webp_2x}
-            />
+            <PhoneWrapper ref={phoneRef}>
+              <Phone
+                src={officeLifeImage.url}
+                src2x={officeLifeImage.url_2x}
+                srcWebp={officeLifeImage.url_webp}
+                srcWebp2x={officeLifeImage.url_webp_2x}
+              />
+            </PhoneWrapper>
           </Wrapper>
         </ContentContainer>
       </Content>
@@ -216,11 +252,15 @@ const Title = styled.p`
   `)}
 `;
 
-const Phone = styled(Picture)`
+const PhoneWrapper = styled.div`
   margin-left: 78px;
+  transform: translateY(-527px);
 
   ${media.tablet(css`
     margin-left: 0;
     margin-top: 32px;
+    transform: translateY(0);
   `)}
 `;
+
+const Phone = styled(Picture)``;
