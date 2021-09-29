@@ -49,6 +49,7 @@ export interface Review {
   video: {
     url: string | null;
   };
+  preview: ThumbnailType;
 }
 
 export interface Courses {

@@ -25,17 +25,20 @@ function ReviewsSlider() {
           },
         }}
       >
-        {reviewsItems.map(({ video, avatar, name, position }, index) => (
-          <SwiperSlide key={index}>
-            <Video
-              key={index}
-              video={video}
-              avatar={avatar}
-              name={name}
-              position={position}
-            />
-          </SwiperSlide>
-        ))}
+        {reviewsItems.map(
+          ({ video, avatar, name, position, preview }, index) => (
+            <SwiperSlide key={index}>
+              <Video
+                key={index}
+                video={video}
+                avatar={avatar}
+                name={name}
+                position={position}
+                preview={preview}
+              />
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </Component>
   );
