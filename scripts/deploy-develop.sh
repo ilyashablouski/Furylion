@@ -14,7 +14,7 @@ sudo cp backend/.env.development backend/.env
 
 sudo cp scripts/nginx-develop.conf /etc/nginx/sites-available/furylion.dev.ozitag.com
 
-COMPOSE_HTTP_TIMEOUT=200 sudo docker-compose -f docker-compose.dev.yml --project-name furylion build
+COMPOSE_HTTP_TIMEOUT=200 sudo docker-compose -f docker-compose.dev.yml --project-name furylion build --pull
 
 touch .maintenance
 COMPOSE_HTTP_TIMEOUT=200 sudo docker-compose -f docker-compose.dev.yml --project-name furylion up -d --force-recreate
