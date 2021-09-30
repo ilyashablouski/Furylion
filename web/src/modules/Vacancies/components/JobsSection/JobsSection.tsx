@@ -17,8 +17,6 @@ import useCurrentPage from '@/hooks/useCurrentPage';
 
 import JobCard from './components/JobCard';
 
-const cityPath = '/vacancies?city=';
-
 function getLocationList(
   vacanciesList: Array<VacancyShortType>
 ): Array<LocationType> {
@@ -49,7 +47,8 @@ function getLocationList(
 
 function getVacanciesByLocation(
   vacanciesList: Array<VacancyShortType>,
-  location: string
+  location: string,
+  cityPath: string
 ) {
   return vacanciesList.filter(
     (vacancy) => `${cityPath}${vacancy.location}` === location
@@ -62,6 +61,8 @@ function JobsSection() {
   const openedVacancyImage = useSettingItem('OPEN_VACANCY_IMAGE');
   const openedVacancyDescription = useSettingItem('OPEN_VACANCY_DESCRIPTION');
   const formVacanciesTitle = useSettingItem('FORM_VACANCIES_TITLE');
+  const currentPath = useCurrentPage().path;
+  const cityPath = useCurrentPage().path + '?city=';
 
   const vacanciesList = useTypedSelector(selectVacanciesList);
   const vacanciesCityList = getLocationList(vacanciesList);
@@ -72,7 +73,8 @@ function JobsSection() {
 
   const filteredVacancyList = getVacanciesByLocation(
     vacanciesList,
-    isCurrentLocation
+    isCurrentLocation,
+    cityPath
   );
 
   const openModal = useModal();
@@ -82,13 +84,13 @@ function JobsSection() {
   const defaultLocationPath = `${cityPath}${vacanciesCityList[0].location}`;
 
   useEffect(() => {
-    if (router.asPath === '/vacancies') {
+    if (router.asPath === currentPath) {
       setCurrentLocation(defaultLocationPath);
       router.push(defaultLocationPath);
     } else {
       setCurrentLocation(router.asPath);
     }
-  }, [defaultLocationPath, router, router.asPath]);
+  }, [currentPath, defaultLocationPath, router, router.asPath]);
 
   function handleOpenFeedbackModal() {
     openModal(FeedbackModal, {
