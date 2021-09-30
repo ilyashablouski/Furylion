@@ -85,6 +85,7 @@ export interface HeroSectionType extends PageFullType {
     heroVideo: {
       url: StringFieldType;
     };
+    heroPreview: ThumbnailType;
   };
 }
 

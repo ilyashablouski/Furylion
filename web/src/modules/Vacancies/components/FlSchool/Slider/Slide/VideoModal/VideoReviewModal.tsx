@@ -40,7 +40,13 @@ function VideoReviewModal({
           <CloseIcon />
         </StyledButton>
       </Panel>
-      <Video controls={true} preload="metadata" muted src={videoUrl ?? ''} />
+      <Video
+        controls={true}
+        preload="metadata"
+        playsInline
+        autoPlay
+        src={videoUrl ?? ''}
+      />
     </Component>
   );
 }

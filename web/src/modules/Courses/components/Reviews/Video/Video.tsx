@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+import { useMedia } from '@tager/web-core';
+
+import { ReactComponent as PlayIcon } from '@/assets/svg/play.svg';
 import { ReactComponent as VolumeOffIcon } from '@/assets/svg/courses/volume-off.svg';
 import { ReactComponent as VolumeOnIcon } from '@/assets/svg/courses/volume-on.svg';
 import Picture from '@/components/Picture';
@@ -11,12 +14,15 @@ import { media } from '@/utils/mixin';
 function Video({ video, avatar, name, position, preview }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setMuted] = useState(true);
+  const [isVideoPlay, setVideoPlay] = useState(false);
+  const tabletMedia = useMedia('(max-width: 1259.9px)');
 
   async function handleVideoPointerEnter() {
     const video = videoRef.current;
 
     try {
       await video?.play();
+      handleChangeVideoPlayState();
     } catch (error) {
       console.log('error: ', error);
     }
@@ -36,29 +42,48 @@ function Video({ video, avatar, name, position, preview }: Review) {
     setMuted(!isMuted);
   };
 
+  const handleChangeVideoPlayState = () => {
+    setVideoPlay(!isVideoPlay);
+  };
+
   return (
     <Component>
-      <Background />
-      <Preview
-        src={preview.url}
-        src2x={preview.url_2x}
-        srcWebp={preview.url_webp}
-        srcWebp2x={preview.url_webp_2x}
-      />
+      <Background isVideoPlay={isVideoPlay} />
 
-      <ReviewVideo
-        ref={videoRef}
-        src={video.url ?? ''}
-        onPointerEnter={handleVideoPointerEnter}
-        onPointerOut={handleVideoPointerOut}
-        controls
-        controlsList="playsinline"
-        muted={isMuted}
-        preload="metadata"
-      />
+      {tabletMedia ? (
+        <ReviewVideo
+          ref={videoRef}
+          src={video.url ?? ''}
+          onEnded={handleChangeVideoPlayState}
+          muted={isMuted}
+          preload="metadata"
+          poster={preview.url ?? ''}
+          playsInline
+        />
+      ) : (
+        <ReviewVideo
+          ref={videoRef}
+          src={video.url ?? ''}
+          onPointerEnter={handleVideoPointerEnter}
+          onPointerOut={handleVideoPointerOut}
+          muted={isMuted}
+          preload="metadata"
+          poster={preview.url ?? ''}
+          playsInline
+        />
+      )}
+
       <VolumeButton onClick={handleChangeMutedState}>
         {isMuted ? <VolumeOffIcon /> : <VolumeOnIcon />}
       </VolumeButton>
+
+      {tabletMedia ? (
+        <PlayButton onClick={handleVideoPointerEnter} isVideoPlay={isVideoPlay}>
+          <PlayIcon />
+        </PlayButton>
+      ) : (
+        ''
+      )}
 
       <Content>
         <Avatar
@@ -78,7 +103,7 @@ function Video({ video, avatar, name, position, preview }: Review) {
 
 export default Video;
 
-const Background = styled.div`
+const Background = styled.div<{ isVideoPlay: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -88,6 +113,7 @@ const Background = styled.div`
   height: 100%;
   background: rgba(25, 24, 20, 0.6);
   backdrop-filter: blur(12px);
+  border-radius: 15px;
   z-index: 2;
   opacity: 1;
   visibility: visible;
@@ -96,6 +122,14 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${({ isVideoPlay }) =>
+    isVideoPlay &&
+    css`
+      ${media.tablet(css`
+        display: none;
+      `)}
+    `}
 `;
 
 const Preview = styled(Picture)`
@@ -120,6 +154,7 @@ const Preview = styled(Picture)`
 
   img {
     object-fit: cover;
+    border-radius: 15px;
   }
 `;
 
@@ -140,6 +175,13 @@ const Component = styled.div`
       opacity: 0;
       visibility: hidden;
     }
+
+    ${media.tablet(css`
+      ${Background} {
+        opacity: 1;
+        visibility: visible;
+      }
+    `)}
   }
 
   ${media.mobile(css`
@@ -158,10 +200,6 @@ const ReviewVideo = styled.video`
   height: 100%;
   border-radius: 15px;
   object-fit: cover;
-
-  &::-webkit-media-controls {
-    visibility: hidden;
-  }
 `;
 
 const VolumeButton = styled.div`
@@ -178,6 +216,35 @@ const VolumeButton = styled.div`
   background: rgba(0, 0, 0, 0.4);
 `;
 
+const PlayButton = styled.div<{ isVideoPlay: boolean }>`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  ${({ isVideoPlay }) =>
+    isVideoPlay &&
+    css`
+      display: none;
+    `}
+`;
+
 const Content = styled.div`
   position: absolute;
   display: flex;
@@ -185,6 +252,7 @@ const Content = styled.div`
   top: 20px;
   left: 6px;
   z-index: 2;
+  user-select: none;
 `;
 
 const Avatar = styled(Picture)`

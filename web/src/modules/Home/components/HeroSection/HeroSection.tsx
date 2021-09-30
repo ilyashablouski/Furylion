@@ -22,6 +22,7 @@ function HeroSection({ courses }: HeroSectionProps) {
   const image = pageFields?.heroImage;
   const imageMobile = pageFields?.heroMobileImage;
   const video = pageFields?.heroVideo;
+  const imagePreview = pageFields?.heroPreview;
   const title = pageFields?.heroTitle;
   const text = pageFields?.heroText;
 
@@ -30,7 +31,14 @@ function HeroSection({ courses }: HeroSectionProps) {
     <Wrapper id={pageFields?.heroId ?? ''}>
       {courses ? (
         <>
-          <BackgroundVideo src={video?.url ?? ''} muted autoPlay loop />
+          <BackgroundVideo
+            src={video?.url ?? ''}
+            poster={imagePreview?.url ?? ''}
+            playsInline
+            muted
+            autoPlay
+            loop
+          />
           <Shadow />
         </>
       ) : (

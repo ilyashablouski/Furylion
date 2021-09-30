@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -55,7 +55,7 @@ function ArtSwiper2({ images, isRightSide = true }: Props) {
           images.map((image, index) => (
             <SwiperSlide key={index}>
               <SlidePicture
-                loading={'lazy'}
+                loading={'eager'}
                 mobileSmall={convertThumbnailToPictureImage(image.mobile)}
                 mobileLarge={convertThumbnailToPictureImage(image.desktop)}
                 className="swiper-image-container"

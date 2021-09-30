@@ -27,6 +27,7 @@ function ItemWrapper({
 }: Props) {
   return (
     <Container className={className} singleItem={singleItem}>
+      <Shadow />
       <ItemLink
         to={getPathWithScrollParam(linkUrl, scrollTo)}
         target={isNewTab ? '_blank' : '_self'}
@@ -54,25 +55,20 @@ const Container = styled.div<{ singleItem?: boolean }>`
       transform: scale(1.2);
     }
   }
+`;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(25, 24, 20, 0) 41.15%,
-      #191814 100%
-    );
-    z-index: 1;
+const Shadow = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(25, 24, 20, 0) 41.15%, #191814 100%);
+  z-index: 1;
 
-    ${media.mobile(css`
-      display: none;
-    `)}
-  }
+  ${media.mobile(css`
+    display: none;
+  `)}
 `;
 
 const ItemLink = styled(Link)`
