@@ -1,4 +1,4 @@
-import { ReactElement, SVGProps } from 'react';
+import { SVGProps } from 'react';
 
 import {
   PageFullType,
@@ -82,6 +82,9 @@ export interface HeroSectionType extends PageFullType {
     heroText: StringFieldType;
     heroImage: Nullable<BaseImageType>;
     heroMobileImage: Nullable<BaseImageType>;
+    heroVideo: {
+      url: StringFieldType;
+    };
   };
 }
 
@@ -109,9 +112,9 @@ export type ServiceItemType = {
   }>;
   title: StringFieldType;
   text: StringFieldType;
-  linkLabel: StringFieldType;
-  linkUrl: StringFieldType;
-  isNewTab: boolean;
+  linkLabel?: StringFieldType;
+  linkUrl?: StringFieldType;
+  isNewTab?: boolean;
   scrollTo?: Nullish<string>;
 };
 

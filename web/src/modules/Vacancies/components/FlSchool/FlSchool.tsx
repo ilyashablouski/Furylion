@@ -129,7 +129,8 @@ const Subtitle = styled.div`
 
   & > p > u {
     text-decoration-color: ${colors.red};
-    text-underline-offset: 8px;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
   }
 
   ${media.tablet(css`

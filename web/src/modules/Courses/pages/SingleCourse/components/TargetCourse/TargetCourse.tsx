@@ -99,16 +99,13 @@ const Description = styled.div`
 
   & > p > u {
     text-decoration-color: ${colors.red};
-    text-underline-offset: 6px;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 4px;
 
     ${media.tablet(css`
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
     `)}
   }
-
-  ${media.tablet(css`
-    line-height: 130%;
-  `)}
 
   ${media.mobile(css`
     font-size: 18px;

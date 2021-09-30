@@ -31,18 +31,6 @@ function AboutUs() {
         '(min-width: 768px)': function () {
           left = '62%';
         },
-        '(max-width: 1259px)': function () {
-          left = '49%';
-        },
-        '(max-width: 1024px)': function () {
-          left = '60%';
-        },
-        '(max-width: 768px)': function () {
-          left = '-154%';
-        },
-        '(max-width: 414px)': function () {
-          left = '-167%';
-        },
       });
 
       tw = gsap.to(vectorRef.current, {
@@ -99,14 +87,13 @@ const Vector = styled.span`
   display: block;
   position: absolute;
   width: 140%;
-  height: 200%;
-  top: -74%;
-  left: -7%;
+  height: 100%;
+  //top: -74%;
   right: 0;
   bottom: 0;
   background: ${colors.red};
   z-index: 10;
-  transform: rotate(-26.5deg);
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 27% 100%);
 
   ${media.tablet(css`
     display: none;

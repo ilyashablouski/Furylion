@@ -92,13 +92,14 @@ export default CourseCard;
 
 const Component = styled.div`
   position: relative;
-  margin-bottom: 20px;
   cursor: pointer;
   transition: 0.3s;
 
-  &:hover {
-    box-shadow: 0 0 10px 2px ${colors.red};
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
 
+  &:hover {
     .white-link {
       color: ${colors.white};
     }
@@ -303,7 +304,7 @@ const ButtonVector = styled.span`
   background: ${colors.red};
   z-index: 1;
 
-  transition: right 0.4s linear;
+  transition: right 0.2s linear;
   clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
 
   ${media.tablet(css`
