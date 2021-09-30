@@ -21,19 +21,35 @@ function HeroSection({ courses }: HeroSectionProps) {
   const pageFields = page?.templateFields;
   const image = pageFields?.heroImage;
   const imageMobile = pageFields?.heroMobileImage;
+  const video = pageFields?.heroVideo;
+  const imagePreview = pageFields?.heroPreview;
   const title = pageFields?.heroTitle;
   const text = pageFields?.heroText;
 
   const arrowRef = useRef<HTMLElement>(null);
   return (
     <Wrapper id={pageFields?.heroId ?? ''}>
-      <BackgroundPicture
-        desktop={convertThumbnailToPictureImage(image?.desktop)}
-        laptop={convertThumbnailToPictureImage(image?.laptop)}
-        tabletLarge={convertThumbnailToPictureImage(image?.tablet)}
-        mobileSmall={convertThumbnailToPictureImage(imageMobile?.mobile)}
-        className="hero-background"
-      />
+      {courses ? (
+        <>
+          <BackgroundVideo
+            src={video?.url ?? ''}
+            poster={imagePreview?.url ?? ''}
+            playsInline
+            muted
+            autoPlay
+            loop
+          />
+          <Shadow />
+        </>
+      ) : (
+        <BackgroundPicture
+          desktop={convertThumbnailToPictureImage(image?.desktop)}
+          laptop={convertThumbnailToPictureImage(image?.laptop)}
+          tabletLarge={convertThumbnailToPictureImage(image?.tablet)}
+          mobileSmall={convertThumbnailToPictureImage(imageMobile?.mobile)}
+          className="hero-background"
+        />
+      )}
 
       <ContentContainer>
         <Inner>
@@ -53,11 +69,19 @@ const Wrapper = styled.section`
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
 
+  ${media.tablet(css`
+    height: calc(100vh - 60px);
+  `)}
+
   ${ContentContainer} {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(var(--vh, 1vh) * 100);
+
+    ${media.tablet(css`
+      height: calc(100vh - 60px);
+    `)}
   }
 `;
 
@@ -89,6 +113,30 @@ const BackgroundPicture = styled(Picture)`
     object-fit: cover;
     overflow: hidden;
   }
+`;
+
+const BackgroundVideo = styled.video`
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+`;
+
+const Shadow = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
 `;
 
 const Title = styled.span<{ courses: HeroSectionProps['courses'] }>`

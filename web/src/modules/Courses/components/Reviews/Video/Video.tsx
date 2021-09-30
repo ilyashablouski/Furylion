@@ -1,19 +1,28 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import React, { useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
+
+import { useMedia } from '@tager/web-core';
 
 import { ReactComponent as PlayIcon } from '@/assets/svg/play.svg';
+import { ReactComponent as VolumeOffIcon } from '@/assets/svg/courses/volume-off.svg';
+import { ReactComponent as VolumeOnIcon } from '@/assets/svg/courses/volume-on.svg';
 import Picture from '@/components/Picture';
 import { colors } from '@/constants/theme';
 import { Review } from '@/modules/Courses/Courses.types';
+import { media } from '@/utils/mixin';
 
-function Video({ video, avatar, name, position }: Review) {
+function Video({ video, avatar, name, position, preview }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setMuted] = useState(true);
+  const [isVideoPlay, setVideoPlay] = useState(false);
+  const tabletMedia = useMedia('(max-width: 1259.9px)');
 
   async function handleVideoPointerEnter() {
     const video = videoRef.current;
 
     try {
       await video?.play();
+      handleChangeVideoPlayState();
     } catch (error) {
       console.log('error: ', error);
     }
@@ -29,21 +38,53 @@ function Video({ video, avatar, name, position }: Review) {
     video.pause();
   };
 
+  const handleChangeMutedState = () => {
+    setMuted(!isMuted);
+  };
+
+  const handleChangeVideoPlayState = () => {
+    setVideoPlay(!isVideoPlay);
+  };
+
   return (
     <Component>
-      <Background>
-        <PlayIcon />
-      </Background>
-      <ReviewVideo
-        ref={videoRef}
-        src={video.url ?? ''}
-        controls={true}
-        controlsList="nofullscreen nodownload noremoteplayback noplaybackrate"
-        preload="metadata"
-        muted
-        onPointerEnter={handleVideoPointerEnter}
-        onPointerOut={handleVideoPointerOut}
-      />
+      <Background isVideoPlay={isVideoPlay} />
+
+      {tabletMedia ? (
+        <ReviewVideo
+          ref={videoRef}
+          src={video.url ?? ''}
+          onEnded={handleChangeVideoPlayState}
+          muted={isMuted}
+          preload="metadata"
+          poster={preview.url ?? ''}
+          playsInline
+        />
+      ) : (
+        <ReviewVideo
+          ref={videoRef}
+          src={video.url ?? ''}
+          onPointerEnter={handleVideoPointerEnter}
+          onPointerOut={handleVideoPointerOut}
+          muted={isMuted}
+          preload="metadata"
+          poster={preview.url ?? ''}
+          playsInline
+        />
+      )}
+
+      <VolumeButton onClick={handleChangeMutedState}>
+        {isMuted ? <VolumeOffIcon /> : <VolumeOnIcon />}
+      </VolumeButton>
+
+      {tabletMedia ? (
+        <PlayButton onClick={handleVideoPointerEnter} isVideoPlay={isVideoPlay}>
+          <PlayIcon />
+        </PlayButton>
+      ) : (
+        ''
+      )}
+
       <Content>
         <Avatar
           src={avatar.url}
@@ -62,7 +103,7 @@ function Video({ video, avatar, name, position }: Review) {
 
 export default Video;
 
-const Background = styled.div`
+const Background = styled.div<{ isVideoPlay: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -72,7 +113,8 @@ const Background = styled.div`
   height: 100%;
   background: rgba(25, 24, 20, 0.6);
   backdrop-filter: blur(12px);
-  z-index: 1;
+  border-radius: 15px;
+  z-index: 2;
   opacity: 1;
   visibility: visible;
   transition: visibility 0.2s, opacity 0.2s;
@@ -80,13 +122,47 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${({ isVideoPlay }) =>
+    isVideoPlay &&
+    css`
+      ${media.tablet(css`
+        display: none;
+      `)}
+    `}
+`;
+
+const Preview = styled(Picture)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0.2s, opacity 0.2s;
+
+  picture,
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    object-fit: cover;
+    border-radius: 15px;
+  }
 `;
 
 const Component = styled.div`
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  min-height: 522px;
+  padding-top: 178.615%;
   cursor: pointer;
 
   &:hover {
@@ -94,7 +170,23 @@ const Component = styled.div`
       opacity: 0;
       visibility: hidden;
     }
+
+    ${Preview} {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    ${media.tablet(css`
+      ${Background} {
+        opacity: 1;
+        visibility: visible;
+      }
+    `)}
   }
+
+  ${media.mobile(css`
+    padding-top: 130%;
+  `)}
 `;
 
 const ReviewVideo = styled.video`
@@ -103,34 +195,64 @@ const ReviewVideo = styled.video`
   left: 0;
   right: 0;
   bottom: 0;
+  background: ${colors.black};
   width: 100%;
   height: 100%;
-  background: ${colors.black};
+  border-radius: 15px;
+  object-fit: cover;
+`;
 
-  &::-webkit-media-controls-timeline {
-    position: absolute;
-    padding: 0;
-    top: 14px;
-    width: 96%;
-    left: 2%;
+const VolumeButton = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+`;
+
+const PlayButton = styled.div<{ isVideoPlay: boolean }>`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+
+  svg {
+    width: 30px;
+    height: 30px;
   }
 
-  &::-webkit-media-controls {
-    z-index: 3;
-  }
-
-  &::-webkit-media-controls-fullscreen-button {
-    display: none;
-  }
+  ${({ isVideoPlay }) =>
+    isVideoPlay &&
+    css`
+      display: none;
+    `}
 `;
 
 const Content = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  top: 28px;
+  top: 20px;
   left: 6px;
   z-index: 2;
+  user-select: none;
 `;
 
 const Avatar = styled(Picture)`

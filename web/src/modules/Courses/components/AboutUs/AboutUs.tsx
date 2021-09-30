@@ -18,7 +18,6 @@ function AboutUs() {
   } = useCoursesData();
 
   const vectorRef = useRef<HTMLDivElement>(null);
-  const blockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let tw: gsap.core.Tween;
@@ -28,20 +27,8 @@ function AboutUs() {
       let left: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 768px)': function () {
+        '(min-width: 1260px)': function () {
           left = '62%';
-        },
-        '(max-width: 1259px)': function () {
-          left = '49%';
-        },
-        '(max-width: 1024px)': function () {
-          left = '60%';
-        },
-        '(max-width: 768px)': function () {
-          left = '-154%';
-        },
-        '(max-width: 414px)': function () {
-          left = '-167%';
         },
       });
 
@@ -64,7 +51,7 @@ function AboutUs() {
 
   return (
     <Wrapper id={aboutUsId ?? ''} className="anchor-section">
-      <Left ref={blockRef}>
+      <Left>
         <Vector ref={vectorRef} />
         <ArtSwiper2 images={aboutUsImages} isRightSide={false} />
       </Left>
@@ -96,20 +83,18 @@ const Wrapper = styled.section`
 `;
 
 const Vector = styled.span`
-  display: block;
+  visibility: visible;
   position: absolute;
   width: 140%;
-  height: 200%;
-  top: -74%;
-  left: -7%;
+  height: 100%;
   right: 0;
   bottom: 0;
   background: ${colors.red};
-  z-index: 10;
-  transform: rotate(-26.5deg);
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 27% 100%);
 
   ${media.tablet(css`
-    display: none;
+    visibility: hidden;
   `)}
 `;
 
@@ -155,7 +140,6 @@ const Title = styled.p`
   text-transform: uppercase;
   color: ${colors.white};
   position: relative;
-  z-index: 10;
   max-width: 800px;
 
   ${media.tablet(css`
@@ -170,7 +154,6 @@ const Title = styled.p`
 const TextContainer = styled.div`
   margin-top: 24px;
   position: relative;
-  z-index: 12;
 `;
 
 const Text = styled.p`

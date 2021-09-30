@@ -26,15 +26,18 @@ function Reviews() {
           <Gallery>
             {reviewsTriplesItems.map((items, index) => (
               <GalleryColumn key={index}>
-                {items.map(({ video, avatar, name, position }, index) => (
-                  <Video
-                    key={index}
-                    video={video}
-                    avatar={avatar}
-                    name={name}
-                    position={position}
-                  />
-                ))}
+                {items.map(
+                  ({ video, avatar, name, position, preview }, index) => (
+                    <Video
+                      key={index}
+                      video={video}
+                      avatar={avatar}
+                      name={name}
+                      position={position}
+                      preview={preview}
+                    />
+                  )
+                )}
               </GalleryColumn>
             ))}
           </Gallery>

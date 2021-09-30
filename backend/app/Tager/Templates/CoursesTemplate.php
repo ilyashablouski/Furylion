@@ -23,8 +23,8 @@ class CoursesTemplate extends Template
                 'heroId' => new StringField('id'),
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new StringField('Text'),
-                'heroImage' => new ImageField('Image', FileScenario::CoursesHeroImage),
-                'heroMobileImage' => new ImageField('Mobile Image', FileScenario::CoursesHeroImage),
+                'heroVideo' => new FileField('Hero video', FileScenario::VideoReview),
+                'heroPreview' => new ImageField('Video preview', FileScenario::VideoPreviewImage),
             ]),
             new GroupField('About us', [
                 'aboutUsId' => new StringField('id'),
@@ -133,6 +133,7 @@ class CoursesTemplate extends Template
                     'name' => new StringField('Name'),
                     'position' => new StringField('Position'),
                     'video' => new FileField('Video', FileScenario::VideoReview),
+                    'preview' => new ImageField('Video preview image', FileScenario::VideoPreviewImage),
                 ], RepeaterView::Table),
             ]),
             new GroupField('Projects', [

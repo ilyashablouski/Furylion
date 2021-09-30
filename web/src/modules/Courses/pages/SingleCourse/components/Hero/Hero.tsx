@@ -100,6 +100,10 @@ const Component = styled.section`
   height: calc(var(--vh, 1vh) * 100);
   background: ${colors.dark};
 
+  ${media.tablet(css`
+    height: calc(100vh - 60px);
+  `)}
+
   ${ContentContainer} {
     position: relative;
     display: flex;
@@ -110,6 +114,7 @@ const Component = styled.section`
 
     ${media.tablet(css`
       align-items: flex-start;
+      height: calc(100vh - 60px);
     `)}
   }
 `;
