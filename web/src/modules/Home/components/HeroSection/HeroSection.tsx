@@ -61,11 +61,19 @@ const Wrapper = styled.section`
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
 
+  ${media.tablet(css`
+    height: calc(100vh - 60px);
+  `)}
+
   ${ContentContainer} {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(var(--vh, 1vh) * 100);
+
+    ${media.tablet(css`
+      height: calc(100vh - 60px);
+    `)}
   }
 `;
 

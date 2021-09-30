@@ -35,6 +35,10 @@ const Wrapper = styled.section`
   max-width: 1920px;
   text-align: center;
   min-height: calc(var(--vh, 1vh) * 100);
+
+  ${media.tablet(css`
+    min-height: calc(100vh - 60px);
+  `)}
 `;
 
 const Inner = styled.div`
