@@ -2452,18 +2452,18 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tager/web-analytics@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@tager/web-analytics/-/web-analytics-0.2.5.tgz#ee70f417d9484d124049dbd31ba1f9b521ef5c1a"
-  integrity sha512-y1YMYwDVw2Lp9bjmxevkoEQ8b5Avp1fPUKgBe4cQM5TRUZk7Fy9hp6v9K1qgvxYwU0Si6ls3mIQzQfnkrqOhig==
+"@tager/web-analytics@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@tager/web-analytics/-/web-analytics-0.2.7.tgz#71f7abaf7ed651b2946dfd4ab86bf884360afd2b"
+  integrity sha512-ySbZNJwuXPKkmnqrW6uqo0wM3egroP9e5VHf42noRKjWuWWO+O5Lg3qN7F5S7j6TdrJxJtM+Fubn/LY5mehQdQ==
   dependencies:
     react-ga "^3.1.2"
     react-gtm-module "^2.0.11"
 
-"@tager/web-components@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@tager/web-components/-/web-components-0.4.3.tgz#6bcc6182cae4bcf4eefad4ebd030fe26d6f5187a"
-  integrity sha512-ibZ+t49A5cag59tsn2NQszyIg/VzJBm8MwR6GrD70zwtfABFGCY0leucfVx8qpO0hy3oi34D8u/jUFm1g5Vi+A==
+"@tager/web-components@^0.4.5":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@tager/web-components/-/web-components-0.4.5.tgz#73b29f2c185e48d6b77a1d806713e0d64d38f922"
+  integrity sha512-RqnvwAI9XSMktW+Guz15lW1Vo6LLvb1tT964+6dPlS66QLgTLiCDE1lZoWhFD1zD7W90YjTn/GZCt5Hje4r3zA==
 
 "@tager/web-core@^0.3.22":
   version "0.3.22"
