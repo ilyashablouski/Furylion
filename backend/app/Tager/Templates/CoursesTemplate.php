@@ -24,6 +24,7 @@ class CoursesTemplate extends Template
                 'heroTitle' => new StringField('Title'),
                 'heroText' => new StringField('Text'),
                 'heroVideo' => new FileField('Hero video', FileScenario::VideoReview),
+                'heroPreview' => new ImageField('Video preview', FileScenario::VideoPreviewImage),
             ]),
             new GroupField('About us', [
                 'aboutUsId' => new StringField('id'),
