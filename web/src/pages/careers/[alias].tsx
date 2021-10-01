@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { isServer } from '@tager/web-core';
 import { Page } from '@tager/web-components';
 
 import Layout from '@/components/Layout';
 import Vacancy from '@/modules/Vacancy';
 import { convertAliasToPath, convertErrorToProps } from '@/utils/common';
 import { CustomApp_PageContext } from '@/typings/hocs';
-import {
-  getVacancyByAliasThunk,
-  selectVacancyByAliasResource,
-} from '@/store/reducers/pages/vacancies';
+import { getVacancyByAliasThunk } from '@/store/reducers/pages/vacancies';
 import { getSharedThunkList } from '@/utils/thunks';
 import { VacancyFullType } from '@/typings/model';
 import ErrorPage from '@/pages/_error';
@@ -53,27 +49,22 @@ CareersVacancy.getInitialProps = async function ({
   store,
 }: CustomApp_PageContext): Promise<Props> {
   const alias = convertAliasToPath(query.alias);
+
   try {
-    await store.dispatch(getVacancyByAliasThunk(alias));
+    const [vacancy] = await Promise.all([
+      store.dispatch(getVacancyByAliasThunk(alias)),
+      ...getSharedThunkList(store.dispatch),
+    ]);
 
-    const vacancyResource = selectVacancyByAliasResource(
-      store.getState(),
-      alias
-    );
-
-    if (!vacancyResource?.data) {
+    if (!vacancy) {
       return {
         pageType: 'NOT_FOUND',
       };
     }
 
-    if (isServer()) {
-      await Promise.all([...getSharedThunkList(store.dispatch)]);
-    }
-
     return {
       pageType: 'DYNAMIC_PAGE',
-      vacancy: vacancyResource.data,
+      vacancy: vacancy,
     };
   } catch (error) {
     return {

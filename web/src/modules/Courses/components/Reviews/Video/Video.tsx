@@ -46,6 +46,18 @@ function Video({ video, avatar, name, position, preview }: Review) {
     setVideoPlay(!isVideoPlay);
   };
 
+  const handleVideoPause = () => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.pause();
+
+    setVideoPlay(!isVideoPlay);
+  };
+
   return (
     <Component>
       <Background isVideoPlay={isVideoPlay} />
@@ -55,6 +67,7 @@ function Video({ video, avatar, name, position, preview }: Review) {
           ref={videoRef}
           src={video.url ?? ''}
           onEnded={handleChangeVideoPlayState}
+          onClick={handleVideoPause}
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}

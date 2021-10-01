@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { ModalProps } from '@tager/web-components';
+import { ThumbnailType } from '@tager/web-modules';
 
 import { colors } from '@/constants/theme';
 import Button from '@/components/Button';
@@ -12,12 +13,19 @@ type Props = ModalProps<{
   videoUrl: string | null;
   author: string | null;
   authorPosition: string | null;
+  videoPreviewImage: ThumbnailType;
   onModalClose?: () => void;
 }>;
 
 function VideoReviewModal({
   closeModal,
-  innerProps: { videoUrl, author, authorPosition, onModalClose },
+  innerProps: {
+    videoUrl,
+    videoPreviewImage,
+    author,
+    authorPosition,
+    onModalClose,
+  },
 }: Props) {
   const onCloseModal = () => {
     closeModal();
@@ -41,7 +49,8 @@ function VideoReviewModal({
         </StyledButton>
       </Panel>
       <Video
-        controls={true}
+        controls
+        poster={videoPreviewImage.url ?? ''}
         preload="metadata"
         playsInline
         autoPlay
