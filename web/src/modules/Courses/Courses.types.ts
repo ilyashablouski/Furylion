@@ -1,3 +1,5 @@
+import SwiperCore from 'swiper';
+
 import { ThumbnailType } from '@tager/web-modules';
 
 import { ServiceItemType } from '@/typings/model';
@@ -50,6 +52,7 @@ export interface Review {
     url: string | null;
   };
   preview: ThumbnailType;
+  swiper?: SwiperCore | null;
 }
 
 export interface Courses {
