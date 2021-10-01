@@ -6,10 +6,13 @@ import { ModalProps } from '@tager/web-components';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
 import ContactsFormContainer from '@/components/form';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 import CloseButton from '../shared/CloseButton';
 
 function SignUpCourseModal({ closeModal }: ModalProps) {
+  const course = useCurrentPage();
+
   return (
     <Wrapper>
       <ButtonWrapper>
@@ -17,7 +20,11 @@ function SignUpCourseModal({ closeModal }: ModalProps) {
       </ButtonWrapper>
       <Title>Расскажите о себе</Title>
       <Form>
-        <ContactsFormContainer isCvForm isSingleCourseForm />
+        <ContactsFormContainer
+          isCvForm
+          isSingleCourseForm
+          courseId={course.id}
+        />
       </Form>
     </Wrapper>
   );

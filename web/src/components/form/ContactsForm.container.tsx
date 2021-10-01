@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, FormikErrors, FormikHelpers } from 'formik';
 
 import { convertRequestErrorToMap, Nullable } from '@tager/web-core';
+import { PageFullType } from '@tager/web-modules';
 
 import {
   FormPayload,
@@ -10,7 +11,6 @@ import {
   sendSingleCourseForm,
 } from '@/services/requests';
 import useCurrentVacancy from '@/hooks/useCurrentVacancy';
-import useCurrentPage from '@/hooks/useCurrentPage';
 
 import ContactsForm, { ContactsFormValues } from './ContactsForm';
 
@@ -34,15 +34,16 @@ function getOnlyTrueValues(values: Record<string, string | number>) {
 function ContactsFormContainer({
   isCvForm = false,
   isSingleCourseForm = false,
+  courseId,
 }: {
   isCvForm?: boolean;
   isSingleCourseForm?: boolean;
+  courseId?: PageFullType['id'];
 }) {
   const [isSentSuccess, setSentSuccess] = useState(false);
   const [fileId, setFileId] = useState<number>(0);
   const [file, setFile] = useState<Nullable<File>>(null);
   const vacancy = useCurrentVacancy();
-  const course = useCurrentPage();
 
   function handleSubmit(
     values: FormPayload,
@@ -56,7 +57,7 @@ function ContactsFormContainer({
       isCvForm && vacancy
         ? { vacancyId: vacancy.data?.id }
         : isCvForm && isSingleCourseForm
-        ? { courseId: course?.id }
+        ? { courseId: courseId }
         : {};
 
     getSendMethod(isCvForm, isSingleCourseForm)(payload, params)
