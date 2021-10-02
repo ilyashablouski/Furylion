@@ -96,6 +96,7 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
           src={video.url ?? ''}
           onEnded={handleChangeVideoPlayState}
           onClick={handleVideoPause}
+          loop
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}
@@ -108,6 +109,7 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
           onPointerEnter={handleVideoPointerEnter}
           onPointerOut={handleVideoPointerOut}
           onEnded={handleVideoEnd}
+          loop
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}
@@ -328,6 +330,9 @@ const Progress = styled.div<{
    ${({ videoDurationMs }) =>
      css`
        animation: ${animation} ${videoDurationMs}ms linear;
+       @media (min-width: 1260px) {
+         animation-iteration-count: infinite;
+       }
      `}
   
       ${(props) =>
