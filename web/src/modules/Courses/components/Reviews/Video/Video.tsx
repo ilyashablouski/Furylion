@@ -330,6 +330,7 @@ const Progress = styled.div<{
    ${({ videoDurationMs }) =>
      css`
        animation: ${animation} ${videoDurationMs}ms linear;
+
        @media (min-width: 1260px) {
          animation-iteration-count: infinite;
        }

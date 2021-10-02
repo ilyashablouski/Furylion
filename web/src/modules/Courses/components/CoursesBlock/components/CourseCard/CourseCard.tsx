@@ -9,6 +9,7 @@ import Link from '@/components/Link';
 import { ReactComponent as ButtonArrowIcon } from '@/assets/svg/slide-arrow.svg';
 import { media } from '@/utils/mixin';
 import { StyledButtonLink } from '@/components/Button/Button';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 import Information from './components/Information';
 import { CourseCardProps } from './CourseCard.types';
@@ -24,7 +25,8 @@ function CourseCard({
 }: CourseCardProps) {
   const desktopMedia = useMedia('(min-width: 1260px)');
   const tabletMedia = useMedia('(max-width: 1259.9px)');
-  const baseUrl = 'courses/';
+  const page = useCurrentPage();
+  const baseUrl = page.path.split('/')[1] + '/';
 
   return (
     <Component>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import { gsap, Power1 } from 'gsap';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
@@ -10,8 +11,48 @@ import FactsCard from './Card';
 
 function Facts() {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
+
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const componentRef = useRef<HTMLTableSectionElement>(null);
+
+  useEffect(() => {
+    let tl: gsap.core.Timeline;
+
+    const delayCall = gsap.delayedCall(0, () => {
+      if (!counterRef.current || !componentRef.current) return;
+
+      tl = gsap
+        .timeline({
+          scrollTrigger: {
+            scroller: 'body',
+            trigger: componentRef.current,
+            start: 'top 80%',
+            end: 'bottom bottom',
+            markers: true,
+          },
+        })
+        .add('start');
+
+      tl = tl.from(
+        counterRef.current,
+        {
+          textContent: 0,
+          duration: 2,
+          ease: Power1.easeOut,
+          snap: { textContent: 1 },
+          stagger: 0.7,
+        },
+        'start'
+      );
+    });
+
+    return () => {
+      delayCall?.kill();
+      tl?.kill();
+    };
+  }, []);
   return (
-    <Component id={factsId ?? ''}>
+    <Component id={factsId ?? ''} ref={componentRef}>
       <ContentContainer>
         <Title>{factsTitle}</Title>
         <Cards>
@@ -19,10 +60,11 @@ function Facts() {
             factsItems.map(
               ({ title, subtitle, description }, index: number) => (
                 <FactsCard
+                  key={index}
                   title={title}
                   subtitle={subtitle}
                   description={description}
-                  key={index}
+                  counterRef={counterRef}
                 />
               )
             )}

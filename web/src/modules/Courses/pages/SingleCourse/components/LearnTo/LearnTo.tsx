@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { useMedia } from '@tager/web-core';
+import { generateNumberArray, useMedia } from '@tager/web-core';
 
 import ContentContainer from '@/components/ContentContainer';
 import { useSingleCourseData } from '@/modules/Courses/pages/SingleCourse/SingleCourse.hooks';
@@ -15,6 +15,38 @@ function LearnTo() {
   const { learnId, learnTitle, learnItems } = useSingleCourseData();
   const [activeIndexCard, setActiveIndexCard] = useState(0);
   const tabletMedia = useMedia('(max-width: 1259.9px)');
+  const learnItemsRefs = useRef(
+    generateNumberArray(learnItems.length).map(() =>
+      React.createRef<HTMLDivElement>()
+    )
+  );
+
+  useEffect(() => {
+    if (!learnItemsRefs.current) return;
+
+    const observer = new IntersectionObserver(
+      (item) => {
+        const index = item[0].target.getAttribute('data-index');
+
+        if (index !== null) {
+          setActiveIndexCard(Number(index));
+        }
+      },
+      {
+        threshold: 1,
+      }
+    );
+
+    learnItemsRefs.current.forEach((el) => {
+      if (el.current) {
+        observer.observe(el.current);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <Component id={learnId ?? ''}>
@@ -30,11 +62,12 @@ function LearnTo() {
                 learnItems.map(
                   ({ title, description, isActive }, index: number) => (
                     <LearnToCard
+                      cardRef={learnItemsRefs.current[index]}
+                      data-index={index}
                       key={index}
                       title={title}
                       description={description}
                       isActive={index === activeIndexCard}
-                      onPointerDown={() => setActiveIndexCard(index)}
                     />
                   )
                 )}

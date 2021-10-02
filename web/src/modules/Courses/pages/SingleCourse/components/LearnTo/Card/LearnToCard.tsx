@@ -7,11 +7,13 @@ import { colors } from '@/constants/theme';
 function LearnToCard({
   title,
   description,
-  onPointerDown,
   isActive,
+  cardRef,
+  image,
+  ...rest
 }: LearnItem) {
   return (
-    <Component onPointerEnter={onPointerDown} isActive={isActive}>
+    <Component {...rest} ref={cardRef} isActive={isActive}>
       <Title>{title}</Title>
       <Description>{description}</Description>
     </Component>

@@ -1,4 +1,5 @@
 import SwiperCore from 'swiper';
+import { RefObject } from 'react';
 
 import { ThumbnailType } from '@tager/web-modules';
 
@@ -30,6 +31,7 @@ export interface Fact {
   title: string | null;
   subtitle: string | null;
   description: string | null;
+  counterRef?: RefObject<HTMLSpanElement>;
 }
 
 export interface Step {
