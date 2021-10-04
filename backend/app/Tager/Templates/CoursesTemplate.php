@@ -90,10 +90,7 @@ class CoursesTemplate extends Template
                     'image' => new ImageField('Image', FileScenario::HomeServicesItems),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'linkLabel' => new StringField('Button Text'),
-                    'linkUrl' => new StringField('Button URL'),
-                    'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new TrueFalseField('Is new Tab?'),
+                    'gallery' => new GalleryField('Image gallery', FileScenario::StudentWorksGallery),
                 ], RepeaterView::Block)
             ]),
             new GroupField('Student work Bottom', [
@@ -103,10 +100,7 @@ class CoursesTemplate extends Template
                     'image' => new ImageField('Image', FileScenario::HomeServicesItems),
                     'title' => new StringField('Title'),
                     'text' => new TextField('Text'),
-                    'linkLabel' => new StringField('Button Text'),
-                    'linkUrl' => new StringField('Button URL'),
-                    'scrollTo' => new StringField('Scroll id Element'),
-                    'isNewTab' => new TrueFalseField('Is new tab??'),
+                    'gallery' => new GalleryField('Image gallery', FileScenario::StudentWorksGallery),
                 ], RepeaterView::Block),
                 'studentsBottomText' => new StringField('Bottom text'),
                 'studentsBottomLabel' => new StringField('Button title'),

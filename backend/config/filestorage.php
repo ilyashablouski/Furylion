@@ -213,6 +213,11 @@ return [
                 'extensions' => ['mp4']
             ]
         ],
+        FileScenario::StudentWorksGallery => TagerImageScenario::wrap([
+            'storage' => ConfigHelper::fileStorage('courses'),
+            'validator' => ConfigHelper::imageValidator(),
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
+        ]),
         FileScenario::VideoPreviewImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('vacancies'),
             'validator' => ConfigHelper::imageValidator(),
