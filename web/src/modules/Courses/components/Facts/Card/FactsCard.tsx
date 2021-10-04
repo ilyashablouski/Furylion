@@ -3,11 +3,33 @@ import styled from 'styled-components';
 
 import { Fact } from '@/modules/Courses/Courses.types';
 import { colors } from '@/constants/theme';
+import { StringFieldType } from '@/typings/common';
 
-function FactsCard({ title, subtitle, description }: Fact) {
+function FactsCard({ title, subtitle, description, counterRef }: Fact) {
+  const getTitleItems = (title: StringFieldType) => {
+    if (!title) {
+      return;
+    }
+
+    return title.split(/(?=[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/])/g);
+  };
+
   return (
     <Card>
-      <Title>{title}</Title>
+      <TitleWrapper>
+        {getTitleItems(title)?.map((item, index) => (
+          <>
+            {index === 1 ? (
+              <Prefix key={index}>{item}</Prefix>
+            ) : (
+              <Title key={index} ref={counterRef}>
+                {item}
+              </Title>
+            )}
+          </>
+        ))}
+      </TitleWrapper>
+
       <Subtitle>{subtitle}</Subtitle>
       <Description>{description}</Description>
     </Card>
@@ -24,6 +46,10 @@ const Card = styled.div`
   border: 1px dashed ${colors.white};
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+`;
+
 const Title = styled.span`
   font-weight: 900;
   font-size: 96px;
@@ -31,6 +57,8 @@ const Title = styled.span`
   text-transform: uppercase;
   color: ${colors.white};
 `;
+
+const Prefix = styled(Title)``;
 
 const Subtitle = styled(Title)`
   color: ${colors.red};

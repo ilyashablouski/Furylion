@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import { gsap, Power1 } from 'gsap';
+import gsap, { Power1 } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+import { generateNumberArray } from '@tager/web-core';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
@@ -9,41 +12,64 @@ import { media } from '@/utils/mixin';
 
 import FactsCard from './Card';
 
+gsap.registerPlugin(ScrollTrigger);
+
+type AnimationType = string | number | gsap.plugins.StartEndFunc | undefined;
+
 function Facts() {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
 
-  const counterRef = useRef<HTMLSpanElement>(null);
+  const numbersArray = factsItems
+    ? generateNumberArray(factsItems.length)
+    : [1];
+
+  const counterRefs = useRef(
+    numbersArray.map(() => React.createRef<HTMLSpanElement>())
+  );
+
   const componentRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
     let tl: gsap.core.Timeline;
 
     const delayCall = gsap.delayedCall(0, () => {
-      if (!counterRef.current || !componentRef.current) return;
+      if (!componentRef.current || !counterRefs.current) return;
 
-      tl = gsap
-        .timeline({
+      let startAnimation: AnimationType;
+      let endAnimation: AnimationType;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          startAnimation = 'top 40%';
+          endAnimation = 'bottom bottom';
+        },
+
+        '(max-width: 767px)': function () {
+          startAnimation = 'top 60%';
+          endAnimation = '40% bottom';
+        },
+      });
+
+      counterRefs.current.forEach((el, index) => {
+        if (!componentRef.current) return;
+
+        tl = gsap.timeline({
           scrollTrigger: {
             scroller: 'body',
             trigger: componentRef.current,
-            start: 'top 80%',
-            end: 'bottom bottom',
-            markers: true,
+            start: startAnimation,
+            end: endAnimation,
+            scrub: 1,
           },
-        })
-        .add('start');
+        });
 
-      tl = tl.from(
-        counterRef.current,
-        {
+        tl = tl.from(counterRefs.current[index].current, {
           textContent: 0,
           duration: 2,
           ease: Power1.easeOut,
           snap: { textContent: 1 },
-          stagger: 0.7,
-        },
-        'start'
-      );
+        });
+      });
     });
 
     return () => {
@@ -64,7 +90,7 @@ function Facts() {
                   title={title}
                   subtitle={subtitle}
                   description={description}
-                  counterRef={counterRef}
+                  counterRef={counterRefs.current[index]}
                 />
               )
             )}

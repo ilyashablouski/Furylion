@@ -7,18 +7,21 @@ import ContentContainer from '@/components/ContentContainer';
 import { useSingleCourseData } from '@/modules/Courses/pages/SingleCourse/SingleCourse.hooks';
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
-import LearnToCard from '@/modules/Courses/pages/SingleCourse/components/LearnTo/Card';
 import Picture from '@/components/Picture';
-import LearnToTabletAndMobile from '@/modules/Courses/pages/SingleCourse/components/LearnTo/LearnToTabletAndMobile';
+
+import LearnToTabletAndMobile from './LearnToTabletAndMobile';
+import LearnToCard from './Card';
 
 function LearnTo() {
   const { learnId, learnTitle, learnItems } = useSingleCourseData();
   const [activeIndexCard, setActiveIndexCard] = useState(0);
   const tabletMedia = useMedia('(max-width: 1259.9px)');
+  const numbersArray = learnItems
+    ? generateNumberArray(learnItems.length)
+    : [1];
+
   const learnItemsRefs = useRef(
-    generateNumberArray(learnItems.length).map(() =>
-      React.createRef<HTMLDivElement>()
-    )
+    numbersArray.map(() => React.createRef<HTMLDivElement>())
   );
 
   useEffect(() => {
