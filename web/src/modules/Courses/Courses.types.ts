@@ -2,8 +2,9 @@ import SwiperCore from 'swiper';
 import { RefObject } from 'react';
 
 import { ThumbnailType } from '@tager/web-modules';
+import { Nullable } from '@tager/web-core';
 
-import { ServiceItemType } from '@/typings/model';
+import { StringFieldType } from '@/typings/common';
 
 export interface PictureType {
   desktop: ThumbnailType;
@@ -57,6 +58,18 @@ export interface Review {
   swiper?: SwiperCore | null;
 }
 
+export interface StudentsItem {
+  image: Nullable<{
+    mobile: ThumbnailType;
+    tablet: ThumbnailType;
+    laptop: ThumbnailType;
+    desktop: ThumbnailType;
+  }>;
+  title: StringFieldType;
+  text: StringFieldType;
+  gallery?: ThumbnailType[];
+}
+
 export interface Courses {
   heroId: string | null;
   heroTitle: string | null;
@@ -85,9 +98,9 @@ export interface Courses {
   questionsItems: Question[];
   studentsId: string | null;
   studentsTitle: string | null;
-  studentsItems: ServiceItemType[];
+  studentsItems: StudentsItem[];
   studentsBottomTitle: string | null;
-  studentsBottomItems: ServiceItemType[];
+  studentsBottomItems: StudentsItem[];
   studentsBottomText: string | null;
   studentsBottomLabel: string | null;
   studentsBottomLinkUrl: string | null;

@@ -34,7 +34,7 @@ function FlSchool() {
             <StyledButton>
               <StyledSkewButton
                 href={flSchoolLinkUrl}
-                color="redTransparent"
+                color="red"
                 isNewTab={flSchoolIsNewTab}
               >
                 {flSchoolLabel}
