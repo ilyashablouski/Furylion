@@ -36,9 +36,9 @@ function CourseCard({
         srcWebp={image.desktop.url_webp}
         srcWebp2x={image.desktop.url_webp_2x}
       />
+      <CardLink to={`${baseUrl}${linkUrl}`} />
       <Container>
         <Content>
-          <CardLink to={`${baseUrl}${linkUrl}`} />
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
 
