@@ -34,45 +34,79 @@ function OfficeLife() {
     officeLifeButtonSecondIsNewTab,
   } = useCoursesData();
 
-  const phoneRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const firstVectorRef = useRef<HTMLImageElement>(null);
+  const secondVectorRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    let tw: gsap.core.Tween;
+    let tweenWrapper: gsap.core.Tween;
+    let firstTweenImage: gsap.core.Tween;
+    let secondTweenImage: gsap.core.Tween;
+
     const delayedCall = gsap.delayedCall(0, () => {
-      if (!phoneRef.current) return null;
+      if (
+        !wrapperRef.current ||
+        !firstVectorRef.current ||
+        !secondVectorRef.current
+      )
+        return null;
 
       let translateY: gsap.TweenValue | undefined;
+      let yPercent: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
           translateY = '0%';
+          yPercent = '-1';
         },
       });
 
-      tw = gsap.to(phoneRef.current, {
+      tweenWrapper = gsap.to(wrapperRef.current, {
         translateY: translateY,
         scrollTrigger: {
           start: 'center 67%',
-          end: '-100% -100%',
-          trigger: phoneRef.current,
+          end: '180% bottom',
+          trigger: wrapperRef.current,
           scrub: true,
+        },
+      });
+
+      firstTweenImage = gsap.to(firstVectorRef.current, {
+        yPercent: yPercent,
+        scrollTrigger: {
+          start: '70% 70%',
+          end: 'bottom bottom',
+          trigger: firstVectorRef.current,
+          scrub: 2,
+        },
+      });
+
+      secondTweenImage = gsap.to(secondVectorRef.current, {
+        yPercent: yPercent,
+        scrollTrigger: {
+          start: '70% 70%',
+          end: '110% bottom',
+          trigger: secondVectorRef.current,
+          scrub: 2,
         },
       });
     });
 
     return () => {
       delayedCall.kill();
-      tw?.kill();
+      tweenWrapper?.kill();
+      firstTweenImage?.kill();
+      secondTweenImage?.kill();
     };
   }, []);
 
   return (
     <Component id={officeLifeId ?? ''}>
-      <FirstVector src={Vector1} />
-      <SecondVector src={Vector2} />
+      <FirstVector imageRef={firstVectorRef} src={Vector1} />
+      <SecondVector imageRef={secondVectorRef} src={Vector2} />
       <Content>
         <ContentContainer>
-          <Wrapper>
+          <Wrapper ref={wrapperRef}>
             <Header>
               <Title>{officeLifeTitle}</Title>
             </Header>
@@ -142,6 +176,11 @@ const FirstVector = styled(Picture)`
     position: relative;
     margin: 0 auto;
     width: 100%;
+    transform: translateY(-50%);
+
+    ${media.tablet(css`
+      transform: translateY(0);
+    `)}
   }
 `;
 
@@ -229,9 +268,11 @@ const IconWrapper = styled.i`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  transform: translateY(-527px);
 
   ${media.tablet(css`
     flex-direction: column;
+    transform: translateY(0);
   `)}
 `;
 

@@ -1,4 +1,4 @@
-import React, { RefObject, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { ThumbnailType } from '@tager/web-modules';
@@ -10,7 +10,6 @@ import { ReactComponent as VolumeOffIcon } from '@/assets/svg/courses/volume-off
 import { ReactComponent as VolumeOnIcon } from '@/assets/svg/courses/volume-on.svg';
 
 export interface PhoneProps {
-  ref?: RefObject<HTMLDivElement>;
   image: ThumbnailType;
   video: {
     url: string | null;
@@ -102,7 +101,6 @@ const animation = keyframes`
 const Component = styled.div`
   position: relative;
   margin-left: 78px;
-  //transform: translateY(-527px);
 
   ${media.tablet(css`
     max-width: 330px;
