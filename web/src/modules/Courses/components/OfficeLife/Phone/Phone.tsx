@@ -27,7 +27,11 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
   const [isMuted, setMuted] = useState(true);
 
   const handleVideoPlay = () => {
-    setAnimationStop(!isAnimationStop);
+    setAnimationStop(false);
+  };
+
+  const handleVideoPause = () => {
+    setAnimationStop(true);
   };
 
   const handleChangeMutedState = () => {
@@ -49,6 +53,7 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
             ref={videoRef}
             src={video.url ?? ''}
             onPlay={handleVideoPlay}
+            onPause={handleVideoPause}
             autoPlay
             loop
             muted={isMuted}

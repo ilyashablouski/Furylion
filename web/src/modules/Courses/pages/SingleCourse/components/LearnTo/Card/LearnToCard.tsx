@@ -26,7 +26,6 @@ const Component = styled.div<{ isActive: LearnItem['isActive'] }>`
   display: flex;
   flex-direction: column;
   opacity: 0.2;
-  cursor: pointer;
   transition: 0.3s;
 
   &:not(:first-child) {

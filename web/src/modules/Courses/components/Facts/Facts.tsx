@@ -40,8 +40,8 @@ function Facts() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          startAnimation = 'top top';
-          endAnimation = 'top top';
+          startAnimation = 'top -10%';
+          endAnimation = 'top -10%';
         },
 
         '(max-width: 767px)': function () {
