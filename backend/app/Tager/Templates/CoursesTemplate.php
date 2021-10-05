@@ -111,7 +111,11 @@ class CoursesTemplate extends Template
             new GroupField('Office life', [
                 'officeLifeId' => new StringField('id'),
                 'officeLifeTitle' => new StringField('Title'),
-                'officeLifeImage' => new ImageField('Image', FileScenario::OfficeLifeImage),
+                'officeLifeImage' => new ImageField('Phone image', FileScenario::OfficeLifeImage),
+                'officeLifeVideo' => new FileField('Video', FileScenario::VideoReview),
+                'officeLifePreview' => new ImageField('Video preview image', FileScenario::VideoPreviewImage),
+                'officeLifeVideoAvatar' => new ImageField('Video avatar', FileScenario::AvatarImage),
+                'officeLifeAvatarTitle' => new StringField('Avatar title'),
                 'officeLifeButtonFirstLabel' => new StringField('Button 1 - Text'),
                 'officeLifeButtonFirstUrl' => new StringField('Button 1 - URL'),
                 'officeLifeButtonFirstIsNewTab' => new TrueFalseField('Button 1 - Is new tab?'),
