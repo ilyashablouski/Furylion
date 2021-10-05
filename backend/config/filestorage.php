@@ -185,10 +185,7 @@ return [
         FileScenario::StepsCardImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnails' => [
-                'desktop' => ConfigHelper::thumbWithWebpAnd2x(293),
-                'mobile' => ConfigHelper::thumbWithWebpAnd2x(293),
-            ]
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
         ]),
         FileScenario::AvatarImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),
@@ -203,7 +200,7 @@ return [
         FileScenario::ProjectsImage => TagerImageScenario::wrap([
             'storage' => ConfigHelper::fileStorage('courses'),
             'validator' => ConfigHelper::imageValidator(),
-            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x(410, 65)
+            'thumbnail' => ConfigHelper::thumbWithWebpAnd2x()
         ]),
         FileScenario::VideoReview => [
             'storage' => ConfigHelper::fileStorage('vacancies'),
