@@ -7,11 +7,13 @@ import { colors } from '@/constants/theme';
 function LearnToCard({
   title,
   description,
-  onPointerDown,
   isActive,
+  cardRef,
+  image,
+  ...rest
 }: LearnItem) {
   return (
-    <Component onPointerEnter={onPointerDown} isActive={isActive}>
+    <Component {...rest} ref={cardRef} isActive={isActive}>
       <Title>{title}</Title>
       <Description>{description}</Description>
     </Component>
@@ -24,7 +26,6 @@ const Component = styled.div<{ isActive: LearnItem['isActive'] }>`
   display: flex;
   flex-direction: column;
   opacity: 0.2;
-  cursor: pointer;
   transition: 0.3s;
 
   &:not(:first-child) {

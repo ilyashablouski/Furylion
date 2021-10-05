@@ -28,10 +28,10 @@ function MediaBlock({ mediaInfo, isTop = true }: Props) {
   const instanceModal = useModal();
 
   function openGalleryModal(image: Nullish<ThumbnailType>) {
-    if (!image) return null;
-    instanceModal(PictureModal, {
-      image: image,
-    });
+    if (!image) {
+      return null;
+    }
+    instanceModal(PictureModal, { image });
   }
 
   return (

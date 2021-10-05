@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import gsap, { Power1 } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+import { generateNumberArray } from '@tager/web-core';
 
 import ContentContainer from '@/components/ContentContainer';
 import { colors } from '@/constants/theme';
@@ -8,10 +12,73 @@ import { media } from '@/utils/mixin';
 
 import FactsCard from './Card';
 
+gsap.registerPlugin(ScrollTrigger);
+
+type AnimationType = string | number | gsap.plugins.StartEndFunc | undefined;
+
 function Facts() {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
+
+  const numbersArray = factsItems
+    ? generateNumberArray(factsItems.length)
+    : [1];
+
+  const counterRefs = useRef(
+    numbersArray.map(() => React.createRef<HTMLSpanElement>())
+  );
+
+  const componentRef = useRef<HTMLTableSectionElement>(null);
+
+  useEffect(() => {
+    let tl: gsap.core.Timeline;
+
+    const delayCall = gsap.delayedCall(0, () => {
+      if (!componentRef.current || !counterRefs.current) return;
+
+      let startAnimation: AnimationType;
+      let endAnimation: AnimationType;
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          startAnimation = 'top -10%';
+          endAnimation = 'top -10%';
+        },
+
+        '(max-width: 767px)': function () {
+          startAnimation = 'top 50%';
+          endAnimation = 'top 50%';
+        },
+      });
+
+      counterRefs.current.forEach((el, index) => {
+        if (!componentRef.current) return;
+
+        tl = gsap.timeline({
+          scrollTrigger: {
+            scroller: 'body',
+            trigger: componentRef.current,
+            start: startAnimation,
+            end: endAnimation,
+            scrub: 1,
+          },
+        });
+
+        tl = tl.from(counterRefs.current[index].current, {
+          textContent: 0,
+          duration: 2,
+          ease: Power1.easeOut,
+          snap: { textContent: 1 },
+        });
+      });
+    });
+
+    return () => {
+      delayCall?.kill();
+      tl?.kill();
+    };
+  }, []);
   return (
-    <Component id={factsId ?? ''}>
+    <Component id={factsId ?? ''} ref={componentRef}>
       <ContentContainer>
         <Title>{factsTitle}</Title>
         <Cards>
@@ -19,10 +86,11 @@ function Facts() {
             factsItems.map(
               ({ title, subtitle, description }, index: number) => (
                 <FactsCard
+                  key={index}
                   title={title}
                   subtitle={subtitle}
                   description={description}
-                  key={index}
+                  counterRef={counterRefs.current[index]}
                 />
               )
             )}

@@ -1,6 +1,10 @@
-import { ThumbnailType } from '@tager/web-modules';
+import SwiperCore from 'swiper';
+import { RefObject } from 'react';
 
-import { ServiceItemType } from '@/typings/model';
+import { ThumbnailType } from '@tager/web-modules';
+import { Nullable } from '@tager/web-core';
+
+import { StringFieldType } from '@/typings/common';
 
 export interface PictureType {
   desktop: ThumbnailType;
@@ -28,6 +32,7 @@ export interface Fact {
   title: string | null;
   subtitle: string | null;
   description: string | null;
+  counterRef?: RefObject<HTMLSpanElement>;
 }
 
 export interface Step {
@@ -50,6 +55,19 @@ export interface Review {
     url: string | null;
   };
   preview: ThumbnailType;
+  swiper?: SwiperCore | null;
+}
+
+export interface StudentsItem {
+  image: Nullable<{
+    mobile: ThumbnailType;
+    tablet: ThumbnailType;
+    laptop: ThumbnailType;
+    desktop: ThumbnailType;
+  }>;
+  title: StringFieldType;
+  text: StringFieldType;
+  gallery?: ThumbnailType[];
 }
 
 export interface Courses {
@@ -80,9 +98,9 @@ export interface Courses {
   questionsItems: Question[];
   studentsId: string | null;
   studentsTitle: string | null;
-  studentsItems: ServiceItemType[];
+  studentsItems: StudentsItem[];
   studentsBottomTitle: string | null;
-  studentsBottomItems: ServiceItemType[];
+  studentsBottomItems: StudentsItem[];
   studentsBottomText: string | null;
   studentsBottomLabel: string | null;
   studentsBottomLinkUrl: string | null;
@@ -94,6 +112,12 @@ export interface Courses {
   officeLifeId: string | null;
   officeLifeTitle: string | null;
   officeLifeImage: ThumbnailType;
+  officeLifeVideo: {
+    url: string | null;
+  };
+  officeLifePreview: ThumbnailType;
+  officeLifeVideoAvatar: ThumbnailType;
+  officeLifeAvatarTitle: string | null;
   officeLifeButtonFirstLabel: string | null;
   officeLifeButtonFirstUrl: string | null;
   officeLifeButtonFirstIsNewTab: boolean | null;

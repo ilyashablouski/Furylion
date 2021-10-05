@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 
 import { useMedia } from '@tager/web-core';
 
@@ -11,11 +11,32 @@ import { colors } from '@/constants/theme';
 import { Review } from '@/modules/Courses/Courses.types';
 import { media } from '@/utils/mixin';
 
-function Video({ video, avatar, name, position, preview }: Review) {
+function Video({ video, avatar, name, position, preview, swiper }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setMuted] = useState(true);
   const [isVideoPlay, setVideoPlay] = useState(false);
+  const [isAnimationStop, setAnimationStop] = useState(true);
+  const [isVideoEnded, setVideoEnded] = useState(false);
   const tabletMedia = useMedia('(max-width: 1259.9px)');
+  const videoDurationMs = videoRef.current?.duration! * 1000;
+
+  useEffect(() => {
+    if (!swiper) {
+      return;
+    }
+
+    swiper.on('slideChange', () => {
+      const video = videoRef.current;
+
+      if (!video) {
+        return;
+      }
+
+      video.pause();
+      setVideoPlay(false);
+      setAnimationStop(true);
+    });
+  }, [isVideoPlay, swiper]);
 
   async function handleVideoPointerEnter() {
     const video = videoRef.current;
@@ -23,6 +44,7 @@ function Video({ video, avatar, name, position, preview }: Review) {
     try {
       await video?.play();
       handleChangeVideoPlayState();
+      setAnimationStop(!isAnimationStop);
     } catch (error) {
       console.log('error: ', error);
     }
@@ -36,6 +58,7 @@ function Video({ video, avatar, name, position, preview }: Review) {
     }
 
     video.pause();
+    setAnimationStop(true);
   };
 
   const handleChangeMutedState = () => {
@@ -54,8 +77,13 @@ function Video({ video, avatar, name, position, preview }: Review) {
     }
 
     video.pause();
-
     setVideoPlay(!isVideoPlay);
+    setAnimationStop(!isAnimationStop);
+  };
+
+  const handleVideoEnd = () => {
+    setVideoEnded(!isVideoEnded);
+    setAnimationStop(true);
   };
 
   return (
@@ -68,6 +96,7 @@ function Video({ video, avatar, name, position, preview }: Review) {
           src={video.url ?? ''}
           onEnded={handleChangeVideoPlayState}
           onClick={handleVideoPause}
+          loop
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}
@@ -79,6 +108,8 @@ function Video({ video, avatar, name, position, preview }: Review) {
           src={video.url ?? ''}
           onPointerEnter={handleVideoPointerEnter}
           onPointerOut={handleVideoPointerOut}
+          onEnded={handleVideoEnd}
+          loop
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}
@@ -98,6 +129,15 @@ function Video({ video, avatar, name, position, preview }: Review) {
         ''
       )}
 
+      <ProgressBar>
+        <Progress
+          className={isVideoEnded ? 'animation' : 'animation'}
+          isAnimationStop={isAnimationStop}
+          videoDurationMs={videoDurationMs}
+          isVideoEnd={isVideoEnded}
+        />
+      </ProgressBar>
+
       <Content>
         <Avatar
           src={avatar.url}
@@ -115,6 +155,15 @@ function Video({ video, avatar, name, position, preview }: Review) {
 }
 
 export default Video;
+
+const animation = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+`;
 
 const Background = styled.div<{ isVideoPlay: boolean }>`
   position: absolute;
@@ -258,11 +307,51 @@ const PlayButton = styled.div<{ isVideoPlay: boolean }>`
     `}
 `;
 
+const ProgressBar = styled.div`
+  position: absolute;
+  width: 96%;
+  left: 2%;
+  height: 2px;
+  background: ${colors.white05};
+  border-radius: 2px;
+  z-index: 2;
+  top: 14px;
+  margin: auto auto;
+`;
+
+const Progress = styled.div<{
+  isAnimationStop: boolean;
+  videoDurationMs: number;
+  isVideoEnd: boolean;
+}>`
+  height: 100%;
+  background: ${colors.white};
+  
+   ${({ videoDurationMs }) =>
+     css`
+       animation: ${animation} ${videoDurationMs}ms linear;
+
+       @media (min-width: 1260px) {
+         animation-iteration-count: infinite;
+       }
+     `}
+  
+      ${(props) =>
+        props.isAnimationStop
+          ? css`
+              animation-play-state: paused;
+            `
+          : css`
+              animation-play-state: running;
+            `}
+    }
+`;
+
 const Content = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  top: 20px;
+  top: 24px;
   left: 6px;
   z-index: 2;
   user-select: none;

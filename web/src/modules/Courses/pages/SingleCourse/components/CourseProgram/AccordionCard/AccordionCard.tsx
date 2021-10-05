@@ -46,27 +46,23 @@ function AccordionCard({
         </InitialContent>
       </Header>
 
-      {isOpened ? (
-        <DropdownContent>
-          <DropdownTitle>{descriptionTitle}</DropdownTitle>
+      <DropdownContent isOpened={isOpened}>
+        <DropdownTitle>{descriptionTitle}</DropdownTitle>
 
-          <DropdownDescription>{description}</DropdownDescription>
+        <DropdownDescription>{description}</DropdownDescription>
 
-          <StepsCards>
-            {programStepsItems &&
-              programStepsItems.map(({ title, time, list }, index: number) => (
-                <ProgramStepCard
-                  key={index}
-                  title={title}
-                  time={time}
-                  list={list}
-                />
-              ))}
-          </StepsCards>
-        </DropdownContent>
-      ) : (
-        ''
-      )}
+        <StepsCards>
+          {programStepsItems &&
+            programStepsItems.map(({ title, time, list }, index: number) => (
+              <ProgramStepCard
+                key={index}
+                title={title}
+                time={time}
+                list={list}
+              />
+            ))}
+        </StepsCards>
+      </DropdownContent>
     </Component>
   );
 }
@@ -105,8 +101,8 @@ const InitialContent = styled.div<{ isOpened: boolean }>`
   justify-content: space-between;
   padding-bottom: 24px;
 
-  ${(props) =>
-    props.isOpened &&
+  ${({ isOpened }) =>
+    isOpened &&
     css`
       border-bottom: 2px solid ${colors.white01};
     `};
@@ -169,8 +165,21 @@ const Arrow = styled.div<{ isOpened: boolean }>`
   }
 `;
 
-const DropdownContent = styled.div`
+const DropdownContent = styled.div<{ isOpened: boolean }>`
   padding: 24px 104px;
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+
+  ${({ isOpened }) =>
+    isOpened &&
+    css`
+      position: relative;
+      transition: opacity 0.5s ease;
+      visibility: visible;
+      opacity: 1;
+    `};
 
   ${media.tablet(css`
     padding: 24px 60px;

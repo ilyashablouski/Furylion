@@ -1,5 +1,6 @@
-import { ThumbnailType } from '@tager/web-modules';
+import { RefObject } from 'react';
 
+import { ThumbnailType } from '@tager/web-modules';
 export interface SingleCourseProps {
   singleCourse?: boolean;
 }
@@ -17,8 +18,8 @@ export interface LearnItem {
   title: string | null;
   description: string | null;
   image?: ThumbnailType;
-  onPointerDown?: () => void;
   isActive?: boolean;
+  cardRef?: RefObject<HTMLDivElement>;
 }
 
 export interface ProgramStepsItem {

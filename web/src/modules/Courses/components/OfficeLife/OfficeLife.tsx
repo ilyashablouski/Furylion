@@ -15,11 +15,17 @@ import { ReactComponent as TiktokIcon } from '@/assets/svg/social/tiktok.svg';
 import Vector1 from '../../../../assets/svg/vector-black.svg';
 import Vector2 from '../../../../assets/svg/vector-dashed.svg';
 
+import Phone from './Phone';
+
 function OfficeLife() {
   const {
     officeLifeId,
     officeLifeTitle,
     officeLifeImage,
+    officeLifeVideo,
+    officeLifePreview,
+    officeLifeVideoAvatar,
+    officeLifeAvatarTitle,
     officeLifeButtonFirstLabel,
     officeLifeButtonFirstUrl,
     officeLifeButtonFirstIsNewTab,
@@ -28,7 +34,7 @@ function OfficeLife() {
     officeLifeButtonSecondIsNewTab,
   } = useCoursesData();
 
-  const phoneRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef(null);
 
   useEffect(() => {
     let tw: gsap.core.Tween;
@@ -70,14 +76,13 @@ function OfficeLife() {
             <Header>
               <Title>{officeLifeTitle}</Title>
             </Header>
-            <PhoneWrapper ref={phoneRef}>
-              <Phone
-                src={officeLifeImage.url}
-                src2x={officeLifeImage.url_2x}
-                srcWebp={officeLifeImage.url_webp}
-                srcWebp2x={officeLifeImage.url_webp_2x}
-              />
-            </PhoneWrapper>
+            <Phone
+              image={officeLifeImage}
+              video={officeLifeVideo}
+              preview={officeLifePreview}
+              avatar={officeLifeVideoAvatar}
+              title={officeLifeAvatarTitle}
+            />
           </Wrapper>
         </ContentContainer>
       </Content>
@@ -251,16 +256,3 @@ const Title = styled.p`
     font-size: 32px;
   `)}
 `;
-
-const PhoneWrapper = styled.div`
-  margin-left: 78px;
-  transform: translateY(-527px);
-
-  ${media.tablet(css`
-    margin-left: 0;
-    margin-top: 32px;
-    transform: translateY(0);
-  `)}
-`;
-
-const Phone = styled(Picture)``;

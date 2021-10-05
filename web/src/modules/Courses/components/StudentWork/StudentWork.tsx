@@ -5,12 +5,13 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { colors } from '@/constants/theme';
 import { media } from '@/utils/mixin';
-import Vector from '@/assets/svg/vector.svg';
+import Vector from '@/assets/svg/vector-red.svg';
 import Picture from '@/components/Picture';
-import ServicesTop from '@/modules/Home/components/ServicesSection/components/ServicesTop';
-import ServicesBottom from '@/modules/Home/components/ServicesSection/components/ServicesBottom';
 import { useCoursesData } from '@/modules/Courses/Courses.hooks';
 import SkewButton from '@/components/SkewButton';
+
+import StudentWorkTop from './components/StudentWorkTop';
+import StudentWorkBottom from './components/StudentWorkBottom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,8 +89,8 @@ function StudentWork() {
       </ServicesPreviewContent>
 
       <ServicesWrapper>
-        <ServicesTop servicesItems={studentsItems} />
-        <ServicesBottom servicesBottomItems={studentsBottomItems} />
+        <StudentWorkTop studentWorksItems={studentsItems} />
+        <StudentWorkBottom studentWorksBottomItems={studentsBottomItems} />
       </ServicesWrapper>
 
       <BottomContent>
