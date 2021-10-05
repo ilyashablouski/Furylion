@@ -1362,10 +1362,10 @@
   dependencies:
     path-to-regexp "^6.1.0"
 
-"@tager/admin-pages@^0.3.28":
-  version "0.3.28"
-  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.28.tgz#e517820fc9e4978753fbc5771b475646efcccc5f"
-  integrity sha512-wT5fYSY7yQ9Q+1OFDu337jIaoOgmoIyF65Ydf3CNqPDNpAJvU5FmZz0SEZLK3PACwx6AxX83jBecDVFubfZ97g==
+"@tager/admin-pages@^0.3.29":
+  version "0.3.29"
+  resolved "https://registry.yarnpkg.com/@tager/admin-pages/-/admin-pages-0.3.29.tgz#d18890330051bb1a36457a8cee14cea2885b02ae"
+  integrity sha512-vjWkOlzhyl+/gVahSDEm1PngaiMJ/DHRaYQC4O/EKtgviW5CPGiROR1nfKYRdLvdJ0o3+7sKyE386c+PlYf0XA==
   dependencies:
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
@@ -1378,10 +1378,10 @@
     lodash.kebabcase "^4.1.1"
     path-to-regexp "^6.1.0"
 
-"@tager/admin-services@^0.2.25":
-  version "0.2.25"
-  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.25.tgz#54ef018f497835bfccec40d82b8cd35e0a409d60"
-  integrity sha512-fDkHWzbrlM0CHTar4KkbYO5Iv7Hw7IUSxdbyluJDdVLrq0VKUXJlvYp6blsUyWMHqDHshqxOoaV8FoFsU7gU1Q==
+"@tager/admin-services@^0.2.26":
+  version "0.2.26"
+  resolved "https://registry.yarnpkg.com/@tager/admin-services/-/admin-services-0.2.26.tgz#5208180f523f28b9f3618dd42479a12396487832"
+  integrity sha512-oo7Gucp1RButzzb28mJ+FS8CXBdmN24dFbNKCc/rtCeI2DyPooKX/lBeqDKKVnhDHm+JHcxQpaoNM2SOm5Yq3w==
   dependencies:
     i18next "^19.7.0"
     nanoid "^3.1.12"

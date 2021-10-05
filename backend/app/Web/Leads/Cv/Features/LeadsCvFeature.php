@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Web\Leads\Cv\Features;
-
 
 use App\Enums\EmailTemplate;
 use App\Models\Vacancy;
@@ -15,10 +13,11 @@ use OZiTAG\Tager\Backend\Core\Resources\SuccessResource;
 use OZiTAG\Tager\Backend\Mail\Exceptions\TagerMailInvalidMessageException;
 use OZiTAG\Tager\Backend\Mail\TagerMail;
 use OZiTAG\Tager\Backend\Mail\Utils\TagerMailAttachments;
+use App\Web\Leads\Cv\Requests\LeadsCvRequest;
 
 class LeadsCvFeature
 {
-    public function handle(CourseRequest $request, FileRepository $fileRepository, VacancyRepository $vacancyRepository, TagerMail $tagerMail): JsonResource
+    public function handle(LeadsCvRequest $request, FileRepository $fileRepository, VacancyRepository $vacancyRepository, TagerMail $tagerMail): JsonResource
     {
         $attachments = new TagerMailAttachments();
         if ($request->file) {
