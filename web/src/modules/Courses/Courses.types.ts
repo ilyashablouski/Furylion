@@ -112,6 +112,12 @@ export interface Courses {
   officeLifeId: string | null;
   officeLifeTitle: string | null;
   officeLifeImage: ThumbnailType;
+  officeLifeVideo: {
+    url: string | null;
+  };
+  officeLifePreview: ThumbnailType;
+  officeLifeVideoAvatar: ThumbnailType;
+  officeLifeAvatarTitle: string | null;
   officeLifeButtonFirstLabel: string | null;
   officeLifeButtonFirstUrl: string | null;
   officeLifeButtonFirstIsNewTab: boolean | null;

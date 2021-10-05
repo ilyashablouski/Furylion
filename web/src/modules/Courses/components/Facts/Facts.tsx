@@ -40,13 +40,13 @@ function Facts() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          startAnimation = 'top 40%';
-          endAnimation = 'bottom bottom';
+          startAnimation = 'top top';
+          endAnimation = 'top top';
         },
 
         '(max-width: 767px)': function () {
-          startAnimation = 'top 60%';
-          endAnimation = '40% bottom';
+          startAnimation = 'top 50%';
+          endAnimation = 'top 50%';
         },
       });
 
