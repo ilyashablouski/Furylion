@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ThumbnailType } from '@tager/web-modules';
 
 import Picture from '@/components/Picture';
+import { media } from '@/utils/mixin';
 
 function ProjectsCard({ url, url_webp, url_2x, url_webp_2x }: ThumbnailType) {
   return (
@@ -30,4 +31,14 @@ const Image = styled(Picture)`
     width: 100%;
     height: 100%;
   }
+
+  ${media.mobile(css`
+    img {
+      margin: 0 auto;
+    }
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+  `)}
 `;

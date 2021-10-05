@@ -77,7 +77,8 @@ const Cards = styled.div`
     min-width: 410px;
 
     ${media.mobile(css`
-      min-width: 256px;
+      min-width: initial;
+      max-width: 360px;
     `)}
   }
 
