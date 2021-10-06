@@ -27,14 +27,17 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
       let marginTop: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 768px)': function () {
+        '(min-width: 1500px)': function () {
           marginTop = '14%';
         },
+        '(max-width: 1500px)': function () {
+          marginTop = '19%';
+        },
         '(max-width: 1259.9px)': function () {
-          marginTop = '27%';
+          marginTop = '21%';
         },
 
-        '(max-width: 768px)': function () {
+        '(max-width: 767px)': function () {
           marginTop = '0%';
         },
       });

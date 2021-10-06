@@ -47,10 +47,6 @@ const Container = styled.div<{ singleItem?: boolean }>`
     padding-top: 83.88%;
   `)}
   &:hover {
-    .item-label {
-      border-bottom-color: transparent;
-    }
-
     img {
       transform: scale(1.2);
     }
@@ -62,7 +58,7 @@ const Shadow = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 101%;
   background: linear-gradient(180deg, rgba(25, 24, 20, 0) 41.15%, #191814 100%);
   z-index: 1;
 

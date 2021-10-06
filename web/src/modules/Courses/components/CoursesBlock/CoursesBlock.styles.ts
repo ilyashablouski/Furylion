@@ -53,7 +53,7 @@ export const Cards = styled.div<{
   }
 
   ${media.mobile(css`
-    margin-top: 50px;
+    margin-top: 75px;
   `)}
 
   ${({ singleCourse }) =>

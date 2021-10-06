@@ -146,6 +146,7 @@ const CardImage = styled(Picture)`
   padding-top: 84.144%;
   width: 100%;
   margin-top: -25px;
+  z-index: 2;
 
   picture {
     position: absolute;

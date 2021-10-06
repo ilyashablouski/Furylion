@@ -20,8 +20,6 @@ function Steps({ singleCourse }: SingleCourseProps) {
     chooseCourseLinkUrl,
   } = useCoursesData();
 
-  const baseUrl = 'courses/';
-
   const stepsItemsLength = stepsItems?.length;
 
   return (
@@ -46,14 +44,11 @@ function Steps({ singleCourse }: SingleCourseProps) {
             ''
           ) : (
             <Course>
-              <CourseLink to={`${baseUrl}${chooseCourseLinkUrl}`}>
+              <CourseLink to={chooseCourseLinkUrl}>
                 {chooseCourseLabel}
               </CourseLink>
 
-              <StyledSkewButton
-                href={`${baseUrl}${chooseCourseLinkUrl}`}
-                color="white-black"
-              >
+              <StyledSkewButton href={chooseCourseLinkUrl} color="white-black">
                 {chooseCourseLabel}
               </StyledSkewButton>
             </Course>
