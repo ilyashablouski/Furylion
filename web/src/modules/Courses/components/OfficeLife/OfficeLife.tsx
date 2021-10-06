@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import gsap from 'gsap';
+import gsap, { Power3 } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import ContentContainer from '@/components/ContentContainer';
@@ -34,30 +34,37 @@ function OfficeLife() {
     officeLifeButtonSecondIsNewTab,
   } = useCoursesData();
 
-  const wrapperRef = useRef(null);
+  const componentRef = useRef<HTMLTableSectionElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const firstVectorRef = useRef<HTMLImageElement>(null);
   const secondVectorRef = useRef<HTMLImageElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let tweenWrapper: gsap.core.Tween;
     let firstTweenImage: gsap.core.Tween;
     let secondTweenImage: gsap.core.Tween;
+    let timeline: gsap.core.Timeline;
 
     const delayedCall = gsap.delayedCall(0, () => {
       if (
+        !componentRef.current ||
         !wrapperRef.current ||
         !firstVectorRef.current ||
-        !secondVectorRef.current
+        !secondVectorRef.current ||
+        !bottomRef.current
       )
         return null;
 
       let translateY: gsap.TweenValue | undefined;
       let yPercent: gsap.TweenValue | undefined;
+      let yPercentBottom: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
           translateY = '0%';
           yPercent = '-1';
+          yPercentBottom = '100';
         },
       });
 
@@ -90,6 +97,28 @@ function OfficeLife() {
           scrub: 2,
         },
       });
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: componentRef.current,
+          start: 'top top',
+          end: 'bottom 90%',
+          scrub: 2,
+        },
+      });
+
+      timeline = timeline.from(
+        bottomRef.current,
+        {
+          ease: Power3.easeOut,
+          yPercent: yPercentBottom,
+          duration: 0.5,
+        },
+        0
+      );
+
+      ScrollTrigger.refresh(true);
     });
 
     return () => {
@@ -97,11 +126,12 @@ function OfficeLife() {
       tweenWrapper?.kill();
       firstTweenImage?.kill();
       secondTweenImage?.kill();
+      timeline?.kill();
     };
   }, []);
 
   return (
-    <Component id={officeLifeId ?? ''}>
+    <Component id={officeLifeId ?? ''} ref={componentRef}>
       <FirstVector imageRef={firstVectorRef} src={Vector1} />
       <SecondVector imageRef={secondVectorRef} src={Vector2} />
       <Content>
@@ -120,7 +150,7 @@ function OfficeLife() {
           </Wrapper>
         </ContentContainer>
       </Content>
-      <Bottom>
+      <Bottom ref={bottomRef}>
         <ContentContainer>
           <Buttons>
             <StyledButton>

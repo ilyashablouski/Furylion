@@ -16,7 +16,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 type AnimationType = string | number | gsap.plugins.StartEndFunc | undefined;
 
-function Facts() {
+export interface FactsProps {
+  singleCourse?: boolean;
+}
+
+function Facts({ singleCourse }: FactsProps) {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
 
   const numbersArray = factsItems
@@ -40,13 +44,13 @@ function Facts() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          startAnimation = 'top -10%';
-          endAnimation = 'top -10%';
+          startAnimation = singleCourse ? '-25% top' : 'top -10%';
+          endAnimation = singleCourse ? '-25% top' : 'top -10%';
         },
 
         '(max-width: 767px)': function () {
-          startAnimation = 'top 50%';
-          endAnimation = 'top 50%';
+          startAnimation = singleCourse ? '-15% top' : 'top 50%';
+          endAnimation = singleCourse ? '-15% top' : 'top 50%';
         },
       });
 
@@ -76,7 +80,7 @@ function Facts() {
       delayCall?.kill();
       tl?.kill();
     };
-  }, []);
+  }, [singleCourse]);
   return (
     <Component id={factsId ?? ''} ref={componentRef}>
       <ContentContainer>

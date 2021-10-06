@@ -25,7 +25,7 @@ function SingleCourse() {
       <CourseProgram />
       <StudentWork />
       <Steps singleCourse />
-      <Facts />
+      <Facts singleCourse />
       <Projects />
       <AfterCompleteCourse />
       <PopularQuestions />
