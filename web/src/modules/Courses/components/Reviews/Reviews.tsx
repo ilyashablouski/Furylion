@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import chunk from 'lodash/chunk';
 
 import { useMedia } from '@tager/web-core';
 
@@ -13,7 +12,6 @@ import ReviewsSlider from '@/modules/Courses/components/Reviews/Slider';
 
 function Reviews() {
   const { reviewsId, reviewsTitle, reviewsItems } = useCoursesData();
-  const reviewsTriplesItems = chunk(reviewsItems, 5);
   const tabletMedia = useMedia('(max-width: 1260px)');
 
   return (
@@ -24,22 +22,19 @@ function Reviews() {
           <ReviewsSlider />
         ) : (
           <Gallery>
-            {reviewsTriplesItems.map((items, index) => (
-              <GalleryColumn key={index}>
-                {items.map(
-                  ({ video, avatar, name, position, preview }, index) => (
-                    <Video
-                      key={index}
-                      video={video}
-                      avatar={avatar}
-                      name={name}
-                      position={position}
-                      preview={preview}
-                    />
-                  )
-                )}
-              </GalleryColumn>
-            ))}
+            {reviewsItems &&
+              reviewsItems.map(
+                ({ video, avatar, name, position, preview }, index) => (
+                  <Video
+                    key={index}
+                    video={video}
+                    avatar={avatar}
+                    name={name}
+                    position={position}
+                    preview={preview}
+                  />
+                )
+              )}
           </Gallery>
         )}
       </CustomContentContainer>
@@ -93,17 +88,11 @@ const Gallery = styled.div`
   gap: 21px;
   margin-top: 149px;
 
-  & > div:nth-child(2) {
+  & > div:nth-of-type(4n + 2) {
     transform: translateY(237px);
   }
 
-  & > div:nth-child(3) {
+  & > div:nth-of-type(4n + 3) {
     transform: translateY(-95px);
   }
-`;
-
-const GalleryColumn = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 21px;
 `;

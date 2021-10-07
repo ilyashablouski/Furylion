@@ -225,6 +225,7 @@ const Component = styled.div`
   border-radius: 15px;
   overflow: hidden;
   padding-top: 178.615%;
+  max-height: 522px;
   cursor: pointer;
 
   &:hover {
