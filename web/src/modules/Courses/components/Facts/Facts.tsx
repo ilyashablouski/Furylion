@@ -63,7 +63,6 @@ function Facts({ singleCourse }: FactsProps) {
             trigger: componentRef.current,
             start: startAnimation,
             end: endAnimation,
-            scrub: 1,
           },
         });
 

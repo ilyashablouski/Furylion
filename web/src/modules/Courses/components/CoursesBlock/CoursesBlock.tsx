@@ -37,8 +37,8 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
           marginTop = '21%';
         },
 
-        '(max-width: 767px)': function () {
-          marginTop = '0%';
+        '(max-width: 768px)': function () {
+          marginTop = '75px';
         },
       });
 
