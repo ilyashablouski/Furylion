@@ -17,13 +17,14 @@ function PopularQuestions() {
         <Title>{questionsTitle}</Title>
 
         <Cards>
-          {questionsItems.map(({ question, answer }, index: number) => (
-            <PopularQuestionsCard
-              question={question}
-              answer={answer}
-              key={index}
-            />
-          ))}
+          {questionsItems &&
+            questionsItems.map(({ question, answer }, index: number) => (
+              <PopularQuestionsCard
+                question={question}
+                answer={answer}
+                key={index}
+              />
+            ))}
         </Cards>
       </ContentContainer>
     </Component>
