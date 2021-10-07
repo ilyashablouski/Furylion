@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Fact } from '@/modules/Courses/Courses.types';
 import { colors } from '@/constants/theme';
 import { StringFieldType } from '@/typings/common';
+import { media } from '@/utils/mixin';
 
 function FactsCard({ title, subtitle, description, counterRef }: Fact) {
   const getTitleItems = (title: StringFieldType) => {
@@ -56,6 +57,10 @@ const Title = styled.span`
   line-height: 130%;
   text-transform: uppercase;
   color: ${colors.white};
+
+  ${media.mobileSmall(css`
+    font-size: 75px;
+  `)}
 `;
 
 const Prefix = styled(Title)``;
@@ -63,6 +68,10 @@ const Prefix = styled(Title)``;
 const Subtitle = styled(Title)`
   color: ${colors.red};
   font-size: 50px;
+
+  ${media.mobileSmall(css`
+    font-size: 37px;
+  `)}
 `;
 
 const Description = styled.p`

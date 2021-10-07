@@ -13,7 +13,7 @@ import ReviewsSlider from '@/modules/Courses/components/Reviews/Slider';
 
 function Reviews() {
   const { reviewsId, reviewsTitle, reviewsItems } = useCoursesData();
-  const reviewsTriplesItems = chunk(reviewsItems, 3);
+  const reviewsTriplesItems = chunk(reviewsItems, 5);
   const tabletMedia = useMedia('(max-width: 1260px)');
 
   return (
