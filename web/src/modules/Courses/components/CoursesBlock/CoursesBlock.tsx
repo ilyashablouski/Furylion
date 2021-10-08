@@ -18,6 +18,8 @@ import {
 function CoursesBlock({ singleCourse }: SingleCourseProps) {
   const { coursesId, coursesTitle, coursesItems } = useCoursesData();
   const coursesCardsRef = useRef<HTMLDivElement>(null);
+  const isComingSoon =
+    coursesItems && coursesItems[coursesItems.length - 1].information.length;
 
   useEffect(() => {
     let tw: gsap.core.Tween;
@@ -74,6 +76,7 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
       <Cards
         singleCourse={singleCourse}
         ref={!singleCourse ? coursesCardsRef : null}
+        comingSoon={!isComingSoon}
       >
         {coursesItems &&
           coursesItems.map((course, index) => (
