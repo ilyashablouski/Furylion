@@ -26,9 +26,21 @@ function CourseProgram() {
 
         <Cards>
           {courseProgramItems &&
-            courseProgramItems.map((courseProgram, index: number) => (
-              <AccordionCard key={index} {...courseProgram} />
-            ))}
+            courseProgramItems.map((courseProgram, index: number) =>
+              index === 0 ? (
+                <AccordionCard
+                  key={index}
+                  {...courseProgram}
+                  initialOpenedValue
+                />
+              ) : (
+                <AccordionCard
+                  key={index}
+                  {...courseProgram}
+                  initialOpenedValue={false}
+                />
+              )
+            )}
         </Cards>
       </ContentContainer>
     </Component>

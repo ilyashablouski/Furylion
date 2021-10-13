@@ -45,7 +45,7 @@ function Reviews() {
 export default Reviews;
 
 const Component = styled.section`
-  padding: 80px 0 428px 0;
+  padding: 80px 0;
   background: ${colors.dark};
 
   ${media.tablet(css`

@@ -63,7 +63,7 @@ function OfficeLife() {
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
           translateY = '0%';
-          yPercent = '-1';
+          yPercent = '-2';
           yPercentBottom = '100';
         },
       });
@@ -71,6 +71,7 @@ function OfficeLife() {
       tweenWrapper = gsap.to(wrapperRef.current, {
         translateY: translateY,
         scrollTrigger: {
+          scroller: 'body',
           start: 'center 67%',
           end: '180% bottom',
           trigger: wrapperRef.current,
@@ -81,8 +82,9 @@ function OfficeLife() {
       firstTweenImage = gsap.to(firstVectorRef.current, {
         yPercent: yPercent,
         scrollTrigger: {
+          scroller: 'body',
           start: '70% 70%',
-          end: 'bottom bottom',
+          end: '110% bottom',
           trigger: firstVectorRef.current,
           scrub: 2,
         },
@@ -91,6 +93,7 @@ function OfficeLife() {
       secondTweenImage = gsap.to(secondVectorRef.current, {
         yPercent: yPercent,
         scrollTrigger: {
+          scroller: 'body',
           start: '70% 70%',
           end: '110% bottom',
           trigger: secondVectorRef.current,
@@ -117,8 +120,6 @@ function OfficeLife() {
         },
         0
       );
-
-      ScrollTrigger.refresh(true);
     });
 
     return () => {
@@ -235,6 +236,8 @@ const Bottom = styled.div`
   margin-top: -20px;
   background: ${colors.white};
   transform: rotate(-3deg);
+  width: 102%;
+  margin-left: -1%;
 
   ${media.tablet(css`
     padding: 15px 0;
