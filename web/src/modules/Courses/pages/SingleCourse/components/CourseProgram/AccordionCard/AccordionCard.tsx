@@ -16,8 +16,9 @@ function AccordionCard({
   descriptionTitle,
   description,
   programStepsItems,
+  initialOpenedValue,
 }: CourseProgramItem) {
-  const [isOpened, setOpened] = useState(false);
+  const [isOpened, setOpened] = useState(initialOpenedValue);
 
   const handleChangeOpenedState = () => {
     setOpened(!isOpened);

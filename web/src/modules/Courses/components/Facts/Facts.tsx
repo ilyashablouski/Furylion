@@ -44,13 +44,13 @@ function Facts({ singleCourse }: FactsProps) {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          startAnimation = singleCourse ? '-25% top' : 'top -10%';
-          endAnimation = singleCourse ? '-25% top' : 'top -10%';
+          startAnimation = singleCourse ? 'top 60%' : 'top 20%';
+          endAnimation = singleCourse ? 'top 60%' : 'top 20%';
         },
 
         '(max-width: 767px)': function () {
-          startAnimation = singleCourse ? '-15% top' : 'top 50%';
-          endAnimation = singleCourse ? '-15% top' : 'top 50%';
+          startAnimation = singleCourse ? 'top 60%' : 'top 55%';
+          endAnimation = singleCourse ? 'top 60%' : 'top 55%';
         },
       });
 
@@ -139,7 +139,7 @@ const Cards = styled.div`
   gap: 20px;
   margin-top: 54px;
 
-  ${media.tabletSmallOnly(css`
+  ${media.tablet(css`
     grid-template-columns: repeat(2, 1fr);
 
     & > div :last-child {
@@ -149,6 +149,10 @@ const Cards = styled.div`
 
   ${media.mobile(css`
     grid-template-columns: repeat(1, 1fr);
+
+    & > div :last-child {
+      grid-column: auto;
+    }
   `)}
 `;
 
