@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ThumbnailType } from '@tager/web-modules';
 
@@ -21,16 +21,37 @@ export interface PhoneProps {
 
 function Phone({ image, video, preview, avatar, title }: PhoneProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const videoDurationMs = videoRef.current?.duration! * 1000 + 50;
-  const [isAnimationStop, setAnimationStop] = useState(true);
+  const progressRef = useRef<HTMLDivElement | null>(null);
+  const pause = useRef(true);
   const [isMuted, setMuted] = useState(true);
 
-  const handleVideoPlay = () => {
-    setAnimationStop(false);
+  const progressAnimate = () => {
+    const progress = () => {
+      if (!videoRef.current || !progressRef.current) {
+        return;
+      }
+
+      const { currentTime, duration } = videoRef.current;
+
+      let percent = (currentTime / duration) * 100;
+
+      if (percent === 100) {
+        percent = 0;
+      }
+
+      progressRef.current.style.width = `${percent}%`;
+
+      if (!pause.current && currentTime < duration) {
+        window.requestAnimationFrame(progress);
+      }
+    };
+
+    window.requestAnimationFrame(progress);
   };
 
-  const handleVideoPause = () => {
-    setAnimationStop(true);
+  const handleVideoPlay = () => {
+    pause.current = false;
+    progressAnimate();
   };
 
   const handleChangeMutedState = () => {
@@ -52,7 +73,6 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
             ref={videoRef}
             src={video.url ?? ''}
             onPlay={handleVideoPlay}
-            onPause={handleVideoPause}
             autoPlay
             loop
             muted={isMuted}
@@ -62,10 +82,7 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
           />
 
           <ProgressBar>
-            <Progress
-              isAnimationStop={isAnimationStop}
-              videoDurationMs={videoDurationMs}
-            />
+            <Progress ref={progressRef} />
           </ProgressBar>
 
           <Information>
@@ -88,15 +105,6 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
 }
 
 export default Phone;
-
-const animation = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
 
 const Component = styled.div`
   position: relative;
@@ -146,27 +154,10 @@ const ProgressBar = styled.div`
   margin: auto auto;
 `;
 
-const Progress = styled.div<{
-  isAnimationStop: boolean;
-  videoDurationMs: number;
-}>`
+const Progress = styled.div`
   height: 100%;
+  width: 0;
   background: ${colors.white};
-  
-   ${({ videoDurationMs }) =>
-     css`
-       animation: ${animation} ${videoDurationMs}ms infinite linear;
-     `}
-  
-      ${(props) =>
-        props.isAnimationStop
-          ? css`
-              animation-play-state: paused;
-            `
-          : css`
-              animation-play-state: running;
-            `}
-    }
 `;
 
 const Information = styled.div`
