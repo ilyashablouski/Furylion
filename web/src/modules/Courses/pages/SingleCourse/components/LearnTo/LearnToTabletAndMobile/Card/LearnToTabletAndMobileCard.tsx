@@ -64,6 +64,7 @@ const Image = styled(Picture)`
   margin: 0 auto;
   height: 239px;
   max-width: 284px;
+  z-index: 1;
 
   picture {
     position: absolute;
