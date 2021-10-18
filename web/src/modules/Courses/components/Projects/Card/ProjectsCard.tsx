@@ -21,7 +21,20 @@ function ProjectsCard({ url, url_webp, url_2x, url_webp_2x }: ThumbnailType) {
 
 export default ProjectsCard;
 
-const Component = styled.div``;
+const Component = styled.div`
+  margin-top: 20px;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  ${media.tablet(css`
+    &:not(:first-child) {
+      margin-left: 0;
+      margin-top: 50px;
+    }
+  `)}
+`;
 
 const Image = styled(Picture)`
   width: 100%;
@@ -31,14 +44,4 @@ const Image = styled(Picture)`
     width: 100%;
     height: 100%;
   }
-
-  ${media.mobile(css`
-    img {
-      margin: 0 auto;
-    }
-    picture {
-      width: 100%;
-      height: 100%;
-    }
-  `)}
 `;
