@@ -58,41 +58,13 @@ const Title = styled.p`
 
 const Cards = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 56px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
 
   ${media.tablet(css`
     flex-direction: column;
+    margin-top: 56px;
   `)}
-
-  & > div:nth-child(1) > div picture img {
-    max-width: 206px;
-  }
-
-  & > div:nth-child(2) > div picture img {
-    max-width: 132px;
-  }
-
-  & > div:nth-child(3) > div picture img {
-    min-width: 410px;
-
-    ${media.mobile(css`
-      min-width: initial;
-      max-width: 360px;
-    `)}
-  }
-
-  & > div:nth-child(4) > div picture img {
-    max-width: 162px;
-  }
-
-  & > div:nth-child(5) > div picture img {
-    max-width: 184px;
-  }
-
-  & > div:not(:first-child) {
-    ${media.tablet(css`
-      margin-top: 50px;
-    `)}
-  }
 `;
