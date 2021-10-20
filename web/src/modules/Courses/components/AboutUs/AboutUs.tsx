@@ -69,7 +69,6 @@ function AboutUs() {
 
 const Wrapper = styled.section`
   position: relative;
-  margin: 0 auto;
   width: 100%;
   min-height: 750px;
   display: flex;
