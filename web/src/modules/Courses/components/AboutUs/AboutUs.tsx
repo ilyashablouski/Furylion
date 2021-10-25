@@ -69,7 +69,6 @@ function AboutUs() {
 
 const Wrapper = styled.section`
   position: relative;
-  margin: 0 auto;
   width: 100%;
   min-height: 750px;
   display: flex;
@@ -85,9 +84,10 @@ const Wrapper = styled.section`
 const Vector = styled.span`
   visibility: visible;
   position: absolute;
-  width: 140%;
+  width: 139%;
   height: 100%;
   right: 0;
+  left: -200px;
   bottom: 0;
   background: ${colors.red};
   z-index: 2;

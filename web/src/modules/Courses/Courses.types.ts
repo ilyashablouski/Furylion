@@ -39,7 +39,7 @@ export interface Step {
   title: string | null;
   position?: string | null;
   description: string | null;
-  image: PictureType;
+  image: ThumbnailType;
 }
 
 export interface Question {

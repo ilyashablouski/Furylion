@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import gsap from 'gsap';
+import gsap, { Power3 } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import ContentContainer from '@/components/ContentContainer';
@@ -34,45 +34,110 @@ function OfficeLife() {
     officeLifeButtonSecondIsNewTab,
   } = useCoursesData();
 
-  const phoneRef = useRef(null);
+  const componentRef = useRef<HTMLTableSectionElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const firstVectorRef = useRef<HTMLImageElement>(null);
+  const secondVectorRef = useRef<HTMLImageElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let tw: gsap.core.Tween;
+    let tweenWrapper: gsap.core.Tween;
+    let firstTweenImage: gsap.core.Tween;
+    let secondTweenImage: gsap.core.Tween;
+    let timeline: gsap.core.Timeline;
+
     const delayedCall = gsap.delayedCall(0, () => {
-      if (!phoneRef.current) return null;
+      if (
+        !componentRef.current ||
+        !wrapperRef.current ||
+        !firstVectorRef.current ||
+        !secondVectorRef.current ||
+        !bottomRef.current
+      )
+        return null;
 
       let translateY: gsap.TweenValue | undefined;
+      let yPercent: gsap.TweenValue | undefined;
+      let yPercentBottom: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
-          translateY = '0%';
+          translateY = '0';
+          yPercent = '-2';
+          yPercentBottom = '100';
         },
       });
 
-      tw = gsap.to(phoneRef.current, {
+      tweenWrapper = gsap.to(wrapperRef.current, {
         translateY: translateY,
         scrollTrigger: {
+          scroller: 'body',
           start: 'center 67%',
-          end: '-100% -100%',
-          trigger: phoneRef.current,
+          end: '180% bottom',
+          trigger: wrapperRef.current,
           scrub: true,
         },
       });
+
+      firstTweenImage = gsap.to(firstVectorRef.current, {
+        yPercent: yPercent,
+        scrollTrigger: {
+          scroller: 'body',
+          start: '70% 70%',
+          end: '110% bottom',
+          trigger: firstVectorRef.current,
+          scrub: 2,
+        },
+      });
+
+      secondTweenImage = gsap.to(secondVectorRef.current, {
+        yPercent: yPercent,
+        scrollTrigger: {
+          scroller: 'body',
+          start: '70% 70%',
+          end: '110% bottom',
+          trigger: secondVectorRef.current,
+          scrub: 2,
+        },
+      });
+
+      timeline = gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: componentRef.current,
+          start: 'top top',
+          end: 'bottom 90%',
+          scrub: 2,
+        },
+      });
+
+      timeline = timeline.from(
+        bottomRef.current,
+        {
+          ease: Power3.easeOut,
+          yPercent: yPercentBottom,
+          duration: 0.5,
+        },
+        0
+      );
     });
 
     return () => {
       delayedCall.kill();
-      tw?.kill();
+      tweenWrapper?.kill();
+      firstTweenImage?.kill();
+      secondTweenImage?.kill();
+      timeline?.kill();
     };
   }, []);
 
   return (
-    <Component id={officeLifeId ?? ''}>
-      <FirstVector src={Vector1} />
-      <SecondVector src={Vector2} />
+    <Component id={officeLifeId ?? ''} ref={componentRef}>
+      <FirstVector imageRef={firstVectorRef} src={Vector1} />
+      <SecondVector imageRef={secondVectorRef} src={Vector2} />
       <Content>
         <ContentContainer>
-          <Wrapper>
+          <Wrapper ref={wrapperRef}>
             <Header>
               <Title>{officeLifeTitle}</Title>
             </Header>
@@ -86,7 +151,7 @@ function OfficeLife() {
           </Wrapper>
         </ContentContainer>
       </Content>
-      <Bottom>
+      <Bottom ref={bottomRef}>
         <ContentContainer>
           <Buttons>
             <StyledButton>
@@ -131,7 +196,7 @@ const Component = styled.section`
 `;
 
 const FirstVector = styled(Picture)`
-  position: absolute !important;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -142,11 +207,32 @@ const FirstVector = styled(Picture)`
     position: relative;
     margin: 0 auto;
     width: 100%;
+    transform: translateY(-50%);
+
+    ${media.tablet(css`
+      transform: translateY(0);
+    `)}
   }
 `;
 
-const SecondVector = styled(FirstVector)`
+const SecondVector = styled(Picture)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
   z-index: 0;
+
+  img {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    transform: translateY(-50%);
+
+    ${media.tablet(css`
+      transform: translateY(0);
+    `)}
+  }
 `;
 
 const Content = styled.div`
@@ -166,6 +252,8 @@ const Bottom = styled.div`
   margin-top: -20px;
   background: ${colors.white};
   transform: rotate(-3deg);
+  width: 102%;
+  margin-left: -1%;
 
   ${media.tablet(css`
     padding: 15px 0;
@@ -229,9 +317,12 @@ const IconWrapper = styled.i`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  transform: translateY(-527px);
 
   ${media.tablet(css`
     flex-direction: column;
+    transform: translateY(0);
   `)}
 `;
 

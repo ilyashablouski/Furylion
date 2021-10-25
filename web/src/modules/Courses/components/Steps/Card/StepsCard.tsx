@@ -10,10 +10,10 @@ function StepsCard({ image, title, position, description }: Step) {
   return (
     <Component position={position}>
       <Background
-        src={image.desktop.url}
-        src2x={image.desktop.url_2x}
-        srcWebp={image.desktop.url_webp}
-        srcWebp2x={image.desktop.url_webp_2x}
+        src={image.url}
+        src2x={image.url_2x}
+        srcWebp={image.url_webp}
+        srcWebp2x={image.url_webp_2x}
         position={position}
       />
       <Content position={position}>

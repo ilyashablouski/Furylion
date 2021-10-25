@@ -129,7 +129,7 @@ const GalleryImage = styled(Picture)`
   }
 
   img {
-    object-fit: cover;
+    object-fit: fill;
 
     ${media.tablet(css`
       object-fit: contain;

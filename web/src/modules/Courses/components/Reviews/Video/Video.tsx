@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { useMedia } from '@tager/web-core';
 
@@ -13,12 +13,36 @@ import { media } from '@/utils/mixin';
 
 function Video({ video, avatar, name, position, preview, swiper }: Review) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setMuted] = useState(true);
+  const progressRef = useRef<HTMLDivElement | null>(null);
   const [isVideoPlay, setVideoPlay] = useState(false);
-  const [isAnimationStop, setAnimationStop] = useState(true);
-  const [isVideoEnded, setVideoEnded] = useState(false);
+  const [isMuted, setMuted] = useState(true);
   const tabletMedia = useMedia('(max-width: 1259.9px)');
-  const videoDurationMs = videoRef.current?.duration! * 1000;
+
+  const pause = useRef(true);
+
+  const progressAnimate = () => {
+    const progress = () => {
+      if (!videoRef.current || !progressRef.current) {
+        return;
+      }
+
+      const { currentTime, duration } = videoRef.current;
+
+      let percent = (currentTime / duration) * 100;
+
+      if (percent === 100) {
+        percent = 0;
+      }
+
+      progressRef.current.style.width = `${percent}%`;
+
+      if (!pause.current && currentTime < duration) {
+        window.requestAnimationFrame(progress);
+      }
+    };
+
+    window.requestAnimationFrame(progress);
+  };
 
   useEffect(() => {
     if (!swiper) {
@@ -34,42 +58,33 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
 
       video.pause();
       setVideoPlay(false);
-      setAnimationStop(true);
     });
   }, [isVideoPlay, swiper]);
-
-  async function handleVideoPointerEnter() {
-    const video = videoRef.current;
-
-    try {
-      await video?.play();
-      handleChangeVideoPlayState();
-      setAnimationStop(!isAnimationStop);
-    } catch (error) {
-      console.log('error: ', error);
-    }
-  }
-
-  const handleVideoPointerOut = () => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.pause();
-    setAnimationStop(true);
-  };
 
   const handleChangeMutedState = () => {
     setMuted(!isMuted);
   };
 
-  const handleChangeVideoPlayState = () => {
-    setVideoPlay(!isVideoPlay);
+  const handleMouseEnter = async () => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    try {
+      await video.play();
+
+      setVideoPlay(true);
+
+      pause.current = false;
+      progressAnimate();
+    } catch (error) {
+      console.log('error:', error);
+    }
   };
 
-  const handleVideoPause = () => {
+  const handleMouseLeave = () => {
     const video = videoRef.current;
 
     if (!video) {
@@ -77,13 +92,9 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
     }
 
     video.pause();
-    setVideoPlay(!isVideoPlay);
-    setAnimationStop(!isAnimationStop);
-  };
 
-  const handleVideoEnd = () => {
-    setVideoEnded(!isVideoEnded);
-    setAnimationStop(true);
+    pause.current = true;
+    setVideoPlay(false);
   };
 
   return (
@@ -94,8 +105,8 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
         <ReviewVideo
           ref={videoRef}
           src={video.url ?? ''}
-          onEnded={handleChangeVideoPlayState}
-          onClick={handleVideoPause}
+          onClick={handleMouseLeave}
+          onPause={handleMouseLeave}
           loop
           muted={isMuted}
           preload="metadata"
@@ -106,14 +117,13 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
         <ReviewVideo
           ref={videoRef}
           src={video.url ?? ''}
-          onPointerEnter={handleVideoPointerEnter}
-          onPointerOut={handleVideoPointerOut}
-          onEnded={handleVideoEnd}
           loop
           muted={isMuted}
           preload="metadata"
           poster={preview.url ?? ''}
           playsInline
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
       )}
 
@@ -122,7 +132,7 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
       </VolumeButton>
 
       {tabletMedia ? (
-        <PlayButton onClick={handleVideoPointerEnter} isVideoPlay={isVideoPlay}>
+        <PlayButton onClick={handleMouseEnter} isVideoPlay={isVideoPlay}>
           <PlayIcon />
         </PlayButton>
       ) : (
@@ -130,12 +140,7 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
       )}
 
       <ProgressBar>
-        <Progress
-          className={isVideoEnded ? 'animation' : 'animation'}
-          isAnimationStop={isAnimationStop}
-          videoDurationMs={videoDurationMs}
-          isVideoEnd={isVideoEnded}
-        />
+        <Progress ref={progressRef} />
       </ProgressBar>
 
       <Content>
@@ -155,15 +160,6 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
 }
 
 export default Video;
-
-const animation = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
 
 const Background = styled.div<{ isVideoPlay: boolean }>`
   position: absolute;
@@ -225,6 +221,7 @@ const Component = styled.div`
   border-radius: 15px;
   overflow: hidden;
   padding-top: 178.615%;
+  max-height: 522px;
   cursor: pointer;
 
   &:hover {
@@ -319,32 +316,10 @@ const ProgressBar = styled.div`
   margin: auto auto;
 `;
 
-const Progress = styled.div<{
-  isAnimationStop: boolean;
-  videoDurationMs: number;
-  isVideoEnd: boolean;
-}>`
+const Progress = styled.div`
   height: 100%;
+  width: 0;
   background: ${colors.white};
-  
-   ${({ videoDurationMs }) =>
-     css`
-       animation: ${animation} ${videoDurationMs}ms linear;
-
-       @media (min-width: 1260px) {
-         animation-iteration-count: infinite;
-       }
-     `}
-  
-      ${(props) =>
-        props.isAnimationStop
-          ? css`
-              animation-play-state: paused;
-            `
-          : css`
-              animation-play-state: running;
-            `}
-    }
 `;
 
 const Content = styled.div`

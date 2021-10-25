@@ -18,6 +18,9 @@ import {
 function CoursesBlock({ singleCourse }: SingleCourseProps) {
   const { coursesId, coursesTitle, coursesItems } = useCoursesData();
   const coursesCardsRef = useRef<HTMLDivElement>(null);
+  const isComingSoon =
+    coursesItems.length &&
+    coursesItems[coursesItems.length - 1].information.length;
 
   useEffect(() => {
     let tw: gsap.core.Tween;
@@ -27,15 +30,18 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
       let marginTop: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 768px)': function () {
+        '(min-width: 1500px)': function () {
           marginTop = '14%';
         },
+        '(max-width: 1500px)': function () {
+          marginTop = '19%';
+        },
         '(max-width: 1259.9px)': function () {
-          marginTop = '27%';
+          marginTop = '21%';
         },
 
         '(max-width: 768px)': function () {
-          marginTop = '0%';
+          marginTop = '75px';
         },
       });
 
@@ -71,6 +77,7 @@ function CoursesBlock({ singleCourse }: SingleCourseProps) {
       <Cards
         singleCourse={singleCourse}
         ref={!singleCourse ? coursesCardsRef : null}
+        comingSoon={!isComingSoon}
       >
         {coursesItems &&
           coursesItems.map((course, index) => (

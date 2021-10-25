@@ -44,9 +44,14 @@ function StudentWork() {
       let topPositionForTitle: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 768px)': function () {
+        '(min-width: 1556px)': () => {
           topPositionForTitle = '96%';
-          endTitleAnimation = '700% 20%';
+          endTitleAnimation = '700% 10%';
+        },
+
+        '(min-width: 768px) and (max-width: 1555.9px)': () => {
+          topPositionForTitle = '90%';
+          endTitleAnimation = '600% 20%';
         },
       });
 

@@ -35,25 +35,23 @@ export const Title = styled.span`
 
 export const Cards = styled.div<{
   singleCourse: SingleCourseProps['singleCourse'];
+  comingSoon: boolean;
 }>`
   position: relative;
 
-  & > div:last-child > div:first-child {
-    &:after {
-      background: rgba(25, 24, 20, 0.6);
-      backdrop-filter: blur(7px);
-
-      ${({ singleCourse }) =>
-        singleCourse &&
-        css`
-          background: none;
-          backdrop-filter: none;
-        `};
-    }
-  }
+  ${({ comingSoon }) =>
+    comingSoon &&
+    css`
+      & > div:last-child > div:first-child {
+        &:after {
+          background: rgba(25, 24, 20, 0.6);
+          backdrop-filter: blur(7px);
+        }
+      }
+    `};
 
   ${media.mobile(css`
-    margin-top: 50px;
+    margin-top: 75px;
   `)}
 
   ${({ singleCourse }) =>

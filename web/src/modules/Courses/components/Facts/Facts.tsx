@@ -16,7 +16,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 type AnimationType = string | number | gsap.plugins.StartEndFunc | undefined;
 
-function Facts() {
+export interface FactsProps {
+  singleCourse?: boolean;
+}
+
+function Facts({ singleCourse }: FactsProps) {
   const { factsId, factsTitle, factsItems, factsText } = useCoursesData();
 
   const numbersArray = factsItems
@@ -40,13 +44,13 @@ function Facts() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          startAnimation = 'top -10%';
-          endAnimation = 'top -10%';
+          startAnimation = singleCourse ? 'top 60%' : 'top 20%';
+          endAnimation = singleCourse ? 'top 60%' : 'top 20%';
         },
 
         '(max-width: 767px)': function () {
-          startAnimation = 'top 50%';
-          endAnimation = 'top 50%';
+          startAnimation = singleCourse ? 'top 60%' : 'top 55%';
+          endAnimation = singleCourse ? 'top 60%' : 'top 55%';
         },
       });
 
@@ -59,7 +63,6 @@ function Facts() {
             trigger: componentRef.current,
             start: startAnimation,
             end: endAnimation,
-            scrub: 1,
           },
         });
 
@@ -76,7 +79,7 @@ function Facts() {
       delayCall?.kill();
       tl?.kill();
     };
-  }, []);
+  }, [singleCourse]);
   return (
     <Component id={factsId ?? ''} ref={componentRef}>
       <ContentContainer>
@@ -136,7 +139,7 @@ const Cards = styled.div`
   gap: 20px;
   margin-top: 54px;
 
-  ${media.tabletSmallOnly(css`
+  ${media.tablet(css`
     grid-template-columns: repeat(2, 1fr);
 
     & > div :last-child {
@@ -146,6 +149,10 @@ const Cards = styled.div`
 
   ${media.mobile(css`
     grid-template-columns: repeat(1, 1fr);
+
+    & > div :last-child {
+      grid-column: auto;
+    }
   `)}
 `;
 

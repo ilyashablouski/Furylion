@@ -308,7 +308,7 @@ const Buttons = styled.div`
 
     width: 100%;
     right: 0;
-    top: 70%;
+    top: 80%;
   `)}
 `;
 

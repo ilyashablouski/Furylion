@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ThumbnailType } from '@tager/web-modules';
 
 import Picture from '@/components/Picture';
+import { media } from '@/utils/mixin';
 
-function ProjectsCard({ url, url_webp, url_2x, url_webp_2x }: ThumbnailType) {
+function ProjectsCard({ url, url_2x }: ThumbnailType) {
   return (
     <Component>
       <Image src={url} src2x={url_2x} srcWebp={null} srcWebp2x={null} />
@@ -15,7 +16,20 @@ function ProjectsCard({ url, url_webp, url_2x, url_webp_2x }: ThumbnailType) {
 
 export default ProjectsCard;
 
-const Component = styled.div``;
+const Component = styled.div`
+  margin-top: 20px;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  ${media.tablet(css`
+    &:not(:first-child) {
+      margin-left: 0;
+      margin-top: 50px;
+    }
+  `)}
+`;
 
 const Image = styled(Picture)`
   width: 100%;
