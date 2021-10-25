@@ -41,7 +41,7 @@ function Phone({ image, video, preview, avatar, title }: PhoneProps) {
 
       progressRef.current.style.width = `${percent}%`;
 
-      if (!pause.current && currentTime < duration) {
+      if (!pause.current && currentTime <= duration) {
         window.requestAnimationFrame(progress);
       }
     };

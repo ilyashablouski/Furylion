@@ -36,7 +36,7 @@ function Video({ video, avatar, name, position, preview, swiper }: Review) {
 
       progressRef.current.style.width = `${percent}%`;
 
-      if (!pause.current && currentTime < duration) {
+      if (!pause.current && currentTime <= duration) {
         window.requestAnimationFrame(progress);
       }
     };

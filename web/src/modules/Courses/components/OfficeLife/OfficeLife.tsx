@@ -72,7 +72,7 @@ function OfficeLife() {
         translateY: translateY,
         scrollTrigger: {
           scroller: 'body',
-          start: 'center 67%',
+          start: 'top 50%',
           end: '180% bottom',
           trigger: wrapperRef.current,
           scrub: true,
