@@ -44,7 +44,7 @@ function StudentWork() {
       let topPositionForTitle: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
-        '(min-width: 1556px) and (max-width: 2300px)': () => {
+        '(min-width: 1556px)': () => {
           topPositionForTitle = '96%';
           endTitleAnimation = '700% 10%';
         },
