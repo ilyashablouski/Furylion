@@ -62,7 +62,7 @@ function OfficeLife() {
 
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
-          translateY = '0%';
+          translateY = '0';
           yPercent = '-2';
           yPercentBottom = '100';
         },
@@ -196,7 +196,7 @@ const Component = styled.section`
 `;
 
 const FirstVector = styled(Picture)`
-  position: absolute !important;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -215,8 +215,24 @@ const FirstVector = styled(Picture)`
   }
 `;
 
-const SecondVector = styled(FirstVector)`
+const SecondVector = styled(Picture)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
   z-index: 0;
+
+  img {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    transform: translateY(-50%);
+
+    ${media.tablet(css`
+      transform: translateY(0);
+    `)}
+  }
 `;
 
 const Content = styled.div`
