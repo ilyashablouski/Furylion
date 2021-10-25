@@ -6,11 +6,12 @@ use App\Repositories\VacancyRepository;
 use OZiTAG\Tager\Backend\Core\Jobs\Job;
 use OZiTAG\Tager\Backend\Pages\Models\TagerPageField;
 use OZiTAG\Tager\Backend\Pages\Repositories\PageFieldFilesRepository;
+use OZiTAG\Tager\Backend\Pages\Repositories\PageFieldsRepository;
 use OZiTAG\Tager\Backend\Pages\Repositories\PagesRepository;
 
 class GetCoursesCountJob extends Job
 {
-    public function handle(PagesRepository $pagesRepository, PageFieldFilesRepository $pageFieldFilesRepository)
+    public function handle(PagesRepository $pagesRepository, PageFieldsRepository $pageFieldsRepository)
     {
         $rootPage = $pagesRepository->findByTemplate('courses')->first();
         if (!$rootPage) {
@@ -18,8 +19,11 @@ class GetCoursesCountJob extends Job
         }
 
         /** @var TagerPageField $field */
-        $field = $pageFieldFilesRepository->builder()->where('page_id', '=', $rootPage->id)
-            ->where('field', '=', 'coursesItems')->first();
+        $field = $pageFieldsRepository->builder()
+            ->where('page_id', '=', $rootPage->id)
+            ->where('field', '=', 'coursesItems')
+            ->first();
+
         if (!$field) {
             return 0;
         }
