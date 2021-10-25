@@ -134,6 +134,7 @@ const PreviewImageWrapper = styled.div`
   ${media.mobile(css`
     display: none;
   `)}
+
   img {
     transform: translateY(-100%);
   }
