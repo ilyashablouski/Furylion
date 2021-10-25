@@ -164,7 +164,7 @@ const BlockRight = styled.div`
     `)}
 
     ${media.mobile(css`
-      padding-top: 41.66%;
+      padding-top: 83.33%;
     `)}
   }
 `;

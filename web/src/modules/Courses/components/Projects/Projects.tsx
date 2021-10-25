@@ -15,17 +15,9 @@ function Projects() {
       <ContentContainer>
         <Title>{projectsTitle}</Title>
         <Cards>
-          {projectsImages.map(
-            ({ url, url_2x, url_webp, url_webp_2x }, index: number) => (
-              <ProjectsCard
-                url={url}
-                url_2x={url_2x}
-                url_webp={url_webp}
-                url_webp_2x={url_webp_2x}
-                key={index}
-              />
-            )
-          )}
+          {projectsImages.map(({ url, url_2x }, index: number) => (
+            <ProjectsCard key={index} url={url} url_2x={url_2x} />
+          ))}
         </Cards>
       </ContentContainer>
     </Component>

@@ -317,6 +317,7 @@ const IconWrapper = styled.i`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   transform: translateY(-527px);
 
   ${media.tablet(css`
