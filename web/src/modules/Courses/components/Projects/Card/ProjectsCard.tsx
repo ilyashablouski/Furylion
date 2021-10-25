@@ -6,15 +6,10 @@ import { ThumbnailType } from '@tager/web-modules';
 import Picture from '@/components/Picture';
 import { media } from '@/utils/mixin';
 
-function ProjectsCard({ url, url_webp, url_2x, url_webp_2x }: ThumbnailType) {
+function ProjectsCard({ url, url_webp }: ThumbnailType) {
   return (
     <Component>
-      <Image
-        src={url}
-        src2x={url_webp}
-        srcWebp={url_2x}
-        srcWebp2x={url_webp_2x}
-      />
+      <Image src={url} src2x={url_webp} />
     </Component>
   );
 }

@@ -22,6 +22,7 @@ function StudentWorkItem({ image, title, text, className }: Props) {
           mobileLarge={convertThumbnailToPictureImage(image?.tablet)}
           tabletSmall={convertThumbnailToPictureImage(image?.laptop)}
           desktop={convertThumbnailToPictureImage(image?.desktop)}
+          useSpinner
           className="item-image-container"
         />
       </ImageContainer>
