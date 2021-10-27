@@ -36,46 +36,65 @@ function OfficeLife() {
 
   const componentRef = useRef<HTMLTableSectionElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const contentContainerRef = useRef<HTMLDivElement>(null);
   const firstVectorRef = useRef<HTMLImageElement>(null);
   const secondVectorRef = useRef<HTMLImageElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let tweenWrapper: gsap.core.Tween;
-    let firstTweenImage: gsap.core.Tween;
-    let secondTweenImage: gsap.core.Tween;
-    let timeline: gsap.core.Timeline;
+    let tweenWrapper: gsap.core.Tween | undefined;
+    let firstTweenImage: gsap.core.Tween | undefined;
+    let secondTweenImage: gsap.core.Tween | undefined;
+    let timeline: gsap.core.Timeline | undefined;
 
     const delayedCall = gsap.delayedCall(0, () => {
       if (
         !componentRef.current ||
         !wrapperRef.current ||
+        !contentContainerRef.current ||
         !firstVectorRef.current ||
         !secondVectorRef.current ||
         !bottomRef.current
-      )
-        return null;
+      ) {
+        return;
+      }
 
-      let translateY: gsap.TweenValue | undefined;
+      function wrapperAnimation(start: string, end: string) {
+        tweenWrapper?.kill();
+
+        return gsap.to(wrapperRef.current, {
+          scrollTrigger: {
+            scroller: 'body',
+            start,
+            end: () => {
+              if (!wrapperRef.current) {
+                return end;
+              }
+
+              const { height } = wrapperRef.current.getBoundingClientRect();
+
+              return `${end}-=${window.innerHeight - height}`;
+            },
+            trigger: contentContainerRef.current ?? undefined,
+            pin: wrapperRef.current ?? undefined,
+            pinSpacing: false,
+          },
+        });
+      }
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1260px)': () => {
+          tweenWrapper = wrapperAnimation('top top+=100', 'bottom bottom');
+        },
+      });
+
       let yPercent: gsap.TweenValue | undefined;
       let yPercentBottom: gsap.TweenValue | undefined;
 
       ScrollTrigger.matchMedia({
         '(min-width: 1260px)': function () {
-          translateY = '0';
           yPercent = '-2';
           yPercentBottom = '100';
-        },
-      });
-
-      tweenWrapper = gsap.to(wrapperRef.current, {
-        translateY: translateY,
-        scrollTrigger: {
-          scroller: 'body',
-          start: 'top 50%',
-          end: '180% bottom',
-          trigger: wrapperRef.current,
-          scrub: true,
         },
       });
 
@@ -136,7 +155,7 @@ function OfficeLife() {
       <FirstVector imageRef={firstVectorRef} src={Vector1} />
       <SecondVector imageRef={secondVectorRef} src={Vector2} />
       <Content>
-        <ContentContainer>
+        <ContentContainer ref={contentContainerRef}>
           <Wrapper ref={wrapperRef}>
             <Header>
               <Title>{officeLifeTitle}</Title>
@@ -238,10 +257,14 @@ const SecondVector = styled(Picture)`
 const Content = styled.div`
   position: relative;
   z-index: 3;
-  margin-top: 527px;
+
+  ${ContentContainer} {
+    position: relative;
+    min-height: 160vh;
+  }
 
   ${media.tablet(css`
-    margin-top: 0;
+    min-height: auto;
   `)}
 `;
 
@@ -315,19 +338,22 @@ const IconWrapper = styled.i`
 `;
 
 const Wrapper = styled.div`
+  padding-top: 80px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  transform: translateY(-527px);
 
   ${media.tablet(css`
     flex-direction: column;
-    transform: translateY(0);
+    padding-top: 20px;
   `)}
 `;
 
 const Header = styled.div`
   max-width: 813px;
+
+  ${media.tablet(css`
+    max-width: none;
+  `)}
 `;
 
 const Title = styled.p`
